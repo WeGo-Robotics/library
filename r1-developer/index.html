@@ -1,0 +1,1462 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Unitree R1 휴머노이드 — 개발 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css */
+@page {
+  @top-left  { content: "Unitree R1 휴머노이드"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "개발 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/Unitree_R1_Developer_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>개발 환경과 시스템 구조</a></summary><a class="wm-t2" href="#c1-s1">로봇 안의 컴퓨터와 주소</a><a class="wm-t2" href="#c1-s2">내부 통신과 클라우드</a><a class="wm-t2" href="#c1-s3">두 가지 통신 방식</a><a class="wm-t2" href="#c1-s4">SDK와 모델 얻기</a><a class="wm-t2" href="#c1-s5">개발 환경</a><a class="wm-t2" href="#c1-s6">설치와 빌드</a><a class="wm-t2" href="#c1-s7">네트워크 설정</a><a class="wm-t2" href="#c1-s8">첫 예제 실행</a><a class="wm-t2" href="#c1-s9">개발 팁</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>저수준 제어</a></summary><a class="wm-t2" href="#c2-s1">디버그 모드가 필요한 이유</a><a class="wm-t2" href="#c2-s2">전신 관절 순서</a><a class="wm-t2" href="#c2-s3">발목 병렬 구조와 mode_pr</a><a class="wm-t2" href="#c2-s4">저수준 예제 r1_ankle_swing_example</a><a class="wm-t2" href="#c2-s5">상체 저수준 예제 A5 · A7</a><a class="wm-t2" href="#c2-s6">리모컨 데이터</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>다관절 손</a></summary><a class="wm-t2" href="#c3-s1">Dex1-1 · Dex2/5</a><a class="wm-t2" href="#c3-s2">Dex3-1</a><a class="wm-t2" href="#c3-s3">BrainCo Revo2 · Revo2 Touch ( brainco_hand_service )</a><a class="wm-t2" href="#c3-s4">LinkerHand O6</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>DDS와 기본 서비스</a></summary><a class="wm-t2" href="#c4-s1">ChannelFactory · Publisher · Subscriber</a><a class="wm-t2" href="#c4-s2">RPC 클라이언트 공통</a><a class="wm-t2" href="#c4-s3">주요 토픽</a><a class="wm-t2" href="#c4-s4">로봇 상태 클라이언트 RobotStateClient</a><a class="wm-t2" href="#c4-s5">저수준 메시지</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>보행 · 음성 · 영상 · SLAM 서비스</a></summary><a class="wm-t2" href="#c5-s1">고수준 보행 LocoClient</a><a class="wm-t2" href="#c5-s2">음성 · 조명 AudioClient</a><a class="wm-t2" href="#c5-s3">영상 서비스</a><a class="wm-t2" href="#c5-s4">SLAM 내비게이션</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>고수준 제어</a></summary><a class="wm-t2" href="#c6-s1">보행 예제 r1_loco_client</a><a class="wm-t2" href="#c6-s2">팔 제어 arm_sdk</a><a class="wm-t2" href="#c6-s3">팔 동작 서비스</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>ROS 2와 DDS 예제</a></summary><a class="wm-t2" href="#c7-s1">ROS 2 설정</a><a class="wm-t2" href="#c7-s2">DDS 발행 · 구독 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>오류 코드와 정의</a></summary><a class="wm-t2" href="#c8-s1">장치 전체 상태 비트</a><a class="wm-t2" href="#c8-s2">모터 상태 비트</a><a class="wm-t2" href="#c8-s3">오류 코드 찾아보기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EDU 확장</a></summary><a class="wm-t2" href="#c9-s1">개발 연산 유닛(백팩) 설치</a><a class="wm-t2" href="#c9-s2">설치 구멍</a><a class="wm-t2" href="#c9-s3">백팩 시스템 백업과 복구</a><a class="wm-t2" href="#c9-s4">다관절 손 설치</a></details><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">DEVELOPER MANUAL</div></div>
+  <div class="kicker">개발 설명서</div>
+  <h1>Unitree <span>R1</span><br>휴머노이드</h1>
+  <div class="title2">R1 EDU · unitree_sdk2<br>2차 개발 안내</div>
+  <div class="bar"></div>
+  <p class="lead">시스템 구조와 네트워크, DDS 토픽과 메시지, 저수준 · 고수준 제어, 다관절 손 · 음성 · 영상 · SLAM 서비스,
+    오류 코드와 EDU 확장까지 Unitree 공식 개발 문서를 SDK 소스와 맞춰 보며 한 권에 정리했습니다.</p>
+  <div class="glow"></div>
+  <img class="hero" src="assets/r1_render_wave.png" alt="Unitree R1">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 판권 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>대상</td><td>Unitree R1 EDU. R1 Air와 R1 Basic은 2차 개발을 지원하지 않습니다. 현장 운용은 <a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a>를 보십시오.</td></tr>
+      <tr><td>근거 문서</td><td>Unitree <i>R1 SDK Development Guide</i> (support.unitree.com/home/en/R1_developer, 2026-11-06 미러 57쪽) ·
+        Unitree 교육 영상의 자막 · R1 URDF (<code>r1_description</code>)</td></tr>
+      <tr><td>SDK</td><td><code>unitree_sdk2</code> <b>8e1b927 (2026-10-30)</b> · <code>unitree_sdk2_python</code> 814556d (2026-09-21).
+        8e1b927보다 오래된 SDK 체크아웃에는 R1 파일이 보행 클라이언트(<code>r1_loco_client</code>)뿐입니다 (1장).</td></tr>
+      <tr><td>함께 보는 책</td><td><a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a> (현장 운용)</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p><span class="src">문서</span> 표시는 Unitree 공식 개발 문서의 내용이고, <span class="src r">SDK</span> 표시는 <code>unitree_sdk2</code> 8e1b927 소스에서
+      함수 이름 · 인자 · ID · 토픽 · 게인을 직접 확인한 내용입니다. 문서와 SDK가 다르면 <b>SDK를 따르고</b> "문서와 SDK의 차이" 상자에 적었습니다.
+      Unitree 문서에 남은 G1 · Go2 문서의 흔적(G1 토픽 표 제목, G1 예제 코드 등)은 옮기지 않고 "문서 오류"로 표시했습니다.</p>
+    <p><b>개발 연산 유닛(PC2)의 접속 계정은 Unitree 기술 지원에서 받습니다.</b> 이 설명서는 기본 비밀번호를 싣지 않습니다.
+      첫 접속 뒤 <code>passwd</code>로 비밀번호를 반드시 바꾸십시오.</p>
+    <p>이 설명서의 명령과 예제는 실제 로봇을 움직입니다. 실행 전에 로봇을 보호 프레임에 매달고, 리모컨 담당이 소프트 비상 정지를 누를 수 있게 대기하십시오.</p>
+    <p class="copy">© WeGo Robotics. 표지의 R1 이미지는 Unitree가 공개한 URDF 메시를 MuJoCo로 렌더링한 것입니다.
+      그림 4의 Dex3-1도 같은 방법으로 렌더링했고, 나머지 본문 그림은 Unitree 개발 문서와 교육 영상에서 가져왔습니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">개발 환경과 시스템 구조<small>SDK 얻기 · 네트워크 · 첫 예제</small></span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">저수준 제어<small>디버그 모드 · 관절 순서 · 발목 병렬 구조 · 리모컨 데이터</small></span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">다관절 손<small>Dex1-1 · Dex2/5 · Dex3-1 · BrainCo Revo2 · Revo2 Touch · LinkerHand O6</small></span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">DDS와 기본 서비스<small>ChannelFactory · 주요 토픽 · RobotStateClient · 저수준 메시지</small></span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">보행 · 음성 · 영상 · SLAM 서비스<small>LocoClient · AudioClient · 영상 스트림 · slam_operate</small></span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">고수준 제어<small>보행 예제 · 팔 제어 arm_sdk · 팔 동작 서비스</small></span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">ROS 2와 DDS 예제</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">오류 코드와 정의</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">EDU 확장<small>백팩 설치 · 설치 구멍 · 백업과 복구 · 손 설치</small></span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조<small>IP · 토픽 · 서비스 · 예제 · FSM ID</small></span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">개발 환경과 시스템 구조</h1></div>
+  <p class="lede">R1 EDU는 <code>unitree_sdk2</code>(C++)로 2차 개발을 합니다. 이 장은 로봇 안의 컴퓨터와 통신 구조,
+    SDK를 얻는 방법, 개발 PC의 네트워크 설정, 첫 예제 실행까지를 다룹니다.</p>
+
+  <h2 id="c1-s1">로봇 안의 컴퓨터와 주소 <span class="src">문서</span></h2>
+  <table class="t wrap1">
+    <thead><tr><th>장치</th><th>IP</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td>운동 제어 컴퓨터 (PC1)</td><td class="mono">192.168.123.161</td><td>Unitree 공식 서비스(보행 · 균형 · 모터 제어, 영상 설정 웹 등)를 실행합니다. <b>사용자 개발에는 쓸 수 없습니다.</b></td></tr>
+      <tr><td>개발 연산 유닛 (PC2)</td><td class="mono">192.168.123.164</td><td>EDU의 등에 다는 백팩(확장 도크)입니다. 사용자 프로그램은 여기에서만 실행합니다.
+        NVIDIA Jetson Orin NX(100 TOPS) 또는 Orin Nano(40 TOPS) 보드이며, 계정은 기술 지원에서 받습니다 (9장).</td></tr>
+      <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>SLAM 내비게이션 서비스용 (R1-EDU + Mid360 구성만, 5장)</td></tr>
+      <tr><td>개발 PC</td><td class="mono">192.168.123.99</td><td>권장 주소. 다른 장치와 겹치지 않는 192.168.123.x이면 됩니다 (문서 예: <code>.222</code>)</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 오류 · PC1과 PC2 이름</div>
+    <p>Unitree의 <i>Architecture Description</i> 페이지는 "개발자는 PC1만 쓸 수 있고 PC1의 IP는 192.168.123.164"라고 적었지만,
+      <i>Quick Development</i>와 <i>SLAM</i> 페이지는 .161을 PC1(공식 서비스, 개발 불가), .164를 개발용 PC2 · NX로 부릅니다.
+      이 설명서는 <b>PC1 = .161, PC2 = .164</b>로 씁니다. 주소 자체는 모든 페이지가 같습니다.</p></div>
+
+  <figure class="light"><img src="assets/dev/architecture.png" alt="R1 소프트웨어 구조"><figcaption><b>그림 1.</b> 개발 인터페이스 구조 (Unitree 문서). DDS 응용(구독/발행 · 요청/응답), ROS 2 응용, GST 영상 응용이 같은 DDS 미들웨어 위에 있습니다. Unitree는 이 구조가 G1과 같다고 밝힙니다.</figcaption></figure>
+
+  <h2 id="c1-s2">내부 통신과 클라우드 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>구성 요소</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>DDS</td><td>로봇 안 기능 모듈 사이의 통신. IDL은 ROS 2와 호환됩니다(알맞은 RMW 선택 필요). EDU는 DDS 또는 ROS 2로 인터페이스를 호출합니다</td></tr>
+      <tr><td>센서 수집</td><td>모터 · 카메라 등의 센서 데이터는 직렬 포트로 모은 뒤 DDS 미들웨어 계층으로 전달합니다</td></tr>
+      <tr><td>OTA 모듈</td><td>MQTT로 클라우드와 통신. 고장 정보 업로드, 시스템 업그레이드, WebRTC 신호 중계</td></tr>
+      <tr><td>WebRTC 모듈</td><td>앱과의 주 데이터 경로. 음성 · 영상, 레이더 점군, 운동 상태, 제어 명령</td></tr>
+      <tr><td>Bluetooth (BLE)</td><td>앱과 연결해 네트워크 설정과 보안 인증</td></tr>
+      <tr><td>클라우드 서비스</td><td>사용자가 허락한 뒤에만 연결합니다. ① 운용 데이터 수집(개인정보 제외, 고장 감지 · 통계) ② WebRTC 원격 조작(P2P 또는 TURN 중계, 서버는 트래픽을 수집 · 분석하지 않음) ③ 시스템 업그레이드.
+        통신은 MQTT(장치 감시 · 업그레이드 · 신호 중계), HTTP(앱 · 웹과 로봇의 바인딩), TURN/STUN(P2P 연결 보조)</td></tr>
+      <tr><td>앱</td><td>사용자 관리(HTTP Web API, 로봇 바인딩), BLE 네트워크 설정, WebRTC(영상 · 점군 · 상태 · 명령)</td></tr>
+      <tr><td>개발 인터페이스</td><td>① DDS (C++ · Python) ② ROS 2 ③ GST (영상 전송 전용, 5장)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s3">두 가지 통신 방식 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>방식</th><th>쓰임</th><th>SDK에서</th></tr></thead>
+    <tbody>
+      <tr><td>구독 / 발행</td><td>받는 쪽이 토픽을 구독하면 보내는 쪽이 계속 보냅니다. 중 · 고주파, 연속 데이터 (관절 상태 · 명령 등)</td><td><code>ChannelPublisher</code> · <code>ChannelSubscriber</code> (4장)</td></tr>
+      <tr><td>요청 / 응답</td><td>묻고 답하는 방식. 저주파 데이터 조회나 기능 전환 (모드 변경 · 동작 실행 등)</td><td><code>Client</code> 상속 클래스 (5 · 6장)</td></tr>
+    </tbody>
+  </table>
+  <p>요청 / 응답은 두 가지로 부릅니다. <b>API 호출</b>은 REST API처럼 요청 토픽에 내용을 보내고 응답 토픽에서 답을 받으며, 응답은 브로드캐스트되고 UUID로 요청과 짝을 맞춥니다.
+    <b>함수 호출</b>은 API 호출을 함수로 감싼 것입니다 (예: <code>LocoClient::Damp()</code>). <code>unitree_sdk2</code>는 C++ 개발 라이브러리입니다.</p>
+
+  <h2 id="c1-s4">SDK와 모델 얻기 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>자료</th><th>위치</th></tr></thead>
+    <tbody>
+      <tr><td>unitree_sdk2</td><td><code>github.com/unitreerobotics/unitree_sdk2</code> (Python: <code>unitree_sdk2_python</code>)</td></tr>
+      <tr><td>URDF</td><td><code>github.com/unitreerobotics/unitree_ros</code> 의 <code>robots/r1_description</code></td></tr>
+      <tr><td>STEP 간략 모델</td><td>R1-EDU 26자유도 전체 (백팩 · 손 인터페이스 · 양안 카메라 포함). Unitree 문서 <i>Get SDK</i> 페이지의 zip</td></tr>
+      <tr><td>발목 병렬 구조 모델</td><td>Unitree 문서 <i>Basic Motion Routine</i> 페이지의 zip (2장)</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 로컬 SDK를 먼저 갱신하십시오 <span class="src r">SDK</span></div>
+    <p>8e1b927보다 오래된 <code>unitree_sdk2</code> 체크아웃에는 R1 파일이 <code>r1_loco_client</code>와 <code>include/unitree/robot/r1/loco/</code>뿐이고,
+      그 <code>LocoClient</code>에는 <code>LieDown()</code> · <code>GetUp()</code>이 없습니다. 이 설명서가 다루는 저수준 예제, 팔 제어 · 팔 동작 예제, 음성 클라이언트,
+      <code>dds_wrapper/robots/r1/</code>는 8e1b927에만 있습니다. 개발 전에 <code>git pull</code>로 갱신하십시오.</p>
+    <p>Python SDK 814556d에는 <code>unitree_sdk2py/r1/loco/</code>와 예제 <code>example/r1/high_level/r1_loco_client_example.py</code>,
+      <code>low_level/r1_low_level_example.py</code> · <code>r1_A5_low_level_example.py</code> · <code>r1_A7_low_level_example.py</code>가 있습니다.
+      Python <code>LocoClient</code>의 <code>WaveHand()</code> · <code>ShakeHand()</code>는 <code>sport</code> 서비스의 API 7106(<code>SET_ARM_TASK</code>)을 부르는데,
+      R1 문서는 팔 동작을 <code>arm</code> 서비스로 안내합니다(6장). R1에서 확인되지 않은 함수이니 쓰지 마십시오.</p></div>
+
+  <h2 id="c1-s5">개발 환경 <span class="src">문서</span></h2>
+  <ul>
+    <li>Ubuntu 20.04에서 개발하기를 권장합니다. Mac · Windows는 지원하지 않습니다.</li>
+    <li>개발 PC와 R1의 스위치를 같은 네트워크에 둡니다. 처음에는 랜 케이블(필요하면 USB 어댑터)로 직접 연결하고, 로봇과 통신하는 네트워크 카드를 192.168.123.x 대역(권장 .99)으로 설정하십시오.</li>
+  </ul>
+
+  <h2 id="c1-s6">설치와 빌드 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <pre class="cmd"><span class="c"># SDK 설치 (헤더 · 라이브러리를 시스템에 설치)</span>
+cd unitree_sdk2/ &amp;&amp; mkdir build &amp;&amp; cd build
+cmake .. &amp;&amp; sudo make install
+<span class="c"># 예제 빌드 (BUILD_EXAMPLES 기본값 ON)</span>
+cd unitree_sdk2 &amp;&amp; cmake -Bbuild &amp;&amp; cmake --build build</pre>
+  <p>문서는 빌드한 예제가 <code>build</code> 폴더에 있다고 적었지만, SDK의 <code>CMakeLists.txt</code>는 실행 파일을 <b><code>build/bin/</code></b>에 둡니다 <span class="src r">SDK</span>.
+    R1 예제의 실행 파일 이름은 <code>example/r1/CMakeLists.txt</code>가 정합니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>실행 파일 (build/bin)</th><th>소스 (example/r1/)</th><th>내용 · 장</th></tr></thead>
+    <tbody>
+      <tr><td><code>r1_loco_client</code></td><td><code>high_level/r1_loco_client_example.cpp</code></td><td>보행 · 모드 명령 (6장). <b>이름에 _example이 없습니다</b></td></tr>
+      <tr><td><code>r1_arm_sdk_dds_example</code></td><td><code>high_level/r1_arm_sdk_dds_example.cpp</code></td><td>팔 덧씌움 <code>rt/arm_sdk</code> (6장). <code>fmt</code> 라이브러리 필요</td></tr>
+      <tr><td><code>r1_arm_action_example</code></td><td><code>high_level/r1_arm_action_example.cpp</code></td><td>팔 동작 서비스 (6장)</td></tr>
+      <tr><td><code>r1_ankle_swing_example</code></td><td><code>low_level/r1_ankle_swing_example.cpp</code></td><td>저수준 발목 흔들기 (2장)</td></tr>
+      <tr><td><code>r1_A5_wrist_swing_example</code></td><td><code>low_level/r1_A5_wrist_swing_example.cpp</code></td><td>상체 12모터 저수준 (2장, 문서 없음)</td></tr>
+      <tr><td><code>r1_A7_wrist_swing_example</code></td><td><code>low_level/r1_A7_wrist_swing_example.cpp</code></td><td>상체 16모터 저수준 (2장, 문서 없음)</td></tr>
+      <tr><td><code>r1_audio_client_example</code></td><td><code>audio/r1_audio_client_example.cpp</code></td><td>음성 · 조명 (5장)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s7">네트워크 설정 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>연결</b>랜 케이블 한쪽을 로봇에, 다른 쪽을 PC에 꽂습니다. PC 쪽 유선(또는 USB 이더넷) 인터페이스를 수동 IPv4로 바꾸고 192.168.123.x(예: <code>192.168.123.99</code>, 넷마스크 <code>255.255.255.0</code>)를 지정합니다.</li>
+    <li><b>확인</b><code>ping 192.168.123.161</code>로 운동 제어 컴퓨터가 응답하는지 봅니다.</li>
+    <li><b>인터페이스 이름</b><code>ifconfig</code>(또는 <code>ip a</code>)에서 192.168.123.x가 붙은 인터페이스 이름을 적어 둡니다 (문서 예: <code>enxf8e43b808e06</code>, <code>enp3s0</code>). 모든 예제가 이 이름을 인자로 받습니다.</li>
+    <li><b>PC2 접속 (선택)</b><code>ping 192.168.123.164</code> 뒤 <code>ssh unitree@192.168.123.164</code>. 비밀번호는 기술 지원에서 받은 것을 쓰고 첫 접속 때 바꿉니다.</li>
+  </ol>
+
+  <h2 id="c1-s8">첫 예제 실행 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <ol class="steps">
+    <li><b>매달기</b>이 예제는 여러 관절을 움직입니다. 로봇을 보호 프레임에 매답니다.</li>
+    <li><b>디버그 모드</b>리모컨으로 디버그 모드에 들어갑니다 (<a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 4장, 이유는 2장).</li>
+    <li><b>실행</b><code>./build/bin/r1_ankle_swing_example &lt;인터페이스&gt;</code>. 3초 동안 모든 관절이 0 자세로 가고, 발목이 PR 모드 → AB 모드로 흔들립니다 (2장).</li>
+  </ol>
+
+  <h2 id="c1-s9">개발 팁 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>주제</th><th>Unitree 권고</th></tr></thead>
+    <tbody>
+      <tr><td>다리 동작</td><td>무릎은 곧게 또는 거의 곧게 폅니다. 걸음 빈도를 줄이고 제자리 걸음을 피합니다. 걸을 때 두 발을 약간 모으고 벌리지 않습니다 (사람 같은 자연스러운 동작을 위해)</td></tr>
+      <tr><td>영상 공개</td><td>연구 성과 영상을 공개할 때는 영상 전체에 걸쳐 연구실 이름이나 로고를 잘 보이게 넣기를 권합니다 (출처 혼동 방지)</td></tr>
+      <tr><td>다관절 손</td><td>3장 첫머리를 보십시오</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">저수준 제어</h1></div>
+  <p class="lede">저수준 제어는 <code>rt/lowcmd</code>로 관절 모터마다 목표 위치 · 속도 · 토크와 게인을 직접 보내는 방식입니다.
+    로봇의 균형은 누구도 대신 잡아 주지 않으므로, 반드시 매단 상태와 디버그 모드에서 작업합니다.</p>
+
+  <h2 id="c2-s1">디버그 모드가 필요한 이유 <span class="src">문서</span></h2>
+  <p>현재 시스템 버전에서는 R1을 켜면 리모컨을 만지지 않아도 내장 운동 제어 프로그램이 자동으로 시작되어 <b>주기적으로 속도 0 명령을 보냅니다</b>.
+    이 상태에서 SDK로 명령을 보내면 두 명령이 충돌해 로봇이 떨립니다. 그래서 SDK로 개발 · 디버깅할 때는 디버그 모드로 들어가 내장 프로그램의 명령을 멈춥니다.
+    진입 · 확인 조작과, 확인 뒤의 동작이 교육 영상과 다를 때의 조치는 <a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 4장에 있습니다.
+    디버그 모드에서는 내장 제어가 완전히 빠지므로 <b>보행 서비스, <code>arm_sdk</code>, 팔 동작 서비스(5 · 6장)는 동작하지 않습니다</b>.</p>
+  <div class="box note"><div class="h">참고 · SDK 예제는 운동 제어 서비스를 소프트웨어로도 해제합니다 <span class="src r">SDK</span></div>
+    <p>8e1b927의 저수준 예제(<code>r1_ankle_swing_example</code>, A5 · A7)는 시작할 때 <code>unitree::robot::b2::MotionSwitcherClient</code>(서비스 <code>motion_switcher</code>, 시간 제한 5 s)로
+      <code>CheckMode(form, name)</code>를 부르고, 이름이 비어 있지 않으면 <code>ReleaseMode()</code>를 5초 간격으로 반복합니다. 문서에는 이 단계가 없습니다.
+      해제 실패 시 오류 7001 ~ 7009(8장)가 돌아올 수 있습니다.</p></div>
+
+  <h2 id="c2-s2">전신 관절 순서 <span class="src">문서</span></h2>
+  <figure class="light f60"><img src="assets/dev/motor_layout.png" alt="R1 관절 모터 위치"><figcaption><b>그림 2.</b> 관절 모터와 주요 부품의 위치 (Unitree <i>About R1</i>).</figcaption></figure>
+  <p><code>unitree_hg::msg::dds_::LowCmd_.motor_cmd[]</code>와 <code>LowState_.motor_state[]</code>의 번호(IDL 번호)입니다. 두 배열은 35칸이며 <span class="src r">SDK</span>,
+    0 ~ 30은 몸통, 31 ~ 34는 Dex1-1 · Dex2/5 손(3장)입니다. 범위는 Unitree <i>About R1</i>의 값, 토크 · 속도 한계는 R1 URDF의 <code>effort</code> · <code>velocity</code>입니다.
+    "arm_sdk" 열은 6장의 팔 덧씌움으로 제어할 수 있는 관절입니다.</p>
+  <table class="t tight jt">
+    <thead><tr><th>IDL</th><th>이름</th><th>관절</th><th>범위 (rad)</th><th>범위 (°)</th><th>N·m</th><th>rad/s</th><th>arm_sdk</th></tr></thead>
+    <tbody>
+<tr><td class="c">0</td><td><code>L_LEG_HIP_PITCH</code></td><td>왼쪽 고관절 피치</td><td class="mono">-2.9322 ~ 2.5482</td><td class="c">-168° ~ 146°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">1</td><td><code>L_LEG_HIP_ROLL</code></td><td>왼쪽 고관절 롤</td><td class="mono">-1.0472 ~ 1.7453</td><td class="c">-60° ~ 100°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">2</td><td><code>L_LEG_HIP_YAW</code></td><td>왼쪽 고관절 요</td><td class="mono">-2.7402 ~ 2.7402</td><td class="c">-157° ~ 157°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">3</td><td><code>L_LEG_KNEE</code></td><td>왼쪽 무릎</td><td class="mono">-0.1745 ~ 2.4260</td><td class="c">-10° ~ 139°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">4</td><td><code>L_LEG_ANKLE_PITCH</code></td><td>왼쪽 발목 피치</td><td class="mono">-0.8727 ~ 0.5760</td><td class="c">-50° ~ 33°</td><td class="c">50</td><td class="c">30</td><td class="c"></td></tr>
+<tr><td class="c">5</td><td><code>L_LEG_ANKLE_ROLL</code></td><td>왼쪽 발목 롤</td><td class="mono">-0.2618 ~ 0.2618</td><td class="c">-15° ~ 15°</td><td class="c">50</td><td class="c">30</td><td class="c"></td></tr>
+<tr><td class="c">6</td><td><code>R_LEG_HIP_PITCH</code></td><td>오른쪽 고관절 피치</td><td class="mono">-2.9322 ~ 2.5482</td><td class="c">-168° ~ 146°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">7</td><td><code>R_LEG_HIP_ROLL</code></td><td>오른쪽 고관절 롤</td><td class="mono">-1.7453 ~ 1.0472</td><td class="c">-100° ~ 60°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">8</td><td><code>R_LEG_HIP_YAW</code></td><td>오른쪽 고관절 요</td><td class="mono">-2.7402 ~ 2.7402</td><td class="c">-157° ~ 157°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">9</td><td><code>R_LEG_KNEE</code></td><td>오른쪽 무릎</td><td class="mono">-0.1745 ~ 2.4260</td><td class="c">-10° ~ 139°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">10</td><td><code>R_LEG_ANKLE_PITCH</code></td><td>오른쪽 발목 피치</td><td class="mono">-0.8727 ~ 0.5760</td><td class="c">-50° ~ 33°</td><td class="c">50</td><td class="c">30</td><td class="c"></td></tr>
+<tr><td class="c">11</td><td><code>R_LEG_ANKLE_ROLL</code></td><td>오른쪽 발목 롤</td><td class="mono">-0.2618 ~ 0.2618</td><td class="c">-15° ~ 15°</td><td class="c">50</td><td class="c">30</td><td class="c"></td></tr>
+<tr><td class="c">12</td><td><code>WAIST_ROLL</code></td><td>허리 롤</td><td class="mono">-0.5236 ~ 0.5236</td><td class="c">-30° ~ 30°</td><td class="c">60</td><td class="c">18.8</td><td class="c"></td></tr>
+<tr><td class="c">13</td><td><code>WAIST_YAW</code></td><td>허리 요</td><td class="mono">-2.618 ~ 2.618</td><td class="c">-150° ~ 150°</td><td class="c">60</td><td class="c">18.8</td><td class="c">O</td></tr>
+<tr><td class="c">14</td><td><code>EMPTY</code></td><td colspan="6" style="color:var(--ink3)">비어 있음 (G1의 허리 피치 자리)</td></tr>
+<tr><td class="c">15</td><td><code>L_SHOULDER_PITCH</code></td><td>왼쪽 어깨 피치</td><td class="mono">-3.1416 ~ 2.0944</td><td class="c">-180° ~ 120°</td><td class="c">60</td><td class="c">18.8</td><td class="c">O</td></tr>
+<tr><td class="c">16</td><td><code>L_SHOULDER_ROLL</code></td><td>왼쪽 어깨 롤</td><td class="mono">-0.2269 ~ 2.4784</td><td class="c">-13° ~ 142°</td><td class="c">60</td><td class="c">18.8</td><td class="c">O</td></tr>
+<tr><td class="c">17</td><td><code>L_SHOULDER_YAW</code></td><td>왼쪽 어깨 요</td><td class="mono">-1.9199 ~ 1.9199</td><td class="c">-110° ~ 110°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">18</td><td><code>L_ELBOW</code></td><td>왼쪽 팔꿈치</td><td class="mono">-0.9757 ~ 2.1850</td><td class="c">-56° ~ 125°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">19</td><td><code>L_WRIST_ROLL</code></td><td>왼쪽 손목 롤</td><td class="mono">-1.9199 ~ 1.9199</td><td class="c">-110° ~ 110°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">20</td><td><code>EMPTY</code></td><td colspan="6" style="color:var(--ink3)">비어 있음 · A7 예제: 왼쪽 손목 피치</td></tr>
+<tr><td class="c">21</td><td><code>EMPTY</code></td><td colspan="6" style="color:var(--ink3)">비어 있음 · A7 예제: 왼쪽 손목 요</td></tr>
+<tr><td class="c">22</td><td><code>R_SHOULDER_PITCH</code></td><td>오른쪽 어깨 피치</td><td class="mono">-3.1416 ~ 2.0944</td><td class="c">-180° ~ 120°</td><td class="c">60</td><td class="c">18.8</td><td class="c">O</td></tr>
+<tr><td class="c">23</td><td><code>R_SHOULDER_ROLL</code></td><td>오른쪽 어깨 롤</td><td class="mono">-2.4784 ~ 0.2269</td><td class="c">-142° ~ 13°</td><td class="c">60</td><td class="c">18.8</td><td class="c">O</td></tr>
+<tr><td class="c">24</td><td><code>R_SHOULDER_YAW</code></td><td>오른쪽 어깨 요</td><td class="mono">-1.9199 ~ 1.9199</td><td class="c">-110° ~ 110°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">25</td><td><code>R_ELBOW</code></td><td>오른쪽 팔꿈치</td><td class="mono">-0.9757 ~ 2.1850</td><td class="c">-56° ~ 125°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">26</td><td><code>R_WRIST_ROLL</code></td><td>오른쪽 손목 롤</td><td class="mono">-1.9199 ~ 1.9199</td><td class="c">-110° ~ 110°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">27</td><td><code>EMPTY</code></td><td colspan="6" style="color:var(--ink3)">비어 있음 · A7 예제: 오른쪽 손목 피치</td></tr>
+<tr><td class="c">28</td><td><code>EMPTY</code></td><td colspan="6" style="color:var(--ink3)">비어 있음 · A7 예제: 오른쪽 손목 요</td></tr>
+<tr><td class="c">29</td><td><code>HEAD_PITCH</code></td><td>머리 피치</td><td class="mono">-0.6283 ~ 0.6283</td><td class="c">-36° ~ 36°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+<tr><td class="c">30</td><td><code>HEAD_YAW</code></td><td>머리 요</td><td class="mono">-2.0071 ~ 2.0071</td><td class="c">-115° ~ 115°</td><td class="c">33</td><td class="c">33.4</td><td class="c">O</td></tr>
+    </tbody>
+  </table>
+  <ul style="font-size:8.2pt">
+    <li>R1의 팔은 한쪽 5자유도(어깨 3 + 팔꿈치 1 + 손목 롤 1)이고 손목 피치 · 요가 없습니다. 허리는 롤 · 요 2자유도이며 허리 피치 자리(14)는 비어 있습니다.</li>
+    <li>팔꿈치 범위는 문서가 -0.9757 ~ 2.1850, URDF가 -0.97564 ~ 2.1852로 0.0002 rad 다릅니다. 표는 문서 값을 씁니다.</li>
+    <li>20 · 21 · 27 · 28은 26자유도 R1에서 비어 있습니다. SDK의 <code>r1_A7_wrist_swing_example</code>은 이 칸을 손목 피치 · 요로 씁니다 (아래).</li>
+  </ul>
+  <div class="box note"><div class="h">문서 오류 · 관절 순서 표의 G1 열</div>
+    <p><i>Joint Motor Sequence</i> 페이지의 R1 표에는 G1 표의 열이 섞여 있습니다(12 · 13번의 <code>WAIST_YAW</code> · <code>WAIST_A</code>, 20 · 21번의 손목 피치 · 요, 이름 없는 수치 열).
+      Dex3-1 표의 수치 열(<code>0.76 | 108</code>)도 같은 흔적입니다. 이 설명서는 IDL 번호와 이름만 옮겼습니다.</p></div>
+
+  <h3>mode_machine 값 <span class="src">문서</span> <span class="src r">SDK</span></h3>
+  <p><i>Joint Motor Sequence</i> 페이지는 26자유도 판을 <code>LowCmd_.mode_machine == 1</code>로 표기합니다. SDK 예제는 이 값을 정하지 않고 <code>LowState_.mode_machine</code>을
+    읽어 그대로 <code>LowCmd_</code>에 넣으며, 처음 받을 때 <code>R1 type: N</code>으로 출력합니다. 받은 값을 그대로 돌려보내십시오.
+    <i>Basic Services</i> 페이지 주석의 "4: 23-Dof, 5: 29-Dof, 6: 27-Dof"는 <b>G1의 값</b>이므로 R1에 쓰지 마십시오.</p>
+
+  <h3>SDK 예제의 압축 번호 <span class="src r">SDK</span></h3>
+  <p><code>r1_ankle_swing_example</code>은 26개 관절에 0 ~ 25의 압축 번호(<code>R1JointIndex</code>)를 붙이고 <code>joint_idx_in_idl</code>로 IDL 번호에 옮깁니다:
+    <code>{0 ~ 13, 15 ~ 19, 22 ~ 26, 29, 30}</code>. 예를 들어 압축 번호 <code>LeftShoulderPitch = 14</code>는 IDL 15입니다.
+    반면 <code>dds_wrapper/robots/r1/defines.h</code>의 <code>r1::JointIndex</code>는 IDL 번호 그대로입니다 (<code>LeftShoulderPitch = 15</code>, <code>HeadPitch = 29</code>). 두 번호 체계를 섞지 마십시오.</p>
+
+  <h2 id="c2-s3">발목 병렬 구조와 mode_pr <span class="src">문서</span></h2>
+  <div class="two">
+    <div>
+      <p>R1의 발목은 병렬 기구입니다. 실제로 모터가 직접 구동하는 것(능동)은 <b>A · B 관절</b>이고, 피치 · 롤(PR) 관절은 수동입니다.
+        둘 사이에 구속 관계가 두 개 있어 발목의 자유도는 2입니다. <code>LowCmd_.mode_pr</code>로 두 가지 제어 모드를 고릅니다.</p>
+      <table class="t tight wrap1">
+        <thead><tr><th>mode_pr</th><th>모드</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="c">0</td><td>PR (기본)</td><td>발목 피치 · 롤을 지령합니다. URDF와 같은 관절이며, 내부에서 A · B를 조정해 PR을 만듭니다</td></tr>
+          <tr><td class="c">1</td><td>AB</td><td>A · B 모터를 직접 지령합니다. 병렬 기구의 기구학은 사용자가 계산합니다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="light"><img src="assets/dev/ankle_parallel.png" alt="R1 발목 병렬 구조" style="max-height:56mm;width:auto;max-width:100%;margin:0 auto"><figcaption><b>그림 3.</b> 발목 병렬 구조. A · B 관절(위)이 피치 · 롤 관절(아래)을 움직입니다 (Unitree 문서, 그림 속 "关节"은 관절).</figcaption></figure>
+  </div>
+  <p>AB 모드에서 IDL 4 · 10은 B, 5 · 11은 A입니다 (SDK: <code>LeftAnkleB = 4</code>, <code>LeftAnkleA = 5</code>) <span class="src r">SDK</span>.
+    <code>rt/arm_sdk</code>에서는 같은 <code>mode_pr</code> 칸이 팔 제어의 <b>가중치</b>로 쓰입니다 (6장).</p>
+
+  <h2 id="c2-s4">저수준 예제 r1_ankle_swing_example <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>구성</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>초기화</td><td><code>ChannelFactory::Instance()-&gt;Init(0, 인터페이스)</code>, 발행 <code>rt/lowcmd</code>(<code>LowCmd_</code>), 구독 <code>rt/lowstate</code>(<code>LowState_</code>, 콜백 <code>LowStateHandler</code>, 큐 1).
+        SDK는 <code>rt/secondary_imu</code>(<code>IMUState_</code>, 몸통 IMU)도 구독해 500회마다 출력합니다</td></tr>
+      <tr><td>스레드</td><td><code>CreateRecurrentThreadEx</code>로 2000 µs(500 Hz) 주기 스레드 두 개: <code>LowCommandWriter</code>(명령 발행) · <code>Control</code>(제어 계산). <code>control_dt_ = 0.002</code> s</td></tr>
+      <tr><td>LowCommandWriter</td><td><code>mode_pr</code> · <code>mode_machine</code>을 채우고 관절마다 <code>mode = 1</code>(1 사용, 0 끄기), <code>tau</code>, <code>q</code>, <code>dq</code>, <code>kp</code>, <code>kd</code>를 넣은 뒤
+        <code>crc = Crc32Core((uint32_t*)&amp;cmd, (sizeof(cmd) &gt;&gt; 2) - 1)</code>로 검사합을 붙여 <code>Write</code></td></tr>
+      <tr><td>LowStateHandler</td><td>CRC를 검사하고(틀리면 <code>[ERROR] CRC Error</code>), <code>q</code> · <code>dq</code>, IMU <code>gyroscope</code> · <code>rpy</code>를 버퍼에 넣습니다. 다리 모터의 <code>motorstate</code>가 0이 아니면 오류를 출력합니다.
+        SDK는 리모컨 40바이트도 해석하고, 500회(1초)마다 모든 모터의 <code>mode</code>, 위치, 속도, <code>tau_est</code>, 온도 2개, 전압, <code>sensor</code>, <code>motorstate</code>, <code>reserve</code>를 출력합니다</td></tr>
+      <tr><td>1단계 0 ~ 3 s</td><td>현재 자세에서 0 자세로: <code>q = (1 - t/3) · q₀</code></td></tr>
+      <tr><td>2단계 3 ~ 6 s</td><td>PR 모드. 피치 ±30°, 롤 ±30°를 1 Hz 사인(<code>sin 2πt</code>)으로. 오른쪽 롤은 부호 반대</td></tr>
+      <tr><td>3단계 6 s ~</td><td>AB 모드. A ±30°, B ±10°를 0.5 Hz(<code>sin πt</code>, B는 위상 π)로 끝날 때까지. 오른쪽은 부호 반대</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight">
+    <thead><tr><th>예제 게인 <span class="src" style="border-color:#b8d08a;color:#b8d08a">SDK</span></th><th>다리 12</th><th>허리 2</th><th>어깨 · 팔꿈치</th><th>손목 롤</th><th>머리 피치</th><th>머리 요</th></tr></thead>
+    <tbody>
+      <tr><td>kp</td><td class="c">200</td><td class="c">300</td><td class="c">100</td><td class="c">50</td><td class="c">50</td><td class="c">10</td></tr>
+      <tr><td>kd</td><td class="c">3</td><td class="c">5</td><td class="c">2</td><td class="c">2</td><td class="c">2</td><td class="c">0.1</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서와 SDK의 차이 → SDK를 따릅니다</div>
+    <ul>
+      <li>2단계의 롤 진폭: 문서 코드는 10°, SDK는 <b>30°</b>입니다.</li>
+      <li>문서 코드는 <code>motor_cmd().at(i)</code>에 압축 번호 <code>i</code>를 그대로 씁니다. 그러면 14번 이후 관절(팔 · 머리)이 엉뚱한 IDL 칸에 들어갑니다. SDK는 <code>joint_idx_in_idl[i]</code>로 옮깁니다.</li>
+      <li>문서 코드는 <code>Control()</code> 안에서 <code>ReportRPY()</code>로 자세를 출력하고, SDK는 상태 콜백에서 1초마다 출력합니다. <code>MotionSwitcherClient</code> 해제와 <code>rt/secondary_imu</code> 구독은 SDK에만 있습니다.</li>
+    </ul></div>
+
+  <h2 id="c2-s5">상체 저수준 예제 A5 · A7 <span class="src r">SDK</span></h2>
+  <p>Unitree 문서에는 설명이 없고 SDK에만 있는 예제입니다. 코드 안에서는 <code>R1Z</code>라는 이름을 쓰며, 어떤 R1 변형용인지 문서는 밝히지 않습니다.
+    두 예제 모두 <code>rt/lowcmd</code>에 상체 관절만 씁니다 (다리 · 허리 명령 없음).</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>예제</th><th>모터 (IDL)</th><th>동작 (각 2 s, ±30°)</th><th>게인 kp / kd</th></tr></thead>
+    <tbody>
+      <tr><td><code>r1_A5_wrist_swing_example</code></td><td>12개: 팔 15 ~ 19 · 22 ~ 26, 머리 29 · 30</td><td>0 자세(2 s) → 손목 롤 → 머리 요, 반복</td><td>팔 100 / 2 (손목 50 / 2), 머리 피치 50 / 2, 요 10 / 0.1</td></tr>
+      <tr><td><code>r1_A7_wrist_swing_example</code></td><td>16개: 위에 손목 피치 · 요 20 · 21 · 27 · 28 추가</td><td>0 자세 → 손목 롤 → 손목 피치 → 손목 요 → 머리 요, 반복</td><td>팔 100 / 2 (손목 3개 50 / 2), 머리 같음</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c2-s6">리모컨 데이터 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <p><code>rt/lowstate</code>의 <code>wireless_remote[40]</code>에 리모컨 원시 데이터 40바이트가 들어 있습니다(SDK 주석: 현재 24바이트 사용).
+    조이스틱은 축마다 <b>-1.0 ~ 1.0</b>, 버튼과 조합마다 고유한 정수 값이 있습니다. 리모컨의 실제 버튼 배치는 <a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 4장의 그림을 보십시오.</p>
+  <div class="two">
+    <table class="t tight">
+      <thead><tr><th>xRockerBtnDataStruct</th><th>형</th></tr></thead>
+      <tbody>
+        <tr><td><code>head[2]</code></td><td>uint8 ×2</td></tr>
+        <tr><td><code>btn</code></td><td><code>xKeySwitchUnion</code> (uint16)</td></tr>
+        <tr><td><code>lx</code> · <code>rx</code> · <code>ry</code></td><td>float</td></tr>
+        <tr><td><code>L2</code></td><td>float (아날로그)</td></tr>
+        <tr><td><code>ly</code></td><td>float</td></tr>
+        <tr><td><code>idle[16]</code></td><td>uint8 ×16</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight">
+      <thead><tr><th>btn 비트 (0부터)</th><th>버튼</th></tr></thead>
+      <tbody>
+        <tr><td>0 ~ 3</td><td><code>R1</code> · <code>L1</code> · <code>start</code> · <code>select</code></td></tr>
+        <tr><td>4 ~ 7</td><td><code>R2</code> · <code>L2</code> · <code>F1</code> · <code>F2</code></td></tr>
+        <tr><td>8 ~ 11</td><td><code>A</code> · <code>B</code> · <code>X</code> · <code>Y</code></td></tr>
+        <tr><td>12 ~ 15</td><td><code>up</code> · <code>right</code> · <code>down</code> · <code>left</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <pre class="cmd">unitree_hg::msg::dds_::LowState_ low_state;   <span class="c">// R1은 unitree_hg</span>
+xRockerBtnDataStruct remote_key_data;
+memcpy(&amp;remote_key_data, &amp;low_state.wireless_remote()[0], 40);</pre>
+  <p>SDK의 <code>example/r1/low_level/gamepad.hpp</code>에는 <code>Gamepad</code> 클래스가 있습니다. 축 값에 데드존 0.01과 평활 계수 0.03을 적용하고,
+    버튼마다 <code>pressed</code> · <code>on_press</code> · <code>on_release</code>를 줍니다. <code>REMOTE_DATA_RX</code> 공용체로 40바이트 버퍼와 구조체를 오갑니다.</p>
+  <div class="box note"><div class="h">문서 오류 · Go2의 메시지 형</div>
+    <p><i>Remote Control Data</i> 페이지의 변환 코드는 <code>unitree_go::msg::dds_::LowState_</code>(Go2 형)를 씁니다. R1은 <code>unitree_hg::msg::dds_::LowState_</code>입니다 (SDK 예제와 같음).</p></div>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">다관절 손</h1></div>
+  <p class="lede">R1 EDU에는 다관절 손을 선택해 달 수 있습니다. 손마다 연결 방식과 토픽이 다르므로, 먼저 아래 표에서 내 손의 제어 경로를 확인하십시오.
+    설치 영상은 9장에 정리했습니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>손</th><th>자유도</th><th>연결</th><th>명령 · 상태</th><th>필요 프로그램</th></tr></thead>
+    <tbody>
+      <tr><td>Dex1-1 (그리퍼)</td><td class="c">1 × 2</td><td>팔 내부 케이블 → 관절 버스</td><td><code>rt/lowcmd</code> · <code>rt/lowstate</code>의 IDL 31 · 33</td><td>앱에서 손 모델 설정</td></tr>
+      <tr><td>Dex2/5</td><td class="c">2 × 2</td><td>팔 내부 케이블 → 관절 버스</td><td>IDL 31 ~ 34 (토크 제어만)</td><td>앱에서 손 모델 설정</td></tr>
+      <tr><td>Dex3-1</td><td class="c">7 × 2</td><td>USB 2.0</td><td><code>rt/dex3/{left|right}/cmd</code> · <code>…/state</code></td><td>로봇 내장 서비스</td></tr>
+      <tr><td>BrainCo Revo2</td><td class="c">6 × 2</td><td>USB-직렬 (손마다 1개)</td><td><code>rt/brainco/{left|right}/{cmd|state}</code></td><td><code>brainco_hand_service</code></td></tr>
+      <tr><td>LinkerHand O6</td><td class="c">6 × 2</td><td>USB-직렬, Modbus RTU</td><td><code>rt/linker/{left|right}/{cmd|state}</code></td><td><code>linker_hand_service</code></td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · 손을 달고 개발할 때 <span class="src">문서</span></div>
+    <ul>
+      <li>로봇 동작 때문에 손이 몸통과 부딪히지 않게 하십시오. 어깨 모터의 바깥쪽 오프셋을 키우면 충돌을 줄일 수 있습니다.</li>
+      <li>손을 단 채 달리기나 균형 시험 같은 격한 동작을 개발하지 마십시오. 손을 단 상태의 눕기 · 쪼그려 앉기는 <a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 2장의 주의를 따릅니다.</li>
+    </ul></div>
+
+  <h2 id="c3-s1">Dex1-1 · Dex2/5 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>IDL</th><th>모터</th></tr></thead>
+    <tbody>
+      <tr><td class="c">31</td><td>왼손: Dex2/5의 네 손가락, 또는 Dex1-1 왼손</td></tr>
+      <tr><td class="c">32</td><td>왼손: Dex2/5의 엄지</td></tr>
+      <tr><td class="c">33</td><td>오른손: Dex2/5의 네 손가락, 또는 Dex1-1 오른손</td></tr>
+      <tr><td class="c">34</td><td>오른손: Dex2/5의 엄지</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>케이블은 팔 안쪽으로 지나갑니다. Unitree Explore 앱에서 주변 장치(손) 모델을 고른 뒤 <b>로봇을 다시 켜야</b> 쓸 수 있습니다.</li>
+    <li>Dex2/5는 <b>토크 제어만</b> 지원합니다.</li>
+    <li>2장의 저수준 예제에 해당 IDL 모터를 추가해 제어합니다. 기본값은 <b>kp 40, kd 2</b>, 나머지 필드는 다른 모터와 같게 둡니다. <code>LowCmd_</code>의 35칸에 31 ~ 34가 들어 있습니다 <span class="src r">SDK</span>.</li>
+    <li>Dex1-1 단독 제어는 Unitree의 <i>Dex1-1 Developer</i> 문서를 참고하십시오.</li>
+  </ul>
+
+  <h2 id="c3-s2">Dex3-1 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <div class="two">
+    <table class="t tight wrap1">
+      <thead><tr><th>항목</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>자유도</td><td>7: 엄지 3 · 검지 2 · 중지 2 (모두 능동)</td></tr>
+        <tr><td>관절 각</td><td>엄지 0 ~ +100°, -35 ~ +60°, -60 ~ +60° / 검지 · 중지 0 ~ +90°, 0 ~ +100°</td></tr>
+        <tr><td>제어 인터페이스</td><td>USB 2.0</td></tr>
+        <tr><td>전압</td><td>정격 24 V (<i>Dexterous Hand</i>) · 동작 12 ~ 58 V (<i>About R1</i>)</td></tr>
+        <tr><td>감지 범위</td><td>10 g ~ 2500 g</td></tr>
+        <tr><td>촉각 센서 (선택)</td><td>손끝마다 3 × 4 배열. 위치 수는 문서마다 6 / 9로 다르며, SDK 예제는 9개(<code>SENSOR_MAX</code>)를 받습니다</td></tr>
+      </tbody>
+    </table>
+    <figure class="light"><img src="assets/dev/dex3_render.png" alt="Dex3-1 왼손"><figcaption data-fig="fig-dex3-render"><b>그림 4.</b> Dex3-1 힘 제어 다관절 손의 왼손 (Unitree가 공개한 URDF 메시를 렌더링). 오른손과 좌우 대칭이며 손마다 다른 토픽을 씁니다.</figcaption></figure>
+  </div>
+
+  <h3>토픽과 메시지</h3>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>토픽</th><th>형 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/dex3/left/cmd</code> · <code>rt/dex3/right/cmd</code></td><td><code>unitree_hg::msg::dds_::HandCmd_</code> 발행</td></tr>
+      <tr><td><code>rt/lf/dex3/left/state</code> · <code>rt/lf/dex3/right/state</code></td><td><code>HandState_</code> 구독 (lf = 저주파). <b>SDK 예제가 쓰는 토픽입니다</b> <span class="src r">SDK</span></td></tr>
+      <tr><td><code>rt/dex3/left/state</code> · <code>rt/dex3/right/state</code></td><td><code>HandState_</code>. <i>Dexterous Hand</i> 페이지가 안내하는 토픽</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>구조체 · 필드 <span class="src" style="border-color:#b8d08a;color:#b8d08a">SDK</span></th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>HandCmd_</code></td><td><code>motor_cmd</code>: <code>MotorCmd_</code> 시퀀스(7개로 <code>resize</code>), <code>reserve[4]</code></td></tr>
+      <tr><td><code>HandState_</code></td><td><code>motor_state</code>(<code>MotorState_</code>), <code>press_sensor_state</code>(<code>PressSensorState_</code>), <code>imu_state</code>, <code>power_v</code>, <code>power_a</code>, <code>system_v</code>, <code>device_v</code>, <code>error[2]</code>, <code>reserve[2]</code></td></tr>
+      <tr><td><code>power_v</code> · <code>power_a</code></td><td>손 전체 입력 전원의 전압 · 전류</td></tr>
+      <tr><td><code>system_v</code> · <code>device_v</code></td><td>손 내부 전원 전압 · 강압 모듈 출력 전압</td></tr>
+      <tr><td><code>error</code></td><td>손이 내는 오류 코드 (8장 모터 상태 표)</td></tr>
+      <tr><td><code>PressSensorState_</code></td><td><code>pressure[12]</code>(float), <code>temperature[12]</code>(float), <code>lost</code>, <code>reserve</code></td></tr>
+    </tbody>
+  </table>
+  <p>헤더는 SDK 설치 후 <code>/usr/local/include/unitree/idl/hg/HandCmd_.hpp</code> · <code>HandState_.hpp</code>에 있습니다 (<code>make install</code> 기본 경로) <span class="src r">SDK</span>.
+    촉각 값은 <b>100000 이상이 유효</b>, <b>30000은 값 없음</b>이며, 표시 · 계산 때는 100000을 10.0000으로 줄여 쓰기를 권합니다 <span class="src">문서</span>.</p>
+  <div class="box note"><div class="h">문서와 SDK의 차이 → SDK를 따릅니다</div>
+    <ul>
+      <li>문서의 <code>PressSensorState</code>는 <code>unsigned short data[12]; id; temp; reserve[2]</code>이지만, SDK의 <code>PressSensorState_</code>는 <code>float pressure[12]; float temperature[12]; lost; reserve</code>입니다.</li>
+      <li>문서의 헤더 경로 <code>/usr/local/include/unitree/hg_idl/</code>은 SDK에 없습니다. 실제는 <code>unitree/idl/hg/</code>입니다.</li>
+      <li>문서의 <code>MotorCmd_t</code>(<code>tor_des</code> · <code>spd_des</code> · <code>pos_des</code> · <code>k_pos</code> · <code>k_spd</code> · <code>CRC32</code>, 20바이트)는 모터 쪽 패킷 형식입니다.
+        DDS로 보내는 <code>MotorCmd_</code>의 필드는 <code>mode, q, dq, tau, kp, kd, reserve</code>입니다 (4장).</li>
+    </ul></div>
+
+  <h3>관절 순서와 mode 바이트</h3>
+  <div class="two">
+    <table class="t tight">
+      <thead><tr><th>IDL</th><th>이름</th><th>왼손 URDF</th><th>오른손 URDF</th></tr></thead>
+      <tbody>
+        <tr><td class="c">0</td><td>thumb_0</td><td>left_hand_zero</td><td>right_hand_zero</td></tr>
+        <tr><td class="c">1</td><td>thumb_1</td><td>left_hand_one</td><td>right_hand_one</td></tr>
+        <tr><td class="c">2</td><td>thumb_2</td><td>left_hand_two</td><td>right_hand_two</td></tr>
+        <tr><td class="c">3</td><td>middle_0</td><td><b>left_hand_five</b></td><td>right_hand_three</td></tr>
+        <tr><td class="c">4</td><td>middle_1</td><td><b>left_hand_six</b></td><td>right_hand_four</td></tr>
+        <tr><td class="c">5</td><td>index_0</td><td><b>left_hand_three</b></td><td>right_hand_five</td></tr>
+        <tr><td class="c">6</td><td>index_1</td><td><b>left_hand_four</b></td><td>right_hand_six</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight wrap1">
+      <thead><tr><th>mode 비트</th><th>뜻 (RIS_Mode_t)</th></tr></thead>
+      <tbody>
+        <tr><td>0 ~ 3 <code>id</code></td><td>모터 ID 0 ~ 14, 15 = 전체 방송</td></tr>
+        <tr><td>4 ~ 6 <code>status</code></td><td>0 잠금, 1 FOC</td></tr>
+        <tr><td>7 <code>timeout</code></td><td>지령 쪽: 1 = 시간 초과 보호 사용(기본 1 s). 모터 쪽: 1 = 보호 동작함 (지령에서 0으로 지움)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>IDL 순서는 엄지 → 중지 → 검지입니다. URDF는 손마다 같은 좌표계로 만들어져 왼손과 오른손의 이름 순서가 다릅니다 (굵은 글씨). URDF는 <code>unitree_ros/robots/dexterous_hand_description</code>에 있습니다.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/dev/dex3_urdf.png" alt="Dex3-1 URDF 관절 이름"><figcaption><b>그림 5.</b> Dex3-1 URDF 관절 이름, 왼손(왼쪽) · 오른손(오른쪽) (Unitree 문서).</figcaption></figure>
+    <figure class="light"><img src="assets/dev/dex3_sensors.png" alt="Dex3-1 촉각 센서 위치"><figcaption><b>그림 6.</b> 촉각 센서 패킷 ID와 <code>pressure[12]</code> 번호의 위치, 왼손 · 오른손 (Unitree 문서).</figcaption></figure>
+  </div>
+
+  <h3>예제 g1_dex3_example <span class="src r">SDK</span></h3>
+  <p>R1 전용 Dex3-1 예제는 없고, 문서도 <code>example/g1/dex3/g1_dex3_example.cpp</code>(실행 파일 <code>g1_dex3_example &lt;인터페이스&gt;</code>)를 안내합니다.
+    실행하면 손(<code>L</code> / <code>R</code>)을 묻고, 키로 상태를 바꿉니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>키</th><th>동작</th><th>게인 · 모드</th></tr></thead>
+    <tbody>
+      <tr><td><code>r</code></td><td>Rotate: 관절 한계 사이를 사인으로 왕복 (시작 상태)</td><td>kp 0.5, kd 0.1, status 1</td></tr>
+      <tr><td><code>g</code></td><td>Grip: 한계의 가운데 위치로 1초마다 지령</td><td>kp 1.5, kd 0.1, status 1</td></tr>
+      <tr><td><code>p</code></td><td>Print: 관절 위치를 한계 기준 0 ~ 1로 정규화해 0.1초마다 출력</td><td>—</td></tr>
+      <tr><td><code>s</code> · <code>q</code></td><td>Stop: 모든 지령 0 / Quit</td><td>kp 0, kd 0, status 1, timeout 1</td></tr>
+    </tbody>
+  </table>
+  <p>예제의 관절 한계(rad, IDL 순): 왼손 최대 <code>{1.05, 1.05, 1.75, 0, 0, 0, 0}</code> · 최소 <code>{-1.05, -0.724, 0, -1.57, -1.75, -1.57, -1.75}</code>,
+    오른손 최대 <code>{1.05, 0.742, 0, 1.57, 1.75, 1.57, 1.75}</code> · 최소 <code>{-1.05, -1.05, -1.75, 0, 0, 0, 0}</code>.
+    문서의 코드는 Rotate에 timeout 1, Grip에 timeout 0을 넣지만, SDK의 Rotate · Grip은 timeout 비트를 설정하지 않습니다 (초기화되지 않은 값). 직접 작성할 때는 명시적으로 넣으십시오.</p>
+  <div class="box note"><div class="h">문서 오류 · G1 · H1 문서의 흔적</div>
+    <p><i>Dexterous Hand</i> 페이지는 "G1 내부의 상주 서비스가 Dex3-1과 통신한다"고 적고, 필드 설명을 H1-2 문서로 넘깁니다. 이 장의 필드 표는 SDK 헤더에서 옮겼습니다.</p></div>
+
+  <h2 id="c3-s3">BrainCo Revo2 · Revo2 Touch (<code>brainco_hand_service</code>)</h2>
+  <p>BrainCo 2세대 다관절 손(한쪽 6자유도)은 RS-485 직렬로 제어합니다. Unitree 공개 저장소 <code>github.com/unitreerobotics/brainco_hand_service</code>(<code>d71996b</code>, 2026-05-11)가 직렬 통신을 DDS로 바꿉니다.
+    README는 빌드 대상을 "PC2 (NVIDIA Jetson Orin NX)"로 적는데, R1의 PC2(백팩, .164)도 같은 Jetson 계열(aarch64)이라 README 절차를 그대로 따릅니다. 촉각형 <b>Revo2 Touch</b>도 같은 서비스 · 토픽을 씁니다.
+    아래는 README와 소스(<code>main.cpp</code> · <code>include/param.h</code> · <code>test/</code> · <code>setup_autostart.sh</code>)를 읽은 내용입니다.</p>
+  <!-- BrainCo Revo2 / Revo2 Touch over brainco_hand_service: DDS topics, channel order, command/state fields. Included by r1-developer and h2-developer (identical text in both). -->
+  <table class="t tight wrap1 api">
+    <thead><tr><th>토픽</th><th>타입 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/brainco/left/cmd</code> · <code>rt/brainco/right/cmd</code></td><td><code>unitree_go::msg::dds_::MotorCmds_</code> (<code>cmds</code> 6개) · 사용자 → 손</td></tr>
+      <tr><td><code>rt/brainco/left/state</code> · <code>rt/brainco/right/state</code></td><td><code>unitree_go::msg::dds_::MotorStates_</code> (<code>states</code> 6개) · 손 → 사용자, 100 Hz</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight">
+    <thead><tr><th>번호</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+    <tbody>
+      <tr><td>채널</td><td>Thumb<span class="en">엄지</span></td><td>Thumb_aux<span class="en">엄지 보조</span></td><td>Index<span class="en">검지</span></td><td>Middle<span class="en">중지</span></td><td>Ring<span class="en">약지</span></td><td>Pinky<span class="en">새끼</span></td></tr>
+    </tbody>
+  </table>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>필드</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>cmds[i].q</code></td><td>목표 위치 <b>0 ~ 1 (0 = 폄, 1 = 쥠)</b> <span class="src r">실측</span> (WeGo가 R1의 Revo2 두 손에서 확인, 2026-10-12). 범위 밖은 잘라내고 ×1000 해서 손의 정규화 위치로 보냅니다</td></tr>
+      <tr><td><code>cmds[i].dq</code></td><td>속도 0 ~ 1 (×1000). 서비스 기본값 1.0, README도 모두 1.0을 권장</td></tr>
+      <tr><td><code>cmds[i]</code>의 <code>tau</code> · <code>kp</code> · <code>kd</code> · <code>mode</code></td><td>쓰지 않음</td></tr>
+      <tr><td><code>states[i].q</code> · <code>dq</code> · <code>tau_est</code></td><td>위치 · 속도 · 전류를 각각 1000으로 나눈 값</td></tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>손 찾기: <code>/dev/ttyUSB*</code> · <code>/dev/ttyHAND*</code> · <code>/dev/ttyUN*</code>를 460800 bps로 훑어 장치 ID <b>126(0x7E) = 왼손</b>, <b>127(0x7F) = 오른손</b>을 찾고, 손의 SKU가 왼손 · 오른손과 맞는지 확인합니다. 포트 이름과 왼손 · 오른손 연결 순서는 상관없습니다.</li>
+    <li>옵션(<code>param.h</code>): <code>-n</code> · <code>--network_interface</code> (DDS 인터페이스, 기본값 빈 문자열) · <code>-h</code> · <code>-v</code>가 있습니다.</li>
+    <li>R1 PC2의 로봇망 인터페이스 이름은 <code>ip -br addr | grep 192.168.123.164</code>로 확인해 <code>-n</code>에 넣습니다.</li>
+  </ul>
+  <pre class="cmd"><span class="c"># PC2(.164)에서. unitree_sdk2를 먼저 sudo make install (1장)</span>
+sudo apt install libspdlog-dev libfmt-dev
+cd ~ &amp;&amp; git clone https://github.com/unitreerobotics/brainco_hand_service
+cd brainco_hand_service &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j6
+
+cd ~/brainco_hand_service/bin
+<span class="c"># sudo는 LD_LIBRARY_PATH를 넘기지 않으므로 env로 지정</span>
+L=$HOME/brainco_hand_service/lib/aarch64
+<span class="c"># 터미널 1: 서비스</span>
+sudo env LD_LIBRARY_PATH=$L ./brainco_hand_server -n &lt;인터페이스&gt;
+<span class="c"># 터미널 2: 시험 (인자 없으면 left)</span>
+sudo env LD_LIBRARY_PATH=$L ./test_brainco_hand_server right
+<span class="c"># 정상: "left/right hand bound to /dev/tty…", "Starting worker"</span></pre>
+  <pre class="cmd">cmd.cmds().resize(6);
+<span class="c">// 반쯤 쥠, 최대 속도</span>
+for (int i = 0; i &lt; 6; ++i) { cmd.cmds()[i].q() = 0.5f; cmd.cmds()[i].dq() = 1.f; }
+<span class="c">// 토픽 rt/brainco/right/cmd</span>
+pub-&gt;Write(cmd);</pre>
+  <div class="box caution"><div class="h">주의 · 시험 프로그램</div>
+    <p><code>test_brainco_hand_server</code>는 시작하자마자 손을 모두 폄 → 엄지 빼고 쥠 → 모두 쥠을 0.7초 간격으로 끝없이 반복합니다. 손 안에 물건이나 손가락이 없는지 확인하고 실행하십시오.</p></div>
+  <div class="box note"><div class="h">참고 · README · 이전 판과 다른 점</div>
+    <ul>
+      <li>현재 저장소가 만드는 실행 파일은 <code>brainco_hand_server</code> · <code>test_brainco_hand_server</code>입니다 (<code>CMakeLists.txt</code>). 이전 판 설명서의 <code>brainco_hand --id … --serial …</code> · <code>example_brainco_hand</code>는 더 이상 빌드되지 않습니다. 장치 ID와 포트는 서비스가 스스로 찾습니다.</li>
+      <li>README의 실행 예는 <code>--network eth0</code>이지만, 소스에 정의된 옵션은 <code>--network_interface</code>(<code>-n</code>)입니다. 위처럼 <code>-n</code>을 쓰십시오.</li>
+      <li>라이브러리는 아키텍처별로 <code>lib/aarch64</code> · <code>lib/x86_64</code>에 들어 있습니다. R1 PC2는 <code>aarch64</code>입니다.</li>
+    </ul></div>
+
+  <h3>부팅 시 자동 시작</h3>
+  <p>서비스는 손이 연결된 동안 계속 돌아야 하고, 터미널(ssh)에서 띄운 서버는 터미널을 닫으면 함께 끝납니다. 상시 운용에는 공식 스크립트로 서비스를 등록하십시오.
+    스크립트는 <code>/etc/systemd/system/brainco_hand.service</code>를 만들고 (<code>User=unitree</code> · <code>Group=dialout</code>, 라이브러리 경로 <code>lib/$(uname -m)</code>), 바로 시작합니다. 다만 <code>-n</code>을 넘기지 않으므로 인터페이스를 지정하려면 실행 줄을 고칩니다.</p>
+  <pre class="cmd"><span class="c"># 등록 + 시작 (sudo 암호 입력)</span>
+cd ~/brainco_hand_service &amp;&amp; bash setup_autostart.sh
+<span class="c"># ExecStart 줄 끝에 " -n &lt;인터페이스&gt;" 추가 후 저장</span>
+sudo systemctl edit --full brainco_hand.service
+sudo systemctl restart brainco_hand.service
+sudo systemctl status brainco_hand.service   <span class="c"># active (running)</span>
+sudo journalctl -u brainco_hand.service -f   <span class="c"># 로그</span></pre>
+  <ul>
+    <li>서비스는 마지막으로 받은 명령을 10 ms마다 손에 다시 보냅니다 (<code>main.cpp</code>의 100 Hz 루프). 내 프로그램을 끝내도 손은 마지막 자세를 유지합니다.</li>
+    <li>BrainCo SDK로 직렬 포트를 직접 다룰 때는 통신이 겹치지 않도록 먼저 <code>sudo systemctl stop brainco_hand.service</code>로 멈추십시오.</li>
+    <li><code>Restart=always</code> · <code>RestartSec=5</code>라서 서버가 비정상 종료되면 5초 뒤 다시 뜹니다.</li>
+  </ul>
+
+  <h3>Revo2 Touch 실측 — 손 동작과 Python 제어 <span class="src r">실측</span></h3>
+  <p>WeGo가 Revo2 Touch 두 손(2026-11-10)을 이 서비스로 직접 구동하며 확인한 손 자체의 동작입니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>항목</th><th>시험 장비에서 확인한 값</th></tr></thead>
+    <tbody>
+      <tr><td>손</td><td>BrainCo <b>Revo2 Touch</b> (서비스 로그 <code>hardware_type 6</code>), 중형 오른손 (<code>sku_type 1</code>) · 중형 왼손 (<code>2</code>), 펌웨어 1.0.22.U</td></tr>
+      <tr><td>연결 확인</td><td>PC2에서 <code>lsusb</code>와 <code>ls -l /dev/ttyUSB* /dev/ttyUN* /dev/ttyHAND*</code>로 손의 직렬 장치 이름 · 권한을 확인합니다</td></tr>
+      <tr><td>왼손 · 오른손 배정</td><td>서비스가 장치 ID로 찾습니다 (위 절). 첫 포트에서 반대쪽 손 정보를 못 읽는다는 경고가 한 번 나오는 것은 정상입니다</td></tr>
+    </tbody>
+  </table>
+  <p>개발 PC(또는 PC2)에서 <code>unitree_sdk2_python</code>(1장)으로 바로 쓸 수 있습니다. 아래 코드는 시험 장비에서 그대로 실행해 확인했습니다. 왼손은 토픽의 <code>right</code>를 <code>left</code>로 바꿉니다.</p>
+  <pre class="cmd">import time
+from unitree_sdk2py.core.channel import (
+    ChannelFactoryInitialize, ChannelPublisher, ChannelSubscriber)
+from unitree_sdk2py.idl.unitree_go.msg.dds_ import MotorCmds_, MotorStates_
+from unitree_sdk2py.idl.default import unitree_go_msg_dds__MotorCmd_
+
+<span class="c"># 개발 PC의 로봇망 인터페이스 (PC2에서 실행하면 PC2의 인터페이스 이름)</span>
+ChannelFactoryInitialize(0, "enp4s0")
+pub = ChannelPublisher("rt/brainco/right/cmd", MotorCmds_); pub.Init()
+state = {}
+sub = ChannelSubscriber("rt/brainco/right/state", MotorStates_)
+sub.Init(lambda m: state.update(q=[round(s.q, 2) for s in m.states]), 10)
+
+<span class="c"># q = [엄지, 엄지 보조, 검지, 중지, 약지, 새끼], 0 = 폄 · 1 = 쥠</span>
+def hand(q, secs=0.8):
+    msg = MotorCmds_([unitree_go_msg_dds__MotorCmd_() for _ in range(6)])
+    for c, v in zip(msg.cmds, q):
+        c.q, c.dq = v, 1.0                      <span class="c"># dq = 속도 0 ~ 1</span>
+    for _ in range(int(secs / 0.1)):
+        pub.Write(msg); time.sleep(0.1)
+    print(state.get("q"))
+
+hand([0] * 6)                                   <span class="c"># 폄</span>
+hand([0, 1, 1, 1, 1, 1])                        <span class="c"># 엄지 빼고 쥠</span>
+hand([1] * 6)                                   <span class="c"># 주먹</span></pre>
+  <table class="t tight">
+    <thead><tr><th>명령</th><th>왼손 상태 q (실측, 여러 번)</th><th>오른손 상태 q (실측, 여러 번)</th></tr></thead>
+    <tbody>
+      <tr><td>폄 <code>[0]*6</code></td><td>0 · 0 · 0 · 0 · 0 · 0</td><td>0 · 0 · 0 · 0 · 0 · 0</td></tr>
+      <tr><td>엄지 빼고 쥠 <code>[0,1,1,1,1,1]</code></td><td>0 · <b>0.70 ~ 1.0</b> · 1.0 · 1.0 · 1.0 · 1.0</td><td>0 · <b>0.80 ~ 1.0</b> · 1.0 · 1.0 · 1.0 · 1.0</td></tr>
+      <tr><td>주먹 <code>[1]*6</code> (위 순서 다음)</td><td>0.59 ~ 0.66 · 0.71 ~ 0.98 · 1.0 · 1.0 · 1.0 · 1.0</td><td>0.60 ~ 0.63 · 0.80 ~ 0.99 · 1.0 · 1.0 · 1.0 · 1.0</td></tr>
+    </tbody>
+  </table>
+  <p>주먹에서 엄지가 약 0.6에서 멈추는 것은 접힌 손가락에 닿기 때문이며 정상입니다 (두 손 모두 같음). 엄지 보조(엄지 회전)는 같은 명령에도 0.7 ~ 1.0 사이에서 멈춰, 시험할 때마다 값이 조금씩 달랐습니다. 목표값과 상태값이 다르다고 바로 고장으로 보지 마십시오.</p>
+  <ul>
+    <li><b>서비스가 시작되면 손을 폅니다.</b> 시험 장비에서 주먹 상태로 서비스를 다시 시작하자 두 손이 펴졌습니다. 부팅 때도 서비스가 뜨면서 손가락이 움직이므로 손 주변을 비워 두십시오.</li>
+    <li>이때 오른손 엄지 보조가 0.28에서 멈췄고, 같은 0 명령을 다시 보내도 움직이지 않았습니다. 다른 위치(1)로 보냈다가 0으로 다시 보내자 정상(0.01)으로 돌아왔습니다.</li>
+  </ul>
+  <div class="box caution"><div class="h">주의 · 쥐는 순서</div>
+    <p>편 상태에서 곧바로 <code>[1]*6</code>(주먹)을 보내면 엄지가 검지보다 먼저 들어와 서로 걸립니다. 시험 장비에서 두 손 모두 검지가 약 0.5, 엄지 보조가 0.5 ~ 0.7에서 멈췄습니다.
+      반드시 <b>폄 → 엄지 빼고 쥠 → 주먹</b> 순서로 보내십시오 (Unitree 시험 프로그램도 같은 순서). 이미 걸렸다면 먼저 완전히 편 뒤 이 순서를 다시 시작합니다.</p></div>
+
+  <h2 id="c3-s4">LinkerHand O6 <span class="src">문서</span></h2>
+  <p>Linkerbot의 O6 다관절 손(6자유도)은 직렬(Modbus RTU)로 제어합니다. <code>linker_hand_service</code>가 DDS로 바꿉니다.</p>
+  <ul>
+    <li>손마다 USB-직렬 장치 하나, 토픽 쌍 <code>rt/linker/{left|right}/{cmd|state}</code>.</li>
+    <li>위치는 0 ~ 1 (<b>0 = 폄</b>, <b>1 = 굽힘</b>), 속도 · 토크도 0 ~ 1 (최소 ~ 최대). 속도는 1.0 권장.</li>
+    <li>손가락 순서: <code>["Thumb", "Thumb Abduction", "Index", "Middle", "Ring", "Little"]</code>.</li>
+  </ul>
+  <pre class="cmd"><span class="c"># 개발 연산 유닛 PC2 (Jetson Orin NX / Orin Nano)에서</span>
+sudo apt install libmodbus-dev
+cd ~ &amp;&amp; git clone https://github.com/unitreerobotics/linker_hand_service
+cd linker_hand_service &amp;&amp; ./build.sh
+cd ~/linker_hand_service/deploy/bin
+sudo ./linker_hand_server                <span class="c"># 서버 (도움말: 문서 표기 sudo ./linker_hand_service -h)</span>
+sudo ./test_linker_hand_server           <span class="c"># 다른 터미널: 주먹 쥐기 ↔ 펴기 반복이면 정상</span>
+cd ~/linker_hand_service &amp;&amp; bash setup_autostart.sh   <span class="c"># 부팅 시 자동 시작 (스크립트 안내를 따름)</span></pre>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>서비스 관리 명령</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td><code>sudo systemctl status linker_hand.service</code></td><td>상태 확인</td></tr>
+      <tr><td><code>sudo journalctl -u linker_hand.service -f</code></td><td>실시간 로그</td></tr>
+      <tr><td><code>sudo systemctl stop</code> · <code>restart</code> · <code>disable linker_hand.service</code></td><td>정지 · 재시작 · 자동 시작 끄기</td></tr>
+    </tbody>
+  </table>
+  <p>빌드 중 <code>unitree_sdk2</code> 헤더를 찾지 못하면 먼저 SDK를 설치하십시오 (1장). 문서 FAQ의 <code>mkdir build &amp; cd build</code>는 <code>&amp;&amp;</code>의 오타입니다.</p>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">DDS와 기본 서비스</h1></div>
+  <p class="lede"><code>unitree_sdk2</code>는 DDS(CycloneDDS) 위에 얇은 층을 씌워 토픽 발행 · 구독과 DDS 토픽 기반 RPC를 제공합니다.
+    R1의 서비스 인터페이스는 Go2 · B2 · H1 · G1과 기본적으로 같습니다.</p>
+
+  <h2 id="c4-s1">ChannelFactory · Publisher · Subscriber <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>함수 (SDK 원형)</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>static ChannelFactory* ChannelFactory::Instance()</code></td><td>싱글턴 포인터</td></tr>
+      <tr><td><code>void Init(int32_t domainId, const std::string&amp; networkInterface = "")</code></td><td>DDS 초기화. 인터페이스가 비면 자동 선택합니다. <b>발행자 · 구독자를 만들기 전에 반드시 호출</b>합니다. 예제는 모두 <code>Init(0, 인터페이스)</code></td></tr>
+      <tr><td><code>void Init(const std::string&amp; configFileName = "")</code> · <code>Init(const JsonMap&amp;)</code></td><td>설정 파일 · JSON으로 초기화 (SDK에만 있음)</td></tr>
+      <tr><td><code>CreateSendChannel&lt;MSG&gt;(name)</code></td><td>보내기 채널 생성</td></tr>
+      <tr><td><code>CreateRecvChannel&lt;MSG&gt;(name, callback, int32_t queuelen = 0)</code></td><td>받기 채널 생성. 큐 길이 0이면 캐시 큐를 쓰지 않습니다</td></tr>
+      <tr><td><code>void Release()</code></td><td>정적 자원 해제</td></tr>
+      <tr><td><code>ChannelPublisher&lt;MSG&gt;(channelName)</code></td><td><code>InitChannel()</code> · <code>bool Write(const MSG&amp;, int64_t waitMicrosec = 0)</code>(성공 true) · <code>CloseChannel()</code></td></tr>
+      <tr><td><code>ChannelSubscriber&lt;MSG&gt;(channelName[, handler, queuelen])</code></td><td><code>InitChannel(handler, int64_t queuelen = 0)</code> · <code>InitChannel()</code>(직전 인자로 다시 열기) · <code>CloseChannel()</code></td></tr>
+      <tr><td><code>int64_t GetLastDataAvailableTime()</code></td><td>마지막 수신 시각. 부팅 후 단조 증가 µs, 채널이 열리지 않았으면 -1</td></tr>
+    </tbody>
+  </table>
+  <p>콜백 처리가 오래 걸리면 큐 길이를 1 이상으로 주어 DDS 콜백 스레드가 막히지 않게 하십시오 <span class="src">문서</span>.</p>
+  <div class="box note"><div class="h">문서와 SDK의 차이 → SDK를 따릅니다</div>
+    <p>문서는 <code>Init(domainId, networkInterface, bool enableSharedMemory = false)</code>와 "G1 밖에서 개발하면 false"라고 적었지만, SDK의 <code>Init</code>에는 세 번째 인자가 없습니다.
+      <code>Write</code>의 <code>waitMicrosec</code> 인자는 문서에 없습니다.</p></div>
+  <div class="box note"><div class="h">참고 · WeGo 운용 기록 · Python 구독 콜백</div>
+    <p>WeGo의 Python 프로그램(<code>unitree_sdk2_python</code>)에서 <code>ChannelSubscriber.Init(handler, queueLen)</code>의 콜백이 첫 샘플 뒤 다시 불리지 않아
+      <code>rt/lowstate</code>가 멈춘 것처럼 보인 일이 있습니다. 핸들러 없이 <code>Init()</code>한 뒤 스레드에서 2 ms마다 <code>Read()</code>로 읽어 해결했습니다.
+      (Python SDK에는 <code>Read(timeout)</code>가 있고, C++ <code>ChannelSubscriber</code>에는 없습니다.)</p></div>
+
+  <h2 id="c4-s2">RPC 클라이언트 공통 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>함수</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>void Init()</code></td><td>API 등록 등 클라이언트 초기화</td></tr>
+      <tr><td><code>void SetTimeout(float timeout)</code></td><td>요청 시간 제한(초). 설정하지 않으면 1초. SDK에는 <code>int64_t</code> 판도 있습니다</td></tr>
+      <tr><td><code>void WaitLeaseApplied()</code></td><td>임대(lease)를 받을 때까지 대기. 임대를 쓰는 서비스에만 유효</td></tr>
+      <tr><td><code>GetApiVersion()</code> · <code>GetServerApiVersion()</code></td><td>클라이언트 · 서버 API 버전</td></tr>
+    </tbody>
+  </table>
+  <p>RPC 공통 오류 3001 ~ 3207은 8장에 있습니다.</p>
+
+  <h2 id="c4-s3">주요 토픽 <span class="src">문서</span></h2>
+  <table class="t tight jt">
+    <thead><tr><th>토픽</th><th>형 (unitree_hg)</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/lowstate</code> · <code>rt/lf/lowstate</code></td><td><code>LowState_</code></td><td>IMU · 모터 상태 / 저주파판</td></tr>
+      <tr><td><code>rt/lowcmd</code></td><td><code>LowCmd_</code></td><td>저수준 명령 (2장)</td></tr>
+      <tr><td><code>rt/arm_sdk</code></td><td><code>LowCmd_</code></td><td>상체 덧씌움 명령 (6장)</td></tr>
+      <tr><td><code>rt/secondary_imu</code> · <code>rt/lf/secondary_imu</code></td><td><code>IMUState_</code></td><td>몸통 IMU / 저주파판</td></tr>
+      <tr><td><code>rt/odommodestate</code> · <code>rt/lf/odommodestate</code></td><td><code>IMUState_</code> (문서: go2)</td><td>오도메트리 / 저주파판</td></tr>
+      <tr><td><code>rt/lf/bmsstate</code></td><td><code>BmsState_</code></td><td>배터리</td></tr>
+      <tr><td><code>rt/lf/mainboardstate</code></td><td><code>MainBoardState_</code></td><td>메인보드</td></tr>
+      <tr><td><code>rt/dex3/…</code> · <code>rt/lf/dex3/…</code></td><td><code>HandCmd_</code> · <code>HandState_</code></td><td>Dex3-1 (3장)</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 오류 · "G1 List of common topics"</div>
+    <p>R1 문서의 토픽 표 제목이 "G1 List of common topics"이고, <code>rt/dex3/left/state</code>와 <code>rt/lf/dex3/left/state</code>의 설명("저주파 모드")이 서로 바뀌어 있으며
+      <code>rt/dex3/right/state</code>를 "왼손"으로 적었습니다. 위 표는 <code>lf</code>가 붙은 쪽을 저주파판으로 바로잡았습니다.
+      Unitree는 IDL 원본 대신 Cyclone DDS <code>idlc</code>로 만든 정의 파일을 제공합니다: <code>unitree_sdk2/include/unitree/idl</code>, <code>unitree_sdk2_python/unitree_sdk2py/idl</code>, <code>unitree_ros2/cyclonedds_ws/src/unitree</code>.</p></div>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>배터리 · 메인보드 필드 <span class="src" style="border-color:#b8d08a;color:#b8d08a">SDK</span></th><th>필드</th></tr></thead>
+    <tbody>
+      <tr><td><code>BmsState_</code></td><td><code>version_high</code>, <code>version_low</code>, <code>fn</code>, <code>cell_vol[40]</code>, <code>bmsvoltage[3]</code>, <code>current</code>, <code>soc</code>, <code>soh</code>, <code>temperature[12]</code>, <code>cycle</code>, <code>manufacturer_date</code>, <code>bmsstate[5]</code>, <code>reserve[3]</code></td></tr>
+      <tr><td><code>MainBoardState_</code></td><td><code>fan_state[6]</code>, <code>temperature[6]</code>, <code>value[6]</code>, <code>state[6]</code></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8pt;color:var(--ink3)">R1 문서는 이 두 메시지의 필드 의미를 설명하지 않습니다. 이름만 SDK 헤더에서 옮겼습니다.</p>
+
+  <h2 id="c4-s4">로봇 상태 클라이언트 RobotStateClient <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <p>장치 상태 서비스의 클라이언트로, 내부 서비스를 켜고 끄거나 상태를 받습니다. B2의 인터페이스를 그대로 씁니다:
+    C++ <code>include/unitree/robot/b2/robot_state</code>, Python <code>unitree_sdk2py/b2/robot_state</code>, ROS 2 <code>ros2_robot_state_client.h</code>.
+    서비스 이름 <code>robot_state</code>, API 버전 1.0.0.2 <span class="src r">SDK</span>.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>함수 (API ID)</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>int32_t ServiceSwitch(const std::string&amp; name, int32_t swit, int32_t&amp; status)</code> (1001)</td><td>서비스 켜기(<code>swit</code> 1) · 끄기(0). <code>status</code>는 실행 뒤 상태 (0 켜짐, 1 꺼짐)</td></tr>
+      <tr><td><code>int32_t SetReportFreq(int32_t interval, int32_t duration)</code> (1002)</td><td>서비스 상태 보고 간격 · 지속 시간(초). 앱의 서비스 상태 화면이 씁니다</td></tr>
+      <tr><td><code>ServiceList(std::vector&lt;ServiceState&gt;&amp;)</code> (1003)</td><td>서비스 목록 (SDK에만 있음)</td></tr>
+      <tr><td><code>LowPowerSwitch(int32_t)</code> (1004) · <code>LowPowerStatus(int32_t&amp;)</code> (1005)</td><td>저전력 전환 · 상태 (SDK에만 있음, R1 문서 설명 없음)</td></tr>
+    </tbody>
+  </table>
+  <div class="two">
+  <table class="t tight">
+    <thead><tr><th>서비스 이름 <span class="src" style="border-color:#fff;color:#fff">문서</span></th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td><code>ai_sport</code></td><td>주 운동 제어 서비스</td></tr>
+      <tr><td><code>basic_service</code></td><td>기본 서비스</td></tr>
+      <tr><td><code>g1_arm_example</code></td><td>상체 동작 서비스 (문서 표기 그대로)</td></tr>
+      <tr><td><code>vui_service</code></td><td>음성 · 조명 제어 서비스</td></tr>
+      <tr><td><code>unitree_slam</code></td><td>내비게이션 서비스</td></tr>
+    </tbody>
+  </table>
+  <p>보호된 서비스는 켜고 끌 수 없으며 5202를 돌려줍니다. 오류 5201 ~ 5204는 8장에 있습니다. 문서 설명에 "G1의 내부 서비스"라는 G1 문구가 남아 있습니다.
+    서비스를 끄면 그 기능(예: <code>ai_sport</code> = 보행 · 균형)이 멈추므로, 매단 상태에서만 시험하십시오.</p>
+  </div>
+
+  <h2 id="c4-s5">저수준 메시지 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <figure class="light f45"><img src="assets/dev/lowlevel_topics.png" alt="저수준 토픽 흐름"><figcaption><b>그림 7.</b> PC와 R1 사이의 저수준 토픽: <code>rt/lowcmd</code> · <code>rt/lowstate</code>, 손 <code>rt/dex3/…/cmd</code> · <code>…/state</code> (Unitree 문서).</figcaption></figure>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>구조체 (unitree_hg::msg::dds_)</th><th>필드 (SDK 헤더 순서)</th></tr></thead>
+    <tbody>
+      <tr><td><code>IMUState_</code></td><td><code>quaternion[4]</code>(w, x, y, z), <code>gyroscope[3]</code>(각속도), <code>accelerometer[3]</code>, <code>rpy[3]</code>(오일러 각), <code>temperature</code>(int16)</td></tr>
+      <tr><td><code>LowCmd_</code></td><td><code>mode_pr</code>(uint8, 0 PR · 1 AB, <code>rt/arm_sdk</code>에서는 가중치 0 ~ 100), <code>mode_machine</code>(uint8), <code>motor_cmd[35]</code>, <code>reserve[4]</code>, <code>crc</code></td></tr>
+      <tr><td><code>LowState_</code></td><td><code>version[2]</code>, <code>mode_pr</code>, <code>mode_machine</code>, <code>tick</code>(1 ms마다 증가), <code>imu_state</code>, <code>motor_state[35]</code>, <code>wireless_remote[40]</code>, <code>reserve[4]</code>, <code>crc</code></td></tr>
+      <tr><td><code>MotorCmd_</code></td><td><code>mode</code>(0 끄기, 1 사용), <code>q</code>(rad), <code>dq</code>(rad/s), <code>tau</code>(N·m 앞먹임), <code>kp</code>, <code>kd</code>, <code>reserve</code></td></tr>
+      <tr><td><code>MotorState_</code></td><td><code>mode</code>, <code>q</code>(rad), <code>dq</code>(rad/s), <code>ddq</code>(rad/s²), <code>tau_est</code>, <code>temperature[2]</code>(표면 · 권선), <code>vol</code>, <code>sensor[2]</code>, <code>motorstate</code>(8장), <code>reserve[4]</code></td></tr>
+    </tbody>
+  </table>
+  <p>관절이 내는 토크는 <code>τ = kp · (q<sub>목표</sub> − q) + kd · (dq<sub>목표</sub> − dq) + tau</code>입니다 (q · dq는 측정값) <span class="src">문서</span>.
+    <code>LowCmd_</code>를 보낼 때는 2장의 <code>Crc32Core</code>로 <code>crc</code>를 채웁니다.</p>
+  <div class="box note"><div class="h">문서와 SDK의 차이 → SDK를 따릅니다</div>
+    <ul>
+      <li><code>MotorCmd_.reserve</code>: 문서 <code>reserve[3]</code>, SDK는 <code>uint32_t</code> 하나.</li>
+      <li><code>MotorState_</code>: 문서의 <code>q_raw</code> · <code>dq_raw</code> · <code>ddq_raw</code>는 SDK에 없습니다.</li>
+      <li><code>LowState_.version[2]</code>는 문서에 없습니다.</li>
+      <li><code>mode_machine</code> 주석의 "4: 23-Dof, 5: 29-Dof, 6: 27-Dof"와 <code>mode_pr</code> 주석의 "(발목과 허리)"는 G1 문구입니다 (2장).</li>
+    </ul></div>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">보행 · 음성 · 영상 · SLAM 서비스</h1></div>
+  <p class="lede">로봇에 내장된 서비스를 요청 / 응답으로 부르는 인터페이스입니다. 보행 · 팔 서비스는 내장 운동 제어 위에서 동작하므로
+    <b>디버그 모드에서는 쓸 수 없습니다</b>.</p>
+
+  <h2 id="c5-s1">고수준 보행 LocoClient <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <pre class="cmd">#include &lt;unitree/robot/r1/loco/r1_loco_client.hpp&gt;
+#include &lt;unitree/robot/r1/loco/r1_loco_api.hpp&gt;
+unitree::robot::r1::LocoClient client;   client.Init();   client.SetTimeout(10.f);</pre>
+  <p>서비스 이름은 <code>ai_sport</code> 1.0.2.0 이상에서 <code>"sport"</code>, 그보다 낮으면 <code>"loco"</code>입니다 <span class="src">문서</span>. SDK의 <code>LOCO_SERVICE_NAME</code>은 <code>"sport"</code>, API 버전 1.0.0.0입니다.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>함수 (SDK 원형)</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td><code>int32_t Damp()</code></td><td><code>SetFsmId(1)</code> 댐핑</td></tr>
+      <tr><td><code>int32_t ZeroTorque()</code></td><td><code>SetFsmId(0)</code> 제로 토크</td></tr>
+      <tr><td><code>int32_t StandUp()</code></td><td><code>SetFsmId(4)</code> 잠금 서기 (균형 제어 없음)</td></tr>
+      <tr><td><code>int32_t Start()</code></td><td><code>SetFsmId(811)</code> 주 운동 제어(걷기 · 달리기)로 전환</td></tr>
+      <tr><td><code>int32_t LieDown()</code></td><td><code>SetFsmId(702)</code> 선 자세 → 누운 자세</td></tr>
+      <tr><td><code>int32_t GetUp()</code></td><td><code>StandUp()</code> → 3초 대기 → <code>SetFsmId(701)</code> 누운 자세 → 선 자세</td></tr>
+      <tr><td><code>int32_t Move(float vx, float vy, float vyaw)</code></td><td>속도 명령. 기본은 명령마다 <b>1초 동안만</b> 유효합니다. <code>SwitchMoveMode(true)</code> 뒤에는 지속 시간 864000 s로 보내 다음 명령까지 계속 움직입니다</td></tr>
+      <tr><td><code>int32_t Move(vx, vy, vyaw, bool continous_move)</code></td><td>지속 여부를 직접 지정</td></tr>
+      <tr><td><code>int32_t SwitchMoveMode(bool flag)</code></td><td>클라이언트 내부 플래그만 바꾸고 0을 돌려줍니다 (서버 호출 없음)</td></tr>
+      <tr><td><code>int32_t StopMove()</code></td><td><code>SetVelocity(0, 0, 0)</code></td></tr>
+      <tr><td><code>int32_t SetVelocity(float vx, float vy, float omega, float duration = 1.f)</code></td><td>API 7105. 앞(vx) · 옆(vy) 속도와 회전 속도(omega), 지속 시간(s). 예제 설명은 vx를 m/s로 씁니다. omega 단위는 문서에 없습니다</td></tr>
+      <tr><td><code>int32_t GetFsmId(int&amp; fsm_id)</code> · <code>SetFsmId(int)</code></td><td>API 7001 · 7101. 현재 / 목표 FSM ID</td></tr>
+      <tr><td><code>int32_t GetFsmMode(int&amp; fsm_mode)</code></td><td>API 7002. 값의 의미는 문서에 없습니다</td></tr>
+      <tr><td><code>int32_t SetSpeedMode(int speed_mode)</code></td><td>API 7107. 값의 의미는 문서에 없습니다</td></tr>
+    </tbody>
+  </table>
+  <div class="two">
+    <table class="t tight wrap1">
+      <thead><tr><th>FSM ID</th><th>모드</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td class="c">0</td><td>제로 토크</td><td>균형 제어 없음</td></tr>
+        <tr><td class="c">1</td><td>댐핑</td><td>균형 제어 없음</td></tr>
+        <tr><td class="c">4</td><td>잠금 서기</td><td>균형 제어 없음</td></tr>
+        <tr><td class="c">811</td><td>걷기 · 달리기 제어</td><td></td></tr>
+        <tr><td class="c">701</td><td>누운 자세 → 서기</td><td>먼저 잠금 서기</td></tr>
+        <tr><td class="c">702</td><td>서기 → 누운 자세</td><td></td></tr>
+      </tbody>
+    </table>
+    <table class="t tight wrap1">
+      <thead><tr><th>오류</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td class="c">7301</td><td>LocoState(상태 정보) 없음</td></tr>
+        <tr><td class="c">7302</td><td>잘못된 FSM ID</td></tr>
+        <tr><td class="c">7303</td><td>잘못된 작업(task) ID</td></tr>
+        <tr><td class="c">7304</td><td>FSM 전환 거부</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>모드 전환이 실제로 되는지는 내장 운동 제어의 전환 규칙이 정합니다. 균형 제어가 없는 모드(0 · 1 · 4)에서는 로봇이 넘어질 수 있으니 매단 상태에서 시험하십시오.</p>
+  <div class="box note"><div class="h">문서와 SDK의 차이 → SDK를 따릅니다</div>
+    <ul>
+      <li>문서는 <code>Move</code>의 동작을 "ContinuousGait 함수로 바꾼다"고 적었지만 그런 함수는 없습니다. <code>SwitchMoveMode(bool)</code>입니다.</li>
+      <li><code>LieDown()</code> · <code>GetUp()</code> · <code>GetFsmMode()</code> · <code>SetSpeedMode()</code> · <code>SwitchMoveMode()</code>는 문서의 함수 표에 없습니다. <code>LieDown</code> · <code>GetUp</code>은 8e1b927보다 오래된 SDK에는 없습니다.</li>
+      <li>문서의 "flight control system", <code>SetVelocity</code> 비고의 "adjust the image"는 번역 오류로 보이며 뜻이 분명하지 않습니다. 이 표는 SDK 코드가 하는 일만 적었습니다.</li>
+    </ul></div>
+
+  <h2 id="c5-s2">음성 · 조명 AudioClient <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>장치</th><th>사양</th></tr></thead>
+    <tbody>
+      <tr><td>RGB 조명</td><td>256색</td></tr>
+      <tr><td>스피커</td><td>8 Ω, 3 W (최대 5 W), 좌우 하나씩</td></tr>
+      <tr><td>마이크</td><td>4개 배열, 간격 20 mm (선형에 가까운 배치, 실리콘 마이크)</td></tr>
+      <tr><td>필요 버전</td><td><code>Vui_Service</code> 2.2.0.0 이상, <code>Vui Module</code> 2.0.0.3 이상 (낮으면 기술 지원에 업그레이드 요청)</td></tr>
+    </tbody>
+  </table>
+  <p>제공 기능: 음성 인식 ASR(기본 비스트리밍, 로컬 오프라인, 방위 · 감정 · 화자 정보 포함), 음성 합성 TTS(로컬 오프라인, 음성 선택), 오디오 스트림 재생, 볼륨, 조명 띠 색.
+    문서는 TTS가 "현재 중국어만 지원"한다고 적었지만, 같은 페이지의 표에 <code>speaker_id</code> 1(영어)이 있습니다. 음성 비서(호출어 · 대화 모드)의 사용법은 <a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 8장에 있습니다.</p>
+  <p>헤더 <code>unitree/robot/r1/audio/audio_client.hpp</code>, 서비스 이름 <code>"voice"</code>, API 버전 1.0.0.0 <span class="src r">SDK</span>.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>함수 (API ID)</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>int32_t TtsMaker(const std::string&amp; text, int32_t speaker_id)</code> (1001)</td><td>문장을 합성해 바로 재생. <code>speaker_id</code> 0 = 중국어, 1 = 영어. 두 언어를 섞을 수 없습니다. 요청마다 <code>index</code>가 1씩 늘어납니다</td></tr>
+      <tr><td><code>int32_t GetVolume(uint8_t&amp; volume)</code> (1005) · <code>SetVolume(uint8_t volume)</code> (1006)</td><td>시스템 볼륨 0 ~ 100</td></tr>
+      <tr><td><code>int32_t LedControl(uint8_t R, uint8_t G, uint8_t B)</code> (1010)</td><td>조명 띠 색 0 ~ 255. <b>호출 간격은 200 ms보다 길어야</b> 합니다</td></tr>
+      <tr><td><code>int32_t PlayStream(std::string app_name, std::string stream_id, std::vector&lt;uint8_t&gt; pcm_data)</code> (1003)</td><td>PCM 재생. <b>16 kHz, 모노, 16비트</b>. 같은 <code>stream_id</code>는 캐시에 이어 재생, 다른 ID는 현재 재생을 끊습니다</td></tr>
+      <tr><td><code>int32_t PlayStop(std::string app_name)</code> (1004)</td><td>재생 정지. SDK 구현은 결과와 상관없이 0을 돌려줍니다</td></tr>
+      <tr><td>ASR (1002)</td><td>SDK가 API를 등록하지만 감싼 함수는 없습니다. 인식 결과는 아래 토픽으로 받습니다</td></tr>
+    </tbody>
+  </table>
+  <p>앱이나 리모컨으로 호출 대기 모드를 켜면 내장 마이크와 ASR이 사람 목소리를 인식하고, <code>rt/audio_msg</code>(<code>std_msgs::msg::dds_::String_</code>)에 JSON으로 결과를 냅니다.</p>
+  <table class="t tight">
+    <thead><tr><th>필드</th><th>형</th><th>뜻</th><th>필드</th><th>형</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>index</code></td><td>정수</td><td>메시지 고유 순번</td><td><code>sense</code></td><td>문자열</td><td>감정 인식 결과</td></tr>
+      <tr><td><code>timestamp</code></td><td>정수</td><td>타임스탬프</td><td><code>confidence</code></td><td>실수</td><td>신뢰도</td></tr>
+      <tr><td><code>text</code></td><td>문자열</td><td>인식 결과</td><td><code>language</code></td><td>문자열</td><td>언어 (예: en-US)</td></tr>
+      <tr><td><code>angle</code></td><td>정수</td><td>방위각 0 ~ 180</td><td><code>is_final</code></td><td>정수</td><td>끝 표시 (스트리밍 모드용)</td></tr>
+      <tr><td><code>speaker_id</code></td><td>정수</td><td>화자 인식 결과</td><td><code>play_state</code></td><td>정수</td><td>재생 상태 0 정지 · 1 재생 (별도 JSON, 문서가 토픽을 밝히지 않음)</td></tr>
+    </tbody>
+  </table>
+  <p><b>예제 <code>r1_audio_client_example &lt;인터페이스&gt;</code></b> <span class="src r">SDK</span>: 볼륨 읽기 → 100으로 설정 → 중국어 · 영어 TTS → <code>test.wav</code>(16 kHz 모노만)를 96000바이트(3초) 조각으로 1초 간격 재생 →
+    조명 초록 → 끔 → 파랑 → 마이크 녹음. 녹음은 UDP 멀티캐스트 <b>239.168.123.161 : 5555</b>에 192.168.123.x 인터페이스로 가입해 16 kHz · 16비트 모노 PCM을 5초 받아 <code>record.wav</code>로 저장합니다.
+    음성 파일 경로가 <code>../example/r1/audio/test.wav</code>이므로 <code>build/</code>에서 실행하십시오.</p>
+  <div class="box note"><div class="h">문서 오류 · G1 예제 코드</div>
+    <p><i>VuiClient Service</i> 페이지의 예제는 G1의 <code>unitree/robot/g1/audio/g1_audio_client.hpp</code>와 <code>example/g1/audio/test.wav</code>를 씁니다. R1은 <code>r1::AudioClient</code>를 쓰십시오.
+      또 SDK 예제는 <code>PlayStop(stream_id)</code>처럼 앱 이름 자리에 스트림 ID를 넘깁니다. 직접 작성할 때는 <code>PlayStream</code>에 준 <code>app_name</code>을 넘기십시오.</p></div>
+
+  <h2 id="c5-s3">영상 서비스 <span class="src">문서</span></h2>
+  <p>R1 EDU 머리의 양안 모듈은 아래 영상을 냅니다. 받은 영상은 개발 연산 유닛(NX)에 화면을 연결하거나 NX의 NoMachine으로 봅니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>영상</th><th>해상도</th><th>장치 · 전송</th><th>UDP 포트</th></tr></thead>
+    <tbody>
+      <tr><td>img</td><td>1280 × 720</td><td><code>/dev/video-img</code>, H.264 RTP</td><td class="c">5001</td></tr>
+      <tr><td>보정된 왼쪽 RGB</td><td>544 × 448 · 10 fps</td><td><code>/dev/video-left</code>, H.264 RTP</td><td class="c">5002</td></tr>
+      <tr><td>보정된 오른쪽 RGB</td><td>544 × 448 · 10 fps</td><td><code>/dev/video-right</code>, H.264 RTP</td><td class="c">5003</td></tr>
+      <tr><td>깊이</td><td>544 × 448 · 16비트</td><td><code>/dev/video-dep</code> (V4L2, 10 fps)</td><td class="c">—</td></tr>
+      <tr><td>왼쪽 원본</td><td>1280 × 1088 · 30 fps</td><td>JPEG RTP</td><td class="c">5004</td></tr>
+      <tr><td>오른쪽 원본</td><td>1280 × 1088 · 30 fps</td><td>JPEG RTP</td><td class="c">5005</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight">
+    <thead><tr><th>필요 버전</th><th>이상</th><th>필요 버전</th><th>이상</th></tr></thead>
+    <tbody>
+      <tr><td>Patch (내부에서만 보임)</td><td>1.0.1.17</td><td>Stereo Patch PC1</td><td>0.4.0.4</td></tr>
+      <tr><td>R1 Stereo Patch PC1</td><td>0.0.1.42</td><td>System_patch_pc4</td><td>2.0.0.0</td></tr>
+      <tr><td>R1 Stereo Patch X5</td><td>0.0.0.17</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <figure class="light f80"><img src="assets/dev/service_status.png" alt="바꾸기 전의 서비스 상태 화면"><figcaption data-fig="fig-video-service"><b>그림 8.</b> 앱의 [설정] → [서비스 상태] 화면. <code>video_hub</code>는 켜져 있고 <code>stereo_patch_pc1</code>은 꺼져 회색으로 보입니다 (Unitree 문서).</figcaption></figure>
+  <figure class="light f80"><img src="assets/dev/video_service_after.png" alt="바꾼 뒤의 서비스 상태 화면"><figcaption data-fig="fig-video-service-after"><b>그림 9.</b> <code>video_hub</code>를 끄고 <code>stereo_patch_pc1</code>을 켠 뒤의 서비스 상태 화면 (Unitree 문서).</figcaption></figure>
+  <ol class="steps">
+    <li><b>스트리밍 시작</b>앱에서 R1을 추가하고 [설정] → [서비스 상태]를 엽니다 (그림 8). <code>video_hub</code>가 이 서비스와 충돌할 수 있으니 끄고, 자동으로 시작되지 않는 <code>Stereo patch PC1</code>을 직접 켭니다 (그림 9).</li>
+    <li><b>H.264 영상 받기</b>아래 명령에서 포트만 바꿔 씁니다. 해상도와 프레임을 확인할 때는 명령 끝을 <code>fakesink -v 2&gt;/dev/null | grep -E 'width|height|framerate'</code>로 바꿉니다.
+      보정된 왼쪽 영상(포트 5002)이면 <code>width=(int)544</code>, <code>height=(int)448</code>, <code>framerate=(fraction)10/1</code>이 나옵니다.</li>
+  </ol>
+  <pre class="cmd">gst-launch-1.0 udpsrc port=5001 ! \
+  application/x-rtp,media=video,clock-rate=90000,encoding-name=H264,payload=96 ! \
+  rtph264depay ! avdec_h264 ! videoconvert ! autovideosink sync=false
+<span class="c"># JPEG 원본 (5004 왼쪽, 5005 오른쪽)</span>
+gst-launch-1.0 udpsrc port=5004 ! \
+  application/x-rtp,media=video,clock-rate=90000,encoding-name=JPEG,payload=96 ! \
+  rtpjpegdepay ! jpegparse ! jpegdec ! videoconvert ! autovideosink sync=false
+<span class="c"># 깊이: 받기 시작 / 끝 (시작하면 "Depth camera capture running in background..."가 나옴)</span>
+sudo unitree_depth_start      sudo unitree_depth_stop
+ffplay -f v4l2 -framerate 10 -video_size 544x448 -i /dev/video-dep</pre>
+  <p>Unitree 문서의 깊이 시각화 스크립트 <code>depth16_show.py</code>(NX의 <code>~/share/rdk/rdkx5/platform_samples_client/dep_img_send</code>)는 16비트 깊이 값을 색으로 보여 줍니다.
+    키는 <code>q</code> 종료, <code>s</code> 현재 프레임 저장(PNG와 원시 <code>.npy</code>), <code>c</code> 색 지도 바꾸기, <code>+</code> · <code>-</code> 정규화 범위 조절입니다.
+    원시 깊이 값의 단위는 mm이며, 화면에는 1000으로 나눈 미터 값이 격자 교차점마다 표시됩니다. 0과 65535는 무효 깊이로 칠합니다.</p>
+  <h3>출력 영상 설정과 보정 값</h3>
+  <ol class="steps">
+    <li><b>서비스 전환</b>앱에서 <code>video_hub</code>를 끄고 <code>Stereo patch PC1</code>을 켭니다 (그림 9).</li>
+    <li><b>설정 페이지 열기</b>NX 도크의 브라우저로 <code>http://192.168.123.161:9080</code>을 열고, 내보낼 영상을 켜거나 끕니다 (그림 10). 어떤 조합이든 되지만 하나 이상은 켜 두어야 합니다.</li>
+    <li><b>저장과 동기화</b><span class="ui">Save and Sync to Camera</span>를 누르면 동기화 결과가 표시됩니다 (그림 11). 바꾼 설정은 <b>전원을 껐다 켜야 적용</b>됩니다.</li>
+    <li><b>보정 값 내려받기</b>같은 페이지 아래의 <span class="ui">Download cam_param.txt</span>를 눌러 <code>cam_param.txt</code>를 내려받습니다. 카메라 내부 파라미터, 왜곡 계수, 양안 외부 파라미터가 들어 있습니다.</li>
+  </ol>
+  <table class="t tight">
+    <thead><tr><th>설정 페이지의 출력</th><th>해상도 · 프레임</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>깊이 맵</td><td>544 × 448 · 10 fps</td><td></td></tr>
+      <tr><td>보정된 왼쪽 · 오른쪽 영상</td><td>544 × 448 · 10 fps</td><td>따로 켜고 끔</td></tr>
+      <tr><td>잘라낸 오른쪽 영상</td><td>720 × 1280 · 15 fps · NV12</td><td>앱이 쓰는 영상. 끄면 앱에서 영상 미리보기가 되지 않음</td></tr>
+      <tr><td>왼쪽 · 오른쪽 원본</td><td>1280 × 1088 · 30 fps · MJPG</td><td></td></tr>
+    </tbody>
+  </table>
+  <figure class="light h95"><img src="assets/dev/video_config.png" alt="양안 출력 설정 페이지"><figcaption data-fig="fig-video-config"><b>그림 10.</b> <code>http://192.168.123.161:9080</code>의 양안 출력 설정 페이지 (Unitree 문서).</figcaption></figure>
+  <figure class="light"><img src="assets/dev/video_config_saved.png" alt="동기화 성공 메시지"><figcaption data-fig="fig-video-config-saved"><b>그림 11.</b> 동기화 성공 메시지. 설정을 적용하려면 전원을 껐다 켜야 한다고 알려 줍니다 (Unitree 문서).</figcaption></figure>
+  <div class="box note"><div class="h">참고 · 문서끼리 다름</div>
+    <p><i>About R1</i>은 RGB 최대 해상도를 1280 × 1080으로, 영상 서비스 문서는 img를 1280 × 720으로 적었습니다. 9080 설정 페이지에는 img 항목이 없고, 원본이 1280 × 1088로 나옵니다.
+      <i>SDK Overview</i>는 "현재 버전은 GST 영상 스트리밍을 지원하지 않는다"고 적었지만,
+      영상 서비스 문서는 위 버전 이상에서 GStreamer 수신을 안내합니다. 납품 장비의 서비스 버전을 먼저 확인하십시오.</p></div>
+
+  <h2 id="c5-s4">SLAM 내비게이션 <span class="src">문서</span></h2>
+  <div class="box warn"><div class="h">경고 · 사용 조건</div>
+    <ul>
+      <li><b>R1-EDU + Mid360 라이다</b> 구성만 지원합니다. 교육 · 연구용이며 산업 응용은 Unitree 영업에 문의합니다.</li>
+      <li>정적이고 평평하며 특징이 많은 실내, X · Y 45 m 이내에서 씁니다. 공중제비 같은 격한 동작은 라이다를 손상시키고 위치를 잃게 합니다.</li>
+      <li>라이다 동작 중 핫플러그를 금지합니다. 사용 전 원시 점군과 IMU 값이 정상인지, 머리가 정면 · 수직이고 헐겁지 않은지 확인합니다.
+        정지한 라이다로 정지한 수직면을 비출 때 점군이 층으로 갈라지거나 IMU 값이 이상하면 수리를 의뢰합니다.</li>
+    </ul></div>
+  <p>점군과 위치의 원점은 Mid360 IMU 좌표계 원점이며, X는 로봇 정면, Z는 수직 위입니다. 개발 PC를 R1 내부 스위치에 직결하고 192.168.123.x로 설정한 뒤
+    <code>ping 192.168.123.120</code>(라이다) · <code>ping 192.168.123.161</code>(PC1)과 <code>ssh unitree@192.168.123.164</code>(NX)로 확인합니다.</p>
+  <p>서비스 이름 <code>"slam_operate"</code>, 버전 1.0.0.1. 요청 인자와 응답은 모두 JSON이며, 응답은 <code>{"succeed": bool, "errorCode": 0 = 정상, "info": 설명, "data": {}}</code>입니다.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>API ID · 기능</th><th>요청 <code>{"data": …}</code></th></tr></thead>
+    <tbody>
+      <tr><td>1801 지도 작성 시작</td><td><code>{"slam_type": "indoor"}</code> (고정값)</td></tr>
+      <tr><td>1802 지도 작성 끝</td><td><code>{"address": "/home/unitree/test.pcd"}</code> 저장 경로. 디스크를 아끼려면 <code>test1.pcd</code> ~ <code>test10.pcd</code>로 이름을 정해 덮어쓰기를 권합니다</td></tr>
+      <tr><td>1804 자세 초기화</td><td><code>{"x","y","z","q_x","q_y","q_z","q_w", "address": pcd 경로}</code></td></tr>
+      <tr><td>1102 자세 내비게이션</td><td><code>{"targetPose": {x, y, z, q_x, q_y, q_z, q_w}, "mode": 1}</code> (mode 고정). 목표는 현재 위치에서 <b>30 m 이내</b>, 직선으로 이동합니다. 라이다 시야 때문에 장애물 높이는 50 cm 이상이어야 합니다</td></tr>
+      <tr><td>1201 일시 정지 · 1202 재개</td><td><code>{}</code></td></tr>
+      <tr><td>1901 SLAM 끄기</td><td><code>{}</code></td></tr>
+    </tbody>
+  </table>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>토픽</th><th>형 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/unitree/slam_mapping/points</code> · <code>…/odom</code></td><td>지도 작성 중 점군 <code>sensor_msgs::msg::dds_::PointCloud2_</code> · 오도메트리 <code>nav_msgs::msg::dds_::Odometry_</code></td></tr>
+      <tr><td><code>rt/unitree/slam_relocation/points</code> · <code>…/odom</code></td><td>재위치 추정 중 점군 · 오도메트리</td></tr>
+      <tr><td><code>rt/unitree/slam_relocation/global_map</code></td><td>전역 지도 점군. 재위치 시작 뒤 한 번만 보냅니다</td></tr>
+      <tr><td><code>rt/slam_info</code></td><td><code>std_msgs::msg::dds_::String_</code> 실시간 방송 JSON: <code>type</code> = <code>robot_data</code> · <code>pos_info</code> · <code>mapping_info</code> · <code>ctrl_info</code></td></tr>
+      <tr><td><code>rt/slam_key_info</code></td><td><code>String_</code> 실행 결과 JSON: <code>type</code> = <code>task_result</code> (<code>targetNodeName</code>, <code>is_arrived</code>)</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight wrap1">
+    <thead><tr><th>JSON type</th><th>data 필드 (공통: <code>errorCode</code>, <code>sec</code>, <code>nanosec</code>, <code>info</code>)</th></tr></thead>
+    <tbody>
+      <tr><td><code>robot_data</code></td><td><code>motorTemp[]</code> °C, <code>motorError[]</code>, <code>batteryAmp</code> mA, <code>batteryPower</code> %, <code>batteryTemp</code> °C, <code>batteryVol</code> mV, <code>sportMode</code> · <code>gaitType</code>(지금은 -1), <code>cpuTemp</code> °C, <code>cpuUsage</code> %, <code>cpuMemory</code> %, <code>cpuFrequency</code> MHz</td></tr>
+      <tr><td><code>pos_info</code> · <code>mapping_info</code></td><td><code>currentPose</code>{x, y, z, q_x, q_y, q_z, q_w}, <code>pcdName</code>, <code>address</code></td></tr>
+      <tr><td><code>ctrl_info</code></td><td><code>targetNodeName</code>, <code>is_arrived</code>, <code>startPose</code> · <code>targetPose</code>{x, y, z, roll, pitch, yaw}, <code>stateMachine</code>{state, isOpenPlan, isBack, isClimbStairs, isRotate, isPause, ctrName, vx, vy, vyaw},
+        <code>obsInfo</code>{state = 장애물, time = 누적 s}, <code>progress</code>{used_time, last_time, completion_percentage}</td></tr>
+    </tbody>
+  </table>
+  <pre class="cmd"><span class="c"># NX(192.168.123.164)에 Unitree Slam 패키지(2026-06-04 "R1-EDU Mid360") 설치: 압축을 풀고 설치 스크립트 실행</span>
+cd /unitree/module/unitree_slam/bin
+export LD_LIBRARY_PATH=/unitree/module/unitree_slam/lib:$LD_LIBRARY_PATH   <span class="c"># .bashrc에 넣어도 됨</span>
+./unitree_slam          <span class="c"># 서비스</span>
+./mid360_driver         <span class="c"># 다른 터미널: 라이다</span>
+./keyDemo eth10         <span class="c"># 다른 터미널: 데모</span></pre>
+  <ul>
+    <li>데모 소스는 <code>/unitree/module/unitree_slam/example</code>, rviz2 설정은 <code>/unitree/module/unitree_slam/rviz2</code>에 있습니다.</li>
+    <li>지도를 만들 때 로봇을 빠르게 움직이지 마십시오. 도크 PC의 자원이 적으므로 SLAM 중에는 rviz2 같은 무거운 프로그램을 켜지 마십시오.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">고수준 제어</h1></div>
+  <p class="lede">내장 운동 제어가 균형을 잡는 동안 보행 명령을 보내거나(<code>r1_loco_client</code>), 상체만 덧씌워 제어하거나(<code>rt/arm_sdk</code>),
+    내장 팔 동작을 실행합니다(팔 동작 서비스). 셋 다 디버그 모드에서는 동작하지 않습니다.</p>
+
+  <h2 id="c6-s1">보행 예제 r1_loco_client <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <p>소스 <code>example/r1/high_level/r1_loco_client_example.cpp</code>, 실행 파일 <code>build/bin/r1_loco_client</code>(문서 표기 <code>unitree_sdk2/bin/r1_loco_client</code>).
+    디버그 모드에 들어가지 않고 실행합니다. 값이 있는 인자는 <code>--키=값</code> 또는 <code>--키="값"</code>, 값이 없으면 <code>--키</code>.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>인자</th><th>동작 (예)</th></tr></thead>
+    <tbody>
+      <tr><td><code>--network_interface</code></td><td>인터페이스 이름 (예: <code>enp3s0</code>). <b>생략하면 <code>lo</code></b></td></tr>
+      <tr><td><code>--get_fsm_id</code> · <code>--get_fsm_mode</code></td><td>현재 FSM ID · FSM 모드 출력</td></tr>
+      <tr><td><code>--set_fsm_id=1</code></td><td>FSM ID 설정</td></tr>
+      <tr><td><code>--set_velocity="0.5 0 0 1"</code></td><td><code>vx vy omega [duration]</code>. duration 생략 시 1 s</td></tr>
+      <tr><td><code>--move="0.5 0 0"</code></td><td><code>Move(vx, vy, omega)</code></td></tr>
+      <tr><td><code>--switch_move_mode=true</code></td><td>연속 이동 플래그 (아래 순서 주의)</td></tr>
+      <tr><td><code>--set_speed_mode=N</code></td><td><code>SetSpeedMode(N)</code></td></tr>
+      <tr><td><code>--damp</code> · <code>--start</code> · <code>--stand_up</code> · <code>--zero_torque</code> · <code>--stop_move</code></td><td>각 함수 호출</td></tr>
+      <tr><td><code>--lie_down</code> · <code>--get_up</code></td><td><code>LieDown()</code> · <code>GetUp()</code> (8e1b927에만 있음)</td></tr>
+    </tbody>
+  </table>
+  <pre class="cmd">./build/bin/r1_loco_client --network_interface=enp3s0 --set_velocity="0.5 0 0 1"   <span class="c"># x 방향 0.5 m/s로 1초</span></pre>
+  <div class="box caution"><div class="h">주의 · 인자는 입력한 순서가 아니라 이름순으로 실행됩니다 <span class="src r">SDK</span></div>
+    <p>예제는 인자를 <code>std::map</code>에 담아 순회하므로 키 이름의 사전순으로 실행합니다. 예를 들어 <code>--switch_move_mode=true --move="0.3 0 0"</code>은
+      <code>move</code>가 먼저 실행되어 1초짜리 이동이 되고, 그 뒤에 플래그가 바뀝니다. 순서가 중요한 명령은 따로 실행하십시오.
+      문서에 주석 처리된 <code>--set_balance_mode</code> · <code>--set_swing_height</code> · <code>--set_stand_height</code> 등은 예제에 없습니다.</p></div>
+
+  <h2 id="c6-s2">팔 제어 arm_sdk <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <p><code>rt/arm_sdk</code>에 <code>unitree_hg::msg::dds_::LowCmd_</code>를 발행하면 팔 · 허리 요 · 머리를 직접 제어하고, 하체 균형은 내장 제어가 계속 잡습니다.
+    상태는 <code>rt/lowstate</code>에서 읽습니다. 미리 정해진 동작만 필요하면 이 인터페이스 대신 아래의 팔 동작 서비스를 부르십시오.</p>
+  <div class="box warn"><div class="h">경고</div>
+    <ul>
+      <li><code>arm_sdk</code>는 관절 한계 · 충돌 검사를 전혀 하지 않습니다. 목표 위치는 전적으로 프로그램 책임이며, 명령은 연속적이고 부드러워야 합니다.</li>
+      <li>이 인터페이스를 쓰는 동안 팔 동작 서비스 API를 부르지 마십시오. 둘이 상체 제어권을 다툽니다 (서비스는 7400을 돌려줍니다).</li>
+    </ul></div>
+  <h3>제어 가중치 mode_pr</h3>
+  <div class="two">
+  <table class="t tight wrap1">
+    <thead><tr><th>가중치 (mode_pr)</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>0.0 (0)</td><td>상체를 내장 제어가 모두 맡습니다. <code>arm_sdk</code> 명령은 효과가 없습니다</td></tr>
+      <tr><td>0.0 ~ 1.0</td><td>사용자 명령과 내장 제어를 가중치로 섞습니다</td></tr>
+      <tr><td>1.0 (100)</td><td>상체 제어권을 프로그램이 모두 가집니다</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8.6pt">R1은 가중치를 <code>LowCmd_.mode_pr</code>(0 ~ 100)에 담습니다. 특정 관절 명령에 가중치를 쓰는 모델(G1은 <code>motor_cmd[29].q</code>)과 다르며, R1의 29번은 머리 피치입니다.
+    SDK의 <code>r1::publisher::ArmSdk</code>(<code>dds_wrapper/robots/r1/r1_pub.h</code>)가 <code>weight(float)</code> = <code>mode_pr = clamp(int(w·100), 0, 100)</code>, <code>weight()</code> = <code>mode_pr / 100</code>으로 감쌉니다 <span class="src r">SDK</span>.</p>
+  </div>
+  <ul>
+    <li><b>잡기</b>: 가중치를 1.0으로 올리기 전에 모든 관절 목표를 <b>현재 측정 위치</b>로 채우고 게인을 씁니다. 넘겨받는 순간 튀지 않게 합니다.</li>
+    <li><b>놓기</b>: 1.0에서 0.0으로 한 번에 내리지 마십시오. 약 <b>1초</b>에 걸쳐 직선으로 내리며 그동안 100 Hz로 계속 발행합니다. 한 번에 내리면 팔이 버티는 힘을 잃고 떨어집니다.</li>
+  </ul>
+  <h3>관절과 게인</h3>
+  <table class="t tight">
+    <thead><tr><th>순서</th><th>JointIndex</th><th>IDL</th><th>KP</th><th>KD</th><th>순서</th><th>JointIndex</th><th>IDL</th><th>KP</th><th>KD</th></tr></thead>
+    <tbody>
+      <tr><td class="c">0</td><td>LeftShoulderPitch</td><td class="c">15</td><td class="c">50</td><td class="c">2</td><td class="c">5</td><td>RightShoulderPitch</td><td class="c">22</td><td class="c">50</td><td class="c">2</td></tr>
+      <tr><td class="c">1</td><td>LeftShoulderRoll</td><td class="c">16</td><td class="c">50</td><td class="c">2</td><td class="c">6</td><td>RightShoulderRoll</td><td class="c">23</td><td class="c">50</td><td class="c">2</td></tr>
+      <tr><td class="c">2</td><td>LeftShoulderYaw</td><td class="c">17</td><td class="c">40</td><td class="c">2</td><td class="c">7</td><td>RightShoulderYaw</td><td class="c">24</td><td class="c">40</td><td class="c">2</td></tr>
+      <tr><td class="c">3</td><td>LeftElbow</td><td class="c">18</td><td class="c">40</td><td class="c">2</td><td class="c">8</td><td>RightElbow</td><td class="c">25</td><td class="c">40</td><td class="c">2</td></tr>
+      <tr><td class="c">4</td><td>LeftWristRoll</td><td class="c">19</td><td class="c">30</td><td class="c">2</td><td class="c">9</td><td>RightWristRoll</td><td class="c">26</td><td class="c">30</td><td class="c">2</td></tr>
+      <tr><td class="c">10</td><td>WaistYaw</td><td class="c">13</td><td class="c">50</td><td class="c">3</td><td class="c">11 · 12</td><td>HeadPitch · HeadYaw</td><td class="c">29 · 30</td><td class="c">15</td><td class="c">1</td></tr>
+    </tbody>
+  </table>
+  <p>순서는 <code>ArmSdk::JOINTS</code>(13개)이고, 게인은 내장 팔 동작 서비스가 쓰는 값으로 예제의 <code>KP</code> · <code>KD</code>와 같습니다. 허리는 <b>요만</b> 제어할 수 있고 허리 롤과 다리는 내장 제어 전용이라 명령해도 효과가 없습니다.
+    같은 번호로 <code>rt/lowstate</code>의 <code>q</code>, <code>dq</code>, <code>motorstate</code>를 읽습니다. 각 관절에는 <code>q</code>(rad), <code>kp</code>, <code>kd</code>, <code>dq</code>(rad/s, 위치 제어면 0), <code>tau</code>(N·m, 위치 제어면 0)를 씁니다.</p>
+  <p>KP가 너무 크면 떨림과 오버슈트, 너무 작으면 늦게 따라가고 끝이 처집니다. KD는 떨림을 줄이지만 지나치면 끈적하고 고주파 진동이 생길 수 있습니다.
+    손으로 끌어 가르칠 때는 KP를 한 자리 ~ 10대 초반으로 크게 낮추고 <code>tau</code>에 중력 보상 토크를 더합니다.</p>
+  <div class="box caution"><div class="h">주의 · WeGo 운용 기록 · 공식 게인을 넘기지 마십시오</div>
+    <p>2026년 8월 WeGo 개발 중 G1용 허리 게인(kp 300, kd 3)이 R1의 머리와 허리 요에 잘못 전달되어, 공식값의 20배 게인이 걸린 머리가 큰 소음을 낸 뒤
+      모터 과열 보호로 멈췄습니다(다른 손상 없음). G1 코드를 옮길 때는 관절 번호와 게인을 R1 값으로 바꾸십시오. 머리 · 허리에서 큰 소음이 나면 프로그램을 멈추고 위 게인 이하로 낮춥니다.</p></div>
+  <h3>제어 흐름과 예제</h3>
+  <ol class="steps">
+    <li><b>잡기</b>weight = 1.0, 모든 <code>q</code>를 측정 위치로, kp · kd 쓰기.</li>
+    <li><b>명령</b><b>100 Hz</b>(10 ms마다)로 목표 위치를 발행합니다. 먼 목표로 바로 뛰지 말고 보간하거나 궤적을 계획합니다. 움직이는 동안 <code>rt/lowstate</code>로 추종 오차와
+      <code>motorstate</code>를 보고, <b>0이 아니면 즉시 멈추고 놓습니다</b>.</li>
+    <li><b>놓기</b>1초에 걸쳐 weight를 0.0으로, 100 Hz 발행 유지. 프로그램을 끝내기 전에 반드시 놓습니다. weight 1.0인 채로 프로그램이 죽으면 상체는 마지막 명령 자세에 머뭅니다.</li>
+  </ol>
+  <p><code>r1_arm_sdk_dds_example &lt;인터페이스&gt;</code>(8e1b927, <code>fmt</code> 필요)의 <code>ArmController</code>는 <code>rt/lowstate</code> 연결을 기다린 뒤
+    <code>enable()</code>(weight 1, 현재 위치 · 게인 채우기) → <code>movej(q_target, max_vel = 1.0)</code>(가장 많이 움직이는 관절이 1 rad/s가 되도록 시간을 정해 10 ms 간격 선형 보간) →
+    <code>release(1.0)</code>(1초 동안 weight 1 → 0, 10 ms 간격)을 실행합니다. 목표는 왼팔 <code>{0, 1.57, 0, 1.57, 0}</code>, 오른팔 <code>{0, -1.57, 0, -1.57, 0}</code>, 허리 요 0, 머리 피치 0, 머리 요 1.0 rad입니다.</p>
+
+  <h2 id="c6-s3">팔 동작 서비스 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <p>R1에 내장된 상체 상호작용 동작과, 가르치기로 녹화한 사용자 동작을 실행 · 관리합니다. 서비스 이름 <code>"arm"</code> → 토픽 <code>rt/api/arm/request</code> · <code>rt/api/arm/response</code>, 요청 · 응답은 JSON,
+    API 버전 1.0.0.0(서버는 아직 검사하지 않음). <code>R1ArmActionClient</code>는 SDK 헤더가 아니라 <b>예제 파일 <code>r1_arm_action_example.cpp</code> 안에만</b> 있으며 <code>Client</code> 기반 클래스만 씁니다.
+    G1의 <code>g1_arm_action_client.hpp</code>는 서비스 이름 · API ID가 같아도 동작 ID 목록과 오류 코드가 달라 쓰면 안 됩니다.</p>
+  <pre class="cmd">./build/bin/r1_arm_action_example eth0 --list           <span class="c"># 동작 목록</span>
+./build/bin/r1_arm_action_example eth0 --id 27          <span class="c"># 미리 정한 동작 (악수)</span>
+./build/bin/r1_arm_action_example eth0 --id 99          <span class="c"># 팔 놓기</span>
+./build/bin/r1_arm_action_example eth0 --name my_action <span class="c"># 사용자 동작</span>
+./build/bin/r1_arm_action_example eth0 --stop           <span class="c"># 사용자 동작 정지</span></pre>
+  <table class="t tight wrap1">
+    <thead><tr><th>API ID · 함수</th><th>요청 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td style="width:40%">7106 <code>ExecuteAction(int32_t action_id)</code></td><td>요청 <code>{"action_id": 27}</code>. 미리 정한 동작. <b>블로킹</b>: 재생이 끝나야 돌아오므로 시간 제한을 동작 길이보다 길게(10 s 권장)</td></tr>
+      <tr><td style="width:40%">7108 <code>ExecuteAction(const std::string&amp; action_name)</code></td><td>요청 <code>{"action_name": "my_action"}</code>. 사용자 동작(대소문자 구분). <b>논블로킹</b>, 끝나면 팔을 자동으로 놓습니다</td></tr>
+      <tr><td style="width:40%">7113 <code>StopCustomAction()</code></td><td>요청 인자 없음. 사용자 동작 정지, 팔은 처음 자세로. 재생 중이 아니어도 0</td></tr>
+      <tr><td style="width:40%">7107 <code>GetActionList(std::string&amp; data)</code></td><td>요청 인자 없음. <code>[[{"id":99,"name":"release_arm"}, …], [{"name":"my_action","time":12.3}]]</code>. 미리 정한 항목에 <code>fsm</code>이 있으면 특정 제어 상태에서만 실행됩니다. 서버 응답이 기준입니다</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight jt">
+    <thead><tr><th>ID</th><th>이름</th><th>동작</th><th>길이 s</th><th>유지</th></tr></thead>
+    <tbody>
+      <tr><td class="c">99</td><td><code>release_arm</code></td><td>팔을 처음 자세로</td><td class="c">—</td><td class="c"></td></tr>
+      <tr><td class="c">11</td><td><code>blow_kiss_with_both_hands</code></td><td>두 손 키스</td><td class="c">3.0</td><td class="c"></td></tr>
+      <tr><td class="c">12</td><td><code>blow_kiss_with_left_hand</code></td><td>왼손 키스</td><td class="c">3.0</td><td class="c"></td></tr>
+      <tr><td class="c">13</td><td><code>blow_kiss_with_right_hand</code></td><td>오른손 키스</td><td class="c">3.0</td><td class="c"></td></tr>
+      <tr><td class="c">15</td><td><code>both_hands_up</code></td><td>두 팔 어깨 높이로</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">17</td><td><code>clamp</code></td><td>박수</td><td class="c">2.2</td><td class="c"></td></tr>
+      <tr><td class="c">18</td><td><code>high_five</code></td><td>하이파이브</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">19</td><td><code>hug</code></td><td>포옹</td><td class="c">2.0</td><td class="c">O</td></tr>
+      <tr><td class="c">22</td><td><code>refuse</code></td><td>두 팔 X자 (거절)</td><td class="c">0.9</td><td class="c">O</td></tr>
+      <tr><td class="c">23</td><td><code>right_hand_up</code></td><td>오른팔 어깨 높이로</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">24</td><td><code>ultraman_ray</code></td><td>울트라맨 광선 자세</td><td class="c">2.1</td><td class="c">O</td></tr>
+      <tr><td class="c">25</td><td><code>wave_under_head</code></td><td>가슴 앞 손 흔들기</td><td class="c">2.6</td><td class="c"></td></tr>
+      <tr><td class="c">26</td><td><code>wave_above_head</code></td><td>머리 위 손 흔들기</td><td class="c">5.7</td><td class="c"></td></tr>
+      <tr><td class="c">27</td><td><code>shake_hand</code></td><td>악수</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">28</td><td><code>box_left_hand_win</code></td><td>복싱 승리 (왼손)</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">29</td><td><code>box_right_hand_win</code></td><td>복싱 승리 (오른손)</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">30</td><td><code>box_both_hand_win</code></td><td>복싱 승리 (두 손)</td><td class="c">2.5</td><td class="c">O</td></tr>
+      <tr><td class="c">31</td><td><code>extend_right_arm_forward</code></td><td>오른팔 앞으로</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">33</td><td><code>right_hand_on_heart</code></td><td>오른손 가슴에</td><td class="c">1.6</td><td class="c">O</td></tr>
+      <tr><td class="c">34</td><td><code>both_hands_up_deviate_right</code></td><td>두 팔 들기, 오른쪽으로</td><td class="c">1.0</td><td class="c">O</td></tr>
+      <tr><td class="c">35</td><td><code>emphasize</code></td><td>강조 몸짓</td><td class="c">0.6</td><td class="c">O</td></tr>
+      <tr><td class="c">36</td><td><code>forward_push</code></td><td>앞으로 밀기</td><td class="c">1.5</td><td class="c">O</td></tr>
+    </tbody>
+  </table>
+  <p>동작 ID는 펌웨어와 함께 바뀌므로 <code>GetActionList</code>로 확인하십시오. "유지" 동작은 끝난 뒤 마지막 자세를 붙들며(holding), 이때 다른 ID는 7401로 거부됩니다.
+    <b>99 또는 지금 유지 중인 같은 ID</b>를 보내면 처음 자세로 돌아갑니다. 유지는 최대 <b>20초</b> 뒤 자동으로 풀립니다.
+    서비스는 현재 상태를 <code>rt/arm/action/state</code>에 10 Hz JSON <code>{"holding": bool, "id": 번호, "name": 이름}</code>으로 냅니다 (사용자 동작 재생 중 <code>id</code> = 100, 가르치는 중 -1).</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>오류</th><th>뜻 · 조치</th></tr></thead>
+    <tbody>
+      <tr><td class="c">7399</td><td>서버 내부 오류</td></tr>
+      <tr><td class="c">7400</td><td>다른 프로그램이 <code>rt/arm_sdk</code>로 상체를 제어 중이거나 다른 동작이 실행 중</td></tr>
+      <tr><td class="c">7401</td><td>팔이 마지막 자세를 유지 중. 99 또는 같은 ID로 놓은 뒤 다시</td></tr>
+      <tr><td class="c">7402</td><td>잘못된 동작 ID. <code>--list</code>로 확인</td></tr>
+      <tr><td class="c">7403</td><td>동작 파일 읽기 실패. 사용자 동작 API에서는 대개 그 이름의 동작이 없다는 뜻</td></tr>
+      <tr><td class="c">7404</td><td>현재 제어 상태에서 실행할 수 없음. 걷기 · 달리기 중 일부 동작 불가, 디버그 모드에서는 모두 불가</td></tr>
+      <tr><td class="c">7405</td><td>같은 이름의 사용자 동작이 이미 있음 (이름 바꾸기)</td></tr>
+      <tr><td class="c">7406</td><td>배터리 부족. <b>6% 아래</b>면 요청을 거부하고 실행 중인 동작도 멈춥니다</td></tr>
+      <tr><td class="c">7407</td><td>모터 오류 상태라 안전을 위해 거부</td></tr>
+      <tr><td class="c">3103 · 3104 · 3204</td><td>API 미등록 · 시간 초과 · 요청 인자 오류 (RPC 공통, 8장)</td></tr>
+    </tbody>
+  </table>
+  <h3>가르치기 API <span class="src">문서</span></h3>
+  <p>가르치는 동안 상체는 낮은 강성 모드가 되어 손으로 끌 수 있고, 서비스가 궤적을 100 Hz로 기록해 사용자 동작으로 저장합니다. 가르치기 전체 흐름은 앱에 구현되어 있습니다.
+    직접 부를 때는 팔이 중력으로 떨어지지 않게 옆에서 받쳐 주십시오. <b>아래 API는 SDK 예제의 클라이언트에 등록되어 있지 않습니다</b>(7106 · 7107 · 7108 · 7113만 등록) — 쓰려면 직접 등록해야 합니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>API ID</th><th>요청 · 동작</th></tr></thead>
+    <tbody>
+      <tr><td>7110 가르치기</td><td>시작 <code>{"action_name": "my_action"}</code>, 유지 · 끝은 빈 문자열 <code>""</code>. 논블로킹. 시작 뒤 <b>1초마다</b> 빈 인자로 하트비트를 보내야 하며, <b>10초</b> 넘게 없으면 실패로 끝냅니다.
+        한 번에 최대 <b>180초</b>, 넘으면 자동 저장. 이름은 <code>a-z A-Z 0-9 _ - :</code>만(어기면 끝낼 때 3204로 저장 실패), 같은 이름은 말없이 덮어씁니다.
+        기록 관절: 팔 5 × 2, 허리 요, 머리 피치 · 요</td></tr>
+      <tr><td>7111 일시 정지</td><td><code>{"pause": true}</code> / <code>{"pause": false}</code> (생략 불가). 정지 중 자세 변화는 기록하지 않습니다. 바로 0을 돌려줍니다</td></tr>
+      <tr><td>7109 이름 바꾸기</td><td><code>{"pre_name": "old", "new_name": "new"}</code>. 원래 동작이 없으면 7403, 새 이름이 있으면 7405</td></tr>
+      <tr><td>7112 삭제</td><td><code>{"action_name": "my_action"}</code>. 없으면 7403</td></tr>
+    </tbody>
+  </table>
+  <p>직접 만든 팔 동작은 이 서비스를 끄지 않고 <code>rt/arm_sdk</code>로 보내면 됩니다. 서비스의 동작 API를 부르지 않는 한 서비스는 상체 제어권을 가져가지 않습니다.</p>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">ROS 2와 DDS 예제</h1></div>
+  <p class="lede">R1의 하부 통신은 DDS이므로 ROS 2 메시지로 SDK를 거치지 않고 바로 통신 · 제어할 수 있습니다 (Go2 · B2 · H1 · G1 · R1 지원).
+    이 장은 <code>unitree_ros2</code> 설정과 SDK의 DDS 발행 · 구독 예제를 다룹니다.</p>
+
+  <h2 id="c7-s1">ROS 2 설정 <span class="src">문서</span></h2>
+  <table class="t tight">
+    <thead><tr><th>시험된 시스템</th><th>ROS 2</th></tr></thead>
+    <tbody><tr><td>Ubuntu 20.04</td><td>foxy</td></tr><tr><td>Ubuntu 22.04</td><td>humble</td></tr></tbody>
+  </table>
+  <p>저장소의 예제는 foxy로 개발되었습니다. 다른 배포판은 명령의 <code>foxy</code>를 바꾸고, rosbag 같은 API 차이는 ROS 2 공식 문서로 맞추십시오.
+    로봇의 CycloneDDS 버전은 <b>0.10.2</b>이므로 ROS 2의 DDS 구현을 바꿔야 합니다.</p>
+  <ol class="steps">
+    <li><b>저장소</b><code>git clone https://github.com/unitreerobotics/unitree_ros2</code>. 작업 공간은 <code>cyclonedds_ws</code>이며, 메시지는 <code>cyclonedds_ws/src/unitree/</code> 아래 <code>unitree_go</code> · <code>unitree_api</code> 등에 있습니다.</li>
+    <li><b>의존성</b><code>sudo apt install ros-foxy-rmw-cyclonedds-cpp ros-foxy-rosidl-generator-dds-idl</code>. 편의를 위해 <code>unitree_sdk2</code> 설치도 권장합니다.</li>
+    <li><b>CycloneDDS 빌드</b>ROS 2 환경을 <b>source하지 않은</b> 새 터미널에서 합니다. <code>~/.bashrc</code>에 <code>source /opt/ros/foxy/setup.bash</code>가 있으면 주석 처리합니다.</li>
+  </ol>
+  <pre class="cmd">cd ~/unitree_ros2/cyclonedds_ws/src
+git clone https://github.com/ros2/rmw_cyclonedds -b foxy
+git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
+cd .. &amp;&amp; colcon build --packages-select cyclonedds
+<span class="c"># 그다음 ROS 2를 source하고 나머지 패키지 빌드</span>
+source /opt/ros/foxy/setup.bash &amp;&amp; colcon build</pre>
+  <ol class="steps" start="4" style="counter-reset:s 3">
+    <li><b>네트워크</b>로봇과 PC를 랜 케이블로 잇고 <code>ifconfig</code>로 인터페이스 이름을 확인합니다. IPv4를 수동으로 바꿔 <code>192.168.123.99</code> / <code>255.255.255.0</code>으로 지정합니다.</li>
+    <li><b>setup.sh</b><code>~/unitree_ros2/setup.sh</code>의 인터페이스 이름을 내 것으로 바꿉니다 (아래). 매번 <code>source ~/unitree_ros2/setup.sh</code>를 하거나 <code>~/.bashrc</code>에 넣되, ROS 환경이 여럿이면 주의합니다.</li>
+    <li><b>확인</b>설정 뒤 PC를 다시 시작하기를 권합니다. <code>source ~/unitree_ros2/setup.sh</code> 후 <code>ros2 topic list</code>로 로봇 토픽이 보이면 연결된 것입니다.</li>
+  </ol>
+  <pre class="cmd">#!/bin/bash
+echo "Setup unitree ros2 environment"
+source /opt/ros/foxy/setup.bash
+source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;
+    &lt;NetworkInterface name="enp3s0" priority="default" multicast="default" /&gt;
+  &lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;'</pre>
+
+  <h2 id="c7-s2">DDS 발행 · 구독 예제 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>실행 파일 (build/bin)</th><th>소스</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td><code>test_publisher</code></td><td><code>example/helloworld/publisher.cpp</code></td><td>토픽 <code>TopicHelloWorld</code>에 <code>HelloWorldData::Msg(현재 ms, "HelloWorld.")</code>를 1초마다 발행</td></tr>
+      <tr><td><code>test_subscriber</code></td><td><code>example/helloworld/subscriber.cpp</code></td><td>같은 토픽을 구독(큐 1)해 <code>userID</code> · <code>message</code> 출력. 5초 뒤 <code>CloseChannel()</code>, 3초 뒤 <code>InitChannel()</code>로 직전 인자로 다시 엽니다</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 문서끼리 다름 → SDK를 따릅니다</div>
+    <p><i>DDS Communication Routine</i> 페이지의 코드는 <code>Init(0, argv[1])</code>로 인터페이스를 받지만, SDK 소스와 <i>DDS Services Interface</i> 페이지의 코드는 <code>ChannelFactory::Instance()-&gt;Init(0)</code>입니다(인자 없이 실행, 인터페이스 자동 선택).
+      로봇과 통신할 때는 2 · 6장 예제처럼 인터페이스를 주십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">오류 코드와 정의</h1></div>
+  <p class="lede">Unitree <i>Common Mistakes and Definitions</i> 페이지의 장치 상태 · 모터 상태 비트 표와, 각 서비스의 오류 코드를 모았습니다.
+    비트 값은 여러 개가 함께 켜질 수 있으므로 비트 AND로 확인합니다. 뜻은 Unitree 영문 원문을 옮긴 것이며, 원문이 모호한 항목(장치 0x200 ~ 0x800의 "하한 · 상한 보호")은 원문 표현을 그대로 살렸습니다.</p>
+
+  <h2 id="c8-s1">장치 전체 상태 비트 <span class="src">문서</span></h2>
+  <div class="two">
+    <table class="t tight">
+      <thead><tr><th>비트</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0x1</td><td>상위 제어 명령 오류</td></tr>
+        <tr><td class="mono">0x2</td><td>하위 계층 피드백 데이터 시간 초과</td></tr>
+        <tr><td class="mono">0x4</td><td>IMU 피드백 시간 초과</td></tr>
+        <tr><td class="mono">0x8</td><td>모터 피드백 시간 초과</td></tr>
+        <tr><td class="mono">0x10</td><td>배터리 피드백 시간 초과</td></tr>
+        <tr><td class="mono">0x20</td><td>Unitree 실물 리모컨 피드백 시간 초과</td></tr>
+        <tr><td class="mono">0x40</td><td>배터리 모델 오류</td></tr>
+        <tr><td class="mono">0x80</td><td>소프트 스타트 오류</td></tr>
+        <tr><td class="mono">0x100</td><td>모터 상태 오류</td></tr>
+        <tr><td class="mono">0x200</td><td>모터 과전류 보호 (하한 보호 동작)</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight">
+      <thead><tr><th>비트</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0x400</td><td>모터 저전압 보호 (상한 보호 동작)</td></tr>
+        <tr><td class="mono">0x800</td><td>모터 과전류 보호 (상한 보호 동작)</td></tr>
+        <tr><td class="mono">0x1000</td><td>소프트 비상 정지가 눌림</td></tr>
+        <tr><td class="mono">0x2000</td><td>일련번호 오류</td></tr>
+        <tr><td class="mono">0x4000</td><td>상위 모델 오류</td></tr>
+        <tr><td class="mono">0x8000</td><td>하위 모델 오류</td></tr>
+        <tr><td class="mono">0x10000</td><td>USB 장치 오류</td></tr>
+        <tr><td class="mono">0x40000</td><td>골반 IMU 데이터 시간 초과</td></tr>
+        <tr><td class="mono">0x80000</td><td>메인보드 판단 배터리 저전압 보호</td></tr>
+        <tr><td class="mono">0x100000</td><td>메인보드 판단 모터 저전압 보호</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="c8-s2">모터 상태 비트 <span class="src">문서</span></h2>
+  <div class="two">
+    <table class="t tight">
+      <thead><tr><th>비트</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0x1</td><td>과전류</td></tr>
+        <tr><td class="mono">0x2</td><td>순간 과전압</td></tr>
+        <tr><td class="mono">0x4</td><td>지속 과전압</td></tr>
+        <tr><td class="mono">0x8</td><td>순간 저전압</td></tr>
+        <tr><td class="mono">0x10</td><td>칩 과열</td></tr>
+        <tr><td class="mono">0x20</td><td>MOS 과열 · 과랭</td></tr>
+        <tr><td class="mono">0x40</td><td>MOS 온도 이상</td></tr>
+        <tr><td class="mono">0x80</td><td>외함 과열 · 과랭</td></tr>
+        <tr><td class="mono">0x100</td><td>외함 온도 이상</td></tr>
+        <tr><td class="mono">0x200</td><td>권선 과열</td></tr>
+        <tr><td class="mono">0x400</td><td>회전자 엔코더 1 오류</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight">
+      <thead><tr><th>비트</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0x800</td><td>회전자 엔코더 2 오류</td></tr>
+        <tr><td class="mono">0x1000</td><td>출력 엔코더 오류</td></tr>
+        <tr><td class="mono">0x2000</td><td>보정 · BOOT 데이터 오류</td></tr>
+        <tr><td class="mono">0x4000</td><td>비정상 리셋</td></tr>
+        <tr><td class="mono">0x8000</td><td>모터 잠김, 마스터 인증 오류</td></tr>
+        <tr><td class="mono">0x10000</td><td>칩 검증 오류</td></tr>
+        <tr><td class="mono">0x20000</td><td>보정 모드 경고</td></tr>
+        <tr><td class="mono">0x40000</td><td>통신 검증 오류</td></tr>
+        <tr><td class="mono">0x80000</td><td>드라이버 버전 낮음</td></tr>
+        <tr><td class="mono">0x40000000</td><td>모터 쪽 판단: PC 연결 시간 초과</td></tr>
+        <tr><td class="mono">0x80000000</td><td>PC 쪽 판단: 모터 연결 끊김</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:8.2pt">문서 원본은 0x800 ~ 0x4000 행을 두 번 실었고, 장치 상태 표에는 0x20000이 없습니다. 위 표는 중복을 지웠습니다.
+    문서는 이 표를 어느 필드에서 읽는지 밝히지 않습니다. Dex3-1 문서는 <code>HandState_.error</code>를 이 모터 상태 표로 안내하며, SDK 예제는 <code>MotorState_.motorstate</code>가 0이 아니면 오류로 출력합니다.</p>
+
+  <h2 id="c8-s3">오류 코드 찾아보기 <span class="src">문서</span> <span class="src r">SDK</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>범위</th><th>출처</th><th>코드</th></tr></thead>
+    <tbody>
+      <tr><td>3001 ~ 3107</td><td>RPC 클라이언트 쪽</td><td>3001 알 수 없음 · 3102 요청 보내기 오류 · 3103 API 미등록 · 3104 요청 시간 초과 · 3105 요청 · 응답 불일치 · 3106 잘못된 응답 데이터 · 3107 잘못된 임대</td></tr>
+      <tr><td>3201 ~ 3207</td><td>RPC 서버 쪽</td><td>3201 응답 보내기 오류(클라이언트에는 오지 않음) · 3202 서버 내부 오류 · 3203 서버에 API 없음 · 3204 API 인자 오류 · 3205 임대로 거부 · 3206 서버에 임대 없음 · 3207 임대가 이미 있음</td></tr>
+      <tr><td>5201 ~ 5204</td><td>RobotStateClient (4장)</td><td>5201 서비스 전환 실행 오류 · 5202 보호된 서비스(켜고 끌 수 없음) · 5203 저전력 전환 오류 · 5204 저전력 상태 오류 (5203 · 5204는 SDK에만)</td></tr>
+      <tr><td>7001 ~ 7009</td><td>MotionSwitcherClient (2장, SDK)</td><td>7001 인자 · 7002 사용 중 · 7003 이벤트 · 7004 · 7005 이름 · 7006 확인 실행 · 7007 선택 실행 · 7008 해제 실행 · 7009 사용자 데이터 저장 오류</td></tr>
+      <tr><td>7301 ~ 7304</td><td>LocoClient (5장)</td><td>7301 상태 정보 없음 · 7302 잘못된 FSM ID · 7303 잘못된 작업 ID · 7304 FSM 전환 거부</td></tr>
+      <tr><td>7399 ~ 7407</td><td>팔 동작 서비스 (6장)</td><td>7399 내부 · 7400 점유 · 7401 유지 중 · 7402 ID · 7403 파일 · 7404 상태 · 7405 이름 중복 · 7406 배터리 · 7407 모터</td></tr>
+      <tr><td>100</td><td>AudioClient (SDK)</td><td><code>UT_ROBOT_AUDIO_ERR_COMM</code> "Invalid parameter"</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">EDU 확장</h1></div>
+  <p class="lede">개발 연산 유닛(백팩) 설치, 몸통 설치 구멍, 백팩 시스템의 백업과 복구, 다관절 손 설치를 다룹니다.
+    설치 절차는 Unitree 교육 영상의 자막과 화면에서 옮겼으며, 작업 전에 해당 영상을 함께 보십시오.</p>
+
+  <h2 id="c9-s1">개발 연산 유닛(백팩) 설치 <span class="src">문서</span></h2>
+  <p>R1-EDU는 등에 개발 연산 유닛을 달 수 있습니다. 개발자는 이 유닛(192.168.123.164)에서만 2차 개발을 합니다. 초기 계정은 기술 지원에서 받습니다.
+    교육 영상: <i>Installation of R1 EDU Backpack</i> (support.unitree.com/home/en/R1_developer/edu_backpack).</p>
+  <figure class="light"><img src="assets/dev/backpack.png" alt="백팩 설치"><figcaption><b>그림 12.</b> 백팩 설치 (Unitree 교육 영상 갈무리). 구성품 · 모듈 끼우기 · Type-C 연결 · 24 V 전원 연결.</figcaption></figure>
+  <ol class="steps">
+    <li><b>긴 나사</b>M3 × 50 접시머리 나사(긴 것)를 끼웁니다.</li>
+    <li><b>손 확장 모듈</b>다관절 손 확장 모듈을 설치합니다.</li>
+    <li><b>몸에 끼우기</b>조립한 모듈을 로봇 등의 해당 장착 구멍에 끼웁니다.</li>
+    <li><b>짧은 나사</b>M3 × 40 접시머리 나사(짧은 것) 두 개를 끼웁니다. 나사 네 개는 전동 공구의 <b>가장 낮은 토크</b>로 조이거나 손으로 조입니다.</li>
+    <li><b>Type-C</b>Type-C 커넥터를 틈으로 지나게 해 해당 포트에 꽂습니다.</li>
+    <li><b>전원</b>전원 커넥터를 틈으로 지나게 해 꽂습니다. <b>반드시 24 V 출력 포트에 연결하고 다른 포트에 꽂지 마십시오.</b> (24 V / 36 V 출력은 <a data-manual="r1-operation" href="../r1-operation/">운용 설명서</a> 3장의 상단 인터페이스)</li>
+  </ol>
+
+  <h2 id="c9-s2">설치 구멍 <span class="src">문서</span></h2>
+  <p>몸통의 설치 구멍은 <b>M4 나사 구멍</b>입니다(단위 mm). 교육 영상: <i>Installation Hole Instructions and Usage</i> (…/R1_developer/installation).
+    가슴 앞 설치 구멍을 쓰려면 다음 순서로 구멍을 엽니다.</p>
+  <ol class="steps">
+    <li><b>나사 풀기</b>앞쪽의 목 고정 나사 2개, 뒤쪽의 어깨 고정 나사 2개, 옆쪽의 허리 고정 나사 4개를 풉니다 (그림 14).</li>
+    <li><b>드릴</b>앞판 안쪽에서 3.3 mm 드릴로 나사 구멍을 뚫습니다.</li>
+    <li><b>탭</b>앞판 안쪽에서 M4 탭으로 기존 M4 나사산을 따라 끝까지 탭을 냅니다. 나사산을 망가뜨리지 않게 주의합니다.</li>
+  </ol>
+  <figure class="light"><img src="assets/dev/mount_holes.png" alt="설치 구멍 치수"><figcaption><b>그림 13.</b> 설치 구멍 치수: 앞 · 뒤 · 머리 (Unitree <i>About R1</i>, M4, mm).</figcaption></figure>
+  <figure class="light"><img src="assets/dev/mount_screws.png" alt="풀어야 할 나사"><figcaption data-fig="fig-mount-screws"><b>그림 14.</b> 가슴 앞 구멍을 쓰기 전에 푸는 나사: 앞(목) · 뒤(어깨) · 옆(허리) (Unitree <i>About R1</i>).</figcaption></figure>
+
+  <h2 id="c9-s3">백팩 시스템 백업과 복구 <span class="src">문서</span></h2>
+  <div class="box warn"><div class="h">경고</div>
+    <p>백업하려면 도크 안의 NVMe 드라이브를 꺼내야 합니다. 이 과정에서 생긴 손상은 무상 보증에서 제외됩니다. <code>dd</code>와 복구 스크립트는 대상 디스크를 지웁니다.
+      장치 이름은 매번 <code>lsblk</code>로 확인하십시오. 모든 작업은 root 권한이 필요합니다.</p></div>
+  <p>받은 즉시 백업해 두기를 권합니다. 준비물: 시스템이 든 NVMe(도크의 것을 써도 되나 주의), NVMe 카드 리더, PC.</p>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>작업</th><th>명령 (예: 장치 /dev/sdc)</th></tr></thead>
+    <tbody>
+      <tr><td>장치 확인</td><td><code>lsblk -f</code> (카드 리더로 꽂은 NVMe, 예: ext4)</td></tr>
+      <tr><td>백업</td><td><code>sudo dd if=/dev/sdc status=progress | bzip2 &gt; nx.img.bz2</code>. 끝나면 PC에서 디스크를 뺍니다</td></tr>
+      <tr><td>새 디스크 포맷</td><td><code>sudo mkfs -t ext4 /dev/sdc</code> (처음 쓰는 디스크만)</td></tr>
+      <tr><td>복구</td><td><code>bzip2 -dc nx.img.bz2 | sudo dd of=/dev/sdc status=progress</code>. 여유 공간 300 GB 이상, 4 ~ 5시간 걸릴 수 있습니다. Windows에서는 Rufus로도 씁니다</td></tr>
+    </tbody>
+  </table>
+  <h3>Unitree 공장 이미지로 복구</h3>
+  <table class="t tight wrap1">
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>이미지</td><td>Unitree 문서의 Google Drive 링크. NX 도크(100 TOPS) <code>r1_nx_img_jetpack5.1.1_v2603.tar.gz</code> · Nano 도크(40 TOPS) <code>r1_nano_img_jetpack5.1.1_v2603.tar.gz</code></td></tr>
+      <tr><td>준비</td><td>NVMe SSD 외장 케이스. 굽는 PC는 x86 Ubuntu 20.04 / 22.04 / 24.04 (<b>가상 머신 불가</b>).
+        <code>sudo apt install -y partclone gawk gzip parted util-linux udisks2</code>. 복구 스크립트 <code>disk_recovery.sh</code>(문서의 zip)</td></tr>
+    </tbody>
+  </table>
+  <pre class="cmd">sudo tar -xvpf r1_nx_img_jetpack5.1.1_v2603.tar.gz     <span class="c"># 풀면 disk_backups/ 가 나옴</span>
+<span class="c"># disk_recovery.sh 를 disk_backups 와 같은 폴더(r1/)에 둔 뒤</span>
+cd r1/ &amp;&amp; chmod +x disk_recovery.sh &amp;&amp; sudo ./disk_recovery.sh</pre>
+  <p>스크립트에서 ① 이미지 번호를 입력하고 ② 대상 디스크 이름을 직접 입력(<code>lsblk</code>로 확인)한 뒤 ③ <code>y</code>로 지우기를 확인합니다. 약 10분 뒤 완료 메시지가 나옵니다.</p>
+
+  <h2 id="c9-s4">다관절 손 설치 <span class="src">문서</span></h2>
+  <p>Unitree 문서의 <i>EDU Expansion › Dexterous Hand Installation</i> 아래 페이지는 모두 교육 영상만 있습니다. 영상마다 자막으로 안내하는 첫 단계는
+    <b>기본으로 달린 의수형 손(prosthetic hand)을 떼어 내는 것</b>입니다. 나머지 조립은 영상 화면을 따르고, 소프트웨어 설정은 3장을 보십시오.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>영상 페이지</th><th>손</th><th>설치 뒤 소프트웨어 (3장)</th></tr></thead>
+    <tbody>
+      <tr><td>Dex1-1 Installation</td><td>Dex1-1</td><td>앱에서 손 모델 선택 → 재부팅 → IDL 31 · 33</td></tr>
+      <tr><td>Dex2/5 Installation</td><td>Dex2/5</td><td>앱에서 손 모델 선택 → 재부팅 → IDL 31 ~ 34 (토크 제어)</td></tr>
+      <tr><td>Dex3-1 Installation</td><td>Dex3-1</td><td><code>rt/dex3/…</code></td></tr>
+      <tr><td>LinkerHand O6 Installation</td><td>LinkerHand O6</td><td>PC2에 <code>linker_hand_service</code></td></tr>
+      <tr><td>Revo 2 Installation</td><td>BrainCo Revo2</td><td><code>brainco_hand_service</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c10" data-mark="c10">빠른 참조</h1></div>
+  <div class="qr">
+    <div class="card"><h3>IP · 주소</h3>
+      <table class="t"><tbody>
+        <tr><td class="mono">192.168.123.161</td><td>PC1 운동 제어 (개발 불가)</td></tr>
+        <tr><td class="mono">192.168.123.164</td><td>PC2 개발 연산 유닛 (ssh)</td></tr>
+        <tr><td class="mono">192.168.123.120</td><td>Mid360 라이다</td></tr>
+        <tr><td class="mono">192.168.123.99</td><td>개발 PC 권장</td></tr>
+        <tr><td class="mono">:9080 (PC1)</td><td>양안 영상 설정 · 보정 값</td></tr>
+        <tr><td class="mono">239.168.123.161:5555</td><td>마이크 PCM 멀티캐스트</td></tr>
+        <tr><td class="mono">UDP 5001 ~ 5005</td><td>영상 img · 왼 · 오 · JPEG 왼 · 오</td></tr>
+      </tbody></table></div>
+    <div class="card"><h3>FSM ID (LocoClient)</h3>
+      <table class="t"><tbody>
+        <tr><td>0</td><td>제로 토크 <code>ZeroTorque()</code></td></tr>
+        <tr><td>1</td><td>댐핑 <code>Damp()</code></td></tr>
+        <tr><td>4</td><td>잠금 서기 <code>StandUp()</code></td></tr>
+        <tr><td>811</td><td>걷기 · 달리기 <code>Start()</code></td></tr>
+        <tr><td>701</td><td>누움 → 서기 (<code>GetUp()</code>)</td></tr>
+        <tr><td>702</td><td>서기 → 누움 <code>LieDown()</code></td></tr>
+      </tbody></table>
+      <p class="cut">0 · 1 · 4는 균형 제어 없음. Move 기본 1 s 유효.</p></div>
+    <div class="card full"><h3>요청 / 응답 서비스</h3>
+      <table class="t"><tbody>
+        <tr><td><code>sport</code></td><td>LocoClient: 7001 GetFsmId · 7002 GetFsmMode · 7101 SetFsmId · 7105 SetVelocity · 7107 SetSpeedMode</td></tr>
+        <tr><td><code>arm</code></td><td>팔 동작: 7106 실행(ID) · 7107 목록 · 7108 실행(이름) · 7109 이름 변경 · 7110 가르치기 · 7111 일시 정지 · 7112 삭제 · 7113 정지</td></tr>
+        <tr><td><code>voice</code></td><td>AudioClient: 1001 TTS · 1002 ASR · 1003 재생 · 1004 정지 · 1005 / 1006 볼륨 · 1010 LED</td></tr>
+        <tr><td><code>robot_state</code></td><td>1001 ServiceSwitch · 1002 SetReportFreq · 1003 ServiceList · 1004 / 1005 LowPower</td></tr>
+        <tr><td><code>slam_operate</code></td><td>1801 지도 시작 · 1802 지도 끝 · 1804 자세 초기화 · 1102 내비 · 1201 / 1202 정지 · 재개 · 1901 끄기</td></tr>
+        <tr><td><code>motion_switcher</code></td><td><code>CheckMode</code> · <code>ReleaseMode</code> (저수준 예제가 시작 때 호출)</td></tr>
+      </tbody></table></div>
+    <div class="card full"><h3>토픽</h3>
+      <table class="t"><tbody>
+        <tr><td><code>rt/lowstate</code> · <code>rt/lf/lowstate</code></td><td><code>hg::LowState_</code> 관절 · IMU · 리모컨 40 B</td></tr>
+        <tr><td><code>rt/lowcmd</code></td><td><code>hg::LowCmd_</code> 저수준 (디버그 모드)</td></tr>
+        <tr><td><code>rt/arm_sdk</code></td><td><code>hg::LowCmd_</code> 상체 덧씌움, 가중치 = <code>mode_pr</code></td></tr>
+        <tr><td><code>rt/secondary_imu</code></td><td><code>hg::IMUState_</code> 몸통 IMU</td></tr>
+        <tr><td><code>rt/lf/bmsstate</code></td><td><code>hg::BmsState_</code> 배터리</td></tr>
+        <tr><td><code>rt/lf/mainboardstate</code></td><td><code>hg::MainBoardState_</code></td></tr>
+        <tr><td><code>rt/dex3/{side}/cmd</code></td><td><code>hg::HandCmd_</code></td></tr>
+        <tr><td><code>rt/lf/dex3/{side}/state</code></td><td><code>hg::HandState_</code></td></tr>
+        <tr><td><code>rt/brainco/{side}/{cmd|state}</code></td><td>Revo2</td></tr>
+        <tr><td><code>rt/linker/{side}/{cmd|state}</code></td><td>LinkerHand O6</td></tr>
+        <tr><td><code>rt/audio_msg</code></td><td><code>String_</code> ASR JSON</td></tr>
+        <tr><td><code>rt/arm/action/state</code></td><td>팔 동작 상태 JSON 10 Hz</td></tr>
+        <tr><td><code>rt/slam_info</code> · <code>rt/slam_key_info</code></td><td><code>String_</code> SLAM JSON</td></tr>
+        <tr><td><code>rt/unitree/slam_*/points · odom</code></td><td>점군 · 오도메트리</td></tr>
+      </tbody></table></div>
+    <div class="card full"><h3>예제 (build/bin, IF = 인터페이스 이름)</h3>
+      <table class="t"><tbody>
+        <tr><td style="white-space:normal"><code>r1_loco_client --network_interface=IF --…</code></td><td>보행 · 모드 (인자 이름순 실행)</td></tr>
+        <tr><td style="white-space:normal"><code>r1_ankle_swing_example IF</code></td><td>저수준 발목, 디버그 모드 · 매달기</td></tr>
+        <tr><td style="white-space:normal"><code>r1_arm_sdk_dds_example IF</code></td><td>팔 덧씌움 → 1 s 놓기</td></tr>
+        <tr><td style="white-space:normal"><code>r1_A5 / r1_A7_wrist_swing_example IF</code></td><td>상체 저수준</td></tr>
+        <tr><td style="white-space:normal"><code>r1_arm_action_example IF --list|--id N|--name S|--stop</code></td><td>팔 동작</td></tr>
+        <tr><td style="white-space:normal"><code>r1_audio_client_example IF</code></td><td>음성 · LED · 녹음</td></tr>
+        <tr><td style="white-space:normal"><code>g1_dex3_example IF</code></td><td>Dex3-1 (r · g · p · s · q)</td></tr>
+        <tr><td style="white-space:normal"><code>test_publisher</code> · <code>test_subscriber</code></td><td>DDS 예제</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- BrainCo Revo2 / Revo2 Touch over brainco_hand_service: DDS topics, channel order, command/state fields. Included by r1-developer and h2-developer (identical text in both). -->
+  <table class="t tight wrap1 api">
+    <thead><tr><th>토픽</th><th>타입 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/brainco/left/cmd</code> · <code>rt/brainco/right/cmd</code></td><td><code>unitree_go::msg::dds_::MotorCmds_</code> (<code>cmds</code> 6개) · 사용자 → 손</td></tr>
+      <tr><td><code>rt/brainco/left/state</code> · <code>rt/brainco/right/state</code></td><td><code>unitree_go::msg::dds_::MotorStates_</code> (<code>states</code> 6개) · 손 → 사용자, 100 Hz</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight">
+    <thead><tr><th>번호</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+    <tbody>
+      <tr><td>채널</td><td>Thumb<span class="en">엄지</span></td><td>Thumb_aux<span class="en">엄지 보조</span></td><td>Index<span class="en">검지</span></td><td>Middle<span class="en">중지</span></td><td>Ring<span class="en">약지</span></td><td>Pinky<span class="en">새끼</span></td></tr>
+    </tbody>
+  </table>
+  <table class="t tight wrap1 api">
+    <thead><tr><th>필드</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>cmds[i].q</code></td><td>목표 위치 <b>0 ~ 1 (0 = 폄, 1 = 쥠)</b> <span class="src r">실측</span> (WeGo가 R1의 Revo2 두 손에서 확인, 2026-10-12). 범위 밖은 잘라내고 ×1000 해서 손의 정규화 위치로 보냅니다</td></tr>
+      <tr><td><code>cmds[i].dq</code></td><td>속도 0 ~ 1 (×1000). 서비스 기본값 1.0, README도 모두 1.0을 권장</td></tr>
+      <tr><td><code>cmds[i]</code>의 <code>tau</code> · <code>kp</code> · <code>kd</code> · <code>mode</code></td><td>쓰지 않음</td></tr>
+      <tr><td><code>states[i].q</code> · <code>dq</code> · <code>tau_est</code></td><td>위치 · 속도 · 전류를 각각 1000으로 나눈 값</td></tr>
+    </tbody>
+  </table>

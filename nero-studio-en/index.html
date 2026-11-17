@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>WeGo NERO Studio — User Guide</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css */
+@page {
+  @top-left  { content: "WeGo NERO Studio"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "User Guide"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">Contents</button><a class="wm-home" href="../">WeGo Library</a><span class="wm-title">WeGo NERO Studio — User Guide</span><span class="wm-ver">Version 2026.11.17</span><a class="wm-pdf" href="../pdf/WeGo_NERO_Studio_Guide_EN.pdf">Download PDF</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="Contents"><a class="wm-toc-home" href="../">← WeGo Library</a><div class="wm-toc-h">Contents</div><a class="wm-t1" href="#about">About this guide</a><a class="wm-t1" href="#c1"><span class="wm-n">01</span>What this system does</a><a class="wm-t1" href="#c2"><span class="wm-n">02</span>Key features</a><a class="wm-t1" href="#c3"><span class="wm-n">03</span>The robot</a><a class="wm-t1" href="#c4"><span class="wm-n">04</span>Starting NERO Studio</a><a class="wm-t1" href="#c5"><span class="wm-n">05</span>The panel at a glance</a><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>Panel reference — every control</a></summary><a class="wm-t2" href="#c6-s1">6.1 Header</a><a class="wm-t2" href="#c6-s2">6.2 ROBOT card</a><a class="wm-t2" href="#c6-s3">6.3 VR TELEOP card</a><a class="wm-t2" href="#c6-s4">6.4 HAND TEST card</a><a class="wm-t2" href="#c6-s5">6.5 Live view and robot health (TELEOP, left)</a><a class="wm-t2" href="#c6-s6">6.6 STREAMS card (RECORD)</a><a class="wm-t2" href="#c6-s7">6.7 CAMERAS card (RECORD)</a><a class="wm-t2" href="#c6-s8">6.8 DATA RECORD &amp; REVIEW card (RECORD)</a><a class="wm-t2" href="#c6-s9">6.9 DATASET card (TRAIN / INFER)</a><a class="wm-t2" href="#c6-s10">6.10 TRAINING card (TRAIN / INFER)</a><a class="wm-t2" href="#c6-s11">6.11 INFERENCE card (TRAIN / INFER)</a><a class="wm-t2" href="#c6-s12">6.12 BOX CYCLE card (TRAIN / INFER)</a><a class="wm-t2" href="#c6-s13">6.13 Keyboard</a></details><a class="wm-t1" href="#c7"><span class="wm-n">07</span>Status chips</a><a class="wm-t1" href="#c8"><span class="wm-n">08</span>Before you begin</a><a class="wm-t1" href="#c9"><span class="wm-n">09</span>Teleoperating with VR</a><a class="wm-t1" href="#c10"><span class="wm-n">10</span>Emergency stop, HOLD and clearing</a><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>Recording demonstrations</a></summary><a class="wm-t2" href="#c11-s1">To record</a><a class="wm-t2" href="#c11-s2">What makes a good dataset</a></details><a class="wm-t1" href="#c12"><span class="wm-n">12</span>Reviewing and editing recordings</a><a class="wm-t1" href="#c13"><span class="wm-n">13</span>Training a policy</a><a class="wm-t1" href="#c14"><span class="wm-n">14</span>Running a policy on the robot</a><details class="wm-ch"><summary><a class="wm-t1" href="#c15"><span class="wm-n">15</span>The object gate: run only when there is work</a></summary><a class="wm-t2" href="#c15-s1">Tune: check the view and the areas</a><a class="wm-t2" href="#c15-s2">Count: how many objects were finished</a></details><a class="wm-t1" href="#c16"><span class="wm-n">16</span>Correcting the policy from VR</a><details class="wm-ch"><summary><a class="wm-t1" href="#c17"><span class="wm-n">17</span>Adapting NERO Studio to a new task</a></summary><a class="wm-t2" href="#c17-s1">What works for any task as it is</a><a class="wm-t2" href="#c17-s2">What to set for each new task</a><a class="wm-t2" href="#c17-s3">The object gate for a new task</a></details><a class="wm-t1" href="#c18"><span class="wm-n">18</span>Saved settings</a><a class="wm-t1" href="#c19"><span class="wm-n">19</span>Connecting your own software</a><a class="wm-t1" href="#c20"><span class="wm-n">20</span>Safety guidelines</a><a class="wm-t1" href="#c21"><span class="wm-n">21</span>When something goes wrong</a></nav><main class="wm-main">
+
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div><div class="tag">USER GUIDE</div></div>
+  <div class="kicker">User guide</div>
+  <h1>WeGo <span>NERO</span><br>Studio</h1>
+  <div class="title2">Teleoperation · Demonstration recording<br>Policy training · Robot deployment</div>
+  <div class="bar"></div>
+  <p class="lead">This guide explains what NERO Studio does, what every control on the panel is for,
+and how to run a session from first launch to a trained policy working on the robot.</p>
+  <div class="glow"></div>
+  <img class="hero" src="assets/nero_robot.png" alt="NERO">
+  <div class="foot"><span>English edition · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+<section class="front"><div class="colophon" id="about">
+  <h3>About this guide</h3><table><tr><td>Audience</td><td>Operators and developers who teleoperate NERO from VR, record demonstrations, train policies and run them on the robot</td></tr><tr><td>Sources</td><td>The user guide in the NERO Studio repository (<code>docs/nero-studio-guide.md</code>, 2026-11-05)</td></tr><tr><td>Read with</td><td><a data-manual="nero-operation" href="../nero-operation/"><b>AgileX NERO Operator Manual</b></a> (Korean; arm connection and web control page)</td></tr><tr><td>Edition</td><td>English edition · <span data-version>2026.11.17</span></td></tr><tr><td>Contact</td><td>go.support@wego-robotics.com</td></tr></table>
+  <p>NERO Studio is not tied to one task. Teleoperation, recording, training and inference work the same for
+any two-arm task you can show the robot from VR. This guide uses one task as its <strong>worked example</strong>:
+parcel handling, in which the robot drags a parcel off an incoming conveyor, aligns it, tips it toward a
+barcode reader and passes it to an outgoing conveyor. The screenshots and example values come from that
+task. Parts that only make sense for it are marked <strong>Example application</strong>. To set the panel up for
+another task, see §17.</p>
+<div class="box note"><p>The Korean edition is <a data-manual="nero-studio-ko" href="../nero-studio-ko/">WeGo NERO Studio 사용 가이드</a>. The panel's
+own language is switched with the <strong>한 / EN</strong> button in the header, immediately.</p></div>
+<p>Installing the software on a new PC is covered in the README (§3).
+The data streams the panel drives are documented in <code>nero-zmq-api.md</code>.</p>
+  <p><b>Try every new policy as a dry run first, then on the robot in clear space, hand on the E-stop.</b></p>
+  <p class="copy">© WeGo Robotics. The cover image is a MuJoCo render of the NERO robot model; the screenshots are of the NERO Studio panel. AgileX and NERO are trademarks of AgileX Robotics.</p>
+</div></section>
+<section class="front toc"><h2>Contents</h2><div class="sub">TABLE OF CONTENTS</div><ol><li><span class="n">01</span><span class="t">What this system does</span><span class="d"></span><span class="p" data-toc="c1"></span></li><li><span class="n">02</span><span class="t">Key features</span><span class="d"></span><span class="p" data-toc="c2"></span></li><li><span class="n">03</span><span class="t">The robot</span><span class="d"></span><span class="p" data-toc="c3"></span></li><li><span class="n">04</span><span class="t">Starting NERO Studio</span><span class="d"></span><span class="p" data-toc="c4"></span></li><li><span class="n">05</span><span class="t">The panel at a glance</span><span class="d"></span><span class="p" data-toc="c5"></span></li><li><span class="n">06</span><span class="t">Panel reference — every control</span><span class="d"></span><span class="p" data-toc="c6"></span></li><li><span class="n">07</span><span class="t">Status chips</span><span class="d"></span><span class="p" data-toc="c7"></span></li><li><span class="n">08</span><span class="t">Before you begin</span><span class="d"></span><span class="p" data-toc="c8"></span></li><li><span class="n">09</span><span class="t">Teleoperating with VR</span><span class="d"></span><span class="p" data-toc="c9"></span></li><li><span class="n">10</span><span class="t">Emergency stop, HOLD and clearing</span><span class="d"></span><span class="p" data-toc="c10"></span></li><li><span class="n">11</span><span class="t">Recording demonstrations</span><span class="d"></span><span class="p" data-toc="c11"></span></li><li><span class="n">12</span><span class="t">Reviewing and editing recordings</span><span class="d"></span><span class="p" data-toc="c12"></span></li><li><span class="n">13</span><span class="t">Training a policy</span><span class="d"></span><span class="p" data-toc="c13"></span></li><li><span class="n">14</span><span class="t">Running a policy on the robot</span><span class="d"></span><span class="p" data-toc="c14"></span></li><li><span class="n">15</span><span class="t">The object gate: run only when there is work</span><span class="d"></span><span class="p" data-toc="c15"></span></li><li><span class="n">16</span><span class="t">Correcting the policy from VR</span><span class="d"></span><span class="p" data-toc="c16"></span></li><li><span class="n">17</span><span class="t">Adapting NERO Studio to a new task</span><span class="d"></span><span class="p" data-toc="c17"></span></li><li><span class="n">18</span><span class="t">Saved settings</span><span class="d"></span><span class="p" data-toc="c18"></span></li><li><span class="n">19</span><span class="t">Connecting your own software</span><span class="d"></span><span class="p" data-toc="c19"></span></li><li><span class="n">20</span><span class="t">Safety guidelines</span><span class="d"></span><span class="p" data-toc="c20"></span></li><li><span class="n">21</span><span class="t">When something goes wrong</span><span class="d"></span><span class="p" data-toc="c21"></span></li></ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">What this system does</h1></div>
+<p class="lede">NERO Studio is one window for the whole NERO dual-arm workflow: <strong>teleoperate</strong>
+the robot from a VR headset, <strong>record</strong> demonstrations with three cameras,
+<strong>train</strong> a policy from them, and <strong>run</strong> the policy back on the robot.</p>
+<p>The panel owns no robot itself. It starts and watches the programs that do: the
+arm bridge (<code>robot/nero_bridge.py</code>), the VR server, the camera server, the
+recorder, the converter, training and inference. Each card names the program it
+drives, and every program's output appears in the log under it.</p>
+<p>In short:</p>
+<ul>
+<li><strong>Connect</strong> the arms in observe mode, then <strong>enable</strong> motion when ready.</li>
+<li><strong>Teleoperate</strong> both arms and both Revo2 hands from a PICO / Quest headset.</li>
+<li><strong>See</strong> the measured robot live in 3D, with the command as a blue ghost when the arm lags.</li>
+<li><strong>Record</strong> takes with one key; label them success or failure; review, trim and audit them.</li>
+<li><strong>Convert and train</strong> ACT, Advanced ACT, Diffusion or SmolVLA from the same recordings.</li>
+<li><strong>Run</strong> a trained policy, first as a dry run, then on the robot; optionally only while the
+  head camera sees an object to work on (the object gate, §15).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">Key features</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observe-first connection</td>
+<td>The arms report their joints before any motor is enabled</td>
+</tr>
+<tr>
+<td>Live 3D robot view</td>
+<td>The measured pose, the hands' closure, and the command as a ghost when the arm trails</td>
+</tr>
+<tr>
+<td>Live speed, follow and ramp sliders</td>
+<td>Tune how fast and how closely the arms follow, while connected</td>
+</tr>
+<tr>
+<td>One-key E-STOP (Esc)</td>
+<td>Damped stop of both arms through the bridge</td>
+</tr>
+<tr>
+<td>VR teleop with adjustable hand spread</td>
+<td>Both arms and hands from a headset; SPREAD lets the robot's hands meet</td>
+</tr>
+<tr>
+<td>Recording with labels and factors</td>
+<td>F5 / F6 / F7; background, lighting, operator saved in each take</td>
+</tr>
+<tr>
+<td>Timing audit of every take</td>
+<td>Camera rate, camera-vs-joint skew and arm following checked before training</td>
+</tr>
+<tr>
+<td>Review, trim, delete</td>
+<td>Clean the dataset inside the panel</td>
+</tr>
+<tr>
+<td>Four training recipes</td>
+<td>ACT, Advanced ACT (DINOv3), Diffusion, SmolVLA, with a live loss chart</td>
+</tr>
+<tr>
+<td>Four inference modes</td>
+<td>chunk, chunk + fade, temporal ensemble, motion player</td>
+</tr>
+<tr>
+<td>Object gate (BOX CYCLE card)</td>
+<td>The policy runs only while an object waits in a set area of the head camera, then returns to the start pose</td>
+</tr>
+<tr>
+<td>VR correction of a running policy</td>
+<td>Take the arm over from the policy and give it back, for corrective data</td>
+</tr>
+<tr>
+<td>Object counter (Count)</td>
+<td>Counts the objects that leave through an exit area, into a daily CSV</td>
+</tr>
+<tr>
+<td>English / Korean, dark / light</td>
+<td>Switch from the header, immediately</td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">The robot</h1></div>
+<ul>
+<li><strong>Arms:</strong> two AgileX NERO 7-joint arms on a torso mount, on CAN buses <code>can_left</code>
+  and <code>can_right</code>.</li>
+<li><strong>Hands:</strong> BrainCo <strong>Revo2 Touch</strong> hands (mount <code>humanoid</code>), or NERO's 2-finger
+  gripper (mount <code>humanoid_gripper</code>).</li>
+<li><strong>Cameras:</strong> a head camera (Logitech C920, 864×480) and two wrist cameras
+  (640×480), served by <code>data/image_server.py</code>.</li>
+<li><strong>VR:</strong> a PICO 4 Ultra or Meta Quest running the NERO VR app, through the VR
+  server (<code>scripts/questarm-mujoco.sh</code>).</li>
+<li><strong>Policy PC:</strong> the robot PC runs the panel, the bridge, the cameras and inference.
+  Long training runs go to the training PC (§13).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">Starting NERO Studio</h1></div>
+<p class="lede">On the robot PC:</p>
+<pre class="cmd">cd ~/workspace/NERO_DualArm_VR
+.venvs/questarm/bin/python3 ./data/nero_studio.py</pre>
+<p>On another PC, run the same file from your clone of the repository, with a Python that has PyQt6, h5py,
+zmq and OpenCV. Training and inference run in a separate LeRobot environment: <code>&lt;repo&gt;/.venvs/lerobot</code>
+if it exists, else <code>~/miniconda3/envs/lerobot</code>; set <code>NERO_LEROBOT_PY</code> to use another one.</p>
+<p>The panel opens on the page you used last, with your last settings (§18). If <strong>start on open</strong> is
+ticked in the CAMERAS card, the cameras start one second after the window opens.</p>
+<p>The 3D robot view needs MuJoCo and OpenGL. Without them the panel draws a stick figure of the arms
+instead and says so in the terminal (<code>[studio] 3D robot view off, drawing the skeleton: …</code>).
+Everything else works the same.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">The panel at a glance</h1></div>
+<figure><img src="assets/01_teleop.png" alt="The TELEOP page"><figcaption><b>Figure 1.</b> The TELEOP page</figcaption></figure>
+<p>The window has three pages, chosen in the header:</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Page</th>
+<th>Left side</th>
+<th>Cards on the right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TELEOP</strong></td>
+<td>Live 3D robot view, robot health, TELEOP LOG</td>
+<td>ROBOT, VR TELEOP, HAND TEST</td>
+</tr>
+<tr>
+<td><strong>RECORD</strong></td>
+<td>Live cameras, RECORD LOG</td>
+<td>STREAMS, CAMERAS, DATA RECORD &amp; REVIEW</td>
+</tr>
+<tr>
+<td><strong>TRAIN / INFER</strong></td>
+<td>Training loss chart, TRAIN / INFER LOG</td>
+<td>DATASET, TRAINING, INFERENCE, BOX CYCLE</td>
+</tr>
+</tbody>
+</table>
+<p>Only the page on screen is drawn: the cameras are decoded only while RECORD is shown. This keeps the
+robot PC's CPU for the policy.</p>
+<p>Each card has a head strip with its name, the program it drives, and a status chip (§7). <strong>⚙ Advanced</strong>
+on a card shows the settings you rarely change.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">Panel reference — every control</h1></div>
+<p class="lede">Skip this section on a first read; come back to it when you want to know exactly what something does.</p>
+<h2 id="c6-s1">6.1 Header</h2>
+<figure><img src="assets/header.png" alt="Header"><figcaption><b>Figure 2.</b> Header</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TELEOP</strong> / <strong>RECORD</strong> / <strong>TRAIN / INFER</strong></td>
+<td>Switch pages</td>
+</tr>
+<tr>
+<td><strong>DATA ROOT</strong></td>
+<td>The folder all data lives under (default <code>~/nero_data</code>). <strong>…</strong> picks another</td>
+</tr>
+<tr>
+<td><strong>MOUNT</strong></td>
+<td><code>humanoid</code> (Revo2 hands) or <code>humanoid_gripper</code> (2-finger gripper). Locked while the bridge, VR or a recording runs</td>
+</tr>
+<tr>
+<td><strong>한 / EN</strong></td>
+<td>Korean or English, immediately. Tooltips and logs stay in English</td>
+</tr>
+<tr>
+<td><strong>☀ / ☾</strong></td>
+<td>Light or dark theme, immediately</td>
+</tr>
+</tbody>
+</table>
+<p>Under DATA ROOT:</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Folder</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recordings/&lt;task&gt;/episode_*.hdf5</code></td>
+<td>One folder per task, one file per take</td>
+</tr>
+<tr>
+<td><code>lerobot/&lt;repo id&gt;/</code></td>
+<td>Converted datasets</td>
+</tr>
+<tr>
+<td><code>train/&lt;date&gt;_&lt;time&gt;_&lt;policy&gt;/</code></td>
+<td>Training runs and their checkpoints</td>
+</tr>
+<tr>
+<td><code>logs/teleop_&lt;date&gt;.log</code></td>
+<td>The TELEOP log and the inference output, with times</td>
+</tr>
+<tr>
+<td><code>logs/takeover_&lt;date&gt;.jsonl</code></td>
+<td>VR corrections of a running policy (§16)</td>
+</tr>
+<tr>
+<td><code>library/*.npz</code></td>
+<td>Motion libraries for the motion player (§14)</td>
+</tr>
+<tr>
+<td><code>box_*.ts</code></td>
+<td>Object detectors for the object gate (§15); the newest one is loaded by default</td>
+</tr>
+<tr>
+<td><code>head_train_ref.jpg</code></td>
+<td>The training view that Tune overlays (§15)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s2">6.2 ROBOT card</h2>
+<figure class="f60"><img src="assets/card_robot.png" alt="ROBOT card"><figcaption><b>Figure 3.</b> ROBOT card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SOURCE</strong></td>
+<td><strong>CAN (real arms)</strong>, or <strong>mock (no robot)</strong>: simulated arms for practice</td>
+</tr>
+<tr>
+<td><strong>ARMS</strong></td>
+<td><code>both</code>, <code>left</code> or <code>right</code></td>
+</tr>
+<tr>
+<td><strong>SPEED</strong></td>
+<td>The arm SDK's move speed, 1–100 %. Applied live while connected</td>
+</tr>
+<tr>
+<td><strong>MAX</strong></td>
+<td>The bridge's tracking speed cap, 0.05–1.60 rad/s. Applied live while connected. The VR server reads it once, when VR starts</td>
+</tr>
+<tr>
+<td><strong>FOLLOW</strong></td>
+<td>How far an arm may trail its command before the bridge puts it in <strong>HOLD</strong>. The label shows the resulting limit: 0.15 rad + FOLLOW × MAX. Applied live</td>
+</tr>
+<tr>
+<td><strong>RAMP</strong></td>
+<td>The speed toward a far command: after Enable, and after Resume from a HOLD. Applied live</td>
+</tr>
+<tr>
+<td><strong>▶ Connect (observe)</strong></td>
+<td>Start the bridge. The arms report their joints; no motor moves. Becomes <strong>■ Disconnect</strong></td>
+</tr>
+<tr>
+<td><strong>↺ Clear e-stop</strong></td>
+<td>Reset an arm latched in e-stop. <strong>Its motors power off at once: a raised arm drops.</strong> Lower or support the arms first</td>
+</tr>
+<tr>
+<td><strong>⚡ Enable motion</strong></td>
+<td>Enable the motors. The arms hold where they are; the first command is approached at RAMP speed</td>
+</tr>
+<tr>
+<td><strong>▶ Resume arms in HOLD</strong></td>
+<td>Continue an arm that stopped in HOLD; it re-approaches the current command at RAMP speed</td>
+</tr>
+<tr>
+<td><strong><svg class="ic" viewBox="0 0 16 16" aria-label="⛔"><polygon points="5,0 11,0 16,5 16,11 11,16 5,16 0,11 0,5" fill="#d92d20"/><rect x="3" y="6.5" width="10" height="3" fill="#fff"/></svg> E-STOP (Esc)</strong></td>
+<td>Damped stop of both arms through the bridge started here. The physical E-stop stays the primary one</td>
+</tr>
+</tbody>
+</table>
+<figure class="f60"><img src="assets/card_robot_adv.png" alt="ROBOT card, Advanced"><figcaption><b>Figure 4.</b> ROBOT card, Advanced</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>⚙ Advanced</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LEFT CAN</strong> / <strong>RIGHT CAN</strong></td>
+<td>CAN interface names, <code>can_left</code> / <code>can_right</code></td>
+</tr>
+<tr>
+<td><strong>EXTRA</strong></td>
+<td>Extra bridge arguments, e.g. <code>--gripper-force 5</code></td>
+</tr>
+</tbody>
+</table>
+<p>SOURCE, ARMS, the CAN names and EXTRA are read at Connect; they are locked while the bridge runs.</p>
+<h2 id="c6-s3">6.3 VR TELEOP card</h2>
+<figure class="f60"><img src="assets/card_vr.png" alt="VR TELEOP card"><figcaption><b>Figure 5.</b> VR TELEOP card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SPREAD</strong></td>
+<td>Multiplies the operator's left–right hand motion on the robot (×1.00–×2.00). The robot's palms start 0.44 m apart, wider than an operator's hands, so at ×1 the operator's hands meet before the robot's. Read when VR starts</td>
+</tr>
+<tr>
+<td><strong>▶ Start VR teleop</strong></td>
+<td>Start the VR server: mount from the header, speed from MAX, spread from SPREAD. Becomes <strong>■ Stop VR</strong></td>
+</tr>
+<tr>
+<td><strong>correct the policy</strong></td>
+<td>Start VR beside a running policy instead of driving the arms alone (§16). Set it before Start VR</td>
+</tr>
+<tr>
+<td>⚙ <strong>ARGS</strong></td>
+<td>Extra VR server arguments; default <code>--godot --w-pos 20</code></td>
+</tr>
+</tbody>
+</table>
+<p>A changed MAX or SPREAD reaches the VR server only at its next start; the log says so.</p>
+<h2 id="c6-s4">6.4 HAND TEST card</h2>
+<figure class="f60"><img src="assets/card_hand.png" alt="HAND TEST card"><figcaption><b>Figure 6.</b> HAND TEST card</figcaption></figure>
+<p><strong>Open</strong>, <strong>Half</strong>, <strong>Close</strong> send one hand command to both hands for about 1.2 s; the hands then hold.
+It works only with motion enabled and with no VR server or policy commanding the hands.</p>
+<h2 id="c6-s5">6.5 Live view and robot health (TELEOP, left)</h2>
+<ul>
+<li><strong>The 3D view</strong> shows NERO from behind, as the operator stands: the <strong>measured</strong> joints and hand
+  closure. When an arm trails its command by more than 0.03 rad, the command appears as a translucent
+  <strong>blue ghost</strong> arm. Drag to turn the view; double-click to reset it.</li>
+<li>Without measured joints the model stands at the VR home pose and the view says
+  <em>no measured arm state on 5561</em>.</li>
+<li><strong>Health lines</strong> under it: the bridge state; each arm's mode (<code>TRACK</code>, <code>IDLE</code>, <strong>HOLD — press ▶ Resume</strong>);
+  the last fault; joint angles in degrees; hand closure (0 open, 1 closed); the Revo2 Touch device
+  of each hand; the speed caps in force; and which master (VR or policy) is commanding, at what rate.</li>
+</ul>
+<h2 id="c6-s6">6.6 STREAMS card (RECORD)</h2>
+<figure class="f60"><img src="assets/card_streams.png" alt="STREAMS card"><figcaption><b>Figure 7.</b> STREAMS card</figcaption></figure>
+<p>Every data stream on this PC with its port, state (<strong>LIVE</strong>, <strong>STALE</strong>, <strong>OFF</strong>), rate and age:
+arm command 5559, hand command 5560, measured arm 5561, measured hand 5562, cameras 5555. The last
+line gives the measured joints in degrees. It shows streams started from a terminal too.</p>
+<h2 id="c6-s7">6.7 CAMERAS card (RECORD)</h2>
+<figure class="f60"><img src="assets/card_cams.png" alt="CAMERAS card"><figcaption><b>Figure 8.</b> CAMERAS card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CAMS</strong></td>
+<td>The cameras, space-separated <code>NAME:TYPE:ID[:WxH][:ROT]</code>, e.g. <code>head:opencv:0 right_wrist:opencv:2:cw left_wrist:opencv:4:ccw</code>. The tooltip has the full syntax</td>
+</tr>
+<tr>
+<td><strong>▶ Cameras</strong></td>
+<td>Start or stop the camera server. A camera that drops off USB reconnects by itself</td>
+</tr>
+<tr>
+<td><strong>start on open</strong></td>
+<td>Start these cameras whenever the panel opens</td>
+</tr>
+<tr>
+<td>⚙ <strong>LOCK</strong></td>
+<td>Fix exposure, white balance and focus, e.g. <code>all:auto_exposure=1,exposure_time_absolute=83</code>; empty = each camera's own auto. Set again after a USB reconnect and saved in every take. Control names: <code>v4l2-ctl -d /dev/videoN --list-ctrls</code> (needs <code>v4l-utils</code>); the tooltip lists the C920's quirks</td>
+</tr>
+<tr>
+<td>⚙ <strong>DEPTH</strong> / <strong>FPS</strong></td>
+<td>Cameras that also send depth (RealSense only); frame rate (default 30)</td>
+</tr>
+</tbody>
+</table>
+<p>Keep <strong>one camera setup per dataset</strong>: same names, sizes and rotations. The converter skips takes whose
+camera size differs from the first take's.</p>
+<h2 id="c6-s8">6.8 DATA RECORD &amp; REVIEW card (RECORD)</h2>
+<figure class="f60"><img src="assets/card_data.png" alt="DATA RECORD &amp; REVIEW card"><figcaption><b>Figure 9.</b> DATA RECORD &amp; REVIEW card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TASK</strong></td>
+<td>A plain instruction, e.g. <code>put the cup on the tray</code> (example application: <code>drag and scan box</code>). Each task gets its own folder. Pick an existing one or type a new one</td>
+</tr>
+<tr>
+<td><strong>FACTORS</strong></td>
+<td><code>key=value</code> pairs saved in every take, e.g. <code>background=none lighting=day operator=op1</code>. Used later to pick or hold out takes</td>
+</tr>
+<tr>
+<td><strong>● Record (F5)</strong></td>
+<td>Start a take. While recording it becomes <strong>■ Stop, no label (F5)</strong></td>
+</tr>
+<tr>
+<td><strong>■ Success (F6)</strong></td>
+<td>Stop and label the take a success</td>
+</tr>
+<tr>
+<td><strong>■ Fail (F7)</strong></td>
+<td>Stop and label it a failure; the panel asks why</td>
+</tr>
+<tr>
+<td><strong>■ Stop, no label</strong></td>
+<td>Stop without a label</td>
+</tr>
+<tr>
+<td><strong>Episode table</strong></td>
+<td>The task's takes, newest first: frames, seconds, label, measured or command-only arm state, cameras, and the <strong>timing</strong> verdict (OK / WARN / BAD; hover for the reasons)</td>
+</tr>
+<tr>
+<td><strong>Refresh</strong></td>
+<td>Re-read the folder</td>
+</tr>
+<tr>
+<td><strong>Visualize</strong></td>
+<td>Open the selected take in the 3D replay viewer (also: double-click a row)</td>
+</tr>
+<tr>
+<td><strong>Trim…</strong></td>
+<td>Keep a span of the take (§12)</td>
+</tr>
+<tr>
+<td><strong>Audit</strong></td>
+<td>Timing report for every take of the task</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Delete the selected take. Cannot be undone</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s9">6.9 DATASET card (TRAIN / INFER)</h2>
+<figure class="f60"><img src="assets/card_dataset.png" alt="DATASET card"><figcaption><b>Figure 10.</b> DATASET card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TASKS</strong></td>
+<td>Every task folder with its number of takes. Tick the ones to convert. <strong>Scan</strong> re-reads them</td>
+</tr>
+<tr>
+<td><strong>REPO ID</strong></td>
+<td>The dataset's name, <code>owner/name</code>, e.g. <code>nero/drag_scan_20261101_s05</code></td>
+</tr>
+<tr>
+<td><strong>ACTION</strong></td>
+<td><code>joint</code> (joint angles, the default) or <code>ee</code> (palm poses)</td>
+</tr>
+<tr>
+<td><strong>include FAIL takes</strong></td>
+<td>Convert failed takes too (off by default)</td>
+</tr>
+<tr>
+<td><strong>IMAGE SCALE</strong></td>
+<td>Shrink every camera before training: <strong>1</strong> for ACT, Advanced ACT and SmolVLA; <strong>0.5</strong> for Diffusion. Give each scale its own REPO ID</td>
+</tr>
+<tr>
+<td><strong>include timing-BAD takes</strong></td>
+<td>Convert takes the audit calls BAD (off by default)</td>
+</tr>
+<tr>
+<td><strong>▶ Convert</strong></td>
+<td>Build the dataset. An existing REPO ID is rebuilt after asking</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s10">6.10 TRAINING card (TRAIN / INFER)</h2>
+<figure class="f60"><img src="assets/card_train.png" alt="TRAINING card"><figcaption><b>Figure 11.</b> TRAINING card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>POLICY</strong></td>
+<td><code>act</code>, <code>advanced act</code>, <code>diffusion</code> or <code>smolvla</code> (§13)</td>
+</tr>
+<tr>
+<td><strong>STEPS</strong> / <strong>BATCH</strong></td>
+<td>Training steps and batch size. A checkpoint is saved every quarter of STEPS</td>
+</tr>
+<tr>
+<td><strong>▶ Train</strong> / <strong>■ Stop</strong></td>
+<td>Start or stop training on this PC's GPU</td>
+</tr>
+<tr>
+<td><strong>convert first</strong></td>
+<td>Convert the ticked tasks to REPO ID before training</td>
+</tr>
+<tr>
+<td><strong>Status line</strong></td>
+<td>Step, loss, best loss, steps per second and time left; warns on GPU out of memory or a NaN loss</td>
+</tr>
+<tr>
+<td>⚙ <strong>EXTRA</strong></td>
+<td>Extra training arguments; one with the same key replaces the recipe's</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>TRAINING LOSS</strong> chart on the left plots the loss on a log scale as training runs.</p>
+<h2 id="c6-s11">6.11 INFERENCE card (TRAIN / INFER)</h2>
+<figure class="f60"><img src="assets/card_infer.png" alt="INFERENCE card"><figcaption><b>Figure 12.</b> INFERENCE card</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CKPT</strong></td>
+<td>Every checkpoint under DATA ROOT/train, newest first, and every motion library. <strong>↻</strong> re-reads them</td>
+</tr>
+<tr>
+<td><strong>DATASET</strong></td>
+<td>The dataset the checkpoint was trained on, read from the checkpoint</td>
+</tr>
+<tr>
+<td><strong>TARGET</strong></td>
+<td><strong>dry run → 5565/5566 (nothing moves)</strong>, or <strong>ROBOT → 5559/5560 (bridge)</strong></td>
+</tr>
+<tr>
+<td><strong>MODE</strong></td>
+<td><code>chunk</code>, <code>chunk + fade</code>, <code>temporal ensemble</code> or <code>motion player</code> (§14)</td>
+</tr>
+<tr>
+<td><strong>FADE</strong> / <strong>PLAY</strong></td>
+<td>chunk + fade only: blend length in control steps, and actions played per chunk (0 = auto)</td>
+</tr>
+<tr>
+<td><strong>COEFF</strong></td>
+<td>temporal ensemble only: the blending weight</td>
+</tr>
+<tr>
+<td><strong>▶ Start</strong> / <strong>■ Stop</strong></td>
+<td>Start or stop the policy</td>
+</tr>
+<tr>
+<td><strong>Eval on dataset</strong></td>
+<td>Replay the dataset's takes through the policy and plot its error against the operator, joint by joint. Nothing moves</td>
+</tr>
+<tr>
+<td>⚙ <strong>TASK</strong></td>
+<td>The task text given to language policies (default: the dataset's)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s12">6.12 BOX CYCLE card (TRAIN / INFER)</h2>
+<figure class="f60"><img src="assets/card_box_adv.png" alt="BOX CYCLE card, Advanced"><figcaption><b>Figure 13.</b> BOX CYCLE card, Advanced</figcaption></figure>
+<p>The card is named after the first application, but works for any object the head camera can see.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MODEL</strong></td>
+<td>The object detector (<code>box_*.ts</code>). Empty: a colour test (HSV) instead</td>
+</tr>
+<tr>
+<td><strong>box gate</strong></td>
+<td>Run the policy only when an object is in the pickup area, and return to the start pose after each run (§15). Untick it for tasks with no trigger object</td>
+</tr>
+<tr>
+<td><strong>WAIT</strong></td>
+<td>Seconds the object must stay in the pickup area before a run starts (default 2)</td>
+</tr>
+<tr>
+<td><strong>Tune</strong></td>
+<td>Open the head camera with the pickup and exit areas drawn, and the training view overlaid (§15). Press again, or close the window, to stop</td>
+</tr>
+<tr>
+<td><strong>Count</strong></td>
+<td>Start or stop the object counter (§15)</td>
+</tr>
+<tr>
+<td>⚙ <strong>ROI</strong></td>
+<td>The pickup area in the head image, <code>X0,Y0,X1,Y1</code></td>
+</tr>
+<tr>
+<td>⚙ <strong>HSV</strong></td>
+<td>The colour range of the colour test</td>
+</tr>
+<tr>
+<td>⚙ <strong>EXIT</strong> / <strong>LINE</strong></td>
+<td>The area finished objects leave through, and the image row an object crosses when it leaves</td>
+</tr>
+<tr>
+<td>⚙ <strong>head mask</strong> / <strong>RECT</strong></td>
+<td>Paint over an area of the head image before the policy sees it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s13">6.13 Keyboard</h2>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F5</strong></td>
+<td>Record / stop without a label</td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td>Stop, success</td>
+</tr>
+<tr>
+<td><strong>F7</strong></td>
+<td>Stop, failure</td>
+</tr>
+<tr>
+<td><strong>Esc</strong></td>
+<td>E-STOP</td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">Status chips</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Card</th>
+<th>Chip</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROBOT</td>
+<td><strong>OFFLINE</strong></td>
+<td>No bridge started from this panel</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>STARTING</strong></td>
+<td>The bridge is connecting to the arms</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>OBSERVE</strong></td>
+<td>Connected; joints are read; motors are off</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>ENABLED</strong></td>
+<td>Motors on; the arms follow the command</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>FAULT</strong></td>
+<td>An arm reported a fault; the reason is in the health lines</td>
+</tr>
+<tr>
+<td>VR TELEOP</td>
+<td><strong>RUNNING</strong> / <strong>CORRECTING</strong> / <strong>STOPPED</strong></td>
+<td>VR drives the arms / VR corrects a policy / not running</td>
+</tr>
+<tr>
+<td>STREAMS</td>
+<td><strong>n/4 LIVE</strong> / <strong>OFF</strong></td>
+<td>How many of the four robot streams (5559–5562) are live</td>
+</tr>
+<tr>
+<td>CAMERAS</td>
+<td><strong>LIVE</strong> / <strong>OFF</strong></td>
+<td>Camera frames arriving</td>
+</tr>
+<tr>
+<td>DATA RECORD</td>
+<td><strong>RECORDING</strong> / <strong>READY</strong> / <strong>STOPPED</strong></td>
+<td>A take is being recorded / the recorder waits / not running</td>
+</tr>
+<tr>
+<td>DATASET</td>
+<td><strong>CONVERTING</strong></td>
+<td>A conversion is running</td>
+</tr>
+<tr>
+<td>TRAINING</td>
+<td><strong>TRAINING</strong> / <strong>STOPPED</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>INFERENCE</td>
+<td><strong>ROBOT</strong> / <strong>DRY RUN</strong> / <strong>STOPPED</strong></td>
+<td>Where the running policy sends its commands</td>
+</tr>
+<tr>
+<td>BOX CYCLE</td>
+<td><strong>GATE ON</strong> / <strong>GATE OFF</strong>, <strong>· COUNTING</strong></td>
+<td>Box gate on or off; the object counter running</td>
+</tr>
+</tbody>
+</table>
+<p>Arm modes in the health lines: <strong>TRACK</strong> (following), <strong>IDLE</strong>, <strong>HOLD</strong> (stopped by the follow
+limit: press <strong>▶ Resume arms in HOLD</strong>), <strong>FAULT</strong>.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">Before you begin</h1></div>
+<ol class="steps">
+<li>The arms are powered and their CAN interfaces are up (<code>can_left</code>, <code>can_right</code>).</li>
+<li>The hands are connected; the health lines will show a Revo2 Touch device for each.</li>
+<li>The cameras are plugged into the <strong>same USB ports as when the dataset was recorded</strong>.</li>
+<li>The robot and the head camera are where they were during recording (check with <strong>Tune</strong>, §15).</li>
+<li>The workspace is clear, and the <strong>physical E-stop is within reach</strong>.</li>
+</ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">Teleoperating with VR</h1></div>
+<ol class="steps">
+<li><strong>TELEOP → ▶ Connect (observe).</strong> Wait for <strong>OBSERVE</strong>. The 3D view now shows the real arms.</li>
+<li>Put the arms in a safe pose, then <strong>⚡ Enable motion</strong> and confirm. The chip turns <strong>ENABLED</strong>.
+   The arms hold where they are.</li>
+<li><strong>▶ Start VR teleop.</strong> Put on the headset and open the NERO VR app.</li>
+<li>On each controller (<strong>X</strong> left, <strong>A</strong> right): <strong>press and hold</strong> to grab the arm where it is,
+   <strong>release</strong> to make it follow your hand. Press again any time to re-grab: the arm stays, your hand moves.</li>
+<li><strong>Y</strong> (left) / <strong>B</strong> (right) stops that arm (it holds). Losing tracking also holds it.</li>
+<li>The <strong>grip</strong> button closes the four fingers; the <strong>thumbstick</strong> moves the thumb.</li>
+<li>The app's <strong>HOME</strong> sends an arm home, palms lifted first so they leave the table upward.</li>
+<li>To finish: <strong>■ Stop VR</strong>, lower the arms, <strong>■ Disconnect</strong>.</li>
+</ol>
+<p>Settings that the team tested on the robot (2026-11-03): SPEED <strong>100 %</strong>, MAX <strong>1.60 rad/s</strong>,
+FOLLOW <strong>0.50 s</strong> (HOLD at 0.95 rad). If fast moves put an arm in HOLD, raise FOLLOW. If the robot's
+hands cannot meet in front of it, raise SPREAD and restart VR.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">Emergency stop, HOLD and clearing</h1></div>
+<ul>
+<li><strong><svg class="ic" viewBox="0 0 16 16" aria-label="⛔"><polygon points="5,0 11,0 16,5 16,11 11,16 5,16 0,11 0,5" fill="#d92d20"/><rect x="3" y="6.5" width="10" height="3" fill="#fff"/></svg> E-STOP (Esc)</strong> stops both arms (damped) through the bridge this panel started. A bridge started
+  in a terminal does not take the button: use the <strong>physical E-stop</strong>, always the primary one.</li>
+<li><strong>Disconnect</strong> or closing the panel while motion is enabled also ends in the damped e-stop: the
+  arms sink. The panel asks first. <strong>Lower the arms before you disconnect.</strong></li>
+<li>After an e-stop the arm stays <strong>latched</strong>: <strong>⚡ Enable motion</strong> is refused with <em>arm is in e-stop</em>.
+  Lower or support the arms, press <strong>↺ Clear e-stop</strong> (the motors power off: a raised arm drops),
+  then <strong>⚡ Enable motion</strong> again.</li>
+<li><strong>HOLD</strong> is not an e-stop. The bridge stops an arm that fell too far behind its command (FOLLOW).
+  The health lines show <strong>HOLD — press ▶ Resume</strong>. Press <strong>▶ Resume arms in HOLD</strong>; the arm
+  re-approaches the command at RAMP speed.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">Recording demonstrations</h1></div>
+<h2 id="c11-s1">To record</h2>
+<ol class="steps">
+<li>Start the cameras (<strong>RECORD → ▶ Cameras</strong>) and VR teleop (§9). <strong>STREAMS</strong> should show <strong>4/4 LIVE</strong>
+   and the cameras <strong>LIVE</strong>.</li>
+<li>Type the <strong>TASK</strong>, and the <strong>FACTORS</strong> that describe this session.</li>
+<li><strong>F5</strong> to start. Do the task.</li>
+<li><strong>F6</strong> if it succeeded, <strong>F7</strong> if not (give the reason), <strong>F5</strong> to stop without a label.</li>
+</ol>
+<p>The panel refuses to record without a VR (or policy) command on 5559, and warns when the measured
+arm state is missing: the take would then hold the command instead of the measured joints.</p>
+<figure><img src="assets/02_record.png" alt="RECORD page while recording"><figcaption><b>Figure 14.</b> RECORD page while recording</figcaption></figure>
+<h2 id="c11-s2">What makes a good dataset</h2>
+<ul>
+<li><strong>The same camera setup in every take</strong>: same cameras, USB ports, sizes, rotation and camera
+  settings (⚙ LOCK in CAMERAS). Different camera settings across sessions are a different dataset to the policy.</li>
+<li><strong>The same head view</strong>: before a session, open <strong>Tune</strong> and line the robot and camera up with the
+  training view (§15). When the head view moved, the policy's success dropped.</li>
+<li><strong>Start every take from the same pose</strong>, with the arms still. The policy's start pose is the
+  takes' start pose.</li>
+<li><strong>Do the task the same way every time.</strong> Two ways of doing one task confuse a policy.</li>
+<li><strong>Label honestly</strong>, and delete takes of a second or less: they hold no task.</li>
+<li><strong>Audit</strong> a ~60 s test take before a session, and the whole folder before converting.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">Reviewing and editing recordings</h1></div>
+<p class="lede">Select a take in the episode table:</p>
+<ul>
+<li><strong>Visualize</strong> (or double-click) replays it in 3D with its cameras.</li>
+<li><strong>Trim…</strong> shows the take's camera with two sliders, <strong>start</strong> and <strong>end</strong>. <strong>Keep selection</strong>
+  rewrites the file with only that span (asks first; cannot be undone). Trimmed takes show <strong><svg class="ic" viewBox="0 0 16 16" aria-label="✂" fill="none" stroke="#2e3446" stroke-width="1.6"><circle cx="4" cy="12" r="2.6"/><circle cx="12" cy="12" r="2.6"/><path d="M5.8 10 L13 1.5 M10.2 10 L3 1.5"/></svg></strong>.</li>
+<li><strong>Audit</strong> lists every take of the task with each camera's rate and its age against the joints,
+  and the reasons for a WARN or BAD:
+  slow camera, skewed camera/joint pairing, recorder stall, arm not following its command (HOLD).
+  <strong>BAD takes are skipped at Convert</strong> unless <em>include timing-BAD takes</em> is ticked.</li>
+<li><strong>Delete</strong> removes the take for good (asks first).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>13</big></div><h1 id="c13" data-mark="c13">Training a policy</h1></div>
+<figure><img src="assets/03_train_infer.png" alt="TRAIN / INFER page"><figcaption><b>Figure 15.</b> TRAIN / INFER page</figcaption></figure>
+<ol class="steps">
+<li><strong>DATASET:</strong> tick the tasks, set a new <strong>REPO ID</strong>, set <strong>IMAGE SCALE</strong> for the policy (below).</li>
+<li><strong>TRAINING:</strong> pick the <strong>POLICY</strong>, <strong>STEPS</strong> and <strong>BATCH</strong>; leave <strong>convert first</strong> ticked.</li>
+<li><strong>▶ Train.</strong> The chart and the status line follow the run. Checkpoints appear under
+   DATA ROOT/train and in the CKPT list.</li>
+<li><strong>Eval on dataset</strong> (INFERENCE card) to check a checkpoint against the operator.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>POLICY</th>
+<th>What it is</th>
+<th>IMAGE SCALE</th>
+<th>BATCH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>act</code></td>
+<td>LeRobot ACT, ResNet18 image encoder</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>advanced act</code></td>
+<td>ACT with a DINOv3 ViT-S/16 image encoder (needs <code>timm</code> and the DINOv3 weights)</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>diffusion</code></td>
+<td>The Diffusion Policy real-robot recipe at 30 Hz, EMA weights, image augmentation</td>
+<td><strong>0.5</strong></td>
+<td><strong>64</strong></td>
+</tr>
+<tr>
+<td><code>smolvla</code></td>
+<td>Fine-tunes <code>lerobot/smolvla_base</code> (must be in the HF cache) on the task text</td>
+<td>1</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<p>The panel warns when a Diffusion dataset is not at scale 0.5 or BATCH is below 32.</p>
+<p><strong>Where to train.</strong> The panel trains on the GPU of the PC it runs on. Long runs (Diffusion over many
+thousands of steps) are run on the training PC with the same scripts; the exact command appears at the
+top of the log when you press Train. Copy the checkpoint folder back under DATA ROOT/train to run it.</p>
+<p><strong>Fine-tuning for a new place.</strong> When the scene changes (new site, moved robot), record new takes
+there, convert them alone, and fine-tune the existing checkpoint on them rather than training from
+scratch.</p>
+<p><strong>Reading the result.</strong> <em>Eval on dataset</em> plots each joint's error against what the operator did, on
+the training takes themselves; the tool's pass mark is under 2° average arm error. A large error there
+means a data or setup problem (dataset stats, feature names, action order); more steps will not fix it.
+A small error shows the policy fits its data, not that it will succeed on the robot.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>14</big></div><h1 id="c14" data-mark="c14">Running a policy on the robot</h1></div>
+<ol class="steps">
+<li>Pick the <strong>CKPT</strong>. Check that <strong>DATASET</strong> shows the dataset it was trained on.</li>
+<li>Start the cameras (the policy sees them) and connect + enable the robot (§9). No VR.</li>
+<li>Choose <strong>MODE</strong> (below) and set <strong>TARGET → dry run</strong>. <strong>▶ Start</strong>: the policy loads and runs and
+   the log follows it, but nothing moves. <strong>■ Stop</strong>.</li>
+<li>Set <strong>TARGET → ROBOT</strong> and <strong>▶ Start</strong>. Confirm the dialog.</li>
+<li>The arms first move to the <strong>start pose</strong> of the training takes, at the bridge's ramp speed.
+   With the box gate on, the robot then waits for an object (§15); without it, the policy starts
+   and runs until <strong>■ Stop</strong>.</li>
+<li><strong>■ Stop</strong> ends the policy. The bridge holds the arms where they are; the hands keep their grip.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>MODE</th>
+<th>How it plays the policy's plans</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>chunk</strong></td>
+<td>Each planned chunk is played to its end, then the next is planned</td>
+<td>ACT baseline</td>
+</tr>
+<tr>
+<td><strong>chunk + fade</strong></td>
+<td>The next chunk is planned in the background and blended in over <strong>FADE</strong> steps</td>
+<td><strong>Diffusion and ACT on NERO.</strong> Tested on the example application: FADE <strong>20</strong>, PLAY <strong>0</strong> (auto)</td>
+</tr>
+<tr>
+<td><strong>temporal ensemble</strong></td>
+<td>Re-plan as fast as possible and average overlapping chunks (<strong>COEFF</strong>)</td>
+<td>ACT only; did not work on NERO or G1</td>
+</tr>
+<tr>
+<td><strong>motion player</strong></td>
+<td>No policy: replays the recorded take whose object was nearest to the object the detector sees</td>
+<td>Experimental fallback; needs the box gate and MODEL, and a LIBRARY in CKPT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PLAY</strong> (chunk + fade): 0 = auto (the policy's chunk length minus FADE). A smaller value plans more
+often, so the arm reacts sooner to where the object is.</p>
+<p>The policy runs inside the same bridge limits as VR teleop (MAX, FOLLOW). Every inference line also
+goes to <code>DATA ROOT/logs/teleop_&lt;date&gt;.log</code>, in the bridge's timeline.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>15</big></div><h1 id="c15" data-mark="c15">The object gate: run only when there is work</h1></div>
+<p class="lede">Many tasks start when an object arrives: a part on a conveyor, an item put on the table. With
+<strong>box gate</strong> ticked (BOX CYCLE card), the policy runs in a loop that waits for one:</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>State</th>
+<th>What the robot does</th>
+<th>Ends when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HOME</strong></td>
+<td>Holds the start pose and watches the pickup area (<strong>ROI</strong>) in the head camera</td>
+<td>An object is seen there and is still there <strong>WAIT</strong> s later → RUN</td>
+</tr>
+<tr>
+<td><strong>RUN</strong></td>
+<td>A fresh run of the policy</td>
+<td>The object leaves past <strong>LINE</strong> through the <strong>EXIT</strong> area (watched from 8 s into the run; only if EXIT is set), or (with MODEL) no object is left in the work area for 2 s because it was taken away or fell, or the run times out (1.5 × the longest training take), or the arm stands still for 3 s → RETURN</td>
+</tr>
+<tr>
+<td><strong>RETURN</strong></td>
+<td>Palms lifted 5 cm, then a smooth move to the start pose</td>
+<td>Start pose reached → HOME</td>
+</tr>
+</tbody>
+</table>
+<p>Only the head camera decides. With <strong>MODEL</strong> set, the object detector finds the objects; without it, a
+colour test does: the share of ROI pixels inside the <strong>HSV</strong> range. The colour test is quick to set up
+but fires on anything of that colour (skin, wood, a coloured belt) and misses objects in shade. A
+detector trained on your object is more reliable (§17).</p>
+<p>Untick <strong>box gate</strong> for tasks that have no trigger object: the policy then starts as soon as the arms
+reach the start pose and runs until <strong>■ Stop</strong>.</p>
+<div class="box note"><div class="h">Example application — parcel handling</div><p>ROI is the end of the incoming conveyor where a parcel
+waits; EXIT is the outgoing conveyor, and LINE is the row a parcel rides past after the robot has
+pushed it on. MODEL is the parcel detector <code>box_rfdetr_s_20261031.ts</code> (RF-DETR Small, trained on
+hand-labelled head-camera frames of this task; it finds cardboard parcels only). A run ends when the
+parcel rides out, or when a person takes away a parcel that got stuck.</p></div>
+<h2 id="c15-s1">Tune: check the view and the areas</h2>
+<figure><img src="assets/tune.png" alt="Tune window"><figcaption><b>Figure 16.</b> Tune window</figcaption></figure>
+<p><strong>Tune</strong> opens the head camera large, with:</p>
+<ul>
+<li>the <strong>pickup ROI</strong>: red, <strong>green while it sees an object</strong>;</li>
+<li>the <strong>EXIT</strong> area and <strong>LINE</strong>: yellow, green while an object leaves;</li>
+<li>the detector's boxes (blue), and the head mask (magenta) if on;</li>
+<li>the <strong>training view</strong> (DATA ROOT/head_train_ref.jpg) blended 50/50 over the live image, and the
+  line <strong>view vs training</strong>: how far the view is off in pixels and degrees. <strong>OK</strong> in green means
+  within 15 px, 2 % scale and 1° roll. The second line gives the range the training takes covered.</li>
+</ul>
+<p>If the view is off, move the robot or the camera until the overlay lines up and <strong>OK</strong> appears. A
+policy only works in the view it was trained in. Close Tune with its window's ✕ or the <strong>Tune</strong> button.
+For a new task, make its own training view first (§17).</p>
+<h2 id="c15-s2">Count: how many objects were finished</h2>
+<p><strong>Count</strong> runs the object counter beside teleop or a policy. It only reads the head camera and
+publishes nothing. An object counts once when it moves <strong>up</strong> the head image through EXIT, from below
+image row 250 to above it (EXIT must be set; the counter uses its own row, not LINE). Each count is
+appended to <code>~/nero_data/parcel_count_&lt;date&gt;.csv</code>; a restart the same day carries on from the last
+count.</p>
+<div class="box note"><div class="h">Example application</div><p>In the parcel task the outgoing conveyor carries parcels away from the
+robot, which is up in the head image. On the 189 takes of 2026-11-01 the counter counted 188 parcels.
+For another layout: the row is <code>--count-line</code> of <code>policy/parcel_counter.py</code> (not a panel field), and
+the upward direction is fixed in the code.</p></div></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>16</big></div><h1 id="c16" data-mark="c16">Correcting the policy from VR</h1></div>
+<p class="lede">To collect corrections where the policy goes wrong (HG-DAgger):</p>
+<ol class="steps">
+<li>Connect and enable the robot. On TELEOP tick <strong>correct the policy</strong>, then <strong>▶ Start VR teleop</strong>
+   (the chip says <strong>CORRECTING</strong>).</li>
+<li>Start the policy on <strong>ROBOT</strong> (§14). It drives; VR follows the robot.</li>
+<li>When the policy goes wrong, press <strong>X</strong> / <strong>A</strong>: you take that arm over from where the policy put it.</li>
+<li>Press <strong>Y</strong> / <strong>B</strong> to give it back. The policy starts over 1 s later from where you left it.</li>
+<li>Record the takes as usual (§11). Each takeover is logged to <code>DATA ROOT/logs/takeover_&lt;date&gt;.jsonl</code>;
+   <code>data/cut_takeovers.py</code> cuts the corrections out of the recorded takes for training.</li>
+</ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>17</big></div><h1 id="c17" data-mark="c17">Adapting NERO Studio to a new task</h1></div>
+<p class="lede">Most of the panel needs nothing new for a new task. What changes is the data, the scene, and, if you
+use it, the object gate.</p>
+<h2 id="c17-s1">What works for any task as it is</h2>
+<p>Teleoperation (§9), the e-stop and HOLD (§10), recording, labels and the timing audit (§11–12),
+conversion and the four training recipes (§13), the inference modes (§14) and VR correction (§16).
+None of them knows what the task is: the policy learns it from your takes.</p>
+<h2 id="c17-s2">What to set for each new task</h2>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Item</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TASK</strong></td>
+<td>A new, plain instruction. It names the task's folder, is saved in every take, and is the instruction SmolVLA learns from</td>
+</tr>
+<tr>
+<td><strong>FACTORS</strong></td>
+<td>The things that vary across your sessions (background, lighting, operator, object type). They let you pick or hold out takes later</td>
+</tr>
+<tr>
+<td><strong>MOUNT</strong></td>
+<td><code>humanoid</code> for the Revo2 hands, <code>humanoid_gripper</code> for the 2-finger gripper. Record and run with the same mount</td>
+</tr>
+<tr>
+<td><strong>Cameras</strong></td>
+<td>Choose the camera setup once for the task and keep it for every take (§11)</td>
+</tr>
+<tr>
+<td><strong>Start pose</strong></td>
+<td>Nothing to set: it comes from your takes (the converter writes it). Start every take from the same pose</td>
+</tr>
+<tr>
+<td><strong>Scene</strong></td>
+<td>Fix the robot, camera and work area before recording, and keep them there. Note the robot's position and height</td>
+</tr>
+<tr>
+<td><strong>Training view</strong></td>
+<td>After the first session, make the Tune reference from the new takes (below)</td>
+</tr>
+<tr>
+<td><strong>REPO ID</strong></td>
+<td>A new dataset name. Do not mix takes of different tasks or scenes in one dataset unless you mean to</td>
+</tr>
+<tr>
+<td><strong>Policy and steps</strong></td>
+<td>Start with the recipes in §13. Check each checkpoint with <strong>Eval on dataset</strong>, then dry run, then the robot</td>
+</tr>
+</tbody>
+</table>
+<p>Make the training view for Tune from the task's takes (run in the repository, with the robot PC's
+Python):</p>
+<pre class="cmd">.venvs/questarm/bin/python3 policy/box_gate.py --build-ref &lt;DATA ROOT&gt;/recordings/&lt;task folder&gt; \
+    --out &lt;DATA ROOT&gt;/head_train_ref.jpg</pre>
+<p>It picks the take with the typical first head frame and writes the image and the takes' spread
+(<code>head_train_ref.json</code>) for Tune's <strong>view vs training</strong> line.</p>
+<h2 id="c17-s3">The object gate for a new task</h2>
+<p>Use the gate only if your task starts when an object arrives (§15). Then:</p>
+<ol class="steps">
+<li><strong>Choose how to see the object.</strong><ul>
+<li><strong>Colour test:</strong> leave MODEL empty and set <strong>HSV</strong> to the object's colour. Check it with <strong>Tune</strong>:
+  the ROI must turn green with the object and stay red without it, including with arms and people
+  in view.</li>
+<li><strong>Detector:</strong> train a detector for your object and set <strong>MODEL</strong> to it. The gate loads an
+  RF-DETR model, either its TorchScript export (<code>.ts</code>, runs on the robot PC's policy environment as
+  it is, on a CUDA GPU) or a training checkpoint (<code>.pth</code>, needs the <code>rfdetr</code> package). Every
+  detection above confidence 0.5 counts as the object. Detector training is not part of the panel;
+  the parcel detector's labelling, training and export scripts are in
+  <code>~/nero_data/det/box_20261031/tools/</code> on the development PC. Put the <code>.ts</code> under DATA ROOT as
+  <code>box_&lt;name&gt;.ts</code> and the panel loads the newest one by default.</li>
+</ul>
+</li>
+<li><strong>Draw the areas</strong> in ⚙ Advanced with <strong>Tune</strong> open: <strong>ROI</strong> where the object waits; <strong>EXIT</strong> and
+   <strong>LINE</strong> where finished objects leave, if they do (leave EXIT empty otherwise; a run then ends on the
+   other rules of §15).</li>
+<li><strong>Set WAIT</strong> to how long the object should rest before the robot starts.</li>
+<li><strong>Check the fixed run-end values</strong> below. They suit the parcel task; they are not panel fields.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Value</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--exit-after</code></td>
+<td>8 s</td>
+<td>EXIT is watched only after this time into a run</td>
+</tr>
+<tr>
+<td><code>--box-gone</code></td>
+<td>2 s</td>
+<td>With MODEL: the run ends when no object has been seen in the work area for this long (0: off)</td>
+</tr>
+<tr>
+<td><code>--box-gone-ymin</code></td>
+<td>row 150</td>
+<td>The work area for <code>--box-gone</code>: object centres below this head-image row</td>
+</tr>
+<tr>
+<td><code>--run-timeout</code></td>
+<td>1.5 × longest take</td>
+<td>The longest a run may last</td>
+</tr>
+<tr>
+<td><code>--home-lift</code> / <code>--home-speed</code></td>
+<td>0.05 m / 0.3</td>
+<td>RETURN: palms rise this far first, then move to the start pose at this speed</td>
+</tr>
+<tr>
+<td><code>--box-conf</code></td>
+<td>0.5</td>
+<td>Detector confidence threshold</td>
+</tr>
+</tbody>
+</table>
+<p>To change them, run <code>policy/inference_nero.py</code> from a terminal with the panel's command line (the
+<code>[infer] $ …</code> line in the TRAIN / INFER log when you press <strong>▶ Start</strong>) plus your values, or change
+their defaults in <code>policy/inference_nero.py</code> and <code>policy/box_gate.py</code>.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>18</big></div><h1 id="c18" data-mark="c18">Saved settings</h1></div>
+<p>Every field and slider is saved when the panel closes and restored at the next start: speeds, CAN
+names, VR arguments, cameras, task factors, dataset and training choices, inference mode and its
+numbers, the object-gate areas, the page, theme and language. They are stored in
+<code>~/.config/WeGo/NeroStudio.conf</code>.</p>
+<p>Settings in use on the robot PC on 2026-11-03, for the example application:</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPEED / MAX / FOLLOW</td>
+<td>100 % / 1.60 rad/s / 0.50 s</td>
+</tr>
+<tr>
+<td>INFERENCE MODE / FADE / PLAY</td>
+<td>chunk + fade / 20 / 0 (auto)</td>
+</tr>
+<tr>
+<td>box gate / WAIT / MODEL</td>
+<td>on / 2 s / <code>~/nero_data/box_rfdetr_s_20261031.ts</code></td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>19</big></div><h1 id="c19" data-mark="c19">Connecting your own software</h1></div>
+<p class="lede">All data moves on local ZeroMQ sockets that any program can read:</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Port</th>
+<th>Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5559 / 5560</td>
+<td>Arm / hand <strong>command</strong> (VR server or policy → bridge)</td>
+</tr>
+<tr>
+<td>5561 / 5562</td>
+<td><strong>Measured</strong> arm / hand (bridge)</td>
+</tr>
+<tr>
+<td>5555</td>
+<td>Camera frames (image server)</td>
+</tr>
+<tr>
+<td>5565 / 5566</td>
+<td>Policy commands in a <strong>dry run</strong> (nothing listens)</td>
+</tr>
+<tr>
+<td>5569 / 5570</td>
+<td>VR corrections while correcting a policy (§16)</td>
+</tr>
+</tbody>
+</table>
+<p>The message format and the joint order are in <code>nero-zmq-api.md</code>. Publish on 5559/5560
+only when nothing else does: one master at a time.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>20</big></div><h1 id="c20" data-mark="c20">Safety guidelines</h1></div>
+<ul>
+<li>Keep people and obstacles out of the arms' reach while motion is enabled.</li>
+<li>Keep the <strong>physical E-stop</strong> within reach; it is the primary stop.</li>
+<li>Connect in observe mode first; enable only with the arms in a safe pose and the workspace clear.</li>
+<li><strong>Clear e-stop powers the motors off: a raised arm drops.</strong> Lower or support the arms first.</li>
+<li>Lower the arms before Disconnect or closing the panel.</li>
+<li>Try every new policy as a dry run first, then on the robot in clear space, hand on the E-stop.</li>
+<li>If anything looks or sounds wrong, stop first, then find out why.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>21</big></div><h1 id="c21" data-mark="c21">When something goes wrong</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>5561 is already published</em> at Connect</td>
+<td>A bridge runs elsewhere (a terminal). Stop it; one program owns the CAN buses</td>
+</tr>
+<tr>
+<td>Enable refused: <em>arm is in e-stop</em></td>
+<td>The arm is latched by the last stop. Lower the arms, <strong>↺ Clear e-stop</strong>, then Enable (§10)</td>
+</tr>
+<tr>
+<td>An arm shows <strong>HOLD</strong></td>
+<td>It fell behind its command. <strong>▶ Resume arms in HOLD</strong>; raise FOLLOW if it happens on fast moves</td>
+</tr>
+<tr>
+<td>An arm shows <strong>FAULT</strong></td>
+<td>The arm reported a fault (the reason is in the health lines). Stop, check the arm and its CAN cable</td>
+</tr>
+<tr>
+<td><em>No arm command on 5559</em> at Record</td>
+<td>Start VR teleop first</td>
+</tr>
+<tr>
+<td>Start VR or Start policy refused: 5559 already published</td>
+<td>VR and a policy cannot both drive. Stop one (or use <strong>correct the policy</strong>, §16)</td>
+</tr>
+<tr>
+<td>No camera image</td>
+<td><strong>▶ Cameras</strong>; check CAMS. Camera numbers change when USB is re-plugged</td>
+</tr>
+<tr>
+<td>The 3D view is a stick figure</td>
+<td>No MuJoCo or OpenGL in this environment; the terminal says why. Everything else works</td>
+</tr>
+<tr>
+<td>Convert skipped takes</td>
+<td>BAD timing or a different camera size; see <strong>Audit</strong></td>
+</tr>
+<tr>
+<td><em>GPU out of memory: lower BATCH</em></td>
+<td>Lower BATCH, or the IMAGE SCALE</td>
+</tr>
+<tr>
+<td>The policy reaches beside the object</td>
+<td>Check the view with <strong>Tune</strong> (§15) and the robot's height and position</td>
+</tr>
+<tr>
+<td>The motion player does not start</td>
+<td>It needs <strong>box gate</strong> on and a <strong>MODEL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The TELEOP log is also written to <code>DATA ROOT/logs/teleop_&lt;date&gt;.log</code>. When you report a problem, send
+that file and say what you were doing.</p></section>
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

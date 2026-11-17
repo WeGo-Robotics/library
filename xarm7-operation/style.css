@@ -1,0 +1,21 @@
+/* xArm7 operator manual: rules the shared stylesheet does not have (kept from the 2026-11-06 edition) */
+.cover .arm{ position:absolute; right:12mm; bottom:24mm; width:84mm; z-index:0;
+  filter: drop-shadow(0 6mm 9mm rgba(0,0,0,.55)); }
+.opener .ko{ font-size:10pt; font-weight:600; color:var(--ink3); margin-top:.6mm; }
+.toc li .t small{ display:inline; font-weight:500; color:var(--ink3); font-size:8.2pt; margin-left:2mm; }
+h2 small{ font-size:8.6pt; font-weight:600; color:var(--ink3); margin-left:1.6mm; }
+h2 + p:has(+ table.t), h3 + p:has(+ table.t){ break-after:avoid; }
+code, pre{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "calt" 0; }
+table.t td code{ word-break:normal; overflow-wrap:normal; white-space:nowrap; font-size:7.4pt; }
+table.t td code.wrap{ white-space:normal; overflow-wrap:anywhere; }
+table.t{ break-inside:avoid; }   /* as in the 11-06 edition: a caption never sits alone at a page foot */
+table.t.keep{ break-inside:avoid; }
+table.t td.num, table.t th.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+table.t.check td{ height:6.4mm; vertical-align:middle; padding-top:.6mm; padding-bottom:.6mm; }
+table.t.check td.blank{ border-bottom:1px solid #9aa1b5; }
+.box p:last-child{ margin-bottom:0; }
+.qr pre.cmd{ margin:0; font-size:7.3pt; }
+table.t td.cb::before{ content:""; display:inline-block; width:3.2mm; height:3.2mm; border:1px solid #5a6178; border-radius:.5mm; vertical-align:-.5mm; }
+/* 17 chapters: the 11-06 edition's tighter contents list keeps it on one page */
+.toc .sub{ margin-bottom:7mm; }
+.toc li{ padding:2mm 0; font-size:10pt; }

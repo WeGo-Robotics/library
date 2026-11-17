@@ -1,0 +1,2 @@
+/* h2-developer: rules this manual uses that shared/css/wego_manual.css does not have */
+table.t.creds code{ white-space:nowrap; word-break:keep-all; }

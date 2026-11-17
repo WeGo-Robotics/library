@@ -1,0 +1,2 @@
+/* NERO Studio guide: panel symbols drawn as inline SVG (see nero_studio_to_parts.py) */
+svg.ic{ display:inline-block; width:1.05em; height:1.05em; vertical-align:-.15em; margin:0 .15em; }

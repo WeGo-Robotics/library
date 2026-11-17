@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>WeGo NERO Studio — 사용 가이드</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css */
+@page {
+  @top-left  { content: "WeGo NERO Studio"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "사용 가이드"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">WeGo NERO Studio — 사용 가이드</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/WeGo_NERO_Studio_Guide_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템이 하는 일</a><a class="wm-t1" href="#c2"><span class="wm-n">02</span>주요 기능</a><a class="wm-t1" href="#c3"><span class="wm-n">03</span>로봇 구성</a><a class="wm-t1" href="#c4"><span class="wm-n">04</span>NERO Studio 실행</a><a class="wm-t1" href="#c5"><span class="wm-n">05</span>제어판 한눈에 보기</a><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>제어판 항목 설명</a></summary><a class="wm-t2" href="#c6-s1">6.1 헤더</a><a class="wm-t2" href="#c6-s2">6.2 로봇 카드</a><a class="wm-t2" href="#c6-s3">6.3 VR 원격조작 카드</a><a class="wm-t2" href="#c6-s4">6.4 핸드 테스트 카드</a><a class="wm-t2" href="#c6-s5">6.5 실시간 뷰와 로봇 상태 (원격조작, 왼쪽)</a><a class="wm-t2" href="#c6-s6">6.6 스트림 카드 (녹화)</a><a class="wm-t2" href="#c6-s7">6.7 카메라 카드 (녹화)</a><a class="wm-t2" href="#c6-s8">6.8 데이터 녹화 &amp; 검토 카드 (녹화)</a><a class="wm-t2" href="#c6-s9">6.9 데이터셋 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s10">6.10 학습 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s11">6.11 추론 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s12">6.12 박스 사이클 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s13">6.13 키보드</a></details><a class="wm-t1" href="#c7"><span class="wm-n">07</span>상태 표시</a><a class="wm-t1" href="#c8"><span class="wm-n">08</span>시작하기 전에</a><a class="wm-t1" href="#c9"><span class="wm-n">09</span>VR 원격조작</a><a class="wm-t1" href="#c10"><span class="wm-n">10</span>비상 정지 · HOLD · 해제</a><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>시연 녹화</a></summary><a class="wm-t2" href="#c11-s1">녹화 방법</a><a class="wm-t2" href="#c11-s2">좋은 데이터셋의 조건</a></details><a class="wm-t1" href="#c12"><span class="wm-n">12</span>녹화 검토와 편집</a><a class="wm-t1" href="#c13"><span class="wm-n">13</span>정책 학습</a><a class="wm-t1" href="#c14"><span class="wm-n">14</span>로봇에서 정책 실행</a><details class="wm-ch"><summary><a class="wm-t1" href="#c15"><span class="wm-n">15</span>물체 게이트: 작업할 물체가 있을 때만 실행</a></summary><a class="wm-t2" href="#c15-s1">조정: 화면과 영역 확인</a><a class="wm-t2" href="#c15-s2">카운트: 완료한 물체 수</a></details><a class="wm-t1" href="#c16"><span class="wm-n">16</span>VR로 정책 보정</a><details class="wm-ch"><summary><a class="wm-t1" href="#c17"><span class="wm-n">17</span>새 작업에 맞추기</a></summary><a class="wm-t2" href="#c17-s1">어떤 작업에도 그대로 동작하는 것</a><a class="wm-t2" href="#c17-s2">새 작업마다 정할 것</a><a class="wm-t2" href="#c17-s3">새 작업에서 물체 게이트 쓰기</a></details><a class="wm-t1" href="#c18"><span class="wm-n">18</span>저장되는 설정</a><a class="wm-t1" href="#c19"><span class="wm-n">19</span>다른 프로그램 연결</a><a class="wm-t1" href="#c20"><span class="wm-n">20</span>안전 수칙</a><a class="wm-t1" href="#c21"><span class="wm-n">21</span>문제가 생겼을 때</a></nav><main class="wm-main">
+
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div><div class="tag">USER GUIDE</div></div>
+  <div class="kicker">사용 가이드</div>
+  <h1>WeGo <span>NERO</span><br>Studio</h1>
+  <div class="title2">원격조작 · 시연 데이터 수집<br>로봇 스킬 학습 · 실제 로봇 적용</div>
+  <div class="bar"></div>
+  <p class="lead">이 가이드는 NERO Studio의 기능, 제어판의 각 항목이 하는 일, 그리고 첫 실행부터 학습된
+정책을 로봇에서 실행하기까지의 과정을 설명합니다.</p>
+  <div class="glow"></div>
+  <img class="hero" src="assets/nero_robot.png" alt="NERO">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+<section class="front"><div class="colophon" id="about">
+  <h3>이 설명서에 대하여</h3><table><tr><td>대상</td><td>VR로 NERO를 원격조작하고, 시연을 녹화하고, 정책을 학습해 로봇에서 실행하는 운영자와 개발자</td></tr><tr><td>근거 문서</td><td>NERO Studio 저장소의 사용 가이드 (<code>docs/nero-studio-guide.ko.md</code>, 2026-11-05)</td></tr><tr><td>함께 보는 책</td><td><a data-manual="nero-operation" href="../nero-operation/"><b>AgileX NERO 운용 설명서</b></a> (로봇팔 연결 · 웹 제어 화면)</td></tr><tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr><tr><td>문의</td><td>go.support@wego-robotics.com</td></tr></table>
+  <p>NERO Studio는 특정 작업 하나에 묶여 있지 않습니다. 원격조작, 녹화, 학습, 추론은 VR로
+로봇에게 보여 줄 수 있는 양팔 작업이라면 무엇이든 똑같이 동작합니다. 이 가이드는 소포 처리
+작업 하나를 <strong>예시</strong>로 씁니다. 로봇이 들어오는 컨베이어에서 소포를 끌어와
+정렬하고, 바코드 리더 쪽으로 기울여 스캔한 뒤, 나가는 컨베이어로 넘기는 작업입니다. 화면 캡처와
+예시 값은 이 작업에서 가져왔습니다. 이 작업에만 해당하는 내용은 <strong>예시 응용</strong>으로
+표시했습니다. 다른 작업에 제어판을 맞추는 방법은 §17을 보십시오.</p>
+<div class="box note"><p>영문판은 <a data-manual="nero-studio-en" href="../nero-studio-en/">WeGo NERO Studio User Guide</a>입니다. 제어판 헤더의
+<strong>한 / EN</strong> 버튼으로 화면 언어를 바로 바꿀 수 있습니다. 아래에 굵게 표시된 버튼
+이름은 한국어 화면에 실제로 나타나는 이름입니다 (툴팁과 로그는 영어로 남습니다).</p></div>
+<p>새 PC에 설치하는 방법은 README §3, 제어판이 다루는 데이터 스트림은
+<code>nero-zmq-api.md</code>를 보십시오.</p>
+  <p><b>새 정책은 항상 드라이런으로 먼저 시험하고, 그다음 빈 공간에서 비상 정지 버튼에 손을 얹은 채 로봇에서 시험하십시오.</b></p>
+  <p class="copy">© WeGo Robotics. 표지 그림은 NERO 로봇 모델을 MuJoCo로 렌더링한 것이고, 본문 화면은 NERO Studio 제어판을 캡처한 것입니다. AgileX, NERO는 AgileX Robotics의 상표입니다.</p>
+</div></section>
+<section class="front toc"><h2>목차</h2><div class="sub">CONTENTS</div><ol><li><span class="n">01</span><span class="t">시스템이 하는 일</span><span class="d"></span><span class="p" data-toc="c1"></span></li><li><span class="n">02</span><span class="t">주요 기능</span><span class="d"></span><span class="p" data-toc="c2"></span></li><li><span class="n">03</span><span class="t">로봇 구성</span><span class="d"></span><span class="p" data-toc="c3"></span></li><li><span class="n">04</span><span class="t">NERO Studio 실행</span><span class="d"></span><span class="p" data-toc="c4"></span></li><li><span class="n">05</span><span class="t">제어판 한눈에 보기</span><span class="d"></span><span class="p" data-toc="c5"></span></li><li><span class="n">06</span><span class="t">제어판 항목 설명</span><span class="d"></span><span class="p" data-toc="c6"></span></li><li><span class="n">07</span><span class="t">상태 표시</span><span class="d"></span><span class="p" data-toc="c7"></span></li><li><span class="n">08</span><span class="t">시작하기 전에</span><span class="d"></span><span class="p" data-toc="c8"></span></li><li><span class="n">09</span><span class="t">VR 원격조작</span><span class="d"></span><span class="p" data-toc="c9"></span></li><li><span class="n">10</span><span class="t">비상 정지 · HOLD · 해제</span><span class="d"></span><span class="p" data-toc="c10"></span></li><li><span class="n">11</span><span class="t">시연 녹화</span><span class="d"></span><span class="p" data-toc="c11"></span></li><li><span class="n">12</span><span class="t">녹화 검토와 편집</span><span class="d"></span><span class="p" data-toc="c12"></span></li><li><span class="n">13</span><span class="t">정책 학습</span><span class="d"></span><span class="p" data-toc="c13"></span></li><li><span class="n">14</span><span class="t">로봇에서 정책 실행</span><span class="d"></span><span class="p" data-toc="c14"></span></li><li><span class="n">15</span><span class="t">물체 게이트: 작업할 물체가 있을 때만 실행</span><span class="d"></span><span class="p" data-toc="c15"></span></li><li><span class="n">16</span><span class="t">VR로 정책 보정</span><span class="d"></span><span class="p" data-toc="c16"></span></li><li><span class="n">17</span><span class="t">새 작업에 맞추기</span><span class="d"></span><span class="p" data-toc="c17"></span></li><li><span class="n">18</span><span class="t">저장되는 설정</span><span class="d"></span><span class="p" data-toc="c18"></span></li><li><span class="n">19</span><span class="t">다른 프로그램 연결</span><span class="d"></span><span class="p" data-toc="c19"></span></li><li><span class="n">20</span><span class="t">안전 수칙</span><span class="d"></span><span class="p" data-toc="c20"></span></li><li><span class="n">21</span><span class="t">문제가 생겼을 때</span><span class="d"></span><span class="p" data-toc="c21"></span></li></ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">시스템이 하는 일</h1></div>
+<p class="lede">NERO Studio는 NERO 양팔 로봇의 작업 전체를 한 창에서 다룹니다. VR 헤드셋으로 로봇을
+<strong>원격조작</strong>하고, 카메라 3대로 시연을 <strong>녹화</strong>하고, 그 데이터로 정책을 <strong>학습</strong>하고,
+학습된 정책을 로봇에서 <strong>실행</strong>합니다.</p>
+<p>제어판은 로봇을 직접 다루지 않습니다. 실제 일을 하는 프로그램들(팔 브리지
+<code>robot/nero_bridge.py</code>, VR 서버, 카메라 서버, 녹화기, 변환기, 학습, 추론)을 실행하고
+지켜봅니다. 각 카드에는 그 카드가 실행하는 프로그램 이름이 적혀 있고, 프로그램의
+출력은 아래쪽 로그에 나타납니다.</p>
+<p>요약하면 다음과 같습니다.</p>
+<ul>
+<li>팔을 관찰 모드로 <strong>연결</strong>하고, 준비되면 모션을 <strong>활성화</strong>합니다.</li>
+<li>PICO / Quest 헤드셋으로 양팔과 Revo2 양손을 <strong>원격조작</strong>합니다.</li>
+<li>측정된 로봇 자세를 3D로 <strong>실시간 확인</strong>합니다. 팔이 명령보다 늦으면 명령이 파란 반투명 팔로 보입니다.</li>
+<li>키 하나로 테이크를 <strong>녹화</strong>하고, 성공/실패 라벨을 붙이고, 검토 · 자르기 · 검사합니다.</li>
+<li>같은 녹화로 ACT, Advanced ACT, Diffusion, SmolVLA를 <strong>변환 · 학습</strong>합니다.</li>
+<li>학습된 정책을 드라이런으로 먼저, 그다음 로봇에서 <strong>실행</strong>합니다. 원하면 헤드 카메라에
+  작업할 물체가 보일 때만 실행하게 할 수 있습니다 (물체 게이트, §15).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">주요 기능</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>기능</th>
+<th>이점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>관찰 우선 연결</td>
+<td>모터를 켜기 전에 팔이 보고하는 관절 값부터 확인</td>
+</tr>
+<tr>
+<td>실시간 3D 로봇 뷰</td>
+<td>측정 자세와 손 쥠 정도, 팔이 늦을 때는 명령 자세를 반투명으로 표시</td>
+</tr>
+<tr>
+<td>속도 · 추종 · 램프 슬라이더</td>
+<td>연결 중에도 팔이 따라오는 속도와 허용 오차를 바로 조정</td>
+</tr>
+<tr>
+<td>키 하나로 비상 정지 (Esc)</td>
+<td>브리지로 양팔을 감쇠 정지</td>
+</tr>
+<tr>
+<td>손 간격을 조절하는 VR 원격조작</td>
+<td>헤드셋으로 양팔 · 양손 조작, <strong>간격</strong>으로 로봇 손이 서로 닿게 조절</td>
+</tr>
+<tr>
+<td>라벨과 조건이 붙는 녹화</td>
+<td>F5 / F6 / F7, 배경 · 조명 · 작업자를 테이크마다 저장</td>
+</tr>
+<tr>
+<td>테이크별 타이밍 검사</td>
+<td>카메라 속도, 카메라-관절 시간차, 팔 추종을 학습 전에 확인</td>
+</tr>
+<tr>
+<td>검토 · 자르기 · 삭제</td>
+<td>제어판 안에서 데이터셋 정리</td>
+</tr>
+<tr>
+<td>학습 레시피 4종</td>
+<td>ACT, Advanced ACT (DINOv3), Diffusion, SmolVLA, 실시간 손실 그래프</td>
+</tr>
+<tr>
+<td>추론 모드 4종</td>
+<td>chunk, chunk + fade, temporal ensemble, motion player</td>
+</tr>
+<tr>
+<td>물체 게이트 (박스 사이클 카드)</td>
+<td>헤드 카메라의 지정 영역에 물체가 있는 동안만 정책을 실행하고, 끝나면 시작 자세로 복귀</td>
+</tr>
+<tr>
+<td>실행 중인 정책을 VR로 보정</td>
+<td>정책에서 팔을 넘겨받았다가 돌려주며 보정 데이터 수집</td>
+</tr>
+<tr>
+<td>물체 카운터 (<strong>카운트</strong>)</td>
+<td>출구 영역으로 나간 물체 수를 날짜별 CSV에 기록</td>
+</tr>
+<tr>
+<td>한국어 / 영어, 다크 / 라이트</td>
+<td>헤더에서 바로 전환</td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">로봇 구성</h1></div>
+<ul>
+<li><strong>팔:</strong> 몸통 마운트에 단 AgileX NERO 7자유도 로봇팔 2대입니다. CAN 버스는 <code>can_left</code>, <code>can_right</code>입니다.</li>
+<li><strong>손:</strong> BrainCo <strong>Revo2 Touch</strong> 다관절 손(마운트 <code>humanoid</code>) 또는 NERO 2지 그리퍼
+  (마운트 <code>humanoid_gripper</code>)입니다.</li>
+<li><strong>카메라:</strong> 헤드 카메라(Logitech C920, 864×480)와 손목 카메라 2대(640×480)입니다.
+  영상은 <code>data/image_server.py</code>가 보냅니다.</li>
+<li><strong>VR:</strong> NERO VR 앱을 실행한 PICO 4 Ultra 또는 Meta Quest입니다. VR 서버
+  (<code>scripts/questarm-mujoco.sh</code>)로 연결합니다.</li>
+<li><strong>로봇 PC:</strong> 제어판, 브리지, 카메라, 추론이 로봇 PC에서 실행됩니다. 긴 학습은 학습
+  PC에서 합니다 (§13).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">NERO Studio 실행</h1></div>
+<p class="lede">로봇 PC에서 다음 명령으로 실행합니다.</p>
+<pre class="cmd">cd ~/workspace/NERO_DualArm_VR
+.venvs/questarm/bin/python3 ./data/nero_studio.py</pre>
+<p>다른 PC에서는 저장소를 클론한 폴더에서 같은 파일을 실행합니다. PyQt6, h5py, zmq, OpenCV가 있는
+Python이 필요합니다. 학습과 추론은 별도의 LeRobot 환경에서 실행됩니다.
+<code>&lt;repo&gt;/.venvs/lerobot</code>이 있으면 그 환경을, 없으면 <code>~/miniconda3/envs/lerobot</code>을 씁니다.
+다른 환경을 쓰려면 <code>NERO_LEROBOT_PY</code>를 지정하십시오.</p>
+<p>제어판은 마지막으로 쓴 페이지와 설정으로 열립니다 (§18). <strong>카메라</strong> 카드의
+<strong>실행 시 시작</strong>이 체크되어 있으면 창이 열리고 1초 뒤 카메라가 시작됩니다.</p>
+<p>3D 로봇 뷰에는 MuJoCo와 OpenGL이 필요합니다. 없으면 제어판은 팔을 선으로 그리고, 터미널에
+<code>[studio] 3D robot view off, drawing the skeleton: …</code>이라고 이유를 남깁니다. 나머지
+기능은 그대로 동작합니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">제어판 한눈에 보기</h1></div>
+<figure><img src="assets/01_teleop.png" alt="원격조작 페이지"><figcaption><b>그림 1.</b> 원격조작 페이지</figcaption></figure>
+<p>창은 세 페이지로 되어 있으며, 페이지는 헤더에서 고릅니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>페이지</th>
+<th>왼쪽</th>
+<th>오른쪽 카드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>원격조작</strong></td>
+<td>실시간 3D 로봇 뷰, 로봇 상태, 원격조작 로그</td>
+<td>로봇, VR 원격조작, 핸드 테스트</td>
+</tr>
+<tr>
+<td><strong>녹화</strong></td>
+<td>실시간 카메라, 녹화 로그</td>
+<td>스트림, 카메라, 데이터 녹화 &amp; 검토</td>
+</tr>
+<tr>
+<td><strong>학습 / 추론</strong></td>
+<td>학습 손실 그래프, 학습 / 추론 로그</td>
+<td>데이터셋, 학습, 추론, 박스 사이클</td>
+</tr>
+</tbody>
+</table>
+<p>제어판은 화면에 보이는 페이지만 그립니다. 카메라 영상도 <strong>녹화</strong> 페이지가 보일 때만
+디코딩합니다. 로봇 PC의 CPU를 정책 실행에 남겨 두기 위해서입니다.</p>
+<p>각 카드의 머리글에는 카드 이름, 실행하는 프로그램, 상태 표시(§7)가 있습니다. 카드의
+<strong>⚙ 고급</strong>을 누르면 자주 바꾸지 않는 설정이 나타납니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">제어판 항목 설명</h1></div>
+<p class="lede">처음 읽을 때는 건너뛰어도 됩니다. 어떤 항목이 정확히 무엇을 하는지 알고 싶을 때
+돌아와 보십시오.</p>
+<h2 id="c6-s1">6.1 헤더</h2>
+<figure><img src="assets/header.png" alt="헤더"><figcaption><b>그림 2.</b> 헤더</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>원격조작</strong> / <strong>녹화</strong> / <strong>학습 / 추론</strong></td>
+<td>페이지 전환</td>
+</tr>
+<tr>
+<td><strong>데이터 루트</strong></td>
+<td>모든 데이터가 저장되는 폴더 (기본 <code>~/nero_data</code>). <strong>…</strong>로 다른 폴더 선택</td>
+</tr>
+<tr>
+<td><strong>마운트</strong></td>
+<td><code>humanoid</code> (Revo2 손) 또는 <code>humanoid_gripper</code> (2지 그리퍼). 브리지, VR, 녹화 중에는 잠김</td>
+</tr>
+<tr>
+<td><strong>한 / EN</strong></td>
+<td>한국어 또는 영어, 바로 적용. 툴팁과 로그는 영어</td>
+</tr>
+<tr>
+<td><strong>☀ / ☾</strong></td>
+<td>라이트 또는 다크 테마, 바로 적용</td>
+</tr>
+</tbody>
+</table>
+<p>데이터 루트 아래의 폴더 구성은 다음과 같습니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>폴더</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recordings/&lt;작업&gt;/episode_*.hdf5</code></td>
+<td>작업마다 폴더 하나, 테이크마다 파일 하나</td>
+</tr>
+<tr>
+<td><code>lerobot/&lt;데이터셋 ID&gt;/</code></td>
+<td>변환된 데이터셋</td>
+</tr>
+<tr>
+<td><code>train/&lt;날짜&gt;_&lt;시각&gt;_&lt;정책&gt;/</code></td>
+<td>학습 실행과 체크포인트</td>
+</tr>
+<tr>
+<td><code>logs/teleop_&lt;날짜&gt;.log</code></td>
+<td>원격조작 로그와 추론 출력, 시각 포함</td>
+</tr>
+<tr>
+<td><code>logs/takeover_&lt;날짜&gt;.jsonl</code></td>
+<td>실행 중인 정책을 VR로 보정한 기록 (§16)</td>
+</tr>
+<tr>
+<td><code>library/*.npz</code></td>
+<td>motion player용 모션 라이브러리 (§14)</td>
+</tr>
+<tr>
+<td><code>box_*.ts</code></td>
+<td>물체 게이트용 물체 검출기 (§15). 기본으로 가장 최근 파일을 불러옴</td>
+</tr>
+<tr>
+<td><code>head_train_ref.jpg</code></td>
+<td><strong>조정</strong>이 겹쳐 보여 주는 학습 당시 화면 (§15)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s2">6.2 로봇 카드</h2>
+<figure class="f60"><img src="assets/card_robot.png" alt="로봇 카드"><figcaption><b>그림 3.</b> 로봇 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>소스</strong></td>
+<td><strong>CAN (real arms)</strong>은 실제 팔, <strong>mock (no robot)</strong>은 연습용 가상 팔입니다</td>
+</tr>
+<tr>
+<td><strong>팔</strong></td>
+<td><code>both</code>, <code>left</code>, <code>right</code> 중에서 연결할 팔을 고릅니다</td>
+</tr>
+<tr>
+<td><strong>속도</strong></td>
+<td>팔 SDK의 이동 속도(1–100 %)입니다. 연결 중에도 바로 적용됩니다</td>
+</tr>
+<tr>
+<td><strong>최대</strong></td>
+<td>브리지의 추종 속도 상한(0.05–1.60 rad/s)입니다. 연결 중에도 바로 적용됩니다. VR 서버는 VR을 시작할 때 한 번만 읽습니다</td>
+</tr>
+<tr>
+<td><strong>추종</strong></td>
+<td>팔이 명령보다 얼마나 늦어도 되는지 정합니다. 이 한계를 넘으면 브리지가 그 팔을 <strong>HOLD</strong>합니다. 옆에 표시되는 값이 실제 한계(0.15 rad + 추종 × 최대)입니다. 바로 적용됩니다</td>
+</tr>
+<tr>
+<td><strong>램프</strong></td>
+<td>활성화 직후나 HOLD에서 재개할 때, 멀리 떨어진 명령 자세로 다가가는 속도입니다. 바로 적용됩니다</td>
+</tr>
+<tr>
+<td><strong>▶ 연결 (관찰)</strong></td>
+<td>브리지를 시작합니다. 팔은 관절 값만 보고하고 모터는 움직이지 않습니다. 누르면 버튼이 <strong>■ 연결 해제</strong>로 바뀝니다</td>
+</tr>
+<tr>
+<td><strong>↺ 비상정지 해제</strong></td>
+<td>비상 정지된 팔을 리셋합니다. <strong>그 즉시 모터 전원이 꺼져 들려 있던 팔이 떨어집니다.</strong> 먼저 팔을 내리거나 받치십시오</td>
+</tr>
+<tr>
+<td><strong>⚡ 모션 활성화</strong></td>
+<td>모터를 켭니다. 팔은 그 자리를 유지하고, 첫 명령에는 램프 속도로 다가갑니다</td>
+</tr>
+<tr>
+<td><strong>▶ HOLD 팔 재개</strong></td>
+<td>HOLD로 멈춘 팔을 다시 움직입니다. 램프 속도로 현재 명령에 다가갑니다</td>
+</tr>
+<tr>
+<td><strong><svg class="ic" viewBox="0 0 16 16" aria-label="⛔"><polygon points="5,0 11,0 16,5 16,11 11,16 5,16 0,11 0,5" fill="#d92d20"/><rect x="3" y="6.5" width="10" height="3" fill="#fff"/></svg> 비상정지 (Esc)</strong></td>
+<td>이 제어판에서 시작한 브리지로 양팔을 감쇠 정지합니다. 기본 정지 수단은 언제나 물리 비상 정지 버튼입니다</td>
+</tr>
+</tbody>
+</table>
+<figure class="f60"><img src="assets/card_robot_adv.png" alt="로봇 카드, 고급"><figcaption><b>그림 4.</b> 로봇 카드, 고급</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>⚙ 고급</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>왼쪽 CAN</strong> / <strong>오른쪽 CAN</strong></td>
+<td>CAN 인터페이스 이름, <code>can_left</code> / <code>can_right</code></td>
+</tr>
+<tr>
+<td><strong>추가 인자</strong></td>
+<td>브리지 추가 인자, 예: <code>--gripper-force 5</code></td>
+</tr>
+</tbody>
+</table>
+<p>소스, 팔, CAN 이름, 추가 인자는 연결할 때 읽으며, 브리지가 실행 중이면 잠깁니다.</p>
+<h2 id="c6-s3">6.3 VR 원격조작 카드</h2>
+<figure class="f60"><img src="assets/card_vr.png" alt="VR 원격조작 카드"><figcaption><b>그림 5.</b> VR 원격조작 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>간격</strong></td>
+<td>작업자 손의 좌우 움직임을 로봇에서 몇 배로 키울지 정합니다(×1.00–×2.00). 로봇 손바닥은 0.44 m 떨어진 채 시작해 사람 손보다 간격이 넓으므로, ×1이면 사람 손끼리 먼저 맞닿습니다. VR을 시작할 때 읽습니다</td>
+</tr>
+<tr>
+<td><strong>▶ VR 원격조작 시작</strong></td>
+<td>VR 서버를 시작합니다. 마운트는 헤더에서, 속도는 <strong>최대</strong>에서, 간격은 <strong>간격</strong>에서 가져옵니다. 누르면 버튼이 <strong>■ VR 정지</strong>로 바뀝니다</td>
+</tr>
+<tr>
+<td><strong>정책 보정</strong></td>
+<td>VR로 팔을 혼자 조작하는 대신, 실행 중인 정책 옆에서 VR을 시작합니다 (§16). VR을 시작하기 전에 설정합니다</td>
+</tr>
+<tr>
+<td>⚙ <strong>인자</strong></td>
+<td>VR 서버 추가 인자입니다. 기본값은 <code>--godot --w-pos 20</code>입니다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>최대</strong>나 <strong>간격</strong>을 바꾸면 VR 서버에는 다음에 시작할 때 적용되며, 로그에도 그렇게 표시됩니다.</p>
+<h2 id="c6-s4">6.4 핸드 테스트 카드</h2>
+<figure class="f60"><img src="assets/card_hand.png" alt="핸드 테스트 카드"><figcaption><b>그림 6.</b> 핸드 테스트 카드</figcaption></figure>
+<p><strong>열기</strong>, <strong>절반</strong>, <strong>닫기</strong>는 양손에 손 명령 하나를 약 1.2초 동안 보내고, 그 뒤 손은 그
+상태를 유지합니다. 이 버튼은 모션이 활성화되어 있고, VR 서버나 정책이 손을 조작하지 않을 때만
+동작합니다.</p>
+<h2 id="c6-s5">6.5 실시간 뷰와 로봇 상태 (원격조작, 왼쪽)</h2>
+<ul>
+<li><strong>3D 뷰</strong>는 작업자가 서는 방향, 즉 뒤에서 본 NERO입니다. <strong>측정된</strong> 관절과 손 쥠
+  정도를 보여 줍니다. 팔이 명령보다 0.03 rad 넘게 늦으면 명령 자세가 <strong>파란 반투명
+  팔</strong>로 나타납니다. 드래그하면 시점이 돌고, 더블클릭하면 원래대로 돌아옵니다.</li>
+<li>측정 관절이 없으면 모델은 VR 홈 자세로 서 있고 <em>5561에 측정된 팔 상태 없음</em>이라고
+  표시합니다.</li>
+<li>아래 <strong>상태 줄</strong>에는 브리지 상태, 팔별 모드 (<code>TRACK</code>, <code>IDLE</code>, <strong>HOLD — press ▶ Resume</strong>),
+  마지막 오류, 관절 각도(도), 손 쥠 정도 (0 열림, 1 닫힘), 손별 Revo2 Touch 장치, 적용
+  중인 속도 상한, 그리고 어떤 마스터(VR 또는 정책)가 몇 Hz로 명령하는지가 표시됩니다.</li>
+</ul>
+<h2 id="c6-s6">6.6 스트림 카드 (녹화)</h2>
+<figure class="f60"><img src="assets/card_streams.png" alt="스트림 카드"><figcaption><b>그림 7.</b> 스트림 카드</figcaption></figure>
+<p>이 PC의 데이터 스트림마다 포트, 상태 (<strong>LIVE</strong>, <strong>STALE</strong>, <strong>OFF</strong>), 속도, 지연을
+보여 줍니다. 스트림은 팔 명령 5559, 손 명령 5560, 측정 팔 5561, 측정 손 5562, 카메라 5555입니다.
+마지막 줄은 측정 관절 각도(도)입니다. 터미널에서 시작한 프로그램의 스트림도 보입니다.</p>
+<h2 id="c6-s7">6.7 카메라 카드 (녹화)</h2>
+<figure class="f60"><img src="assets/card_cams.png" alt="카메라 카드"><figcaption><b>그림 8.</b> 카메라 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>카메라 설정</strong></td>
+<td>카메라 목록을 <code>이름:종류:ID[:WxH][:회전]</code> 형식으로, 띄어쓰기로 구분해 적습니다. 예: <code>head:opencv:0 right_wrist:opencv:2:cw left_wrist:opencv:4:ccw</code>. 전체 문법은 툴팁을 참고하십시오</td>
+</tr>
+<tr>
+<td><strong>▶ 카메라</strong></td>
+<td>카메라 서버를 시작하거나 정지합니다. USB에서 빠졌던 카메라는 스스로 다시 연결됩니다</td>
+</tr>
+<tr>
+<td><strong>실행 시 시작</strong></td>
+<td>제어판을 열 때마다 이 카메라들을 시작합니다</td>
+</tr>
+<tr>
+<td>⚙ <strong>고정</strong></td>
+<td>노출, 화이트 밸런스, 초점을 고정합니다. 예: <code>all:auto_exposure=1,exposure_time_absolute=83</code>. 비워 두면 카메라마다 자동으로 맞춥니다. 설정은 USB를 다시 연결한 뒤에도 다시 적용되고, 테이크마다 저장됩니다. 항목 이름은 <code>v4l2-ctl -d /dev/videoN --list-ctrls</code>로 확인합니다(<code>v4l-utils</code> 필요). C920의 제약은 툴팁을 참고하십시오</td>
+</tr>
+<tr>
+<td>⚙ <strong>깊이</strong> / <strong>FPS</strong></td>
+<td>깊이도 보낼 카메라(RealSense만)와 프레임 속도(기본 30)를 정합니다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>데이터셋 하나에는 카메라 설정 하나</strong>를 유지하십시오. 카메라 이름, 크기, 회전이 모두 같아야 합니다. 변환기는
+카메라 크기가 첫 테이크와 다른 테이크를 건너뜁니다.</p>
+<h2 id="c6-s8">6.8 데이터 녹화 &amp; 검토 카드 (녹화)</h2>
+<figure class="f60"><img src="assets/card_data.png" alt="데이터 녹화 &amp; 검토 카드"><figcaption><b>그림 9.</b> 데이터 녹화 &amp; 검토 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>작업</strong></td>
+<td>작업을 설명하는 간단한 지시문입니다. 예: <code>put the cup on the tray</code> (예시 응용: <code>drag and scan box</code>). 작업마다 폴더가 따로 생깁니다. 기존 작업을 고르거나 새로 입력합니다</td>
+</tr>
+<tr>
+<td><strong>조건</strong></td>
+<td>테이크마다 저장되는 <code>키=값</code> 목록입니다. 예: <code>background=none lighting=day operator=op1</code>. 나중에 테이크를 고르거나 제외할 때 씁니다</td>
+</tr>
+<tr>
+<td><strong>● 녹화 (F5)</strong></td>
+<td>테이크를 시작합니다. 녹화 중에는 버튼이 <strong>■ 정지, 라벨 없음 (F5)</strong>로 바뀝니다</td>
+</tr>
+<tr>
+<td><strong>■ 성공 (F6)</strong></td>
+<td>정지하고 성공 라벨을 붙입니다</td>
+</tr>
+<tr>
+<td><strong>■ 실패 (F7)</strong></td>
+<td>정지하고 실패 라벨을 붙입니다. 실패 이유를 묻습니다</td>
+</tr>
+<tr>
+<td><strong>■ 정지, 라벨 없음</strong></td>
+<td>라벨 없이 정지합니다</td>
+</tr>
+<tr>
+<td><strong>테이크 목록</strong></td>
+<td>작업의 테이크를 최신순으로 보여 줍니다. 프레임 수, 초, 라벨, 팔 상태(측정 값 또는 명령만), 카메라, <strong>timing</strong> 판정(OK / WARN / BAD, 마우스를 올리면 이유 표시)이 나옵니다</td>
+</tr>
+<tr>
+<td><strong>새로고침</strong></td>
+<td>폴더를 다시 읽습니다</td>
+</tr>
+<tr>
+<td><strong>시각화</strong></td>
+<td>선택한 테이크를 3D 재생 뷰어로 엽니다 (줄을 더블클릭해도 됩니다)</td>
+</tr>
+<tr>
+<td><strong>자르기…</strong></td>
+<td>테이크의 일부 구간만 남깁니다 (§12)</td>
+</tr>
+<tr>
+<td><strong>검사</strong></td>
+<td>작업에 있는 모든 테이크의 타이밍 보고서를 보여 줍니다</td>
+</tr>
+<tr>
+<td><strong>삭제</strong></td>
+<td>선택한 테이크를 삭제합니다. 되돌릴 수 없습니다</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s9">6.9 데이터셋 카드 (학습 / 추론)</h2>
+<figure class="f60"><img src="assets/card_dataset.png" alt="데이터셋 카드"><figcaption><b>그림 10.</b> 데이터셋 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>작업 목록</strong></td>
+<td>작업 폴더와 테이크 수를 보여 줍니다. 변환할 작업을 체크합니다. <strong>스캔</strong>으로 다시 읽습니다</td>
+</tr>
+<tr>
+<td><strong>데이터셋 ID</strong></td>
+<td>데이터셋 이름(<code>소유자/이름</code>)입니다. 예: <code>nero/drag_scan_20261101_s05</code></td>
+</tr>
+<tr>
+<td><strong>액션</strong></td>
+<td><code>joint</code> (관절 각도, 기본) 또는 <code>ee</code> (손바닥 자세)를 고릅니다</td>
+</tr>
+<tr>
+<td><strong>실패 테이크 포함</strong></td>
+<td>실패한 테이크도 변환합니다 (기본 꺼짐)</td>
+</tr>
+<tr>
+<td><strong>이미지 배율</strong></td>
+<td>학습 전에 모든 카메라 영상을 줄입니다. ACT, Advanced ACT, SmolVLA는 <strong>1</strong>, Diffusion은 <strong>0.5</strong>를 씁니다. 배율마다 데이터셋 ID를 따로 쓰십시오</td>
+</tr>
+<tr>
+<td><strong>타이밍 BAD 테이크 포함</strong></td>
+<td>검사에서 BAD로 나온 테이크도 변환합니다 (기본 꺼짐)</td>
+</tr>
+<tr>
+<td><strong>▶ 변환</strong></td>
+<td>데이터셋을 만듭니다. 같은 ID가 있으면 물어본 뒤 다시 만듭니다</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s10">6.10 학습 카드 (학습 / 추론)</h2>
+<figure class="f60"><img src="assets/card_train.png" alt="학습 카드"><figcaption><b>그림 11.</b> 학습 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>정책</strong></td>
+<td><code>act</code>, <code>advanced act</code>, <code>diffusion</code>, <code>smolvla</code> (§13)</td>
+</tr>
+<tr>
+<td><strong>스텝</strong> / <strong>배치</strong></td>
+<td>학습 스텝 수와 배치 크기. 스텝의 1/4마다 체크포인트 저장</td>
+</tr>
+<tr>
+<td><strong>▶ 학습</strong> / <strong>■ 정지</strong></td>
+<td>이 PC의 GPU에서 학습 시작/정지</td>
+</tr>
+<tr>
+<td><strong>먼저 변환</strong></td>
+<td>학습 전에 체크한 작업을 데이터셋 ID로 변환</td>
+</tr>
+<tr>
+<td><strong>상태 줄</strong></td>
+<td>스텝, 손실, 최저 손실, 초당 스텝, 남은 시간. GPU 메모리 부족이나 NaN 손실을 경고</td>
+</tr>
+<tr>
+<td>⚙ <strong>추가 인자</strong></td>
+<td>학습 추가 인자. 같은 키는 레시피 값보다 우선</td>
+</tr>
+</tbody>
+</table>
+<p>왼쪽 <strong>학습 손실</strong> 그래프는 학습하는 동안 손실을 로그 눈금으로 그립니다.</p>
+<h2 id="c6-s11">6.11 추론 카드 (학습 / 추론)</h2>
+<figure class="f60"><img src="assets/card_infer.png" alt="추론 카드"><figcaption><b>그림 12.</b> 추론 카드</figcaption></figure>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>체크포인트</strong></td>
+<td>데이터 루트/train 아래의 모든 체크포인트(최신순)와 모션 라이브러리. <strong>↻</strong>로 다시 읽기</td>
+</tr>
+<tr>
+<td><strong>데이터셋</strong></td>
+<td>체크포인트가 학습한 데이터셋 (체크포인트에서 읽음)</td>
+</tr>
+<tr>
+<td><strong>대상</strong></td>
+<td><strong>dry run → 5565/5566 (nothing moves)</strong> 아무것도 움직이지 않음, 또는 <strong>ROBOT → 5559/5560 (bridge)</strong></td>
+</tr>
+<tr>
+<td><strong>모드</strong></td>
+<td><code>chunk</code>, <code>chunk + fade</code>, <code>temporal ensemble</code>, <code>motion player</code> (§14)</td>
+</tr>
+<tr>
+<td><strong>페이드</strong> / <strong>재생</strong></td>
+<td>chunk + fade 전용: 섞는 길이(제어 스텝), 청크마다 재생할 액션 수 (0 = 자동)</td>
+</tr>
+<tr>
+<td><strong>계수</strong></td>
+<td>temporal ensemble 전용: 섞는 가중치</td>
+</tr>
+<tr>
+<td><strong>▶ 시작</strong> / <strong>■ 정지</strong></td>
+<td>정책 시작/정지</td>
+</tr>
+<tr>
+<td><strong>데이터셋으로 평가</strong></td>
+<td>데이터셋의 테이크를 정책에 넣고 작업자와의 차이를 관절별로 그래프로 표시. 로봇은 움직이지 않음</td>
+</tr>
+<tr>
+<td>⚙ <strong>작업</strong></td>
+<td>언어 정책에 주는 작업 문구 (기본: 데이터셋의 작업 문구)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s12">6.12 박스 사이클 카드 (학습 / 추론)</h2>
+<figure class="f60"><img src="assets/card_box_adv.png" alt="박스 사이클 카드, 고급"><figcaption><b>그림 13.</b> 박스 사이클 카드, 고급</figcaption></figure>
+<p>카드 이름은 첫 응용(소포)에서 왔지만, 헤드 카메라에 보이는 물체라면 무엇에나 쓸 수 있습니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>모델</strong></td>
+<td>물체 검출기(<code>box_*.ts</code>)입니다. 비워 두면 색상 판정(HSV)을 씁니다</td>
+</tr>
+<tr>
+<td><strong>박스 게이트</strong></td>
+<td>집는 영역에 물체가 있을 때만 정책을 실행하고, 매번 끝나면 시작 자세로 돌아갑니다 (§15). 시작 신호가 될 물체가 없는 작업이면 체크를 끄십시오</td>
+</tr>
+<tr>
+<td><strong>대기</strong></td>
+<td>실행을 시작하기 전에 물체가 집는 영역에 머물러야 하는 시간입니다(초, 기본 2)</td>
+</tr>
+<tr>
+<td><strong>조정</strong></td>
+<td>헤드 카메라 영상을 크게 열고, 집는 영역 · 출구 영역과 학습 당시 화면을 겹쳐 보여 줍니다 (§15). 다시 누르거나 창을 닫으면 멈춥니다</td>
+</tr>
+<tr>
+<td><strong>카운트</strong></td>
+<td>물체 카운터를 시작하거나 정지합니다 (§15)</td>
+</tr>
+<tr>
+<td>⚙ <strong>ROI</strong></td>
+<td>헤드 영상에서 물체를 집는 영역(<code>X0,Y0,X1,Y1</code>)입니다</td>
+</tr>
+<tr>
+<td>⚙ <strong>HSV</strong></td>
+<td>색상 판정에 쓰는 색 범위입니다</td>
+</tr>
+<tr>
+<td>⚙ <strong>출구</strong> / <strong>라인</strong></td>
+<td>작업을 마친 물체가 나가는 영역과, 물체가 나갈 때 넘는 영상의 행입니다</td>
+</tr>
+<tr>
+<td>⚙ <strong>헤드 마스크</strong> / <strong>영역</strong></td>
+<td>정책이 보기 전에 헤드 영상의 한 영역을 덮습니다</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c6-s13">6.13 키보드</h2>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>키</th>
+<th>동작</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F5</strong></td>
+<td>녹화 / 라벨 없이 정지</td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td>정지, 성공</td>
+</tr>
+<tr>
+<td><strong>F7</strong></td>
+<td>정지, 실패</td>
+</tr>
+<tr>
+<td><strong>Esc</strong></td>
+<td>비상 정지</td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">상태 표시</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>카드</th>
+<th>표시</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>로봇</td>
+<td><strong>오프라인</strong></td>
+<td>이 제어판에서 시작한 브리지 없음</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>시작 중</strong></td>
+<td>브리지가 팔에 연결 중</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>관찰</strong></td>
+<td>연결됨, 관절을 읽는 중, 모터 꺼짐</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>활성</strong></td>
+<td>모터 켜짐, 팔이 명령을 따름</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>오류</strong></td>
+<td>팔이 오류를 보고함, 이유는 상태 줄에 표시</td>
+</tr>
+<tr>
+<td>VR 원격조작</td>
+<td><strong>실행 중</strong> / <strong>보정 중</strong> / <strong>정지됨</strong></td>
+<td>VR이 팔을 조작 / VR이 정책을 보정 / 실행 안 함</td>
+</tr>
+<tr>
+<td>스트림</td>
+<td><strong>n/4 라이브</strong> / <strong>꺼짐</strong></td>
+<td>로봇 스트림 4개 (5559–5562) 중 살아 있는 수</td>
+</tr>
+<tr>
+<td>카메라</td>
+<td><strong>라이브</strong> / <strong>꺼짐</strong></td>
+<td>카메라 영상 수신 여부</td>
+</tr>
+<tr>
+<td>데이터 녹화</td>
+<td><strong>녹화 중</strong> / <strong>준비</strong> / <strong>정지됨</strong></td>
+<td>테이크 녹화 중 / 녹화기 대기 / 실행 안 함</td>
+</tr>
+<tr>
+<td>데이터셋</td>
+<td><strong>변환 중</strong></td>
+<td>변환 실행 중</td>
+</tr>
+<tr>
+<td>학습</td>
+<td><strong>학습</strong> / <strong>정지됨</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>추론</td>
+<td><strong>로봇</strong> / <strong>드라이런</strong> / <strong>정지됨</strong></td>
+<td>실행 중인 정책의 명령이 가는 곳</td>
+</tr>
+<tr>
+<td>박스 사이클</td>
+<td><strong>게이트 켜짐</strong> / <strong>게이트 꺼짐</strong>, <strong>· 카운트 중</strong></td>
+<td>박스 게이트 켜짐/꺼짐, 물체 카운터 실행 중</td>
+</tr>
+</tbody>
+</table>
+<p>상태 줄의 팔 모드는 <strong>TRACK</strong> (추종 중), <strong>IDLE</strong>, <strong>HOLD</strong> (추종 한계로 정지,
+<strong>▶ HOLD 팔 재개</strong>를 누르십시오), <strong>FAULT</strong>입니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">시작하기 전에</h1></div>
+<ol class="steps">
+<li>팔 전원이 켜져 있고 CAN 인터페이스(<code>can_left</code>, <code>can_right</code>)가 올라와 있습니다.</li>
+<li>다관절 손이 연결되어 있습니다. 상태 줄에 손마다 Revo2 Touch 장치가 표시됩니다.</li>
+<li>카메라가 <strong>데이터셋을 녹화할 때와 같은 USB 포트</strong>에 꽂혀 있습니다.</li>
+<li>로봇과 헤드 카메라가 녹화할 때와 같은 위치에 있습니다 (<strong>조정</strong>으로 확인, §15).</li>
+<li>작업 공간이 비어 있고, <strong>물리 비상 정지 버튼에 손이 닿습니다</strong>.</li>
+</ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">VR 원격조작</h1></div>
+<ol class="steps">
+<li><strong>원격조작 → ▶ 연결 (관찰)</strong>을 누릅니다. 표시가 <strong>관찰</strong>이 될 때까지 기다리면 3D 뷰에 실제 팔이 보입니다.</li>
+<li>팔을 안전한 자세에 두고 <strong>⚡ 모션 활성화</strong>를 누른 뒤 확인합니다. 표시가 <strong>활성</strong>으로
+   바뀌고, 팔은 그 자리를 유지합니다.</li>
+<li><strong>▶ VR 원격조작 시작</strong>을 누릅니다. 헤드셋을 쓰고 NERO VR 앱을 엽니다.</li>
+<li>각 컨트롤러의 버튼(<strong>X</strong> 왼쪽, <strong>A</strong> 오른쪽)을 <strong>누르고 있으면</strong> 팔을 지금 자리에서 잡고,
+   <strong>떼면</strong> 팔이 손을 따라옵니다. 언제든 다시 누르면 팔은 멈추고 손만 옮길 수 있습니다.</li>
+<li><strong>Y</strong>(왼쪽) / <strong>B</strong>(오른쪽) 버튼은 그 팔을 멈춥니다(그 자리를 유지합니다). 추적이 끊겨도 멈춥니다.</li>
+<li><strong>그립</strong> 버튼은 네 손가락을 쥐고, <strong>썸스틱</strong>은 엄지를 움직입니다.</li>
+<li>앱의 <strong>HOME</strong>은 팔을 홈 자세로 보냅니다. 이때 손바닥을 먼저 들어 올려 테이블에서 위쪽으로 떨어지게 합니다.</li>
+<li>마칠 때는 <strong>■ VR 정지</strong>를 누르고, 팔을 내린 뒤 <strong>■ 연결 해제</strong>를 누릅니다.</li>
+</ol>
+<p>개발팀이 로봇에서 시험한 설정(2026-11-03)은 <strong>속도 100 %</strong>, <strong>최대 1.60 rad/s</strong>,
+<strong>추종 0.50 s</strong>(0.95 rad에서 HOLD)입니다. 빠르게 움직일 때 HOLD가 걸리면 <strong>추종</strong>을
+올리십시오. 로봇 손이 앞에서 서로 닿지 않으면 <strong>간격</strong>을 올리고 VR을 다시 시작하십시오.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">비상 정지 · HOLD · 해제</h1></div>
+<ul>
+<li><strong><svg class="ic" viewBox="0 0 16 16" aria-label="⛔"><polygon points="5,0 11,0 16,5 16,11 11,16 5,16 0,11 0,5" fill="#d92d20"/><rect x="3" y="6.5" width="10" height="3" fill="#fff"/></svg> 비상정지 (Esc)</strong>는 이 제어판이 시작한 브리지로 양팔을 감쇠 정지합니다.
+  터미널에서 시작한 브리지는 이 버튼에 반응하지 않으므로 <strong>물리 비상 정지 버튼</strong>을 쓰십시오.
+  언제나 물리 버튼이 기본 정지 수단입니다.</li>
+<li>모션이 활성화된 상태에서 <strong>연결 해제</strong>하거나 제어판을 닫아도 감쇠 정지로 끝나 팔이
+  내려앉습니다. 이때 제어판이 먼저 확인을 요청합니다. <strong>연결 해제 전에 팔을 내리십시오.</strong></li>
+<li>비상 정지 후 팔은 <strong>잠긴 상태</strong>로 남으며, <strong>⚡ 모션 활성화</strong>를 눌러도 <em>arm is in e-stop</em> 메시지와 함께
+  거부됩니다. 팔을 내리거나 받친 뒤 <strong>↺ 비상정지 해제</strong>를 누르고(모터 전원이 꺼져 들려 있던
+  팔이 떨어집니다), 그다음 다시 <strong>⚡ 모션 활성화</strong>를 누르십시오.</li>
+<li><strong>HOLD</strong>는 비상 정지가 아닙니다. 팔이 명령보다 너무 늦으면(<strong>추종</strong> 한계 초과) 브리지가 그
+  팔을 멈춥니다. 상태 줄에 <strong>HOLD — press ▶ Resume</strong>이 보이면 <strong>▶ HOLD 팔 재개</strong>를
+  누르십시오. 팔이 램프 속도로 명령에 다시 다가갑니다.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">시연 녹화</h1></div>
+<h2 id="c11-s1">녹화 방법</h2>
+<ol class="steps">
+<li>카메라(<strong>녹화 → ▶ 카메라</strong>)와 VR 원격조작(§9)을 시작합니다. <strong>스트림</strong> 카드가
+   <strong>4/4 라이브</strong>, 카메라 카드가 <strong>라이브</strong>여야 합니다.</li>
+<li><strong>작업</strong>과, 이번 세션을 설명하는 <strong>조건</strong>을 입력합니다.</li>
+<li><strong>F5</strong>로 시작하고 작업을 합니다.</li>
+<li>성공하면 <strong>F6</strong>, 실패하면 <strong>F7</strong>(이유 입력), 라벨 없이 멈추려면 <strong>F5</strong>를 누릅니다.</li>
+</ol>
+<p>제어판은 5559에 VR(또는 정책) 명령이 없으면 녹화를 거부하고, 측정된 팔 상태가 없으면 경고합니다.
+측정 값이 없으면 테이크에 측정 관절 대신 명령 값이 들어가기 때문입니다.</p>
+<figure><img src="assets/02_record.png" alt="녹화 중인 녹화 페이지"><figcaption><b>그림 14.</b> 녹화 중인 녹화 페이지</figcaption></figure>
+<h2 id="c11-s2">좋은 데이터셋의 조건</h2>
+<ul>
+<li><strong>모든 테이크의 카메라 설정이 같아야 합니다</strong>: 같은 카메라, USB 포트, 크기, 회전,
+  카메라 설정 (카메라 카드의 ⚙ <strong>고정</strong>). 세션마다 카메라 설정이 다르면 정책에는 서로 다른 데이터셋이나 마찬가지입니다.</li>
+<li><strong>헤드 화면이 같아야 합니다</strong>: 세션 전에 <strong>조정</strong>을 열어 로봇과 카메라를 학습 화면에
+  맞추십시오 (§15). 헤드 화면이 움직였을 때 정책 성공률이 떨어졌습니다.</li>
+<li><strong>모든 테이크를 같은 자세에서</strong>, 팔이 멈춘 상태로 시작하십시오. 정책의 시작 자세가
+  테이크의 시작 자세입니다.</li>
+<li><strong>작업은 매번 같은 방식으로</strong> 하십시오. 한 작업을 두 가지 방식으로 하면 정책이 혼란을 겪습니다.</li>
+<li><strong>라벨은 정직하게</strong> 붙이고, 1초 이하의 테이크는 삭제하십시오. 그런 테이크에는 작업이 담겨 있지 않습니다.</li>
+<li>세션 전에는 약 60초 길이의 시험 테이크를, 변환 전에는 폴더 전체를 <strong>검사</strong>하십시오.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">녹화 검토와 편집</h1></div>
+<p class="lede">테이크 목록에서 테이크를 선택한 뒤 다음 버튼을 씁니다.</p>
+<ul>
+<li><strong>시각화</strong> (또는 더블클릭): 카메라 영상과 함께 3D로 재생합니다.</li>
+<li><strong>자르기…</strong>: 테이크의 카메라 영상과 <strong>start</strong>, <strong>end</strong> 슬라이더 두 개가 나옵니다.
+  <strong>Keep selection</strong>을 누르면 그 구간만 남기고 파일을 다시 씁니다 (먼저 확인을 요청하며, 되돌릴
+  수 없습니다). 자른 테이크에는 <strong><svg class="ic" viewBox="0 0 16 16" aria-label="✂" fill="none" stroke="#2e3446" stroke-width="1.6"><circle cx="4" cy="12" r="2.6"/><circle cx="12" cy="12" r="2.6"/><path d="M5.8 10 L13 1.5 M10.2 10 L3 1.5"/></svg></strong> 표시가 붙습니다.</li>
+<li><strong>검사</strong>: 작업의 모든 테이크마다 카메라별 속도, 관절 대비 영상 지연, WARN 또는
+  BAD의 이유를 보여 줍니다. 이유는 느린 카메라, 카메라-관절 시간차, 녹화기 멈춤, 팔이 명령을
+  따르지 않음(HOLD) 중 하나입니다. <strong>BAD 테이크는 변환에서 제외됩니다</strong> (<strong>타이밍 BAD 테이크 포함</strong>을 체크하지 않는 한).</li>
+<li><strong>삭제</strong>: 테이크를 완전히 지웁니다 (먼저 확인을 요청합니다).</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>13</big></div><h1 id="c13" data-mark="c13">정책 학습</h1></div>
+<figure><img src="assets/03_train_infer.png" alt="학습 / 추론 페이지"><figcaption><b>그림 15.</b> 학습 / 추론 페이지</figcaption></figure>
+<ol class="steps">
+<li><strong>데이터셋</strong>: 작업을 체크하고, 새 <strong>데이터셋 ID</strong>를 정하고, 정책에 맞는
+   <strong>이미지 배율</strong>을 정합니다 (아래 표).</li>
+<li><strong>학습</strong>: <strong>정책</strong>, <strong>스텝</strong>, <strong>배치</strong>를 고르고 <strong>먼저 변환</strong>은 체크해 둡니다.</li>
+<li><strong>▶ 학습</strong>을 누릅니다. 그래프와 상태 줄이 진행 상황을 보여 줍니다. 체크포인트는 데이터 루트/train
+   아래와 <strong>체크포인트</strong> 목록에 나타납니다.</li>
+<li>추론 카드의 <strong>데이터셋으로 평가</strong>로 체크포인트를 작업자와 비교합니다.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>정책</th>
+<th>내용</th>
+<th>이미지 배율</th>
+<th>배치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>act</code></td>
+<td>LeRobot ACT, ResNet18 영상 인코더</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>advanced act</code></td>
+<td>DINOv3 ViT-S/16 영상 인코더를 쓴 ACT (<code>timm</code>과 DINOv3 가중치 필요)</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>diffusion</code></td>
+<td>Diffusion Policy 실로봇 레시피 30 Hz, EMA 가중치, 영상 증강</td>
+<td><strong>0.5</strong></td>
+<td><strong>64</strong></td>
+</tr>
+<tr>
+<td><code>smolvla</code></td>
+<td><code>lerobot/smolvla_base</code>(HF 캐시에 있어야 함)를 작업 문구로 파인튜닝</td>
+<td>1</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<p>제어판은 Diffusion 데이터셋의 배율이 0.5가 아니거나 배치가 32보다 작으면 경고합니다.</p>
+<p><strong>학습 장소.</strong> 제어판은 자신이 실행 중인 PC의 GPU로 학습합니다. 긴 학습
+(수만 스텝 이상의 Diffusion)은 같은 스크립트로 학습 PC에서 합니다. <strong>▶ 학습</strong>을
+누르면 로그 맨 위에 정확한 명령이 나옵니다. 결과 체크포인트 폴더를 데이터 루트/train
+아래로 복사하면 실행할 수 있습니다.</p>
+<p><strong>새 장소에 맞추기.</strong> 장면이 바뀌면(새 현장, 로봇 이동) 그곳에서 새 테이크를 녹화해
+그 테이크만 변환하고, 처음부터 학습하는 대신 기존 체크포인트를 파인튜닝하십시오.</p>
+<p><strong>결과 읽기.</strong> <strong>데이터셋으로 평가</strong>는 학습에 쓴 테이크로 관절마다 작업자와의
+차이를 그립니다. 도구의 통과 기준은 팔 평균 오차 2° 미만입니다. 여기서 오차가 크면
+데이터나 설정 문제(데이터셋 통계, 특징 이름, 액션 순서)이며, 스텝을 늘려도 고쳐지지
+않습니다. 오차가 작다는 것은 정책이 데이터에 맞는다는 뜻일 뿐, 로봇에서 성공한다는
+뜻은 아닙니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>14</big></div><h1 id="c14" data-mark="c14">로봇에서 정책 실행</h1></div>
+<ol class="steps">
+<li><strong>체크포인트</strong>를 고릅니다. <strong>데이터셋</strong>에 그 체크포인트가 학습한 데이터셋이 표시되는지 확인합니다.</li>
+<li>카메라를 시작하고(정책이 카메라 영상을 봅니다), 로봇을 연결하고 활성화합니다 (§9). VR은 켜지 않습니다.</li>
+<li><strong>모드</strong>(아래 표)를 고르고 <strong>대상 → dry run</strong>으로 둡니다. <strong>▶ 시작</strong>을 누르면 정책을
+   불러와 실행하고 로그도 나오지만, 아무것도 움직이지 않습니다. 확인한 뒤 <strong>■ 정지</strong>를 누릅니다.</li>
+<li><strong>대상 → ROBOT</strong>으로 바꾸고 <strong>▶ 시작</strong>을 누른 뒤, 확인 창에서 확인합니다.</li>
+<li>팔은 먼저 브리지 램프 속도로 학습 테이크의 <strong>시작 자세</strong>로 이동합니다. 박스 게이트가
+   켜져 있으면 물체를 기다리고 (§15), 꺼져 있으면 정책이 바로 시작해 <strong>■ 정지</strong>까지
+   실행됩니다.</li>
+<li><strong>■ 정지</strong>로 정책을 끝냅니다. 브리지가 팔을 그 자리에 유지하고, 손은 쥔 상태를 유지합니다.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>모드</th>
+<th>정책의 계획을 재생하는 방식</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>chunk</strong></td>
+<td>계획한 청크를 끝까지 재생한 뒤 다음 청크를 계획</td>
+<td>ACT 기준선</td>
+</tr>
+<tr>
+<td><strong>chunk + fade</strong></td>
+<td>다음 청크를 뒤에서 미리 계획하고 <strong>페이드</strong> 스텝 동안 섞어 넘김</td>
+<td><strong>NERO의 Diffusion과 ACT.</strong> 예시 응용에서 시험한 값: 페이드 <strong>20</strong>, 재생 <strong>0</strong> (자동)</td>
+</tr>
+<tr>
+<td><strong>temporal ensemble</strong></td>
+<td>가능한 한 자주 다시 계획하고 겹치는 청크를 평균 (<strong>계수</strong>)</td>
+<td>ACT 전용. NERO와 G1에서 효과 없었음</td>
+</tr>
+<tr>
+<td><strong>motion player</strong></td>
+<td>정책 없이, 검출기가 본 물체와 물체 위치가 가장 가까웠던 녹화 테이크를 재생</td>
+<td>실험적 대안. 박스 게이트와 <strong>모델</strong>, 체크포인트의 LIBRARY 필요</td>
+</tr>
+</tbody>
+</table>
+<p><strong>재생</strong>(chunk + fade 전용)은 0이면 자동(정책의 청크 길이 − 페이드)입니다. 값을 작게 하면 더 자주 다시
+계획하므로 팔이 물체 위치에 더 빨리 반응합니다.</p>
+<p>정책은 VR 원격조작과 같은 브리지 한계(<strong>최대</strong>, <strong>추종</strong>) 안에서 움직입니다. 추론 출력은
+모두 <code>데이터 루트/logs/teleop_&lt;날짜&gt;.log</code>에도 브리지와 같은 시간 축으로 기록됩니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>15</big></div><h1 id="c15" data-mark="c15">물체 게이트: 작업할 물체가 있을 때만 실행</h1></div>
+<p class="lede">많은 작업은 컨베이어 위의 부품, 테이블에 놓인 물건처럼 물체가 도착하면 시작합니다.
+<strong>박스 게이트</strong>(박스 사이클 카드)를 체크하면 정책이 물체를 기다리며 다음처럼 반복합니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>상태</th>
+<th>로봇 동작</th>
+<th>끝나는 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HOME</strong></td>
+<td>시작 자세를 유지하며 헤드 카메라의 집는 영역(<strong>ROI</strong>)을 감시</td>
+<td>그곳에 물체가 보이고 <strong>대기</strong> 초 뒤에도 있으면 → RUN</td>
+</tr>
+<tr>
+<td><strong>RUN</strong></td>
+<td>정책을 새로 실행</td>
+<td>물체가 <strong>출구</strong> 영역에서 <strong>라인</strong>을 넘어 나감 (실행 8초 후부터 봄, <strong>출구</strong>를 설정했을 때만), 또는 (<strong>모델</strong> 사용 시) 물체를 사람이 치우거나 떨어져 작업 영역에 2초간 물체 없음, 또는 시간 초과 (가장 긴 학습 테이크의 1.5배), 또는 팔이 3초간 정지 → RETURN</td>
+</tr>
+<tr>
+<td><strong>RETURN</strong></td>
+<td>손바닥을 5 cm 들어 올린 뒤 부드럽게 시작 자세로</td>
+<td>시작 자세 도착 → HOME</td>
+</tr>
+</tbody>
+</table>
+<p>판단에는 헤드 카메라만 씁니다. <strong>모델</strong>이 있으면 물체 검출기가 물체를 찾고, 없으면 색상
+판정을 씁니다. 색상 판정은 ROI 픽셀 중 <strong>HSV</strong> 범위에 드는 비율로 판단합니다. 색상 판정은 설정이 빠르지만
+같은 색이면 무엇에나(피부, 나무, 색깔 있는 벨트) 반응하고 그늘진 물체를 놓칠 수
+있습니다. 그 물체로 학습한 검출기가 더 믿을 만합니다 (§17).</p>
+<p>시작 신호가 될 물체가 없는 작업이면 <strong>박스 게이트</strong>를 끄십시오. 그러면 팔이 시작 자세에
+도착하자마자 정책이 시작해 <strong>■ 정지</strong>까지 실행됩니다.</p>
+<div class="box note"><div class="h">참고 · 예시 응용 — 소포 처리</div><p>ROI는 소포가 기다리는 들어오는 컨베이어 끝, <strong>출구</strong>는 나가는
+컨베이어, <strong>라인</strong>은 로봇이 밀어 넣은 소포가 타고 넘어가는 행입니다. <strong>모델</strong>은 소포 검출기
+<code>box_rfdetr_s_20261031.ts</code>입니다 (RF-DETR Small, 이 작업의 헤드 카메라 영상을 손으로 라벨링해
+학습했고, 골판지 소포만 찾습니다). 소포가 나가거나, 걸린 소포를 사람이 치우면 실행이 끝납니다.</p></div>
+<h2 id="c15-s1">조정: 화면과 영역 확인</h2>
+<figure><img src="assets/tune.png" alt="조정 창"><figcaption><b>그림 16.</b> 조정 창</figcaption></figure>
+<p><strong>조정</strong>은 헤드 카메라 영상을 크게 열고 그 위에 다음을 그립니다.</p>
+<ul>
+<li><strong>집는 영역 ROI</strong>는 빨강으로 그리며, <strong>물체가 보이면 초록</strong>으로 바뀝니다.</li>
+<li><strong>출구</strong> 영역과 <strong>라인</strong>은 노랑으로 그리며, 물체가 나갈 때 초록으로 바뀝니다.</li>
+<li>검출기가 찾은 상자는 파랑, 헤드 마스크는 켜져 있을 때 자홍으로 그립니다.</li>
+<li><strong>학습 당시 화면</strong>(데이터 루트/head_train_ref.jpg)을 실시간 영상에 50/50으로 겹치고,
+  <strong>view vs training</strong> 줄로 화면이 몇 픽셀, 몇 도 어긋났는지 보여 줍니다. 초록 <strong>OK</strong>는
+  어긋남이 15 px, 배율 2 %, 롤 1° 이내라는 뜻입니다. 둘째 줄은 학습 테이크들이 차지한 범위입니다.</li>
+</ul>
+<p>화면이 어긋나 있으면 겹친 영상이 맞고 <strong>OK</strong>가 나올 때까지 로봇이나 카메라를 옮기십시오.
+정책은 학습한 화면에서만 제대로 동작합니다. 조정 창은 창의 ✕나 <strong>조정</strong> 버튼으로 닫습니다.
+새 작업이면 먼저 그 작업의 학습 화면을 만드십시오 (§17).</p>
+<h2 id="c15-s2">카운트: 완료한 물체 수</h2>
+<p><strong>카운트</strong>는 원격조작이나 정책과 함께 물체 카운터를 실행합니다. 헤드 카메라를 읽기만 하고
+아무것도 보내지 않습니다. 물체가 <strong>출구</strong> 영역에서 헤드 영상 <strong>위쪽으로</strong>, 250행 아래에서
+위로 넘어가면 한 번 셉니다 (<strong>출구</strong>가 설정되어 있어야 하며, 카운터는 <strong>라인</strong>이 아닌 자체
+행을 씁니다). 셀 때마다 <code>~/nero_data/parcel_count_&lt;날짜&gt;.csv</code>에 추가하며, 같은 날 다시
+시작하면 마지막 수에서 이어 셉니다.</p>
+<div class="box note"><div class="h">참고 · 예시 응용</div><p>소포 작업에서는 나가는 컨베이어가 소포를 로봇에서 멀리, 즉 헤드 영상의 위쪽으로
+실어 갑니다. 2026-11-01에는 테이크 189개에서 소포 188개를 셌습니다. 배치가 다른 현장에서는 다음을 참고하십시오. 기준 행은
+<code>policy/parcel_counter.py</code>의 <code>--count-line</code>(제어판 항목 아님)이고, 위쪽 방향은 코드에 고정되어
+있습니다.</p></div></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>16</big></div><h1 id="c16" data-mark="c16">VR로 정책 보정</h1></div>
+<p class="lede">정책이 틀리는 지점의 보정 데이터를 모으려면(HG-DAgger) 다음 순서를 따르십시오.</p>
+<ol class="steps">
+<li>로봇을 연결하고 활성화합니다. 원격조작 페이지에서 <strong>정책 보정</strong>을 체크하고
+   <strong>▶ VR 원격조작 시작</strong>을 누릅니다(표시가 <strong>보정 중</strong>이 됩니다).</li>
+<li>정책을 <strong>ROBOT</strong> 대상으로 시작합니다 (§14). 정책이 로봇을 조작하고, VR은 로봇을 따라갑니다.</li>
+<li>정책이 틀리면 <strong>X</strong> / <strong>A</strong>를 누르십시오. 정책이 둔 자리에서 그 팔을 넘겨받습니다.</li>
+<li><strong>Y</strong> / <strong>B</strong>로 돌려줍니다. 1초 뒤 정책이 그 자리에서 다시 시작합니다.</li>
+<li>테이크는 평소처럼 녹화합니다 (§11). 넘겨받은 기록은 <code>데이터 루트/logs/takeover_&lt;날짜&gt;.jsonl</code>에 남고, <code>data/cut_takeovers.py</code>가 녹화 테이크에서 보정 구간을 잘라 학습용으로 만듭니다.</li>
+</ol></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>17</big></div><h1 id="c17" data-mark="c17">새 작업에 맞추기</h1></div>
+<p class="lede">새 작업이라도 제어판 대부분은 그대로 씁니다. 바뀌는 것은 데이터와 장면, 그리고 물체 게이트를
+쓴다면 그 설정입니다.</p>
+<h2 id="c17-s1">어떤 작업에도 그대로 동작하는 것</h2>
+<p>원격조작(§9), 비상 정지와 HOLD(§10), 녹화 · 라벨 · 타이밍 검사(§11–12), 변환과 학습 레시피
+4종(§13), 추론 모드(§14), VR 보정(§16)은 작업이 무엇인지 모릅니다. 작업은 정책이 테이크에서
+배웁니다.</p>
+<h2 id="c17-s2">새 작업마다 정할 것</h2>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>항목</th>
+<th>할 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>작업</strong></td>
+<td>새 작업의 간단한 지시문을 정합니다. 이 지시문은 작업 폴더 이름이 되고, 테이크마다 저장되며, SmolVLA가 배우는 지시문이 됩니다</td>
+</tr>
+<tr>
+<td><strong>조건</strong></td>
+<td>세션마다 달라지는 것(배경, 조명, 작업자, 물체 종류)을 적습니다. 나중에 테이크를 고르거나 제외할 때 씁니다</td>
+</tr>
+<tr>
+<td><strong>마운트</strong></td>
+<td>Revo2 손은 <code>humanoid</code>, 2지 그리퍼는 <code>humanoid_gripper</code>를 고릅니다. 녹화와 실행에 같은 마운트를 쓰십시오</td>
+</tr>
+<tr>
+<td><strong>카메라</strong></td>
+<td>작업에 쓸 카메라 설정을 한 번 정하고 모든 테이크에 유지하십시오 (§11)</td>
+</tr>
+<tr>
+<td><strong>시작 자세</strong></td>
+<td>따로 정하지 않습니다. 시작 자세는 테이크에서 나옵니다(변환기가 기록). 모든 테이크를 같은 자세에서 시작하십시오</td>
+</tr>
+<tr>
+<td><strong>장면</strong></td>
+<td>녹화 전에 로봇, 카메라, 작업 영역을 고정하고 그대로 두십시오. 로봇의 위치와 높이를 기록해 두십시오</td>
+</tr>
+<tr>
+<td><strong>학습 화면</strong></td>
+<td>첫 세션 뒤, 새 테이크로 <strong>조정</strong> 기준 화면을 만드십시오 (아래)</td>
+</tr>
+<tr>
+<td><strong>데이터셋 ID</strong></td>
+<td>새 데이터셋 이름. 의도한 경우가 아니면 다른 작업이나 장면의 테이크를 한 데이터셋에 섞지 마십시오</td>
+</tr>
+<tr>
+<td><strong>정책과 스텝</strong></td>
+<td>§13의 레시피로 시작하십시오. 체크포인트마다 <strong>데이터셋으로 평가</strong>, 드라이런, 로봇 순서로 확인하십시오</td>
+</tr>
+</tbody>
+</table>
+<p><strong>조정</strong>에 쓰는 학습 화면은 그 작업의 테이크로 만듭니다. 저장소 폴더에서 로봇 PC의 Python으로 다음 명령을 실행하십시오.</p>
+<pre class="cmd">.venvs/questarm/bin/python3 policy/box_gate.py --build-ref &lt;데이터 루트&gt;/recordings/&lt;작업 폴더&gt; \
+    --out &lt;데이터 루트&gt;/head_train_ref.jpg</pre>
+<p>이 명령은 첫 헤드 화면이 가장 전형적인 테이크를 골라 그 영상과 테이크들의 분포
+(<code>head_train_ref.json</code>)을 저장합니다. 조정 창의 <strong>view vs training</strong> 줄이 이 파일을 씁니다.</p>
+<h2 id="c17-s3">새 작업에서 물체 게이트 쓰기</h2>
+<p>물체가 도착하면 시작하는 작업일 때만 게이트를 쓰십시오 (§15). 순서는 다음과 같습니다.</p>
+<ol class="steps">
+<li><strong>물체를 어떻게 볼지 고릅니다.</strong><ul>
+<li><strong>색상 판정:</strong> <strong>모델</strong>을 비우고 <strong>HSV</strong>를 물체 색에 맞춥니다. <strong>조정</strong>으로 확인하십시오.
+  물체가 있으면 ROI가 초록, 없으면 빨강이어야 하며, 팔이나 사람이 화면에 있어도 마찬가지여야 합니다.</li>
+<li><strong>검출기:</strong> 그 물체용 검출기를 학습해 <strong>모델</strong>에 지정합니다. 게이트가 불러오는 RF-DETR 모델은
+  TorchScript로 내보낸 파일(<code>.ts</code>, 로봇 PC의 정책 환경 그대로 CUDA GPU에서 실행) 또는
+  학습 체크포인트(<code>.pth</code>, <code>rfdetr</code> 패키지 필요)입니다. 신뢰도 0.5 이상인 검출은 모두 물체로
+  봅니다. 검출기 학습은 제어판 기능이 아닙니다. 소포 검출기의 라벨링 · 학습 · 내보내기
+  스크립트는 개발 PC의 <code>~/nero_data/det/box_20261031/tools/</code>에 있습니다. <code>.ts</code>를 데이터
+  루트 아래 <code>box_&lt;이름&gt;.ts</code>로 두면 제어판이 기본으로 가장 최근 파일을 불러옵니다.</li>
+</ul>
+</li>
+<li><strong>조정</strong>을 연 상태에서 ⚙ 고급의 <strong>영역을 정합니다</strong>: 물체가 기다리는 곳은 <strong>ROI</strong>, 작업을
+   마친 물체가 나가는 곳이 있으면 <strong>출구</strong>와 <strong>라인</strong> (없으면 <strong>출구</strong>를 비우십시오. 그러면
+   §15의 다른 조건으로 실행이 끝납니다).</li>
+<li><strong>대기</strong>를 로봇이 시작하기 전 물체가 멈춰 있어야 하는 시간으로 정합니다.</li>
+<li>아래 <strong>고정된 실행 종료 값</strong>을 확인합니다. 소포 작업에 맞춘 값이며 제어판 항목이 아닙니다.</li>
+</ol>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>값</th>
+<th>기본</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--exit-after</code></td>
+<td>8초</td>
+<td>실행 시작 후 이 시간이 지나야 <strong>출구</strong> 감시 시작</td>
+</tr>
+<tr>
+<td><code>--box-gone</code></td>
+<td>2초</td>
+<td><strong>모델</strong> 사용 시: 작업 영역에서 이 시간 동안 물체가 안 보이면 실행 종료 (0: 끔)</td>
+</tr>
+<tr>
+<td><code>--box-gone-ymin</code></td>
+<td>150행</td>
+<td><code>--box-gone</code>의 작업 영역: 물체 중심이 헤드 영상의 이 행보다 아래</td>
+</tr>
+<tr>
+<td><code>--run-timeout</code></td>
+<td>가장 긴 테이크의 1.5배</td>
+<td>실행 한 번의 최대 시간</td>
+</tr>
+<tr>
+<td><code>--home-lift</code> / <code>--home-speed</code></td>
+<td>0.05 m / 0.3</td>
+<td>RETURN: 손바닥을 이만큼 먼저 들고, 이 속도로 시작 자세로 이동</td>
+</tr>
+<tr>
+<td><code>--box-conf</code></td>
+<td>0.5</td>
+<td>검출기 신뢰도 기준</td>
+</tr>
+</tbody>
+</table>
+<p>값을 바꾸려면 제어판의 명령줄(<strong>▶ 시작</strong>을 누르면 학습 / 추론 로그에 나오는 <code>[infer] $ …</code> 줄)에
+원하는 값을 더해 터미널에서 <code>policy/inference_nero.py</code>를 실행하거나,
+<code>policy/inference_nero.py</code>와 <code>policy/box_gate.py</code>의 기본값을 바꾸십시오.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>18</big></div><h1 id="c18" data-mark="c18">저장되는 설정</h1></div>
+<p class="lede">모든 입력란과 슬라이더는 제어판을 닫을 때 저장되고 다음 실행 때 복원됩니다. 저장되는 항목은 속도, CAN
+이름, VR 인자, 카메라, 작업 조건, 데이터셋과 학습 선택, 추론 모드와 값, 물체 게이트 영역,
+페이지, 테마, 언어입니다. 저장 위치는 <code>~/.config/WeGo/NeroStudio.conf</code>입니다.</p>
+<p>2026-11-03에 로봇 PC에서 예시 응용에 쓰던 설정은 다음과 같습니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>설정</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>속도 / 최대 / 추종</td>
+<td>100 % / 1.60 rad/s / 0.50 s</td>
+</tr>
+<tr>
+<td>추론 모드 / 페이드 / 재생</td>
+<td>chunk + fade / 20 / 0 (자동)</td>
+</tr>
+<tr>
+<td>박스 게이트 / 대기 / 모델</td>
+<td>켜짐 / 2초 / <code>~/nero_data/box_rfdetr_s_20261031.ts</code></td>
+</tr>
+</tbody>
+</table></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>19</big></div><h1 id="c19" data-mark="c19">다른 프로그램 연결</h1></div>
+<p class="lede">모든 데이터는 어떤 프로그램이든 읽을 수 있는 로컬 ZeroMQ 소켓으로 오갑니다.</p>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>포트</th>
+<th>스트림</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5559 / 5560</td>
+<td>팔 / 손 <strong>명령</strong> (VR 서버 또는 정책 → 브리지)</td>
+</tr>
+<tr>
+<td>5561 / 5562</td>
+<td><strong>측정된</strong> 팔 / 손 (브리지)</td>
+</tr>
+<tr>
+<td>5555</td>
+<td>카메라 영상 (이미지 서버)</td>
+</tr>
+<tr>
+<td>5565 / 5566</td>
+<td><strong>드라이런</strong> 때 정책 명령 (받는 곳 없음)</td>
+</tr>
+<tr>
+<td>5569 / 5570</td>
+<td>정책 보정 중의 VR 명령 (§16)</td>
+</tr>
+</tbody>
+</table>
+<p>메시지 형식과 관절 순서는 <code>nero-zmq-api.md</code>에 있습니다. 5559/5560에는
+다른 프로그램이 보내고 있지 않을 때만 보내십시오. 마스터는 한 번에 하나뿐입니다.</p></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>20</big></div><h1 id="c20" data-mark="c20">안전 수칙</h1></div>
+<ul>
+<li>모션이 활성화된 동안 사람과 물건을 팔이 닿는 범위 밖에 두십시오.</li>
+<li><strong>물리 비상 정지 버튼</strong>에 손이 닿게 하십시오. 이 버튼이 기본 정지 수단입니다.</li>
+<li>먼저 관찰 모드로 연결하고, 팔이 안전한 자세에 있고 작업 공간이 비었을 때만 활성화하십시오.</li>
+<li><strong>비상 정지를 해제하면 모터 전원이 꺼져, 들려 있던 팔이 떨어집니다.</strong> 먼저 팔을 내리거나 받치십시오.</li>
+<li>연결을 해제하거나 제어판을 닫기 전에 팔을 내리십시오.</li>
+<li>새 정책은 항상 드라이런으로 먼저 시험하고, 그다음 빈 공간에서 비상 정지 버튼에 손을 얹은 채 로봇에서 시험하십시오.</li>
+<li>보이거나 들리는 것이 이상하면 먼저 멈추고, 그다음 원인을 찾으십시오.</li>
+</ul></section>
+<section class="chapter"><div class="opener"><div class="num">CHAPTER<big>21</big></div><h1 id="c21" data-mark="c21">문제가 생겼을 때</h1></div>
+<table class="t wrap1">
+<thead>
+<tr>
+<th>증상</th>
+<th>원인과 해결</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>연결 시 <em>5561 is already published</em></td>
+<td>다른 곳(터미널)에서 브리지가 실행 중입니다. 그 브리지를 멈추십시오. CAN 버스는 한 번에 한 프로그램만 쓸 수 있습니다</td>
+</tr>
+<tr>
+<td>활성화 거부: <em>arm is in e-stop</em></td>
+<td>지난 정지로 팔이 잠겨 있습니다. 팔을 내리고 <strong>↺ 비상정지 해제</strong>를 누른 뒤 다시 활성화하십시오 (§10)</td>
+</tr>
+<tr>
+<td>팔이 <strong>HOLD</strong></td>
+<td>팔이 명령보다 늦었습니다. <strong>▶ HOLD 팔 재개</strong>를 누르십시오. 빠른 동작에서 반복되면 <strong>추종</strong>을 올리십시오</td>
+</tr>
+<tr>
+<td>팔이 <strong>FAULT</strong></td>
+<td>팔이 오류를 보고했습니다 (이유는 상태 줄). 멈추고 팔과 CAN 케이블을 확인하십시오</td>
+</tr>
+<tr>
+<td>녹화 시 <em>No arm command on 5559</em></td>
+<td>VR 원격조작을 먼저 시작하십시오</td>
+</tr>
+<tr>
+<td>VR 시작이나 정책 시작이 5559 사용 중으로 거부됨</td>
+<td>VR과 정책은 동시에 조작할 수 없습니다. 하나를 멈추거나 <strong>정책 보정</strong>을 쓰십시오 (§16)</td>
+</tr>
+<tr>
+<td>카메라 영상 없음</td>
+<td><strong>▶ 카메라</strong>와 <strong>카메라 설정</strong>을 확인하십시오. USB를 다시 꽂으면 카메라 번호가 바뀝니다</td>
+</tr>
+<tr>
+<td>3D 뷰가 선으로만 보임</td>
+<td>이 환경에 MuJoCo나 OpenGL이 없습니다. 이유는 터미널에 표시됩니다. 나머지 기능은 정상적으로 동작합니다</td>
+</tr>
+<tr>
+<td>변환에서 테이크가 빠짐</td>
+<td>타이밍 BAD이거나 카메라 크기가 다릅니다. <strong>검사</strong>로 확인하십시오</td>
+</tr>
+<tr>
+<td><em>GPU out of memory: lower BATCH</em></td>
+<td><strong>배치</strong>나 <strong>이미지 배율</strong>을 낮추십시오</td>
+</tr>
+<tr>
+<td>정책이 물체 옆을 짚음</td>
+<td><strong>조정</strong>으로 화면을 확인하고 (§15), 로봇의 높이와 위치를 확인하십시오</td>
+</tr>
+<tr>
+<td>motion player가 시작되지 않음</td>
+<td><strong>박스 게이트</strong>를 켜고 <strong>모델</strong>을 지정해야 합니다</td>
+</tr>
+</tbody>
+</table>
+<p>원격조작 로그는 <code>데이터 루트/logs/teleop_&lt;날짜&gt;.log</code>에도 저장됩니다. 문제를 알릴 때 이
+파일과, 그때 무엇을 하고 있었는지를 함께 보내 주십시오.</p></section>
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

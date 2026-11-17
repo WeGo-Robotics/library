@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>UFACTORY xArm7 로봇팔 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css + style.css */
+@page {
+  @top-left  { content: "UFACTORY xArm7"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">UFACTORY xArm7 로봇팔 — 운용 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/UFACTORY_xArm7_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>System Overview</a></summary><a class="wm-t2" href="#c1-s1">Components 구성 요소</a><a class="wm-t2" href="#c1-s2">Network Ports 통신 포트</a></details><a class="wm-t1" href="#c2"><span class="wm-n">02</span>Safety Precautions</a><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>Specifications</a></summary><a class="wm-t2" href="#c3-s1">Key Specifications 주요 사양</a><a class="wm-t2" href="#c3-s2">Joint Range &amp; Max Torque 관절별 범위 · 최대 토크</a><a class="wm-t2" href="#c3-s3">Jerk 저크 (가속도 변화율)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>Installation &amp; Network</a></summary><a class="wm-t2" href="#c4-s1">Mounting 설치</a><a class="wm-t2" href="#c4-s2">Network 네트워크 연결</a><a class="wm-t2" href="#c4-s3">IP Reset IP를 잊었을 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Start-up &amp; Shut-down</a></summary><a class="wm-t2" href="#c5-s1">Start-up 시작 순서</a><a class="wm-t2" href="#c5-s2">Shut-down 종료 순서</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>UFactory Studio</a></summary><a class="wm-t2" href="#c6-s1">Access 접속</a><a class="wm-t2" href="#c6-s2">Home Screen 홈 화면</a><a class="wm-t2" href="#c6-s3">Settings 설정 메뉴</a><a class="wm-t2" href="#c6-s4">Default TCP Payloads 공식 엔드 이펙터 기본값</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>Motion Modes &amp; States</a></summary><a class="wm-t2" href="#c7-s1">Modes 모드 · set_mode(n)</a><a class="wm-t2" href="#c7-s2">States 상태 · set_state(n) / get_state()</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>Coordinate Systems</a></summary><a class="wm-t2" href="#c8-s1">Coordinate Frames 좌표계 종류</a><a class="wm-t2" href="#c8-s2">Pose Representation 위치 · 자세 표현</a><a class="wm-t2" href="#c8-s3">TCP Offset &amp; User Frame TCP Offset · 사용자 좌표계</a><a class="wm-t2" href="#c8-s4">Setting the TCP TCP 설정 · 변경</a><a class="wm-t2" href="#c8-s5">Base vs Tool Control Base / Tool 기준 이동</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>Python SDK</a></summary><a class="wm-t2" href="#c9-s1">Install 설치</a><a class="wm-t2" href="#c9-s2">Connect &amp; Enable 연결 · 활성화</a><a class="wm-t2" href="#c9-s3">Basic Motion 기본 이동 · 모드 0</a><a class="wm-t2" href="#c9-s4">Servo Streaming 서보 스트리밍 · 모드 1</a><a class="wm-t2" href="#c9-s5">Velocity Control 속도 제어 · 모드 4</a><a class="wm-t2" href="#c9-s6">Gripper 그리퍼</a><a class="wm-t2" href="#c9-s7">Error Handling 에러 처리</a><a class="wm-t2" href="#c9-s8">API Reference &amp; Examples API 문서 · 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>Real-time Data</a></summary><a class="wm-t2" href="#c10-s1">Port 30000 Layout 주요 필드 위치</a><a class="wm-t2" href="#c10-s2">Reading Example 읽기 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>Force &amp; Torque</a></summary><a class="wm-t2" href="#c11-s1">Reading Joint Torque 관절 토크 읽기</a><a class="wm-t2" href="#c11-s2">Torque Limits 토크 한계</a><a class="wm-t2" href="#c11-s3">F/T Sensor &amp; Force Control 힘 제어</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c12"><span class="wm-n">12</span>Safety Functions</a></summary><a class="wm-t2" href="#c12-s1">Stop Categories 정지 방식</a><a class="wm-t2" href="#c12-s2">Controller Input Functions 컨트롤 박스 입력 기능</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">13</span>ROS 2 &amp; Robot Model</a></summary><a class="wm-t2" href="#c13-s1">Install 설치</a><a class="wm-t2" href="#c13-s2">Launch 실행</a><a class="wm-t2" href="#c13-s3">Robot Model (URDF) 로봇 모델</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c14"><span class="wm-n">14</span>Teleoperation &amp; Data Collection</a></summary><a class="wm-t2" href="#c14-s1">Recommendations 수집할 때 권장 사항</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c15"><span class="wm-n">15</span>Troubleshooting &amp; Error Codes</a></summary><a class="wm-t2" href="#c15-s1">Symptoms 증상별 조치</a><a class="wm-t2" href="#c15-s2">Control Box Errors 컨트롤 박스 에러 (C)</a><a class="wm-t2" href="#c15-s3">Joint Servo Errors 관절 서보 에러 (S)</a><a class="wm-t2" href="#c15-s4">SDK Return Codes SDK 반환 코드</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c16"><span class="wm-n">16</span>Commissioning Checklist</a></summary><a class="wm-t2" href="#c16-s1">Device Record 장비 기록</a><a class="wm-t2" href="#c16-s2">Function Checks 동작 확인</a></details><a class="wm-t1" href="#c17"><span class="wm-n">부록</span>Quick Reference</a></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>UFACTORY <span>xArm7</span><br>로봇팔</h1>
+  <div class="title2">7축 로봇팔 운용 · 프로그래밍 가이드</div>
+  <div class="bar"></div>
+  <p class="lead">설치와 네트워크 연결, 시작 · 종료 순서, UFactory Studio 웹 앱, 좌표계와 TCP 설정,
+    Python SDK 제어, 실시간 데이터, 힘 · 토크 기능, 안전 기능과 문제 해결을 한 권에 정리했습니다.</p>
+  <img class="arm" src="assets/xarm7.png" alt="">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 판권 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>UFACTORY xArm7 로봇팔 · 컨트롤 박스</td></tr>
+      <tr><td>근거 문서</td><td>UFactory Studio 사용자 매뉴얼 — docs.ufactory.cc/user_manual/ufactoryStudio · xArm-Python-SDK · API 문서 — github.com/xArm-Developer/xArm-Python-SDK (doc/api/xarm_api.md) · 실시간 포트 데이터 설명 — docs.supportarticle.ufactory.cc › firmware › data-description-of-tcp-port · xarm_ros2 — github.com/xArm-Developer/xarm_ros2 · LeRobot 플러그인 — github.com/xArm-Developer/lerobot_robot_ufactory · 원격조작 — github.com/xArm-Developer/ufactory_teleop</td></tr>
+      <tr><td>소프트웨어</td><td>UFactory Studio 2.8.2 (2026-07-31 릴리스) · xArm-Python-SDK 1.18.4 · xarm_ros2 (humble 브랜치)</td></tr>
+      <tr><td>표기</td><td>장 제목 · 표 제목 · 그림 설명은 영어, 본문은 한국어. 함수 · 포트 · 에러 코드는 원문 표기 그대로</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>수치와 기능은 UFACTORY 공식 문서 기준입니다. 펌웨어 버전에 따라 일부 기능(예: 실시간 포트 30000)이 없을 수 있으므로,
+      설치할 때 16장 점검표로 실제 장비의 버전을 먼저 기록하십시오.</p>
+    <p class="copy">© WeGo Robotics. 본 문서는 납품된 xArm7 시스템의 운용을 위해 제공됩니다. UFACTORY · xArm은 UFACTORY의 상표입니다.
+      표지와 그림 2 · 그림 4의 로봇 이미지는 공개 URDF 메시로 렌더링한 것입니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">System Overview<small>시스템 구성</small></span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">Safety Precautions<small>안전 수칙</small></span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">Specifications<small>제품 사양</small></span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">Installation &amp; Network<small>설치 · 네트워크 연결</small></span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">Start-up &amp; Shut-down<small>시작 · 종료 순서</small></span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">UFactory Studio<small>웹 앱 사용법</small></span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">Motion Modes &amp; States<small>모션 모드와 상태</small></span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">Coordinate Systems<small>좌표계 · TCP 설정 · Base / Tool 기준 제어</small></span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">Python SDK<small>파이썬 프로그래밍</small></span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t">Real-time Data<small>실시간 데이터 수신</small></span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t">Force &amp; Torque<small>힘 · 토크 기능</small></span><span class="d"></span><span class="p" data-toc="c11"></span></li>
+    <li><span class="n">12</span><span class="t">Safety Functions<small>안전 기능 설정</small></span><span class="d"></span><span class="p" data-toc="c12"></span></li>
+    <li><span class="n">13</span><span class="t">ROS 2 &amp; Robot Model<small>ROS 2 · URDF</small></span><span class="d"></span><span class="p" data-toc="c13"></span></li>
+    <li><span class="n">14</span><span class="t">Teleoperation &amp; Data Collection<small>원격조작 · 데이터 수집</small></span><span class="d"></span><span class="p" data-toc="c14"></span></li>
+    <li><span class="n">15</span><span class="t">Troubleshooting &amp; Error Codes<small>문제 해결 · 에러 코드</small></span><span class="d"></span><span class="p" data-toc="c15"></span></li>
+    <li><span class="n">16</span><span class="t">Commissioning Checklist<small>설치 점검표</small></span><span class="d"></span><span class="p" data-toc="c16"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">Quick Reference<small>빠른 참조</small></span><span class="d"></span><span class="p" data-toc="c17"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">System Overview</h1><div class="ko">시스템 구성</div></div>
+  <p class="lede">xArm7 시스템은 로봇팔 · 컨트롤 박스 · 제어 PC 세 장치로 구성됩니다.
+    PC는 이더넷 케이블 한 가닥으로 컨트롤 박스에 연결하며, 모든 명령은 컨트롤 박스를 거쳐 로봇팔로 전달됩니다.</p>
+  <figure>
+    <svg viewBox="28 10 470 540" style="width:78%;margin:0 auto" role="img" aria-label="Every command reaches the arm through the control box"
+         font-family="Pretendard" font-size="13">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#8a90a2"/></marker></defs>
+      <text x="40" y="34" font-size="15" font-weight="700" fill="#0b1020">Every command reaches the arm through the control box</text>
+      <g fill="none" stroke="#8a90a2" stroke-width="1.25">
+        <path d="M180 156V228" marker-end="url(#ar)"/><path d="M220 228V156" marker-end="url(#ar)"/>
+        <path d="M180 356V428" marker-end="url(#ar)"/><path d="M220 428V356" marker-end="url(#ar)"/>
+      </g>
+      <rect x="40" y="60" width="320" height="96" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="56" y="86" font-size="15" font-weight="700" fill="#0b1020">Control PC</text>
+      <text x="56" y="106" font-size="11.5" fill="#5a6178">UFactory Studio in a web browser</text>
+      <text x="56" y="122" font-size="11.5" fill="#5a6178">Python SDK · C++ SDK · ROS 2</text>
+      <text x="56" y="138" font-size="11.5" fill="#5a6178">Wired IP on the same subnet (192.168.1.x)</text>
+      <rect x="40" y="228" width="320" height="128" rx="8" fill="#1673e6" fill-opacity="0.10" stroke="#1673e6" stroke-width="2"/>
+      <text x="56" y="254" font-size="15" font-weight="700" fill="#0b1020">Control Box</text>
+      <text x="56" y="274" font-size="11.5" fill="#0b1020">Robot controller · AC power input</text>
+      <text x="56" y="290" font-size="11.5" fill="#0b1020">Emergency-stop button (Stop Category 1)</text>
+      <text x="56" y="306" font-size="11.5" fill="#0b1020">Default IP 192.168.1.xxx (printed on label)</text>
+      <text x="56" y="322" font-size="11.5" fill="#0b1020">I/O: CI0–7 · DI0–7 · CO0–7 · DO0–7</text>
+      <text x="56" y="338" font-size="11.5" fill="#0b1020">AI0–1 · AO0–1 · emergency input EI</text>
+      <rect x="40" y="428" width="320" height="112" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="56" y="454" font-size="15" font-weight="700" fill="#0b1020">xArm7 Robot Arm</text>
+      <text x="56" y="474" font-size="11.5" fill="#5a6178">7 revolute joints · 3.5&nbsp;kg payload</text>
+      <text x="56" y="490" font-size="11.5" fill="#5a6178">Tool I/O: TI0–4 · TO0–4 · TAI0–1</text>
+      <text x="56" y="506" font-size="11.5" fill="#5a6178">Gripper or F/T sensor on the flange</text>
+      <text x="56" y="522" font-size="11.5" fill="#5a6178">Built-in IMU (SN XS1300 and later)</text>
+      <text x="240" y="176" font-weight="700" fill="#0b1020">Ethernet (LAN cable)</text>
+      <text x="240" y="194" font-size="11.5" fill="#5a6178">down: commands · port 502</text>
+      <text x="240" y="210" font-size="11.5" fill="#5a6178">up: state · ports 30000–30003</text>
+      <text x="380" y="292" font-size="11.5" fill="#5a6178">web app</text>
+      <text x="380" y="308" font-size="11.5" font-weight="700" fill="#0b1020">:18333</text>
+      <text x="240" y="376" font-weight="700" fill="#0b1020">Arm cable</text>
+      <text x="240" y="394" font-size="11.5" fill="#5a6178">down: motor power, joint commands</text>
+      <text x="240" y="410" font-size="11.5" fill="#5a6178">up: encoders, motor currents</text>
+    </svg>
+    <figcaption data-fig="fig-arch"><b>그림 1.</b> System architecture — 3 devices, 2 cables</figcaption>
+  </figure>
+
+  <h2 id="c1-s1">Components <small>구성 요소</small></h2>
+  <table class="t">
+    <caption data-tbl="components"><b>표 1.</b> System Components</caption>
+    <thead><tr><th>장치</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td>xArm7 로봇팔</td><td>7개 회전 관절로 이루어집니다. 끝단 플랜지에 그리퍼 · 6축 힘/토크 센서 등을 장착합니다. 끝단 I/O는 디지털 입력 TI0–TI4, 출력 TO0–TO4, 아날로그 입력 TAI0–TAI1(0–3.3 V)입니다</td></tr>
+      <tr><td>컨트롤 박스</td><td>로봇 제어기입니다. 비상 정지 버튼, 이더넷 포트, 디지털 I/O 32점(CI0–7, DI0–7 입력 / CO0–7, DO0–7 출력), 아날로그 입력 AI0–1, 출력 AO0–1(0–10 V)을 갖추고 있습니다</td></tr>
+      <tr><td>제어 PC</td><td>웹 브라우저로 UFactory Studio를 열고, Python SDK · C++ SDK · ROS 2로 프로그램을 실행합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s2">Network Ports <small>통신 포트</small></h2>
+  <table class="t">
+    <caption data-tbl="ports"><b>표 2.</b> Network Ports</caption>
+    <thead><tr><th>포트</th><th>용도</th><th class="num">주기</th></tr></thead>
+    <tbody>
+      <tr><td>18333</td><td>UFactory Studio 웹 앱 (브라우저에서 <code>IP:18333</code>)</td><td class="num">—</td></tr>
+      <tr><td>502</td><td>제어 명령 (SDK · Modbus-TCP). 변경할 수 없음</td><td class="num">—</td></tr>
+      <tr><td>30000</td><td>실시간 데이터: 실제 관절 위치 · 속도 · 전류, 추정 토크 등 (10장)</td><td class="num">250&nbsp;Hz</td></tr>
+      <tr><td>30003</td><td>목표 관절각, TCP 위치, 관절 토크</td><td class="num">100&nbsp;Hz</td></tr>
+      <tr><td>30001 · 30002</td><td>상태 · 에러 코드 · 설정값 (SDK 기본 상태 수신은 30002)</td><td class="num">5&nbsp;Hz</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">Safety Precautions</h1><div class="ko">안전 수칙</div></div>
+  <p class="lede">로봇팔은 사람을 다치게 할 수 있는 힘과 속도(관절 최대 180°/s, TCP(공구 끝점) 최대 1 m/s)로 움직입니다.
+    운용하기 전에 매번 아래 항목을 확인하십시오. 설치할 때마다 위험성 평가가 필요합니다.</p>
+
+  <div class="box warn"><div class="h">경고 · 비상 정지 시 로봇팔이 약간 처집니다</div>
+    <p>컨트롤 박스의 비상 정지 버튼을 누르면 소프트웨어 감속이 시작되고 <b>300&nbsp;ms 안에 로봇팔 전원이 차단</b>됩니다. 이때 브레이크가 걸리면서 팔이 약간 처집니다.
+      손목 아래에 손이나 물건을 두지 마십시오. 비상 정지는 안전 펜스 같은 위험 저감 수단을 대신하지 않습니다.</p></div>
+
+  <ol class="steps">
+    <li><b>단단한 면에 고정하십시오.</b>설치면은 베이스 관절 최대 토크의 10배, 로봇팔 무게의 5배 이상을 견뎌야 합니다(4장).</li>
+    <li><b>작업 반경을 비우십시오.</b>도달거리 700&nbsp;mm + 공구 길이 안에 사람 · 물건이 없게 하고, 필요하면 안전 경계(12장)를 켭니다.</li>
+    <li><b>TCP Payload · 장착 방향을 정확히 입력하고, 충돌 감지 민감도는 3 이상으로 두십시오.</b>관절 토크 센서가 없어 충돌 감지는 모터 전류로 동작합니다. TCP Payload나 장착 방향이 틀리면 충돌 감지가 잘못 작동하고(C31), 수동 모드에서 팔이 스스로 움직일 수 있습니다(C37). 민감도를 0으로 하면 충돌 감지가 꺼지며, UFACTORY는 3 미만을 권장하지 않습니다.</li>
+    <li><b>새 프로그램은 저속으로 먼저 실행하고, 서보 목표는 촘촘히 보간해 보내십시오.</b>낮은 속도로 경로를 확인한 뒤 속도를 올립니다. 서보 모드(모드 1)는 받은 목표 위치까지 최고 속도로 움직이므로, 보간한 경로를 100–200 Hz로 보냅니다(7장).</li>
+    <li><b>관절 잠금 해제(Unlock)는 팔을 받친 상태에서 하십시오.</b>해제된 관절은 힘이 없어 떨어집니다. 반드시 한 사람이 팔을 받치고 작업합니다.</li>
+    <li><b>케이블은 전원을 끈 뒤 다루고, 액체 · 습기를 피하십시오.</b>외부 AC 전원을 분리한 상태에서 로봇팔 케이블을 연결 · 분리합니다. 로봇팔과 컨트롤 박스가 액체에 닿거나 습한 곳에 오래 있지 않게 합니다.</li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">Specifications</h1><div class="ko">제품 사양</div></div>
+  <p class="lede">xArm7은 가반하중 3.5&nbsp;kg, 도달거리 700 mm의 7축 로봇팔입니다. 7번째 축 덕분에 TCP 위치 · 자세를 유지한 채 팔 자세(팔꿈치 위치)를 바꿀 수 있습니다.</p>
+  <figure>
+    <svg viewBox="-330 -175 1730 1440" style="width:54%;margin:0 auto" role="img" aria-label="xArm7 joints J1 to J7" font-family="Pretendard">
+      <image href="assets/xarm7.png" x="0" y="0" width="1041" height="1230"/>
+      <g stroke="#1673e6" stroke-width="3" fill="none">
+        <path d="M-40 1015 L287 1029"/><path d="M-40 747 L292 761"/><path d="M-40 549 L314 563"/><path d="M-40 261 L264 275"/>
+        <path d="M360 -40 L360 173"/><path d="M673 -40 L673 248"/>
+        <path d="M1100 296 L926 310"/><path d="M1100 447 L972 461"/>
+      </g>
+      <g fill="#1673e6" stroke="#fff" stroke-width="4">
+        <circle cx="287" cy="1029" r="13"/><circle cx="292" cy="761" r="13"/><circle cx="314" cy="563" r="13"/><circle cx="264" cy="275" r="13"/>
+        <circle cx="360" cy="173" r="13"/><circle cx="673" cy="248" r="13"/><circle cx="926" cy="310" r="13"/><circle cx="972" cy="461" r="13"/>
+      </g>
+      <g font-weight="800" font-size="56" fill="#0b1020" text-anchor="end">
+        <text x="-55" y="1020">Base</text><text x="-55" y="752">J1</text><text x="-55" y="554">J2</text><text x="-55" y="266">J3</text>
+      </g>
+      <g font-size="36" fill="#5a6178" text-anchor="end">
+        <text x="-55" y="1064">link_base</text><text x="-55" y="796">±360°</text><text x="-55" y="598">−118° ~ +120°</text><text x="-55" y="310">±360°</text>
+      </g>
+      <g font-weight="800" font-size="56" fill="#0b1020" text-anchor="middle"><text x="360" y="-100">J4</text><text x="673" y="-100">J5</text></g>
+      <g font-size="36" fill="#5a6178" text-anchor="middle"><text x="360" y="-55">−11° ~ +225°</text><text x="673" y="-55">±360°</text></g>
+      <g font-weight="800" font-size="56" fill="#0b1020"><text x="1115" y="305">J6</text><text x="1115" y="456">J7</text></g>
+      <g font-size="36" fill="#5a6178"><text x="1115" y="349">−97° ~ +180°</text><text x="1115" y="500">±360° · flange</text></g>
+    </svg>
+    <figcaption data-fig="fig-joints"><b>그림 2.</b> xArm7 joints J1–J7 and their ranges (each label marks the link that the joint rotates)</figcaption>
+  </figure>
+  <h2 id="c3-s1">Key Specifications <small>주요 사양</small></h2>
+  <table class="t tight keep">
+    <caption data-tbl="key-spec"><b>표 3.</b> Key Specifications</caption>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>자유도</td><td>7 (회전 관절)</td></tr>
+      <tr><td>가반하중</td><td>3.5&nbsp;kg</td></tr>
+      <tr><td>도달거리</td><td>700&nbsp;mm</td></tr>
+      <tr><td>반복정밀도</td><td>±0.1&nbsp;mm</td></tr>
+      <tr><td>무게 (로봇팔)</td><td>약 13.7&nbsp;kg</td></tr>
+      <tr><td>관절 최대 속도 · 가속도</td><td>180°/s · 1146°/s² (3.14 rad/s · 20 rad/s²), 모든 관절 동일</td></tr>
+      <tr><td>TCP 최대 속도 · 가속도</td><td>1000&nbsp;mm/s · 50000&nbsp;mm/s² (1 m/s · 50 m/s²)</td></tr>
+      <tr><td>통신</td><td>이더넷 (TCP/IP, Modbus-TCP) · 기본 IP 192.168.1.xxx</td></tr>
+    </tbody>
+  </table>
+
+
+  <h2 id="c3-s2">Joint Range &amp; Max Torque <small>관절별 범위 · 최대 토크</small></h2>
+  <table class="t tight keep">
+    <caption data-tbl="joint-torque"><b>표 4.</b> Joint Range &amp; Max Torque</caption>
+    <thead><tr><th>관절</th><th>범위</th><th class="num">최대 토크 (모델 1305 미만)</th><th class="num">최대 토크 (모델 1305 이상)</th></tr></thead>
+    <tbody>
+      <tr><td>J1</td><td>±360°</td><td class="num">163.2&nbsp;N·m</td><td class="num">179.4&nbsp;N·m</td></tr>
+      <tr><td>J2</td><td>−118° ~ +120°</td><td class="num">163.2&nbsp;N·m</td><td class="num">179.4&nbsp;N·m</td></tr>
+      <tr><td>J3</td><td>±360°</td><td class="num">81.6&nbsp;N·m</td><td class="num">92&nbsp;N·m</td></tr>
+      <tr><td>J4</td><td>−11° ~ +225°</td><td class="num">81.6&nbsp;N·m</td><td class="num">92&nbsp;N·m</td></tr>
+      <tr><td>J5</td><td>±360°</td><td class="num">81.6&nbsp;N·m</td><td class="num">81.6&nbsp;N·m</td></tr>
+      <tr><td>J6</td><td>−97° ~ +180°</td><td class="num">30.6&nbsp;N·m</td><td class="num">30.6&nbsp;N·m</td></tr>
+      <tr><td>J7</td><td>±360°</td><td class="num">30.6&nbsp;N·m</td><td class="num">30.6&nbsp;N·m</td></tr>
+    </tbody>
+  </table>
+  <p>최대 토크는 xarm_ros2 모델의 순간 최댓값(토크 상수 × 감속비 100 × 과부하 배율)이며, 연속 정격 토크는 공개되어 있지 않습니다.
+    <b>모델 번호</b>는 시리얼 번호(SN)의 3–6번째 자리입니다(예: XS1305… → 1305). SN은 <span class="ui">Settings › My Device</span>에 있습니다.</p>
+
+  <h2 id="c3-s3">Jerk <small>저크 (가속도 변화율)</small></h2>
+  <table class="t tight keep">
+    <caption data-tbl="jerk"><b>표 5.</b> Jerk Limits</caption>
+    <thead><tr><th>항목</th><th class="num">TCP 운동 (직선)</th><th class="num">관절 운동</th></tr></thead>
+    <tbody>
+      <tr><td>최대 저크</td><td class="num">100000&nbsp;mm/s³</td><td class="num">28647°/s³ (500 rad/s³)</td></tr>
+      <tr><td>기본값</td><td class="num">7000&nbsp;mm/s³</td><td class="num">11459°/s³ (200 rad/s³)</td></tr>
+    </tbody>
+  </table>
+  <p>저크는 <span class="ui">Settings › General › Advanced</span>에서 바꿀 수 있지만, UFACTORY는 변경을 권장하지 않습니다. SDK · Studio의 기본 단위는 mm · 도(°)이며, 라디안을 쓰려면 <code>is_radian=True</code>를 지정합니다.</p>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">Installation &amp; Network</h1><div class="ko">설치 · 네트워크 연결</div></div>
+  <p class="lede">로봇팔을 단단한 면에 고정하고, 컨트롤 박스와 PC를 이더넷 케이블로 직접 연결합니다. PC의 IP는 컨트롤 박스와 같은 대역(192.168.1.x)이어야 합니다.</p>
+
+  <h2 id="c4-s1">Mounting <small>설치</small></h2>
+  <ol class="steps">
+    <li><b>작업 공간을 정합니다.</b>팔이 닿는 범위(700&nbsp;mm + 공구)에 사람 · 설비가 부딪히지 않는 위치를 고릅니다.</li>
+    <li><b>베이스를 고정합니다.</b>설치면은 충격에 강하고 단단해야 하며, 베이스 관절 최대 토크의 10배 · 로봇팔 무게의 5배 이상을 견뎌야 합니다. 볼트를 모두 조입니다.</li>
+    <li><b>로봇팔과 컨트롤 박스를 연결합니다.</b>외부 AC 전원을 분리한 상태에서 로봇팔 케이블을 꽂습니다.</li>
+    <li><b>컨트롤 박스 전원 케이블을 연결합니다.</b></li>
+    <li><b>엔드 이펙터를 장착합니다.</b>그리퍼 · 센서를 플랜지에 고정하고, 8장 Setting the TCP 순서로 TCP Payload · TCP Offset을 입력합니다(공식 공구 값: 6장 표 8).</li>
+  </ol>
+  <div class="box note"><div class="h">바닥이 아닌 곳에 설치할 때</div>
+    <p>벽 · 천장 · 경사면에 설치하면 <span class="ui">Settings › Motion › Coordinates › Mounting</span>에서 기울기(0–180°)와 회전(±180°)을 입력합니다.
+      값이 틀리면 로봇이 중력 방향을 잘못 인식해 충돌 오감지가 잦아집니다. SN이 XS1300 이후인 로봇은 내장 IMU가 감지한 방향과 설정값이 10° 넘게 다르면 경고를 표시합니다.</p></div>
+
+  <h2 id="c4-s2">Network <small>네트워크 연결</small></h2>
+  <ol class="steps">
+    <li><b>컨트롤 박스 IP를 확인합니다.</b>컨트롤 박스 라벨에 적혀 있습니다. 기본 대역은 <code>192.168.1.xxx</code>(2–254)입니다.</li>
+    <li><b>PC와 컨트롤 박스를 직접 연결합니다.</b>UFACTORY는 공유기 없이 케이블로 직접 연결하는 방식을 권장합니다. 연결되면 네트워크 포트 표시등이 빠르게 깜박입니다.</li>
+    <li><b>PC 유선 IP를 같은 대역으로 고정합니다.</b>로봇과 겹치지 않는 주소를 씁니다. Ubuntu 예시:
+      <pre class="cmd">nmcli con mod "유선 연결 1" ipv4.method manual ipv4.addresses 192.168.1.100/24
+nmcli con up "유선 연결 1"</pre>
+      연결 이름은 <code>nmcli con show</code>로 확인합니다(영문 Ubuntu: "Wired connection 1").</li>
+    <li><b>프록시를 끕니다.</b>PC에 네트워크 프록시가 켜져 있으면 접속되지 않습니다.</li>
+    <li><b>연결을 확인합니다.</b><code>ping 192.168.1.xxx</code>로 응답을 확인한 뒤, 브라우저에서 <code>192.168.1.xxx:18333</code>을 엽니다(6장).</li>
+  </ol>
+
+  <h2 id="c4-s3">IP Reset <small>IP를 잊었을 때</small></h2>
+  <p>IP를 바꿨다면 반드시 컨트롤 박스에 새 IP를 적어 두십시오. 잊어버렸다면 다음 순서로 <b>192.168.1.111</b>로 초기화합니다.</p>
+  <ol class="steps">
+    <li><b>비상 정지 버튼을 누르고 컨트롤 박스 전원을 끕니다.</b></li>
+    <li><b>RI0 단자와 GND를 전선으로 연결합니다.</b></li>
+    <li><b>컨트롤 박스 전원을 켭니다.</b>"삐" 소리가 나면 IP가 192.168.1.111로 초기화된 것입니다.</li>
+    <li><b>RI0–GND 전선을 빼고 60초 기다립니다.</b>컨트롤 박스가 부팅됩니다.</li>
+    <li><b>브라우저에서 <code>192.168.1.111:18333</code>을 엽니다.</b></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">Start-up &amp; Shut-down</h1><div class="ko">시작 · 종료 순서</div></div>
+  <p class="lede">전원 → 네트워크 → Studio → 활성화(Enable) 순서로 켜고, 반대 순서로 끕니다. 활성화 전에는 로봇팔이 움직이지 않습니다.</p>
+
+  <h2 id="c5-s1">Start-up <small>시작 순서</small></h2>
+  <ol class="steps">
+    <li><b>주변을 확인합니다.</b>작업 반경 안에 사람 · 물건이 없는지 확인합니다.</li>
+    <li><b>전원을 켭니다.</b>컨트롤 박스 전원 스위치를 켜고, 비상 정지 버튼을 화살표 방향으로 돌려 올립니다. 로봇팔 전원 표시등이 켜집니다. 부팅까지 약 60초 기다립니다.</li>
+    <li><b>네트워크를 확인합니다.</b>PC에서 <code>ping</code>으로 컨트롤 박스 응답을 확인합니다(4장).</li>
+    <li><b>UFactory Studio를 엽니다.</b>브라우저에서 <code>컨트롤 박스 IP:18333</code>에 접속합니다.</li>
+    <li><b>설정을 확인합니다.</b>홈 화면의 <span class="ui">TCP Payload</span> · <span class="ui">Collision Sensitivity</span> · <span class="ui">Robot-Mounting</span>과 TCP Offset(8장)이 실제 장착 상태와 같은지 확인합니다.</li>
+    <li><b>로봇을 활성화합니다.</b>홈 화면의 <span class="ui">Enable Robot</span>을 누릅니다. <span class="ui">Robot State</span>가 <b>Normal</b>이면 명령을 받을 수 있습니다.</li>
+    <li><b>저속으로 동작을 확인합니다.</b>Live Control에서 한 관절씩 작게 움직여 봅니다. 그다음 SDK 프로그램이나 Blockly 프로젝트를 실행합니다.</li>
+  </ol>
+
+  <h2 id="c5-s2">Shut-down <small>종료 순서</small></h2>
+  <ol class="steps">
+    <li><b>동작을 멈춥니다.</b>실행 중인 프로그램을 정지합니다(SDK: <code>arm.set_state(4)</code>).</li>
+    <li><b>안전한 자세로 옮깁니다.</b>팔이 처져도 부딪히지 않는 자세로 옮깁니다. Live Control의 <span class="ui">Initial Position</span>은 공구에 맞게 바꿔 둔 경우에만 씁니다(8장).</li>
+    <li><b>SDK 연결을 끊습니다.</b><code>arm.disconnect()</code></li>
+    <li><b>비상 정지 버튼을 누릅니다.</b>로봇팔 전원 표시등이 꺼집니다.</li>
+    <li><b>컨트롤 박스 전원 스위치를 끕니다.</b></li>
+  </ol>
+
+  <div class="box note"><div class="h">비상 정지 후 다시 시작하기</div>
+    <p>① 비상 정지 버튼을 화살표 방향으로 돌려 해제하고 ② Studio에서 <span class="ui">Enable Robot</span>을 누릅니다.
+      SDK에서는 <code>arm.clean_error()</code> → <code>arm.motion_enable(True)</code> → <code>arm.set_state(0)</code> 순서입니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">UFactory Studio</h1><div class="ko">웹 앱 사용법</div></div>
+  <p class="lede">UFactory Studio는 설치 없이 브라우저로 여는 로봇팔 제어 앱입니다. 파라미터를 설정하고, Live Control로 팔을 움직이고,
+    Blockly 블록으로 프로그래밍 없이 동작을 만듭니다. Chrome · Firefox · Safari · Edge를 지원합니다.</p>
+
+  <h2 id="c6-s1">Access <small>접속</small></h2>
+  <p>브라우저 주소창에 <code>컨트롤 박스 IP:18333</code>을 입력합니다. 예를 들어 컨트롤 박스 IP가 192.168.1.201이면 <code>192.168.1.201:18333</code>을 입력합니다.</p>
+
+  <h2 id="c6-s2">Home Screen <small>홈 화면</small></h2>
+  <table class="t">
+    <caption data-tbl="home"><b>표 6.</b> UFactory Studio Home Screen</caption>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Robot State</td><td><b>Error</b>: 활성화되지 않았거나 에러 상태. 파란 <span class="ui">Enable Robot</span> 버튼으로 활성화. <b>Normal</b>: 명령을 받을 준비 완료</td></tr>
+      <tr><td>Controller IP</td><td>연결된 컨트롤 박스 IP와 축 수(xArm7 = 7)</td></tr>
+      <tr><td>TCP Payload</td><td>현재 설정된 TCP Payload(공구 · 물체 무게)</td></tr>
+      <tr><td>Collision Sensitivity</td><td>충돌 감지 민감도</td></tr>
+      <tr><td>Robot-Mounting</td><td>장착 방향</td></tr>
+      <tr><td>Motion Enable</td><td>모터 활성화 여부</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c6-s3">Settings <small>설정 메뉴</small></h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="settings"><b>표 7.</b> UFactory Studio Settings Menu</caption>
+    <thead><tr><th>메뉴</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Motion › Parameters</td><td>Live Control의 관절 · 위치 · 자세 스텝, <b>충돌 감지 민감도</b>(1–5, 3 이상 권장), Initial Position(안전 복귀 자세, xArm 기본값은 모든 관절 0° — 공구를 달면 바꿈, 8장)</td></tr>
+      <tr><td>Motion › TCP</td><td><b>TCP Payload</b>: 공구 + 물체 무게(kg)와 무게중심(mm, 플랜지 기준). 하중이 없으면 모두 0. <b>TCP Offset</b>: 플랜지 중심에서 공구 끝까지의 위치 · 자세. 직접 입력하거나 자동 식별(Payload) · 5점 교시(Offset)로 구함(8장 Setting the TCP)</td></tr>
+      <tr><td>Motion › Coordinates</td><td>사용자 좌표계(직접 입력 또는 3점 교시, 8장), 장착 방향(Mounting)</td></tr>
+      <tr><td>Externals</td><td>끝단 I/O(5&nbsp;Hz 갱신), 컨트롤 박스 I/O와 I/O 기능(12장), F/T 센서 하중 인식, Modbus RTU(기본 2,000,000 bps), Modbus TCP(포트 502)</td></tr>
+      <tr><td>Safety</td><td>안전 경계(Safety Boundary), 감속 모드(Reduced Mode) — 12장</td></tr>
+      <tr><td>General</td><td>수동 모드 민감도, 자세 표시 · 조작 방식(축-각 / RPY), Python IDE, 포장 자세(Pack the robot)</td></tr>
+      <tr><td>General › Debugging Tools</td><td>목표 · 실제 관절 위치 · 속도 · 전류, 추정 관절 토크, TCP 자세 그래프와 CSV 다운로드. 관절 잠금 해제(Unlock)</td></tr>
+      <tr><td>General › Advanced</td><td>기본 암호 <code>admin</code>. 관절 · TCP 저크, 충돌 반발, 충돌 감지 켜기 · 끄기, 자기충돌 감지, 설정 내보내기 · 가져오기, 공장 초기화</td></tr>
+      <tr><td>My Device</td><td>IP, 펌웨어 · Studio 버전, 축 수, <b>시리얼 번호(SN)</b>, 네트워크 설정, 업데이트 확인, 에러 로그 다운로드</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c6-s4">Default TCP Payloads <small>공식 엔드 이펙터 기본값</small></h2>
+  <table class="t tight">
+    <caption data-tbl="tcp-payloads"><b>표 8.</b> Default TCP Payload &amp; TCP Offset of Official End Effectors</caption>
+    <thead><tr><th>엔드 이펙터</th><th>Payload [kg, Cx, Cy, Cz]</th><th>Offset [x, y, z, roll, pitch, yaw]</th></tr></thead>
+    <tbody>
+      <tr><td>없음</td><td>[0, 0, 0, 0]</td><td>[0, 0, 0, 0, 0, 0]</td></tr>
+      <tr><td>xArm Gripper</td><td>[0.82, 0, 0, 48]</td><td>[0, 0, 172, 0, 0, 0]</td></tr>
+      <tr><td>xArm Vacuum Gripper</td><td>[0.61, 0, 0, 53]</td><td>[0, 0, 126, 0, 0, 0]</td></tr>
+      <tr><td>xArm BIO Gripper</td><td>[0.72, 22.39, 3.22, 23.55]</td><td>[159.5, 0, 59.5, 0, 0, 0]</td></tr>
+      <tr><td>Robotiq 2F-85</td><td>[0.925, 0, 0, 58]</td><td>[0, 0, 174, 0, 0, 0]</td></tr>
+      <tr><td>Robotiq 2F-140</td><td>[1.025, 0, 0, 73]</td><td>[0, 0, 244, 0, 0, 0]</td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">공장 초기화 · 수리 전에 설정 내보내기</div>
+    <p>공장 초기화나 수리 전에는 <span class="ui">Settings › General › Advanced › Export</span>로 설정 파일을 저장하십시오. 같은 메뉴의 <span class="ui">Import</span>로 다른 로봇팔에 같은 설정을 넣을 수도 있습니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">Motion Modes &amp; States</h1><div class="ko">모션 모드와 상태</div></div>
+  <p class="lede">로봇팔은 <b>모드</b>(명령을 받는 방식)와 <b>상태</b>(지금 움직일 수 있는지) 두 값으로 동작합니다.
+    모드나 주요 설정을 바꾸면 상태가 5가 되며, <code>set_state(0)</code>을 보내야 다시 움직입니다.</p>
+
+  <h2 id="c7-s1">Modes <small>모드 · set_mode(n)</small></h2>
+  <table class="t tight">
+    <caption data-tbl="modes"><b>표 9.</b> Motion Modes (set_mode)</caption>
+    <colgroup><col style="width:22%"><col style="width:46%"><col style="width:32%"></colgroup>
+    <thead><tr><th>모드</th><th>동작</th><th>주요 함수</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:normal">0 · Position</td><td>기본 모드. 관절 · 직선 · 원호 · 원 운동. 명령이 버퍼에 쌓여 차례로 실행</td><td><code>set_servo_angle</code><br><code>set_position</code><br><code>move_arc_lines</code><br><code>move_circle</code></td></tr>
+      <tr><td style="white-space:normal">1 · Servo</td><td>버퍼 없이 마지막 목표만 즉시 실행. 수신 최대 <b>250&nbsp;Hz</b>(초과분은 버림). 권장 30–250&nbsp;Hz, 가능하면 100 또는 200 Hz로 보간한 경로를 보냄. 30&nbsp;Hz 미만이면 끊겨 움직임. 속도 · 가속도 인자는 쓰이지 않음</td><td><code>set_servo_angle_j</code><br><code>set_servo_cartesian</code></td></tr>
+      <tr><td style="white-space:normal">2 · Manual</td><td>중력 보상 상태에서 손으로 끌어 교시. 교시가 끝나면 set_mode(0), set_state(0)을 보내 모드 0으로 복귀. TCP Payload · 장착 방향이 틀리면 팔이 멈춰 있지 않음</td><td><code>set_mode(2)</code></td></tr>
+      <tr><td style="white-space:normal">4 · Joint velocity</td><td>관절별 속도 지령. duration이 지나면 속도가 자동으로 0 (펌웨어 1.8.0 이상)</td><td><code>vc_set_joint_velocity</code></td></tr>
+      <tr><td style="white-space:normal">5 · Cartesian velocity</td><td>TCP 속도 지령(mm/s, 회전은 축-각속도)</td><td><code>vc_set_cartesian_velocity</code></td></tr>
+      <tr><td style="white-space:normal">6 · Joint online planning</td><td>새 명령이 오면 진행 중인 동작을 끊고 현재 위치에서 다시 계획</td><td><code>set_servo_angle</code></td></tr>
+      <tr><td style="white-space:normal">7 · Cartesian online planning</td><td>모드 6의 직교좌표 버전. Base 좌표계만 사용(is_tool_coord=False)</td><td><code>set_position</code><br><code>set_position_aa</code></td></tr>
+    </tbody>
+  </table>
+  <p>모드 4 · 5는 펌웨어 1.6.9 이상에서 동작합니다. 모드 3은 없습니다.</p>
+
+  <h2 id="c7-s2">States <small>상태 · set_state(n) / get_state()</small></h2>
+  <table class="t tight">
+    <caption data-tbl="states"><b>표 10.</b> Robot States (set_state / get_state)</caption>
+    <thead><tr><th>상태</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td>0 · 설정</td><td>대기(STANDBY)로 설정하고 에러 표시를 지움. 설정 후 상태는 자동으로 2가 됨</td></tr>
+      <tr><td>1 · 피드백</td><td>움직이는 중(MOVING)</td></tr>
+      <tr><td>2 · 피드백</td><td>준비됨(READY) — 명령을 받아 실행할 수 있음</td></tr>
+      <tr><td>3 · 설정/피드백</td><td>일시정지(PAUSED). <code>set_state(0)</code>으로 이어서 실행</td></tr>
+      <tr><td>4 · 설정/피드백</td><td>정지(STOP). 즉시 멈추고 새 명령을 받지 않음. 에러가 나면 자동으로 이 상태가 됨</td></tr>
+      <tr><td>5 · 피드백</td><td>설정 변경됨(MODE_CHANGED). 모드 · TCP Payload · TCP Offset · 충돌 감지 민감도 등을 바꾸면 이 상태가 되며(진행 중인 동작은 멈추고 대기 중인 명령은 지워짐) <code>set_state(0)</code> 전까지 명령을 받지 않음</td></tr>
+      <tr><td>6 · 설정/피드백</td><td>즉시 감속 정지</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <svg viewBox="0 0 720 340" role="img" aria-label="The arm moves only from READY (state 2)" font-family="Pretendard" font-size="13">
+      <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#8a90a2"/></marker></defs>
+      <text x="20" y="26" font-size="15" font-weight="700" fill="#0b1020">The arm moves only from READY (state 2)</text>
+      <g fill="none" stroke="#8a90a2" stroke-width="1.25">
+        <path d="M180 79H243" marker-end="url(#ar2)"/>
+        <path d="M405 79H498" marker-end="url(#ar2)"/>
+        <path d="M560 108V158" marker-end="url(#ar2)"/><path d="M600 158V110" marker-end="url(#ar2)"/>
+        <path d="M498 178H407" marker-end="url(#ar2)"/><path d="M407 202H498" marker-end="url(#ar2)"/>
+        <path d="M545 218V240H330V258" marker-end="url(#ar2)"/>
+        <path d="M405 300H700V79H652" marker-end="url(#ar2)"/>
+      </g>
+      <rect x="20" y="50" width="160" height="58" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="32" y="74" font-weight="700" fill="#0b1020">Mode / config change</text>
+      <text x="32" y="94" font-size="11.5" fill="#5a6178">set_mode(n), payload, TCP</text>
+      <rect x="245" y="50" width="160" height="58" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="257" y="74" font-weight="700" fill="#0b1020">5 · MODE_CHANGED</text>
+      <text x="257" y="94" font-size="11.5" fill="#5a6178">commands are ignored</text>
+      <rect x="500" y="50" width="150" height="58" rx="8" fill="#1673e6" fill-opacity="0.10" stroke="#1673e6" stroke-width="2"/>
+      <text x="512" y="74" font-weight="700" fill="#0b1020">2 · READY</text>
+      <text x="512" y="94" font-size="11.5" fill="#0b1020">waiting for commands</text>
+      <rect x="500" y="160" width="150" height="58" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="512" y="184" font-weight="700" fill="#0b1020">1 · MOVING</text>
+      <text x="512" y="204" font-size="11.5" fill="#5a6178">executing motion</text>
+      <rect x="245" y="160" width="160" height="58" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="257" y="184" font-weight="700" fill="#0b1020">3 · PAUSED</text>
+      <text x="257" y="204" font-size="11.5" fill="#5a6178">motion held</text>
+      <rect x="245" y="260" width="160" height="58" rx="8" fill="#b42318" fill-opacity="0.08" stroke="#b42318" stroke-width="1.5"/>
+      <text x="257" y="284" font-weight="700" fill="#0b1020">4 · STOP</text>
+      <text x="257" y="304" font-size="11.5" fill="#5a6178">error, E-stop or set_state(4)</text>
+      <text x="410" y="70" font-size="11.5" fill="#5a6178">set_state(0)</text>
+      <text x="484" y="138" font-size="11.5" fill="#5a6178" text-anchor="end">command</text>
+      <text x="608" y="138" font-size="11.5" fill="#5a6178">done</text>
+      <text x="452" y="171" font-size="11.5" fill="#5a6178" text-anchor="middle">set_state(3)</text>
+      <text x="452" y="216" font-size="11.5" fill="#5a6178" text-anchor="middle">set_state(0)</text>
+      <text x="440" y="234" font-size="11.5" fill="#b42318">error</text>
+      <text x="414" y="320" font-size="11.5" fill="#5a6178">clean_error() → motion_enable(True) → set_state(0)</text>
+    </svg>
+    <figcaption data-fig="fig-states"><b>그림 3.</b> Robot states and the calls that move between them</figcaption>
+  </figure>
+
+  <pre class="cmd"><span class="c"># 모드를 바꿀 때는 항상 이 두 줄</span>
+arm.set_mode(1)      <span class="c"># 예: 서보 모드</span>
+arm.set_state(0)     <span class="c"># 상태 5 → 2(READY)</span></pre>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">Coordinate Systems</h1><div class="ko">좌표계 · TCP 설정 · Base / Tool 기준 제어</div></div>
+  <p class="lede">xArm7에 내리는 명령은 두 가지입니다. <b>관절 공간</b> 명령은 J1–J7 각도(°)를, <b>직교 공간</b> 명령은 TCP(공구 끝점)의 위치 · 자세를 지정합니다.
+    직교 공간 명령은 같은 숫자라도 <b>어느 좌표계 기준인지</b>에 따라 움직임이 달라지므로, 명령을 보내기 전에 기준 좌표계를 확인하십시오.</p>
+
+  <figure>
+    <svg viewBox="-300 40 1340 900" style="width:100%;margin:0 auto" role="img" aria-label="xArm7 base and tool frames at zero pose" font-family="Pretendard">
+      <image href="assets/xarm7_zero.png" x="0" y="0" width="600" height="850"/>
+<path d="M175.0 772.0 L329.6 803.7" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M175.0 772.0 L329.6 803.7" stroke="#d64545" stroke-width="6"/><path d="M351.2 808.1 L327.6 813.5 L331.6 793.9 Z" fill="#d64545" stroke="#fff" stroke-width="2"/>
+<text x="330" y="850" fill="#d64545" font-weight="800" font-size="34" text-anchor="middle">X</text>
+<path d="M175.0 772.0 L228.6 714.2" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M175.0 772.0 L228.6 714.2" stroke="#2f9e44" stroke-width="6"/><path d="M243.6 698.1 L235.9 721.0 L221.3 707.4 Z" fill="#2f9e44" stroke="#fff" stroke-width="2"/>
+<text x="262" y="668" fill="#2f9e44" font-weight="800" font-size="34" text-anchor="middle">Y</text>
+<path d="M175.0 772.0 L172.3 621.8" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M175.0 772.0 L172.3 621.8" stroke="#1673e6" stroke-width="6"/><path d="M171.9 599.8 L182.3 621.7 L162.3 622.0 Z" fill="#1673e6" stroke="#fff" stroke-width="2"/>
+<text x="138" y="586" fill="#1673e6" font-weight="800" font-size="34" text-anchor="middle">Z</text>
+<circle cx="175.0" cy="772.0" r="8" fill="#0b1020" stroke="#fff" stroke-width="3"/>
+<path d="M406.3 684.4 L490.4 698.7" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M406.3 684.4 L490.4 698.7" stroke="#d64545" stroke-width="6"/><path d="M512.1 702.4 L488.8 708.6 L492.1 688.9 Z" fill="#d64545" stroke="#fff" stroke-width="2"/>
+<text x="523" y="676" fill="#d64545" font-weight="800" font-size="34" text-anchor="middle">X</text>
+<path d="M406.3 684.4 L386.1 713.1" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M406.3 684.4 L386.1 713.1" stroke="#2f9e44" stroke-width="6"/><path d="M373.5 731.1 L377.9 707.4 L394.3 718.9 Z" fill="#2f9e44" stroke="#fff" stroke-width="2"/>
+<text x="352" y="770" fill="#2f9e44" font-weight="800" font-size="34" text-anchor="middle">Y</text>
+<path d="M406.3 684.4 L404.1 757.4" stroke="#fff" stroke-width="11" stroke-linecap="round"/><path d="M406.3 684.4 L404.1 757.4" stroke="#1673e6" stroke-width="6"/><path d="M403.4 779.4 L394.1 757.1 L414.1 757.7 Z" fill="#1673e6" stroke="#fff" stroke-width="2"/>
+<text x="440" y="790" fill="#1673e6" font-weight="800" font-size="34" text-anchor="middle">Z</text>
+<circle cx="406.3" cy="684.4" r="8" fill="#0b1020" stroke="#fff" stroke-width="3"/>
+
+      <path d="M-10 712 L80 724" stroke="#5a6178" stroke-width="2.5" fill="none"/>
+      <g text-anchor="end"><text x="-18" y="706" font-size="32" font-weight="700" fill="#0b1020">Cable connectors</text><text x="-18" y="744" font-size="30" fill="#5a6178">−X side (back)</text></g>
+      <g text-anchor="middle"><text x="175" y="900" font-size="40" font-weight="800" fill="#0b1020">Base frame</text><text x="175" y="934" font-size="28" fill="#5a6178">origin: base bottom center · link_base</text></g>
+      <g><text x="490" y="540" font-size="40" font-weight="800" fill="#0b1020">Tool frame (TCP)</text><text x="490" y="576" font-size="28" fill="#5a6178">origin: flange center (TCP offset 0)</text><text x="490" y="610" font-size="28" fill="#5a6178">pose = [206, 0, 120.5, 180, 0, 0]</text></g>
+    </svg>
+    <figcaption data-fig="fig-frames"><b>그림 4.</b> Base and Tool frames at the zero pose (all joints 0°) — <span style="color:#d64545">X red</span> · <span style="color:#2f9e44">Y green</span> · <span style="color:#1673e6">Z blue</span></figcaption>
+  </figure>
+
+  <h2 id="c8-s1">Coordinate Frames <small>좌표계 종류</small></h2>
+  <table class="t tight">
+    <caption data-tbl="frames"><b>표 11.</b> Coordinate Frames</caption>
+    <colgroup><col style="width:15%"><col style="width:55%"><col style="width:30%"></colgroup>
+    <thead><tr><th>좌표계</th><th>원점 · 방향</th><th>사용처</th></tr></thead>
+    <tbody>
+      <tr><td>Joint<br>관절</td><td>J1–J7 각도(°)입니다. 각 관절의 + 방향은 회전축에 대한 오른손 법칙을 따릅니다(예: J1 +는 위에서 볼 때 반시계 방향). 범위는 3장 표 4에 있습니다</td><td><code>set_servo_angle</code><br>Live Control 관절 버튼</td></tr>
+      <tr><td>Base<br>베이스</td><td>원점은 베이스 바닥(설치면)의 중심이며, 로봇에 고정되어 움직이지 않습니다. <b>+Z</b>는 위, <b>+X</b>는 앞(모든 관절이 0°일 때 팔이 뻗는 쪽, 베이스 케이블 커넥터의 반대쪽), <b>+Y</b>는 +X를 바라볼 때 왼쪽입니다</td><td>위치 표시 · <code>get_position</code><br><code>set_position</code> 기본 기준<br>ROS <code>link_base</code></td></tr>
+      <tr><td>Tool<br>공구 (TCP)</td><td>원점은 TCP이며, TCP Offset이 0이면 플랜지 중심입니다. 팔과 함께 움직이며, TCP Offset의 roll · pitch · yaw가 0이면 <b>+Z는 플랜지 면에 수직으로 공구 쪽(바깥)</b>을 향합니다. 모든 관절이 0°일 때 방향은 베이스를 X축으로 180° 돌린 것(자세 [180, 0, 0])입니다</td><td><code>set_tool_position</code><br><code>is_tool_coord=True</code><br>ROS <code>link_eef</code>(플랜지)</td></tr>
+      <tr><td>User<br>사용자</td><td>작업대 · 지그 등에 맞춰 정의하는 좌표계입니다. 설정하면 위치 표시와 Base 기준 명령이 베이스 대신 이 좌표계를 기준으로 합니다</td><td><span class="ui">Settings › Motion › Coordinates</span><br><code>set_world_offset</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s2">Pose Representation <small>위치 · 자세 표현</small></h2>
+  <p>직교 공간의 자세(pose)는 6개 값 <code>[x, y, z, roll, pitch, yaw]</code>입니다. x · y · z는 기준 좌표계에서 본 TCP 위치(mm), roll · pitch · yaw는 TCP의 방향(°)입니다.</p>
+  <ul>
+    <li><b>RPY</b> (SDK 기본): 기준 좌표계의 고정축 X → Y → Z 순서로 roll · pitch · yaw만큼 돌린 방향입니다(XYZ 고정각, R&nbsp;=&nbsp;Rz(yaw)·Ry(pitch)·Rx(roll)). URDF · ROS의 rpy와 같은 정의입니다.
+      범위는 ±180°이며, +180°와 −180°는 같은 방향이므로 어느 쪽으로든 표시될 수 있습니다.</li>
+    <li><b>축-각</b> [rx, ry, rz]: 회전축 단위벡터 × 회전각입니다. 예: X축으로 180° = [180, 0, 0]. SDK는 <code>get_position_aa</code> · <code>set_position_aa</code>를 쓰고, Studio의 표시 방식은 <span class="ui">Settings › General</span>에서 고릅니다.</li>
+    <li>자세를 바꿀 때 팔은 항상 <b>짧은 쪽</b>으로 돕니다. 두 자세의 차이가 180°에 가까우면 예상과 반대로 돌 수 있으므로 중간 점을 넣으십시오.</li>
+  </ul>
+  <p>그림 4의 0° 자세 값은 팔을 움직이지 않고 계산으로 확인할 수 있습니다.</p>
+  <pre class="cmd">code, pose = arm.get_forward_kinematics([0] * 7)   <span class="c"># 계산만 함, 팔은 움직이지 않음</span>
+<span class="c"># TCP Offset · 사용자 좌표계가 0이면 약 [206, 0, 120.5, 180, 0, 0]</span>
+<span class="c"># 위치는 로봇별 보정값만큼 수 mm 다를 수 있고, roll은 −180으로 보일 수 있음</span></pre>
+  <div class="box caution"><div class="h">공구를 단 채 0° 자세로 보내지 마십시오 — Initial Position 기본값도 0°</div>
+    <p>0° 자세에서는 플랜지가 설치면 위 약 120&nbsp;mm에서 아래를 향합니다(그림 4). 이보다 긴 공구를 달고 이 자세로 보내면 공구가 설치면에 부딪힙니다.
+      Studio Live Control의 <span class="ui">Initial Position</span> 버튼도 xArm 기본값으로는 모든 관절 0° 자세로 가며, SDK의 <code>move_gohome()</code>도 한계 검사 없이 0° 자세로 갑니다.
+      공구를 달면 <span class="ui">Settings › Motion › Parameters › Initial Position</span>을 공구가 아무것에도 닿지 않는 자세로 바꾸고, <code>move_gohome()</code>은 쓰지 마십시오.</p></div>
+
+  <h2 id="c8-s3">TCP Offset &amp; User Frame <small>TCP Offset · 사용자 좌표계</small></h2>
+  <p><b>TCP Offset</b> <code>[x, y, z, roll, pitch, yaw]</code>은 플랜지 중심의 기본 Tool 좌표계에서 본 실제 공구 끝점의 위치 · 방향입니다.
+    예: xArm Gripper는 [0, 0, 172, 0, 0, 0], 즉 Tool +Z 방향으로 172&nbsp;mm입니다(6장 표 8).
+    설정하면 위치 표시가 공구 끝점의 값이 되고, 위치는 그대로 두고 자세만 바꾸는 명령은 공구 끝점을 중심으로 돕니다. 설정 방법은 다음 절에 있습니다.</p>
+  <p><b>사용자 좌표계</b>는 숫자를 직접 넣기보다 <b>3점 교시</b>로 만드는 것을 권장합니다. 기준점 → 원하는 +X 방향으로 옮긴 점 → +Y 방향으로 옮긴 점 순서로 TCP를 옮겨 기록하면 방향이 계산됩니다
+    (Studio <span class="ui">Settings › Motion › Coordinates</span>, SDK <code>calibrate_user_orientation_offset</code> · <code>calibrate_user_coordinate_offset</code>).
+    <code>set_world_offset(offset)</code>에 숫자를 직접 넣을 때는 주의하십시오. 공식 문서마다 offset의 방향 설명이 다릅니다(Studio 문서: 베이스에서 본 사용자 좌표계, 개발자 매뉴얼: 사용자 좌표계에서 본 베이스).
+    직접 넣기 전에 아래처럼 팔을 움직이지 않고 확인합니다.</p>
+  <pre class="cmd">code, p = arm.get_position()                <span class="c"># 현재 [x, y, z, ...]</span>
+arm.set_world_offset([100, 0, 0, 0, 0, 90])
+code, q = arm.get_position()
+<span class="c"># q[:3] = (y, 100−x, z)  → offset = 베이스에서 본 사용자 좌표계</span>
+<span class="c"># q[:3] = (100−y, x, z)  → offset = 사용자 좌표계에서 본 베이스</span>
+arm.set_world_offset([0, 0, 0, 0, 0, 0]); arm.set_state(0)</pre>
+  <div class="box caution"><div class="h">지점을 기록하기 전에 TCP Offset · 사용자 좌표계 확인</div>
+    <p>두 값이 바뀌면 같은 숫자의 목표가 다른 위치를 뜻합니다. 지점을 기록하거나 저장된 프로그램을 실행하기 전에, 두 값이 프로그램을 만들 때와 같은지 확인하십시오.
+      Live Control은 사용자 좌표계가 0이 아니면 Base 대신 사용자 좌표계 기준으로 표시합니다.</p></div>
+
+  <h2 style="break-before:page" id="c8-s4">Setting the TCP <small>TCP 설정 · 변경</small></h2>
+  <p>공구를 달거나 바꿀 때는 세 가지를 맞춥니다. <b>TCP Payload</b>(공구 + 물체의 무게 · 무게중심)는 충돌 감지와 수동 모드의 중력 보상에 쓰이고,
+    <b>TCP Offset</b>(공구 끝점)은 위치 표시와 직교 공간 이동에 쓰입니다. <b>자기충돌 모델</b>(공구를 감싸는 형상)은 자기충돌 감지(12장)를 켰을 때 팔이 자기 공구와 부딪히는지 판단하는 데 쓰입니다.
+    Payload의 무게중심 [Cx, Cy, Cz]도 Offset과 같이 플랜지 중심의 기본 Tool 좌표계 기준(mm)입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tcp-methods"><b>표 12.</b> Ways to Set the TCP</caption>
+    <colgroup><col style="width:21%"><col style="width:35%"><col style="width:44%"></colgroup>
+    <thead><tr><th>항목</th><th>공식 엔드 이펙터</th><th>다른 공구 (타사 · 자체 제작)</th></tr></thead>
+    <tbody>
+      <tr><td>공구 선택</td><td><span class="ui">Live Control › End Effector</span>에서 선택. 끝단 RS-485 통신 속도도 함께 맞춰짐(xArm Gripper 2,000,000&nbsp;bps, Robotiq 115,200&nbsp;bps)</td><td><span class="ui">Other</span>를 고르고, 공구를 감싸는 원기둥 · 직육면체를 자기충돌 모델로 지정</td></tr>
+      <tr><td>TCP Payload</td><td>6장 표 8의 값이 기록으로 들어 있으므로 목록에서 선택</td><td>무게 · 무게중심을 알면 직접 입력, 모르면 <b>자동 식별</b>(팔이 스스로 움직이며 측정)</td></tr>
+      <tr><td>TCP Offset</td><td>Payload와 같은 기록에 들어 있음</td><td>도면 값을 직접 입력, 또는 <b>Teaching Tool Center</b>(5점 교시)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Studio · 새 기록 만들기</h3>
+  <ol class="steps">
+    <li><b>새 기록을 만듭니다.</b><span class="ui">Settings › Motion › TCP</span>에서 <span class="ui">+ New</span>를 누르고 이름(예: 공구 이름)을 입력한 뒤 <span class="ui">Next Step</span>을 누릅니다. 이후에는 이름을 바꿀 수 없습니다.</li>
+    <li><b>Payload를 넣습니다.</b>직접 입력하거나 자동 식별을 고릅니다. 자동 식별은 팔이 여러 자세로 스스로 움직이므로, 팔이 단단히 고정되어 있고 주변에 사람 · 물체가 없을 때만 실행합니다. 물체를 잡은 상태에서 쓸 값이면 물체를 잡은 채로 측정합니다.</li>
+    <li><b>Offset을 넣습니다.</b>값을 알면 <span class="ui">Manual Input</span>, 모르면 <span class="ui">Teaching Tool Center</span>를 고릅니다(아래 5점 교시).</li>
+    <li><b>현재 설정으로 적용합니다.</b><span class="ui">TCP Payload and Offset</span> 화면 오른쪽 위 목록에서 이 기록을 고르고, 홈 화면의 TCP Payload 값이 바뀌었는지 확인합니다. 공구를 다시 바꿀 때도 목록에서 그 기록만 고르면 됩니다.</li>
+  </ol>
+
+  <h3>Teaching Tool Center · 5점 교시</h3>
+  <ol class="steps">
+    <li><b>현재 Offset을 0으로 둡니다.</b>시작 전 TCP Offset이 [0, 0, 0, 0, 0, 0]이어야 하며, 교시하는 동안 Offset이나 사용자 좌표계를 바꾸면 안 됩니다.</li>
+    <li><b>기준점을 고정합니다.</b>작업대에 끝이 뾰족한 핀 등을 단단히 세웁니다.</li>
+    <li><b>같은 점을 4가지 자세로 찍습니다.</b>공구 끝을 기준점에 정확히 맞추고 <span class="ui">Set Point</span>를 누르는 동작을 네 번 반복합니다. 네 자세는 공구 방향이 서로 크게 달라야 하며 한 평면 위에 있으면 안 됩니다. 수동 모드로 끌어 대략 맞춘 뒤 Live Control의 작은 스텝으로 끝을 맞추면 정확합니다.</li>
+    <li><b>나머지 한 점으로 공구 방향을 정합니다.</b>화면 안내를 따릅니다. 공구 축이 플랜지 축과 나란한 일반 그리퍼는 roll · pitch · yaw 오프셋이 0입니다.</li>
+    <li><b>결과를 확인합니다.</b>계산된 Offset의 Z가 실제 공구 길이(플랜지 면 → 공구 끝)와 비슷한지 보고, 아래 Verify 방법으로 확인합니다.</li>
+  </ol>
+
+  <h3>SDK · 파이썬으로 설정</h3>
+  <pre class="cmd"><span class="c"># 1) Payload를 알 때: 무게(kg), 무게중심 [x, y, z](mm, 플랜지 기준)</span>
+arm.set_tcp_load(0.82, [0, 0, 48])              <span class="c"># 예: xArm Gripper</span>
+<span class="c"># 모를 때만 자동 식별 (펌웨어 1.8.0 이상, 팔이 스스로 움직임):</span>
+<span class="c"># arm.set_mode(0); arm.set_state(0)</span>
+<span class="c"># code, load = arm.iden_tcp_load()             # [kg, Cx, Cy, Cz]</span>
+<span class="c"># arm.set_tcp_load(load[0], load[1:])</span>
+
+<span class="c"># 2) Offset (기본 wait=True: 앞선 동작이 끝난 뒤 적용)</span>
+arm.set_tcp_offset([0, 0, 172, 0, 0, 0])
+
+<span class="c"># 3) 자기충돌 모델: xArm Gripper = 1 (다른 공구: 21 원기둥, 22 직육면체)</span>
+arm.set_collision_tool_model(1)
+
+arm.set_state(0)                                <span class="c"># 설정 변경 후 상태 5 → READY</span>
+arm.save_conf()                                 <span class="c"># 저장하지 않으면 재부팅 후 사라짐</span></pre>
+  <p>Offset을 4점으로 구하는 SDK 함수는 <code>calibrate_tcp_coordinate_offset</code>입니다(펌웨어 1.6.9 이상). Studio에서와 마찬가지로 Offset을 0으로 두고 실행합니다.
+    공구 방향(roll · pitch · yaw)은 <code>calibrate_tcp_orientation_offset</code>으로 구합니다.</p>
+  <pre class="cmd">arm.set_mode(2); arm.set_state(0)               <span class="c"># 수동 모드: 손으로 끌어 맞춤</span>
+pts = []
+for i in range(4):                              <span class="c"># 같은 점을 4가지 자세로</span>
+    input(f'{i + 1}/4: 공구 끝을 기준점에 맞추고 Enter')
+    pts.append(arm.get_position()[1])
+arm.set_mode(0); arm.set_state(0)
+code, xyz = arm.calibrate_tcp_coordinate_offset(pts)   <span class="c"># [x, y, z] mm</span>
+arm.set_tcp_offset(xyz + [0, 0, 0]); arm.set_state(0)  <span class="c"># 공구 방향 오프셋이 0일 때</span></pre>
+  <p>SDK로 넣은 값은 Studio 목록에서 다른 기록을 고르거나 TCP를 설정하는 Blockly 프로젝트를 실행하면 바뀝니다. Studio 값과 다르면 Studio가 덮어쓸 수도 있습니다(UFACTORY ROS 문서).
+    Studio의 <span class="ui">Settings › Motion › TCP</span>에도 같은 기록을 만들어 두십시오.</p>
+
+  <h3>Verify · 확인</h3>
+  <ul>
+    <li><b>Offset</b>: 공구 끝을 기준점에 맞춘 뒤 Live Control에서 roll · pitch · yaw(축-각 조작을 골랐으면 Rx · Ry · Rz)를 조금씩 움직입니다. 공구 끝이 기준점에 그대로 있으면 정상이고, 원을 그리며 벗어나면 Offset이 틀린 것입니다.</li>
+    <li><b>Payload</b>: 수동 모드에서 손을 떼었을 때 팔이 스스로 처지거나 움직이지 않아야 합니다. 아무것도 부딪히지 않았는데 충돌 정지(C31)가 나면 Payload를 다시 확인합니다.</li>
+    <li><b>기록</b>: <code>01_check.py</code>로 값을 읽어 16장 표 29에 적고, 설정을 내보내기(Export)로 저장합니다.</li>
+  </ul>
+
+  <h3>Changing the Tool · 공구 교체 순서</h3>
+  <ol class="steps">
+    <li><b>프로그램을 멈추고 팔을 옮깁니다.</b>공구를 떼고 달 공간이 있는 자세로 팔을 둡니다.</li>
+    <li><b>로봇팔 전원을 끄고 공구를 답니다.</b>비상 정지 버튼을 눌러 로봇팔 전원 표시등이 꺼진 것을 확인한 뒤(끝단 케이블 활선 연결 금지), 공구를 플랜지에 고정하고 케이블을 연결합니다.</li>
+    <li><b>공구를 선택합니다.</b>비상 정지를 해제하고 <span class="ui">Enable Robot</span>을 누른 뒤 <span class="ui">Live Control › End Effector</span>에서 공구를 고릅니다(공식 공구가 아니면 Other + 충돌 모델).</li>
+    <li><b>TCP 기록을 고르거나 새로 만듭니다.</b>위 Studio 절차를 따릅니다.</li>
+    <li><b>Initial Position을 확인합니다.</b>새 공구로 그 자세에 갔을 때 설치면 · 주변에 닿지 않는지 확인합니다.</li>
+    <li><b>확인하고 기록합니다.</b>위 Verify 항목을 확인하고, 저장된 프로그램은 저속으로 먼저 실행합니다.</li>
+  </ol>
+
+  <h2 id="c8-s5">Base vs Tool Control <small>Base / Tool 기준 이동</small></h2>
+  <p><b>Base 기준</b> 명령은 공구 방향과 관계없이 베이스의 X · Y · Z 방향으로 움직입니다(예: 바닥 설치 · 사용자 좌표계 0일 때 z −20 = 수직으로 20&nbsp;mm 아래). 사용자 좌표계를 설정했으면 Base 기준 명령은 그 좌표계의 축을 따릅니다.
+    <b>Tool 기준</b> 명령은 현재 공구의 X · Y · Z 방향으로 움직입니다(예: z +20 = 공구가 향한 쪽으로 20&nbsp;mm 전진. 비스듬한 그리퍼로 물체에 다가갈 때 씁니다).
+    Tool 좌표계는 팔과 함께 움직이므로 Tool 기준 명령은 항상 <b>현재 TCP에서의 상대 이동</b>입니다.</p>
+  <pre class="cmd"><span class="c"># Base 기준: 베이스 Z 방향으로 20 mm 아래 (공구 방향과 무관)</span>
+arm.set_position(z=-20, relative=True, speed=50, wait=True)
+
+<span class="c"># Tool 기준: 공구가 향한 쪽(Tool +Z)으로 20 mm 전진</span>
+arm.set_tool_position(z=20, speed=50, wait=True)</pre>
+  <table class="t tight keep">
+    <caption data-tbl="base-tool"><b>표 13.</b> Cartesian Commands: Base vs Tool Frame</caption>
+    <colgroup><col style="width:24%"><col style="width:36%"><col style="width:40%"></colgroup>
+    <thead><tr><th>용도 (모드)</th><th>Base 기준</th><th>Tool 기준</th></tr></thead>
+    <tbody>
+      <tr><td>목표 자세로 이동 (0)</td><td><code>set_position(x=…, …)</code><br>절대 좌표</td><td>없음 (Tool 기준은 상대 이동만)</td></tr>
+      <tr><td>상대 이동 (0)</td><td><code>set_position(…, relative=True)</code></td><td><code>set_tool_position(x=…, …)</code></td></tr>
+      <tr><td>축-각 자세 (0)</td><td><code>set_position_aa(pose)</code><br><code>relative=True</code> 가능</td><td><code>set_position_aa(pose,</code><br><code>is_tool_coord=True)</code> — relative 무시</td></tr>
+      <tr><td>속도 지령 (5)</td><td><code>vc_set_cartesian_velocity(v)</code></td><td><code>vc_set_cartesian_velocity(v,</code><br><code>is_tool_coord=True)</code></td></tr>
+      <tr><td>서보 스트리밍 (1)</td><td><code>set_servo_cartesian(pose)</code><br>절대 좌표</td><td><code>set_servo_cartesian(pose,</code><br><code>is_tool_coord=True)</code> — pose 해석 방식이 문서에 없으므로 작은 값으로 먼저 확인</td></tr>
+      <tr><td>온라인 계획 (7)</td><td><code>set_position</code> · <code>set_position_aa</code></td><td>지원하지 않음</td></tr>
+      <tr><td>Studio Live Control</td><td>Base 선택(기본)</td><td>Tool 선택</td></tr>
+    </tbody>
+  </table>
+  <p>Live Control의 버튼은 짧게 누르면 한 스텝(<span class="ui">Settings › Motion › Parameters</span>의 스텝 값)만 움직이고, 길게 누르면 누르는 동안 계속 움직입니다.</p>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">Python SDK</h1><div class="ko">파이썬 프로그래밍</div></div>
+  <p class="lede">xArm-Python-SDK로 PC에서 로봇팔을 제어합니다. 모든 프로그램은
+    연결 → 에러 지우기 → 활성화 → 모드 · 상태 설정 → 명령 순서를 따릅니다.</p>
+
+  <h2 id="c9-s1">Install <small>설치</small></h2>
+  <pre class="cmd">pip install xarm-python-sdk          <span class="c"># 1.18.4 (PyPI), Python 3.5 이상</span></pre>
+  <p>C++ SDK(<code>xArm-CPLUS-SDK</code>)는 Linux · Windows를 지원하며 같은 함수 이름을 씁니다.</p>
+
+  <h2 id="c9-s2">Connect &amp; Enable <small>연결 · 활성화</small></h2>
+  <pre class="cmd">from xarm.wrapper import XArmAPI
+
+arm = XArmAPI('192.168.1.xxx')       <span class="c"># 컨트롤 박스 IP</span>
+arm.clean_error()
+arm.clean_warn()
+arm.motion_enable(enable=True)
+arm.set_mode(0)                      <span class="c"># 위치 모드</span>
+arm.set_state(0)                     <span class="c"># READY</span></pre>
+  <p>함수는 반환 코드 <code>code</code>를 돌려줍니다. <b>0이면 성공</b>이고, 그 외 값의 의미는 표 28(15장)에 있습니다. 값을 읽는 함수는 <code>code, value</code> 두 개를 돌려줍니다.
+    SDK로 바꾼 설정(충돌 감지 민감도 · TCP Payload 등)은 <code>arm.save_conf()</code>를 호출해야 재부팅 후에도 유지됩니다.</p>
+
+  <h2 id="c9-s3">Basic Motion <small>기본 이동 · 모드 0</small></h2>
+  <pre class="cmd">code, angles = arm.get_servo_angle()             <span class="c"># 관절각 [J1..J7] (°)</span>
+code, pose   = arm.get_position()                <span class="c"># [x,y,z,roll,pitch,yaw] mm, °</span>
+
+<span class="c"># J1을 10° 회전 (현재 위치 기준, 20°/s), 끝날 때까지 기다림</span>
+arm.set_servo_angle(servo_id=1, angle=10, relative=True, speed=20, wait=True)
+
+<span class="c"># TCP를 베이스 기준 20 mm 내림 (z −20, 50 mm/s)</span>
+arm.set_position(z=-20, relative=True, speed=50, wait=True)</pre>
+
+  <h2 id="c9-s4">Servo Streaming <small>서보 스트리밍 · 모드 1</small></h2>
+  <pre class="cmd">import time
+arm.set_mode(1); arm.set_state(0); time.sleep(0.1)
+code, q = arm.get_servo_angle()
+t = time.perf_counter()
+for _ in range(200):                  <span class="c"># 100 Hz × 2초</span>
+    q[0] += 0.05                      <span class="c"># J1을 한 주기에 0.05° (= 5°/s)</span>
+    arm.set_servo_angle_j(q)          <span class="c"># 버퍼 없음: 마지막 목표만 실행</span>
+    t += 0.01                         <span class="c"># 주기를 일정하게 유지</span>
+    time.sleep(max(0, t - time.perf_counter()))
+arm.set_mode(0); arm.set_state(0)</pre>
+
+  <h2 id="c9-s5">Velocity Control <small>속도 제어 · 모드 4</small></h2>
+  <pre class="cmd">arm.set_mode(4); arm.set_state(0); time.sleep(0.1)
+<span class="c"># J1을 5°/s로, 1초 뒤 자동 정지</span>
+arm.vc_set_joint_velocity([5, 0, 0, 0, 0, 0, 0], duration=1.0)</pre>
+  <p><code>duration</code>은 통신이 끊겨도 팔이 계속 움직이지 않게 하는 안전장치입니다. 매 주기 명령을 다시 보내는 구조에서는 짧게(예: 주기의 몇 배) 잡습니다.</p>
+
+  <h2 id="c9-s6">Gripper <small>그리퍼</small></h2>
+  <pre class="cmd">arm.set_gripper_mode(0)
+arm.set_gripper_enable(True)
+arm.set_gripper_position(800, wait=True)    <span class="c"># xArm Gripper: 800 = 열림</span>
+arm.set_gripper_position(0, wait=True)      <span class="c"># 0 = 닫힘</span></pre>
+  <p>xArm Gripper G2는 <code>set_gripper_g2_position(pos)</code>(0–84&nbsp;mm), Robotiq 그리퍼는 <code>robotiq_*</code> 함수를 씁니다.</p>
+
+  <h2 id="c9-s7">Error Handling <small>에러 처리</small></h2>
+  <pre class="cmd">def on_err(data):                     <span class="c"># {'error_code': .., 'warn_code': ..}</span>
+    if data['error_code'] != 0:
+        print('error', data['error_code'])
+
+arm.register_error_warn_changed_callback(on_err)
+
+<span class="c"># 복구 순서</span>
+arm.clean_error()
+arm.motion_enable(True)
+arm.set_state(0)</pre>
+
+  <h2 id="c9-s8">API Reference &amp; Examples <small>API 문서 · 예제</small></h2>
+  <p>이 장의 함수 외에도 SDK에는 많은 함수가 있습니다. 함수별 인자 · 반환값 · 필요한 펌웨어 버전은 공식 API 문서에서 확인하십시오.</p>
+  <table class="t tight keep">
+    <caption data-tbl="api-refs"><b>표 14.</b> SDK API Reference &amp; Official Examples</caption>
+    <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+    <thead><tr><th>자료</th><th>위치 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td>API 문서</td><td>github.com/xArm-Developer/xArm-Python-SDK › <code>doc/api/xarm_api.md</code> — 전체 함수의 인자 · 반환값 · 필요 펌웨어. 반환 코드는 같은 폴더의 <code>xarm_api_code.md</code></td></tr>
+      <tr><td>공식 예제</td><td>같은 저장소의 <code>example/wrapper/common/</code> — 모드별 예제(예: <code>1001-move_line.py</code>, <code>7001-servo_j.py</code>, <code>2000-joint_velocity_control.py</code>). <code>pip install</code>에는 포함되지 않으므로 저장소에서 받음</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Delivered Scripts · 제공 예제 스크립트</h3>
+  <p>이 설명서와 함께 제공되는 <code>xArm7_examples.zip</code>에 표 15의 세 스크립트가 있습니다. <b>01 → 03 → 02</b> 순서로 실행하십시오.</p>
+  <table class="t tight keep">
+    <caption data-tbl="scripts"><b>표 15.</b> Delivered Example Scripts</caption>
+    <colgroup><col style="width:30%"><col style="width:52%"><col style="width:18%"></colgroup>
+    <thead><tr><th>스크립트</th><th>내용</th><th>로봇 동작</th></tr></thead>
+    <tbody>
+      <tr><td><code>01_check.py</code></td><td>펌웨어, 시리얼 번호 · 모델 번호, 축 수, 상태 · 모드, 에러 · 경고 코드, TCP Payload, TCP Offset, 사용자 좌표계 오프셋, 충돌 감지 민감도, 실제 · 목표 관절각, TCP 자세를 출력합니다. 이 중 펌웨어 · SN · 모델 번호 · TCP Payload · TCP Offset · 민감도는 표 29에 기록합니다</td><td>움직이지 않음</td></tr>
+      <tr><td><code>03_rt30000.py</code></td><td>포트 30000을 읽어 0.5초마다 수신 주기(Hz), 관절각(°), 추정 관절 토크(N·m)를 출력합니다. 시작할 때 SDK로 읽은 실제 관절각을 한 번 출력하므로, 이어지는 관절각과 같은지 비교하십시오. <code>--selftest</code>는 로봇 없이 파서를 확인합니다</td><td>움직이지 않음</td></tr>
+      <tr><td><code>02_move.py</code></td><td>J1을 +10° 돌렸다 되돌리고, TCP를 z −20&nbsp;mm 옮겼다 되돌립니다. <code>--servo</code>는 100&nbsp;Hz 서보 스트리밍(J1 +5° 후 복귀, 2초)을, <code>--gripper</code>는 그리퍼 열기 · 닫기를 이어서 실행합니다. 실행 전에 y/N으로 묻고, Ctrl+C로 멈춥니다(상태 4)</td><td><b>움직임</b></td></tr>
+    </tbody>
+  </table>
+  <pre class="cmd">unzip xArm7_examples.zip
+python3 -m venv .venv
+.venv/bin/pip install xarm-python-sdk==1.18.4
+.venv/bin/python examples/01_check.py   192.168.1.xxx
+.venv/bin/python examples/03_rt30000.py 192.168.1.xxx
+.venv/bin/python examples/02_move.py    192.168.1.xxx     <span class="c"># 작업 반경을 비운 뒤</span></pre>
+  <p>제공 스크립트는 Python 3.8 이상이 필요합니다(SDK 자체는 3.5 이상). Ubuntu에서 <code>python3 -m venv</code>가 실패하면 먼저 <code>sudo apt install python3-venv</code>를 실행하십시오.</p>
+</section>
+
+<!-- ═══════════════════════ 10 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">Real-time Data</h1><div class="ko">실시간 데이터 수신</div></div>
+  <p class="lede">컨트롤 박스는 로봇 상태를 TCP 포트로 계속 보냅니다. 데이터 수집이나 폐루프 제어에는 250 Hz의 포트 30000을 쓰십시오.
+    SDK가 기본으로 받는 상태(arm.angles 등)는 5 Hz로 갱신됩니다.</p>
+
+  <table class="t tight keep">
+    <caption data-tbl="rt-ports"><b>표 16.</b> Real-time Report Ports</caption>
+    <colgroup><col style="width:17%"><col style="width:17%"><col style="width:48%"><col style="width:18%"></colgroup>
+    <thead><tr><th>포트</th><th>주기</th><th>내용</th><th>필요 펌웨어</th></tr></thead>
+    <tbody>
+      <tr><td>30000</td><td>250&nbsp;Hz<br>(F/T 센서 사용 시 200&nbsp;Hz)</td><td>목표 · <b>실제</b> 관절 위치 · 속도 · 가속도, 실제 관절 전류, 추정 관절 토크, TCP 자세 · 속도, 추정 TCP 힘, F/T 센서 원시 · 필터값, 그리퍼 상태</td><td>2.7.101 이상</td></tr>
+      <tr><td>30003</td><td>100&nbsp;Hz</td><td><b>목표</b> 관절각, TCP 위치, 관절 토크</td><td>—</td></tr>
+      <tr><td>30001 · 30002</td><td>5&nbsp;Hz</td><td>상태 · 에러 코드 · TCP 설정 · 민감도 등</td><td>1.8.0 이상</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box caution"><div class="h">SDK 기본 상태는 5&nbsp;Hz, get_servo_angle()은 목푯값</div>
+    <p><code>XArmAPI</code>는 기본으로 포트 30002(5&nbsp;Hz)에서 상태를 받아 <code>arm.angles</code> 같은 속성을 갱신합니다. <code>get_servo_angle()</code>은 호출할 때마다 컨트롤 박스에 질의하지만 기본으로 <b>목표</b> 관절각을 돌려줍니다.
+      실제 관절각은 <code>get_servo_angle(is_real=True)</code>로 읽으며, 펌웨어 1.9.110 미만에서는 경고 없이 목푯값이 나옵니다. 250&nbsp;Hz 실측 데이터가 필요하면 포트 30000을 직접 읽으십시오.</p></div>
+
+  <h2 id="c10-s1">Port 30000 Layout <small>주요 필드 위치</small></h2>
+  <p>표 17의 오프셋은 패킷 첫 바이트를 0으로 센 값입니다. 처음 4바이트는 이 4바이트를 포함한 패킷 전체 길이(big-endian u32)이고, 실수는 little-endian float32입니다.</p>
+  <table class="t tight">
+    <caption data-tbl="port30000"><b>표 17.</b> Port 30000 Field Layout</caption>
+    <thead><tr><th>바이트</th><th>필드</th><th>형식 · 단위</th></tr></thead>
+    <tbody>
+      <tr><td>0–3</td><td>패킷 전체 길이</td><td>u32</td></tr>
+      <tr><td>4–11</td><td>타임스탬프</td><td>u64 · µs</td></tr>
+      <tr><td>32–59</td><td>목표 관절 위치</td><td>7 × f32 · rad</td></tr>
+      <tr><td>116–143</td><td>실제 관절 위치</td><td>7 × f32 · rad</td></tr>
+      <tr><td>144–171</td><td>실제 관절 속도</td><td>7 × f32 · rad/s</td></tr>
+      <tr><td>200–227</td><td>실제 관절 전류</td><td>7 × f32 · A</td></tr>
+      <tr><td>228–255</td><td>추정 관절 토크</td><td>7 × f32 · N·m</td></tr>
+      <tr><td>472–495</td><td>실제 TCP 자세</td><td>6 × f32 · mm, rad</td></tr>
+      <tr><td>520–543</td><td>추정 TCP 힘 · 토크</td><td>6 × f32 · N, N·m</td></tr>
+      <tr><td>712–735</td><td>F/T 센서 필터값</td><td>6 × f32 · N, N·m</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c10-s2">Reading Example <small>읽기 예제</small></h2>
+  <pre class="cmd">import socket, struct
+
+def read_exact(s, n):
+    buf = b''
+    while len(buf) &lt; n:
+        chunk = s.recv(n - len(buf))
+        if not chunk:
+            raise ConnectionError('closed')
+        buf += chunk
+    return buf
+
+s = socket.create_connection(('192.168.1.xxx', 30000))
+while True:
+    hdr  = read_exact(s, 4)
+    size = struct.unpack('&gt;I', hdr)[0]           <span class="c"># 패킷 전체 길이 (이 4바이트 포함)</span>
+    pkt  = hdr + read_exact(s, size - 4)
+    q    = struct.unpack('&lt;7f', pkt[116:144])   <span class="c"># 실제 관절 위치 (rad)</span>
+    cur  = struct.unpack('&lt;7f', pkt[200:228])   <span class="c"># 실제 관절 전류 (A)</span>
+    tau  = struct.unpack('&lt;7f', pkt[228:256])   <span class="c"># 추정 관절 토크 (N·m)</span></pre>
+  <p>먼저 4바이트로 패킷 전체 길이를 읽고, 나머지를 읽어 앞 4바이트와 합친 뒤 표 17의 오프셋으로 자릅니다. 수신 주기 표시까지 포함한 전체 코드는 제공 스크립트 <code>03_rt30000.py</code>입니다(9장). 설치할 때 관절각이 Studio에 표시된 값과 같은지 한 번 확인하십시오(16장).</p>
+</section>
+
+<!-- ═══════════════════════ 11 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">Force &amp; Torque</h1><div class="ko">힘 · 토크 기능</div></div>
+  <p class="lede">xArm7 관절에는 토크 센서가 없습니다. 관절 토크는 모터 전류와 동역학 모델로 추정한 참고용 값이며, 관절 토크나 전류를 직접 명령하는 기능은 없습니다.
+    힘 제어가 필요하면 UFACTORY 6축 힘/토크(F/T) 센서를 씁니다.</p>
+
+  <h2 id="c11-s1">Reading Joint Torque <small>관절 토크 읽기</small></h2>
+  <table class="t keep">
+    <caption data-tbl="torque-read"><b>표 18.</b> Ways to Read Joint Torque</caption>
+    <colgroup><col style="width:36%"><col style="width:64%"></colgroup>
+    <thead><tr><th>방법</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>get_joints_torque()</code></td><td>관절별 추정 토크 (참고용)</td></tr>
+      <tr><td><code>set_report_tau_or_i(n)</code></td><td>보고할 값 선택: 0 = 추정 토크(N·m), 1 = 모터 전류(A)</td></tr>
+      <tr><td>포트 30000</td><td>추정 관절 토크 · 실제 관절 전류 · 추정 TCP 힘을 250 Hz로 수신 (10장)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c11-s2">Torque Limits <small>토크 한계</small></h2>
+  <p>관절별 최대 토크(모델 1305 미만 / 이상)는 3장 표 4에 있습니다. 사용자가 관절 토크 · 전류 한계를 직접 설정하는 기능은 없으며, 대신 다음 기능으로 힘을 제한합니다.</p>
+  <ul>
+    <li><b>충돌 감지 민감도</b>(1–5): 전류가 모델 예측에서 벗어나면 정지 (12장)</li>
+    <li><b>정확한 TCP Payload</b>: 하중이 틀리면 모델 예측이 틀어져 오감지 · 미감지가 생김</li>
+    <li><b>F/T 센서 충돌 감지</b>: <code>set_ft_collision_threshold</code>로 x · y · z 5–200 N, Rx · Ry · Rz 0.1–4&nbsp;N·m (펌웨어 2.6.103 이상)</li>
+  </ul>
+
+  <h2 id="c11-s3">F/T Sensor &amp; Force Control <small>힘 제어</small></h2>
+  <p>UFACTORY 6축 F/T 센서가 필요합니다(타사 센서는 지원하지 않음). 펌웨어 1.8.3 이상에서 동작합니다.</p>
+  <table class="t tight">
+    <caption data-tbl="ft-api"><b>표 19.</b> F/T Sensor &amp; Force-Control Functions</caption>
+    <colgroup><col style="width:44%"><col style="width:56%"></colgroup>
+    <thead><tr><th>함수</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>set_ft_sensor_enable(1)</code></td><td>센서 측정값 사용 켜기 (0 = 끄기)</td></tr>
+      <tr><td><code>set_ft_sensor_zero()</code></td><td>현재 값을 영점으로. 공구에 외력이 없을 때 실행</td></tr>
+      <tr><td><code>set_ft_sensor_mode(n)</code></td><td>0 = 힘 제어 끔, <b>1 = 어드미턴스</b>(외력에 순응), <b>2 = 힘 제어</b>(목표 힘 유지)</td></tr>
+      <tr><td><code>set_ft_sensor_admittance_parameters</code></td><td>인자 (coord, c_axis, M, K, B). coord: 0 = Base, 1 = Tool 좌표계. c_axis: 순응할 축(6개, 0/1). M: 질량, K: 강성. 감쇠 B는 제어기가 2√(M·K)로 정함</td></tr>
+      <tr><td><code>set_ft_sensor_force_parameters</code></td><td>인자 (coord, c_axis, f_ref, limits, kp, ki, kd, xe_limit). f_ref: 목표 힘 · 토크, limits: 순응 축의 최대 TCP 속도, kp · ki · kd: PID 이득</td></tr>
+      <tr><td><code>get_ft_sensor_data()</code></td><td>센서 값 읽기</td></tr>
+    </tbody>
+  </table>
+  <pre class="cmd">arm.set_ft_sensor_enable(1)
+arm.set_ft_sensor_zero()                    <span class="c"># 외력 없는 상태에서</span>
+<span class="c"># 먼저 M, K를 6개 값 리스트로 정하십시오 (허용 범위: UFACTORY F/T 센서 문서)</span>
+arm.set_ft_sensor_admittance_parameters(
+    coord=1, c_axis=[0, 0, 1, 0, 0, 0],     <span class="c"># Tool z축만 순응</span>
+    M=M, K=K, B=[0]*6)                      <span class="c"># B는 제어기가 계산</span>
+arm.set_ft_sensor_mode(1)                   <span class="c"># 1 = 어드미턴스</span>
+arm.set_state(0)
+<span class="c"># ... 작업 ...</span>
+arm.set_ft_sensor_mode(0)
+arm.set_ft_sensor_enable(0)</pre>
+  <p>M · K 값은 UFACTORY F/T 센서 문서에서 허용 범위를 확인한 뒤 작은 값부터 시험하십시오. 센서 관련 에러는 C50–C53입니다(15장).</p>
+
+  <div class="box note"><div class="h">힘 피드백 원격조작</div>
+    <p>xArm7은 토크 명령을 받지 않으므로 힘을 되돌려 주는 리더(마스터) 팔로는 쓸 수 없습니다.
+      xArm7을 팔로워로 쓸 때는 포트 30000에서 추정 관절 토크(250&nbsp;Hz)나 F/T 센서 값(200&nbsp;Hz)을 읽어 별도의 햅틱 장치로 보낼 수 있습니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 12 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">Safety Functions</h1><div class="ko">안전 기능 설정</div></div>
+  <p class="lede">안전 기능은 Studio 설정이나 SDK로 켭니다. SDK로 바꾼 값은 <code>save_conf()</code>를 호출해야 재부팅 후에도 유지됩니다.</p>
+
+  <table class="t tight">
+    <caption data-tbl="safety-funcs"><b>표 20.</b> Safety Functions</caption>
+    <colgroup><col style="width:17%"><col style="width:40%"><col style="width:43%"></colgroup>
+    <thead><tr><th>기능</th><th>동작</th><th>Studio 메뉴 · SDK 함수</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:normal">충돌 감지</td><td>관절 전류가 동역학 모델 예측보다 크게 벗어나면 정지(C31). 민감도가 높을수록 작은 힘에도 반응</td><td>Settings › Motion › Parameters (1–5)<br><code>set_collision_sensitivity</code> (0–5, 0 = 끔)</td></tr>
+      <tr><td style="white-space:normal">충돌 반발</td><td>충돌 후 일정 거리 뒤로 물러남. 끄면 충돌 위치에 멈춤</td><td>Settings › General › Advanced<br><code>set_collision_rebound</code></td></tr>
+      <tr><td style="white-space:normal">자기충돌 감지</td><td>로봇팔의 링크끼리, 또는 공구와 팔이 부딪히는 자세를 막음(C22). 공구 형상(원기둥 · 직육면체)을 추가할 수 있음</td><td>Settings › General › Advanced<br><code>set_self_collision_detection</code><br><code>set_collision_tool_model</code></td></tr>
+      <tr><td style="white-space:normal">안전 경계</td><td>TCP가 정해 둔 직교 공간 상자([x_max, x_min, y_max, y_min, z_max, z_min])를 벗어나면 정지(C35). 손으로 다시 안으로 옮김. SDK로 경계를 바꾼 뒤에는 set_reduced_mode(True)를 다시 호출해야 적용됨</td><td>Settings › Safety<br><code>set_reduced_tcp_boundary</code><br><code>set_fence_mode</code></td></tr>
+      <tr><td style="white-space:normal">감속 모드</td><td>최대 직선 속도 · 관절 속도 · 관절 범위를 제한</td><td>Settings › Safety<br><code>set_reduced_mode</code></td></tr>
+      <tr><td style="white-space:normal">수동 모드 민감도</td><td>손으로 끌 때 필요한 힘(1–5, 클수록 가벼움)</td><td>Settings › General<br><code>set_teach_sensitivity</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s1">Stop Categories <small>정지 방식</small></h2>
+  <table class="t">
+    <caption data-tbl="stops"><b>표 21.</b> Stop Categories</caption>
+    <thead><tr><th>입력</th><th>정지 범주</th><th>재시작</th></tr></thead>
+    <tbody>
+      <tr><td>컨트롤 박스 비상 정지 버튼</td><td>Stop Category 1 (감속 후 전원 차단)</td><td>버튼 해제 → Enable Robot (C1)</td></tr>
+      <tr><td>비상 정지 입력 EI</td><td>Stop Category 1</td><td>EI 2개를 GND에 연결 → Enable Robot (C2)</td></tr>
+      <tr><td>보호 정지 입력 SI</td><td>Stop Category 2 (감속 정지, 전원 유지)</td><td>Safeguard Reset 입력으로 재개</td></tr>
+      <tr><td>SDK · Studio 정지</td><td>상태 4(즉시 정지) 또는 6(감속 정지)</td><td><code>set_state(0)</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s2">Controller Input Functions <small>컨트롤 박스 입력 기능</small></h2>
+  <p>CI0–CI7에는 표 22의 기능을 지정할 수 있으며, <b>Low 신호</b>에서 동작합니다(<span class="ui">Settings › Externals › Controller IO</span>).</p>
+  <table class="t tight keep">
+    <caption data-tbl="ci-funcs"><b>표 22.</b> Controller Input Functions</caption>
+    <thead><tr><th>기능</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Stop Moving</td><td>입력 시 로봇팔 정지</td></tr>
+      <tr><td>Safeguard Reset</td><td>보호 정지 상태에서 동작 재개. SI와 함께 사용</td></tr>
+      <tr><td>Reduced Mode</td><td>입력 시 감속 모드</td></tr>
+      <tr><td>Manual Mode</td><td>입력이 Low인 동안 손으로 끌 수 있음</td></tr>
+      <tr><td>Enable Robot</td><td>입력으로 로봇 활성화</td></tr>
+      <tr><td>Offline Task</td><td>입력으로 Blockly 프로젝트 실행</td></tr>
+      <tr><td>General Input</td><td>Blockly · SDK에서 자유롭게 사용. 기능이 지정된 입력은 프로그램에서 사용 금지</td></tr>
+    </tbody>
+  </table>
+  <p>DI0–DI7에는 Stop Moving · Safeguard Reset · Reduced Mode를 지정할 수 없습니다.</p>
+  <div class="box note"><div class="h">인증</div>
+    <p>UFACTORY는 xArm 시리즈의 CE 인증 규격으로 EN ISO 10218-1:2011 · EN 60204-1 · EN ISO 12100 등을 밝히고 있습니다(인증서에 기재된 모델은 xArm 6).
+      설치 현장의 위험성 평가는 별도로 하십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 13 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>13</big></div><h1 id="c13" data-mark="c13">ROS 2 &amp; Robot Model</h1><div class="ko">ROS 2 · URDF</div></div>
+  <p class="lede">ROS 2 드라이버 · MoveIt 설정 · 로봇 모델은 UFACTORY의 <code>xarm_ros2</code> 저장소에 있습니다. ROS 배포판과 같은 이름의 브랜치를 씁니다.</p>
+
+  <table class="t">
+    <caption data-tbl="ros-branches"><b>표 23.</b> xarm_ros2 Branches by ROS 2 Distribution</caption>
+    <thead><tr><th>Ubuntu</th><th>ROS 2</th><th>브랜치</th></tr></thead>
+    <tbody>
+      <tr><td>20.04</td><td>Foxy · Galactic</td><td><code>foxy</code> · <code>galactic</code></td></tr>
+      <tr><td>22.04</td><td>Humble · Rolling</td><td><code>humble</code> (Gazebo: <code>humble_gz</code>) · <code>rolling</code></td></tr>
+      <tr><td>24.04</td><td>Jazzy</td><td><code>jazzy</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c13-s1">Install <small>설치</small></h2>
+  <pre class="cmd">source /opt/ros/humble/setup.bash          <span class="c"># 사용하는 ROS 2 배포판</span>
+mkdir -p ~/dev_ws/src &amp;&amp; cd ~/dev_ws/src
+git clone https://github.com/xArm-Developer/xarm_ros2.git \
+    --recursive -b $ROS_DISTRO
+cd ~/dev_ws/src && rosdep update
+rosdep install --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+cd ~/dev_ws && colcon build
+source install/setup.bash</pre>
+  <p><code>--recursive</code>를 빼면 의존 서브모듈을 받지 않습니다. 같은 네트워크에 ROS 2 사용자가 여럿이면 <code>ROS_DOMAIN_ID</code>를 따로 정하십시오.</p>
+
+  <h2 id="c13-s2">Launch <small>실행</small></h2>
+  <pre class="cmd"><span class="c"># 모델 보기 (로봇 없이)</span>
+ros2 launch xarm_description xarm7_rviz_display.launch.py add_gripper:=true
+
+<span class="c"># 드라이버</span>
+ros2 launch xarm_api xarm7_driver.launch.py robot_ip:=192.168.1.xxx
+
+<span class="c"># MoveIt — 가상 로봇</span>
+ros2 launch xarm_moveit_config xarm7_moveit_fake.launch.py
+
+<span class="c"># MoveIt — 실제 로봇</span>
+ros2 launch xarm_moveit_config xarm7_moveit_realmove.launch.py \
+    robot_ip:=192.168.1.xxx</pre>
+  <p>모델 보기 명령의 <code>add_gripper:=true</code>는 xArm Gripper를 붙여 표시합니다. 그리퍼가 없으면 빼십시오.</p>
+
+  <h2 id="c13-s3">Robot Model (URDF) <small>로봇 모델</small></h2>
+  <p>모델은 <code>xarm_description</code> 패키지에 xacro 형식으로 들어 있습니다. 진입 파일은 <code>urdf/xarm_device.urdf.xacro</code>, 인자는 <code>dof:=7</code> · <code>robot_type:=xarm</code>입니다.
+    <code>link_base</code>는 Base 좌표계, <code>link_eef</code>는 TCP Offset이 0인 Tool 좌표계(플랜지 중심)와 같습니다(8장 그림 4).
+    관절 범위는 3장 표 4에 있습니다. 최대 토크는 launch 인자 <code>robot_sn:=&lt;SN&gt;</code>을 주면 모델 번호에 따라 <code>config/xarm7/</code>의 <code>joint_limits.yaml</code>(1305 미만) 또는
+    <code>joint_limits_1305.yaml</code>(1305 이상)에서 읽습니다. 인자를 주지 않으면 항상 <code>joint_limits.yaml</code>을 씁니다.</p>
+  <h3>Calibrated Kinematics · 로봇별 보정값</h3>
+  <p>2023년 8월 이후 생산된 xArm은 로봇마다 보정된 기구학 값이 컨트롤 박스에 저장되어 있습니다. 이를 URDF에 넣으면 정확도가 올라갑니다.</p>
+  <pre class="cmd">cd ~/dev_ws/src/xarm_ros2/xarm_description/config/kinematics
+python3 gen_kinematics_params.py 192.168.1.xxx SITE1
+<span class="c"># → config/kinematics/user/xarm7_kinematics_SITE1.yaml</span>
+cd ~/dev_ws &amp;&amp; colcon build --packages-select xarm_description
+source install/setup.bash
+ros2 launch xarm_moveit_config xarm7_moveit_realmove.launch.py \
+    robot_ip:=192.168.1.xxx kinematics_suffix:=SITE1</pre>
+  <p>파일은 소스 폴더에 만들어지므로, <code>xarm_description</code>을 다시 빌드해야 launch가 파일을 찾습니다.</p>
+</section>
+
+<!-- ═══════════════════════ 14 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>14</big></div><h1 id="c14" data-mark="c14">Teleoperation &amp; Data Collection</h1><div class="ko">원격조작 · 데이터 수집</div></div>
+  <p class="lede">UFACTORY가 공개한 원격조작 · LeRobot 도구로 xArm7 시연 데이터를 수집하고 정책을 학습시킬 수 있습니다.</p>
+
+  <table class="t wrap1 tight">
+    <caption data-tbl="teleop"><b>표 24.</b> Teleoperation &amp; Data-Collection Tools</caption>
+    <thead><tr><th>도구</th><th>입력 장치</th><th>로봇 제어 방식</th></tr></thead>
+    <tbody>
+      <tr><td>lerobot_robot_ufactory<br>(UFACTORY LeRobot 플러그인)</td><td>GELLO, Pika, UMI, SpaceMouse. RealSense · UMI 카메라 수집, ACT · Diffusion Policy 학습</td><td>관절: 모드 6, 직교: 모드 7. xArm7 GELLO 설정의 기록 주기 30 fps. <code>lerobot==0.6.1</code>, Python 3.12 이상</td></tr>
+      <tr><td>ufactory_teleop</td><td>Pika Sense, FastUMI, GELLO, Xbox 패드, SpaceMouse</td><td>GELLO는 관절, 나머지는 직교 공간. xArm 5/6/7 · Lite 6 · 850 지원</td></tr>
+      <tr><td>GELLO (gello_software)</td><td>GELLO 리더 팔(Dynamixel)</td><td>모드 1 <code>set_servo_angle_j</code>, 50&nbsp;Hz. 한 주기 관절 변화량(7개 관절 벡터의 크기)을 0.05 rad 이하로 제한</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c14-s1">Recommendations <small>수집할 때 권장 사항</small></h2>
+  <ul>
+    <li><b>관측값은 실측값으로.</b> 관절 상태는 포트 30000의 실제 관절 위치(250&nbsp;Hz)를 기록합니다. SDK 기본 속성(arm.angles, 5&nbsp;Hz)이나 get_servo_angle() 기본값(목푯값)은 학습 관측값으로 쓰지 않습니다(10장).</li>
+    <li><b>행동(action)은 보낸 목푯값으로.</b> 로봇에 보낸 명령을 그대로 기록해야 정책이 같은 명령을 재현합니다.</li>
+    <li><b>서보 모드는 고르게.</b> 모드 1을 쓰면 100–200 Hz로 일정하게 보내고, 한 주기 이동량을 제한합니다.</li>
+    <li><b>그리퍼 범위를 통일.</b> xArm Gripper 위치(0 = 닫힘, 800 = 열림)를 0–1로 정규화해 기록하면 그리퍼를 바꿔도 데이터를 재사용할 수 있습니다.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 15 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>15</big></div><h1 id="c15" data-mark="c15">Troubleshooting &amp; Error Codes</h1><div class="ko">문제 해결 · 에러 코드</div></div>
+  <p class="lede">에러가 나면 로봇팔은 즉시 멈추고 쌓인 명령을 버립니다. 원인을 해결한 뒤 에러를 지우고(Clear Error) 다시 활성화합니다.</p>
+
+  <h2 id="c15-s1">Symptoms <small>증상별 조치</small></h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="symptoms"><b>표 25.</b> Troubleshooting by Symptom</caption>
+    <thead><tr><th>증상</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>브라우저에서 <code>IP:18333</code>이 열리지 않음</td><td>PC 유선 IP가 192.168.1.x인지, 프록시가 꺼져 있는지, 케이블 · <code>ping</code>을 확인합니다. IP를 모르면 4장 IP Reset 순서로 초기화합니다</td></tr>
+      <tr><td>Robot State가 Error</td><td>표시된 에러 코드를 표 26 · 표 27에서 확인하고, 원인을 해결한 뒤 Clear Error → Enable Robot을 누릅니다</td></tr>
+      <tr><td>SDK 명령에 반응하지 않음 (코드 1, 9, -2)</td><td><code>clean_error()</code> → <code>motion_enable(True)</code> → <code>set_state(0)</code> 순서로 호출합니다. 모드를 바꾼 뒤 <code>set_state(0)</code>을 보냈는지 확인합니다</td></tr>
+      <tr><td>서보 모드에서 끊기듯 움직임</td><td>전송 주기가 30&nbsp;Hz 미만이거나 고르지 않습니다. 100–200 Hz로 일정하게 보냅니다</td></tr>
+      <tr><td>수동 모드에서 팔이 스스로 움직임 (C37)</td><td>TCP Payload와 장착 방향이 실제와 같은지 확인합니다</td></tr>
+      <tr><td>아무것도 부딪히지 않았는데 충돌 정지 (C31)</td><td>TCP Payload · 무게중심, 장착 방향을 확인합니다. 고속 · 고하중이면 민감도를 낮추되 3 미만으로는 내리지 않습니다</td></tr>
+      <tr><td>관절 데이터가 느림 (5&nbsp;Hz)</td><td>SDK 기본 상태 수신(포트 30002, 5&nbsp;Hz)입니다. 포트 30000을 직접 읽습니다(10장)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box note"><div class="h">지원</div>
+    <p>문제가 계속되면 에러 코드, 하던 작업, Studio <span class="ui">Settings › My Device › Log</span>에서 받은 에러 로그를 <b>go.support@wego-robotics.com</b>으로 보내 주십시오.</p></div>
+
+  <h2 id="c15-s2">Control Box Errors <small>컨트롤 박스 에러 (C)</small></h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="c-errors"><b>표 26.</b> Control Box Error Codes (C)</caption>
+    <thead><tr><th>코드</th><th>의미 · 조치</th></tr></thead>
+    <tbody>
+      <tr><td>C1</td><td>비상 정지 버튼 눌림 → 버튼 해제 후 Enable Robot</td></tr>
+      <tr><td>C2</td><td>비상 정지 입력(EI) 동작 → EI 2개를 GND에 연결 후 Enable Robot</td></tr>
+      <tr><td>C3</td><td>3단 스위치 비상 정지 → 해제 후 Enable Robot</td></tr>
+      <tr><td>C11–C17</td><td>전원을 다시 켬</td></tr>
+      <tr><td>C19</td><td>끝단 모듈 통신 에러 → 그리퍼 장착 · 보드레이트 확인</td></tr>
+      <tr><td>C21</td><td>기구학 에러 → 경로를 다시 계획</td></tr>
+      <tr><td>C22</td><td>자기충돌 → 경로 재계획. 계속되면 Live Control에서 수동 모드를 켜고 팔을 정상 자세로 옮김</td></tr>
+      <tr><td>C23</td><td>관절 범위 초과 → Live Control의 Initial Position으로 복귀(공구에 맞게 설정해 둔 경우, 8장)</td></tr>
+      <tr><td>C24</td><td>속도 초과 → 특이점 근처인지 확인, 속도 · 가속도를 낮춤</td></tr>
+      <tr><td>C25</td><td>경로 계획 에러 → 경로 재계획 또는 속도 낮춤</td></tr>
+      <tr><td>C31</td><td>비정상 전류(충돌) → 충돌 여부, TCP Payload, 장착 방향, 민감도 대비 속도 확인</td></tr>
+      <tr><td>C35</td><td>안전 경계 도달 → 경계 안으로 옮김</td></tr>
+      <tr><td>C37</td><td>수동 모드 이상 동작 → TCP Payload · 장착 방향 확인</td></tr>
+      <tr><td>C38</td><td>관절 각도 이상 → 비상 정지 버튼으로 정지</td></tr>
+      <tr><td>C50</td><td>F/T 센서 에러 → 센서 에러 코드 확인 후 전원 재투입</td></tr>
+      <tr><td>C51</td><td>F/T 센서 모드 설정 에러 → 수동 모드가 아닌지, set_ft_sensor_mode 값이 0/1/2인지 확인</td></tr>
+      <tr><td>C52</td><td>F/T 센서 영점 에러 → 센서 통신 배선 · 전원 확인</td></tr>
+      <tr><td>C53</td><td>F/T 센서 과부하 → 하중 · 외력을 줄임</td></tr>
+    </tbody>
+  </table>
+  <p>표 26에 없는 코드가 나오면 전원을 다시 켜고, 여러 번 반복되면 기술 지원에 연락합니다.</p>
+
+  <h2 id="c15-s3">Joint Servo Errors <small>관절 서보 에러 (S)</small></h2>
+  <p>대부분 <b>비상 정지 버튼으로 다시 시작</b>합니다(버튼 누름 → 해제 → Enable Robot).</p>
+  <table class="t wrap1 tight">
+    <caption data-tbl="s-errors"><b>표 27.</b> Joint Servo Error Codes (S)</caption>
+    <thead><tr><th>코드</th><th>의미 · 조치</th></tr></thead>
+    <tbody>
+      <tr><td>S10 · S11 · S12</td><td>전류 감지 이상 · 관절 과전류 · 관절 과속 → 비상 정지 버튼으로 재시작</td></tr>
+      <tr><td>S15</td><td>관절 과열 → 운전을 멈추고 식힌 뒤 재시작</td></tr>
+      <tr><td>S16</td><td>인코더 초기화 에러 → 팔에 외력이 없는 상태에서 다시 시작</td></tr>
+      <tr><td>S18</td><td>다회전 인코더 에러 → 에러 지우기(Clear Error) 후 컨트롤 박스 전원 OFF, 5초 뒤 ON</td></tr>
+      <tr><td>S23</td><td>모터 위치 편차 큼 → 움직임이 막혔는지, 하중 초과인지, 가속도가 큰지 확인</td></tr>
+      <tr><td>S26 · S27</td><td>관절 N 범위 초과(S26: + 방향, S27: − 방향) → 에러 지우기(Clear Error) 후 관절 잠금 해제로 범위 안으로 돌림</td></tr>
+      <tr><td>S28</td><td>로봇이 활성화되지 않음 → Enable Robot</td></tr>
+      <tr><td>S33 · S34</td><td>드라이브 · 모터 과부하 → 하중이 가반하중(3.5&nbsp;kg) 이내인지 확인</td></tr>
+      <tr><td>S39 · S40</td><td>관절 과전압 · 저전압 → 가속도를 낮춤. 저전압이면 비상 정지 해제 여부 확인</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c15-s4">SDK Return Codes <small>SDK 반환 코드</small></h2>
+  <table class="t tight">
+    <caption data-tbl="sdk-codes"><b>표 28.</b> SDK Return Codes</caption>
+    <thead><tr><th>코드</th><th>의미 · 조치</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>성공</td></tr>
+      <tr><td>-9</td><td>비상 정지</td></tr>
+      <tr><td>-8</td><td>TCP 목표가 작업 범위 밖 → 목표 수정</td></tr>
+      <tr><td>-2</td><td>준비 안 됨 → 활성화 · 상태 확인</td></tr>
+      <tr><td>-1</td><td>연결 안 됨 → 네트워크 확인</td></tr>
+      <tr><td>1 · 2</td><td>지우지 않은 에러 · 경고가 있음 → <code>clean_error()</code> · <code>clean_warn()</code></td></tr>
+      <tr><td>3</td><td>응답 시간 초과 → 펌웨어 버전 · 네트워크 확인</td></tr>
+      <tr><td>9</td><td>준비 안 됨 → 에러 지우기, 활성화, 상태 설정 확인</td></tr>
+      <tr><td>12</td><td>인자 에러</td></tr>
+      <tr><td>100</td><td>동작 완료 대기 시간 초과</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 16 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>16</big></div><h1 id="c16" data-mark="c16">Commissioning Checklist</h1><div class="ko">설치 점검표</div></div>
+  <p class="lede">설치할 때 표 29의 값을 기록해 두면 이후 지원과 설정 복구가 빨라집니다. 시리얼 번호 · 모델 번호 · 펌웨어 버전 · TCP Payload · TCP Offset · 충돌 감지 민감도는 <code>01_check.py</code>가 출력합니다(9장 표 15). 기록한 뒤 Studio <span class="ui">Settings › General › Advanced › Export</span>로 설정 파일도 저장하십시오.</p>
+
+  <h2 id="c16-s1">Device Record <small>장비 기록</small></h2>
+  <table class="t check">
+    <caption data-tbl="device-record"><b>표 29.</b> Device Record</caption>
+    <thead><tr><th style="width:42%">항목</th><th>기록</th></tr></thead>
+    <tbody>
+      <tr><td>시리얼 번호 (SN)</td><td class="blank"></td></tr>
+      <tr><td>모델 번호 (SN 3–6번째 자리)</td><td class="blank"></td></tr>
+      <tr><td>펌웨어 버전</td><td class="blank"></td></tr>
+      <tr><td>UFactory Studio 버전</td><td class="blank"></td></tr>
+      <tr><td>컨트롤 박스 IP</td><td class="blank"></td></tr>
+      <tr><td>제어 PC IP</td><td class="blank"></td></tr>
+      <tr><td>장착 방향 (기울기 · 회전)</td><td class="blank"></td></tr>
+      <tr><td>엔드 이펙터</td><td class="blank"></td></tr>
+      <tr><td>TCP Payload [kg, Cx, Cy, Cz]</td><td class="blank"></td></tr>
+      <tr><td>TCP Offset [x, y, z, roll, pitch, yaw]</td><td class="blank"></td></tr>
+      <tr><td>충돌 감지 민감도</td><td class="blank"></td></tr>
+      <tr><td>안전 경계 · 감속 모드</td><td class="blank"></td></tr>
+      <tr><td>설치자 · 날짜</td><td class="blank"></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c16-s2">Function Checks <small>동작 확인</small></h2>
+  <table class="t tight keep">
+    <caption data-tbl="function-checks"><b>표 30.</b> Function Checks</caption>
+    <thead><tr><th style="width:8%">확인</th><th>항목</th></tr></thead>
+    <tbody>
+      <tr><td class="cb"></td><td>비상 정지 버튼을 누르면 팔이 멈추고 전원 표시등이 꺼짐 · 해제 후 Enable Robot으로 복귀</td></tr>
+      <tr><td class="cb"></td><td>Live Control로 J1–J7을 각각 작게 움직여 방향 확인</td></tr>
+      <tr><td class="cb"></td><td>(사용자 좌표계 0일 때) Live Control Base 기준 +X: TCP가 베이스 케이블 커넥터 반대쪽으로 이동 · Tool 기준 +Z: 공구가 향한 쪽으로 이동 (8장)</td></tr>
+      <tr><td class="cb"></td><td>TCP Offset이 장착한 공구와 맞고(<code>01_check.py</code>), 사용자 좌표계를 쓰지 않으면 오프셋이 모두 0</td></tr>
+      <tr><td class="cb"></td><td>Initial Position이 공구 · 설치면 · 주변과 닿지 않는 자세로 설정됨 (기본값 모든 관절 0°)</td></tr>
+      <tr><td class="cb"></td><td>수동 모드에서 팔이 스스로 움직이지 않음 (TCP Payload · 장착 방향 정상)</td></tr>
+      <tr><td class="cb"></td><td>손으로 가볍게 막았을 때 충돌 감지로 정지</td></tr>
+      <tr><td class="cb"></td><td>그리퍼 열기 · 닫기</td></tr>
+      <tr><td class="cb"></td><td>SDK 연결 · 활성화 · 상대 이동 (<code>02_move.py</code>)</td></tr>
+      <tr><td class="cb"></td><td>포트 30000 수신 약 250&nbsp;Hz(F/T 센서 사용 시 약 200&nbsp;Hz), 관절각이 SDK · Studio 값과 같음 (<code>03_rt30000.py</code>)</td></tr>
+      <tr><td class="cb"></td><td>(ROS 2 사용 시) 보정 기구학 파일 생성 · 드라이버 실행 (13장)</td></tr>
+      <tr><td class="cb"></td><td>설정 파일 내보내기(Export) 저장</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c17" data-mark="c17">Quick Reference</h1><div class="ko">빠른 참조</div></div>
+  <div class="qr">
+    <div class="card"><h3>Start-up · 시작 순서</h3>
+      <ol><li>주변 확인</li><li>컨트롤 박스 전원 ON, 비상 정지 해제</li><li>약 60초 부팅 대기</li><li>PC IP 192.168.1.x · <code>ping</code></li>
+        <li>브라우저 <code>IP:18333</code></li><li>TCP Payload · 민감도 · 장착 방향 확인</li><li><b>Enable Robot</b> → State <b>Normal</b></li><li>저속으로 동작 확인</li></ol></div>
+    <div class="card"><h3>Shut-down · 종료 순서</h3>
+      <ol><li>프로그램 정지 (<code>set_state(4)</code>)</li><li>안전 자세로 이동</li><li><code>arm.disconnect()</code></li><li>비상 정지 버튼 누름</li><li>컨트롤 박스 전원 OFF</li></ol>
+      <h3 style="margin-top:3mm">Recovery · 에러 복구</h3>
+      <ol><li>원인 해결</li><li><code>clean_error()</code></li><li><code>motion_enable(True)</code></li><li><code>set_state(0)</code></li></ol></div>
+    <div class="card full"><h3>SDK Pattern · 기본 코드</h3>
+      <pre class="cmd">from xarm.wrapper import XArmAPI
+arm = XArmAPI('192.168.1.xxx')
+arm.clean_error(); arm.motion_enable(True)
+arm.set_mode(0); arm.set_state(0)          <span class="c"># 모드를 바꿀 때마다 set_state(0)</span>
+arm.set_servo_angle(servo_id=1, angle=10, relative=True, speed=20, wait=True)</pre></div>
+    <div class="card full"><h3>Modes &amp; Ports · 모드와 포트</h3>
+      <table class="t">
+    <caption data-tbl="modes-ports"><b>표 31.</b> Modes &amp; Ports (Quick Reference)</caption>
+        <thead><tr><th>모드</th><th>용도</th><th>포트</th><th>용도</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>위치 (기본, 버퍼)</td><td>18333</td><td>Studio 웹 앱</td></tr>
+          <tr><td>1</td><td>서보 스트리밍 (최대 250&nbsp;Hz)</td><td>502</td><td>제어 명령</td></tr>
+          <tr><td>2</td><td>수동 (손으로 끌기)</td><td>30000</td><td>실측 데이터 250&nbsp;Hz</td></tr>
+          <tr><td>4 · 5</td><td>관절 · 직교 속도</td><td>30003</td><td>목푯값 100&nbsp;Hz</td></tr>
+          <tr><td>6 · 7</td><td>관절 · 직교 온라인 계획</td><td>30001 · 30002</td><td>상태 5&nbsp;Hz</td></tr>
+        </tbody>
+      </table></div>
+  </div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

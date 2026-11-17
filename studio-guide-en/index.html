@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>WeGo Humanoid Studio — User guide</title>
+<style>
+@page {
+  @top-left  { content: "WeGo Humanoid Studio"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "User guide"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">Contents</button><a class="wm-home" href="../">WeGo Library</a><span class="wm-title">WeGo Humanoid Studio — User guide</span><span class="wm-ver">Version 2026.11.16</span><a class="wm-pdf" href="../pdf/WeGo_Humanoid_Studio_Guide_EN.pdf">Download PDF</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="Contents"><a class="wm-toc-home" href="../">← WeGo Library</a><div class="wm-toc-h">Contents</div><a class="wm-t1" href="#about">About this manual</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>What this system does</a></summary><a class="wm-t2" href="#c1-s1">In short</a><a class="wm-t2" href="#c1-s2">Supported robots and hands</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>What you received, what you need</a></summary><a class="wm-t2" href="#c2-s1">The operator PC</a><a class="wm-t2" href="#c2-s2">The robot side</a><a class="wm-t2" href="#c2-s3">The operator</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>Installing</a></summary><a class="wm-t2" href="#c3-s1">If you have the .run file</a><a class="wm-t2" href="#c3-s2">If you have the .tar.gz</a></details><a class="wm-t1" href="#c4"><span class="wm-n">04</span>Activating your licence</a><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Connecting the robot and the mocap gear</a></summary><a class="wm-t2" href="#c5-s1">5.1 Find your network interface</a><a class="wm-t2" href="#c5-s2">5.2 Give your PC an address on the robot's network</a><a class="wm-t2" href="#c5-s3">5.3 Confirm the robot is actually talking</a><a class="wm-t2" href="#c5-s4">5.4 Enter it in the panel</a><a class="wm-t2" href="#c5-s5">Connecting the motion-capture gear</a></details><a class="wm-t1" href="#c6"><span class="wm-n">06</span>First run, with nothing connected</a><a class="wm-t1" href="#c7"><span class="wm-n">07</span>The control panel at a glance</a><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>Panel reference — every control</a></summary><a class="wm-t2" href="#c8-s1">8.1 ARM TELEOP card</a><a class="wm-t2" href="#c8-s2">8.2 HAND TELEOP card</a><a class="wm-t2" href="#c8-s3">8.3 CONTROLS card</a><a class="wm-t2" href="#c8-s4">8.4 ROBOT HEALTH card</a><a class="wm-t2" href="#c8-s5">8.5 DATA RECORD &amp; REVIEW card</a><a class="wm-t2" href="#c8-s6">8.6 DATASET / TRAINING / INFERENCE cards (TRAIN / INFER page)</a><a class="wm-t2" href="#c8-s7">8.7 Configuration window (⚙)</a><a class="wm-t2" href="#c8-s8">8.8 Keyboard</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>Status badges</a></summary><a class="wm-t2" href="#c9-s1">Row 1 — what is connected</a><a class="wm-t2" href="#c9-s2">Row 2 — what the arm is doing</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>Operating the system</a></summary><a class="wm-t2" href="#c10-s1">Step 1 — Start the preview</a><a class="wm-t2" href="#c10-s2">Step 2 — Take control</a><a class="wm-t2" href="#c10-s3">Step 3 — Match and engage</a><a class="wm-t2" href="#c10-s4">Step 4 — Teleoperate</a><a class="wm-t2" href="#c10-s5">Step 5 — Pause or stop</a><a class="wm-t2" href="#s10-vr">VR mode (Meta Quest) — R1</a></details><a class="wm-t1" href="#c11"><span class="wm-n">11</span>Hand grip modes</a><a class="wm-t1" href="#c12"><span class="wm-n">12</span>Emergency stop</a><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">13</span>Recording, cameras, review &amp; editing</a></summary><a class="wm-t2" href="#c13-s1">To record</a><a class="wm-t2" href="#c13-s2">What makes a good dataset</a><a class="wm-t2" href="#c13-s3">Cameras</a><a class="wm-t2" href="#c13-s4">Reviewing and editing</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c14"><span class="wm-n">14</span>Training &amp; running a skill</a></summary><a class="wm-t2" href="#c14-s1">1. Prepare the dataset</a><a class="wm-t2" href="#c14-s2">2. Train</a><a class="wm-t2" href="#c14-s3">3. Check the result</a><a class="wm-t2" href="#c14-s4">4. Run the skill on the robot</a></details><a class="wm-t1" href="#c15"><span class="wm-n">15</span>Saved configurations</a><details class="wm-ch"><summary><a class="wm-t1" href="#c16"><span class="wm-n">16</span>Connecting your own software</a></summary><a class="wm-t2" href="#c16-s1">What is published</a><a class="wm-t2" href="#c16-s2">Commanding the robot from your own program</a><a class="wm-t2" href="#c16-s3">Recorded sessions</a><a class="wm-t2" href="#c16-s4">Trying it before you have hardware</a><a class="wm-t2" href="#c16-s5">Where the details are</a></details><a class="wm-t1" href="#c17"><span class="wm-n">17</span>Safety guidelines</a><a class="wm-t1" href="#c18"><span class="wm-n">18</span>Getting help</a></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ cover ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">USER GUIDE</div></div>
+  <div class="kicker">User guide</div>
+  <h1>WeGo <span>Humanoid Studio</span></h1>
+  <div class="bar"></div>
+  <p class="lead">Teleoperation, data collection and skill training for a humanoid
+    robot with dexterous hands — from the delivered file to a trained skill
+    running on the robot.</p>
+  <div class="cover-shot"><img src="assets/screenshots/01_teleop_default.png" alt="The control panel, TELEOP page"></div>
+  <div class="foot"><span>English edition · <span data-version>2026.11.16</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ about this manual ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>About this manual</h3>
+    <table>
+      <tr><td>Audience</td><td>Operators who install and run Humanoid Studio (Unitree G1 · R1 · H2 humanoids, dexterous hands)</td></tr>
+      <tr><td>Sources</td><td>The screens and behaviour of the Humanoid Studio 2.1.0 release · the delivered <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
+      <tr><td>Read with</td><td><a data-manual="g1-operation" href="../g1-operation/"><b>Unitree G1 operator manual</b></a> · <a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 operator manual</b></a> · <a data-manual="h2-operation" href="../h2-operation/"><b>Unitree H2 operator manual</b></a> (Korean; operating the robot itself)</td></tr>
+      <tr><td>Edition</td><td>English edition · <span data-version>2026.11.16</span></td></tr>
+      <tr><td>Contact</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ contents ═══════════════════════ -->
+<section class="front toc">
+  <h2>Contents</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t"><a href="#s1">What this system does</a></span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t"><a href="#s2">What you received, what you need</a></span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t"><a href="#s3">Installing</a></span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t"><a href="#s4">Activating your licence</a></span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t"><a href="#s5">Connecting the robot and the mocap gear</a></span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t"><a href="#s6">First run, with nothing connected</a></span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t"><a href="#s7">The control panel at a glance</a></span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t"><a href="#s8">Panel reference — every control</a></span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t"><a href="#s9">Status badges</a></span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t"><a href="#s10">Operating the system — suit and VR headset</a></span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t"><a href="#s11">Hand grip modes</a></span><span class="d"></span><span class="p" data-toc="c11"></span></li>
+    <li><span class="n">12</span><span class="t"><a href="#s12">Emergency stop</a></span><span class="d"></span><span class="p" data-toc="c12"></span></li>
+    <li><span class="n">13</span><span class="t"><a href="#s13">Recording, cameras, review &amp; editing</a></span><span class="d"></span><span class="p" data-toc="c13"></span></li>
+    <li><span class="n">14</span><span class="t"><a href="#s14">Training &amp; running a skill</a></span><span class="d"></span><span class="p" data-toc="c14"></span></li>
+    <li><span class="n">15</span><span class="t"><a href="#s15">Saved configurations</a></span><span class="d"></span><span class="p" data-toc="c15"></span></li>
+    <li><span class="n">16</span><span class="t"><a href="#s16">Connecting your own software</a></span><span class="d"></span><span class="p" data-toc="c16"></span></li>
+    <li><span class="n">17</span><span class="t"><a href="#s17">Safety guidelines</a></span><span class="d"></span><span class="p" data-toc="c17"></span></li>
+    <li><span class="n">18</span><span class="t"><a href="#s18">Getting help</a></span><span class="d"></span><span class="p" data-toc="c18"></span></li>
+  </ol>
+</section>
+
+<section class="chapter" id="s1">
+<div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">What this system does</h1></div>
+<p class="lede">An operator wearing motion-capture gear moves naturally; a
+humanoid robot mirrors those movements in real time — arms and individual
+fingers — with a live 3D preview so you always see what the robot is about to
+do before it moves. The same system records demonstrations, trains a skill
+from them, and runs that skill back on the robot through exactly the same
+safety path a human operator uses.</p>
+
+<figure class="flow">
+<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-a)" d="M200,70 L255,70"/>
+<path class="fa" marker-end="url(#ah-a)" d="M445,70 L500,70"/>
+<rect class="fb" x="10" y="32" width="190" height="76" rx="10"/><rect class="fb-accent" x="10" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="26" y="60">YOU</text>
+<text class="fs" x="26" y="80">Motion-capture suit</text>
+<text class="fs" x="26" y="94">+ gloves</text>
+<rect class="fb" x="255" y="32" width="190" height="76" rx="10"/><rect class="fb-accent" x="255" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="271" y="60">THIS PANEL</text>
+<text class="fs" x="271" y="80">Retargeting engine —</text>
+<text class="fs" x="271" y="94">WeGo Humanoid Studio</text>
+<rect class="fb" x="500" y="32" width="190" height="76" rx="10"/><rect class="fb-accent" x="500" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="516" y="60">ROBOT</text>
+<text class="fs" x="516" y="80">Arms + dexterous hand,</text>
+<text class="fs" x="516" y="94">mirrored live</text>
+</svg>
+<figcaption><b>Figure 1.</b> The pipeline in one line: your motion is retargeted from human
+proportions onto the robot's own joints, previewed on screen, then — only on
+your command — sent to the robot.</figcaption>
+</figure>
+
+<h2 id="c1-s1">In short</h2>
+<ul>
+<li><strong>Teleoperate</strong> a humanoid's arms and hands by moving your own body and fingers.</li>
+<li><strong>Preview</strong> every motion safely before the robot acts.</li>
+<li><strong>Grip delicately</strong> — soft and touch-sensing modes let the hands hold fragile objects without crushing them.</li>
+<li><strong>Collect data</strong> — capture demonstrations and camera footage with one click.</li>
+<li><strong>Review, edit &amp; replay</strong> — inspect any recording, trim it, and play it back.</li>
+<li><strong>Train a skill</strong> from your recordings, and <strong>run it on the robot</strong>.</li>
+</ul>
+
+<h2 id="c1-s2">Supported robots and hands</h2>
+<p>The panel supports three humanoids — <strong>G1</strong>, <strong>R1</strong>
+and <strong>H2</strong> — and four dexterous hands — <strong>RH56F1</strong>,
+<strong>Inspire RH56DFX</strong>, <strong>BrainCo Revo2</strong> and
+<strong>Unitree Dex3-1</strong>. You choose
+them from dropdowns and the 3D preview switches to match, so you always see
+the machine you are actually operating. Your delivered system has been
+configured and verified for <strong>your</strong> robot and hand; other
+combinations are selectable but should only be used with support.</p>
+</section>
+
+<section class="chapter" id="s2">
+<div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">What you received, what you need</h1></div>
+
+<p>Either a single archive, <code>wego-teleop-&lt;version&gt;.tar.gz</code>,
+with a <code>.sha256</code> checksum beside it — or a single self-extracting
+file, <code>wego-teleop-&lt;version&gt;-install.run</code>. Both are built from
+the same contents; the <code>.run</code> file is a one-step version of
+"unpack, then run <code>install.sh</code>". Either way it is
+<strong>self-contained</strong>: its own Python runtimes, robot models, hand
+models, fonts and training stack. Nothing is downloaded during installation
+and it does not touch any Python you already have.</p>
+
+<table class="t">
+<thead><tr><th>Inside the install</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td>bin/</td><td>The commands you run — <code>wego-gui</code> is the one you want, <code>wego-license</code> handles activation</td></tr>
+<tr><td>env-gmr/, env-dex/, env-lerobot/</td><td>The three bundled Python runtimes</td></tr>
+<tr><td>assets/</td><td>Robot and hand models, fonts, artwork, mocap SDK</td></tr>
+<tr><td>examples/, tools/</td><td>Reference scripts you may read and edit</td></tr>
+<tr><td>jetson/</td><td>The offline kit installed onto the robot</td></tr>
+<tr><td>docs/, *.md</td><td>The rest of the documentation</td></tr>
+<tr><td>VERSION</td><td>The build you are running — quote it in any support request</td></tr>
+</tbody>
+</table>
+
+<h2 id="c2-s1">The operator PC</h2>
+<table class="t">
+<thead><tr><th></th><th>Minimum</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Operating system</td><td>Ubuntu 22.04 LTS, 64-bit</td><td>Newer Ubuntu usually works; older will not</td></tr>
+<tr><td>Disk space</td><td>25 GB free</td><td>5.4 GB archive, 14 GB installed, plus recordings</td></tr>
+<tr><td>Memory</td><td>16 GB</td><td>32 GB if you will train</td></tr>
+<tr><td>Graphics</td><td>Any GPU with OpenGL</td><td>The 3D preview needs it</td></tr>
+<tr><td>Training only</td><td>NVIDIA GPU + driver 550+</td><td>8 GB VRAM trains ACT and Diffusion; see §14</td></tr>
+<tr><td>Network</td><td>One wired port for the robot</td><td>A second interface (Wi-Fi) is convenient</td></tr>
+</tbody>
+</table>
+
+<pre class="cmd">lsb_release -d          # Ubuntu 22.04
+df -h ~                 # free space
+nvidia-smi              # only if you will train — must print a driver version</pre>
+
+<div class="box note"><div class="h">Note · GR00T is a research-only (non-commercial) option</div>
+NVIDIA releases the GR00T-N1.5-3B weights for non-commercial use only, so WeGo does not provide GR00T as a
+commercial feature. The policy list shows it as <span class="ui">GR00T (research only)</span>.
+GR00T is one of the policies you can pick for training (<code>nvidia/GR00T-N1.5-3B</code>); it is downloaded
+from Hugging Face on demand, only when you select it and start training — it is not in the pre-installed set
+and is not version-managed.</div>
+
+<h2 id="c2-s2">The robot side</h2>
+<ul>
+<li>The robot (Unitree G1, R1 or H2), powered and reachable over Ethernet.</li>
+<li>The dexterous hands fitted, and — if wired to the robot's own computer — the hand bridge installed there (§5).</li>
+<li>Cameras, if you intend to record video with your demonstrations (§13).</li>
+</ul>
+<h2 id="c2-s3">The operator</h2>
+<ul><li>Motion-capture gear (Virdyn VDSuit, with or without mHand Pro gloves), worn and calibrated per its own manual.</li></ul>
+</section>
+
+<section class="chapter" id="s3">
+<div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">Installing</h1></div>
+
+<figure class="flow">
+<svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-b)" d="M175,70 L213,70"/>
+<path class="fa" marker-end="url(#ah-b)" d="M378,70 L416,70"/>
+<path class="fa" marker-end="url(#ah-b)" d="M581,70 L619,70"/>
+<rect class="fb" x="10" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="10" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="24" y="60">Verify</text><text class="fs" x="24" y="80">sha256sum -c</text><text class="fs" x="24" y="94">the checksum</text>
+<rect class="fb" x="213" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="213" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="227" y="60">Install</text><text class="fs" x="227" y="80">./install.sh</text><text class="fs" x="227" y="94">(or the .run file)</text>
+<rect class="fb" x="416" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="416" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="430" y="60">Accept</text><text class="fs" x="430" y="80">Type ACCEPT</text><text class="fs" x="430" y="94">once, first install</text>
+<rect class="fb" x="619" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="619" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="633" y="60">Open</text><text class="fs" x="633" y="80">bin/wego-gui —</text><text class="fs" x="633" y="94">nothing moves yet</text>
+</svg>
+</figure>
+
+<h2 id="c3-s1">If you have the <code>.run</code> file</h2>
+<pre class="cmd">sha256sum -c wego-teleop-&lt;version&gt;-install.run.sha256   # verify, should print "OK"
+chmod +x wego-teleop-&lt;version&gt;-install.run
+./wego-teleop-&lt;version&gt;-install.run ~/wego-teleop        # extracts, then installs</pre>
+
+<h2 id="c3-s2">If you have the <code>.tar.gz</code></h2>
+<pre class="cmd"># 1. verify the download is intact (should print "OK")
+sha256sum -c wego-teleop-&lt;version&gt;.tar.gz.sha256
+
+# 2. unpack wherever you want it to live, permanently
+tar xzf wego-teleop-&lt;version&gt;.tar.gz -C ~/
+
+# 3. finish the installation
+cd ~/wego-teleop
+./install.sh</pre>
+
+<p>Either way, the first thing you see is the <strong>licence terms</strong> —
+read them and type <code>ACCEPT</code> to continue (one-time; a later
+reinstall or update only asks again if the terms text itself changed).
+Scripting an install with no one at the keyboard? Add <code>--accept-eula</code>
+(or set <code>WEGO_EULA_ACCEPT=1</code>) after reading
+<code>LICENSE_TERMS.md</code> yourself. Reprint the terms any time with
+<code>bin/wego-license --terms</code>.</p>
+
+<p><code>install.sh</code> prints a line per step and ends with
+<code>Installed (&lt;version&gt;)</code>. If any line says <code>!!</code>, stop
+and read <code>TROUBLESHOOTING.md</code> §1.</p>
+
+<div class="box caution"><div class="h">Caution · Choose the location now</div>
+The installation is bound to the directory it is unpacked into. Moving it
+later breaks it (§13 of <code>INSTALL.md</code>) — re-extract at the new
+location instead.</div>
+
+<p>Start the panel:</p>
+<pre class="cmd">~/wego-teleop/bin/wego-gui</pre>
+<p>You should see a brief animated splash, then the control panel shown on the
+cover of this guide: two 3D canvases on the left, cards down the right, and a
+header carrying the WeGo logo, the page tabs and the connection fields.</p>
+
+<div class="box note"><div class="h">Note · Nothing has moved, and nothing will</div>
+Starting the panel does not command the robot. Motion needs a deliberate
+<span class="ui">Control</span> and then <span class="ui">Teleop</span> press
+(§10), and even then only after the robot's own signals have been confirmed.</div>
+</section>
+
+<section class="chapter" id="s4">
+<div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">Activating your licence</h1></div>
+<p>The software is licensed per computer. <code>install.sh</code> tells you
+which case you are in.</p>
+
+<p><strong>Already licensed</strong> — nothing to do. When a package is built
+for a machine you have already told WeGo about, the licence travels inside the
+package; installing it is the whole activation step, and <code>install.sh</code>
+prints who it is licensed to.</p>
+
+<p><strong>Licence does not match this computer</strong> — the package was
+built for a different machine than the one it was installed on. Send WeGo the
+Machine ID the message prints; do not reinstall, the pairing is what's wrong,
+not the software.</p>
+
+<p><strong>Not licensed yet</strong> — the file WeGo needs already exists.
+You can do this from the panel: start <code>bin/wego-gui</code> and it opens a
+licence window with <span class="ui">Copy Machine ID</span>,
+<span class="ui">Save request file…</span> and <span class="ui">Activate…</span>
+— activating there continues straight into the application.</p>
+
+<figure class="flow">
+<svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-c)" d="M175,70 L213,70"/>
+<path class="fa" marker-end="url(#ah-c)" d="M378,70 L416,70"/>
+<path class="fa" marker-end="url(#ah-c)" d="M581,70 L619,70"/>
+<rect class="fb" x="10" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="10" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="24" y="60">Request</text><text class="fs" x="24" y="80">wego-license</text><text class="fs" x="24" y="94">--request</text>
+<rect class="fb" x="213" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="213" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="227" y="60">Send</text><text class="fs" x="227" y="80">Email the Machine</text><text class="fs" x="227" y="94">ID file to WeGo</text>
+<rect class="fb" x="416" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="416" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="430" y="60">Issue</text><text class="fs" x="430" y="80">We reply with a</text><text class="fs" x="430" y="94">licence file</text>
+<rect class="fb" x="619" y="32" width="165" height="76" rx="10"/><rect class="fb-accent" x="619" y="32" width="4" height="76" rx="2"/>
+<text class="ft" x="633" y="60">Activate</text><text class="fs" x="633" y="80">wego-license</text><text class="fs" x="633" y="94">--activate ⋯.key</text>
+</svg>
+</figure>
+
+<pre class="cmd"># 1. produce (or reproduce) the request file
+~/wego-teleop/bin/wego-license --request
+# → email ~/wego_machine_id.txt to go.support@wego-robotics.com
+
+# 2. install the licence file WeGo sends back
+~/wego-teleop/bin/wego-license --activate ~/Downloads/your-licence.key
+
+# 3. check any time
+~/wego-teleop/bin/wego-license --status</pre>
+
+<p>The licence is tied to <strong>this computer</strong>, not to the
+installation directory — it survives reinstalling, updating, renaming the
+computer, reinstalling Ubuntu, plugging in a docking station, and replacing a
+network card or disk. Moving to a genuinely different computer needs a new
+licence. A licence you activate yourself always takes precedence over one that
+came inside the package, so a renewal works without reinstalling anything.</p>
+</section>
+
+<section class="chapter" id="s5">
+<div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">Connecting the robot and the mocap gear</h1></div>
+
+<h2 id="c5-s1">5.1 Find your network interface</h2>
+<p>Plug the robot's Ethernet cable into your PC and list the interfaces:</p>
+<pre class="cmd">ip link</pre>
+<p>Look for a wired interface that is <code>UP</code> — typically
+<code>enp4s0</code>, <code>eno1</code> or <code>enx…</code>. <strong>Write it
+down</strong> — this name goes into the panel's <strong>IFACE</strong> field,
+and getting it wrong is the single most common cause of "the robot does not
+respond".</p>
+<div class="box caution"><div class="h">Caution · Why it matters</div>
+The panel binds robot communication to exactly this interface. Naming one that
+does not exist is an asymmetric trap: messages still <em>leave</em> your PC
+through the default route while nothing is ever <em>received</em> — the robot
+may twitch while the panel shows no data at all.</div>
+
+<h2 id="c5-s2">5.2 Give your PC an address on the robot's network</h2>
+<p>The robot uses the <code>192.168.123.x</code> network.</p>
+<pre class="cmd">sudo ip addr add 192.168.123.222/24 dev enp4s0     # your interface name
+sudo ip link set enp4s0 up
+ping -c3 192.168.123.164                            # the robot's onboard computer</pre>
+
+<h2 id="c5-s3">5.3 Confirm the robot is actually talking</h2>
+<pre class="cmd">~/wego-teleop/bin/wego-gmr robot_telemetry enp4s0     # your interface name</pre>
+<p>It prints joint temperatures and battery percentage, roughly once a second.
+If it prints nothing, the robot is not reaching you and no amount of pressing
+<span class="ui">Control</span> will help — see
+<code>TROUBLESHOOTING.md</code> §2.</p>
+
+<h2 id="c5-s4">5.4 Enter it in the panel</h2>
+<p>In the header, set <strong>IFACE</strong> to your interface name. The
+<strong>ROBOT HEALTH</strong> card starts showing battery and temperature
+within a few seconds — that is your positive confirmation the link is live.</p>
+
+<figure>
+<img src="assets/screenshots/header.png" alt="Header: SUIT IP, ARM PORT, HAND PORT, IFACE, MODE fields">
+<figcaption><b>Figure 2.</b> The header — shared by both pages. <b>IFACE</b> is the field that
+matters most; <b>SUIT IP</b> / <b>ARM PORT</b> / <b>HAND PORT</b> / <b>MODE</b>
+configure the motion-capture link described below.</figcaption>
+</figure>
+
+<h2 id="c5-s5">Connecting the motion-capture gear</h2>
+<table class="t">
+<thead><tr><th>MODE</th><th>Your gear</th><th>Ports used</th></tr></thead>
+<tbody>
+<tr><td>Suit (all-in-one)</td><td>One suit, gloves worn on the suit</td><td>ARM PORT 7000 only</td></tr>
+<tr><td>Suit + Gloves</td><td>Suit body without gloves, separate mHand Pro gloves</td><td>ARM PORT 7000 + HAND PORT 7001</td></tr>
+<tr><td>VR (Quest / PICO)</td><td>Meta Quest 3 / 3S or PICO 4 Ultra worn by the operator, no suit (§10, VR mode)</td><td>8443 (TCP) + 8444 (UDP), over Wi-Fi</td></tr>
+</tbody>
+</table>
+<p>Set <strong>SUIT IP</strong> to the address your mocap software streams
+from (<code>192.168.0.68</code> by default). <strong>Choose MODE before
+starting anything</strong> — it configures both the arm and hand sides at
+once; switching afterwards means stopping and restarting them.</p>
+<div class="box note"><div class="h">Note · Wrist tracking without gloves on the suit</div>
+If your suit is worn without gloves and you use separate mHand Pro gloves, you
+must use <strong>Suit + Gloves</strong>. The suit alone cannot report wrist
+rotation in that arrangement — the wrist would appear frozen — and this mode
+feeds it from the gloves instead.</div>
+</section>
+
+<section class="chapter" id="s6">
+<div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">First run, with nothing connected</h1></div>
+<p>Before involving the robot, confirm the panel itself works.</p>
+<ol>
+<li>Start the panel.</li>
+<li>In the <strong>ARM TELEOP</strong> card, open <span class="ui">⚙ Advanced</span> and tick <strong>SIM ONLY</strong>, then press <span class="ui">▶ Start</span>.</li>
+<li>The left canvas shows the robot; the hand close-up (below it, via <span class="ui">▶ SHOW HAND CANVAS</span>) shows the hands.</li>
+<li>Move — the on-screen robot follows. Nothing else is being commanded.</li>
+<li>Press <span class="ui">■ Stop</span>.</li>
+</ol>
+<p>If the canvases stay empty, your mocap gear is not streaming (§5). If the
+panel itself will not start, see <code>TROUBLESHOOTING.md</code> §1.</p>
+<div class="box note"><div class="h">Note · SIM ONLY</div> Ticking it appends
+<code>--no-robot</code> — it guarantees zero DDS traffic to any robot. It is
+the safest way to check tracking and is the only screenshot state used
+throughout this guide.</div>
+</section>
+
+<section class="chapter" id="s7">
+<div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">The control panel at a glance</h1></div>
+<p>The application has two pages, switched from the header:
+<strong>TELEOP</strong> and <strong>TRAIN / INFER</strong>.</p>
+
+<figure>
+<img src="assets/screenshots/01_teleop_default.png" alt="TELEOP page, idle default state">
+<figcaption><b>Figure 3.</b> The <b>TELEOP</b> page: live 3D preview on the left, a column of
+cards on the right — ARM, HAND, CONTROLS, ROBOT HEALTH, DATA RECORD &amp; REVIEW.
+Every badge reads OFFLINE / STOPPED here — nothing has been started yet.</figcaption>
+</figure>
+
+<figure>
+<img src="assets/screenshots/03_train_infer_default.png" alt="TRAIN / INFER page, default state">
+<figcaption><b>Figure 4.</b> The <b>TRAIN / INFER</b> page: five live charts on the left,
+DATASET / TRAINING / INFERENCE cards on the right. This is where recordings
+become a trained skill.</figcaption>
+</figure>
+
+<p>The header is shared by both pages: profile, network fields, the
+<span class="ui">EN / 한</span> language and <span class="ui">☀ / ☾</span> theme
+buttons, and the <span class="ui">⚙</span> button that opens the Configuration
+window, where every setting can be seen and saved.</p>
+</section>
+
+<section class="chapter" id="s8">
+<div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">Panel reference — every control</h1></div>
+<p class="lede">This section names every control, card by card. Skip it on a
+first read; come back when you want to know exactly what something does.</p>
+
+<h2 id="c8-s1">8.1 ARM TELEOP card</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_arm_card.png" alt="ARM TELEOP card"></figure>
+</div>
+<table class="t">
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>ROBOT</td><td>Which humanoid you are operating (G1 / R1 / H2)</td></tr>
+<tr><td>ROBOT MODE</td><td><strong>Motion</strong> — the robot balances itself, we drive only the arms (the normal choice). <strong>Debug</strong> — we drive every joint directly and the robot must be supported or hung; the panel asks you to confirm</td></tr>
+<tr><td>▶ Start / ■ Stop</td><td>Start or stop the arm module. Starting does <strong>not</strong> move the robot</td></tr>
+<tr><td>⚙ Advanced</td><td>Reveals the exact command this card runs and a <strong>SIM ONLY</strong> checkbox (§6). For support use — the controls above already drive everything that matters</td></tr>
+</tbody>
+</table>
+
+<h2 id="c8-s2">8.2 HAND TELEOP card</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_hand_card.png" alt="HAND TELEOP card"></figure>
+</div>
+<table class="t">
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>HAND</td><td>Which hand model is fitted (RH56F1 / Inspire RH56DFX / BrainCo Revo2 / Unitree Dex3-1)</td></tr>
+<tr><td>▶ Start / ■ Stop</td><td>Start or stop the hand module. Preview streams immediately; the real hand stays gated until Teleop</td></tr>
+</tbody>
+</table>
+
+<figure>
+<img src="assets/screenshots/02_teleop_hand_canvas.png" alt="Hand close-up canvas expanded">
+<figcaption><b>Figure 5.</b> The dedicated hand close-up (<span class="ui">▶ SHOW HAND CANVAS</span>,
+below the body canvas) — the body canvas already renders the fingers; this is
+the zoomed-in view.</figcaption>
+</figure>
+
+<h2 id="c8-s3">8.3 CONTROLS card</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_controls_card.png" alt="CONTROLS card"></figure>
+</div>
+<p>Two rows of status badges (§9) and the buttons that actually move the robot:</p>
+<table class="t">
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Control</td><td>First real motion. The robot eases into its neutral ready posture over about three seconds</td></tr>
+<tr><td>Teleop</td><td>Start following you. Ramps in over about two seconds from wherever the robot currently is, tracking you as it goes</td></tr>
+<tr><td>Idle</td><td>Stop following and return to the ready posture</td></tr>
+<tr><td>Pause</td><td>Hold the current pose and stop following</td></tr>
+<tr><td>Quit</td><td>Release the arm and shut the arm module down cleanly</td></tr>
+<tr><td>Full Force / Soft Force / Adaptive</td><td>Hand grip mode — see §11</td></tr>
+<tr><td>Open</td><td>Immediately open both hands and release whatever is held</td></tr>
+<tr><td>E-Stop</td><td>Emergency stop (E-stop) — see §12</td></tr>
+</tbody>
+</table>
+
+<h2 id="c8-s4">8.4 ROBOT HEALTH card</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_robot_health_card.png" alt="ROBOT HEALTH card"></figure>
+</div>
+<p>Read directly from the robot, independently of everything else — it works
+<em>before</em> you start the arm and keeps updating after you stop it.</p>
+<table class="t">
+<thead><tr><th>Item</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>LINK</td><td>Whether the robot's status messages are arriving</td></tr>
+<tr><td>BATTERY</td><td>Charge percentage</td></tr>
+<tr><td>Motor temperature</td><td>The hottest motor, with a chart on the TRAIN / INFER page</td></tr>
+<tr><td>WARN °C / CRIT °C</td><td>Your thresholds (65 / 80 by default)</td></tr>
+</tbody>
+</table>
+<p>Crossing the critical threshold turns the badge red and names the hottest
+joint in the log. <strong>It never stops the robot on its own</strong> — an
+unexpected stop mid-grasp is its own hazard.</p>
+
+<h2 id="c8-s5">8.5 DATA RECORD &amp; REVIEW card</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_data_card.png" alt="DATA RECORD & REVIEW card"></figure>
+</div>
+<table class="t">
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>TASK</td><td>The instruction being demonstrated, e.g. <em>pick up the red cup</em>. Stored with every recording</td></tr>
+<tr><td>Format</td><td>Training JSON (default, trainable), HDF5 (review and replay only), or Nero HDF5 (trainable; the Nero project's format, one file per take, with ✓ Save as success / ✗ Save as fail buttons under Record — failed takes are left out of Convert)</td></tr>
+<tr><td>● Record</td><td>Start / stop a demonstration</td></tr>
+<tr><td>CAMERAS: HOST</td><td>Robot (PC2) — the shipped arrangement, or This PC</td></tr>
+<tr><td>Head / L Wrist / R Wrist</td><td>One row per camera: type (RealSense/OpenCV) + identifier. Blank = not used</td></tr>
+<tr><td>+ Add camera</td><td>Add another camera — no fixed limit</td></tr>
+<tr><td>▶ Cameras</td><td>Start the cameras and open a preview</td></tr>
+<tr><td>Browse… / Latest</td><td>Choose which recording the review buttons act on</td></tr>
+<tr><td>Visualize</td><td>Full review view — 3D robot, every joint signal and camera video on one scrubbable timeline</td></tr>
+<tr><td>Replay → Preview</td><td>Play a recording on the on-screen preview only</td></tr>
+<tr><td>⚠ Replay → ROBOT</td><td>Play a recording back on the real robot, behind every normal safety gate</td></tr>
+<tr><td>Trim / Edit Episodes</td><td>Open the episode editor — §13</td></tr>
+</tbody>
+</table>
+
+<h2 id="c8-s6">8.6 DATASET / TRAINING / INFERENCE cards (TRAIN / INFER page)</h2>
+<div class="shots-row">
+<figure>
+<img src="assets/screenshots/card_dataset_card.png" alt="DATASET card"></figure>
+<figure>
+<img src="assets/screenshots/card_training_card.png" alt="TRAINING card"></figure>
+</div>
+<figure style="max-width:340px">
+<img src="assets/screenshots/card_inference_card.png" alt="INFERENCE card">
+<figcaption><b>Figure 6.</b> DATASET — prepare a training dataset. TRAINING — run and monitor a
+training job. INFERENCE — hand control to a trained skill. Detailed in §14.</figcaption>
+</figure>
+
+<h2 id="c8-s7">8.7 Configuration window (⚙)</h2>
+<div class="shots-row">
+<figure style="max-width:420px">
+<img src="assets/screenshots/config_dialog.png" alt="Configuration window"></figure>
+</div>
+<p>One window, <strong>four tabs</strong> — TRAINING PARAMETERS, TELEOP,
+DATA / CAMERAS, COMMANDS — holding every operator-settable value in the
+application. Along the bottom: <span class="ui">Load…</span>
+<span class="ui">Save</span> <span class="ui">Save As…</span>
+<span class="ui">Delete</span> <span class="ui">Reset</span>
+<span class="ui">Close</span>. These act on named profiles (§15). Edits apply
+immediately; <span class="ui">Reset</span> restores the state from when you
+opened the window.</p>
+
+<h2 id="c8-s8">8.8 Keyboard</h2>
+<p><span class="k s">R</span> on a 3D canvas resets the camera view (the
+<span class="ui">⟲</span> button does the same). The canvases can also be
+rotated by dragging and zoomed with the scroll wheel.</p>
+</section>
+
+<section class="chapter" id="s9">
+<div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">Status badges</h1></div>
+<p>The CONTROLS card carries two rows of badges — the fastest way to see what
+the system is actually doing.</p>
+
+<h2 id="c9-s1">Row 1 — what is connected</h2>
+<p>
+<span class="chip c-grey">OFFLINE</span>
+<span class="chip c-green">MOTION</span>
+<span class="chip c-amber">DEBUG</span>
+<span class="chip c-grey">SIM (no robot)</span>
+</p>
+<table class="t">
+<tbody>
+<tr><td>OFFLINE</td><td>The arm module is not running</td></tr>
+<tr><td>MOTION</td><td>The robot balances itself; we drive the arms</td></tr>
+<tr><td>DEBUG</td><td>We drive every joint; the robot must be supported</td></tr>
+<tr><td>SIM (no robot)</td><td>Preview only — no robot is being contacted</td></tr>
+<tr><td>HUMAN / REPLAY / POLICY</td><td>Who is commanding: you, a recording, or a trained skill</td></tr>
+</tbody>
+</table>
+
+<h2 id="c9-s2">Row 2 — what the arm is doing</h2>
+<table class="t">
+<tbody>
+<tr><td>OFFLINE</td><td>Not running</td></tr>
+<tr><td>READY (released)</td><td>Running, but the robot is not being driven — the state right after Start</td></tr>
+<tr><td>CONTROL</td><td>Moving to the neutral ready posture</td></tr>
+<tr><td>SYNCING…</td><td>Easing into following you</td></tr>
+<tr><td>TELEOP</td><td>Following you</td></tr>
+<tr><td>IDLE</td><td>Back at the ready posture, not following</td></tr>
+<tr><td>PAUSE</td><td>Holding position</td></tr>
+<tr><td>E-STOP (damp)</td><td>E-stop was pressed</td></tr>
+</tbody>
+</table>
+
+<p>Alongside them, the hand's current grip mode. The default badge reads
+<span class="chip c-green">● SOFT</span> and, once you pick a mode, always
+switches to the internal mode key in English — <code>● FULL</code>,
+<code>● SOFT</code> or <code>● ADAPTIVE</code> — even when the rest of the
+interface is set to Korean.</p>
+</section>
+
+<section class="chapter" id="s10">
+<div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">Operating the system</h1></div>
+<p class="lede">The system is designed so the robot <strong>never moves
+unexpectedly</strong>. You move through a few clear stages, and the robot only
+acts when you tell it to.</p>
+
+<figure class="flow">
+<svg viewBox="0 0 820 150" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-d)" d="M148,72 L172,72"/>
+<path class="fa" marker-end="url(#ah-d)" d="M312,72 L336,72"/>
+<path class="fa" marker-end="url(#ah-d)" d="M476,72 L500,72"/>
+<path class="fa" marker-end="url(#ah-d)" d="M640,72 L664,72"/>
+<rect class="fb" x="8" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="8" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="22" y="48">1</text><text class="ft" x="22" y="68">Start</text><text class="fs" x="22" y="86">▶ Start — ARM</text><text class="fs" x="22" y="100">+ HAND, preview</text>
+<rect class="fb" x="172" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="172" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="186" y="48">2</text><text class="ft" x="186" y="68">Control</text><text class="fs" x="186" y="86">Eases to ready</text><text class="fs" x="186" y="100">posture, ~3 s</text>
+<rect class="fb" x="336" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="336" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="350" y="48">3</text><text class="ft" x="350" y="68">Teleop</text><text class="fs" x="350" y="86">~2 s ramp, then</text><text class="fs" x="350" y="100">follows you 1:1</text>
+<rect class="fb" x="500" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="500" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="514" y="48">4</text><text class="ft" x="514" y="68">Operate</text><text class="fs" x="514" y="86">Move naturally —</text><text class="fs" x="514" y="100">arms + fingers</text>
+<rect class="fb" x="664" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="664" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="678" y="48">5</text><text class="ft" x="678" y="68">Pause/Stop</text><text class="fs" x="678" y="86">Idle, Pause,</text><text class="fs" x="678" y="100">E-Stop, or Stop</text>
+</svg>
+</figure>
+
+<h2 id="c10-s1">Step 1 — Start the preview</h2>
+<p>Press <span class="ui">▶ Start</span> on the ARM card, and on the HAND
+card. The robot does <strong>not</strong> move — you see the live 3D preview
+follow you. Use this stage to confirm the preview tracks you correctly and
+that you are in a comfortable starting posture. You may connect the robot now
+or later; connecting it does not move it.</p>
+
+<h2 id="c10-s2">Step 2 — Take control</h2>
+<p>Press <span class="ui">Control</span>. The robot smoothly moves into a
+neutral ready posture over about three seconds — it eases in, there is never a
+jump. If the robot does not move and the log says it cannot engage, the panel
+is telling you it is not receiving the robot's position and is refusing to
+move it blind. See <code>TROUBLESHOOTING.md</code> §2.</p>
+
+<h2 id="c10-s3">Step 3 — Match and engage</h2>
+<p>With the robot in its ready posture, position your own body to match it.
+Then press <span class="ui">Teleop</span>. Over about two seconds the robot
+transitions to following you, tracking you as it goes — no jump even if you
+move during the transition.</p>
+
+<h2 id="c10-s4">Step 4 — Teleoperate</h2>
+<p>Move naturally. Your arm and finger motions are reflected in real time. How
+the motion feels is adjustable in the Configuration window: following you more
+aggressively is more responsive and less smooth; following more gently is
+smoother but will not keep up with fast motion.</p>
+
+<h2 id="c10-s5">Step 5 — Pause or stop</h2>
+<ul>
+<li><span class="ui">Pause</span> holds the robot in place while you reposition yourself.</li>
+<li><span class="ui">Idle</span> returns the robot to its ready posture and stops following.</li>
+<li><span class="ui">E-Stop</span> immediately stops all motion (§12).</li>
+<li><span class="ui">■ Stop</span> ends the modules. This is not an E-stop.</li>
+</ul>
+
+<h2 class="newpage" id="s10-vr">VR mode (Meta Quest) — R1</h2>
+<p class="lede">Instead of the suit, the operator can wear a <strong>Meta Quest 3
+/ 3S or PICO 4 Ultra</strong> and drive the robot's arms and hands with the two controllers. The
+headset runs the <strong>Humanoid Studio VR</strong> app (in Korean): it shows
+the robot, an alignment guide and the robot's state. These steps are written
+for <strong>R1</strong>; G1 and H2 work the same way except where the R1 notes
+say otherwise.</p>
+
+<h3>Before you start</h3>
+<ul>
+<li>The headset and the PC are on the <strong>same Wi-Fi network</strong>. The
+headset connects to the PC on port <strong>8443</strong> (TCP) and finds it
+through a broadcast on port <strong>8444</strong> (UDP); a firewall on the PC
+must allow both.</li>
+<li>The headset stays with the PC it first connected to, even when another
+Humanoid Studio runs on the same Wi-Fi. The console's bottom line shows the
+robot and PC it is on, and any other PC it hears. To move it to another PC,
+press <strong>CHANGE PC</strong> on the console twice. A PC that already has a headset
+refuses a second one.</li>
+<li>The robot is connected as usual (<strong>IFACE</strong>), standing and balancing.</li>
+<li>R1's BrainCo hands are driven by the hand service on the robot's own PC
+(<code>192.168.123.164</code>), which starts by itself when the robot boots.</li>
+</ul>
+
+<h3>Start</h3>
+<ol>
+<li>On the PC, set <strong>MODE</strong> to <span class="ui">VR (Quest / PICO)</span>,
+<strong>ROBOT</strong> to <span class="ui">R1</span> and <strong>ROBOT MODE</strong>
+to <span class="ui">Motion</span>, then press <span class="ui">▶ Start</span> on
+the ARM card. Set <strong>HAND</strong> to <span class="ui">BrainCo Revo2</span> and press
+<span class="ui">▶ Start</span> on the HAND card too.</li>
+<li>Put the headset on and open <strong>Humanoid Studio VR</strong> from the app
+library (apps not from the store are listed under <em>Unknown sources</em>). It
+finds the PC by itself: the <strong>LINK</strong> chip turns green and the
+<strong>ROBOT</strong> chip shows <strong>R1</strong>.</li>
+</ol>
+
+<div class="figwrap">
+<figure>
+<img src="assets/screenshots/vr_console_idle.png" alt="Headset console, connected to R1, waiting for the operator">
+<figcaption><b>Figure 7.</b> The headset console, connected to R1 and waiting for the operator.
+The <b>GUIDE</b> card lists the next steps; the E-stop card says what the
+thumbstick combination does on this robot. (Captured in the desktop preview,
+hence <b>HEADSET SIM</b>.)</figcaption>
+</figure>
+</div>
+
+<h3>Controller buttons</h3>
+<table class="t">
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><span class="k s">X</span></td><td><strong>Control</strong>: the arms move to the start pose over about three seconds. During teleoperation, X stops following and returns the arms to the start pose</td></tr>
+<tr><td><span class="k s">A</span></td><td>Starts <strong>alignment</strong>; teleoperation begins by itself once you are aligned</td></tr>
+<tr><td>Grip (side button)</td><td>Closes all four fingers of the robot hand together</td></tr>
+<tr><td>Thumbstick (move, don't press)</td><td>Moves the robot's thumb: toward the palm rotates it across the palm, forward bends it. Centred = half way</td></tr>
+<tr><td><span class="k s">Y</span> + <span class="k s">B</span></td><td><strong>E-stop</strong>: following stops, the arms return home and the hands open</td></tr>
+<tr><td>Both thumbsticks pressed</td><td>On R1 in Motion: <strong>releases the arms</strong> to the robot's own controller (raised arms may drop); the robot keeps balancing. In Debug, and on G1 and H2: the robot goes limp (damp). The hands open</td></tr>
+<tr><td>Grip (pointing at a panel, outside teleoperation)</td><td>Drag a panel, or press its button</td></tr>
+<tr><td>Menu (left)</td><td>Minimize the console</td></tr>
+<tr><td>Hold the headset's home button (Meta / PICO)</td><td>Recenter the view</td></tr>
+<tr><td>CLOSE APP (red, top right of the console)</td><td>Point and press grip twice within 3 s to quit the app. Hidden during teleoperation</td></tr>
+</tbody>
+</table>
+
+<h3>A session</h3>
+<ol>
+<li>Stand relaxed, then press <span class="k s">X</span>. The robot's arms move to the start pose.</li>
+<li>Press <span class="k s">A</span>. Two rings appear where the robot's wrists
+are. Put your hands in the rings and hold <strong>both triggers</strong> until
+the gauge reaches 100%. The headset tells you which way to move each hand. If
+the position check will not pass, keep the triggers held, hold
+<span class="k s">A</span> and add <span class="k s">X</span> to skip it.</li>
+<li>Teleoperation starts by itself and the console shrinks to a status strip.
+Move naturally; the arms follow your controllers and the hands follow your
+grip and thumbstick. The hands move only during teleoperation.</li>
+<li>To stop, press <span class="k s">X</span>: the arms return to the start
+pose and the hands keep their grip. Press <span class="k s">A</span> to align and continue again.</li>
+</ol>
+
+<div class="figwrap">
+<figure>
+<img src="assets/screenshots/vr_console_align.png" alt="Headset console during alignment">
+<figcaption><b>Figure 8.</b> During alignment: the gauge, the checklist, and how far to move
+each hand (<b>L</b> = left, <b>R</b> = right).</figcaption>
+</figure>
+</div>
+
+<p>If the headset warns that your hands are off the robot's forward direction,
+face forward or hold the headset's home button (Meta / PICO) to recenter.</p>
+
+<div class="box caution"><div class="h">Caution · Automatic stops</div>
+Taking the headset off, a lost link, controllers out of the headset's view for
+more than a second, or <span class="k s">Y</span> + <span class="k s">B</span>
+all stop the session the same way: the arms return home and the stop stays in
+force; the hands keep what they hold, except on <span class="k s">Y</span> + <span class="k s">B</span>,
+which opens them. The headset shows the reason. Press <span class="k s">X</span> to
+acknowledge, then <span class="k s">A</span> to align again.</div>
+
+<h3>R1 notes</h3>
+<ul>
+<li>The robot camera panel stays empty on R1: its camera feed is not supported
+in VR mode yet.</li>
+<li>A finger that stops against an object, or against the thumb, stays there
+until you ease off: release the grip a little, or move the thumb back, then try again.</li>
+<li>On R1 in Motion, the thumbstick combination only releases the arms. To stop
+the whole robot, use the robot's own remote control.</li>
+</ul>
+</section>
+
+<section class="chapter" id="s11">
+<div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">Hand grip modes</h1></div>
+<p>Three modes, switchable at any time — including mid-grasp.</p>
+<table class="t">
+<thead><tr><th>Mode</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td>Full Force</td><td>Maximum strength, for firm grasping of solid objects</td></tr>
+<tr><td>Soft Force <em>(default)</em></td><td>Gentle, compliant grasping. The hand senses contact and stops closing, so it holds fragile or delicate items without crushing them</td></tr>
+<tr><td>Adaptive</td><td>Uses the hand's touch sensors: feels first contact, tests how soft the object is, holds accordingly, and tightens slightly if it starts to slip</td></tr>
+</tbody>
+</table>
+<p><span class="ui">Open</span> immediately releases whatever is held.</p>
+<div class="box note"><div class="h">Note · Not a fault</div> In Soft and Adaptive
+modes a finger <strong>stops where it first met resistance</strong> and stays
+there. To release, open your own hand past the point where the finger
+stopped. These modes rely on the touch-sensing hand's sensors; on hands
+without them, grip is position-controlled only.</div>
+</section>
+
+<section class="chapter" id="s12">
+<div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">Emergency stop</h1></div>
+<p>The <span class="ui">E-Stop</span> button is always available on the
+control panel.</p>
+<div class="box warn"><div class="h">Warning · Pressing it immediately</div>
+<ul>
+<li>stops driving the robot's arms and lets them go slack,</li>
+<li>opens the hands to release any held object,</li>
+<li>returns the system to a safe, idle state.</li>
+</ul>
+Use it any time you are unsure or something looks wrong. It is always safe to
+press.</div>
+<p><strong>Important:</strong> E-stop makes the robot <em>stop being
+driven</em>. It does not catch or hold the robot up. On a robot that is not
+balancing on its own (Debug mode), the robot must already be supported.</p>
+</section>
+
+<section class="chapter" id="s13">
+<div class="opener"><div class="num">CHAPTER<big>13</big></div><h1 id="c13" data-mark="c13">Recording, cameras, review &amp; editing</h1></div>
+<p>The system captures your teleoperation sessions as reusable datasets — the
+robot's full motion together with synchronized camera video.</p>
+
+<h2 id="c13-s1">To record</h2>
+<ol>
+<li>Start the cameras first, if you want video (§8.5).</li>
+<li>Teleoperate as normal (§10).</li>
+<li>Type or choose the <strong>TASK</strong> — a plain instruction such as
+<em>"pick up the red cup"</em>. This wording is stored with the recording and
+is what a trained skill later learns to associate with the behaviour.</li>
+<li>Press <span class="ui">● Record</span> to begin.</li>
+<li>Perform the demonstration.</li>
+<li>Press <span class="ui">■ Stop Recording</span> to finish. Each demonstration saves automatically.</li>
+</ol>
+<p>Empty or accidental recordings are discarded. Choose a different task from
+the dropdown at any time <em>between</em> demonstrations — no restart needed.
+Always pick an existing task from the list rather than retyping it: <em>"pick
+up cup"</em> and <em>"pick up the cup"</em> become two separate tasks.</p>
+
+<h2 id="c13-s2">What makes a good dataset</h2>
+<ul>
+<li><strong>Consistency beats volume</strong> — demonstrate the task the same way each time.</li>
+<li><strong>Trim the dead air</strong> — the seconds before/after teach the skill to do nothing.</li>
+<li><strong>Vary what should vary</strong> — move the object between takes if its position matters.</li>
+<li><strong>Twenty to fifty clean demonstrations</strong> is a realistic starting point for a single-task skill.</li>
+</ul>
+
+<h2 id="c13-s3">Cameras</h2>
+<p>Optional for teleoperation, <strong>required</strong> for training a skill
+that uses vision. In the CAMERAS section: set <strong>HOST</strong> (Robot PC2
+or This PC), fill in a type + identifier per camera row (RealSense → serial
+number; OpenCV → device number), and press <span class="ui">▶ Cameras</span>.</p>
+<div class="box caution"><div class="h">Caution · Two hardware facts worth knowing first</div>
+Three RealSense cameras on one USB 2 bus cannot run at 30 fps — set
+<strong>FPS</strong> to <code>15</code> (resolution is unchanged, only the
+rate drops; USB 3 is fine at 30). A camera can also be held by another
+program — on the robot, a factory service may already own the head camera
+(<code>Device or resource busy</code>); see <code>TROUBLESHOOTING.md</code>
+§5.</div>
+
+<h2 id="c13-s4">Reviewing and editing</h2>
+<p>Choose a recording with <span class="ui">Browse…</span> or
+<span class="ui">Latest</span>, then <span class="ui">Visualize</span> for a
+full scrubbable timeline (3D robot + every joint + camera video together —
+this is how you confirm a recording is complete before training on it), or
+<span class="ui">Replay → Preview</span> to play it on the 3D preview without
+touching the robot.</p>
+
+<h3>The episode editor (Trim / Edit Episodes)</h3>
+<table class="t">
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>▶ Play / ❚❚ Pause</td><td>Play the episode or the selection</td></tr>
+<tr><td>Loop: whole episode / selection</td><td>What playback repeats</td></tr>
+<tr><td>Select all</td><td>Select the whole episode</td></tr>
+<tr><td>Keep selection</td><td>Keep the selected range, discard the rest</td></tr>
+<tr><td>Delete selection</td><td>Delete the selected range, keep the rest</td></tr>
+<tr><td>Delete episode</td><td>Remove this demonstration entirely</td></tr>
+</tbody>
+</table>
+<div class="box warn"><div class="h">Warning · Cannot be undone</div>
+Editing rewrites the recording in place. The panel confirms first, and only
+ever edits the demonstration you explicitly selected. Cutting the dead air off
+the start and end of each take is the single cheapest way to improve a
+training dataset.</div>
+</section>
+
+<section class="chapter" id="s14">
+<div class="opener"><div class="num">CHAPTER<big>14</big></div><h1 id="c14" data-mark="c14">Training &amp; running a skill</h1></div>
+
+<figure class="flow">
+<svg viewBox="0 0 820 150" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-e" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-e)" d="M148,72 L172,72"/>
+<path class="fa" marker-end="url(#ah-e)" d="M312,72 L336,72"/>
+<path class="fa" marker-end="url(#ah-e)" d="M476,72 L500,72"/>
+<path class="fa" marker-end="url(#ah-e)" d="M640,72 L664,72"/>
+<rect class="fb" x="8" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="8" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="22" y="48">1</text><text class="ft" x="22" y="68">Record</text><text class="fs" x="22" y="86">● Record — motion</text><text class="fs" x="22" y="100">+ camera video</text>
+<rect class="fb" x="172" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="172" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="186" y="48">2</text><text class="ft" x="186" y="68">Convert</text><text class="fs" x="186" y="86">▶ Convert builds</text><text class="fs" x="186" y="100">the dataset</text>
+<rect class="fb" x="336" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="336" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="350" y="48">3</text><text class="ft" x="350" y="68">Train</text><text class="fs" x="350" y="86">ACT, Diffusion,</text><text class="fs" x="350" y="100">live loss curve</text>
+<rect class="fb" x="500" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="500" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="514" y="48">4</text><text class="ft" x="514" y="68">Evaluate</text><text class="fs" x="514" y="86">Per-joint error vs</text><text class="fs" x="514" y="100">what you did</text>
+<rect class="fb" x="664" y="26" width="140" height="92" rx="10"/><rect class="fb-accent" x="664" y="26" width="4" height="92" rx="2"/>
+<text class="fn" x="678" y="48">5</text><text class="ft" x="678" y="68">Run it</text><text class="fs" x="678" y="86">INFERENCE ▶ Start</text><text class="fs" x="678" y="100">same safety gates</text>
+</svg>
+</figure>
+
+<h2 id="c14-s1">1. Prepare the dataset</h2>
+<p>On the DATASET card: set <strong>RAW DIR</strong> to the folder holding
+your task folders (not a task folder itself), give the dataset a
+<strong>REPO ID</strong>, tick which <strong>TASKS</strong> to include, and
+press <span class="ui">▶ Convert</span>. Press <span class="ui">Scan</span>
+first if you want to know what is there before spending time on it.</p>
+
+<h2 id="c14-s2">2. Train</h2>
+<p>Choose <strong>POLICY</strong>, <strong>STEPS</strong> and
+<strong>BATCH</strong>, then <span class="ui">▶ Start</span>. Live charts show
+progress; the panel estimates remaining time and reports the best result so
+far. <span class="ui">⚙ Hyperparameters…</span> opens every other setting;
+the card shows <code>stock settings</code> or <code>N overrides active</code>
+so a modified run is never invisible.</p>
+
+<table class="t">
+<thead><tr><th>Policy</th><th>Needs about</th><th>On an 8 GB card</th></tr></thead>
+<tbody>
+<tr><td>ACT</td><td>2 GB</td><td>Yes</td></tr>
+<tr><td>Diffusion</td><td>3 GB</td><td>Yes</td></tr>
+<tr><td>VQ-BeT</td><td>4 GB</td><td>Yes</td></tr>
+<tr><td>SmolVLA</td><td>12 GB</td><td>No</td></tr>
+<tr><td>π0 / π0.5 / GR00T (research only, non-commercial)</td><td>45 GB</td><td>No</td></tr>
+</tbody>
+</table>
+<p>Estimates for a full fine-tune; batch size, camera count and image
+resolution move them. Some model types learn a <em>single</em> task; others
+follow a spoken instruction across <em>many</em> and train one combined run.
+Your recordings are model-agnostic: <strong>record once, train more than
+once.</strong></p>
+<p>GR00T is research only (non-commercial): NVIDIA releases the GR00T-N1.5-3B weights for non-commercial
+use only, so WeGo does not provide GR00T as a commercial feature (see §2).</p>
+
+<h2 id="c14-s3">3. Check the result</h2>
+<p><span class="ui">Eval checkpoint on dataset</span> replays recordings
+through the trained skill and reports the error per joint against what you
+actually did. More than about <strong>2° of average arm error on the very
+episodes it trained on</strong> means something is wrong upstream — more
+training steps will not fix it. Look at the demonstrations first.</p>
+
+<h2 id="c14-s4">4. Run the skill on the robot</h2>
+<p>Select the skill under <strong>CKPT</strong> and press
+<span class="ui">▶ Start</span> on the INFERENCE card. The arm module restarts
+<strong>without releasing the arm</strong>. Once the skill has loaded, the arm
+moves by itself (about 3 s) to the pose your training recordings start from and
+holds it, so keep that space clear. Then walk the robot to the place where the
+recordings were made: a skill only knows the scene it was trained on.
+<span class="ui">View check</span> lays a training head-camera frame over the
+live head camera and tells you which way to move until they line up. The skill
+moves the robot only after you press <span class="ui">Teleop</span>, and then
+starts at once from that pose. It takes exactly the place your motion capture
+normally occupies, so every safeguard stays in force: the same speed limits as
+manual teleoperation, and <strong>E-stop remains live</strong> throughout.
+Cameras must be running if the skill was trained with camera images. A skill
+that needs a stronger graphics card can run on another PC: enter it under
+<strong>GPU PC</strong> on the INFERENCE card.</p>
+<div class="box caution"><div class="h">Caution · Treat a new skill like a new operator</div>
+First runs in clear space, hand on the E-stop.</div>
+</section>
+
+<section class="chapter" id="s15">
+<div class="opener"><div class="num">CHAPTER<big>15</big></div><h1 id="c15" data-mark="c15">Saved configurations</h1></div>
+<p>Every setting — robot, hand, network, cameras, task, dataset, training
+options, and every training hyperparameter — can be saved as a named
+<strong>profile</strong> and reloaded from the header in one click.</p>
+<ul>
+<li><span class="ui">Save As…</span> stores the current setup under a name.</li>
+<li><span class="ui">Load…</span> switches to a stored setup.</li>
+<li>The panel reopens on the profile you used last.</li>
+<li><code>— unsaved —</code> in the header means the current settings are not stored anywhere.</li>
+</ul>
+<p>Keep one profile per rig. A profile written by an older version keeps
+whatever settings it does not know about, so upgrading never blanks your
+setup.</p>
+</section>
+
+<section class="chapter" id="s16">
+<div class="opener"><div class="num">CHAPTER<big>16</big></div><h1 id="c16" data-mark="c16">Connecting your own software</h1></div>
+<p class="lede">This chapter is for your engineers. Nothing in it is needed to
+operate the system — but if you want to log the data elsewhere, drive the robot
+from your own controller, or plug the robot into software you already have,
+this is how.</p>
+
+<p>The system is not a closed box. Everything it sees, commands and measures is
+published live on ordinary <strong>ZeroMQ</strong> sockets that any program on
+the PC can read, and your own program can publish commands back the same way.
+There is no SDK to install and no licence key involved: ZeroMQ has bindings for
+Python, C++, C#, Java, MATLAB and ROS nodes, and the messages are plain arrays
+of 32-bit floating-point numbers.</p>
+
+<figure class="flow">
+<svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah-api" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border2)"/></marker></defs>
+<path class="fa" marker-end="url(#ah-api)" d="M215,68 L272,68"/>
+<path class="fa" marker-end="url(#ah-api)" d="M488,68 L545,68"/>
+<path class="fa" marker-end="url(#ah-api)" d="M645,130 L645,160 L115,160 L115,130"/>
+<rect class="fb" x="10" y="28" width="205" height="80" rx="10"/><rect class="fb-accent" x="10" y="28" width="4" height="80" rx="2"/>
+<text class="ft" x="26" y="56">YOUR PROGRAM</text>
+<text class="fs" x="26" y="76">Any language, ZeroMQ</text>
+<text class="fs" x="26" y="90">— no SDK, no licence key</text>
+<rect class="fb" x="272" y="28" width="216" height="80" rx="10"/><rect class="fb-accent" x="272" y="28" width="4" height="80" rx="2"/>
+<text class="ft" x="288" y="56">WEGO HUMANOID STUDIO</text>
+<text class="fs" x="288" y="76">Every safeguard applies:</text>
+<text class="fs" x="288" y="90">Control / Teleop, speed limits, E-stop</text>
+<rect class="fb" x="545" y="28" width="205" height="80" rx="10"/><rect class="fb-accent" x="545" y="28" width="4" height="80" rx="2"/>
+<text class="ft" x="561" y="56">ROBOT</text>
+<text class="fs" x="561" y="76">Arms + dexterous hands</text>
+<text class="fs" x="330" y="20">commands — ports 5565 / 5566</text>
+<text class="fs" x="300" y="180">measurements, commands and camera images — ports 5555 &amp; 5559–5564</text>
+</svg>
+</figure>
+
+<h2 id="c16-s1">What is published</h2>
+<table class="t">
+<thead><tr><th>Port</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>5559</td><td><b>Command</b> — the operator's full-body motion, retargeted onto the robot</td></tr>
+<tr><td>5560</td><td><b>Command</b> — the hand pose being sent to the hands</td></tr>
+<tr><td>5561</td><td><b>Measurement</b> — each arm joint's real position, speed and torque</td></tr>
+<tr><td>5562</td><td><b>Measurement</b> — each hand's real finger positions and grip force</td></tr>
+<tr><td>5564</td><td>The raw human hand pose (21 points per hand) before any robot conversion</td></tr>
+<tr><td>5563</td><td>The glove's wrist orientation</td></tr>
+<tr><td>5555</td><td>The camera images (JPEG, with a capture timestamp)</td></tr>
+</tbody>
+</table>
+<p>Battery level and motor temperatures come from the robot's own network
+interface rather than these sockets — which is why the panel can show robot
+health before you start anything.</p>
+
+<p>Reading a stream is about five lines:</p>
+<pre class="cmd"><code>import zmq, numpy as np
+sub = zmq.Context().socket(zmq.SUB)
+sub.setsockopt(zmq.SUBSCRIBE, b"")
+sub.connect("tcp://127.0.0.1:5561")          # measured arm state
+while True:
+    print(np.frombuffer(sub.recv(), dtype=np.float32))</code></pre>
+<p>Subscribing costs the system nothing and cannot disturb operation: a
+subscriber that falls behind simply misses samples.</p>
+
+<h2 id="c16-s2">Commanding the robot from your own program</h2>
+<p>Your software can also take the operator's place: publish target positions on
+ports <strong>5565</strong> (body) and <strong>5566</strong> (hands) and the
+robot follows them. This is the same path a trained skill uses.</p>
+<div class="box note"><div class="h">Note · The gates still apply</div>
+<p>The robot does not move until the operator presses <span class="ui">Control</span>
+and then <span class="ui">Teleop</span>; per-joint speed limits apply; and
+<span class="ui">E-Stop</span> works throughout. There is no interface that
+bypasses those safeguards, by design.</p></div>
+
+<h2 id="c16-s3">Recorded sessions</h2>
+<p>Recordings are open too — plain JSON plus JPEG files (or HDF5), documented
+field by field. Each episode is self-describing: which robot and hand recorded
+it, what the cameras were, what the task instruction was, and what every value
+means. You can read them with your own tools, without this application.</p>
+
+<h2 id="c16-s4">Trying it before you have hardware</h2>
+<p>A synthetic publisher ships with the system: it puts plausible data on
+<em>every</em> port with no robot, no motion capture and no cameras attached.
+Your integration can be written and tested against it, and moving to the real
+system means starting a different program, not changing your code. A stream
+checker lists every port with its live rate, so “is the robot publishing?” and
+“is my program wrong?” are never confused.</p>
+
+<h2 id="c16-s5">Where the details are</h2>
+<table class="t">
+<thead><tr><th>Document</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>docs/API.md</code></td><td>Complete specification — every stream, exact layout, units, and the array sizes for each robot and hand</td></tr>
+<tr><td><code>examples/README.md</code></td><td>Runnable example programs, one per stream, plus the synthetic publisher and the stream checker</td></tr>
+<tr><td><code>docs/joint_names.json</code></td><td>Machine-readable joint names and index maps</td></tr>
+</tbody>
+</table>
+<p>The examples need only <code>pip install pyzmq numpy</code> and run on any
+Python 3.8 or newer — they do not import this application.</p>
+<div class="box caution"><div class="h">Caution · One rule worth repeating</div>
+<p>Array sizes depend on which robot and which hand you are using. Read the
+length from the message rather than assuming it, and the same program works
+across the whole range of supported hardware.</p></div>
+</section>
+
+<section class="chapter" id="s17">
+<div class="opener"><div class="num">CHAPTER<big>17</big></div><h1 id="c17" data-mark="c17">Safety guidelines</h1></div>
+<ul class="checklist">
+<li>Keep the working area clear of people and obstacles during operation.</li>
+<li>Always start with the preview stage to confirm tracking before engaging.</li>
+<li>Engage control (Control, then Teleop) only when you have space and are ready.</li>
+<li>Keep the E-stop within reach at all times.</li>
+<li>Use Soft Force or Adaptive grip for any fragile, soft or unknown object.</li>
+<li>In Debug robot mode the robot cannot hold itself up — it must be supported or hung before you start.</li>
+<li>Treat a trained skill like a new operator: first runs in clear space, hand on the E-stop.</li>
+<li>If anything looks or feels wrong, press E-stop first, then assess.</li>
+</ul>
+</section>
+
+<section class="chapter" id="s18">
+<div class="opener"><div class="num">CHAPTER<big>18</big></div><h1 id="c18" data-mark="c18">Getting help</h1></div>
+<p>Problems and their fixes are collected in <code>TROUBLESHOOTING.md</code>.
+If a problem persists, contact your WeGo Robotics representative with:</p>
+<ol>
+<li>The contents of <code>VERSION</code> in your installation directory.</li>
+<li>What you did, what you expected, and what happened instead.</li>
+<li>The panel's log: open the log panel at the bottom of the page and copy the last screenful, or attach the terminal output if you started it from one.</li>
+</ol>
+<p style="font-size:16px"><strong>go.support@wego-robotics.com</strong></p>
+
+<div class="doc-footer">© WEGO Robotics. All rights reserved. This document is
+provided for operational use of the delivered system.</div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

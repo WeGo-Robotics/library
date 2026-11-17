@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Unitree G1 휴머노이드 — 운용 설명서</title>
+<style>
+@page {
+  @top-left  { content: "Unitree G1 휴머노이드"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+/* Chrome applies @page rules in source order: repeat the shared no-header rule for the
+   cover and front pages after the header above. No size/margin here (shrinks the book). */
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree G1 휴머노이드 — 운용 설명서</span><span class="wm-ver">버전 2026.11.16</span><a class="wm-pdf" href="../pdf/Unitree_G1_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템 구성</a></summary><a class="wm-t2" href="#c1-s1">모델 구분</a><a class="wm-t2" href="#c1-s2">세 가지 제어 경로</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">운용 전 점검</a><a class="wm-t2" href="#c2-s2">촬영 · 공개 시 권장 사항</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>하드웨어와 관절</a></summary><a class="wm-t2" href="#c3-s1">주요 사양</a><a class="wm-t2" href="#c3-s2">관절 번호와 가동 범위</a><a class="wm-t2" href="#c3-s3">전기 인터페이스</a><a class="wm-t2" href="#c3-s4">장착 구멍</a><a class="wm-t2" href="#c3-s5">허리 고정구 29</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>리모컨과 운용 모드</a></summary><a class="wm-t2" href="#c4-s1">운용 모드</a><a class="wm-t2" href="#c4-s2">모드 전환 키</a><a class="wm-t2" href="#c4-s3">운동 제어 키</a><a class="wm-t2" href="#c4-s4">인사 동작</a><a class="wm-t2" href="#c4-s5">춤 모드</a><a class="wm-t2" href="#c4-s6">디버그 모드 (EDU)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>시작 · 종료 순서</a></summary><a class="wm-t2" href="#c5-s1">A. 매단 상태에서 시작 (기본)</a><a class="wm-t2" href="#c5-s2">A. 매단 상태로 종료</a><a class="wm-t2" href="#c5-s3">B. 의자에 앉아 시작 · 종료</a><a class="wm-t2" href="#c5-s4">C. 누운 자세 · 쪼그린 자세</a><a class="wm-t2" href="#c5-s5">배터리 · 충전</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>개발 안내 (EDU)</a></summary><a class="wm-t2" href="#c6-s1">EDU에서 할 수 있는 것</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>센서 · 음성 · 손</a></summary><a class="wm-t2" href="#c7-s1">라이다 · Livox MID-360</a><a class="wm-t2" href="#c7-s2">깊이 카메라 · RealSense D435i</a><a class="wm-t2" href="#c7-s3">SLAM · 내비게이션 서비스 (EDU)</a><a class="wm-t2" href="#c7-s4">음성 비서</a><a class="wm-t2" href="#c7-s5">다관절 손 (EDU 선택)</a></details><a class="wm-t1" href="#c8"><span class="wm-n">08</span>WeGo 소프트웨어 미리보기</a><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>문제 해결</a></summary><a class="wm-t2" href="#c9-s1">Unitree 문서의 알려진 오류</a></details><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>Unitree <span>G1</span><br>휴머노이드</h1>
+  <div class="title2">23자유도 · 29자유도<br>G1 기본형 · G1 EDU</div>
+  <div class="bar"></div>
+  <p class="lead">안전 수칙과 하드웨어, 리모컨 조작과 운용 모드,
+    시작 · 종료 순서, 라이다 · 카메라 · 음성 · 손, 문제 해결까지
+    G1을 현장에서 운용하는 데 필요한 내용을 한 권에 정리했습니다.</p>
+  <div class="glow"></div>
+  <img class="hero" src="assets/g1_render_wave.png" alt="Unitree G1">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.16</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 판권 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>Unitree G1 기본형 (23자유도) · G1 EDU (23자유도 / 29자유도)</td></tr>
+      <tr><td>근거 문서</td><td>Unitree 문서 센터 <i>G1 SDK Development Guide</i> 전 45쪽 (2026-11-06 수집).</td></tr>
+      <tr><td>리모컨 키</td><td>Unitree 리모컨 키 스티커 (운동 제어 버전 8.6.0.0 초과, 23자유도용 · 29자유도용)</td></tr>
+      <tr><td>실측 자료</td><td>WeGo 개발용 G1 23자유도 EDU (2026년 10월)</td></tr>
+      <tr><td>함께 보는 책</td><td><i><a data-manual="g1-developer" href="../g1-developer/">Unitree G1 개발 설명서</a></i> — SDK · DDS · 저수준/고수준 제어 · 손 · 센서 · SLAM · 음성 API (EDU)</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.16</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>본문의 <span class="src">문서</span> 표시는 Unitree 공식 문서의 내용이고, <span class="src r">실측</span> 표시는 WeGo 보유 장비에서 직접 확인한 값입니다.
+      <span class="tag29">29</span> 표시는 29자유도 모델에만 해당하는 내용입니다.</p>
+    <p>리모컨 조합키는 펌웨어(운동 제어 버전)에 따라 달라집니다. 이 설명서는 8.6.0.0 초과 버전 기준이며,
+      다른 버전은 Unitree 문서 센터의 해당 버전 스티커를 확인하십시오.</p>
+    <p><b>개발용 컴퓨터의 계정 정보는 이 설명서에 싣지 않습니다.</b> Unitree 문서의 방침과 같이 기술 지원 담당자가 따로 안내하며,
+      로봇을 외부 네트워크에 연결하기 전에 기본 비밀번호를 바꾸십시오.</p>
+    <p class="copy">© WeGo Robotics. 표지와 그림 2의 G1 이미지는 Unitree가 공개한 로봇 메시를 MuJoCo로 렌더링한 것이며, 따로 표시가 없는 기술 도면은 Unitree Robotics 문서에서 가져왔습니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">시스템 구성</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">하드웨어와 관절</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">리모컨과 운용 모드</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">시작 · 종료 순서</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">개발 안내<small>EDU 전용 · 자세한 내용은 <a data-manual="g1-developer" href="../g1-developer/">개발 설명서</a></small></span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">센서 · 음성 · 손</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">WeGo 소프트웨어 미리보기</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">시스템 구성</h1></div>
+  <p class="lede">G1은 키 1.32 m, 무게 약 35 kg의 휴머노이드입니다. 보행 · 균형은 비공개 운동 제어 컴퓨터(PC1)가 맡고,
+    EDU 모델에서는 사용자의 프로그램이 개발용 컴퓨터(PC2) 또는 외부 PC에서 DDS 네트워크로 로봇을 제어합니다.</p>
+  <figure>
+    <svg viewBox="20 8 470 470" style="width:84%;margin:0 auto" role="img" aria-label="G1 시스템 구성" font-family="Pretendard" font-size="13">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#8a90a2"/></marker></defs>
+      <text x="40" y="32" font-size="15" font-weight="700" fill="#0b1020">SDK 명령은 모두 192.168.123.x 네트워크를 지납니다</text>
+      <rect x="40" y="52" width="200" height="92" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="56" y="78" font-size="14.5" font-weight="700" fill="#0b1020">개발 PC (외부, EDU)</text>
+      <text x="56" y="98" font-size="11.5" fill="#5a6178">Ubuntu 20.04 권장</text>
+      <text x="56" y="114" font-size="11.5" fill="#5a6178">고정 IP 192.168.123.99 권장</text>
+      <text x="56" y="130" font-size="11.5" fill="#5a6178">unitree_sdk2 · ROS 2</text>
+      <rect x="270" y="52" width="200" height="92" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="286" y="78" font-size="14.5" font-weight="700" fill="#0b1020">리모컨 · Unitree 앱</text>
+      <text x="286" y="98" font-size="11.5" fill="#5a6178">리모컨: 모드 전환 · 보행 · 비상</text>
+      <text x="286" y="114" font-size="11.5" fill="#5a6178">앱: BLE 네트워크 설정,</text>
+      <text x="286" y="130" font-size="11.5" fill="#5a6178">WebRTC 영상 · 상태 · 설정</text>
+      <g fill="none" stroke="#8a90a2" stroke-width="1.25">
+        <path d="M140 144V196" marker-end="url(#ar)"/><path d="M370 144V196" marker-end="url(#ar)" stroke-dasharray="4 3"/>
+      </g>
+      <text x="150" y="168" font-weight="700" fill="#0b1020" font-size="12">LAN · 어깨 RJ45 포트</text>
+      <text x="150" y="184" font-size="11" fill="#5a6178">DDS (CycloneDDS)</text>
+      <text x="380" y="168" font-weight="700" fill="#0b1020" font-size="12">무선</text>
+      <text x="380" y="184" font-size="11" fill="#5a6178">리모컨 · BLE · Wi-Fi 6</text>
+      <rect x="40" y="200" width="430" height="266" rx="10" fill="#1673e6" fill-opacity="0.07" stroke="#1673e6" stroke-width="2"/>
+      <text x="56" y="224" font-size="14.5" font-weight="700" fill="#0b1020">G1 로봇 내부 · 192.168.123.0/24</text>
+      <rect x="56" y="238" width="196" height="76" rx="7" fill="#fff" stroke="#0a1428" stroke-width="1.4"/>
+      <text x="70" y="262" font-weight="700" fill="#0b1020">PC1 · 운동 제어</text>
+      <text x="70" y="280" font-size="11.5" fill="#5a6178">.161 · 사용자 접속 불가</text>
+      <text x="70" y="296" font-size="11.5" fill="#5a6178">보행 · 균형 · 모터 제어</text>
+      <rect x="258" y="238" width="196" height="76" rx="7" fill="#fff" stroke="#1673e6" stroke-width="1.8"/>
+      <text x="272" y="262" font-weight="700" fill="#0b1020">PC2 · 개발 (EDU)</text>
+      <text x="272" y="280" font-size="11.5" fill="#5a6178">.164 · Jetson Orin NX 16 GB</text>
+      <text x="272" y="296" font-size="11.5" fill="#5a6178">기본형에는 없음</text>
+      <rect x="56" y="324" width="196" height="60" rx="7" fill="#fff" stroke="#8a90a2" stroke-width="1.2"/>
+      <text x="70" y="348" font-weight="700" fill="#0b1020">라이다 Livox MID-360</text>
+      <text x="70" y="366" font-size="11.5" fill="#5a6178">.120 · 머리</text>
+      <rect x="258" y="324" width="196" height="60" rx="7" fill="#fff" stroke="#8a90a2" stroke-width="1.2"/>
+      <text x="272" y="348" font-weight="700" fill="#0b1020">깊이 카메라 D435i</text>
+      <text x="272" y="366" font-size="11.5" fill="#5a6178">머리 · USB로 PC2에 연결</text>
+      <rect x="56" y="394" width="398" height="60" rx="7" fill="#fff" stroke="#8a90a2" stroke-width="1.2"/>
+      <text x="70" y="418" font-weight="700" fill="#0b1020">몸체 장치</text>
+      <text x="70" y="438" font-size="11.5" fill="#5a6178">관절 모터 23 / 29개 · IMU · 배터리 → 직렬 통신으로 수집 → DDS · 마이크 4 · 스피커 5 W</text>
+    </svg>
+    <figcaption data-fig="g1-system"><b>그림 1.</b> G1 시스템 구성. 굵은 파란 테두리가 사용자가 프로그램을 올릴 수 있는 컴퓨터입니다 (EDU 모델). <span class="src">문서</span></figcaption>
+  </figure>
+
+  <h2 id="c1-s1">모델 구분 <span class="src">문서</span></h2>
+  <div class="two">
+    <div>
+      <table class="t tight wrap1">
+        <thead><tr><th>항목</th><th>G1 기본형</th><th>G1 EDU</th></tr></thead>
+        <tbody>
+          <tr><td>전체 자유도</td><td>23</td><td>23 ~ 43</td></tr>
+          <tr><td>다리 (한쪽)</td><td>6</td><td>6</td></tr>
+          <tr><td>허리</td><td>1 (yaw)</td><td>1, 선택 시 3 (+ roll · pitch)</td></tr>
+          <tr><td>팔 (한쪽)</td><td>5</td><td>5, 선택 시 7 (+ 손목 pitch · yaw)</td></tr>
+          <tr><td>손 (한쪽)</td><td>없음</td><td>선택: Dex3-1 3지 손 7자유도 등</td></tr>
+          <tr><td>무릎 최대 토크</td><td>90 N·m</td><td>120 N·m</td></tr>
+          <tr><td>팔 최대 하중</td><td>약 2 kg</td><td>약 3 kg</td></tr>
+          <tr><td>개발용 컴퓨터</td><td>없음</td><td>Jetson Orin NX (PC2)</td></tr>
+          <tr><td>2차 개발 (SDK)</td><td>지원하지 않음</td><td>지원</td></tr>
+        </tbody>
+      </table>
+      <p><b>29자유도</b>는 EDU 모델에 허리 2자유도와 양쪽 손목 2자유도씩을 더한 구성입니다 (23 + 2 + 4).
+        6장은 EDU 모델에만 해당하며, 개발 내용은 별도의 <a data-manual="g1-developer" href="../g1-developer/">개발 설명서</a>에 있습니다.</p>
+    </div>
+    <figure class="light h95"><img src="assets/g1_render_ready.png" alt="Unitree G1" style="border:0"><figcaption data-fig="g1-render"><b>그림 2.</b> Unitree G1 (23자유도). Unitree가 공개한 메시를 MuJoCo로 렌더링했습니다.</figcaption></figure>
+  </div>
+
+  <h2 id="c1-s2">세 가지 제어 경로</h2>
+  <table class="t wrap1">
+    <thead><tr><th>경로</th><th>용도</th><th>연결</th></tr></thead>
+    <tbody>
+      <tr><td>리모컨</td><td>모드 전환, 보행, 인사 · 춤 동작, 비상 댐핑. 현장 운용의 기본 (4장)</td><td>무선 → PC1</td></tr>
+      <tr><td>Unitree Explore 앱</td><td>네트워크 설정(BLE), 영상 · 상태(WebRTC), 허리 잠금 등 설정</td><td>BLE · Wi-Fi</td></tr>
+      <tr><td>SDK (DDS · ROS 2)</td><td>사용자 프로그램. 고수준(보행 명령 · 팔 덧씌움)과 저수준(모든 관절 직접 제어). EDU 전용</td><td>LAN · 192.168.123.x</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 클라우드 연결</div>
+    <p>G1은 <b>사용자가 승인한 경우에만</b> Unitree 클라우드에 접속합니다. 클라우드는 MQTT로 고장 정보 · OTA 업데이트 ·
+      WebRTC 시그널링을 처리하고, TURN/STUN 서버로 원격 영상 연결을 중계합니다. 영상과 제어 트래픽은 서버에서 수집 · 분석하지 않는다고
+      문서에 명시되어 있습니다. <span class="src">문서</span></p></div>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <p class="lede">G1은 사람 크기의 로봇이며 관절 하나의 토크가 최대 120 N·m에 이릅니다. 넘어지면 사람이 다치고 장비가 손상됩니다.
+    아래 수칙은 매 운용 전에 확인하십시오.</p>
+
+  <div class="box warn"><div class="h">경고 · 비상 정지(댐핑)는 로봇의 힘을 뺍니다</div>
+    <p>로봇이 예상과 다르게 움직이면 <span class="k">L2</span> + <span class="k r">B</span>를 누릅니다. 운동 제어 상태에서는 <b>5초</b> 길게 눌러야 합니다.
+      G1은 <b>댐핑 모드</b>로 들어가 모든 모터가 능동 동작을 멈추고, <b>균형을 잃고 주저앉거나 넘어집니다.</b>
+      이 키는 디버그 모드에서도 동작합니다. 시험 · 시연 중에는 로봇을 <b>보호 거치대(크레인)에 걸어 둔 상태</b>로 운용하십시오. <span class="src">문서</span></p></div>
+
+  <div class="box warn"><div class="h">경고 · 전원을 켜면 내장 제어기가 바로 동작합니다 (EDU)</div>
+    <p>G1은 전원이 들어오면 리모컨을 만지지 않아도 내장 운동 제어 프로그램이 시작되어 <b>속도 0 명령을 주기적으로 보냅니다</b>.
+      이 상태에서 SDK로 <code>rt/lowcmd</code>를 보내면 두 명령이 충돌해 로봇이 떨립니다.
+      저수준 개발 전에는 반드시 <b>디버그 모드</b>로 들어가십시오 (4장). <span class="src">문서</span></p></div>
+
+  <h2 id="c2-s1">운용 전 점검</h2>
+  <ol class="steps">
+    <li><b>거치대 고정</b>로봇을 보호 거치대에 걸고, 거치대 바닥의 바퀴 4개를 모두 잠급니다.</li>
+    <li><b>작업 공간 확보</b>로봇 주변을 비웁니다. 춤 동작은 한 방향으로 <b>최대 6 m</b>를 움직입니다. 동작마다 필요한 공간은 4장 춤 표에 있습니다.</li>
+    <li><b>리모컨 담당 지정</b>운용 중에는 리모컨을 든 사람을 한 명 정하고, 그 사람은 언제든 <span class="k">L2</span> + <span class="k r">B</span>를 누를 수 있게 대기합니다.</li>
+    <li><b>보조자 배치</b>잠금 서기(②)에서 운동 제어(③ · ⑦)로 넘어갈 때는 사람이 로봇을 붙잡아 똑바로 세워 줘야 합니다 (5장).</li>
+    <li><b>바닥 확인</b>누운 자세 · 쪼그린 자세에서 시작하는 방법은 <b>평평하고 단단한 바닥</b>에서만 씁니다. 그 밖의 바닥에서는 일어서다 넘어질 수 있습니다.</li>
+    <li><b>디버그 모드 확인</b>(EDU) 저수준 프로그램을 돌릴 때는 <span class="k">L2</span> + <span class="k">A</span>로 디버그 모드인지 먼저 확인합니다.</li>
+  </ol>
+
+  <div class="box caution"><div class="h">주의 · 계단과 경사</div>
+    <p>현재 보행 모드에는 계단 오르기 기능이 없습니다. 계단을 오르게 하지 마십시오. <span class="src">문서</span></p></div>
+  <div class="box caution"><div class="h">주의 · 손을 단 경우</div>
+    <p>다관절 손(Dex3-1 등)을 달았다면 누운 자세 · 쪼그린 자세 시작이 손을 손상시킬 수 있습니다. 팔 동작이 손과 몸통을 부딪치지 않게 하고,
+      손을 단 상태에서는 달리기나 균형 시험처럼 격한 동작을 피하십시오. <span class="src">문서</span></p></div>
+  <div class="box caution"><div class="h">주의 · 연속 이동 (SDK)</div>
+    <p><code>Move(…, continous_move=true)</code> 또는 <code>ContinuousGait(true)</code>를 쓰면 새 명령이 올 때까지 로봇이 계속 걷거나 제자리걸음합니다.
+      기본값(꺼짐)에서는 마지막 속도 명령 후 1초가 지나면 스스로 멈춥니다. 꼭 필요할 때만 켜십시오. <span class="src">문서</span></p></div>
+
+  <h2 id="c2-s2">촬영 · 공개 시 권장 사항 <span class="src">문서</span></h2>
+  <ul>
+    <li>다리 동작 프로그램에서는 무릎을 되도록 곧게 폅니다.</li>
+    <li>걸음 빈도를 낮추고, 제자리 걸음을 피합니다.</li>
+    <li>보행 중 두 발을 조금 가깝게 모읍니다.</li>
+    <li>연구 영상을 공개할 때는 연구실 이름이나 로고를 영상 전체에 잘 보이게 넣을 것을 Unitree가 권장합니다.</li>
+    <li>G1은 민간용 로봇입니다. 위험한 개조나 위험한 방식의 사용을 하지 마십시오.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">하드웨어와 관절</h1></div>
+  <p class="lede">G1은 다리 6 × 2, 허리 1, 팔 5 × 2 — 기본 23개의 관절 모터를 가집니다. 29자유도 EDU는 허리 2개와 손목 2 × 2개가 더해집니다.
+    이 장의 관절 번호는 SDK의 <code>motor_cmd[]</code> · <code>motor_state[]</code> 배열 번호와 같습니다.</p>
+  <figure class="light"><img src="assets/parts_23.png" alt="G1 부품 명칭"><figcaption><b>그림 3.</b> G1 기본형 부품 명칭 (Unitree). 허리 관절 모터 × 1</figcaption></figure>
+  <figure class="light"><img src="assets/parts_edu.png" alt="G1 EDU 부품 명칭"><figcaption><b>그림 4.</b> G1 EDU 29자유도 부품 명칭 (Unitree). 허리 관절 모터 × 3, 손목 관절 모터가 더해집니다</figcaption></figure>
+
+  <h2 id="c3-s1">주요 사양 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>항목</th><th>G1 기본형 · EDU 공통</th></tr></thead>
+    <tbody>
+      <tr><td>크기 (선 자세 / 접은 자세)</td><td>1320 × 450 × 200 mm / 690 × 450 × 300 mm</td></tr>
+      <tr><td>무게 (배터리 포함)</td><td>약 35 kg</td></tr>
+      <tr><td>다리 길이 (허벅지 + 종아리)</td><td>0.6 m</td></tr>
+      <tr><td>관절 가동 범위</td><td>허리 Z ±155° (EDU 3자유도: X ±30°, Y ±30°) · 무릎 0 ~ 165° · 고관절 P ±154°, R −30 ~ +170°, Y ±158° · 손목 P ±92.5°, Y ±92.5° <span class="tag29">29</span></td></tr>
+      <tr><td>관절 모터</td><td>저관성 고속 내전형 PMSM · 산업용 크로스 롤러 베어링 · 이중 엔코더 · 관절 속 중공 배선 · 국부 공랭</td></tr>
+      <tr><td>배터리 · 충전기</td><td>13직렬 리튬 스마트 배터리 9000 mAh (탈착식) · 충전기 54 V 5 A · 사용 시간 약 2시간</td></tr>
+      <tr><td>센서</td><td>깊이 카메라 Intel RealSense D435i + 3D 라이다 Livox MID-360 (머리)</td></tr>
+      <tr><td>음성 · 통신</td><td>마이크 4개 배열 · 5 W 스피커 · Wi-Fi 6 · Bluetooth 5.2 · OTA 업데이트</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c3-s2">관절 번호와 가동 범위 <span class="src">문서</span></h2>
+  <table class="t tight num">
+    <thead><tr><th>번호</th><th>관절</th><th>범위 (rad)</th><th>번호</th><th>관절</th><th>범위 (rad)</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>왼 고관절 pitch</td><td>−2.5307 ~ 2.8798</td><td>15</td><td>왼 어깨 pitch</td><td>−3.0892 ~ 2.6704</td></tr>
+      <tr><td>1</td><td>왼 고관절 roll</td><td>−0.5236 ~ 2.9671</td><td>16</td><td>왼 어깨 roll</td><td>−1.5882 ~ 2.2515</td></tr>
+      <tr><td>2</td><td>왼 고관절 yaw</td><td>−2.7576 ~ 2.7576</td><td>17</td><td>왼 어깨 yaw</td><td>−2.618 ~ 2.618</td></tr>
+      <tr><td>3</td><td>왼 무릎</td><td>−0.0873 ~ 2.8798</td><td>18</td><td>왼 팔꿈치</td><td>−1.0472 ~ 2.0944</td></tr>
+      <tr><td>4</td><td>왼 발목 pitch</td><td>−0.8727 ~ 0.5236</td><td>19</td><td>왼 손목 roll</td><td>−1.9722 ~ 1.9722</td></tr>
+      <tr><td>5</td><td>왼 발목 roll</td><td>−0.2618 ~ 0.2618</td><td>20</td><td>왼 손목 pitch <span class="tag29">29</span></td><td>−1.6144 ~ 1.6144</td></tr>
+      <tr><td>6</td><td>오른 고관절 pitch</td><td>−2.5307 ~ 2.8798</td><td>21</td><td>왼 손목 yaw <span class="tag29">29</span></td><td>−1.6144 ~ 1.6144</td></tr>
+      <tr><td>7</td><td>오른 고관절 roll</td><td>−2.9671 ~ 0.5236</td><td>22</td><td>오른 어깨 pitch</td><td>−3.0892 ~ 2.6704</td></tr>
+      <tr><td>8</td><td>오른 고관절 yaw</td><td>−2.7576 ~ 2.7576</td><td>23</td><td>오른 어깨 roll</td><td>−2.2515 ~ 1.5882</td></tr>
+      <tr><td>9</td><td>오른 무릎</td><td>−0.0873 ~ 2.8798</td><td>24</td><td>오른 어깨 yaw</td><td>−2.618 ~ 2.618</td></tr>
+      <tr><td>10</td><td>오른 발목 pitch</td><td>−0.8727 ~ 0.5236</td><td>25</td><td>오른 팔꿈치</td><td>−1.0472 ~ 2.0944</td></tr>
+      <tr><td>11</td><td>오른 발목 roll</td><td>−0.2618 ~ 0.2618</td><td>26</td><td>오른 손목 roll</td><td>−1.9722 ~ 1.9722</td></tr>
+      <tr><td>12</td><td>허리 yaw</td><td>−2.618 ~ 2.618</td><td>27</td><td>오른 손목 pitch <span class="tag29">29</span></td><td>−1.6144 ~ 1.6144</td></tr>
+      <tr><td>13</td><td>허리 roll <span class="tag29">29</span></td><td>−0.52 ~ 0.52</td><td>28</td><td>오른 손목 yaw <span class="tag29">29</span></td><td>−1.6144 ~ 1.6144</td></tr>
+      <tr><td>14</td><td>허리 pitch <span class="tag29">29</span></td><td>−0.52 ~ 0.52</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 23자유도 모델의 빈 번호 <span class="src r">실측</span></div>
+    <p>23자유도 G1도 DDS 배열 구성은 29자유도와 같습니다. 23자유도에 없는 관절의 자리인 <b>13 · 14 · 20 · 21 · 27 · 28번</b>은 비어 있으며,
+      <code>unitree_sdk2</code>의 관절 번호 정의에도 "INVALID for g1 23dof"로 표시되어 있습니다. 발목과 29자유도의 허리 roll · pitch는 병렬 기구이며,
+      SDK는 기본으로 PR 모드(URDF와 같은 pitch · roll 관절)로 제어합니다 (<a data-manual="g1-developer" href="../g1-developer/">개발 설명서</a> 4장).</p></div>
+  <div class="two">
+    <figure class="light h70"><img src="assets/zero_23.png" alt="23자유도 관절 영점"><figcaption><b>그림 5.</b> 23자유도: 모든 관절이 0일 때의 좌표계 (빨강 X · 초록 Y · 파랑 Z)</figcaption></figure>
+    <figure class="light h70"><img src="assets/zero_29.png" alt="29자유도 관절 영점"><figcaption><b>그림 6.</b> 29자유도: 같은 영점 자세 (Unitree)</figcaption></figure>
+  </div>
+
+  <h2 id="c3-s3">전기 인터페이스 <span class="src">문서</span></h2>
+  <p>G1 오른쪽 어깨 위에 관절 모터 디버깅 · 센서 확장 · 네트워크용 인터페이스가 모여 있습니다.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/io_top.jpg" alt="G1 전기 인터페이스"><figcaption><b>그림 7.</b> 인터페이스 위치 (위에서 본 모습)</figcaption></figure>
+    <table class="t tight num">
+      <thead><tr><th>번호</th><th>커넥터</th><th>사양</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>XT30UPB-F</td><td>VBAT 58 V / 5 A (배터리 직결)</td></tr>
+        <tr><td>2</td><td>XT30UPB-F</td><td>24 V / 5 A 출력</td></tr>
+        <tr><td>3</td><td>XT30UPB-F</td><td>12 V / 5 A 출력</td></tr>
+        <tr><td>4 · 5</td><td>RJ45</td><td>기가비트 이더넷</td></tr>
+        <tr><td>6 ~ 8</td><td>Type-C</td><td>USB 3.0 호스트, 5 V / 1.5 A</td></tr>
+        <tr><td>9</td><td>Type-C</td><td>USB 3.2 호스트 + DP 1.4</td></tr>
+        <tr><td>10</td><td>5577</td><td>I/O: 12 V / 3 A + GPIO 6개</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="two">
+    <figure class="light"><img src="assets/io_pins.jpg" alt="I/O 핀"><figcaption><b>그림 8.</b> I/O 커넥터 [10] 핀 배치</figcaption></figure>
+    <table class="t tight">
+      <thead><tr><th>GPIO</th><th>NX 핀</th><th>기능</th></tr></thead>
+      <tbody>
+        <tr><td>GPIO1 · 2</td><td>203 · 205</td><td>UART1 TX · RX (<code>/dev/ttyTHS0</code>, 9600 8N1)</td></tr>
+        <tr><td>GPIO3 · 4</td><td>232 · 234</td><td>I2C2 SCL · SDA (버스 0)</td></tr>
+        <tr><td>GPIO5 · 6</td><td>128 · 130</td><td>범용 GPIO (sysfs 330 · 331)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>운동 제어 컴퓨터(PC1)와 개발용 컴퓨터(PC2)의 이더넷 디버그 포트는 등판에 있으며, 두 포트의 배선 순서는 같습니다 (핀 1 ~ 8: 주황-흰 · 주황 · 초록-흰 · 초록 · 파랑-흰 · 파랑 · 갈색-흰 · 갈색).</p>
+  <figure class="light f80"><img src="assets/debug_ports.png" alt="디버그 포트"><figcaption><b>그림 9.</b> 등판의 이더넷 디버그 포트 (위: 개발용 · 아래: 운동 제어용)</figcaption></figure>
+
+  <h2 id="c3-s4">장착 구멍</h2>
+  <p>센서나 장비를 몸통에 달 때는 아래 구멍을 씁니다 (단위 mm). 구멍 위의 라벨을 먼저 떼어 내십시오.</p>
+  <div class="two">
+    <figure class="light h95"><img src="assets/holes_front.png" alt="앞면 장착 구멍"><figcaption><b>그림 10.</b> 앞면</figcaption></figure>
+    <figure class="light h95"><img src="assets/holes_back.png" alt="뒷면 장착 구멍"><figcaption><b>그림 11.</b> 뒷면</figcaption></figure>
+  </div>
+
+  <h2 id="c3-s5">허리 고정구 <span class="tag29">29</span> <span class="src">문서</span></h2>
+  <div class="two">
+    <div>
+      <p>29자유도 G1의 허리는 3자유도라 제어가 까다롭습니다. 허리 roll · pitch가 필요 없으면 Unitree가 제공하는 <b>허리 고정구</b>로
+        두 병렬 모터를 물리적으로 잠글 수 있습니다.</p>
+      <ol class="steps">
+        <li><b>고정구 1 · 2 끼우기</b>몸통을 뒤로 젖혀 고정구 1을, 앞으로 숙여 고정구 2를 끼웁니다. 허리 케이블을 누르지 않게 주의합니다.</li>
+        <li><b>M5 나사 2개 조이기</b>육각 렌치로 고정합니다.</li>
+        <li><b>앱 설정</b>Unitree Explore 앱 [설정] - [로봇]에서 <b>허리 모터 잠금</b>을 켜고, 안내에 따라 다시 시작합니다.</li>
+      </ol>
+      <p>풀 때는 역순으로 하고 앱에서 잠금을 끕니다. 잠근 상태에서 27관절 보정을 했다면, 고정구를 푼 뒤 <b>29관절 보정을 다시</b> 해야 합니다.
+        보정하지 않으면 관절 한계 초과 오류가 납니다 (9장).</p>
+    </div>
+    <figure class="light h95"><img src="assets/waist_lock.png" alt="허리 고정구 장착 완료"><figcaption><b>그림 12.</b> 허리 고정구 장착 완료</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">리모컨과 운용 모드</h1></div>
+  <p class="lede">리모컨은 모드 전환과 보행의 기본 도구입니다. 대부분의 조합은 <span class="k">L2</span>나 <span class="k">R1</span> · <span class="k">R2</span>를
+    <b>누른 채</b> 다른 버튼을 누르는 방식입니다. ★는 짧게 한 번, ▲는 <b>2초 길게</b> 눌러야 동작합니다.</p>
+
+  <h2 id="c4-s1">운용 모드 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>모드</th><th>동작</th><th>LED</th></tr></thead>
+    <tbody>
+      <tr><td>제로 토크<span class="en">Zero Torque</span></td><td>모든 모터가 능동 동작을 멈춥니다. 관절을 움직여도 저항이 없습니다. 전원을 켠 직후의 상태</td><td>보라</td></tr>
+      <tr><td>댐핑<span class="en">Damping</span></td><td>모든 모터가 능동 동작을 멈추고, 움직이면 뚜렷한 저항이 느껴집니다. 여기서 잠금 서기로 갈 수 있습니다. <b>비상 정지가 이 모드입니다</b></td><td>주황</td></tr>
+      <tr><td>잠금 서기 (준비)<span class="en">Locked Standing</span></td><td>5초 안에 천천히 운동 전 준비 자세를 잡습니다. <b>균형 제어는 하지 않습니다</b></td><td>짙은 파랑 (대기)</td></tr>
+      <tr><td>쪼그려 앉기 · 앉기<span class="en">Squat · Seated</span></td><td>5초 안에 천천히 쪼그린 자세 · 의자에 앉는 자세를 잡습니다 (균형 제어 없음)</td><td>초록 (앉기)</td></tr>
+      <tr><td>운동 제어<span class="en">Motion</span></td><td>리모컨으로 걷고 달리는 모드. 로봇이 스스로 균형을 잡습니다</td><td>파랑</td></tr>
+      <tr><td>디버그<span class="en">Debug</span></td><td>내장 운동 제어를 멈추는 저수준 개발용 모드 (EDU)</td><td>노랑</td></tr>
+      <tr><td>오류</td><td>이상 상태</td><td>빨강</td></tr>
+    </tbody>
+  </table>
+  <p>운동 제어 안에서 <b>서기 모드</b>는 조이스틱 입력이 0이면 걸음을 멈추고 서 있으며, 입력이 있거나 균형이 흔들리면 걸음을 뗍니다.
+    <b>연속 걷기 모드</b>는 늘 제자리걸음을 합니다 (권장하지 않음). 두 모드는 <span class="k s">START</span>로 바꿉니다.</p>
+
+  <figure>
+    <svg viewBox="0 0 520 300" role="img" aria-label="G1 모드 전환" font-family="Pretendard" font-size="12">
+      <defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5a6178"/></marker></defs>
+      <g font-weight="700">
+        <rect x="8" y="118" width="74" height="44" rx="8" fill="#fff" stroke="#8a90a2"/><text x="45" y="145" text-anchor="middle" fill="#0b1020">전원 켜기</text>
+        <rect x="110" y="118" width="88" height="44" rx="8" fill="#f1e9ff" stroke="#7b4fd0" stroke-width="1.6"/><text x="154" y="138" text-anchor="middle" fill="#0b1020">제로 토크</text><text x="154" y="153" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">보라</text>
+        <rect x="228" y="118" width="88" height="44" rx="8" fill="#fff1e3" stroke="#c76a00" stroke-width="1.6"/><text x="272" y="138" text-anchor="middle" fill="#0b1020">① 댐핑</text><text x="272" y="153" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">주황 · 비상 정지</text>
+        <rect x="350" y="118" width="96" height="44" rx="8" fill="#e8ecf6" stroke="#22356b" stroke-width="1.6"/><text x="398" y="138" text-anchor="middle" fill="#0b1020">② 잠금 서기</text><text x="398" y="153" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">짙은 파랑 · 균형 X</text>
+        <rect x="350" y="222" width="160" height="58" rx="8" fill="#e3eefc" stroke="#1673e6" stroke-width="2"/><text x="430" y="243" text-anchor="middle" fill="#0b1020">운동 제어 (파랑)</text><text x="430" y="259" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">③ 달리기 R2+A · ⑦ 일반 R1+X</text><text x="430" y="272" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">⑧ 장애물 R2+B</text>
+        <rect x="228" y="16" width="88" height="44" rx="8" fill="#fff8d6" stroke="#b08a00" stroke-width="1.6"/><text x="272" y="36" text-anchor="middle" fill="#0b1020">디버그</text><text x="272" y="51" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">노랑 · EDU</text>
+        <rect x="120" y="222" width="150" height="58" rx="8" fill="#e6f5ea" stroke="#1a7f4b" stroke-width="1.6"/><text x="195" y="243" text-anchor="middle" fill="#0b1020">자세 동작</text><text x="195" y="259" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">④ 앉기 L2+←  ⑥ 쪼그리기 L2+A</text><text x="195" y="272" text-anchor="middle" font-size="10" font-weight="500" fill="#5a6178">⑤ 누운→서기 L2+X</text>
+      </g>
+      <g fill="none" stroke="#5a6178" stroke-width="1.3">
+        <path d="M82 140H108" marker-end="url(#m2)"/>
+        <path d="M198 140H226" marker-end="url(#m2)"/>
+        <path d="M316 140H348" marker-end="url(#m2)"/>
+        <path d="M398 162V220" marker-end="url(#m2)"/>
+        <path d="M262 60V116" marker-end="url(#m2)"/><path d="M282 116V62" marker-end="url(#m2)"/>
+        <path d="M350 250H272" marker-end="url(#m2)"/>
+        <path d="M455 222C470 140 380 100 316 128" marker-end="url(#m2)" stroke="#b42318" stroke-dasharray="4 3"/>
+      </g>
+      <g font-size="10.5" fill="#0b1020">
+        <text x="200" y="112">L2+B</text><text x="320" y="112">L2+↑</text><text x="404" y="196">L2를 떼고 조합키</text>
+        <text x="182" y="90">L2+R2</text><text x="288" y="90">L2+B</text>
+        <text x="460" y="120" fill="#b42318">L2+B 5초</text>
+        <text x="8" y="16" font-weight="700" fill="#0b1020" font-size="12.5">기본 흐름: 켜기 → ① → ② → ③ (또는 ⑦)</text>
+      </g>
+    </svg>
+    <figcaption><b>그림 13.</b> 모드 전환 요약. 디버그 모드는 제로 토크 · 댐핑 상태에서만 들어갈 수 있습니다. 운동 제어 중 <span class="k">L2</span> + <span class="k r">B</span>를 5초 누르면 댐핑으로 떨어집니다 (빨간 점선).</figcaption>
+  </figure>
+
+  <h2 id="c4-s2">모드 전환 키 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>모드</th><th>조합키</th><th></th><th>23 · 29</th></tr></thead>
+    <tbody>
+      <tr><td>제로 토크</td><td><span class="k">L2</span> + <span class="k">Y</span></td><td>★</td><td>공통</td></tr>
+      <tr><td>① 댐핑</td><td><span class="k">L2</span> + <span class="k r">B</span></td><td>★</td><td>공통 · 운동 제어 중에는 5초</td></tr>
+      <tr><td>② 잠금 서기</td><td><span class="k">L2</span> + <span class="k">↑</span></td><td>★</td><td>공통</td></tr>
+      <tr><td>④ 앉기</td><td><span class="k">L2</span> + <span class="k">←</span></td><td>▲</td><td>공통</td></tr>
+      <tr><td>⑤ 누운 자세 → 서기</td><td><span class="k">L2</span> + <span class="k">X</span></td><td>★</td><td>공통</td></tr>
+      <tr><td>⑥ 쪼그리기 ↔ 서기</td><td><span class="k">L2</span> + <span class="k">A</span></td><td>▲</td><td>공통</td></tr>
+      <tr><td>⑩ 자동 일어서기<span class="en">Adapt Rise</span></td><td><span class="k">R1</span> + <span class="k">R2</span> + <span class="k">X</span></td><td>★</td><td>공통</td></tr>
+      <tr><td>디버그 모드 (EDU)</td><td><span class="k">L2</span>를 누른 채 <span class="k">R2</span></td><td>★</td><td>공통 · 제로 토크 · 댐핑에서만</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s3">운동 제어 키 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>모드</th><th>조합키</th><th></th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>③ 달리기 모드<span class="en">Running</span></td><td><span class="k">R2</span> + <span class="k">A</span></td><td>▲</td><td>저속 <span class="k">R2</span> + <span class="k">↓</span> · 고속 <span class="k">R2</span> + <span class="k">↑</span> ★</td></tr>
+      <tr><td>⑦ 일반 모드<span class="en">Regular</span></td><td><span class="k">R1</span> + <span class="k">X</span><br><span class="tag29">29</span> 3자유도 허리: <span class="k">R1</span> + <span class="k">Y</span></td><td>▲</td><td>저속 <span class="k">L2</span> 두 번 · 고속 <span class="k">L1</span> 두 번 ★</td></tr>
+      <tr><td>⑧ 장애물 넘기<span class="en">Climb</span></td><td><span class="k">R2</span> + <span class="k">B</span></td><td>▲</td><td>제자리걸음 / 서기: <span class="k s">START</span> 두 번 ★</td></tr>
+      <tr><td>음성 모드 전환<span class="en">Normal / Welcome</span></td><td><span class="k">R1</span> + <span class="k">R2</span> + <span class="k">Y</span></td><td>★</td><td>일반 / 안내 모드 (7장)</td></tr>
+    </tbody>
+  </table>
+  <p>왼쪽 스틱은 앞뒤 · 옆 이동, 오른쪽 스틱은 회전입니다. 일반 모드에서 몸이 한쪽으로 흐르면 <span class="k">R1</span>을 누른 채 방향키로 보정합니다
+    (→ 왼쪽, ← 오른쪽, ↓ 앞쪽, ↑ 뒤쪽 보정). 이 보정 방향은 문서 그대로이며, 처음에는 짧게 눌러 결과를 확인하십시오.</p>
+
+  <h2 id="c4-s4">인사 동작 <span class="src">문서</span></h2>
+  <table class="t tight">
+    <thead><tr><th>동작</th><th>조합키</th><th>동작</th><th>조합키</th></tr></thead>
+    <tbody>
+      <tr><td>악수</td><td><span class="k s">SELECT</span> + <span class="k">A</span></td><td>손 키스</td><td><span class="k">X</span> 두 번</td></tr>
+      <tr><td>손 높이 흔들기</td><td><span class="k s">SELECT</span> + <span class="k">Y</span></td><td>박수</td><td><span class="k">A</span> 두 번</td></tr>
+      <tr><td>가슴 앞 손 흔들기</td><td><span class="k">Y</span> 두 번</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s5">춤 모드 <span class="src">문서</span></h2>
+  <p><span class="k">R1</span> + <span class="k">B</span>로 춤 모드에 들어간 뒤 아래 키를 짧게 누릅니다. 괄호는 필요한 공간입니다.
+    <b>춤 · 상체 동작 중 <span class="k s">START</span>를 두 번 누르면 즉시 멈춥니다.</b></p>
+  <table class="t tight">
+    <thead><tr><th>춤</th><th>조합키</th><th>공간</th><th>춤</th><th>조합키</th><th>공간</th></tr></thead>
+    <tbody>
+      <tr><td>찰스턴 1</td><td><span class="k">R1</span>+<span class="k">↑</span></td><td>→1 m</td><td>팝핀 3 <span class="tag29">29</span></td><td><span class="k">R1</span>+<span class="k">↓</span></td><td>↑6 m, ←3 m</td></tr>
+      <tr><td>찰스턴 2</td><td><span class="k">R1</span>+<span class="k">←</span></td><td>↑1 m, ←1 m</td><td>팝핀 4 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">Y</span></td><td>↑4 m, ←2 m</td></tr>
+      <tr><td>찰스턴 3</td><td><span class="k">R1</span>+<span class="k">→</span></td><td>↗3 m</td><td>발레 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">A</span></td><td>↖6 m, →3 m</td></tr>
+      <tr><td>절권도</td><td><span class="k">R2</span>+<span class="k">↑</span></td><td>3 × 3 m</td><td>민속춤 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">B</span></td><td>↖2 m, →4 m</td></tr>
+      <tr><td>트위스트</td><td><span class="k">R2</span>+<span class="k">←</span></td><td>3 × 3 m</td><td>그루브 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">↑</span></td><td>3 × 3 m</td></tr>
+      <tr><td></td><td></td><td></td><td>팝핀 5 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">←</span></td><td>3 × 3 m</td></tr>
+      <tr><td></td><td></td><td></td><td>워밍업 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">→</span></td><td>3 × 3 m</td></tr>
+      <tr><td></td><td></td><td></td><td>힙합 <span class="tag29">29</span></td><td><span class="k">L1</span>+<span class="k">↓</span></td><td>3 × 3 m</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s6">디버그 모드 (EDU) <span class="src">문서</span></h2>
+  <div class="two">
+    <div>
+      <ol class="steps">
+        <li><b>매달고 댐핑</b>로봇을 거치대에 매단 채 댐핑(또는 제로 토크) 상태로 둡니다.</li>
+        <li><b>디버그 진입</b><span class="k">L2</span>를 누른 채 <span class="k">R2</span>. 내장 운동 제어가 멈춥니다.</li>
+        <li><b>확인</b><span class="k">L2</span> + <span class="k">A</span>를 누르면 로봇이 위치 모드로 정해진 진단 자세를 잡습니다 (그림 14). 자세가 다르면 <span class="k">L2</span> + <span class="k">R2</span>를 여러 번 눌러 다시 들어갑니다.</li>
+        <li><b>댐핑으로</b><span class="k">L2</span> + <span class="k r">B</span>로 댐핑에 둔 뒤 SDK 개발을 시작합니다.</li>
+      </ol>
+      <p>디버그 모드에서는 내장 운동 제어가 완전히 멈추므로 <b>고수준 서비스(LocoClient, 팔 덧씌움)도 동작하지 않습니다.</b></p>
+    </div>
+    <figure class="light h70"><img src="assets/debug_pose.jpg" alt="디버그 진단 자세"><figcaption data-fig="debug-pose"><b>그림 14.</b> <span class="k">L2</span> + <span class="k">A</span> 진단 자세</figcaption></figure>
+  </div>
+  <div class="box caution"><div class="h">주의 · 펌웨어 버전에 따라 키가 다릅니다</div>
+    <p>이 장의 키는 운동 제어 버전 8.6.0.0 초과 기준입니다. 8.2 ~ 8.5 버전 문서에는 ⑧이 "R1 + Y (3자유도 허리 전용)"로 되어 있는 등 조합이 다릅니다.
+      앱에서 버전을 확인하고, 다르면 Unitree 문서 센터 <i>Remote Control</i> 쪽의 해당 버전 스티커를 쓰십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">시작 · 종료 순서</h1></div>
+  <p class="lede">G1은 보호 거치대에 매단 상태, 의자에 앉은 상태, 누운 · 쪼그린 상태에서 시작할 수 있습니다.
+    처음 운용하거나 사람이 많은 곳에서는 <b>매단 상태(A)</b>를 기본으로 하십시오.</p>
+
+  <h2 id="c5-s1">A. 매단 상태에서 시작 (기본) <span class="src">문서</span></h2>
+  <div class="three">
+    <figure class="light"><img src="assets/hang_1.jpg" alt="거치대에 매달기"><figcaption><b>그림 15.</b> ① 거치대에 매달기</figcaption></figure>
+    <figure class="light"><img src="assets/hang_ready.png" alt="준비 자세"><figcaption><b>그림 16.</b> ⑥ 잠금 서기 자세</figcaption></figure>
+    <figure class="light"><img src="assets/hang_feet.jpg" alt="발 내리기"><figcaption><b>그림 17.</b> ⑦ 두 발을 바닥에</figcaption></figure>
+  </div>
+  <ol class="steps">
+    <li><b>매달기</b>보호 거치대에 G1을 걸고 거치대 바퀴를 잠급니다. 팔다리를 자연스럽게 내려 둡니다.</li>
+    <li><b>배터리 끼우기</b>몸통 옆의 배터리 칸에 방향을 맞춰 넣습니다. "딸깍" 소리가 나면 끝입니다. 억지로 누르지 마십시오.</li>
+    <li><b>전원 켜기</b>배터리 전원 버튼을 <b>짧게 한 번</b> 누른 뒤 <b>2초 이상 길게</b> 누릅니다.</li>
+    <li><b>부팅 대기 (약 1분)</b>발목이 한계에 닿는 소리가 나면 초기화가 끝난 것입니다. 30초 더 기다립니다.
+      WeGo의 G1 시작 안내서에 따르면 "Zero Torque Mode" 음성과 함께 보라색 LED가 켜지면 제로 토크 상태입니다.</li>
+    <li><b>리모컨 연결</b>리모컨 전원을 켭니다. 처음 쓰는 리모컨은 Unitree 문서의 <i>리모컨 바인딩</i> 영상대로 짝을 맞춥니다.</li>
+    <li><b>댐핑 → 잠금 서기</b><span class="k">L2</span> + <span class="k r">B</span>로 댐핑, 이어서 <span class="k">L2</span> + <span class="k">↑</span>로 잠금 서기. 로봇이 5초 안에 준비 자세를 잡습니다.</li>
+    <li><b>발 내리기</b>거치대 줄을 내려 두 발이 바닥에 닿게 합니다. 줄은 조금 여유 있게 둡니다.</li>
+    <li><b>운동 제어 시작</b><span class="k">R2</span> + <span class="k">A</span>(③ 달리기 모드) 또는 <span class="k">R1</span> + <span class="k">X</span>(⑦ 일반 모드)를 2초 누릅니다.
+      G1이 걸음을 조정하며 섭니다. <b>이때 두 발은 반드시 바닥에 닿아 있어야 합니다.</b></li>
+    <li><b>줄 풀기</b>자세가 안정되면 고리를 완전히 풉니다. 이제 스틱으로 움직이고, <span class="k s">START</span>로 서기 · 걷기를 바꿉니다.</li>
+  </ol>
+
+  <h2 id="c5-s2">A. 매단 상태로 종료</h2>
+  <ol class="steps">
+    <li><b>다시 매달기</b>거치대 고리를 다시 걸고, 줄이 로봇을 살짝 당길 만큼 팽팽하게 합니다. 사람이 뒷목 손잡이를 잡고 있을 것을 권장합니다.</li>
+    <li><b>댐핑</b><span class="k">L2</span> + <span class="k r">B</span>를 약 5초 눌러 댐핑으로 들어갑니다.</li>
+    <li><b>전원 끄기</b>댐핑 상태에서 배터리 전원 버튼을 짧게 한 번 + 길게 눌러 끄고, 배터리를 뺍니다.
+      (끄지 않고 다시 쓰려면 <span class="k">L2</span> + <span class="k">↑</span>로 잠금 서기, EDU 개발이면 <span class="k">L2</span> + <span class="k">R2</span>로 디버그 모드)</li>
+  </ol>
+
+  <h2 id="c5-s3">B. 의자에 앉아 시작 · 종료 <span class="src">문서</span></h2>
+  <div class="two">
+    <figure class="light"><img src="assets/boot_chair.png" alt="의자에 앉아 시작"><figcaption><b>그림 18.</b> 의자에 앉힌 시작 자세</figcaption></figure>
+    <figure class="light"><img src="assets/sit_off.png" alt="의자에 앉혀 종료"><figcaption><b>그림 19.</b> 종료: 의자를 등지고 서서 앉기</figcaption></figure>
+  </div>
+  <p><b>시작</b> — 의자에 팔다리를 자연스럽게 두고 앉힌 뒤 배터리를 넣고 전원을 켭니다. 약 1분 뒤 제로 토크가 되면
+    <span class="k">L2</span> + <span class="k r">B</span>(댐핑) → 어깨를 잡고 <span class="k">L2</span> + <span class="k">↑</span>(잠금 서기) →
+    똑바로 서면 <span class="k">R1</span> + <span class="k">X</span> (<span class="tag29">29</span> 3자유도 허리는 <span class="k">R1</span> + <span class="k">Y</span>).
+    리모컨 스티커에서 권장하는 순서(켜기 → ① → ② → ③ → 시연 → ④ → 끄기)도 같은 흐름이며, ②에서 ③으로 넘어갈 때 <b>사람이 로봇을 똑바로 붙잡아 줘야</b> 합니다.</p>
+  <p><b>종료</b> — 로봇을 의자 앞에 의자를 등지고 세워 멈춘 뒤, 어깨와 손잡이를 잡고 <span class="k">L2</span> + <span class="k">←</span>(④ 앉기, 2초)를 눌러 앉도록 돕습니다.
+    앉으면 <span class="k">L2</span> + <span class="k r">B</span>로 댐핑에 두고 전원을 끕니다.</p>
+
+  <h2 id="c5-s4">C. 누운 자세 · 쪼그린 자세 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>시작 자세</th><th>순서</th></tr></thead>
+    <tbody>
+      <tr><td>누운 자세</td><td>켜기 → ① <span class="k">L2</span>+<span class="k r">B</span> → ⑩ <span class="k">R1</span>+<span class="k">R2</span>+<span class="k">X</span> (자동 일어서기) → 시연 → ⑥ <span class="k">L2</span>+<span class="k">A</span> → 끄기. 엉덩이가 바닥에 평평하게 닿게 눕힙니다</td></tr>
+      <tr><td>쪼그린 자세</td><td>켜기 → ① → ⑥ <span class="k">L2</span>+<span class="k">A</span> (일어서기) → 시연 → ⑥ (다시 쪼그리기) → 끄기</td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · 누운 · 쪼그린 자세 시작</div>
+    <p>누운 · 쪼그린 자세 시작은 <b>평평하고 단단한 바닥</b>에서만 씁니다. 손을 단 경우 손이 손상될 수 있습니다.</p></div>
+
+  <h2 id="c5-s5">배터리 · 충전</h2>
+  <p>9000 mAh 탈착식 스마트 배터리로 약 2시간 운용합니다. 충전은 전용 충전기(54 V 5 A)로 하며, 배터리는 반드시 <b>댐핑 상태에서 전원을 끈 뒤</b> 뺍니다. <span class="src">문서</span></p>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">개발 안내 (EDU)</h1></div>
+  <p class="lede">G1 EDU는 사용자 프로그램으로 로봇을 제어할 수 있습니다. 개발 내용은 별도의 <b><a data-manual="g1-developer" href="../g1-developer/">Unitree G1 개발 설명서</a></b>에 있고,
+    이 장은 시작 전에 알아야 할 것만 담았습니다. G1 기본형은 2차 개발을 지원하지 않습니다.</p>
+
+  <div class="box warn"><div class="h">경고 · 개발 전에 꼭 지킬 것</div>
+    <ul>
+      <li><b>매달기</b> — 관절을 움직이는 프로그램은 로봇을 보호 거치대에 매달고 시험합니다.</li>
+      <li><b>디버그 모드</b> — 저수준 제어 전에는 <span class="k">L2</span> + <span class="k">R2</span>로 들어가 <span class="k">L2</span> + <span class="k">A</span>로 확인합니다 (4장). 내장 제어와 명령이 충돌하면 로봇이 떨립니다.</li>
+      <li><b>비상 정지 대기</b> — 리모컨 담당자가 <span class="k">L2</span> + <span class="k r">B</span>(댐핑)를 누를 수 있게 대기합니다. 이 키는 디버그 모드에서도 동작합니다.</li>
+      <li><b>작은 값부터</b> — 속도 · 게인 · 가중치는 작은 값에서 시작해 천천히 올립니다.</li>
+    </ul></div>
+
+  <h2 id="c6-s1">EDU에서 할 수 있는 것 <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>구분</th><th>내용</th><th><a data-manual="g1-developer" href="../g1-developer/">개발 설명서</a></th></tr></thead>
+    <tbody>
+      <tr><td>개발 환경</td><td>외부 PC(Ubuntu 20.04) 또는 PC2에서 <code>unitree_sdk2</code> (C++ · Python) · ROS 2</td><td>1 · 2장</td></tr>
+      <tr><td>저수준 제어</td><td>디버그 모드에서 모든 관절을 직접 제어 (<code>rt/lowcmd</code>, 500 Hz)</td><td>4장</td></tr>
+      <tr><td>고수준 제어</td><td>보행 · 모드 전환(LocoClient), 팔 덧씌우기(<code>rt/arm_sdk</code>), 팔 동작</td><td>5장</td></tr>
+      <tr><td>손 · 센서 · SLAM</td><td>다관절 손, 오도메트리 · 라이다 · 깊이 카메라, SLAM 내비게이션</td><td>7 · 8장</td></tr>
+      <tr><td>음성 · 오디오</td><td>음성 합성(TTS) · 음량 · 조명 · 소리 재생 API</td><td>9장</td></tr>
+    </tbody>
+  </table>
+
+  <p>로봇 네트워크는 <code>192.168.123.0/24</code>입니다. PC1(.161) · PC2(.164) · 라이다(.120)의 주소는 1장 그림 1과 부록 "네트워크"에 있으며, 외부 개발 PC는 어깨 RJ45 포트에 유선으로 연결하고 <code>192.168.123.99</code>를 권장합니다.</p>
+
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">센서 · 음성 · 손</h1></div>
+  <p class="lede">G1의 머리에는 3D 라이다와 깊이 카메라가, 가슴에는 마이크 4개와 스피커가 있습니다. EDU 모델은 다관절 손을 달 수 있습니다.</p>
+  <figure class="light"><img src="assets/fov_merged.png" alt="라이다와 카메라 시야"><figcaption><b>그림 20.</b> 라이다 MID-360과 카메라 D435i의 시야 (Unitree). 라이다는 수평 360°, 수직 최대 59°</figcaption></figure>
+
+  <h2 id="c7-s1">라이다 · Livox MID-360 <span class="src">문서</span></h2>
+  <ul>
+    <li>공장 IP는 <code>192.168.123.120</code>. 같은 대역의 PC에서 <code>ping</code>으로 확인합니다.</li>
+    <li>Livox Viewer 2는 <b>개발자 PC</b>에서 실행합니다. PC2(Arm)에서는 실행되지 않습니다 ("Exec format error").</li>
+    <li>로봇은 점군과 라이다 IMU를 DDS 토픽 <code>rt/utlidar/cloud_livox_mid360</code> · <code>rt/utlidar/imu_livox_mid360</code>으로도 냅니다.</li>
+    <li>WeGo 보유 G1에서는 MID-360이 <b>뒤집혀</b> 달려 있어, 점군을 표시할 때 위아래를 뒤집어야 했습니다. <span class="src r">실측</span></li>
+  </ul>
+
+  <h2 id="c7-s2">깊이 카메라 · RealSense D435i <span class="src">문서</span></h2>
+  <p>머리의 D435i는 PC2에 USB로 연결됩니다. PC2에 <code>librealsense</code>를 설치하면 <code>realsense-viewer</code>나 SDK로 영상을 읽을 수 있습니다.
+    EDU+ 모델에서 앱 영상이 보이지 않으면 먼저 <b>목 뒤의 USB-C 케이블이 어깨의 Type-C 포트에 꽂혀 있는지</b> 확인하십시오.</p>
+
+  <h2 id="c7-s3">SLAM · 내비게이션 서비스 (EDU) <span class="src">문서</span></h2>
+  <p>Unitree는 라이다 기반 지도 작성 · 위치 추정 · 경로 이동 서비스(<code>slam_operate</code>)를 제공합니다. 지도를 만든 뒤
+    그 지도 위에서 위치를 잡고 목표 지점으로 이동합니다. 호출 방법과 절차는 <a data-manual="g1-developer" href="../g1-developer/">개발 설명서</a> 8장에 있습니다.</p>
+  <ul>
+    <li>적용 범위: 특징이 풍부한 <b>정적인 실내 평지</b>, 가로 · 세로 45 m 미만. 교육 · 연구용이며 산업용으로는 권장하지 않습니다.</li>
+    <li>사용 전에 라이다 점군과 IMU에 이상이 없는지, 머리가 위를 향해 흔들림 없이 고정되어 있는지 확인합니다.</li>
+  </ul>
+
+  <h2 id="c7-s4">음성 비서 <span class="src">문서</span></h2>
+  <div class="two">
+    <div>
+      <p>펌웨어 1.3.0 이상에서 <b>인터넷에 연결되면</b> GPT 기반 대화(잡담, 동작, 음악 재생 등)를 지원합니다.</p>
+      <table class="t tight wrap1">
+        <thead><tr><th>기능</th><th>방법</th></tr></thead>
+        <tbody>
+          <tr><td>모드 전환</td><td><span class="k">L1</span> + <span class="k">L2</span> 동시에 (또는 앱 [기기]-[데이터]-[오디오]-[음성 비서])</td></tr>
+          <tr><td>호출어 모드</td><td>"Hello Robot"이라고 부른 뒤 여러 번 대화. 15초 동안 말이 없으면 끝납니다</td></tr>
+          <tr><td>버튼 모드</td><td><span class="k">L2</span> + <span class="k s">SELECT</span>를 누르는 동안 녹음, 떼면 인식. 시끄러운 곳에 적합</td></tr>
+          <tr><td>강제 중단</td><td><span class="k">L1</span> + <span class="k s">SELECT</span></td></tr>
+        </tbody>
+      </table>
+      <p>소리를 들으면 파란 불이, 명령을 받으면 초록 불이 숨 쉬듯 깜빡입니다. 말해도 불이 깜빡이지 않으면 소리가 들어가지 않은 것입니다.
+        로봇 정면 1 m 안에서 말하십시오. 인터넷이 없으면 "Hello, I am here"라고 답하는 오프라인 모드가 됩니다.</p>
+    </div>
+    <figure class="light"><img src="assets/voice_parts.jpg" alt="마이크 · 스피커 위치"><figcaption><b>그림 21.</b> RGB 조명 · 마이크 배열 · 스피커 위치</figcaption></figure>
+  </div>
+
+  <h2 id="c7-s5">다관절 손 (EDU 선택) <span class="src">문서</span></h2>
+  <table class="t tight wrap1">
+    <thead><tr><th>Dex3-1</th><th>사양</th></tr></thead>
+    <tbody>
+      <tr><td>자유도</td><td>7 (엄지 3, 검지 2, 중지 2)</td></tr>
+      <tr><td>관절 각도</td><td>엄지 0 ~ 100°, −35 ~ 60°, −60 ~ 60° · 검지 · 중지 0 ~ 90°, 0 ~ 100°</td></tr>
+      <tr><td>전원 · 통신 · 촉각</td><td>12 ~ 58 V (문서 사양표) · RS-485 · 배열 센서 9개, 감지 범위 10 ~ 2500 g</td></tr>
+    </tbody>
+  </table>
+  <p>Unitree 문서는 Dex3-1 외에 Inspire(FTP · DFX), BrainCo 손의 연결 방법도 다룹니다. 어떤 손을 달든,
+    팔 동작이 손과 몸통을 부딪치지 않게 어깨 roll에 바깥쪽 여유를 두십시오.</p>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">WeGo 소프트웨어 미리보기</h1></div>
+  <p class="lede">WeGo는 G1용 원격조작 소프트웨어를 함께 제공합니다. <b>Humanoid Pilot</b>은 VR 헤드셋으로 G1의 팔과 보행을 조작하는
+    WeGo의 원격조작 소프트웨어입니다. 자세한 사용법은 별도의 <i>Humanoid Pilot 사용 설명서</i>를 보십시오.</p>
+  <figure><img src="assets/pilot_teleop.png" alt="Humanoid Pilot 원격조작 화면"><figcaption><b>그림 22.</b> Humanoid Pilot 원격조작 화면 (실제 G1 23자유도 운용 중, 2026년 10월)</figcaption></figure>
+  <table class="t tight wrap1">
+    <thead><tr><th>기능</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>VR 원격조작</td><td>헤드셋의 손 위치를 G1 팔 관절로 바꿔 <code>rt/arm_sdk</code>로 보냅니다. 스틱으로 걷기 (LocoClient)</td></tr>
+      <tr><td>안전 장치</td><td>제어 · 원격조작 단계 분리, 2초 램프인, 속도 제한, 화면의 비상 정지(댐핑) 버튼</td></tr>
+      <tr><td>로봇 상태</td><td>관절 각도 · 모터 온도, 배터리, 라이다 점군, 오도메트리, 머리 카메라 영상</td></tr>
+      <tr><td>관람객 영상</td><td>원격조작 동안 로봇 카메라 영상을 녹화하고, 끝나면 QR 코드로 휴대폰에 전달</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">문제 해결</h1></div>
+  <table class="t tight wrap1">
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>SDK로 명령하면 로봇이 떨림</td><td>내장 운동 제어가 속도 0 명령을 계속 보냄</td><td>디버그 모드로 들어갑니다 (<span class="k">L2</span>+<span class="k">R2</span>, <span class="k">L2</span>+<span class="k">A</span>로 확인)</td></tr>
+      <tr><td><span class="k">L2</span>+<span class="k">A</span> 자세가 영상과 다름</td><td>디버그 모드에 완전히 들어가지 않음</td><td><span class="k">L2</span>+<span class="k">R2</span>를 여러 번 누릅니다</td></tr>
+      <tr><td>LocoClient · 팔 덧씌움이 반응 없음</td><td>디버그 모드에서는 고수준 서비스가 꺼짐</td><td>전원을 다시 켜 운동 제어 상태에서 씁니다</td></tr>
+      <tr><td>펌웨어 1.3.0 이상으로 올린 뒤 관절 한계 이상 · 순간 과전압 보고</td><td>새 펌웨어가 더 높은 보정 정확도를 요구</td><td>관절 모터를 다시 보정합니다 (Unitree 보정 영상, 23 · 29자유도 별도)</td></tr>
+      <tr><td><span class="tag29">29</span> 허리 고정구를 푼 뒤 관절 한계 초과 오류</td><td>허리 모터 2개가 보정되지 않음</td><td>앱의 허리 잠금을 끄고 고정구를 이용해 29관절 보정을 다시 합니다</td></tr>
+      <tr><td>앱 네트워크 설정 실패</td><td>무선 간섭 (전시장 등)</td><td>간섭이 적은 곳으로 옮겨 다시 설정합니다</td></tr>
+      <tr><td><code>ping 192.168.123.161</code> 응답 없음</td><td>PC 네트워크 카드가 다른 대역 · 케이블</td><td>192.168.123.99/24로 설정, 어깨 RJ45 포트 확인</td></tr>
+      <tr><td>EDU+ 앱에서 깊이 영상이 안 보임</td><td>목 뒤 USB-C 케이블 빠짐 · PC2 패치 누락</td><td>케이블을 어깨 Type-C에 꽂습니다. 그래도 안 되면 기술 지원에 PC2 패치를 요청합니다</td></tr>
+      <tr><td>음성 비서가 답하지 않음</td><td>인터넷 연결 없음 · 소리가 들어가지 않음</td><td>네트워크와 숨쉬는 불빛을 확인하고 정면 1 m 안에서 말합니다</td></tr>
+      <tr><td>잠금 서기 후 운동 제어가 시작되지 않음</td><td>발이 바닥에 닿지 않음 · 키를 짧게 누름</td><td>줄을 내려 두 발을 바닥에 대고 ▲ 키는 2초 누릅니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s1">Unitree 문서의 알려진 오류</h2>
+  <p>이 설명서는 아래 항목에서 리모컨 스티커와 다른 문서 쪽 표기를 쓰지 않았습니다. 원문을 볼 때 참고하십시오.</p>
+  <ul>
+    <li><i>Quick Start</i>의 "의자에 앉아 시작"은 댐핑을 <code>L1 + A</code>, 잠금 서기를 <code>L1 + UP</code>로 적었습니다. 스티커와 <i>Remote Control</i>의 키 표는 <span class="k">L2</span>+<span class="k r">B</span> · <span class="k">L2</span>+<span class="k">↑</span>입니다.</li>
+    <li>같은 문서의 "의자에 앉아 종료"는 <code>L1 + LEFT</code> · <code>L1 + A</code>로 적었습니다. 키 표는 앉기 <span class="k">L2</span>+<span class="k">←</span>, 댐핑 <span class="k">L2</span>+<span class="k r">B</span>입니다.</li>
+    <li>⑦ · ⑧ 번호는 버전마다 다릅니다. 8.6.0.0 초과 스티커에서 ⑧은 장애물 넘기(<span class="k">R2</span>+<span class="k">B</span>)이고, 이전 키 표에서 ⑧은 3자유도 허리용 <code>R1 + Y</code>입니다.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c10" data-mark="c10">빠른 참조</h1></div>
+  <div class="qr">
+    <div class="card">
+      <h3>매단 상태 시작</h3>
+      <ol>
+        <li>거치대에 걸기 · 바퀴 잠금</li>
+        <li>배터리 넣기 → 짧게 + 2초 길게</li>
+        <li>약 1분 (+30초) 대기 · 보라 LED</li>
+        <li><span class="k">L2</span>+<span class="k r">B</span> 댐핑</li>
+        <li><span class="k">L2</span>+<span class="k">↑</span> 잠금 서기</li>
+        <li>줄 내려 두 발 바닥에</li>
+        <li><span class="k">R2</span>+<span class="k">A</span> 또는 <span class="k">R1</span>+<span class="k">X</span> (2초)</li>
+        <li>안정되면 고리 풀기</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>종료 · 비상</h3>
+      <ol>
+        <li>고리 다시 걸고 줄 팽팽히</li>
+        <li><span class="k">L2</span>+<span class="k r">B</span> 5초 → 댐핑</li>
+        <li>배터리 짧게 + 길게 → 끄기</li>
+      </ol>
+      <p class="cut"><b style="color:var(--red)">비상:</b> <span class="k">L2</span>+<span class="k r">B</span> (운동 제어 중 5초). 로봇은 주저앉거나 넘어집니다.<br>
+        <b>춤 중지:</b> <span class="k s">START</span> 두 번</p>
+    </div>
+    <div class="card">
+      <h3>주요 키</h3>
+      <table class="t tight">
+        <tbody>
+          <tr><td>제로 토크</td><td><span class="k">L2</span>+<span class="k">Y</span></td></tr>
+          <tr><td>디버그 (EDU)</td><td><span class="k">L2</span>+<span class="k">R2</span></td></tr>
+          <tr><td>④ 앉기</td><td><span class="k">L2</span>+<span class="k">←</span> ▲</td></tr>
+          <tr><td>⑥ 쪼그리기</td><td><span class="k">L2</span>+<span class="k">A</span> ▲</td></tr>
+          <tr><td>⑧ 장애물</td><td><span class="k">R2</span>+<span class="k">B</span> ▲</td></tr>
+          <tr><td>춤 모드</td><td><span class="k">R1</span>+<span class="k">B</span></td></tr>
+          <tr><td>서기 ↔ 걷기</td><td><span class="k s">START</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>네트워크 (EDU)</h3>
+      <table class="t tight">
+        <tbody>
+          <tr><td>PC1 운동 제어</td><td class="mono">.161</td></tr>
+          <tr><td>PC2 개발</td><td class="mono">.164</td></tr>
+          <tr><td>라이다</td><td class="mono">.120</td></tr>
+          <tr><td>내 PC (권장)</td><td class="mono">.99</td></tr>
+        </tbody>
+      </table>
+      <p class="cut">대역 192.168.123.0/24 · DDS 도메인 0</p>
+    </div>
+    <div class="card full">
+      <h3>리모컨 키 스티커 · 23자유도 (Unitree, 운동 제어 8.6.0.0 초과)</h3>
+      <img src="assets/remote_23-2.png" alt="23자유도 리모컨 키" style="width:100%;border-radius:1.4mm">
+    </div>
+    <div class="card full">
+      <h3>리모컨 키 스티커 · 29자유도 (Unitree, 운동 제어 8.6.0.0 초과)</h3>
+      <img src="assets/remote_29-2.png" alt="29자유도 리모컨 키" style="width:100%;border-radius:1.4mm">
+    </div>
+  </div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

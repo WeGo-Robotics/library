@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>AgileX PIKA 데이터 수집 시스템 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css */
+@page {
+  @top-left  { content: "AgileX PIKA"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">AgileX PIKA 데이터 수집 시스템 — 운용 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/AgileX_PIKA_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 소개</a></summary><a class="wm-t2" href="#c1-s1">구성</a><a class="wm-t2" href="#c1-s2">특징</a><a class="wm-t2" href="#c1-s3">구성품</a><a class="wm-t2" href="#c1-s4">세 가지 사용 방법</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">면책과 책임의 한계</a><a class="wm-t2" href="#c2-s2">통합 업체와 최종 고객의 책임</a><a class="wm-t2" href="#c2-s3">사용 환경</a><a class="wm-t2" href="#c2-s4">사용 전 점검</a><a class="wm-t2" href="#c2-s5">조작 주의 사항</a><a class="wm-t2" href="#c2-s6">사용 경고 ⚠</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>사양</a></summary><a class="wm-t2" href="#c3-s1">Pika Sense와 Pika Gripper</a><a class="wm-t2" href="#c3-s2">Pika Station</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>모듈 소개</a></summary><a class="wm-t2" href="#c4-s1">Pika Sense (데이터 수집기)</a><a class="wm-t2" href="#c4-s2">Pika Gripper (데이터 실행기)</a><a class="wm-t2" href="#c4-s3">Pika Station (위치 기지국)</a><a class="wm-t2" href="#c4-s4">Pika Package (데이터 백팩, 선택)</a></details><a class="wm-t1" href="#c5"><span class="wm-n">05</span>빠른 시작</a><a class="wm-t1" href="#c6"><span class="wm-n">06</span>소프트웨어 환경 구성</a><a class="wm-t1" href="#c7"><span class="wm-n">07</span>하드웨어 준비</a><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>사용 흐름</a></summary><a class="wm-t2" href="#c8-s1">본체 없는 수집 (Pika Sense · Ego 카메라)</a><a class="wm-t2" href="#c8-s2">로봇팔 원격조작</a><a class="wm-t2" href="#c8-s3">Pika Gripper</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>유지 보수와 문제 해결</a></summary><a class="wm-t2" href="#c9-s1">기지국 청소</a><a class="wm-t2" href="#c9-s2">자주 생기는 문제</a><a class="wm-t2" href="#c9-s3">A. 치수 도면</a><a class="wm-t2" href="#c9-s4">B. 권장 구성</a><a class="wm-t2" href="#c9-s5">C. 상태 표시등</a><a class="wm-t2" href="#c9-s6">D. AgileX 자료 목록</a></details></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>AgileX <span>PIKA</span><br>데이터 수집 시스템</h1>
+  <div class="title2">Pika Sense · Pika Gripper · Pika Station</div>
+  <div class="bar"></div>
+  <p class="lead">AgileX 공식 자료를 한국어로 옮긴 설명서입니다. 구성과 사양, 안전 수칙, 모듈별 각 부분과 표시등부터 ROS2 소프트웨어 환경 구성,
+    기지국 설치와 위치 교정, 본체 없는 수집 · 로봇팔 원격조작 · Gripper 사용 흐름, 유지 보수와 문제 해결까지 다룹니다.</p>
+  <img class="arm" src="assets/pd_001.png" alt="">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>AgileX PIKA 데이터 수집 시스템 (Pika Sense · Pika Gripper · Pika Station · Pika Ego · Tracker)</td></tr>
+      <tr><td>근거 문서</td><td>AgileX <i>Pika 用户手册 (Pika 产品使用手册（CN）ROS2)</i> (agilexsupport.yuque.com peoot3/zozsdvvgvgha4zgd, 2026-09-08 판, AgileX 자료 목록의 ROS2 사용 설명서) ·
+        같은 설명서의 대외판 <i>【对外】Pika 产品用户手册 beta（CN）ROS2</i> (vm7e26ho2hmuw0ng, 2026-11-09, Tracker 표시등이 꺼졌을 때도 충전하라는 안내가 더해짐) ·
+        AgileX <i>Pika 产品数据手册 beta（CN）</i> (2026-10-12, 사양 · 구성품 · 모듈 소개) · AgileX <i>PIKA 产品使用资料清单</i> (자료 목록, 부록 D)</td></tr>
+      <tr><td>소프트웨어</td><td>Ubuntu 22.04 · ROS 2 Humble · github.com/agilexrobotics/pika_ros (ros2 브랜치)</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>사용 설명서(ROS2)와 데이터 시트(beta)의 내용이 다른 곳은 더 새로운 사용 설명서를 따랐습니다. 특히 Pika Sense와 Tracker의 표시등은 부록 C를 보십시오.
+      AgileX 사용 설명서는 세부 절차를 AgileX 지식 베이스의 다른 문서에 맡기므로, 이 책도 그 문서의 이름과 주소를 그대로 적었습니다.</p>
+    <p class="copy">© WeGo Robotics. AgileX, PIKA는 AgileX Robotics의 상표입니다. 그림은 AgileX 사용 설명서와 데이터 시트에서 가져왔습니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">제품 소개</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">사양</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">모듈 소개</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">빠른 시작</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">소프트웨어 환경 구성</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">하드웨어 준비</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">사용 흐름</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">유지 보수와 문제 해결</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">치수 도면 · 권장 구성 · 상태 표시등 · 자료 목록</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">제품 소개</h1></div>
+  <p class="lede">Pika는 AgileX Robotics의 로봇 데이터 수집 · 원격조작 시스템입니다. 체화 지능(embodied AI) 분야의 공간 데이터 수집 제품으로, 범용 조작을 위한 가볍고 휴대하기 쉬운 수집 · 실행 일체형 솔루션입니다. <span class="src">문서</span></p>
+  <p>Pika는 공간 정보를 밀리미터 수준으로 수집합니다. 6자유도 공간 위치 · 깊이 · 초광각 영상 · 그리퍼 개폐 정보를 함께 담아, 여러 정보를 융합해야 하는 체화 지능 데이터 수집에 알맞습니다. 실행기(Pika Gripper)는 Pika Sense로 수집한 데이터로 학습한 모델을 실행하는 끝단으로 쓸 수 있습니다.</p>
+
+  <h2 id="c1-s1">구성 <span class="src">문서</span></h2>
+  <table class="t wrap1">
+    <caption data-tbl="parts"><b>표 1.</b> Pika 구성</caption>
+    <thead><tr><th>부품</th><th>역할</th><th>필수 여부</th></tr></thead>
+    <tbody>
+      <tr><td>Pika Station</td><td>위치 기지국입니다. 작업 공간에 설치해 수집기에 공간 위치를 제공합니다.</td><td>필수</td></tr>
+      <tr><td>Pika Sense</td><td>손에 드는 데이터 수집기입니다. 끝단 자세와 영상 데이터를 수집합니다.</td><td>필수</td></tr>
+      <tr><td>Pika Gripper</td><td>두 손가락 그리퍼입니다. 모델 추론 실행이나 원격조작 실행에 씁니다.</td><td>선택</td></tr>
+      <tr><td>Pika Ego</td><td>머리에 쓰는 1인칭 시점 카메라입니다.</td><td>선택</td></tr>
+      <tr><td>Tracker</td><td>공간 위치 추적 모듈입니다. Pika Sense(또는 Ego 카메라)에 달아 기지국 신호를 받아 6D 자세를 계산합니다.</td><td>위치 기능을 쓸 때 필수 (Sense에 기본 포함, Ego 카메라는 선택)</td></tr>
+    </tbody>
+  </table>
+  <figure class="light"><img src="assets/pm_001.jpg" alt=""><figcaption><b>그림 1.</b> Pika 구성: Pika Station · Pika Sense · Pika Ego · Pika Gripper · Tracker (AgileX 문서)</figcaption></figure>
+
+  <h2 id="c1-s2">특징 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>가벼운 손잡이</b>: UMI보다 가볍습니다.</li>
+    <li><b>높은 위치 정밀도</b>: 공간 정밀도가 최대 1.5 mm입니다. 벽 · 책상처럼 무늬가 적은 환경에서도 위치를 잃지 않습니다.</li>
+    <li><b>풍부한 센서</b>: 화각이 약 200°인 어안 카메라로 두 손잡이가 서로를 볼 수 있어 양팔 작업에 크게 도움이 됩니다. 스테레오 깊이 카메라로 정밀한 깊이 데이터를, 고정밀 엔코더로 그리퍼 개폐 정보를 수집합니다.</li>
+    <li><b>완전한 실행기</b>: 수집 끝단과 실행 끝단의 센서 구성이 같아 모델 알고리즘을 재현하기 쉽습니다.</li>
+    <li><b>위치 정보 직접 출력</b>: 데이터를 후처리하거나 나중에 동기화할 필요가 없어 데이터 품질이 높고 수집이 빠릅니다.</li>
+    <li><b>편한 사용</b>: 사람-기계 상호 작용을 고려한 설계로 오래 작업해도 덜 피곤합니다.</li>
+  </ul>
+  <figure class="light f80"><img src="assets/pd_002.jpg" alt=""><figcaption><b>그림 2.</b> 실물: Pika Sense · Pika Gripper · Pika Package · Pika Station · Pika Gripper + PiPER (AgileX 문서)</figcaption></figure>
+
+  <h2 id="c1-s3">구성품 <span class="src">문서</span></h2>
+  <table class="t">
+    <caption data-tbl="box"><b>표 2.</b> 구성품 (데이터 시트 기준)</caption>
+    <thead><tr><th>제품</th><th>품목</th><th>수량</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="4">Pika Station</td><td>삼각대</td><td>1</td></tr>
+      <tr><td>위치 기지국</td><td>1</td></tr>
+      <tr><td>배터리</td><td>1</td></tr>
+      <tr><td>전원 어댑터</td><td>1</td></tr>
+      <tr><td rowspan="3">Pika Sense</td><td>손잡이 단말</td><td>1</td></tr>
+      <tr><td>USB 수신기</td><td>1</td></tr>
+      <tr><td>USB – Type-C 케이블 2 m</td><td>1</td></tr>
+      <tr><td rowspan="3">Pika Gripper</td><td>Gripper 단말</td><td>1</td></tr>
+      <tr><td>XT30 전원선 0.35 m</td><td>1</td></tr>
+      <tr><td>USB – Type-C 케이블 2 m</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s4">세 가지 사용 방법 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>손으로 들고 수집</b>: Pika Sense와 Pika Station만으로 손에 들고 데이터를 수집합니다.</li>
+    <li><b>Gripper로 추론 실행</b>: Pika Gripper를 단독 그리퍼로 써서 모델 추론을 실행합니다.</li>
+    <li><b>원격조작 수집</b>: Pika Sense · Pika Station으로 로봇팔(PiPER 등 임의의 로봇팔)을 원격조작하며 수집합니다.</li>
+  </ul>
+  <figure class="light f80"><img src="assets/pd_003.png" alt=""><figcaption><b>그림 3.</b> 손으로 들고 수집 (AgileX 문서)</figcaption></figure>
+  <div class="two">
+    <figure class="light"><img src="assets/pd_004.jpg" alt=""><figcaption><b>그림 4.</b> Gripper로 추론 실행 (AgileX 문서)</figcaption></figure>
+    <figure class="light"><img src="assets/pd_005.jpg" alt=""><figcaption><b>그림 5.</b> 원격조작 수집 (AgileX 문서)</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <p class="lede">장치를 쓰기 전(특히 처음 전원을 넣기 전)에 이 장 전체를 읽고 이해한 뒤, 이 설명서의 조립 · 조작 지침을 모두 엄격히 따르십시오. <span class="src">문서</span></p>
+  <div class="box warn"><div class="h">경고 · 경고 표시의 뜻</div>
+    <p>⚠ 표시는 피하지 않으면 인명 피해 · 재산 피해 · 심각한 장비 손상으로 이어질 수 있는 위험한 상황을 뜻합니다.</p></div>
+  <h2 id="c2-s1">면책과 책임의 한계</h2>
+  <ul>
+    <li>Pika 장치가 어떤 방식으로든 손상 · 변경 · 개조되었으면 AgileX는 책임지지 않습니다.</li>
+    <li>프로그램 오류나 조작 실수로 장치나 다른 장비에 생긴 손상에 AgileX는 책임지지 않습니다.</li>
+  </ul>
+  <p>장치를 쓰기 시작하면 이 사용 설명서와 안전 정보의 모든 조건과 내용을 읽고 이해하고 받아들인 것으로 봅니다. 사용자는 자신의 행동과 그로 인한 모든 결과에 책임을 지며, 장치를 정당한 목적으로만 쓰고 이 조건과 AgileX가 정하는 관련 정책 · 지침에 동의합니다.
+    Pika 장치를 쓰는 동안에는 사용 설명서와 안전 정보의 요구 사항을 엄격히 지키십시오. 사용 지침을 어기거나 피할 수 없는 요인으로 생긴 인명 피해 · 사고 · 재산 피해 · 법적 분쟁 · 이해 충돌에 AgileX는 책임지지 않습니다.</p>
+  <div class="box warn"><div class="h">경고 · 사용자 나이</div>
+    <p>Pika 장치는 만 18세 미만이거나 완전한 행위 능력이 없는 사람이 쓰기에 적합하지 않습니다. 이런 사람이 제품에 접근하지 못하게 하고, 이들이 있는 곳에서 조작할 때는 더욱 주의하십시오.</p></div>
+  <h2 id="c2-s2">통합 업체와 최종 고객의 책임</h2>
+  <p>Pika 장치의 통합 업체와 최종 고객은 관련 규정과 법을 지키고, 데이터 수집 응용 시스템 전체에 중대한 위험이 없도록 할 책임이 있습니다. 이 책임에는 다음 항목이 포함되며, 이에 한정되지 않습니다.</p>
+  <ul>
+    <li>데이터 수집 시스템 전체의 위험성 평가를 합니다.</li>
+    <li>위험성 평가에서 정한, 다른 기계의 추가 안전장치를 함께 연결합니다.</li>
+    <li>소프트웨어와 하드웨어를 포함한 데이터 수집 시스템 전체의 설계 · 설치가 정확한지 확인합니다.</li>
+    <li>장치 관련 기능의 안전성을 평가하여, 개발한 데이터 수집 시스템이 실제 응용에서 중대한 위험이나 안전 문제가 없도록 합니다.</li>
+    <li>장치를 조작하기 전에 잠재적인 안전 위험을 알아 둡니다.</li>
+    <li>사용자가 어떤 안전 조치도 바꾸지 않게 합니다.</li>
+  </ul>
+  <h2 id="c2-s3">사용 환경</h2>
+  <ul>
+    <li>처음 쓰기 전에 이 설명서를 꼼꼼히 읽고 기본 조작과 규칙을 이해하십시오.</li>
+    <li>비교적 트인 곳에서 쓰십시오. Pika 장치에는 자동 장애물 회피 센서가 없습니다.</li>
+    <li>주위 온도가 0 ~ 40 °C인 곳에서 쓰십시오.</li>
+    <li>방수 · 방진 등급은 IP22입니다. 이 등급에 맞는 환경에서 쓰십시오.</li>
+  </ul>
+  <h2 id="c2-s4">사용 전 점검</h2>
+  <ul>
+    <li>장치에 눈에 띄는 이상이 없는지 확인하십시오.</li>
+    <li>배선이 제대로 연결되어 있는지 확인하십시오.</li>
+  </ul>
+  <h2 id="c2-s5">조작 주의 사항</h2>
+  <ul>
+    <li>조작할 때는 주변을 비교적 넓게 비워 두십시오.</li>
+    <li>장치가 보이는 곳에서 조작하십시오.</li>
+    <li>이상이 생기면 2차 손상을 막기 위해 즉시 사용을 멈추십시오.</li>
+    <li>이상이 생기면 기술 담당자에게 연락하고, 직접 고치지 마십시오.</li>
+  </ul>
+  <h2 id="c2-s6">사용 경고 ⚠</h2>
+  <ul>
+    <li>Pika 장치와 공구 · 엔드 이펙터가 언제나 바르게, 단단히 고정되어 있어야 합니다.</li>
+    <li>Pika 장치가 자유롭게 움직일 공간을 확보하십시오.</li>
+    <li>위험성 평가에서 정한 안전 조치를 갖추십시오.</li>
+    <li>헐렁한 옷을 입고 조작하지 말고, 긴 머리는 묶으십시오.</li>
+    <li>손상되었거나 이상이 있는 장치는 쓰지 마십시오.</li>
+    <li>머리 · 얼굴 등 몸을 작동 중이거나 곧 작동할 Pika 장치가 닿는 범위 밖에 두십시오.</li>
+    <li>Pika 장치를 절대 개조하지 마십시오. 개조하면 통합 업체가 예측할 수 없는 위험이 생길 수 있습니다.</li>
+    <li>강한 자기장에 오래 두지 마십시오. 강한 자기장은 장치를 손상시킬 수 있습니다.</li>
+    <li>서로 다른 기계를 연결하면 위험이 커지거나 새로 생길 수 있습니다. 설치 전체의 위험성 평가를 하십시오. 위험성 평가 결과에 따라 기능 안전 수준이 달라질 수 있으므로, 서로 다른 안전 · 비상 정지 성능 수준이 필요하면 언제나 가장 높은 수준을 고르십시오. 설치에 쓰는 모든 장비의 설명서를 읽고 이해하십시오.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">사양</h1></div>
+  <p class="lede">AgileX 데이터 시트(beta, 2026-10-12)에 실린 사양입니다. IMU 항목은 초기 버전에서만 지원합니다. <span class="src">문서</span></p>
+  <h2 id="c3-s1">Pika Sense와 Pika Gripper</h2>
+  <table class="t tight wrap1">
+    <caption data-tbl="spec-sg"><b>표 3.</b> Pika Sense · Pika Gripper 사양</caption>
+    <thead><tr><th>항목</th><th>Pika Sense</th><th>Pika Gripper</th></tr></thead>
+    <tbody>
+      <tr><td>크기 (L × W × H)</td><td>215 × 220 × 257 mm</td><td>215 × 191 × 143 mm</td></tr>
+      <tr><td>무게</td><td>448 g</td><td>617 g</td></tr>
+      <tr><td>최대 파지력</td><td>2 kg</td><td>2 kg</td></tr>
+      <tr><td>공간 위치 정밀도</td><td>±1.5 mm (가림이 없을 때)</td><td>—</td></tr>
+      <tr><td>위치 데이터 출력</td><td>120 Hz</td><td>—</td></tr>
+      <tr><td>위치 태그 사용 시간</td><td>9 h</td><td>—</td></tr>
+      <tr><td>출력 데이터</td><td>6D 공간 좌표 · 그리퍼 개폐축 각도 · 깊이 · RGB · IMU(초기 버전)</td><td>—</td></tr>
+      <tr><td>2차 개발</td><td>ROS1 · ROS2 · URDF</td><td>—</td></tr>
+      <tr><td>통신 인터페이스</td><td>Type-C</td><td>Type-C (전원 XT30)</td></tr>
+      <tr><td>기계 인터페이스</td><td>—</td><td>플랜지</td></tr>
+      <tr><td>그리퍼</td><td colspan="2">두 손가락 · 최대 95 mm · 최소 0 (종이도 집을 수 있음) · 개폐 정밀도 ±0.1° · 피드백 100 Hz</td></tr>
+      <tr><td>IMU (초기 버전)</td><td colspan="2">9축 자이로 · 자이로 영점 드리프트 2.5°/h · 가속도계 영점 드리프트 30 µg · 100 Hz</td></tr>
+      <tr><td>깊이 카메라</td><td colspan="2">최적 거리 7 ~ 50 cm · 글로벌 셔터 · 스테레오 · FOV 87° × 58° · 최소 7 cm @ 480p · 최대 1280 × 720 · 정밀도 ±2 % @ 50 cm · 최대 90 fps</td></tr>
+      <tr><td>RGB (깊이 카메라)</td><td colspan="2">FOV 87° × 58° · 최대 1280 × 720 · 최대 90 fps</td></tr>
+      <tr><td>광각 카메라</td><td colspan="2">대각 200° · 1280 × 720 @ 30 fps · 640 × 480 @ 30 / 60 / 90 fps</td></tr>
+    </tbody>
+  </table>
+  <h2 id="c3-s2">Pika Station</h2>
+  <table class="t">
+    <caption data-tbl="spec-st"><b>표 4.</b> Pika Station 사양</caption>
+    <thead><tr><th>항목</th><th>사양</th></tr></thead>
+    <tbody>
+      <tr><td>기지국 FOV</td><td>수평 110° · 수직 150°</td></tr>
+      <tr><td>삼각대</td><td>최대 높이 2.1 m · 기울기 조절 가능</td></tr>
+      <tr><td>배터리</td><td>12 V · 10 Ah</td></tr>
+      <tr><td>소비 전력</td><td>일반 3 W</td></tr>
+      <tr><td>사용 시간</td><td>30 h</td></tr>
+      <tr><td>작동 전압</td><td>12 V</td></tr>
+    </tbody>
+  </table>
+  <p>Pika Package(데이터 백팩)는 선택 부속품입니다 (4장).</p>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">모듈 소개</h1></div>
+  <p class="lede">Pika Sense · Pika Gripper · Pika Station · Pika Package의 각 부분을 설명합니다. 상태 표시등은 부록 C를 보십시오. <span class="src">문서</span></p>
+
+  <h2 id="c4-s1">Pika Sense (데이터 수집기)</h2>
+  <p>Pika Sense는 손에 들고 단독으로 데이터를 수집하는 장치입니다. 손잡이 · 고정밀 깊이 카메라 · 광각 단안 카메라 · 고정밀 엔코더 · 두 손가락 그리퍼로 이루어지며, 고정밀 위치 데이터로 로봇팔 같은 장치를 원격조작할 수도 있습니다.</p>
+  <figure class="light"><img src="assets/pd_006.png" alt=""><figcaption><b>그림 6.</b> Pika Sense 각 부분 (AgileX 문서)</figcaption></figure>
+  <table class="t num tight">
+    <thead><tr><th>번호</th><th>이름</th><th>번호</th><th>이름</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>위치 태그 (Tracker)</td><td>8</td><td>위치 태그 전원 버튼</td></tr>
+      <tr><td>2</td><td>위치 태그 충전구</td><td>9</td><td>위치 태그 표시등</td></tr>
+      <tr><td>3</td><td>초광각 카메라</td><td>10</td><td>Type-C 포트</td></tr>
+      <tr><td>4</td><td>깊이 카메라</td><td>11</td><td>영점 버튼</td></tr>
+      <tr><td>5</td><td>깊이 카메라</td><td>12</td><td>상태 표시등</td></tr>
+      <tr><td>6</td><td>그리퍼 안쪽 패드</td><td>13</td><td>손잡이</td></tr>
+      <tr><td>7</td><td>두 손가락 그리퍼</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>대기 상태에서 그리퍼를 빠르게 두 번 쥐면 녹화가 켜지고, 다시 빠르게 두 번 쥐면 대기 상태로 돌아갑니다.</li>
+    <li>위쪽 위치 태그는 내장 배터리로 따로 동작하므로 정기적으로 충전하십시오. 다른 모듈은 Type-C 케이블로 전원을 받습니다.</li>
+  </ul>
+  <h3>영점 버튼 (11번, 뒤쪽 표시등 두 개 사이)</h3>
+  <table class="t wrap1">
+    <thead><tr><th>기능</th><th>조작</th><th>설명</th></tr></thead>
+    <tbody><tr><td>그리퍼 영점 설정</td><td>두 번 누르기</td><td>그리퍼의 현재 위치를 영점으로 정합니다.</td></tr></tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · 영점 버튼</div>
+    <p>영점은 출고 때 설정되어 있으므로 꼭 필요할 때만 조작하십시오. 조작할 때는 그리퍼를 완전히 닫은 상태에서 버튼을 누르십시오.</p></div>
+  <h3>USB 무선 수신기 (데이터 시트)</h3>
+  <p>위치 태그는 USB 무선 수신기로 수집 PC(주로 노트북이나 산업용 PC)와 무선 통신하므로, 위치 태그마다 무선 수신기와 짝지어 써야 합니다. 짝지은 수신기를 PC에 꽂고 위치 태그를 3초 동안 길게 눌러 켜십시오.
+    태그 표시등이 파란색에서 녹색으로 바뀌면 연결된 것입니다. 현재 ROS2 사용 설명서는 Tracker를 C-C 케이블로 Sense에 연결합니다 (7장).</p>
+  <figure class="light f45"><img src="assets/pd_007.jpg" alt=""><figcaption><b>그림 7.</b> USB 무선 수신기 (AgileX 문서)</figcaption></figure>
+
+  <h2 id="c4-s2">Pika Gripper (데이터 실행기)</h2>
+  <p>Pika Gripper는 두 손가락 그리퍼 · 깊이 카메라 · 광각 카메라로 이루어집니다. 표준 고정 구조를 갖추었고, 여러 로봇팔(AgileX PiPER 6자유도 로봇팔이나 다른 회사 로봇팔)에 달 수 있도록 설치 플랜지를 선택할 수 있습니다 (플랜지는 따로 구매).
+    그리퍼 모터용 전원 포트 하나와 센서 통신용 Type-C 포트 하나가 있습니다.</p>
+  <figure class="light"><img src="assets/pd_008.png" alt=""><figcaption><b>그림 8.</b> Pika Gripper 각 부분 (AgileX 문서)</figcaption></figure>
+  <table class="t num tight">
+    <thead><tr><th>번호</th><th>이름</th><th>번호</th><th>이름</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>광각 카메라</td><td>7</td><td>전원 · 통신 포트</td></tr>
+      <tr><td>2</td><td>깊이 카메라</td><td>8</td><td>영점 버튼</td></tr>
+      <tr><td>3</td><td>깊이 카메라</td><td>9</td><td>상태 표시등</td></tr>
+      <tr><td>4</td><td>그리퍼 슬라이드 레일</td><td>10</td><td>Type-C 데이터 통신 포트</td></tr>
+      <tr><td>5</td><td>그리퍼 안쪽 패드</td><td>11</td><td>플랜지 설치 위치</td></tr>
+      <tr><td>6</td><td>두 손가락 그리퍼</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p>영점 버튼은 Pika Sense와 같습니다. 두 번 누르면 그리퍼의 현재 위치가 영점이 됩니다. 꼭 필요할 때만, 그리퍼를 완전히 닫은 상태에서 조작하십시오.</p>
+  <h3>전원 · 통신 포트</h3>
+  <p>전원 포트는 XT30(PB)입니다. 함께 있는 통신 핀(CAN)은 쓰지 않으며, 통신과 제어는 모두 Type-C로 합니다. <b>USB 3.0 이상</b> 케이블로 그리퍼에 연결하십시오.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/pd_012.png" alt=""><figcaption><b>그림 9.</b> Pika Gripper 전원 · 통신 포트 (AgileX 문서)</figcaption></figure>
+    <table class="t num">
+      <thead><tr><th>번호</th><th>정의</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>24 V 전원 −</td></tr>
+        <tr><td>2</td><td>24 V 전원 +</td></tr>
+        <tr><td>3</td><td>CAN-L (예비)</td></tr>
+        <tr><td>4</td><td>CAN-H (예비)</td></tr>
+        <tr><td>5</td><td>Type-C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="c4-s3">Pika Station (위치 기지국)</h2>
+  <p>고정밀 위치 기지국은 이동식 거치대와 전용 배터리를 갖추었으며, 공간 안에서 Pika 데이터 장치의 위치를 밀리미터 수준으로 알려 줍니다.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/pd_013.png" alt=""><figcaption><b>그림 10.</b> Pika Station 각 부분 (AgileX 문서)</figcaption></figure>
+    <table class="t num tight">
+      <thead><tr><th>번호</th><th>이름</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>상태 표시등</td></tr>
+        <tr><td>2</td><td>앞면 패널</td></tr>
+        <tr><td>3</td><td>전원 포트</td></tr>
+        <tr><td>4</td><td>나사 설치 구멍</td></tr>
+        <tr><td>5</td><td>Micro-USB 포트</td></tr>
+        <tr><td>6</td><td>기지국 삼각대</td></tr>
+        <tr><td>7</td><td>위치 기지국</td></tr>
+        <tr><td>8</td><td>배터리 (최신 배터리는 아래쪽 거치대에 설치)</td></tr>
+        <tr><td>9</td><td>채널 설정 구멍</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>기지국 전원</h3>
+  <ul>
+    <li><b>방법 1</b>: 기본 제공 HTC 전원 공급기(220 V 교류 입력)로 기지국에 바로 전원을 넣습니다.</li>
+    <li><b>방법 2</b>: 기본 제공 배터리로 기지국에 전원을 넣습니다. 배터리와 기지국은 배터리-기지국 연결선으로 잇고, 배터리는 전용 충전기로 충전합니다.</li>
+  </ul>
+  <div class="two">
+    <figure class="light"><img src="assets/pd_014.jpg" alt=""><figcaption><b>그림 11.</b> 기지국 전원 어댑터 (AgileX 문서)</figcaption></figure>
+    <figure class="light"><img src="assets/pd_015.jpg" alt=""><figcaption><b>그림 12.</b> 배터리-기지국 연결선 (AgileX 문서)</figcaption></figure>
+  </div>
+  <figure class="light f60"><img src="assets/pd_016.jpg" alt=""><figcaption><b>그림 13.</b> 배터리 충전기 (AgileX 문서)</figcaption></figure>
+
+  <h2 id="c4-s4">Pika Package (데이터 백팩, 선택)</h2>
+  <div class="box note"><div class="h">참고 · 선택 부속품</div>
+    <p>Pika Package는 기본 구성에 들어 있지 않은 선택 부속품입니다. 구매는 영업 담당에게 문의하십시오.</p></div>
+  <p>Pika Package는 데이터 기록용 산업용 PC와 그 배터리, 고정 벨트로 이루어집니다. 내장 소프트웨어와 알고리즘으로 Pika Sense의 데이터를 수집 · 저장하고 내보내며, Pika Sense를 최대 두 대까지 동시에 쓸 수 있습니다.</p>
+  <figure class="light f60"><img src="assets/pd_017.png" alt=""><figcaption><b>그림 14.</b> Pika Package: 1 고정 벨트 · 2 데이터 기록 산업용 PC · 3 배터리 (AgileX 문서)</figcaption></figure>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">빠른 시작</h1></div>
+  <p class="lede">소프트웨어 구성 → 하드웨어 준비 → 사용 흐름 선택 → 사용의 순서로 시작합니다. <span class="src">문서</span></p>
+  <ol class="steps">
+    <li><b>소프트웨어 구성</b>6장의 소프트웨어 환경 구성을 마칩니다 (필수).</li>
+    <li><b>하드웨어 준비</b>기지국을 설치하고 위치 교정을 마칩니다 (7장).</li>
+    <li><b>흐름 선택</b>사용 방법에 맞는 8장의 절을 고릅니다.</li>
+    <li><b>사용</b>수집 · 원격조작 · 추론 실행을 시작합니다.</li>
+  </ol>
+  <div class="box note"><div class="h">참고 · 순서</div>
+    <p>기지국 교정에는 소프트웨어 환경이 필요하므로, 6장을 먼저 마친 뒤 7장의 위치 교정을 하십시오.</p></div>
+  <table class="t wrap1">
+    <caption data-tbl="flows"><b>표 5.</b> 사용 방법별로 읽을 절</caption>
+    <thead><tr><th>사용 방법</th><th>장치 구성</th><th>읽을 절</th></tr></thead>
+    <tbody>
+      <tr><td>본체 없는 수집 (로봇팔 제어 없음)</td><td>Pika Sense 1 ~ 2대 (Ego 카메라 선택)</td><td>8장 본체 없는 수집</td></tr>
+      <tr><td>로봇팔 원격조작 (그리퍼 · Gripper 없음)</td><td>Pika Sense 1 ~ 2대 (Ego 없음) + 로봇팔</td><td>8장 로봇팔 원격조작</td></tr>
+      <tr><td>로봇팔 원격조작 + 그리퍼 · Gripper</td><td>Pika Sense 1 ~ 2대 + 일반 그리퍼 · Pika Gripper (Ego 없음)</td><td>8장 로봇팔 원격조작 · Pika Gripper</td></tr>
+      <tr><td>그리퍼만으로 추론 실행</td><td>Pika Gripper + 임의의 로봇팔</td><td>8장 Pika Gripper</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">소프트웨어 환경 구성</h1></div>
+  <p class="lede">반드시 거쳐야 하는 단계입니다. 환경은 Ubuntu 22.04 + ROS 2 Humble입니다. <span class="src">문서</span></p>
+  <ol class="steps">
+    <li><b>ROS 2 Humble을 설치합니다.</b>AgileX는 fishros의 원클릭 설치 스크립트를 권장합니다. 화면 안내에 따라 설치합니다.
+      <pre class="cmd">cd ~ &amp;&amp; wget http://fishros.com/install -O fishros &amp;&amp; . fishros</pre></li>
+    <li><b>코드를 받습니다.</b>
+      <pre class="cmd">git clone https://github.com/agilexrobotics/pika_ros.git
+cd pika_ros &amp;&amp; git checkout ros2
+git submodule update --init --recursive
+cd ~/pika_ros/src/PikaAnyArm/agx_arm
+git clone https://github.com/agilexrobotics/agx_arm_ros.git
+cd agx_arm_ros/src/agx_arm_description
+git clone -b flattened https://github.com/agilexrobotics/agx_arm_urdf.git</pre></li>
+    <li><b>의존성을 설치합니다.</b>
+      <pre class="cmd">sudo apt-get update &amp;&amp; sudo apt install libjsoncpp-dev libpcap-dev python3-pcl build-essential zlib1g-dev libx11-dev libusb-1.0-0-dev freeglut3-dev liblapacke-dev libopenblas-dev libatlas-base-dev cmake git libssl-dev pkg-config libgtk-3-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev g++ python3-pip libopenvr-dev ros-humble-diagnostic-updater cutecom
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y &amp;&amp; sudo apt update &amp;&amp; sudo apt install -y gcc-13 g++-13 libstdc++6 libcurl4-openssl-dev
+git clone https://github.com/agilexrobotics/pyAgxArm.git
+cd pyAgxArm
+pip3 install .
+pip3 install "opencv-python&lt;5"
+pip3 install "numpy&lt;2"</pre>
+      <code>pyAgxArm</code>은 AgileX 로봇팔(PiPER · NERO 등)의 Python SDK로, 로봇팔 · 그리퍼의 Python 개발과 추론 실행에 씁니다. PikaAnyArm은 ROS2 원격조작 패키지로, 2단계에서 pika_ros의 서브모듈로 함께 받았습니다. 둘은 용도가 다릅니다.</li>
+    <li><b>USB 규칙을 설정합니다.</b>
+      <pre class="cmd">cd ~/pika_ros
+sudo cp scripts/81-vive.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger</pre>
+      이 단계를 마친 뒤 PC에 무선 수신기가 꽂혀 있으면 한 번 뺐다가 다시 꽂습니다.</li>
+    <li><b>RealSense SDK를 설치합니다.</b><code>pika_ros/source</code>의 <code>librealsense-2.55.1.zip</code>과 <code>curl-7.75.0.zip</code>을 홈 디렉터리에 풉니다 (<b>pika_ros 안의 폴더에 풀지 마십시오</b>).
+      <code>librealsense-2.55.1/CMake/external_libcurl.cmake</code>의 <code>/home/agilex/pika_ros/source/curl-7.75.0</code> 경로를 사용 중인 PC에 있는 curl-7.75.0의 실제 경로로 바꾼 뒤 빌드하고 설치합니다.
+      <pre class="cmd">cd librealsense-2.55.1
+mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; sudo make install</pre>
+      새 터미널에서 <code>realsense-viewer</code>를 입력해 화면이 열리면 설치된 것입니다.</li>
+    <li><b>install 압축 파일을 풀고 권한을 줍니다.</b><code>source</code>의 <code>install.zip</code>을 <code>~/pika_ros</code>에 풀고 실행 권한을 줍니다.
+      <pre class="cmd">chmod 777 -R install/</pre></li>
+    <li><b>환경 변수를 추가합니다.</b>
+      <pre class="cmd">echo 'source ~/pika_ros/install/setup.bash' &gt;&gt; ~/.bashrc</pre></li>
+    <li><b>pika_ros를 빌드합니다.</b><code>~/pika_ros</code>에서 실행합니다.
+      <pre class="cmd">colcon build</pre>
+      빌드가 끝나면 <code>pika_ros</code>에 <code>img · install · README.md · scripts · source · build · log · src</code>가 있습니다.</li>
+  </ol>
+  <div class="box note"><div class="h">참고 · 다음 단계</div>
+    <p>소프트웨어 환경 구성이 끝났습니다. 7장에서 하드웨어를 준비하십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">하드웨어 준비</h1></div>
+  <p class="lede">위치 교정에는 6장의 소프트웨어 환경이 필요합니다. 6장을 먼저 마친 뒤 아래 순서로 준비합니다. <span class="src">문서</span></p>
+  <ol class="steps">
+    <li><b>안전과 환경을 확인합니다.</b>2장의 안전 수칙을 읽고 이해했는지, 작업 환경이 안전하고 트였는지, 장치가 모두 갖춰져 있고 눈에 띄는 이상이 없는지, 배선이 제대로 연결되었는지 확인합니다.</li>
+    <li><b>소프트웨어 구성을 확인합니다.</b>6장을 마쳤는지 확인합니다.</li>
+    <li><b>장치를 연결하고 충전 상태를 봅니다.</b>Pika Sense의 Tracker를 양쪽 끝이 Type-C인 케이블(C-C)로 Sense 오른쪽 위의 Type-C 포트에 연결하고, Sense 본체는 데이터 케이블로 PC에 연결합니다.
+      <div class="two">
+        <figure class="light"><img src="assets/pm_002.png" alt=""><figcaption><b>그림 15.</b> Tracker를 Sense의 Type-C에 연결 (AgileX 문서)</figcaption></figure>
+        <figure class="light"><img src="assets/pm_003.jpg" alt=""><figcaption><b>그림 16.</b> Tracker 표시등 위치 (AgileX 문서)</figcaption></figure>
+      </div>
+      Tracker 표시등이 흰색이나 녹색인지 확인합니다. 노란색 · 빨간색이거나 꺼져 있으면 휴대폰 충전기(5 V 3 A 이상)로 Tracker만 따로 충전하고, 표시등이 흰색이나 녹색으로 바뀐 뒤에 씁니다.</li>
+    <li><b>기지국을 설치하고 위치를 교정합니다.</b>AgileX 문서 <i>【ROS2】Pika 定位器与Sense使用说明及定位校准</i> (kb.agilex.ai/s/agx-pika-products-cn-en/p/ros2pika-sense-iNNLTg9WsD)에 따라 기지국을 설치하고 Tracker를 교정합니다.
+      <b>Pika Gripper를 단독으로 쓰는 경우(8장)를 빼고 모든 사용 방법에서 필수</b>이며, 6장을 마친 뒤에 합니다.</li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">사용 흐름</h1></div>
+  <p class="lede">6장 소프트웨어 구성과 7장 하드웨어 준비를 마친 뒤 시작합니다 (Pika Gripper를 단독으로 쓸 때는 하드웨어 준비가 필요 없습니다). 각 단계의 자세한 절차는 표에 적은 AgileX 문서에 있습니다. <span class="src">문서</span></p>
+
+  <h2 id="c8-s1">본체 없는 수집 (Pika Sense · Ego 카메라)</h2>
+  <p>Pika Sense와 Ego 카메라(선택)로 본체 없이 수집하려면, 7장의 위치 교정을 마쳤는지 확인한 뒤 아래 표의 순서대로 각 문서의 절차를 따르십시오. 설정하고 쓰는 동안에는 기지국 설치 환경을 좋게 유지하고, 작업 환경의 안전을 확보하십시오.</p>
+  <table class="t wrap1 tight">
+    <thead><tr><th>단계</th><th>AgileX 문서 (kb.agilex.ai/s/agx-pika-products-cn-en/p/…)</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>【ROS2】Pika无本体采集启动流程 (ros2pika-OAVJkq461Z)</td><td>본체 없는 수집의 시작 절차와 데이터 저장 형식을 설명합니다. Sense 한 대 · Ego 한 대 · Sense 두 대 · Sense 두 대 + Ego 구성을 다룹니다. 문서의 명령은 6장과 앞 문서의 설정, 기지국 교정을 마친 뒤 실행하십시오.</td></tr>
+      <tr><td>2</td><td>【ROS2】采集数据处理流程 (ros2-IfpG8EcCko)</td><td>수집이 끝난 뒤 데이터를 처리하는 절차입니다.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s2">로봇팔 원격조작</h2>
+  <p>기지국을 설치한 곳에서 Pika Sense로 로봇팔을 원격조작하려면, 7장의 위치 교정을 마쳤는지 확인한 뒤 아래 표의 순서대로 각 문서의 절차를 따르십시오. 설정하고 쓰는 동안에는 기지국 설치 환경을 좋게 유지하고, 작업 환경의 안전을 확보하십시오.</p>
+  <table class="t wrap1 tight">
+    <thead><tr><th>단계</th><th>AgileX 문서</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>【ROS2】Pika 遥操作机械臂 (ros2pika-k1E2fXuuet)</td><td>Sense 한 대 · Sense 한 대 + Gripper 한 대 · Sense 두 대 · Sense 두 대 + Gripper 두 대로 로봇팔을 원격조작하는 방법을 다룹니다.</td></tr>
+      <tr><td>2</td><td>【ROS2】Pika Gripper 使用说明 (ros2pika-gripper-NnKA7Kx6aE)</td><td>PiPER를 예로 들어 Gripper 설치 방법과, 모델 추론 때 그리퍼 데이터를 받고 그리퍼를 제어하는 방법을 설명합니다. <b>Pika Gripper로 원격조작하지 않으면 이 단계를 건너뛰십시오.</b></td></tr>
+      <tr><td>3</td><td>【ROS2】Pika遥操作采集启动流程 (ros2pika-ZeQGmkMIld)</td><td>AgileX 로봇팔을 원격조작하며 수집할 때의 시작 절차와 데이터 저장 형식을 설명합니다. 앞의 모든 원격조작 방식을 다룹니다. 문서의 명령은 소프트웨어 환경 구성과 앞 문서의 설정, 기지국 교정을 마친 뒤 실행하십시오.</td></tr>
+      <tr><td>4</td><td>【ROS2】采集数据处理流程 (ros2-IfpG8EcCko)</td><td>수집이 끝난 뒤 데이터를 처리하는 절차입니다.</td></tr>
+    </tbody>
+  </table>
+  <p>PiPER와 NERO 로봇팔 사용법은 <b>AgileX PiPER 운용 설명서</b>와 <b>AgileX NERO 운용 설명서</b>를 보십시오.</p>
+
+  <h2 id="c8-s3">Pika Gripper</h2>
+  <div class="box caution"><div class="h">주의 · 쓰기 전에</div>
+    <ul>
+      <li>Gripper는 Station · Sense 없이 단독 그리퍼로 쓸 수 있고, PiPER뿐 아니라 어떤 로봇팔에도 달아 쓸 수 있습니다.</li>
+      <li>Sense로 수집한 데이터의 추론과, Sense로 하는 로봇팔 원격조작에 쓸 수 있습니다.</li>
+      <li><b>함께 있는 통신 핀(CAN)은 쓰지 않고, 통신과 제어는 모두 Type-C로 합니다. 통신 케이블은 반드시 USB 3.0 포트에 연결하십시오.</b></li>
+    </ul></div>
+  <p>6장을 마친 뒤 시작하십시오. 원격조작에 쓰려면 7장(위치 교정 포함)도 마쳐야 합니다.</p>
+  <h3>단독 그리퍼로 사용</h3>
+  <table class="t wrap1 tight">
+    <thead><tr><th>단계</th><th>AgileX 문서</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>【ROS2】Pika Gripper 使用说明 (ros2pika-gripper-NnKA7Kx6aE)</td><td>PiPER를 예로 들어 Gripper 설치 방법과, 모델 추론 때 그리퍼 데이터를 받고 그리퍼를 제어하는 방법을 설명합니다.</td></tr>
+    </tbody>
+  </table>
+  <h3>Pika Sense와 함께 임의의 로봇팔 원격조작</h3>
+  <div class="box note"><div class="h">참고 · 2차 개발</div>
+    <p>이 내용은 2차 개발 범위입니다. 기술 지원이 필요하면 AgileX 기술 지원 창구에 문의하십시오.</p></div>
+  <table class="t wrap1 tight">
+    <thead><tr><th>단계</th><th>자료</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>PikaAnyArm GitHub 저장소 (ros2 브랜치, pika_ros의 서브모듈)</td><td>이 저장소의 코드로 Pika Gripper와 Pika Sense를 함께 써서 임의의 로봇팔을 원격조작합니다.</td></tr>
+      <tr><td>2</td><td>【ROS2】Pika Gripper 使用说明 (ros2pika-gripper-NnKA7Kx6aE)</td><td>PiPER를 예로 들어 Gripper 설치 방법과, 모델 추론 때 그리퍼 데이터를 받고 그리퍼를 제어하는 방법을 설명합니다.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">유지 보수와 문제 해결</h1></div>
+  <p class="lede">기지국 청소 방법과 자주 생기는 문제의 해결 방법을 설명합니다. <span class="src">문서</span></p>
+  <h2 id="c9-s1">기지국 청소</h2>
+  <div class="box warn"><div class="h">경고 · 물기</div>
+    <p>감전을 막으려면 기지국과 전원 어댑터를 언제나 마른 상태로, 액체에서 멀리 두십시오.</p></div>
+  <ol class="steps">
+    <li><b>플러그를 뽑고 기지국을 떼어 냅니다.</b></li>
+    <li><b>물을 조금 묻힌, 거칠지 않은 부드러운 천으로 닦습니다.</b>세제를 쓰지 마십시오. 앞면 패널을 긁지 말고, 어떤 부품도 분해하지 마십시오.</li>
+  </ol>
+
+  <h2 id="c9-s2">자주 생기는 문제</h2>
+  <h3>교정 중 driver_openvr.so를 찾지 못함</h3>
+  <pre class="cmd">Error loading .../install/lib/plugins/driver_openvr.so: libopenvr_api.so.1: cannot open shared object file: No such file or directory</pre>
+  <p>의존성을 설치한 뒤 다시 교정하십시오.</p>
+  <pre class="cmd">sudo apt install libopenvr-dev</pre>
+  <h3>교정 중 터미널이 멈추고 위치 오차가 나오지 않음</h3>
+  <pre class="cmd">rm ~/.config/libsurvive/config.json</pre>
+  <p>config.json을 지운 뒤 다시 교정하십시오.</p>
+  <h3>교정 끝에 error failures가 나옴 · 사용 중 TF 좌표가 어긋남</h3>
+  <p>error failures는 교정이 실패했다는 뜻입니다. 두 경우 모두 햇빛이 드는지, 적외선을 스스로 내는 장치가 있는지, Sense가 기지국 FOV 안에 들도록 기지국을 두었는지 확인한 뒤 다시 교정하십시오.</p>
+  <h3>기지국이 위치를 잡지 못함</h3>
+  <p>기지국을 둔 위치, 기지국 전원이 정상인지, Pika Sense와 Pika Station 사이에 가리는 것이 있는지, 적외선 간섭원이 있는지 확인하십시오.</p>
+  <h3>어안 카메라 연결 끊김</h3>
+  <p>Ubuntu에 기본으로 들어 있는 카메라 프로그램 Cheese로 어안 카메라 화면을 열어 보십시오. 그래도 영상이 나오지 않으면 기술 지원에 문의하십시오.</p>
+  <h3>스테레오 카메라 연결 끊김</h3>
+  <p>터미널에서 <code>realsense-viewer</code>를 실행해 카메라가 인식되는지 확인하십시오. 인식되지 않으면 기술 지원에 문의하십시오.</p>
+  <h3>자세 정보를 TF로 읽어도 됩니까?</h3>
+  <p>Pika가 한 대라면 <code>/pika_pose</code> 토픽을 구독해 자세 정보를 받을 수 있습니다.</p>
+  <h3>Failed to Call service</h3>
+  <p>이 오류만 따로 나온다면 조치할 필요가 없습니다. 수집 서비스가 켜져 있지 않아서 나오는 오류입니다.</p>
+  <h3>Permission denied</h3>
+  <figure class="light"><img src="assets/pm_004.png" alt=""><figcaption><b>그림 17.</b> Permission denied 오류 (AgileX 문서)</figcaption></figure>
+  <p>install 디렉터리에 권한을 주지 않아서 생기는 오류입니다. 아래 명령으로 권한을 주십시오.</p>
+  <pre class="cmd">chmod 777 -R install/</pre>
+  <h3>casadi 가져오기 오류</h3>
+  <p>conda 환경에서 PikaAnyArm 원격조작을 실행할 때 자주 생기는 오류입니다 (그림의 경로는 예시입니다).</p>
+  <figure class="light f80"><img src="assets/pm_005.png" alt=""><figcaption><b>그림 18.</b> casadi 오류 (AgileX 문서)</figcaption></figure>
+  <p><b>원인</b>: 프로그램이 conda 환경에 설치된, casadi와 호환되는 새 C++ 표준 라이브러리 대신 시스템에 기본으로 들어 있는 오래된 라이브러리에 잘못 링크되었습니다.<br>
+    <b>해결</b>: <code>LD_PRELOAD</code>를 설정해 동적 링커가 conda 환경의 라이브러리를 먼저 불러오게 하십시오. 경로는 실제 conda 환경에 맞게 고치십시오.</p>
+  <pre class="cmd">export LD_PRELOAD=/home/&lt;user name&gt;/miniconda3/envs/Pika/lib/libstdc++.so.6</pre>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX</div><h1 id="c10" data-mark="c10">치수 도면 · 권장 구성 · 상태 표시등 · 자료 목록</h1></div>
+  <p class="lede">AgileX 사용 설명서의 부록과 자료 목록입니다. 도면 단위는 mm입니다. <span class="src">문서</span></p>
+
+  <h2 id="c9-s3">A. 치수 도면</h2>
+  <div class="two">
+    <figure class="light"><img src="assets/pm_006.jpg" alt=""><figcaption><b>그림 19.</b> Pika Gripper</figcaption></figure>
+    <figure class="light"><img src="assets/pm_007.png" alt=""><figcaption><b>그림 20.</b> Pika Gripper (카메라 상대 위치 치수는 Sense와 같음)</figcaption></figure>
+  </div>
+  <div class="two">
+    <figure class="light"><img src="assets/pm_008.jpg" alt=""><figcaption><b>그림 21.</b> Pika Sense</figcaption></figure>
+    <figure class="light"><img src="assets/pm_009.jpg" alt=""><figcaption><b>그림 22.</b> Pika Station (높이 조절)</figcaption></figure>
+  </div>
+
+  <h2 id="c9-s4">B. 권장 구성</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="configs"><b>표 6.</b> 권장 구성 (데이터 저장 PC · 로봇팔 · 추론용 PC나 연산 카드는 따로 준비)</caption>
+    <thead><tr><th>구성</th><th>장치</th><th>쓰는 곳</th></tr></thead>
+    <tbody>
+      <tr><td>구성 1 (권장)</td><td>Pika Station × 2 · Pika Sense × 1 · Pika Gripper × 1 · PiPER × 1</td><td>한 팔 Pick &amp; Place와 조작. Sense 한 대로 수집한 뒤 실행기를 로봇팔에 달아 추론. 작업 공간 약 6 × 6 m</td></tr>
+      <tr><td>구성 2 (일반)</td><td>Pika Station × 2 · Pika Sense × 2 · Pika Gripper × 2 · PiPER × 2</td><td>양팔 Pick &amp; Place 같은 복잡한 조작. Sense 두 대로 동시에 수집한 뒤 실행기를 로봇팔에 달아 추론. 작업 공간 약 5 × 5 m</td></tr>
+      <tr><td>구성 3 (넓은 공간)</td><td>Pika Station × 4 · Pika Sense × 2 · Pika Gripper × 2 · PiPER × 2</td><td>구성 2와 같은 양팔 작업을 넓은 공간에서. 작업 공간 약 10 × 10 m</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s5">C. 상태 표시등</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="leds"><b>표 7.</b> 상태 표시등 (AgileX 사용 설명서 ROS2)</caption>
+    <thead><tr><th>장치</th><th>색</th><th>상태</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="4">Pika Gripper</td><td><span class="led g"></span>녹색</td><td>깜박임</td><td>전원 투입 후 자가 점검 중</td></tr>
+      <tr><td><span class="led g"></span>녹색</td><td>켜짐</td><td>자가 점검 통과, 대기 (그리퍼 Disable)</td></tr>
+      <tr><td><span class="led b"></span>파란색</td><td>켜짐</td><td>작동 상태 (그리퍼 Enable)</td></tr>
+      <tr><td><span class="led r"></span>빨간색</td><td>켜짐</td><td>그리퍼 모터 고장 경고 (고장 검출 데이터 프레임으로 판정)</td></tr>
+      <tr><td rowspan="5">Pika Sense</td><td><span class="led w"></span>흰색</td><td>켜짐</td><td>기본 전원 투입 상태</td></tr>
+      <tr><td><span class="led y"></span>노란색</td><td>켜짐</td><td>원격조작 실패나 수집 프레임 누락 같은 이상</td></tr>
+      <tr><td><span class="led g"></span>녹색</td><td>켜짐</td><td>원격조작 · 수집 정상</td></tr>
+      <tr><td><span class="led b"></span>파란색</td><td>켜짐</td><td>두 번 쥐기 · 명령 전환 감지</td></tr>
+      <tr><td><span class="led r"></span>빨간색</td><td>켜짐 · 깜박임</td><td>위치 데이터 손실</td></tr>
+      <tr><td rowspan="4">Tracker</td><td><span class="led w"></span>흰색</td><td>켜짐</td><td>완전 충전 (전원 꺼짐)</td></tr>
+      <tr><td><span class="led g"></span>녹색</td><td>켜짐</td><td>완전 충전 (전원 켜짐), 정상</td></tr>
+      <tr><td><span class="led y"></span>노란색</td><td>켜짐</td><td>충전 중</td></tr>
+      <tr><td><span class="led r"></span>빨간색</td><td>켜짐 · 깜박임</td><td>배터리 부족. 충전기로 Tracker만 따로, 표시등이 흰색 · 녹색이 될 때까지 충전</td></tr>
+      <tr><td rowspan="2">Pika Station</td><td><span class="led g"></span>녹색</td><td>켜짐</td><td>정상</td></tr>
+      <tr><td><span class="led b"></span>파란색</td><td>켜짐</td><td>안정화 대기. 계속되면 단단히 설치되었는지, 진동이 적은 면에 두었는지 확인</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s6">D. AgileX 자료 목록</h2>
+  <p>AgileX가 PIKA 사용자에게 안내하는 공식 자료입니다 (<i>【对外】PIKA产品使用资料清单-202507</i>, 2026-09-18 판).</p>
+  <table class="t wrap1 tight">
+    <caption data-tbl="resources"><b>표 8.</b> PIKA 공식 자료</caption>
+    <thead><tr><th>자료</th><th>주소 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td>제품 페이지</td><td>www.agilex.ai (Pika Pro · UMI와 Ego 데이터 수집 솔루션)</td></tr>
+      <tr><td>개봉 영상</td><td>bilibili BV1kTgn6sEHe (영상의 백팩과 Ego는 선택 부속품)</td></tr>
+      <tr><td>사용 설명서 ROS2</td><td>Pika 用户手册: agilexsupport.yuque.com/staff-hso6mo/peoot3/zozsdvvgvgha4zgd (이 책의 근거) · 대외판: …/peoot3/vm7e26ho2hmuw0ng</td></tr>
+      <tr><td>Pika Package 사용 설명서</td><td>agilexsupport.yuque.com/staff-hso6mo/peoot3/awqtm00vsb829b3z (선택 부속품 데이터 백팩)</td></tr>
+      <tr><td>구조 모델 파일</td><td>agilexsupport.yuque.com/staff-hso6mo/peoot3/cg50c6d2fn27aimk (Pika Gripper · Pika Sense)</td></tr>
+      <tr><td>Python SDK</td><td>github.com/agilexrobotics/pika_sdk (LGPL-3.0)</td></tr>
+      <tr><td>ROS 드라이버</td><td>github.com/agilexrobotics/pika_ros (BSD-3-Clause)</td></tr>
+      <tr><td>원격조작 코드</td><td>github.com/agilexrobotics/PikaAnyArm (BSD-3-Clause) · 임의 로봇팔 원격조작 방법: agilexsupport.yuque.com/staff-hso6mo/qdr95l/aaypydzgtmog2gsz</td></tr>
+      <tr><td>자주 묻는 질문</td><td>agilexsupport.yuque.com/staff-hso6mo/peoot3/ltl2m8a3crra12kg</td></tr>
+      <tr><td>예제 데이터셋</td><td>huggingface.co/datasets/AgileXRobotics/pika_sample_data</td></tr>
+      <tr><td>시연 영상</td><td>bilibili BV1cGrYYuEv9 (전체) · BV1Pew3eTEZD (데이터 수집) · BV14oc9etErC (Gripper 추론) · BV13zRgYbEfF (한 팔 원격조작) · BV13G9dYDEua (여러 팔 원격조작)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>
