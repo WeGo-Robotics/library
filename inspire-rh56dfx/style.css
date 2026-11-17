@@ -1,0 +1,4 @@
+/* Inspire RH56DFX operator manual: short tables and side-by-side pairs stay whole so a caption never sits alone at a page foot */
+table.t.keep, .two{ break-inside:avoid; }
+/* register names stay on one line in the register lists */
+table.t.regs td:nth-child(2) code{ white-space:nowrap; }

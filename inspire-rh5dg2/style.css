@@ -1,0 +1,4 @@
+/* Inspire RH5DG2 operator manual: short tables and side-by-side pairs stay whole so a caption never sits alone at a page foot */
+table.t.keep, .two{ break-inside:avoid; }
+/* angle ranges (90° ~ 165°) stay on one line */
+table.t.angdef td:last-child{ white-space:nowrap; }

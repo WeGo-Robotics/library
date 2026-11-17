@@ -1,0 +1,1637 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Inspire RH56DFX · RH56BFX 다관절 손 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css */
+@page {
+  @top-left  { content: "Inspire RH56DFX · RH56BFX"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Inspire RH56DFX · RH56BFX 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/Inspire_RH56DFX_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">주요 특징</a><a class="wm-t2" href="#c1-s2">모델</a><a class="wm-t2" href="#c1-s3">구조와 치수</a><a class="wm-t2" href="#c1-s4">성능 사양</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">안전 등급</a><a class="wm-t2" href="#c2-s2">개봉과 인수</a><a class="wm-t2" href="#c2-s3">보관과 운송</a><a class="wm-t2" href="#c2-s4">설치</a><a class="wm-t2" href="#c2-s5">배선</a><a class="wm-t2" href="#c2-s6">전원 투입</a><a class="wm-t2" href="#c2-s7">이상이 생겼을 때</a><a class="wm-t2" href="#c2-s8">사용 종료와 폐기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>전기 연결과 통신 방식</a></summary><a class="wm-t2" href="#c3-s1">핀 정의</a><a class="wm-t2" href="#c3-s2">통신 방식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>RS485 프로토콜</a></summary><a class="wm-t2" href="#c4-s1">통신 프로토콜 개요</a><a class="wm-t2" href="#c4-s2">RS485 레지스터 읽기 · 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Modbus RTU</a></summary><a class="wm-t2" href="#c5-s1">Modbus 프로토콜 개요</a><a class="wm-t2" href="#c5-s2">보유 레지스터 읽기 (0x03)</a><a class="wm-t2" href="#c5-s3">단일 레지스터 프리셋 (0x06)</a><a class="wm-t2" href="#c5-s4">다중 레지스터 프리셋 (0x10)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>레지스터</a></summary><a class="wm-t2" href="#c6-s1">레지스터 목록</a><a class="wm-t2" href="#c6-s2">시스템 설정</a><a class="wm-t2" href="#c6-s3">보호값과 전원 투입 설정값</a><a class="wm-t2" href="#c6-s4">동작 설정값</a><a class="wm-t2" href="#c6-s5">상태 읽기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>동작 시퀀스</a></summary><a class="wm-t2" href="#c7-s1">동작 시퀀스 레지스터</a><a class="wm-t2" href="#c7-s2">동작 시퀀스 읽기</a><a class="wm-t2" href="#c7-s3">동작 시퀀스 쓰기</a><a class="wm-t2" href="#c7-s4">동작 시퀀스 실행</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>손목 모듈</a></summary><a class="wm-t2" href="#c8-s1">개요</a><a class="wm-t2" href="#c8-s2">손목 레지스터</a><a class="wm-t2" href="#c8-s3">RS232 · RS485 레지스터 읽기 · 쓰기</a><a class="wm-t2" href="#c8-s4">CAN 레지스터 읽기 · 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>PC 소프트웨어</a></summary><a class="wm-t2" href="#c9-s1">준비와 연결</a><a class="wm-t2" href="#c9-s2">상태 데이터 보기</a><a class="wm-t2" href="#c9-s3">손가락 움직이기</a><a class="wm-t2" href="#c9-s4">파라미터 설정</a><a class="wm-t2" href="#c9-s5">동작 시퀀스</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>Unitree G1 연동</a></summary><a class="wm-t2" href="#c10-s1">제어 방식</a><a class="wm-t2" href="#c10-s2">G1 손 인터페이스</a><a class="wm-t2" href="#c10-s3">예제</a><a class="wm-t2" href="#c10-s4">패키지 내려받기</a></details></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>Inspire <span>RH56DFX</span><br>다관절 손</h1>
+  <div class="title2">RH56BFX · 손목형 포함 · 6자유도 · 관절 12개 · RS485</div>
+  <div class="bar"></div>
+  <p class="lead">사양과 커넥터 핀 정의, RS485 · Modbus RTU 프로토콜, 레지스터 전체와 동작 시퀀스, 손목 모듈을
+    Inspire-Robots 공식 문서에서 옮기고, PC 소프트웨어와 Unitree G1 연동을 함께 실었습니다.</p>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>Inspire RH56 시리즈 다관절 손: RH56DFX · RH56BFX와 손목 모듈이 달린 RH56DFXW · RH56BFXW (6자유도 · 관절 12개, RS485)</td></tr>
+      <tr><td>근거 문서</td><td>Inspire-Robots <i>The Dexterous Hand RH56 Series User Manual</i> V1.0.9 (2024-01, PRJ-02-TS-U-001) ·
+        <i>Wrist Module of the Dexterous Hand Instructions</i> V0.0.2 (2024-01, PRJ-02-TS-U-004) ·
+        Inspire 웹사이트의 RH56DFX · RH56BFX 제품 페이지 (2026-11-17 수집) ·
+        Unitree 문서 센터 <i>G1 SDK Development Guide</i>의 「DFX Dexterous Hand」 (2026-11-06 수집)</td></tr>
+      <tr><td>소프트웨어</td><td>Inspire-Robots <i>The Dexterous Hands Instructions</i> V0.0.2 (2024-01, PRJ-02-TS-U-002) ·
+        <i>The Dexterous Hand PC Instructions</i> V0.0.1 (2024-01, PRJ-02-TS-U-003)</td></tr>
+      <tr><td>함께 보는 책</td><td><a data-manual="inspire-rh56e2" href="../inspire-rh56e2/">Inspire RH56E2 · RH56DFTP 운용 설명서</a> (같은 PC 소프트웨어, 같은 RS485 프레임 형식)</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>1장과 3 ~ 7장은 Inspire 공식 사용 설명서(영문) 전체를 옮긴 것이며 (1장의 '모델' 절만 Inspire 제품 페이지), 장 순서는 WeGo 설명서 형식에 맞췄습니다 (원문 2장 '통신 프로토콜'을 4 ~ 7장으로 나눔).
+      원문에는 안전 수칙 장이 없어서, 2장 '중요 안전 수칙'은 Inspire의 최신 다관절 손 사용 설명서들에 실린 안전 수칙을 옮겨 넣었습니다.
+      8장은 Inspire의 손목 모듈 설명서를, 9장은 PC 소프트웨어 문서 두 편을, 10장은 Unitree 문서를 옮겼습니다.
+      원문의 오류나 앞뒤가 맞지 않는 곳은 값을 고치지 않고 그 자리에 <b>문서 오류</b> · <b>문서 차이</b> 상자로 적었습니다.</p>
+    <p>원문 설명서는 손 모델 이름을 'RH56 시리즈'로만 적고, 성능 사양 표에서 DF · BF 두 가지를 나눕니다. Inspire 제품 페이지에 따라 DF는 RH56DFX, BF는 RH56BFX로 읽었습니다 (1장).</p>
+    <p class="copy">© WeGo Robotics (한국어 번역) · 원문 © Beijing Inspire-Robots Technology Co., Ltd. WeGo Robotics는 Inspire-Robots의 공식 파트너입니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">제품 개요</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">전기 연결과 통신 방식</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">RS485 프로토콜</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">Modbus RTU</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">레지스터</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">동작 시퀀스</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">손목 모듈</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">PC 소프트웨어</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t">Unitree G1 연동</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">제품 개요</h1></div>
+  <p class="lede">RH56 시리즈는 작고 토크가 큰 리니어 서보 액추에이터 여섯 개로 움직이는 다섯 손가락 다관절 손입니다. RS485 포트로 손 내부 레지스터를 읽고 써서 제어합니다. <span class="src">문서</span></p>
+
+  <h2 id="c1-s1">주요 특징 <span class="src">문서</span></h2>
+  <p>RH56 시리즈 다관절 손(이하 '손')은 부피가 작고 토크가 큰 리니어 서보 액추에이터를 통합해 설계한 기계식 다관절 손입니다. 리니어 서보 액추에이터가 여섯 개 들어 있고,
+    사용자 인터페이스로는 RS232 · RS485 · CAN 통신을 씁니다 (RS232와 CAN은 주문 제작 모델, 3장). 감도가 높은 압력 센서가 들어 있어, 임계값을 달리 정하면 단단한 정도가 다른 물체도 쉽게 쥘 수 있습니다.</p>
+  <p>제어 명령이 간결하고 효율적이어서 손을 빠르게 다룰 수 있으며, 성능이 뛰어나 서비스 로봇 · 교구 · 의수 같은 분야에 알맞습니다.</p>
+
+  <h2 id="c1-s2">모델 <span class="src">문서</span></h2>
+  <p>원문 설명서는 'RH56 시리즈'라는 이름만 쓰고 모델 번호를 적지 않습니다. 성능 사양 표(표 2)의 쥐는 힘만 DF · BF로 나누며, 이 값은 Inspire 제품 페이지의 RH56DFX · RH56BFX 값과 같습니다.
+    제품 페이지에 실린 모델은 다음과 같습니다. 이름 끝의 L은 왼손, R은 오른손이고, 이름에 W가 붙은 모델은 손목 모듈(8장)이 달린 6 + 2자유도 모델입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-models"><b>표 1.</b> RH56DFX · RH56BFX 모델 (Inspire 제품 페이지)</caption>
+    <thead><tr><th>항목</th><th>RH56DFX</th><th>RH56BFX</th></tr></thead>
+    <tbody>
+      <tr><td>손목 없음</td><td>RH56DFX-2L · RH56DFX-2R</td><td>RH56BFX-2L · RH56BFX-2R</td></tr>
+      <tr><td>손목 포함</td><td>RH56DFXW-2L · RH56DFXW-2R</td><td>RH56BFXW-2L · RH56BFXW-2R</td></tr>
+      <tr><td>엄지 손끝 힘 · 네 손가락 손끝 힘</td><td>15 N · 10 N</td><td>6 N · 4 N</td></tr>
+      <tr><td>네 손가락 굽힘 속도</td><td>260°/s</td><td>570°/s</td></tr>
+      <tr><td>엄지 굽힘 속도 · 엄지 측면 회전 속도</td><td>70°/s · 107°/s</td><td>150°/s · 235°/s</td></tr>
+      <tr><td>무게 (손목 없음 · 손목 포함)</td><td colspan="2">540 g · 650 g</td></tr>
+      <tr><td>동작 전압</td><td colspan="2">DC 12 ~ 48 V</td></tr>
+      <tr><td>손목 요 · 피치 동작 범위</td><td colspan="2">±27° · ±22° (손목 포함 모델, 손목 부하 토크 2 N·m, 손 무게 제외)</td></tr>
+    </tbody>
+  </table>
+  <p>Inspire의 <i>The Dexterous Hands Instructions</i>(9장)는 RH56DF3-1R을 예로 듭니다.</p>
+  <figure class="light f45"><img src="assets/rh56_df3.jpg" alt=""><figcaption data-fig="fig-df3"><b>그림 1.</b> RH56DF3-1R 외관 (Inspire 문서)</figcaption></figure>
+  <div class="box note"><div class="h">문서 차이 · 제품 페이지와 설명서</div>
+    <p>제품 페이지의 동작 전압은 DC 12 ~ 48 V, 대기 전류는 0.09 A(@24 V)이고, 사용 설명서는 동작 전압 24 V, 대기 전류 0.12 A(@24 V)로 적습니다 (표 2).
+      무게는 제품 페이지가 540 g, <i>The Dexterous Hands Instructions</i>가 500 g입니다. 전원은 받은 손의 라벨과 공급처의 안내를 따르십시오.</p></div>
+
+  <h2 id="c1-s3">구조와 치수 <span class="src">문서</span></h2>
+  <p>손의 구조와 치수는 다음과 같습니다.</p>
+  <figure class="light"><img src="assets/rh56_dims.png" alt=""><figcaption data-fig="fig-dims"><b>그림 2.</b> 구조와 치수 (Inspire 문서)</figcaption></figure>
+
+  <h2 id="c1-s4">성능 사양 <span class="src">문서</span></h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-spec"><b>표 2.</b> 성능 사양</caption>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>전체 관절 수</td><td>12</td></tr>
+      <tr><td>자유도</td><td>6</td></tr>
+      <tr><td>힘 센서 수</td><td>6</td></tr>
+      <tr><td>힘 센서 분해능</td><td>0.5 N</td></tr>
+      <tr><td>손끝 반복 위치 정밀도</td><td>0.2 mm</td></tr>
+      <tr><td>네 손가락 쥐는 힘</td><td>DF: 10 N · BF: 4 N</td></tr>
+      <tr><td>엄지 쥐는 힘</td><td>DF: 15 N · BF: 6 N</td></tr>
+      <tr><td>동작 전압</td><td>24 V</td></tr>
+      <tr><td>대기 전류</td><td>0.12 A @ 24 V</td></tr>
+      <tr><td>무부하 동작 평균 전류</td><td>0.6 A @ 24 V</td></tr>
+      <tr><td>최대 쥐는 힘일 때 전류</td><td>2 A @ 24 V</td></tr>
+      <tr><td>통신 인터페이스</td><td>RS485</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <!-- Inspire 다관절 손 공통 안전 수칙. Inspire-Robots 사용 설명서의 'Safety Precautions'를 옮긴 것으로,
+     Inspire 책(RH56E2 · RH5DG2 · RH56H1 · RH56F1 · RH56 시리즈)이 2장 첫머리 다음에 함께 넣습니다.
+     모델 이름을 쓰지 않습니다 ('이 제품'). 한 모델에만 맞는 문장은 여기 넣지 말고 그 책에 씁니다. -->
+  <p class="lede">이 제품을 쓰기 전에 이 장을 꼭 읽고, 조작 · 안전 · 주의 사항을 충분히 이해한 뒤에 다루십시오. 제품은 바르게 설치하고, 안전에 최대한 주의하며 조작하십시오. <span class="src">문서</span></p>
+  <p>제품 조작에 따르는 위험은 주로 이 장의 <b>경고</b> · <b>주의</b> 상자에 적혀 있습니다. 원문이 가장 높은 <b>위험</b> 등급으로 표시한 항목은 경고 상자 머리글에 '(위험 등급)'을 붙였습니다. 그 밖의 사항은 일반 전기 작업 수칙을 따르십시오.</p>
+
+  <h2 id="c2-s1">안전 등급</h2>
+  <table class="t wrap1">
+    <thead><tr><th>표시</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>위험</td><td>정해진 절차를 지키지 않으면 사망하거나 크게 다칩니다.</td></tr>
+      <tr><td>경고</td><td>정해진 절차를 지키지 않으면 사망하거나 크게 다칠 수 있습니다.</td></tr>
+      <tr><td>주의</td><td>정해진 절차를 지키지 않으면 가볍게 다치거나 장치가 손상될 수 있습니다.</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>설명을 알아보기 쉽게 하려고, 설명서의 일부 제품 그림은 덮개나 안전 가드를 뗀 모습일 수 있습니다. 제품을 조작할 때는 모든 덮개와 안전 가드를 제대로 달고, 설명서의 절차를 따르십시오.</li>
+    <li>설명서의 제품 그림은 설명을 위한 것이며 주문한 제품과 조금 다를 수 있습니다. 받은 실물을 기준으로 하십시오.</li>
+  </ul>
+
+  <h2 id="c2-s2">개봉과 인수</h2>
+  <div class="box warn"><div class="h">경고 · 이런 제품은 설치하지 마십시오</div>
+    <ul>
+      <li>개봉했을 때 제품이나 부속품에 나사 풀림 · 손상 · 부식 같은 문제가 있으면 설치하지 마십시오.</li>
+      <li>개봉했을 때 제품 안에 습기가 있거나, 부품이 빠졌거나 손상되었으면 설치하지 마십시오.</li>
+      <li>포장 목록과 꼼꼼히 맞춰 보아 제품 이름이 다르면 설치하지 마십시오.</li>
+    </ul></div>
+  <div class="box caution"><div class="h">주의 · 개봉할 때</div>
+    <ul>
+      <li>개봉하기 전에 운송 포장이 파손 · 침수 · 습기 · 변형되지 않았는지 살피십시오.</li>
+      <li>순서에 따라 한 겹씩 개봉하십시오. 세게 두드리지 마십시오.</li>
+      <li>개봉할 때 장치 외관과 모든 부속품에 물리적 손상 · 부식 · 충격 자국이 없는지 살피십시오.</li>
+      <li>개봉한 뒤 포장 목록과 맞춰 장치 · 부속품 · 문서가 모두 들어 있는지 확인하십시오.</li>
+    </ul></div>
+  <p>위 항목에서 문제를 발견하면 곧바로 제품 공급처나 사무소에 연락하십시오.</p>
+
+  <h2 id="c2-s3">보관과 운송</h2>
+  <div class="box caution"><div class="h">주의 · 보관 · 운송 조건</div>
+    <ul>
+      <li>정해진 보관 · 운송 조건을 엄격히 지켜 제품이 손상되지 않게 하십시오.</li>
+      <li>물이 튀거나 비가 들이치는 곳, 직사광선, 강한 전기장 · 자기장, 심한 진동이 있는 곳에서 보관하거나 운송하지 마십시오.</li>
+      <li>보관 기간은 최대 3개월로 하십시오. 더 오래 보관해야 하면 보호 조치를 강화하고 필요한 점검을 하십시오.</li>
+      <li>차량으로 운송하기 전에 제품을 단단히 포장하십시오. 장거리 운송에는 반드시 밀폐 컨테이너를 쓰십시오.</li>
+      <li>제품에 영향을 주거나 제품을 손상시킬 수 있는 장치 · 물질과 함께 운송하는 것은 엄격히 금지합니다.</li>
+    </ul></div>
+
+  <h2 id="c2-s4">설치</h2>
+  <div class="box warn"><div class="h">경고 · 설치</div>
+    <ul>
+      <li>설치하기 전에 제품 설명서와 안전 수칙을 끝까지 읽으십시오.</li>
+      <li>강한 전기장이나 전자기 간섭이 있는 곳에 설치하지 마십시오.</li>
+      <li>캐비닛이나 섀시 안처럼 밀폐된 곳에 설치할 때는 냉각 팬이나 에어컨 같은 냉각 장치로 충분히 식혀 환경 조건을 맞추십시오. 그러지 않으면 제품이 과열되거나 불이 날 수 있습니다.</li>
+      <li>제품을 개조하는 것은 엄격히 금지합니다.</li>
+      <li>제품의 구성품이나 부품을 고정하는 볼트를 푸는 것은 엄격히 금지합니다.</li>
+      <li>제품을 캐비닛이나 단말 장비에 넣을 때는 그 캐비닛이나 장비에 방화 외함 · 전기 보호 외함 · 기계 보호 외함 같은 보호 장치가 있어야 합니다. 보호 등급은 관련 IEC 표준과 현지 법규를 따라야 합니다.</li>
+      <li>변압기처럼 전자기 간섭이 강한 장비를 함께 설치할 때는 차폐 장치를 달아 이 제품의 오작동을 막으십시오.</li>
+      <li>제품은 금속처럼 불에 타지 않는 면에 설치하십시오. 가연물을 제품에서 멀리 두어 화재를 막으십시오.</li>
+    </ul></div>
+  <div class="box caution"><div class="h">주의 · 설치 중 이물질</div>
+    <p>설치하는 동안 제품 위를 천이나 종이로 덮어, 구멍을 뚫을 때 금속 부스러기 · 기름 · 물 같은 이물질이 제품 안에 들어가 고장 나지 않게 하십시오. 설치가 끝나면 덮개를 걷어 내십시오. 덮개가 통풍구를 막으면 열이 빠지지 않아 제품이 과열될 수 있습니다.</p></div>
+
+  <h2 id="c2-s5">배선</h2>
+  <div class="box warn"><div class="h">경고 · 배선 전 전원 차단 (위험 등급)</div>
+    <ul>
+      <li>제품의 설치 · 배선 · 정비 · 점검 · 부품 교체는 자격을 갖춘 사람만 하십시오.</li>
+      <li>배선하기 전에 관련된 모든 장치의 전원이 완전히 끊어졌는지 확인하십시오. 전원을 끊은 뒤에도 장비 안의 커패시터에는 전압이 남아 있습니다. 제품 경고 라벨에 적힌 시간 이상 기다린 뒤에 배선이나 다른 작업을 하고, 주회로의 직류 전압을 재서 안전한 전압인지 확인하십시오. 지키지 않으면 감전될 위험이 있습니다.</li>
+    </ul></div>
+  <div class="box warn"><div class="h">경고 · 배선</div>
+    <ul>
+      <li>입력 전원을 장치나 제품의 신호 · 통신 단자나 출력 단자에 연결하는 것은 엄격히 금지합니다. 장치가 손상되거나 불이 날 수 있습니다.</li>
+      <li>제조사의 영업 · 기술 지원 담당자가 승인한 커넥터와 케이블을 쓰십시오. 규격에 맞지 않는 커넥터와 케이블은 고장을 일으킵니다.</li>
+      <li>배선에 쓰는 모든 케이블은 선 굵기와 차폐 요구를 지켜야 합니다. 차폐 케이블의 차폐층은 한쪽 끝을 확실히 접지하십시오.</li>
+      <li>장치와 제품은 제대로 접지해야 합니다. 그러지 않으면 정전기로 제품이 손상될 수 있습니다.</li>
+      <li>배선할 때 금속 심선이 드러나지 않게 해, 고온 산화나 단락을 막으십시오.</li>
+    </ul></div>
+  <div class="box caution"><div class="h">주의 · 배선</div>
+    <ul>
+      <li>정전기 방전(ESD) 보호 절차를 지키십시오. 배선할 때는 정전기 방지 손목 밴드를 차서 장치와 제품 내부 회로가 손상되지 않게 하십시오.</li>
+      <li>전원 플러그와 모든 커넥터를 단단히 연결해, 접촉 불량으로 동작에 문제가 생기지 않게 하십시오.</li>
+      <li>제어 회로는 차폐 꼬임쌍선으로 배선하고, 차폐선을 제품의 접지 단자에 연결하십시오. 그러지 않으면 제품이 비정상적으로 동작할 수 있습니다.</li>
+    </ul></div>
+
+  <h2 id="c2-s6">전원 투입</h2>
+  <div class="box warn"><div class="h">경고 · 전원을 넣기 전에 (위험 등급)</div>
+    <ul>
+      <li>전원을 넣기 전에 제품이 바르게 설치되었고 모든 배선이 단단히 연결되었는지 확인하십시오.</li>
+      <li>전원을 넣기 전에 전원 공급 장치가 제품 요구 사항에 맞는지 확인해, 제품 손상이나 화재를 막으십시오.</li>
+    </ul></div>
+  <div class="box warn"><div class="h">경고 · 전원 사양과 시운전</div>
+    <ul>
+      <li>전원을 넣기 전에 전원 사양이 장치 정격에 맞는지 확인해, 과전압으로 손상되지 않게 하십시오.</li>
+      <li>배선과 파라미터 설정을 마친 뒤 시운전으로 기계가 안전하게 동작하는지 확인하십시오. 그러지 않으면 사람이 다치거나 장치가 손상될 수 있습니다.</li>
+      <li>전원을 넣기 전에 제품의 정격 전압이 전원 전압과 같은지 확인하십시오. 전원 전압이 틀리면 불이 날 위험이 있습니다.</li>
+    </ul></div>
+
+  <h2 id="c2-s7">이상이 생겼을 때</h2>
+  <div class="box warn"><div class="h">경고 · 분해 금지</div>
+    <p>장치를 직접 분해하지 마십시오. 고장이 확인되거나 의심되면 구입처나 제조사의 영업 · 기술 지원 담당자에게 연락하십시오.</p></div>
+  <p>다음 중 하나라도 해당하면 <b>즉시 전원을 끊고</b> 구입처나 제조사에 연락하십시오.</p>
+  <ul>
+    <li>장치 안에 물이 들어갔을 때</li>
+    <li>하우징이 깨졌거나 부품이 떨어져 나갔을 때</li>
+    <li>동작이 비정상이거나 성능이 기준에서 벗어났을 때</li>
+    <li>장치에서 이상한 냄새 · 연기 · 소음이 날 때</li>
+  </ul>
+
+  <h2 id="c2-s8">사용 종료와 폐기</h2>
+  <div class="box warn"><div class="h">경고 · 폐기</div>
+    <ul>
+      <li>장치와 제품은 관련 국가 규정과 표준에 따라 사용을 종료해, 재산 손실이나 인명 사고를 막으십시오.</li>
+      <li>사용을 끝낸 장치와 제품은 산업 폐기물 처리 기준에 따라 폐기 · 재활용해 환경 오염을 막으십시오.</li>
+    </ul></div>
+
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">전기 연결과 통신 방식</h1></div>
+  <p class="lede">손의 전기 인터페이스는 GX12 항공 플러그 하나이며, 전원과 RS485 통신이 함께 들어갑니다. 버스에 여러 대를 달 때는 손마다 ID를 다르게 정합니다. <span class="src">문서</span></p>
+
+  <h2 id="c3-s1">핀 정의 <span class="src">문서</span></h2>
+  <p>손의 전기 인터페이스는 GX12 규격의 표준 항공 플러그입니다. 핀 정의는 다음과 같습니다 (표 3 · 그림 3).</p>
+  <div class="two">
+    <table class="t num keep">
+      <caption data-tbl="tbl-pins"><b>표 3.</b> RS485 인터페이스 핀 정의</caption>
+      <thead><tr><th>핀</th><th>RS485</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>GND</td></tr>
+        <tr><td>2</td><td>VCC</td></tr>
+        <tr><td>3</td><td>A+</td></tr>
+        <tr><td>4</td><td>B-</td></tr>
+        <tr><td>5</td><td>GND</td></tr>
+      </tbody>
+    </table>
+    <figure class="light f60"><img src="assets/rh56_pins.png" alt=""><figcaption data-fig="fig-pins"><b>그림 3.</b> 항공 플러그 핀 번호 1 ~ 5 (Inspire 문서)</figcaption></figure>
+  </div>
+  <div class="box warn"><div class="h">경고 · 전원 연결</div>
+    <p>전원은 VCC(핀 2)와 GND(핀 1 · 5)에만 연결하십시오. 입력 전원을 통신 핀(A+ · B-)에 연결하면 손이 손상되거나 불이 날 수 있습니다 (2장 '배선').</p></div>
+
+  <h2 id="c3-s2">통신 방식 <span class="src">문서</span></h2>
+  <p>RS485 인터페이스를 쓰면 별도 변환 회로로 손 254대를 한 버스에 병렬로 연결할 수 있습니다. RS232 · CAN 인터페이스는 주문 제작 손에만 있습니다.</p>
+  <p>손의 통신 명령과 레지스터는 제품 사용자에게 공개되어 있습니다. 사용자는 위 인터페이스로 손을 PC(컨트롤러나 일반 컴퓨터)에 연결하고, PC나 임베디드 컨트롤러로 손의 파라미터 설정 · 동작 제어 같은 작업을 할 수 있습니다 (그림 4).</p>
+  <figure class="light f60"><img src="assets/rh56_comm.jpg" alt=""><figcaption data-fig="fig-comm"><b>그림 4.</b> 통신 방식: PC에서 USB 변환기로, 또는 전용 임베디드 컨트롤러(Special embedded controller)로 RS485 · RS232 · CAN 버스의 손을 제어 (Inspire 문서)</figcaption></figure>
+  <p>같은 버스에 연결한 손은 ID(레지스터 <code>HAND_ID</code>, 6장)를 서로 다르게 정해야 합니다.</p>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">RS485 프로토콜</h1></div>
+  <p class="lede">상위 시스템은 손 내부 레지스터를 읽고 써서 손의 상태를 얻고 손을 제어합니다. RS485에서는 패킷 헤더 · 손 ID · 명령 · 주소 · 데이터 · 체크섬으로 이루어진 전용 프레임을 씁니다. <span class="src">문서</span></p>
+
+  <h2 id="c4-s1">통신 프로토콜 개요 <span class="src">문서</span></h2>
+  <p>주 제어 장치(MCU)는 손 내부 레지스터를 읽고 써서 손의 상태를 얻고 손을 제어합니다.</p>
+  <ul>
+    <li><b>레지스터 읽기</b>: 상위 시스템이 손 내부 레지스터 값을 읽습니다. 그룹 단위로 읽을 수 있으며, 그룹은 주소가 이어진 여러 레지스터를 말합니다.
+      상위 시스템이 읽기 명령(레지스터 그룹의 시작 주소 · 길이 등)을 보내면, 손은 명령을 받아 검사하고 이상이 없으면 그 레지스터의 데이터를 상위 시스템에 돌려줍니다.</li>
+    <li><b>레지스터 쓰기</b>: 상위 시스템이 손 내부 레지스터에 데이터를 씁니다. 그룹 단위로 쓸 수 있습니다. 상위 시스템이 쓰기 명령(레지스터 그룹의 시작 주소와 쓸 데이터)을 보내면,
+      손은 명령을 받아 검사하고 이상이 없으면 확인 신호를 상위 시스템에 돌려줍니다.</li>
+  </ul>
+
+  <h2 id="c4-s2">RS485 레지스터 읽기 · 쓰기 <span class="src">문서</span></h2>
+  <p>RS485 통신 파라미터는 <b>데이터 비트 8 · 정지 비트 1 · 패리티 없음</b>이고, 기본 보율은 <b>115200 bps</b>입니다. 보율은 레지스터 <code>REDU_RATIO</code>(6장)로 바꿉니다.</p>
+
+  <h3>레지스터 읽기</h3>
+  <p>읽기 명령 프레임 형식은 아래와 같습니다. <code>Address</code>는 읽을 레지스터의 시작 주소, <code>Hands_ID</code>는 손 ID, <code>Address_L</code>은 <code>Address</code>의 하위 8비트, <code>Address_H</code>는 상위 8비트,
+    <code>Register_Length</code>는 읽을 레지스터의 길이(단위: 바이트)입니다. <code>Checksum</code>은 프레임 헤더를 뺀 나머지 데이터를 체크섬 바로 앞까지 모두 더한 값의 하위 바이트입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-rd"><b>표 4.</b> RS485 레지스터 읽기 명령 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>Hands_ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x11</td><td>레지스터 읽기 플래그</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>Register_Length</td><td>읽을 레지스터 길이</td></tr>
+      <tr><td>byte[8]</td><td>Checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 읽기 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-rd-res"><b>표 5.</b> RS485 레지스터 읽기 응답 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>Hands_ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>Register_Length+3</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x11</td><td>레지스터 읽기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>Data[0]</td><td rowspan="3">레지스터 값</td></tr>
+      <tr><td>…</td><td>…</td></tr>
+      <tr><td>byte[7+Register_Length-1]</td><td>Data[Register_Length-1]</td></tr>
+      <tr><td>byte[7+Register_Length]</td><td>Checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+
+  <h3>읽기 예: 자유도별 실제 각도</h3>
+  <p>ID가 1인 손이 자유도별 실제 각도를 읽는 예입니다. 실제 각도는 레지스터 그룹 <code>ANGLE_ACT(m)</code>에 있으며, 시작 주소는 1546(0x060A), 길이는 12바이트(0x0C)입니다. 명령 프레임은 다음과 같습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-rd-ex"><b>표 6.</b> RS485 읽기 예: 명령 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>손 ID: 1</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x11</td><td>레지스터 읽기 플래그</td></tr>
+      <tr><td>byte[5]</td><td>0x0A</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x06</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>0x0C</td><td>읽을 레지스터 길이</td></tr>
+      <tr><td>byte[8]</td><td>0x32</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 이 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight">
+    <caption data-tbl="tbl-485-rd-ex-res"><b>표 7.</b> RS485 읽기 예: 응답 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>0x0F</td><td>프레임 데이터 길이: 12 + 3</td></tr>
+      <tr><td>byte[4]</td><td>0x11</td><td>레지스터 읽기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>0x0A</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x06</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7] · byte[8]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[9] · byte[10]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[11] · byte[12]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[13] · byte[14]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[15] · byte[16]</td><td>0xE803</td><td>정수 1000 (0x03E8)</td></tr>
+      <tr><td>byte[17] · byte[18]</td><td>0x0000</td><td>정수 0 (0x0000)</td></tr>
+      <tr><td>byte[19]</td><td>0xAC</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>이 응답에서 자유도별 실제 값 100, 100, 100, 100, 1000, 0을 얻습니다. 표의 '0x6400'은 바이트 두 개(0x64, 0x00)를 보내는 순서대로 이어 적은 것으로, 하위 바이트가 먼저 옵니다. 주고받는 바이트를 차례로 적으면 다음과 같습니다.</p>
+<pre class="cmd"><span class="c"># 보냄: 실제 각도 읽기 (ID 1, 주소 0x060A, 12바이트)</span>
+EB 90 01 04 11 0A 06 0C 32
+<span class="c"># 받음: 100, 100, 100, 100, 1000, 0</span>
+90 EB 01 0F 11 0A 06 64 00 64 00 64 00 64 00 E8 03 00 00 AC</pre>
+
+  <h3>레지스터 쓰기</h3>
+  <p>쓰기 명령 프레임 형식은 아래와 같습니다. <code>Data[0]</code> ~ <code>Data[Register_Length-1]</code>이 레지스터에 쓸 데이터입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-wr"><b>표 8.</b> RS485 레지스터 쓰기 명령 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>Hands_ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>Register_Length+3</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x12</td><td>레지스터 쓰기 명령 플래그</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>Data[0]</td><td rowspan="3">레지스터에 쓸 데이터</td></tr>
+      <tr><td>…</td><td>…</td></tr>
+      <tr><td>byte[7+Register_Length-1]</td><td>Data[Register_Length-1]</td></tr>
+      <tr><td>byte[7+Register_Length]</td><td>checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 쓰기 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-wr-res"><b>표 9.</b> RS485 레지스터 쓰기 응답 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>Hands_ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>4</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x12</td><td>레지스터 쓰기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>1</td><td></td></tr>
+      <tr><td>byte[8]</td><td>checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+
+  <h3>쓰기 예: 자유도별 각도 설정</h3>
+  <p>ID가 1인 손의 자유도별 각도를 100, 100, 100, 100, 1000, 0으로 정하는 예입니다. 레지스터 그룹 <code>ANGLE_SET(m)</code>의 값을 바꿔야 하며, 이 그룹의 시작 주소는 1486(0x05CE), 길이는 12바이트(0x0C)입니다. 보낼 명령은 다음과 같습니다.</p>
+  <table class="t tight">
+    <caption data-tbl="tbl-485-wr-ex"><b>표 10.</b> RS485 쓰기 예: 명령 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>0x0F</td><td>프레임 데이터 길이: 12 + 3</td></tr>
+      <tr><td>byte[4]</td><td>0x12</td><td>레지스터 쓰기 명령 플래그</td></tr>
+      <tr><td>byte[5]</td><td>0xCE</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x05</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7] · byte[8]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[9] · byte[10]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[11] · byte[12]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[13] · byte[14]</td><td>0x6400</td><td>정수 100 (0x0064)</td></tr>
+      <tr><td>byte[15] · byte[16]</td><td>0xE803</td><td>정수 1000 (0x03E8)</td></tr>
+      <tr><td>byte[17] · byte[18]</td><td>0x0000</td><td>정수 0 (0x0000)</td></tr>
+      <tr><td>byte[19]</td><td>0x70</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 이 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-485-wr-ex-res"><b>표 11.</b> RS485 쓰기 예: 응답 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x12</td><td>레지스터 쓰기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>0xCE</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x05</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>0x01</td><td></td></tr>
+      <tr><td>byte[8]</td><td>0xEB</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+<pre class="cmd"><span class="c"># 보냄: 각도 설정 (ID 1, 주소 0x05CE, 12바이트) = 100, 100, 100, 100, 1000, 0</span>
+EB 90 01 0F 12 CE 05 64 00 64 00 64 00 64 00 E8 03 00 00 70
+<span class="c"># 받음</span>
+90 EB 01 04 12 CE 05 01 EB</pre>
+  <div class="box note"><div class="h">참고 · 체크섬 계산</div>
+    <p>체크섬은 byte[2]부터 체크섬 바로 앞 바이트까지 더한 값의 하위 8비트입니다. 위 읽기 명령은 0x01 + 0x04 + 0x11 + 0x0A + 0x06 + 0x0C = 0x32입니다. 이 장의 네 예는 모두 이 계산과 맞습니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">Modbus RTU</h1></div>
+  <p class="lede">손은 Modbus 기능 코드 0x03(보유 레지스터 읽기) · 0x06(단일 레지스터 프리셋) · 0x10(다중 레지스터 프리셋)을 지원합니다. <span class="src">문서</span></p>
+
+  <h2 id="c5-s1">Modbus 프로토콜 개요 <span class="src">문서</span></h2>
+  <p>Modbus 프로토콜은 마스터-슬레이브 요청 · 응답 방식으로 통신합니다. 프로토콜 프레임은 기능 코드 · 데이터 필드 · 순환 중복 검사(CRC)로 이루어집니다.
+    이 시리즈는 보유 레지스터 읽기(기능 코드 0x03) · 단일 레지스터 프리셋(0x06) · 다중 레지스터 프리셋(0x10)을 지원합니다.</p>
+  <p>아래 표와 설명은 원문을 그대로 옮긴 것입니다. 원문에서 앞뒤가 맞지 않는 곳은 이 장 끝의 상자에 모았습니다.</p>
+
+  <h2 id="c5-s2">보유 레지스터 읽기 (0x03) <span class="src">문서</span></h2>
+  <div class="two">
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-03"><b>표 12.</b> 0x03 마스터 국 질의 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x11</td></tr>
+        <tr><td>기능 코드</td><td>0x03</td></tr>
+        <tr><td>시작 레지스터 (상위 바이트)</td><td>0x6B</td></tr>
+        <tr><td>시작 레지스터 (하위 바이트)</td><td>0x00</td></tr>
+        <tr><td>레지스터 수 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>레지스터 수 (하위 바이트)</td><td>0x02</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-03-res"><b>표 13.</b> 0x03 슬레이브 국 응답 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x01</td></tr>
+        <tr><td>기능 코드</td><td>0x03</td></tr>
+        <tr><td>바이트 수</td><td>0x04</td></tr>
+        <tr><td>0x006B 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>0x006B 레지스터 (하위 바이트)</td><td>0x01</td></tr>
+        <tr><td>0x006C 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>0x006C 레지스터 (하위 바이트)</td><td>0x02</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><b>질의</b>: 슬레이브 국 17번(0x11)의 보유 레지스터를 읽습니다. 시작 주소는 0x006B, 레지스터 수는 0x0002, 끝 주소는 0x006B+2-1=0x006C입니다. 즉 슬레이브 국 17번의 보유 레지스터 0x006B ~ 0x006C 두 개를 읽습니다.</p>
+  <p><b>응답</b>: 슬레이브 국 17번(0x11)의 보유 레지스터 0x006B ~ 0x006C 두 개의 값을 돌려줍니다. 0x006B 레지스터 값은 0x0001, 0x0062 레지스터 값은 0x0002입니다.</p>
+
+  <h2 id="c5-s3">단일 레지스터 프리셋 (0x06) <span class="src">문서</span></h2>
+  <div class="two">
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-06"><b>표 14.</b> 0x06 마스터 국 질의 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x11</td></tr>
+        <tr><td>기능 코드</td><td>0x06</td></tr>
+        <tr><td>시작 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>시작 레지스터 (하위 바이트)</td><td>0x6B</td></tr>
+        <tr><td>데이터 내용 (상위 바이트)</td><td>0x10</td></tr>
+        <tr><td>데이터 내용 (하위 바이트)</td><td>0x00</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-06-res"><b>표 15.</b> 0x06 슬레이브 국 응답 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x11</td></tr>
+        <tr><td>기능 코드</td><td>0x06</td></tr>
+        <tr><td>시작 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>시작 레지스터 (하위 바이트)</td><td>0x00</td></tr>
+        <tr><td>데이터 내용 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>데이터 내용 (하위 바이트)</td><td>0x00</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><b>질의</b>: 슬레이브 국 17번(0x11)의 보유 레지스터를 설정합니다. 레지스터 주소는 0x006B, 데이터 내용은 0x1000입니다.</p>
+
+  <h2 id="c5-s4">다중 레지스터 프리셋 (0x10) <span class="src">문서</span></h2>
+  <div class="two">
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-10"><b>표 16.</b> 0x10 마스터 국 질의 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x11</td></tr>
+        <tr><td>기능 코드</td><td>0x10</td></tr>
+        <tr><td>시작 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>시작 레지스터 (하위 바이트)</td><td>0x01</td></tr>
+        <tr><td>레지스터 수 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>레지스터 수 (하위 바이트)</td><td>0x02</td></tr>
+        <tr><td>바이트 수</td><td>0x04</td></tr>
+        <tr><td>데이터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>데이터 (하위 바이트)</td><td>0x0A</td></tr>
+        <tr><td>데이터 (상위 바이트)</td><td>0x01</td></tr>
+        <tr><td>데이터 (하위 바이트)</td><td>0x02</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight keep">
+      <caption data-tbl="tbl-rtu-10-res"><b>표 17.</b> 0x10 슬레이브 국 응답 프레임</caption>
+      <thead><tr><th>필드</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>슬레이브 국 주소</td><td>0x11</td></tr>
+        <tr><td>기능 코드</td><td>0x10</td></tr>
+        <tr><td>시작 레지스터 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>시작 레지스터 (하위 바이트)</td><td>0x01</td></tr>
+        <tr><td>레지스터 수 (상위 바이트)</td><td>0x00</td></tr>
+        <tr><td>레지스터 수 (하위 바이트)</td><td>0x02</td></tr>
+        <tr><td>CRC</td><td>XXXX</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><b>질의</b>: 슬레이브 국 17번(0x11)의 보유 레지스터를 설정합니다. 레지스터 시작 주소는 0x0001, 레지스터 수는 0x0002, 데이터 내용의 바이트 수는 0x04이고, 데이터 내용은 0x000A와 0x0102입니다.</p>
+<pre class="cmd"><span class="c"># 원문 표의 바이트 (CRC는 원문에 XXXX로 비어 있음)</span>
+11 03 6B 00 00 02 <span class="c">CRC</span>              <span class="c"># 0x03 질의</span>
+01 03 04 00 01 00 02 <span class="c">CRC</span>           <span class="c"># 0x03 응답</span>
+11 06 00 6B 10 00 <span class="c">CRC</span>              <span class="c"># 0x06 질의</span>
+11 06 00 00 00 00 <span class="c">CRC</span>              <span class="c"># 0x06 응답</span>
+11 10 00 01 00 02 04 00 0A 01 02 <span class="c">CRC</span>  <span class="c"># 0x10 질의</span>
+11 10 00 01 00 02 <span class="c">CRC</span>              <span class="c"># 0x10 응답</span></pre>
+
+  <div class="box note"><div class="h">문서 오류 · Modbus RTU 예</div>
+    <ul>
+      <li>0x03 질의(표 12): 시작 주소가 0x006B인데 상위 바이트 칸이 0x6B, 하위 바이트 칸이 0x00입니다. Modbus 규격대로라면 상위 0x00, 하위 0x6B입니다.</li>
+      <li>0x03 응답(표 13): 슬레이브 국 주소가 0x01인데 설명은 17번(0x11)입니다. 설명의 '0x0062 레지스터'는 0x006C여야 합니다.</li>
+      <li>0x06 응답(표 15): 주소와 값이 모두 0x00입니다. Modbus 규격의 0x06 응답은 질의의 주소(0x006B)와 값(0x1000)을 그대로 돌려줍니다.</li>
+    </ul></div>
+  <div class="box note"><div class="h">참고 · 원문에 없는 것</div>
+    <p>원문은 Modbus RTU를 쓰는 인터페이스와 통신 파라미터, 4장의 전용 프레임과 Modbus RTU 사이를 전환하는 방법, 6장의 레지스터 주소가 Modbus 보유 레지스터 주소와 어떻게 대응하는지를 적지 않습니다. 위 예의 주소(0x006B, 0x0001)는 손의 레지스터 목록(6장)에 없는 주소입니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">레지스터</h1></div>
+  <p class="lede">이 장은 사용자에게 공개된 손의 레지스터와 각 레지스터의 뜻 · 범위를 다룹니다. 이름에 <code>(m)</code>이 붙은 레지스터 그룹은 레지스터 여섯 개로 이루어지며, m = 0 ~ 5는 어느 그룹에서나 차례로 새끼손가락 · 약지 · 중지 · 검지 · 엄지 굽힘 · 엄지 회전입니다. <span class="src">문서</span></p>
+
+  <h2 id="c6-s1">레지스터 목록 <span class="src">문서</span></h2>
+  <p>여러 바이트 값(short)은 하위 바이트가 먼저 옵니다 (4장 예). 권한 W/R은 읽기 · 쓰기, R은 읽기 전용입니다.</p>
+  <table class="t tight regs">
+    <caption data-tbl="tbl-regs"><b>표 18.</b> 사용자 레지스터</caption>
+    <thead><tr><th>주소</th><th>약어</th><th>뜻</th><th>길이</th><th>권한</th></tr></thead>
+    <tbody>
+      <tr><td>1000 (0x03E8)</td><td><code>HAND_ID</code></td><td>ID</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1002 (0x03EA)</td><td><code>REDU_RATIO</code></td><td>보율 설정</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1004 (0x03EC)</td><td><code>CLEAR_ERROR</code></td><td>오류 해제</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1005 (0x03ED)</td><td><code>SAVE</code></td><td>Flash에 데이터 저장</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1006 (0x03EE)</td><td><code>RESET_PARA</code></td><td>공장 기본값 복원</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1008 (0x03F0)</td><td><code>reserve</code></td><td>예약</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1009 (0x03F1)</td><td><code>GESTURE_FORCE_CLB</code></td><td>힘 센서 보정</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>1020 (0x03FC)</td><td><code>CURRENT_LIMIT(m)</code></td><td>자유도별 액추에이터 전류 보호값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1032 (0x0408)</td><td><code>DEFAULT_SPEED_SET(m)</code></td><td>자유도별 전원 투입 속도 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1044 (0x0414)</td><td><code>DEFAULT_FORCE_SET(m)</code></td><td>자유도별 전원 투입 힘 제어 임계값 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1472 (0x05C0)</td><td><code>VLTAGE</code></td><td>시스템 전압</td><td>1&nbsp;short</td><td>R</td></tr>
+      <tr><td>1474 (0x05C2)</td><td><code>POS_SET(m)</code></td><td>자유도별 액추에이터 위치 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1486 (0x05CE)</td><td><code>ANGLE_SET(m)</code></td><td>자유도별 각도 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1498 (0x05DA)</td><td><code>FORCE_SET(m)</code></td><td>자유도별 힘 제어 임계값 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1522 (0x05F2)</td><td><code>SPEED_SET(m)</code></td><td>자유도별 속도 설정값</td><td>6&nbsp;short (12&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>1534 (0x05FE)</td><td><code>POS_ACT(m)</code></td><td>자유도별 액추에이터 실제 위치</td><td>6&nbsp;short (12&nbsp;byte)</td><td>R</td></tr>
+      <tr><td>1546 (0x060A)</td><td><code>ANGLE_ACT(m)</code></td><td>자유도별 실제 각도</td><td>6&nbsp;short (12&nbsp;byte)</td><td>R</td></tr>
+      <tr><td>1582 (0x062E)</td><td><code>FORCE_ACT(m)</code></td><td>손가락별 실제 힘</td><td>6&nbsp;short (12&nbsp;byte)</td><td>R</td></tr>
+      <tr><td>1594 (0x063A)</td><td><code>CURRENT(m)</code></td><td>자유도별 액추에이터 전류</td><td>6&nbsp;short (12&nbsp;byte)</td><td>R</td></tr>
+      <tr><td>1606 (0x0646)</td><td><code>ERROR(m)</code></td><td>자유도별 액추에이터 오류 코드</td><td>6&nbsp;byte</td><td>R</td></tr>
+      <tr><td>1612 (0x064C)</td><td><code>STATUS(m)</code></td><td>자유도별 상태 정보</td><td>6&nbsp;byte</td><td>R</td></tr>
+      <tr><td>1618 (0x0652)</td><td><code>TEMP(m)</code></td><td>자유도별 액추에이터 온도</td><td>6&nbsp;byte</td><td>R</td></tr>
+      <tr><td>2000 (0x07D0)</td><td><code>ACTION_SEQ_CHECKDATA1</code></td><td>현재 동작 시퀀스 확인 코드 1</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2001 (0x07D1)</td><td><code>ACTION_SEQ_CHECKDATA2</code></td><td>현재 동작 시퀀스 확인 코드 2</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2002 (0x07D2)</td><td><code>ACTION_SEQ_STEPNUM</code></td><td>현재 동작 시퀀스의 전체 단계 수</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2016 (0x07E0)</td><td><code>ACTION_SEQ_STEP(0)</code></td><td>현재 동작 시퀀스 설정: 0단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2054 (0x0806)</td><td><code>ACTION_SEQ_STEP(1)</code></td><td>현재 동작 시퀀스 설정: 1단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2092 (0x082C)</td><td><code>ACTION_SEQ_STEP(2)</code></td><td>현재 동작 시퀀스 설정: 2단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2130 (0x0852)</td><td><code>ACTION_SEQ_STEP(3)</code></td><td>현재 동작 시퀀스 설정: 3단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2168 (0x0878)</td><td><code>ACTION_SEQ_STEP(4)</code></td><td>현재 동작 시퀀스 설정: 4단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2206 (0x089E)</td><td><code>ACTION_SEQ_STEP(5)</code></td><td>현재 동작 시퀀스 설정: 5단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2244 (0x08C4)</td><td><code>ACTION_SEQ_STEP(6)</code></td><td>현재 동작 시퀀스 설정: 6단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2282 (0x08EA)</td><td><code>ACTION_SEQ_STEP(7)</code></td><td>현재 동작 시퀀스 설정: 7단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2320 (0x0910)</td><td><code>ACTION_SEQ_INDEX</code></td><td>현재 동작 시퀀스 인덱스 번호</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2321 (0x0911)</td><td><code>SAVE_ACTION_SEQ</code></td><td>현재 동작 시퀀스 저장</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2322 (0x0912)</td><td><code>ACTION_SEQ _RUN</code></td><td>현재 동작 시퀀스 실행</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2324 (0x0914)</td><td><code>ACTION_ADJUST_FORCE_SET</code></td><td>동작 시퀀스의 힘 제어 조정값</td><td>2&nbsp;byte</td><td>W/R</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 오류 · 레지스터 목록</div>
+    <ul>
+      <li>1472 시스템 전압의 약어는 원문에 <code>VLTAGE</code>로 적혀 있습니다 (VOLTAGE의 오타로 보임). 이 레지스터와 1008 <code>reserve</code>, 2324 <code>ACTION_ADJUST_FORCE_SET</code>은 목록에만 있고 설명 절이 없습니다.</li>
+      <li>2322의 약어는 원문 그대로 <code>ACTION_SEQ _RUN</code>(밑줄 앞에 빈칸)으로 적었습니다. 7장의 절차에도 같은 꼴로 나옵니다.</li>
+    </ul></div>
+
+  <h2 id="c6-s2">시스템 설정 <span class="src">문서</span></h2>
+  <h3>HAND_ID · 손 ID (1000)</h3>
+  <p>기본값 1, 범위 1 ~ 254이며 저장할 수 있습니다. 한 버스에 손 여러 대를 연결할 때는 손마다 ID를 다르게 정해야 합니다.</p>
+
+  <h3>REDU_RATIO · 보율 설정 (1002)</h3>
+  <p>기본값 0, 범위 0 ~ 2이며 저장할 수 있습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-baud"><b>표 19.</b> REDU_RATIO 값과 보율</caption>
+    <thead><tr><th>값</th><th>보율</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>115200</td></tr>
+      <tr><td>1</td><td>57600</td></tr>
+      <tr><td>2</td><td>19200</td></tr>
+    </tbody>
+  </table>
+
+  <h3>CLEAR_ERROR · 오류 해제 (1004)</h3>
+  <p>기본값 0, 범위 0 ~ 1이며 저장되지 않습니다. 1을 쓰면 손에서 해제할 수 있는 오류(구속 · 과전류 · 동작 이상 · 통신 오류 같은 액추에이터 오류)를 해제합니다.</p>
+  <div class="box note"><div class="h">참고 · 과열 오류</div>
+    <p>액추에이터 과열 오류는 해제할 수 없습니다. 온도가 내려가면 저절로 해제됩니다.</p></div>
+
+  <h3>SAVE · Flash에 파라미터 저장 (1005)</h3>
+  <p>기본값 0, 범위 0 ~ 1이며 저장되지 않습니다. 1을 쓰면 손이 현재 파라미터를 Flash에 씁니다. 저장한 파라미터는 전원이 꺼져도 사라지지 않습니다.</p>
+
+  <h3>RESET_PARA · 공장 기본값 복원 (1006)</h3>
+  <p>기본값 0, 범위 0 ~ 1이며 저장되지 않습니다. 1을 쓰면 손의 파라미터가 공장 기본값으로 돌아갑니다.</p>
+
+  <h3>GESTURE_FORCE_CLB · 힘 센서 보정 (1009)</h3>
+  <p>이 파라미터를 1로 정하면 손이 힘 센서 보정을 시작합니다. 보정에는 6초가 걸립니다. 손은 먼저 다섯 손가락을 완전히 펴고, 네 손가락(새끼손가락 · 약지 · 중지 · 검지)을 굽힌 뒤,
+    네 손가락을 편 채로 엄지를 굽히고, 마지막으로 엄지를 폅니다.</p>
+  <div class="box caution"><div class="h">주의 · 보정하는 동안</div>
+    <p>보정하는 동안에는 손을 무부하 상태로 두십시오. 손가락이 어떤 물체에도 닿지 않게 하십시오.</p></div>
+
+  <h2 id="c6-s3">보호값과 전원 투입 설정값 <span class="src">문서</span></h2>
+  <h3>CURRENT_LIMIT(m) · 자유도별 액추에이터 전류 보호값 (1020 ~ 1031)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 전류 보호값을 하나씩 담습니다. 손가락이 움직이는 동안 전류가 이 값을 넘으면 손가락이 멈추고,
+    손가락 상태 레지스터 <code>STATUS(m)</code>에 전류 보호로 멈췄다고 표시됩니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 단위는 mA입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-cur-limit"><b>표 20.</b> CURRENT_LIMIT(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1020-1021</td><td><code>CURRENT_LIMIT(0)</code></td><td>새끼손가락 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1022-1023</td><td><code>CURRENT_LIMIT(1)</code></td><td>약지 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1024-1025</td><td><code>CURRENT_LIMIT(2)</code></td><td>중지 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1026-1027</td><td><code>CURRENT_LIMIT(3)</code></td><td>검지 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1028-1029</td><td><code>CURRENT_LIMIT(4)</code></td><td>엄지 굽힘 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1030-1031</td><td><code>CURRENT_LIMIT(5)</code></td><td>엄지 회전 전류 보호값</td><td>short</td><td>0 ~ 1500</td></tr>
+    </tbody>
+  </table>
+
+  <h3>DEFAULT_SPEED_SET(m) · 자유도별 전원 투입 속도 설정값 (1032 ~ 1043)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 전원 투입 속도 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 범위 값에는 단위가 없습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pon-speed"><b>표 21.</b> DEFAULT_SPEED_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1032-1033</td><td><code>DEFAULT_SPEED_SET(0)</code></td><td>새끼손가락 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1034-1035</td><td><code>DEFAULT_SPEED_SET(1)</code></td><td>약지 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1036-1037</td><td><code>DEFAULT_SPEED_SET(2)</code></td><td>중지 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1038-1039</td><td><code>DEFAULT_SPEED_SET(3)</code></td><td>검지 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1040-1041</td><td><code>DEFAULT_SPEED_SET(4)</code></td><td>엄지 굽힘 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1042-1043</td><td><code>DEFAULT_SPEED_SET(5)</code></td><td>엄지 회전 초기 전원 투입 속도</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <p>속도 1000은 부하가 없는 손가락이 큰 각도에서 최소 각도까지 움직이는 데 800 ms가 걸린다는 뜻입니다. 부하가 크면 실제 속도는 이보다 조금 느립니다.</p>
+
+  <h3>DEFAULT_FORCE_SET(m) · 자유도별 전원 투입 힘 제어 임계값 설정값 (1044 ~ 1055)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 전원 투입 힘 제어 임계값 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 단위는 g입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pon-force"><b>표 22.</b> DEFAULT_FORCE_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1044-1045</td><td><code>DEFAULT_FORCE_SET(0)</code></td><td>새끼손가락 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1046-1047</td><td><code>DEFAULT_FORCE_SET(1)</code></td><td>약지 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1048-1049</td><td><code>DEFAULT_FORCE_SET(2)</code></td><td>중지 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1050-1051</td><td><code>DEFAULT_FORCE_SET(3)</code></td><td>검지 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1052-1053</td><td><code>DEFAULT_FORCE_SET(4)</code></td><td>엄지 굽힘 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1500</td></tr>
+      <tr><td>1054-1055</td><td><code>DEFAULT_FORCE_SET(5)</code></td><td>엄지 회전 초기 전원 투입 힘 제어</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <p>이 레지스터 값은 그 손가락 끝이 내는 쥐는 힘입니다. 예를 들어 <code>DEFAULT_FORCE_SET(1)</code>을 800으로 정하면 약지 끝이 800 g의 쥐는 힘을 낼 수 있다는 뜻입니다.
+    (물체에 닿는 부분이 손가락 끝이 아니면 낼 수 있는 쥐는 힘이 달라집니다. 힘의 크기는 힘의 팔 길이와 관계가 있어, 힘의 팔이 짧을수록 쥐는 힘이 커집니다.)</p>
+  <div class="box note"><div class="h">문서 차이 · 엄지 굽힘 힘 범위</div>
+    <p><code>DEFAULT_FORCE_SET(4)</code>(엄지 굽힘)만 범위가 0 ~ 1500이고, 같은 자유도의 <code>FORCE_SET(4)</code>와 <code>FORCE_ACT(4)</code>는 0 ~ 1000입니다. 원문 그대로 옮겼습니다.</p></div>
+
+  <h2 id="c6-s4">동작 설정값 <span class="src">문서</span></h2>
+  <h3>POS_SET(m) · 자유도별 액추에이터 위치 설정값 (1474 ~ 1485)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 액추에이터 위치 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 없습니다. 범위 값에는 단위가 없습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pos-set"><b>표 23.</b> POS_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1474-1475</td><td><code>POS_SET(0)</code></td><td>새끼손가락 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1476-1477</td><td><code>POS_SET(1)</code></td><td>약지 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1478-1479</td><td><code>POS_SET(2)</code></td><td>중지 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1480-1481</td><td><code>POS_SET(3)</code></td><td>검지 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1482-1483</td><td><code>POS_SET(4)</code></td><td>엄지 굽힘 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1484-1485</td><td><code>POS_SET(5)</code></td><td>엄지 회전 액추에이터 위치 설정</td><td>short</td><td>0 ~ 2000</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><b>0</b>: 액추에이터 최소 스트로크로, 손가락 최대 각도(손가락을 편 상태)에 해당합니다.</li>
+    <li><b>2000</b>: 액추에이터 최대 스트로크로, 손가락 최소 각도(손가락을 굽힌 상태)에 해당합니다.</li>
+    <li><b>−1</b>: 액추에이터가 움직이지 않습니다.</li>
+  </ul>
+  <p>이 레지스터 그룹으로 손가락의 위치 각도를 정하는 것은 권장하지 않습니다.</p>
+
+  <h3>ANGLE_SET(m) · 자유도별 각도 설정값 (1486 ~ 1497)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 각도 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 범위 값에는 단위가 없습니다.
+    어느 자유도의 각도 값을 0 ~ 1000 안의 값으로 정하면 그 손가락이 곧바로 움직입니다. −1로 정하면 그 손가락은 반응하지 않습니다.</p>
+  <p>예를 들어 레지스터 여섯 개(<code>ANGLE_SET(0)</code> ~ <code>ANGLE_SET(5)</code>)의 각도 값을 차례로 500, 500, −1, 0, 500, 500으로 정하면 새끼손가락 · 약지 · 엄지 굽힘 · 엄지 회전의 네 자유도가 '500'에 해당하는 각도로 움직입니다.
+    검지는 '0'에 해당하는 각도로 움직이고, 중지는 움직이지 않고 지금 위치를 그대로 유지합니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-angle-set"><b>표 24.</b> ANGLE_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1486-1487</td><td><code>ANGLE_SET(0)</code></td><td>새끼손가락 각도 설정값</td><td>short</td><td>−1, 0 ~ 1000</td></tr>
+      <tr><td>1488-1489</td><td><code>ANGLE_SET(1)</code></td><td>약지 각도 설정값</td><td>short</td><td>−1, 0 ~ 1000</td></tr>
+      <tr><td>1490-1491</td><td><code>ANGLE_SET(2)</code></td><td>중지 각도 설정값</td><td>short</td><td>−1, 0 ~ 1000</td></tr>
+      <tr><td>1492-1493</td><td><code>ANGLE_SET(3)</code></td><td>검지 각도 설정값</td><td>short</td><td>−1, 0 ~ 1000</td></tr>
+      <tr><td>1494-1495</td><td><code>ANGLE_SET(4)</code></td><td>엄지 굽힘 각도 설정값</td><td>short</td><td>−1, 0 ~ 1000</td></tr>
+      <tr><td>1496-1497</td><td><code>ANGLE_SET(5)</code></td><td>엄지 회전 각도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 오류 · ANGLE_SET 표</div>
+    <ul>
+      <li>원문 표는 이 그룹의 설명을 모두 'Initial power-on angle of …'(초기 전원 투입 각도)로 적었습니다. 목록과 절 제목에 따라 각도 설정값으로 옮겼습니다.</li>
+      <li><code>ANGLE_SET(5)</code>(엄지 회전)만 범위에 −1이 없습니다 (0 ~ 1000). 본문은 어느 자유도든 −1이면 반응하지 않는다고 적습니다.</li>
+    </ul></div>
+  <p>각 자유도 각도의 정의와 동작 범위는 다음과 같습니다. 그림의 Metacarpal plane은 중수골 평면, Rotation axis of the thumb은 엄지 회전축, 'Parallel to the rotation axis of the'(그림에서 끝 낱말 thumb이 잘림)는 엄지 회전축과 평행한 선입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-angle-def"><b>표 25.</b> 자유도별 각도와 동작 범위</caption>
+    <thead><tr><th>각도</th><th>그림</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>새끼손가락 · 약지 · 중지 · 검지</td><td>각 α (P1 · P2, 중수골 평면 기준) · 그림 5</td><td>19° ~ 176.7°</td></tr>
+      <tr><td>엄지 굽힘 각도</td><td>각 θ (P5 · P6, 엄지 회전축과 평행한 선 기준) · 그림 6</td><td>−13° ~ 53.6°</td></tr>
+      <tr><td>엄지 회전 각도</td><td>각 β (P4, 중수골 평면 기준) · 그림 7</td><td>90° ~ 165°</td></tr>
+    </tbody>
+  </table>
+  <div class="three">
+    <figure class="light"><img src="assets/rh56_angle_finger.jpg" alt=""><figcaption data-fig="fig-ang-a"><b>그림 5.</b> 네 손가락 각도 α (Inspire 문서)</figcaption></figure>
+    <figure class="light"><img src="assets/rh56_angle_thumb_bend.jpg" alt=""><figcaption data-fig="fig-ang-t"><b>그림 6.</b> 엄지 굽힘 각도 θ (Inspire 문서)</figcaption></figure>
+    <figure class="light"><img src="assets/rh56_angle_thumb_rot.jpg" alt=""><figcaption data-fig="fig-ang-b"><b>그림 7.</b> 엄지 회전 각도 β (Inspire 문서)</figcaption></figure>
+  </div>
+
+  <h3>FORCE_SET(m) · 자유도별 힘 제어 임계값 설정값 (1498 ~ 1509)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 힘 제어 임계값 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 단위는 g입니다. 이 그룹으로 손가락의 쥐는 힘을 제어할 수 있습니다.</p>
+  <p>예를 들어 <code>FORCE_SET(3)</code>을 300으로 정해 두고, 검지의 현재 실제 각도 <code>ANGLE_ACT(3)</code>이 1000(완전히 편 상태)일 때 검지 각도 <code>ANGLE_SET(3)</code>을 0으로 정하면 검지가 손바닥 쪽으로 굽습니다.
+    굽는 동안 검지에 걸리는 실제 힘(<code>FORCE_ACT(3)</code>, 이 장의 '상태 읽기')이 300에 이르면 검지는 멈추고, 그렇지 않으면 정한 각도까지 움직입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-force-set"><b>표 26.</b> FORCE_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1498-1499</td><td><code>FORCE_SET(0)</code></td><td>새끼손가락 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1500-1501</td><td><code>FORCE_SET(1)</code></td><td>약지 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1502-1503</td><td><code>FORCE_SET(2)</code></td><td>중지 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1504-1505</td><td><code>FORCE_SET(3)</code></td><td>검지 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1506-1507</td><td><code>FORCE_SET(4)</code></td><td>엄지 굽힘 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1508-1509</td><td><code>FORCE_SET(5)</code></td><td>엄지 회전 힘 제어 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <p>이 레지스터 값은 그 손가락 끝이 내는 쥐는 힘입니다. 예를 들어 <code>DEFAULT_FORCE_SET(1)</code>을 800으로 정하면 약지 끝이 800 g의 쥐는 힘을 낼 수 있다는 뜻입니다.
+    (물체에 닿는 부분이 손가락 끝이 아니면 낼 수 있는 쥐는 힘이 달라집니다. 힘의 크기는 힘의 팔 길이와 관계가 있어, 힘의 팔이 짧을수록 쥐는 힘이 커집니다.)</p>
+  <div class="box note"><div class="h">문서 오류 · FORCE_SET 절</div>
+    <ul>
+      <li>원문 본문은 <code>FORCE_ACT(3)</code>의 설명으로 '2.4.17 참조'를 적었으나, 원문 2.4.17은 <code>CURRENT(m)</code>이고 <code>FORCE_ACT(m)</code>은 2.4.16입니다.</li>
+      <li>둘째 문단의 예는 <code>FORCE_SET(1)</code>이어야 할 자리에 <code>DEFAULT_FORCE_SET(1)</code>을 적었습니다 (앞 절의 문단을 그대로 옮긴 것으로 보임).</li>
+      <li>원문 예는 '<code>ANGLE_ACT(3)</code>을 1000으로 정한다'고 적었으나 <code>ANGLE_ACT(m)</code>은 읽기 전용입니다. 이 책은 '1000일 때'로 옮겼습니다.</li>
+    </ul></div>
+
+  <h3>SPEED_SET(m) · 자유도별 속도 설정값 (1522 ~ 1533)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 속도 설정값을 하나씩 담습니다. 이 파라미터는 저장할 수 있으며, 저장한 값은 전원을 꺼도 유지됩니다. 범위 값에는 단위가 없습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-speed-set"><b>표 27.</b> SPEED_SET(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1522-1523</td><td><code>SPEED_SET(0)</code></td><td>새끼손가락 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1524-1525</td><td><code>SPEED_SET(1)</code></td><td>약지 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1526-1527</td><td><code>SPEED_SET(2)</code></td><td>중지 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1528-1529</td><td><code>SPEED_SET(3)</code></td><td>검지 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1530-1531</td><td><code>SPEED_SET(4)</code></td><td>엄지 굽힘 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1532-1533</td><td><code>SPEED_SET(5)</code></td><td>엄지 회전 속도 설정값</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <p>속도 1000은 부하가 없는 손가락이 큰 각도에서 최소 각도까지 움직이는 데 800 ms가 걸린다는 뜻입니다. 부하가 크면 실제 속도는 이보다 조금 느립니다.</p>
+
+  <h2 id="c6-s5">상태 읽기 <span class="src">문서</span></h2>
+  <h3>POS_ACT(m) · 자유도별 액추에이터 실제 위치 (1534 ~ 1545)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 액추에이터 실제 위치를 하나씩 담습니다. 읽기 전용입니다. 범위 값에는 단위가 없습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pos-act"><b>표 28.</b> POS_ACT(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1534-1535</td><td><code>POS_ACT(0)</code></td><td>새끼손가락 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1536-1537</td><td><code>POS_ACT(1)</code></td><td>약지 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1538-1539</td><td><code>POS_ACT(2)</code></td><td>중지 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1540-1541</td><td><code>POS_ACT(3)</code></td><td>검지 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1542-1543</td><td><code>POS_ACT(4)</code></td><td>엄지 굽힘 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+      <tr><td>1544-1545</td><td><code>POS_ACT(5)</code></td><td>엄지 회전 액추에이터 실제 위치</td><td>short</td><td>0 ~ 2000</td></tr>
+    </tbody>
+  </table>
+  <p>0은 액추에이터 최소 스트로크로 손가락 최대 각도, 2000은 최대 스트로크로 손가락 최소 각도에 해당합니다.</p>
+
+  <h3>ANGLE_ACT(m) · 자유도별 실제 각도 (1546 ~ 1557)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 실제 각도를 하나씩 담습니다. 각 자유도 각도의 정의는 레지스터 그룹 '1.7DEFAULT_ANGLE_SET(m)'의 설명을 보십시오. 읽기 전용입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-angle-act"><b>표 29.</b> ANGLE_ACT(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1546-1547</td><td><code>ANGLE_ACT(0)</code></td><td>새끼손가락 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1548-1549</td><td><code>ANGLE_ACT(1)</code></td><td>약지 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1550-1551</td><td><code>ANGLE_ACT(2)</code></td><td>중지 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1552-1553</td><td><code>ANGLE_ACT(3)</code></td><td>검지 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1554-1555</td><td><code>ANGLE_ACT(4)</code></td><td>엄지 굽힘 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1556-1557</td><td><code>ANGLE_ACT(5)</code></td><td>엄지 회전 실제 각도</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 오류 · 각도 정의 참조</div>
+    <p>원문이 가리키는 '1.7DEFAULT_ANGLE_SET(m)'이라는 레지스터 그룹은 없습니다. 각도 정의는 이 장의 <code>ANGLE_SET(m)</code> 절(표 25)에 있습니다.</p></div>
+
+  <h3>FORCE_ACT(m) · 손가락별 실제 힘 (1582 ~ 1593)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 실제 힘을 하나씩 담습니다. 읽기 전용입니다. 단위는 g입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-force-act"><b>표 30.</b> FORCE_ACT(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>1582-1583</td><td><code>FORCE_ACT(0)</code></td><td>새끼손가락에 걸리는 실제 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1584-1585</td><td><code>FORCE_ACT(1)</code></td><td>약지에 걸리는 실제 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1586-1587</td><td><code>FORCE_ACT(2)</code></td><td>중지에 걸리는 실제 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1588-1589</td><td><code>FORCE_ACT(3)</code></td><td>검지에 걸리는 실제 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1590-1591</td><td><code>FORCE_ACT(4)</code></td><td>엄지에 걸리는 실제 굽힘 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+      <tr><td>1592-1593</td><td><code>FORCE_ACT(5)</code></td><td>엄지에 걸리는 실제 회전 힘</td><td>short</td><td>0 ~ 1000</td></tr>
+    </tbody>
+  </table>
+
+  <h3>CURRENT(m) · 자유도별 액추에이터 전류 (1594 ~ 1605)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손 액추에이터 여섯 개의 전류 값을 하나씩 담습니다. 읽기 전용입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-current"><b>표 31.</b> CURRENT(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th><th>단위</th></tr></thead>
+    <tbody>
+      <tr><td>1594-1595</td><td><code>CURRENT(0)</code></td><td>새끼손가락 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+      <tr><td>1596-1597</td><td><code>CURRENT(1)</code></td><td>약지 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+      <tr><td>1598-1599</td><td><code>CURRENT(2)</code></td><td>중지 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+      <tr><td>1600-1601</td><td><code>CURRENT(3)</code></td><td>검지 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+      <tr><td>1602-1603</td><td><code>CURRENT(4)</code></td><td>엄지 굽힘 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+      <tr><td>1604-1605</td><td><code>CURRENT(5)</code></td><td>엄지 회전 액추에이터 전류</td><td>short</td><td>0 ~ 1000</td><td>mA</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ERROR(m) · 액추에이터 오류 코드 (1606 ~ 1611)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손 액추에이터 여섯 개의 오류 코드를 하나씩 담습니다. 읽기 전용입니다.</p>
+  <div class="two">
+    <table class="t tight keep">
+      <caption data-tbl="tbl-err"><b>표 32.</b> ERROR(m)</caption>
+      <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th></tr></thead>
+      <tbody>
+        <tr><td>1606</td><td><code>ERROR(0)</code></td><td>새끼손가락 액추에이터 오류 코드</td><td>byte</td></tr>
+        <tr><td>1607</td><td><code>ERROR (1)</code></td><td>약지 액추에이터 오류 코드</td><td>byte</td></tr>
+        <tr><td>1608</td><td><code>ERROR (2)</code></td><td>중지 액추에이터 오류 코드</td><td>byte</td></tr>
+        <tr><td>1609</td><td><code>ERROR (3)</code></td><td>엄지 액추에이터 오류 코드 (원문 그대로)</td><td>byte</td></tr>
+        <tr><td>1610</td><td><code>ERROR (4)</code></td><td>엄지 굽힘 액추에이터 오류 코드</td><td>byte</td></tr>
+        <tr><td>1611</td><td><code>ERROR (5)</code></td><td>엄지 회전 액추에이터 오류 코드</td><td>byte</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight keep">
+      <caption data-tbl="tbl-err-bits"><b>표 33.</b> 오류 코드 비트</caption>
+      <thead><tr><th>비트</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>Bit0</td><td>구속(locked-rotor) 오류</td></tr>
+        <tr><td>Bit1</td><td>과열 오류</td></tr>
+        <tr><td>Bit2</td><td>과전류 오류</td></tr>
+        <tr><td>Bit3</td><td>모터 동작 이상</td></tr>
+        <tr><td>Bit4</td><td>통신 오류</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>예를 들어 <code>ERROR (3)</code>이 0x06(2진수 00000110)이면 검지 액추에이터에 과열 오류와 과전류 오류가 났다는 뜻입니다.</p>
+  <div class="box note"><div class="h">문서 오류 · ERROR(3)의 설명</div>
+    <p>원문 표는 1609 <code>ERROR (3)</code>을 '엄지(thumb) 액추에이터'로 적었습니다. 그룹 순서와 바로 아래 예(<code>ERROR (3)</code> = 검지)로 보면 검지 액추에이터입니다. 원문은 <code>ERROR(0)</code>만 붙여 쓰고 나머지는 <code>ERROR (1)</code>처럼 빈칸을 두었습니다.</p></div>
+
+  <h3>STATUS(m) · 자유도별 상태 정보 (1612 ~ 1617)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손의 6자유도별 상태 정보를 하나씩 담습니다. 읽기 전용입니다.</p>
+  <div class="two">
+    <table class="t tight keep">
+      <caption data-tbl="tbl-status"><b>표 34.</b> STATUS(m)</caption>
+      <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th></tr></thead>
+      <tbody>
+        <tr><td>1612</td><td><code>STATUS(0)</code></td><td>새끼손가락 상태 정보</td><td>byte</td></tr>
+        <tr><td>1613</td><td><code>STATUS(1)</code></td><td>약지 상태 정보</td><td>byte</td></tr>
+        <tr><td>1614</td><td><code>STATUS(2)</code></td><td>중지 상태 정보</td><td>byte</td></tr>
+        <tr><td>1615</td><td><code>STATUS(3)</code></td><td>검지 상태 정보</td><td>byte</td></tr>
+        <tr><td>1616</td><td><code>STATUS(4)</code></td><td>엄지 굽힘 상태 정보</td><td>byte</td></tr>
+        <tr><td>1617</td><td><code>STATUS(5)</code></td><td>엄지 회전 상태 정보</td><td>byte</td></tr>
+      </tbody>
+    </table>
+    <table class="t tight keep">
+      <caption data-tbl="tbl-status-code"><b>표 35.</b> 상태 코드</caption>
+      <thead><tr><th>코드</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>펴는 중</td></tr>
+        <tr><td>1</td><td>쥐는 중</td></tr>
+        <tr><td>2</td><td>목표 위치에 이르러 멈춤</td></tr>
+        <tr><td>3</td><td>정한 힘 제어값에 이르러 멈춤</td></tr>
+        <tr><td>5</td><td>전류 보호로 멈춤</td></tr>
+        <tr><td>6</td><td>액추에이터 구속으로 멈춤</td></tr>
+        <tr><td>7</td><td>액추에이터 고장으로 멈춤</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>원문의 상태 코드 표에는 4가 없습니다.</p>
+
+  <h3>TEMP(m) · 액추에이터 온도 (1618 ~ 1623)</h3>
+  <p>이 그룹은 레지스터 여섯 개로 이루어지며, 손 액추에이터 여섯 개의 온도 값을 하나씩 담습니다. 읽기 전용입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-temp"><b>표 36.</b> TEMP(m)</caption>
+    <thead><tr><th>주소</th><th>이름</th><th>설명</th><th>자료형</th><th>범위</th><th>단위</th></tr></thead>
+    <tbody>
+      <tr><td>1618</td><td><code>TEMP(0)</code></td><td>새끼손가락 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+      <tr><td>1619</td><td><code>TEMP(1)</code></td><td>약지 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+      <tr><td>1620</td><td><code>TEMP(2)</code></td><td>중지 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+      <tr><td>1621</td><td><code>TEMP(3)</code></td><td>검지 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+      <tr><td>1622</td><td><code>TEMP(4)</code></td><td>엄지 굽힘 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+      <tr><td>1623</td><td><code>TEMP(5)</code></td><td>엄지 회전 액추에이터 온도</td><td>byte</td><td>0 ~ 100</td><td>°C</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">동작 시퀀스</h1></div>
+  <p class="lede">동작 시퀀스는 이어지는 제스처의 묶음입니다. 손은 동작 시퀀스를 40개까지 저장하고, 인덱스 번호로 골라 읽고 쓰고 실행합니다. <span class="src">문서</span></p>
+
+  <h2 id="c7-s1">동작 시퀀스 레지스터 <span class="src">문서</span></h2>
+  <table class="t tight regs">
+    <caption data-tbl="tbl-seq-regs"><b>표 37.</b> 동작 시퀀스 관련 레지스터</caption>
+    <thead><tr><th>주소</th><th>약어</th><th>뜻</th><th>길이</th><th>권한</th></tr></thead>
+    <tbody>
+      <tr><td>2000</td><td><code>ACTION_SEQ_CHECKDATA1</code></td><td>현재 동작 시퀀스 확인 코드 1</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2001</td><td><code>ACTION_SEQ_CHECKDATA2</code></td><td>현재 동작 시퀀스 확인 코드 2</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2002</td><td><code>ACTION_SEQ_STEPNUM</code></td><td>현재 동작 시퀀스의 전체 단계 수</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2016</td><td><code>ACTION_SEQ_STEP(0)</code></td><td>현재 동작 시퀀스 설정: 0단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2054</td><td><code>ACTION_SEQ_STEP(1)</code></td><td>현재 동작 시퀀스 설정: 1단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2092</td><td><code>ACTION_SEQ_STEP(2)</code></td><td>현재 동작 시퀀스 설정: 2단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2130</td><td><code>ACTION_SEQ_STEP(3)</code></td><td>현재 동작 시퀀스 설정: 3단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2168</td><td><code>ACTION_SEQ_STEP(4)</code></td><td>현재 동작 시퀀스 설정: 4단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2206</td><td><code>ACTION_SEQ_STEP(5)</code></td><td>현재 동작 시퀀스 설정: 5단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2244</td><td><code>ACTION_SEQ_STEP(6)</code></td><td>현재 동작 시퀀스 설정: 6단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2282</td><td><code>ACTION_SEQ_STEP(7)</code></td><td>현재 동작 시퀀스 설정: 7단계</td><td>19&nbsp;short (38&nbsp;byte)</td><td>W/R</td></tr>
+      <tr><td>2320</td><td><code>ACTION_SEQ_INDEX</code></td><td>현재 동작 시퀀스 인덱스 번호</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2321</td><td><code>SAVE_ACTION_SEQ</code></td><td>현재 동작 시퀀스 저장</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+      <tr><td>2322</td><td><code>ACTION_SEQ _RUN</code></td><td>현재 동작 시퀀스 실행</td><td>1&nbsp;byte</td><td>W/R</td></tr>
+    </tbody>
+  </table>
+  <p>동작 시퀀스 하나에는 제스처 여러 개(최대 8개)의 각도 · 속도 · 힘 제어 · 지연 시간(ms) 설정이 들어 있습니다. 손은 이 데이터 · 순서 · 지연 시간에 따라 제스처를 하나씩 취하며, 이 제스처들이 이어져 하나의 동작 시퀀스가 됩니다.</p>
+  <p>손의 메모리에는 동작 시퀀스 데이터 40개를 저장할 수 있고, 동작 시퀀스는 인덱스 번호로 구분합니다. 이 데이터는 다른 레지스터와 읽는 방법이 조금 다릅니다.</p>
+  <div class="box note"><div class="h">참고 · 원문에 없는 것</div>
+    <p>원문은 단계 레지스터 <code>ACTION_SEQ_STEP(n)</code>의 19개 short가 어떤 순서로 각도 · 속도 · 힘 제어 · 지연 시간을 담는지, 인덱스 번호의 범위(0부터인지 1부터인지)를 적지 않습니다.
+      2324 <code>ACTION_ADJUST_FORCE_SET</code>(동작 시퀀스의 힘 제어 조정값)은 6장 목록에만 있고 이 표와 설명에는 없습니다.</p></div>
+
+  <h2 id="c7-s2">동작 시퀀스 읽기 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>현재 동작 ID 레지스터 <code>ACTION_SEQ_INDEX</code>를 정합니다.</b></li>
+    <li><b><code>ACTION_SEQ_CHECKDATA1</code>과 <code>ACTION_SEQ_CHECKDATA2</code>를 읽습니다.</b><code>ACTION_SEQ_CHECKDATA1</code>이 0x90이고 <code>ACTION_SEQ_CHECKDATA10</code>이 xEB이면 이 동작 시퀀스 데이터는 유효하고, 아니면 유효하지 않습니다 (원문 그대로, 아래 상자).</li>
+    <li><b>데이터가 유효하면 <code>ACTION_SEQ_STEPNUM</code>과 <code>ACTION_SEQ_STEP(0-7)</code>을 읽습니다.</b></li>
+  </ol>
+
+  <h2 id="c7-s3">동작 시퀀스 쓰기 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>현재 동작 ID 레지스터 <code>ACTION_SEQ_INDEX</code>를 정합니다.</b></li>
+    <li><b>쓸 데이터를 <code>ACTION_SEQ_STEPNUM</code> · <code>ACTION_SEQ_STEP(0-7)</code>에 씁니다.</b></li>
+    <li><b><code>ACTION_SEQ_CHECKDATA1</code>과 <code>ACTION_SEQ_CHECKDATA2</code>에 0x90과 0xEB를 씁니다.</b></li>
+    <li><b>동작 시퀀스 라이브러리 저장 레지스터 <code>SAVE_ACTION_SEQ</code>를 1로 정합니다.</b>손이 <code>ACTION_SEQ_CHECKDATA1</code> · <code>ACTION_SEQ_CHECKDATA2</code> · <code>ACTION_SEQ_STEPNUM</code> · <code>ACTION_SEQ_STEP (0-7)</code>의 데이터를 그 인덱스 번호에 해당하는 Flash 주소에 씁니다.</li>
+  </ol>
+
+  <h2 id="c7-s4">동작 시퀀스 실행 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>현재 동작 ID 레지스터 <code>ACTION_SEQ_INDEX</code>를 실행할 동작 시퀀스의 인덱스 번호로 정합니다.</b></li>
+    <li><b>레지스터 <code>ACTION_SEQ _RUN</code>을 1로 정합니다.</b>손이 동작 시퀀스를 실행하기 시작합니다. 실행이 끝나면 레지스터 값은 저절로 0으로 돌아갑니다.</li>
+  </ol>
+  <div class="box note"><div class="h">문서 오류 · 확인 코드</div>
+    <p>읽기 절차 2단계의 <code>ACTION_SEQ_CHECKDATA10</code>과 'xEB'는 <code>ACTION_SEQ_CHECKDATA2</code>와 0xEB의 오타로 보입니다. 쓰기 절차 3단계는 <code>ACTION_SEQ_CHECKDATA1</code> · <code>ACTION_SEQ_CHECKDATA2</code>에 0x90 · 0xEB를 씁니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">손목 모듈</h1></div>
+  <p class="lede">손목 모듈이 달린 모델(RH56DFXW · RH56BFXW)은 손의 6자유도에 손목 2자유도(요 · 피치)가 더해집니다. 손목 레지스터는 손 레지스터와 같은 방법으로 읽고 쓰되, 다른 명령 플래그를 씁니다. <span class="src">문서</span></p>
+  <p>이 장은 Inspire의 <i>Wrist Module of the Dexterous Hand Instructions</i> V0.0.2를 옮겼습니다. 이 문서는 모델 이름을 적지 않으며, 손목형 모델 이름은 Inspire 제품 페이지(1장)를 따랐습니다.</p>
+
+  <h2 id="c8-s1">개요 <span class="src">문서</span></h2>
+  <p>손목에는 요(yawing)와 피치(pitching) 두 자유도가 있습니다.</p>
+  <figure class="light f80"><img src="assets/wr_dof.png" alt=""><figcaption data-fig="fig-wr-dof"><b>그림 8.</b> 손목의 두 자유도: 요(Yawing) · 피치(Pitching) (Inspire 문서)</figcaption></figure>
+  <p>두 자유도의 동작 각도 범위는 다음과 같습니다.</p>
+  <ul>
+    <li><b>피치 각도 범위</b>: [−22.66°, 22.12°]</li>
+    <li><b>요 각도 범위</b>: [−25.50°, 25.50°]</li>
+  </ul>
+  <figure class="light f60"><img src="assets/wr_range.png" alt=""><figcaption data-fig="fig-wr-range"><b>그림 9.</b> 손목 동작 각도 범위: 가로축 피치(°), 세로축 요(°) (Inspire 문서)</figcaption></figure>
+  <div class="box note"><div class="h">문서 차이 · 손목 동작 범위</div>
+    <p>Inspire 제품 페이지는 손목 동작 범위를 요 ±27° · 피치 ±22°로 적습니다 (표 1). 이 장의 값은 손목 모듈 설명서의 값입니다.</p></div>
+
+  <h2 id="c8-s2">손목 레지스터 <span class="src">문서</span></h2>
+  <p>손목 관련 제어 · 상태 레지스터는 다음과 같습니다. 설정 · 읽기 방법은 손의 다른 레지스터와 같으며, 자세한 방법은 손 사용 설명서(이 책 4장)에 있습니다.</p>
+  <table class="t tight">
+    <caption data-tbl="tbl-wr-regs"><b>표 38.</b> 손목 레지스터 주소 (RS232 · CAN 프로토콜)</caption>
+    <thead><tr><th>주소</th><th>약어</th><th>뜻</th><th>길이</th><th>권한</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>1020</td><td><code>WRIST_PITCH_ANGLE</code></td><td>손목 실제 피치 각도</td><td>2&nbsp;byte</td><td>R</td><td>값 100이 1°. 예: 1125는 11.25°</td></tr>
+      <tr><td>1022</td><td><code>WRIST_YAW_ANGLE</code></td><td>손목 실제 요 각도</td><td>2&nbsp;byte</td><td>R</td><td>위와 같음</td></tr>
+      <tr><td>1026</td><td><code>WRIST_CURRENT1</code></td><td>손목 1번 서보 액추에이터 전류</td><td>2&nbsp;byte</td><td>R</td><td>단위 mA</td></tr>
+      <tr><td>1024</td><td><code>WRIST_CURRENT2</code></td><td>손목 2번 서보 액추에이터 전류</td><td>2&nbsp;byte</td><td>R</td><td>단위 mA</td></tr>
+      <tr><td>1028</td><td><code>WRIST_ERROR1</code></td><td>손목 1번 서보 액추에이터 오류 코드</td><td>1&nbsp;byte</td><td>R</td><td></td></tr>
+      <tr><td>1030</td><td><code>WRIST_ERROR2</code></td><td>손목 2번 서보 액추에이터 오류 코드</td><td>1&nbsp;byte</td><td>R</td><td></td></tr>
+      <tr><td>1032</td><td><code>WRIST_TEMP1</code></td><td>손목 1번 서보 액추에이터 온도</td><td>1&nbsp;byte</td><td>R</td><td></td></tr>
+      <tr><td>1033</td><td><code>WRIST_TEMP2</code></td><td>손목 2번 서보 액추에이터 온도</td><td>1&nbsp;byte</td><td>R</td><td></td></tr>
+      <tr><td>1038</td><td><code>WRIST_YAW_ANGLE_SET</code></td><td>손목 요 각도 설정</td><td>2&nbsp;byte</td><td>W/R</td><td>값 100이 1°. 예: 1125는 11.25°</td></tr>
+      <tr><td>1040</td><td><code>WRIST_PITCH_ANGLE_SET</code></td><td>손목 피치 각도 설정</td><td>2&nbsp;byte</td><td>W/R</td><td>위와 같음</td></tr>
+      <tr><td>1042</td><td><code>PROFILE_TIME_MS_SET</code></td><td>손목 동작 시간 설정</td><td>2&nbsp;byte</td><td>W/R</td><td>단위 ms. 현재 위치에서 목표 위치까지 걸리는 시간. '설정'에서 이 파라미터를 바꿔 손목 동작 속도 조절</td></tr>
+    </tbody>
+  </table>
+  <p>손목 레지스터 주소는 손 레지스터 주소(6장, 1020 <code>CURRENT_LIMIT(m)</code> 등)와 겹치지만, 손목 레지스터는 아래처럼 손목 전용 명령 플래그(RS232 · RS485의 0x30 · 0x31, CAN의 4 · 5)로 읽고 씁니다.</p>
+
+  <h2 id="c8-s3">RS232 · RS485 레지스터 읽기 · 쓰기 <span class="src">문서</span></h2>
+  <p>RS232 · RS485 통신 파라미터는 <b>115200 bps · 데이터 비트 8 · 정지 비트 1 · 패리티 없음</b>입니다. 필드의 뜻(<code>Address</code> · <code>Address_L</code> · <code>Address_H</code> · <code>Register_Length</code> · <code>Checksum</code>)은 4장과 같습니다.</p>
+
+  <h3>손목 레지스터 읽기</h3>
+  <p>손목 레지스터 읽기 명령 프레임 형식은 아래와 같습니다 (원문 표 그대로).</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-rd"><b>표 39.</b> 손목 레지스터 읽기 명령 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>ID</td><td>손목 ID</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x30</td><td>레지스터 읽기 플래그</td></tr>
+      <tr><td>byte[5]</td><td>0x46</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x06</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>18</td><td>읽을 레지스터 길이</td></tr>
+      <tr><td>byte[8]</td><td>Checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 읽기 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-rd-res"><b>표 40.</b> 손목 레지스터 읽기 응답 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>Register_Length+3</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x30</td><td>레지스터 읽기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>Data[0]</td><td rowspan="3">레지스터 값</td></tr>
+      <tr><td>…</td><td>…</td></tr>
+      <tr><td>byte[7+Register_Length-1]</td><td>Data[Register_Length-1]</td></tr>
+      <tr><td>byte[7+Register_Length]</td><td>Checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+
+  <h3>읽기 예: 손목 서보 액추에이터 두 개의 전류</h3>
+  <p>원문은 이 예를 '서보 액추에이터 전류 데이터는 레지스터 그룹 <code>WRIST_CURRENT</code>에 있으며, 시작 주소는 1024(0x03FC), 길이는 4바이트(0x04)'라고 설명합니다. 명령 프레임은 다음과 같습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-rd-ex"><b>표 41.</b> 손목 읽기 예: 명령 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>손 ID: 1</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x30</td><td>레지스터 읽기 플래그</td></tr>
+      <tr><td>byte[5]</td><td>0xFC</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x03</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>0x02</td><td>읽을 레지스터 길이</td></tr>
+      <tr><td>byte[8]</td><td>0x36</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손목은 이 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-rd-ex-res"><b>표 42.</b> 손목 읽기 예: 응답 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>ID</td></tr>
+      <tr><td>byte[3]</td><td>0x05</td><td>프레임 데이터 길이: 2 + 3</td></tr>
+      <tr><td>byte[4]</td><td>0x30</td><td>레지스터 읽기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>0xFC</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x03</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7] · byte[8]</td><td>0x0000</td><td>정수 00x0000 (원문 그대로)</td></tr>
+      <tr><td>byte[9] · byte[10]</td><td>0x000</td><td>정수 0 (0x0000)</td></tr>
+      <tr><td>byte[11]</td><td>0x35</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>이 응답 프레임에서 서보 액추에이터 두 개의 전류가 0 A임을 알 수 있습니다.</p>
+<pre class="cmd"><span class="c"># 원문 예의 바이트 (보냄 · 받음)</span>
+EB 90 01 04 30 FC 03 02 36
+90 EB 01 05 30 FC 03 00 00 00 00 35</pre>
+
+  <h3>손목 레지스터 쓰기</h3>
+  <p>손목 레지스터 쓰기 명령 프레임 형식은 아래와 같습니다. <code>Data[0]</code> ~ <code>Data[Register_Length-1]</code>이 레지스터에 쓸 데이터입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-wr"><b>표 43.</b> 손목 레지스터 쓰기 명령 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>ID</td><td>ID</td></tr>
+      <tr><td>byte[3]</td><td>Register_Length+3</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x31</td><td>레지스터 쓰기 명령 플래그</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>Data[0]</td><td rowspan="3">레지스터에 쓸 데이터</td></tr>
+      <tr><td>…</td><td>…</td></tr>
+      <tr><td>byte[7+Register_Length-1]</td><td>Data[Register_Length-1]</td></tr>
+      <tr><td>byte[7+Register_Length]</td><td>checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손은 쓰기 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-wr-res"><b>표 44.</b> 손목 레지스터 쓰기 응답 프레임 형식</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>ID</td><td>손 ID</td></tr>
+      <tr><td>byte[3]</td><td>4</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x31</td><td>레지스터 쓰기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>Address_L</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>Address_H</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>1</td><td></td></tr>
+      <tr><td>byte[8]</td><td>checksum</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+
+  <h3>쓰기 예: 손목 피치 −10.00° · 요 10.00°</h3>
+  <p>ID가 1인 손목의 피치와 요 각도를 −10.00°와 10.00°로 정하는 예입니다. 레지스터 <code>WRIST_YAW_ANGLE_SET</code>(1038)과 <code>WRIST_PITCH_ANGLE_SET</code>(1040)을 고칩니다. 보낼 명령은 다음과 같습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-wr-ex"><b>표 45.</b> 손목 쓰기 예: 명령 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>ID</td></tr>
+      <tr><td>byte[3]</td><td>0x07</td><td>프레임 데이터 길이: 4 + 3</td></tr>
+      <tr><td>byte[4]</td><td>0x31</td><td>레지스터 쓰기 명령 플래그</td></tr>
+      <tr><td>byte[5]</td><td>0x0E</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x04</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7] · byte[8]</td><td>0x18FC</td><td>−10.00°: 레지스터에 −1000(0xFC18)을 씀</td></tr>
+      <tr><td>byte[9] · byte[10]</td><td>0xEB03</td><td>10.00°: 레지스터에 1000(0x03EB)을 씀</td></tr>
+      <tr><td>byte[11]</td><td>0x4D</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+  <p>손목은 이 명령에 다음 응답 프레임을 돌려줍니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-wr-ex-res"><b>표 46.</b> 손목 쓰기 예: 응답 프레임</caption>
+    <thead><tr><th>바이트</th><th>값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>byte[0]</td><td>0x90</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[1]</td><td>0xEB</td><td>패킷 헤더</td></tr>
+      <tr><td>byte[2]</td><td>0x01</td><td>ID</td></tr>
+      <tr><td>byte[3]</td><td>0x04</td><td>프레임 데이터 길이</td></tr>
+      <tr><td>byte[4]</td><td>0x31</td><td>레지스터 쓰기 명령에 대한 응답 프레임</td></tr>
+      <tr><td>byte[5]</td><td>0x0E</td><td>레지스터 시작 주소의 하위 8비트</td></tr>
+      <tr><td>byte[6]</td><td>0x04</td><td>레지스터 시작 주소의 상위 8비트</td></tr>
+      <tr><td>byte[7]</td><td>0x01</td><td></td></tr>
+      <tr><td>byte[8]</td><td>0x49</td><td>체크섬</td></tr>
+    </tbody>
+  </table>
+<pre class="cmd"><span class="c"># 원문 예의 바이트 (보냄 · 받음)</span>
+EB 90 01 07 31 0E 04 18 FC EB 03 4D
+90 EB 01 04 31 0E 04 01 49</pre>
+  <div class="box note"><div class="h">문서 오류 · 손목 RS485 예</div>
+    <ul>
+      <li>읽기 형식 표(표 39)의 byte[5] ~ byte[7]에는 일반 필드 이름 대신 값(0x46 · 0x06 · 18, 곧 주소 0x0646 = 1606과 길이 18)이 적혀 있습니다. 1606은 손의 <code>ERROR(m)</code> 주소입니다.</li>
+      <li>읽기 예의 설명은 시작 주소를 '1024(0x03FC)', 길이를 '4바이트(0x04)'로 적었으나, 0x03FC는 1020(<code>WRIST_PITCH_ANGLE</code>)이고 명령 프레임의 길이 바이트는 0x02입니다. 응답의 데이터 길이 0x05(2 + 3)와 달리 데이터 칸은 4바이트(byte[7] ~ byte[10])입니다. 체크섬 0x36 · 0x35는 표의 바이트(길이 0x05, 데이터 0)와 맞습니다.</li>
+      <li>쓰기 예: 1000은 0x03E8인데 원문은 0x03EB(= 1003, 바이트 EB 03)로 적었습니다. 체크섬 0x4D는 EB 03으로 계산한 값입니다 (E8 03이면 0x4A).</li>
+      <li>쓰기 예의 설명은 피치 −10.00°, 요 10.00°이지만, 주소 순서대로라면 첫 값(−1000)이 1038 <code>WRIST_YAW_ANGLE_SET</code>(요), 둘째 값(1000)이 1040 <code>WRIST_PITCH_ANGLE_SET</code>(피치)에 들어갑니다.</li>
+      <li>레지스터 표는 <code>WRIST_CURRENT1</code>을 1026, <code>WRIST_CURRENT2</code>를 1024로 적었습니다 (번호와 주소의 순서가 반대). 원문 그대로 옮겼습니다.</li>
+    </ul></div>
+
+  <h2 id="c8-s4">CAN 레지스터 읽기 · 쓰기 <span class="src">문서</span></h2>
+  <p>CAN 인터페이스는 주문 제작 손에 있습니다 (3장). 보율은 <b>1000K</b>입니다. 확장 식별자와 데이터 프레임 형식을 쓰며, 표준 식별자와 리모트 프레임은 쓰지 않습니다. 확장 식별자는 29비트이며, 하위 비트부터 다음과 같이 정의합니다.</p>
+  <ul>
+    <li><b>bit0 ~ 13</b>: <code>Hand_ID</code>. 최대 16383대를 지원합니다.</li>
+    <li><b>bit14 ~ 25</b>: 다룰 레지스터의 시작 주소</li>
+    <li><b>bit26 ~ 28</b>: 읽기 · 쓰기 플래그. 0은 손 레지스터 읽기, 1은 손 레지스터 쓰기, 4는 손의 손목 레지스터 읽기, 5는 손의 손목 레지스터 쓰기입니다.</li>
+  </ul>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-id"><b>표 47.</b> CAN 식별자 정의</caption>
+    <thead><tr><th>식별자</th><th>bit 31-29</th><th>bit 26-28 (W/R)</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody>
+      <tr><td>뜻</td><td>예약</td><td>0: R — 손 레지스터 읽기<br>1: W — 손 레지스터 쓰기<br>4: R — 손목 레지스터 읽기<br>5: R — 손목 레지스터 쓰기 (원문 그대로)</td><td>레지스터 주소</td><td><code>Hand_ID</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>레지스터 읽기</h3>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-rd"><b>표 48.</b> CAN 손목 레지스터 읽기 식별자</caption>
+    <thead><tr><th>식별자</th><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>뜻</td><td>예약</td><td>4</td><td>주소</td><td><code>Hand_ID</code></td></tr></tbody>
+  </table>
+  <p>명령 프레임의 데이터 길이는 1바이트이고, 데이터 내용은 읽을 레지스터 데이터의 길이입니다. 손목은 이 명령을 받아 제대로 해석하면 같은 형식의 식별자(bit 26-28 = 4)로 프레임을 돌려줍니다. 응답 프레임의 데이터 길이는 돌려주는 레지스터 데이터의 길이이고, 데이터 내용은 레지스터 데이터입니다.</p>
+
+  <h3>읽기 예: 손목 서보 액추에이터 두 개의 전류</h3>
+  <p>ID가 1인 손의 손목 서보 액추에이터 두 개의 전류를 읽으려면 다음 프레임을 CAN 버스에 보냅니다. 식별자는 2진수로 0001 0001 0000 0000 0000 0000 0000 0001입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-rd-ex"><b>표 49.</b> CAN 손목 읽기 예: 명령 식별자</caption>
+    <thead><tr><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>0</td><td>4</td><td><code>CURRENT_ACT(0)</code> 주소 = 1024, 2진수 010000000000</td><td>1</td></tr></tbody>
+  </table>
+  <p>데이터 길이는 1, 데이터 내용은 4입니다 (서보 액추에이터 두 개의 전류는 각각 정수이며 데이터 길이는 2바이트). 손은 다음 프레임을 돌려줍니다. 식별자는 2진수로 0000 0001 1000 0100 0000 0000 0000 0001입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-rd-ex-res"><b>표 50.</b> CAN 손목 읽기 예: 응답 식별자</caption>
+    <thead><tr><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>0</td><td>4</td><td><code>CURRENT_ACT(0)</code> 주소 = 1024, 2진수 010000000000</td><td>1</td></tr></tbody>
+  </table>
+  <p>데이터 길이는 4이고, 데이터 내용은 아래와 같습니다. 서보 액추에이터 전류는 정수이므로 이 데이터를 정수로 바꿉니다 (하위 바이트가 먼저, 상위 바이트가 뒤). 상위 · 하위 바이트를 맞바꾸면 16진수 0x0000, 10진수 0입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-rd-data"><b>표 51.</b> CAN 손목 읽기 예: 응답 데이터</caption>
+    <thead><tr><th>byte0</th><th>byte1</th><th>byte2</th><th>byte3</th></tr></thead>
+    <tbody><tr><td>0x00</td><td>0x00</td><td>0x00</td><td>0x00</td></tr></tbody>
+  </table>
+<pre class="cmd"><span class="c"># 보냄: 식별자 0x11000001 (4 &lt;&lt; 26 | 1024 &lt;&lt; 14 | 1), 데이터 길이 1</span>
+04
+<span class="c"># 받음: 데이터 길이 4 → 전류 0, 0</span>
+00 00 00 00</pre>
+
+  <h3>레지스터 쓰기</h3>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-wr"><b>표 52.</b> CAN 손목 레지스터 쓰기 식별자</caption>
+    <thead><tr><th>식별자</th><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>뜻</td><td>예약</td><td>5</td><td>주소</td><td><code>Hand_ID</code></td></tr></tbody>
+  </table>
+  <p>명령 프레임의 데이터 길이는 레지스터에 쓸 데이터의 길이이고, 데이터 내용은 레지스터에 쓸 데이터입니다. 손은 이 명령을 받아 제대로 해석하면 같은 형식의 식별자(bit 26-28 = 5)로 프레임을 돌려줍니다. 응답 프레임의 데이터 길이는 0입니다.</p>
+
+  <h3>쓰기 예: 손목 피치 −10.00° · 요 10.00°</h3>
+  <p>ID가 1인 손의 손목 피치와 요 각도를 −10.00°와 10.00°로 정하려면 다음 프레임을 CAN 버스에 보냅니다. 식별자는 2진수로 0001 0101 0000 0011 1000 0000 0000 0001입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-wr-ex"><b>표 53.</b> CAN 손목 쓰기 예: 명령 식별자</caption>
+    <thead><tr><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>0</td><td>5</td><td><code>ANGLE_SET(0)</code> 주소 = 1492, 2진수 010000001110</td><td>1</td></tr></tbody>
+  </table>
+  <p>데이터 길이는 4이고, 데이터 내용은 손목 피치와 요 각도 −10.00°(0xFC18)와 10.00°(0x03EB)입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-wr-data"><b>표 54.</b> CAN 손목 쓰기 예: 데이터</caption>
+    <thead><tr><th>byte0</th><th>byte1</th><th>byte2</th><th>byte3</th></tr></thead>
+    <tbody><tr><td>0xFC</td><td>0x18</td><td>0x03</td><td>0xEB</td></tr></tbody>
+  </table>
+  <p>손은 다음 프레임을 돌려줍니다. 식별자는 2진수로 0001 0101 0000 0011 1000 0000 0000 0001이고, 데이터 길이는 0입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-wr-can-wr-ex-res"><b>표 55.</b> CAN 손목 쓰기 예: 응답 식별자</caption>
+    <thead><tr><th>bit 31-29</th><th>bit 26-28</th><th>bit 14-25</th><th>bit 13-0</th></tr></thead>
+    <tbody><tr><td>0</td><td>5</td><td><code>ANGLE_SET (0)</code> 주소 = 1038, 2진수 010000001110</td><td>1</td></tr></tbody>
+  </table>
+<pre class="cmd"><span class="c"># 보냄: 식별자 0x15038001 (5 &lt;&lt; 26 | 1038 &lt;&lt; 14 | 1), 데이터 길이 4 (원문 바이트 그대로)</span>
+FC 18 03 EB
+<span class="c"># 받음: 식별자 0x15038001, 데이터 길이 0</span></pre>
+  <div class="box note"><div class="h">문서 오류 · 손목 CAN 예</div>
+    <ul>
+      <li>식별자 정의 표(표 47)의 '5: R'은 쓰기(W)여야 합니다.</li>
+      <li>읽기 예의 응답 식별자 2진수(0000 0001 1000 0100 … 0001 = 0x01840001)는 플래그 0 · 주소 1552로, 손 설명서의 검지 각도 읽기 예와 같은 값입니다. 바로 아래 표(플래그 4 · 주소 1024)와 맞지 않습니다.</li>
+      <li>읽기 예는 주소 1024의 이름을 <code>CURRENT_ACT(0)</code>으로 적었습니다. 레지스터 표의 이름은 <code>WRIST_CURRENT2</code>입니다.</li>
+      <li>쓰기 예의 명령 표는 주소를 '<code>ANGLE_SET(0)</code> = 1492'로 적었으나, 같은 칸의 2진수 010000001110과 식별자는 1038(<code>WRIST_YAW_ANGLE_SET</code>)이고 응답 표도 1038입니다.</li>
+      <li>쓰기 예의 데이터 바이트(FC 18 03 EB)는 상위 바이트가 먼저 옵니다. 읽기 예의 설명(하위 바이트가 먼저)과 RS485 예(18 FC EB 03)와 순서가 반대이며, 10.00°의 값도 0x03EB(1003)로 적혀 있습니다.</li>
+      <li>16진 식별자(0x11000001 · 0x15038001)는 원문의 명령 2진수를 옮겨 적은 것입니다.</li>
+    </ul></div>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">PC 소프트웨어</h1></div>
+  <p class="lede">Inspire의 Windows용 PC 테스트 소프트웨어(창 제목 <span class="ui">InspireHand</span>)로 RS485에 연결한 손의 상태를 보고, 손가락을 움직이고, 파라미터와 동작 시퀀스를 설정합니다. <span class="src">문서</span></p>
+  <p>이 장은 Inspire의 <i>The Dexterous Hands Instructions</i>(RH56DF3-1R을 예로 든 따라 하기)와 <i>The Dexterous Hand PC Instructions</i>(화면 설명)를 함께 옮겼습니다. 화면은 영문판이며, 버튼 이름은 화면 글자 그대로 적습니다.</p>
+
+  <h2 id="c9-s1">준비와 연결 <span class="src">문서</span></h2>
+  <p>RH56 시리즈 손은 6자유도에 모터 관절이 12개이며, 무게는 500 g입니다. 권장 전원 전압은 24 V, 최대 전류는 5 A입니다. RS485 직렬 포트 통신 파라미터는 115200 bps · 데이터 비트 8 · 정지 비트 1 · 패리티 없음입니다.</p>
+  <div class="two">
+    <figure class="light h70"><img src="assets/ins_cable.jpg" alt=""><figcaption data-fig="fig-cable"><b>그림 10.</b> 시험용 케이블: 항공 플러그 케이블과 USB-RS485 변환기 (Inspire 문서)</figcaption></figure>
+    <figure class="light h70"><img src="assets/ins_485.jpg" alt=""><figcaption data-fig="fig-485"><b>그림 11.</b> 손에 RS485 연결 (Inspire 문서)</figcaption></figure>
+  </div>
+  <ol class="steps">
+    <li><b>케이블을 연결하고 전원을 켭니다.</b>항공 플러그 케이블의 DC 단자를 전원 어댑터에, 항공 플러그 포트를 손의 항공 플러그에 연결합니다. USB-RS485 케이블의 USB 포트를 PC에 연결하고 전원을 켭니다.</li>
+    <li><b>PC 테스트 소프트웨어를 열고 연결합니다.</b>'Dexterous Hands - PC Test Software'를 실행하고 왼쪽 위의 <span class="ui">Connection Search</span>(화면 메뉴 <span class="ui">Connect</span>)를 누릅니다. 손이 연결된 직렬 포트 번호를 고르고 <span class="ui">Search</span>를 누릅니다.</li>
+    <li><b>연결을 확인합니다.</b>연결되면 오른쪽 아래에 <span class="ui">UART successfully connected</span>가 표시되고, 화면 오른쪽 아래에는 각도 · 전류 같은 데이터도 실시간으로 갱신되어 나타납니다.</li>
+  </ol>
+  <figure class="light f80"><img src="assets/ins_search.jpg" alt=""><figcaption data-fig="fig-search"><b>그림 12.</b> Search for connected devices 창: COM 포트 · 보율(Baud r) · ID 범위, RS232/485 또는 CAN-USB, Hand 또는 Wrist (Inspire 문서)</figcaption></figure>
+  <figure class="light f80"><img src="assets/ins_connected.jpg" alt=""><figcaption data-fig="fig-connected"><b>그림 13.</b> 연결된 화면: 오른쪽 아래 UART successfully connected (Inspire 문서)</figcaption></figure>
+
+  <h2 id="c9-s2">상태 데이터 보기 <span class="src">문서</span></h2>
+  <p>메인 화면에는 손가락별 실시간 각도 · 전류 · 힘과 구동부 온도 · 오류 코드가 표시됩니다. 손가락에 걸린 힘이 정확하지 않으면 힘 센서를 보정해야 합니다 (<span class="ui">Sensor calibration</span>. 6장 <code>GESTURE_FORCE_CLB</code>의 주의 사항을 지키십시오).</p>
+  <figure class="light f80"><img src="assets/pci_status.jpg" alt=""><figcaption data-fig="fig-status"><b>그림 14.</b> 상태 데이터: 위는 손가락별 전류와 힘 그래프(Current and force value of each finger), 아래는 손가락별 데이터(Act Angle · Current mA · Act force · Temperature · Error code) (Inspire PC Instructions)</figcaption></figure>
+  <p>손가락별 서보 액추에이터 ID는 다음과 같습니다. 화면 표의 열 순서도 같습니다 (Little · Ring · Middle · Index · Thumb1 · Thumb2).</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-servo-id"><b>표 56.</b> 서보 액추에이터 ID</caption>
+    <thead><tr><th>ID</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+    <tbody><tr><td>손가락</td><td>새끼손가락</td><td>약지</td><td>중지</td><td>검지</td><td>엄지 굽힘</td><td>엄지 회전</td></tr></tbody>
+  </table>
+
+  <h2 id="c9-s3">손가락 움직이기 <span class="src">문서</span></h2>
+  <p>왼쪽 손 그림의 슬라이더를 끌면 손가락이 움직입니다. 아래 표의 <span class="ui">Set angle</span> · <span class="ui">Set speed</span> · <span class="ui">Set force</span> 줄에 값을 넣고 줄 끝의 <span class="ui">Set</span>을 눌러 손가락을 제어할 수도 있습니다.</p>
+  <figure class="light f80"><img src="assets/pci_motion.jpg" alt=""><figcaption data-fig="fig-motion"><b>그림 15.</b> 손가락 제어: 슬라이더를 끌어 움직이기(Drag the slider…), 각도 · 속도 · 힘 값을 넣어 제어하기(Set angle, speed and force data…) (Inspire PC Instructions)</figcaption></figure>
+
+  <h2 id="c9-s4">파라미터 설정 <span class="src">문서</span></h2>
+  <p><span class="ui">Refresh parameters</span>를 누르면 손 서보 액추에이터의 파라미터를 볼 수 있습니다. 파라미터의 전원 투입 기본 속도(<span class="ui">Default Speed</span>)와 기본 힘(<span class="ui">Default force</span>)은 다음 순서로 바꿉니다.</p>
+  <ol class="steps">
+    <li><b>바꿀 서보 액추에이터 값을 더블클릭해 고칩니다.</b></li>
+    <li><b>줄 끝의 <span class="ui">Set</span>을 누릅니다.</b></li>
+    <li><b><span class="ui">Save</span>를 누릅니다.</b></li>
+    <li><b>전원을 껐다가 다시 켭니다.</b></li>
+  </ol>
+  <figure class="light f80"><img src="assets/ins_param.jpg" alt=""><figcaption data-fig="fig-param-steps"><b>그림 16.</b> 기본 속도 · 기본 힘 바꾸기: ① 값 고치기 → ② Set → ③ Save (Inspire 문서)</figcaption></figure>
+  <p>맨 아래 줄에서 손 ID(<span class="ui">ID</span>)와 보율(<span class="ui">Baud rate</span>)을 정합니다.</p>
+  <figure class="light f80"><img src="assets/pci_param.jpg" alt=""><figcaption data-fig="fig-param-id"><b>그림 17.</b> 파라미터 설정 영역: ID 설정(ID settings) · 보율 설정(Baud rate setting) (Inspire PC Instructions)</figcaption></figure>
+
+  <h2 id="c9-s5">동작 시퀀스 <span class="src">문서</span></h2>
+  <p>손의 동작은 PC의 손 그림으로 직접 만들 수도 있고, 손 내부 파라미터(동작 시퀀스, 7장)로 설정할 수도 있습니다. <span class="ui">Parameter</span> 메뉴에서 <span class="ui">Action parameter</span>를 고르면 동작 시퀀스 창이 열립니다.</p>
+  <figure class="light f80"><img src="assets/pci_seqmenu.jpg" alt=""><figcaption data-fig="fig-seq-menu"><b>그림 18.</b> Parameter 메뉴의 Action parameter (Inspire PC Instructions)</figcaption></figure>
+  <ul>
+    <li><span class="ui">upload</span>: 손에 있는 동작 시퀀스 파라미터를 읽어 소프트웨어의 표에 보여 줍니다.</li>
+    <li><span class="ui">download</span>: 소프트웨어에서 편집한 동작 시퀀스 파라미터를 손으로 보냅니다.</li>
+    <li><span class="ui">Test</span>: 지금 고른 번호의 동작 시퀀스로 손을 움직입니다.</li>
+  </ul>
+  <p>PC Instructions는 동작 시퀀스 표를 다음과 같이 설명합니다. 이 소프트웨어로 손의 1 ~ 13번 동작 시퀀스 데이터를 설정할 수 있습니다. 동작 시퀀스마다 최대 8단계이며, 단계마다 손가락 각도 · 동작 속도 · 힘 · 대기 시간을 따로 정합니다.</p>
+  <ul>
+    <li><b>단계 수</b>: 0 ~ 8</li>
+    <li><b>손가락 각도</b>: 그 단계의 목표 손가락 각도. 입력 범위는 0 ~ 1000이며, 0은 손가락을 가장 많이 굽힌 상태, 1000은 완전히 편 상태입니다. 칸을 비워 두면 그 손가락은 움직이지 않습니다.</li>
+    <li><b>동작 속도</b>: 1 ~ 1000</li>
+    <li><b>힘</b>: 1 ~ 1000</li>
+    <li><b>지연 시간</b>: 그 단계의 대기 시간 (원문에는 '손가락 동작 속도를 정합니다'로 잘못 적혀 있음)</li>
+  </ul>
+  <figure class="light f80"><img src="assets/pci_seqtable.jpg" alt=""><figcaption data-fig="fig-seq-table"><b>그림 19.</b> 동작 시퀀스 표: 단계 수 정하기(Set the number of action steps), 단계별 각 자유도의 각도 · 속도 · 힘 · 지연 정하기 (Inspire PC Instructions)</figcaption></figure>
+
+  <h3>공장 동작 13가지</h3>
+  <p>PC 소프트웨어에는 동작 13가지가 미리 들어 있습니다. 동작을 고르고 <span class="ui">Test</span>를 누르면 손이 그 동작을 합니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-actions"><b>표 57.</b> 미리 들어 있는 동작</caption>
+    <thead><tr><th>번호</th><th>동작</th><th>번호</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>Action1</td><td>손바닥 펴기</td><td>Action8</td><td>엄지로 옆에서 집기</td></tr>
+      <tr><td>Action2</td><td>물병 쥐기</td><td>Action9</td><td>엄지로 옆에서 빠르게 집기</td></tr>
+      <tr><td>Action3</td><td>물병 빠르게 쥐기</td><td>Action10</td><td>네 손가락 굽히기</td></tr>
+      <tr><td>Action4</td><td>세 손가락으로 공 집기</td><td>Action11</td><td>검지로 탁구공 튕기기</td></tr>
+      <tr><td>Action5</td><td>세 손가락으로 공 빠르게 집기</td><td>Action12</td><td>조이스틱 조작</td></tr>
+      <tr><td>Action6</td><td>세 손가락으로 집기</td><td>Action13</td><td>주먹 쥐기</td></tr>
+      <tr><td>Action7</td><td>세 손가락으로 빠르게 집기</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p>Action8(엄지로 옆에서 집기)을 예로 듭니다. 손가락 서보 액추에이터의 각도 · 속도 · 쥐는 힘은 모두 0 ~ 1000 범위로 정합니다. 먼저 새끼손가락 · 약지 · 중지 · 검지의 각도를 0, 엄지를 움직이는 서보 액추에이터 두 개의 각도를 1000, 속도와 쥐는 힘을 1000으로 정합니다.
+    지연 시간 1000 ms 뒤에 엄지 굽힘 서보 액추에이터의 각도를 0, 속도를 200, 쥐는 힘을 1000으로 바꾸면 이 동작이 됩니다.</p>
+  <figure class="light f45"><img src="assets/ins_action8.jpg" alt=""><figcaption data-fig="fig-action8"><b>그림 20.</b> Action8: 엄지로 옆에서 집기 (Inspire 문서)</figcaption></figure>
+
+  <h3>동작 만들기: OK 제스처</h3>
+  <p>PC 소프트웨어로 동작을 직접 만들 수 있습니다. 예를 들어 Action14에서 왼쪽의 전체 단계 수(<span class="ui">steps</span>)를 고르면 그 수만큼 <span class="ui">Step</span> 줄이 생기고, 줄마다 각도 · 속도 · 힘 · 지연 시간을 정해 손을 움직입니다. OK 제스처는 두 단계로 만듭니다.</p>
+  <ol class="steps">
+    <li><b>Step 1</b>서보 액추에이터 1 · 2 · 3의 각도를 1000, 서보 액추에이터 6의 각도를 0으로 바꿉니다.</li>
+    <li><b>Step 2</b>지연 시간 1000 ms 뒤에 서보 액추에이터 4 · 5의 각도를 500, 속도를 200으로 바꿉니다. OK 제스처가 완성됩니다.</li>
+  </ol>
+  <p>정확한 각도를 모를 때는 손 그림의 슬라이더로 손을 움직여 보고, 화면의 실제 각도(<span class="ui">Act Angle</span>)를 표에 옮겨 적으면 됩니다 (그림 22).</p>
+  <figure class="light f80"><img src="assets/ins_ok2.jpg" alt=""><figcaption data-fig="fig-ok2"><b>그림 21.</b> 동작 시퀀스 표에 두 단계를 넣은 모습 (Inspire 문서)</figcaption></figure>
+  <figure class="light f80"><img src="assets/ins_ok3.jpg" alt=""><figcaption data-fig="fig-ok3"><b>그림 22.</b> 슬라이더로 정한 자세의 실제 각도(Act Angle)를 동작 시퀀스 표의 각도로 옮기기 (Inspire 문서)</figcaption></figure>
+  <figure class="light f45"><img src="assets/ins_ok_photo.jpg" alt=""><figcaption data-fig="fig-ok-photo"><b>그림 23.</b> 완성된 OK 제스처 (Inspire 문서)</figcaption></figure>
+  <div class="box note"><div class="h">문서 차이 · 동작 시퀀스 번호와 범위</div>
+    <ul>
+      <li>그림의 표는 Action1 탭이며 값도 본문의 OK 제스처(서보 1 ~ 3 각도 1000, 서보 6 각도 0)와 다릅니다. 본문의 값을 따르십시오.</li>
+      <li>PC Instructions는 '1 ~ 13번 동작 시퀀스를 설정할 수 있다'고 적고, Instructions에서는 13번까지가 미리 들어 있는 동작이며 새 동작은 Action14에 만듭니다. 사용 설명서(7장)는 손이 동작 시퀀스 40개를 저장한다고 적습니다.</li>
+      <li>PC Instructions의 속도 · 힘 범위는 1 ~ 1000, Instructions는 0 ~ 1000입니다.</li>
+    </ul></div>
+
+  <h3>동작 시퀀스 파일</h3>
+  <p>동작 시퀀스 창의 <span class="ui">file</span> 메뉴:</p>
+  <ul>
+    <li><span class="ui">open offline file</span>: 동작 시퀀스 데이터 파일을 열어 소프트웨어의 동작 시퀀스 데이터 영역에 보여 줍니다.</li>
+    <li><span class="ui">download file data to the device</span>: 동작 시퀀스 데이터 파일의 데이터를 손으로 한꺼번에 보냅니다.</li>
+    <li><span class="ui">save as offline file</span>: 소프트웨어에 보이는 · 편집한 동작 시퀀스 데이터 전체를 지정한 파일로 저장합니다.</li>
+  </ul>
+  <figure class="light f60"><img src="assets/pci_file.jpg" alt=""><figcaption data-fig="fig-file"><b>그림 24.</b> 동작 시퀀스 file 메뉴 (Inspire PC Instructions)</figcaption></figure>
+  <div class="box note"><div class="h">문서 차이 · 전원 사양</div>
+    <p>Instructions는 최대 전류를 5 A로 적고, 사용 설명서(표 2)는 최대 쥐는 힘일 때 전류를 2 A @ 24 V로 적습니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 10 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">Unitree G1 연동</h1></div>
+  <p class="lede">Unitree G1에는 Inspire RH56DFX 다관절 손을 달 수 있습니다. 이 장은 Unitree 문서 「DFX Dexterous Hand」를 옮긴 것입니다. <span class="src">문서</span></p>
+  <p>이 손은 6자유도 · 운동 관절 12개로 사람 손의 복잡한 동작을 흉내 냅니다. 촉각 센서가 달린 Inspire 손(Unitree 문서의 'Inspire FTP')은 <a data-manual="inspire-rh56e2" href="../inspire-rh56e2/">Inspire RH56E2 · RH56DFTP 운용 설명서</a>를, G1에 다는 다른 손은 <a data-manual="g1-developer" href="../g1-developer/">Unitree G1 개발 설명서</a>를 보십시오.</p>
+  <figure class="light f60"><img src="assets/g1_dfx.png" alt=""><figcaption data-fig="fig-g1-dfx"><b>그림 25.</b> G1용 Inspire RH56DFX 다관절 손 (Unitree 문서)</figcaption></figure>
+
+  <h2 id="c10-s1">제어 방식 <span class="src">문서</span></h2>
+  <p>Inspire 손의 공식 SDK는 직렬 포트로 통신합니다. 로봇에 딸린 USB-직렬 모듈을 PC2(개발 연산 유닛)에 꽂으면 손과 통신하고 손을 제어할 수 있습니다. 이때 포트 이름은 보통 <code>/dev/ttyUSB1</code>(왼손) · <code>/dev/ttyUSB2</code>(오른손)입니다.</p>
+  <ol class="steps">
+    <li><b>Inspire SDK로 제어</b>Inspire 다관절 손의 공식 통신 프로토콜(이 책 4 ~ 7장)에 따라 직접 프로그램을 짭니다.</li>
+    <li><b>Unitree Inspire Hand SDK로 제어</b>G1의 통신은 DDS 프레임워크를 기반으로 합니다. <code>unitree_sdk2</code>로 손을 제어할 수 있도록, 직렬 포트로 주고받는 데이터를 DDS 메시지로 바꾸는 예제 프로그램을 Unitree가 제공합니다 (이 장 끝의 '패키지 내려받기').</li>
+  </ol>
+  <div class="box note"><div class="h">문서 오류 · H1과 G1</div>
+    <p>Unitree의 G1 문서인데 이 절은 'H1이 USB-직렬 모듈을 제공하며, H1 개발 연산 유닛(PC2)에 꽂는다'고 적었습니다. 아래 예제 코드의 클래스 이름(<code>H1HandController</code>)과 IDL 설명 링크(H1 개발 문서의 Basic_Services_Interface)도 H1 문서에서 가져온 것입니다. 첫 패키지도 'H1 예제를 그대로 씀'으로 적혀 있습니다.</p></div>
+
+  <h2 id="c10-s2">G1 손 인터페이스 <span class="src">문서</span></h2>
+  <p>토픽 <code>rt/inspire/cmd</code>에 <code>unitree_go::msg::dds::MotorCmds_</code> 메시지를 발행해 손을 제어하고, 토픽 <code>rt/inspire/state</code>에서 <code>unitree_go::msg::dds::MotorStates_</code> 메시지를 구독해 손 상태를 얻습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-g1-topics"><b>표 58.</b> 손 DDS 토픽</caption>
+    <thead><tr><th>토픽</th><th>메시지 형식</th><th>방향 · 내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/inspire/cmd</code></td><td><code>unitree_go::msg::dds::MotorCmds_</code></td><td>사용자 → G1 · 제어</td></tr>
+      <tr><td><code>rt/inspire/state</code></td><td><code>unitree_go::msg::dds::MotorStates_</code></td><td>G1 → 사용자 · 상태</td></tr>
+    </tbody>
+  </table>
+
+  <h3>IDL 메시지 형식</h3>
+  <p>모터 데이터는 배열로 되어 있으며, 두 손 모터 12개의 데이터를 담습니다. <code>MotorCmds_.idl</code> · <code>MotorState_.idl</code>의 자세한 형식은 Unitree 문서 'Basic_Services_Interface'에 있습니다.</p>
+  <div class="box note"><div class="h">참고 · 관절 제어만 지원</div>
+    <p>현재 손은 관절 제어만 지원합니다. IDL 형식에서는 파라미터 <code>q</code>만 쓰이고, 나머지는 예약 필드입니다.</p></div>
+<pre class="cmd"># namespace unitree_go::msg::dds_
+
+# unitree_go::msg::dds_::MotorCmds_
+struct MotorCmds_ 
+{
+    sequence&lt;unitree_go::msg::dds_::MotorCmd_&gt; cmds;
+};
+
+# unitree_go::msg::dds_::MotorStates_
+struct MotorCmds_ 
+{
+    sequence&lt;unitree_go::msg::dds_::MotorState&gt; states;
+};</pre>
+  <div class="box note"><div class="h">문서 오류 · IDL</div>
+    <p>원문 IDL의 둘째 구조체는 주석이 <code>MotorStates_</code>인데 이름이 <code>MotorCmds_</code>로, 원소 형식이 <code>MotorState_</code>가 아닌 <code>MotorState</code>로 적혀 있습니다. 원문 그대로 옮겼습니다.</p></div>
+
+  <h3>관절 모터 순서</h3>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-g1-joints"><b>표 59.</b> IDL 배열의 관절 모터 순서 (Id)</caption>
+    <thead><tr><th>손</th><th>새끼 (pinky)</th><th>약지 (ring)</th><th>중지 (middle)</th><th>검지 (index)</th><th>엄지 굽힘 (thumb-bend)</th><th>엄지 회전 (thumb-rotation)</th></tr></thead>
+    <tbody>
+      <tr><td>오른손</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+      <tr><td>왼손</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c10-s3">예제 <span class="src">문서</span></h2>
+  <p>다음은 예제에 들어 있는 클래스로, 손 제어 인터페이스를 감싼 것입니다. <code>ctrl()</code>에 넣는 각도는 0 ~ 1 범위이며, 0은 닫기(close), 1은 열기(open)입니다. 라벨 <code>open</code> · <code>close</code> · <code>half</code>는 모든 관절을 각각 1 · 0 · 0.5로 정합니다.</p>
+<pre class="cmd">/**
+ * @brief Unitree H1 Hand Controller
+ * The user can subscribe to "rt/inspire/state" to get the current state of the hand and publish to "rt/inspire/cmd" to control the hand.
+ * 
+ *                  IDL Types
+ * user ---(unitree_go::msg::dds_::MotorCmds_)---&gt; "rt/inspire/cmd"
+ * user &lt;--(unitree_go::msg::dds_::MotorStates_)-- "rt/inspire/state"
+ * 
+ * @attention Currently the hand only supports position control, which means only the `q` field in idl is used.
+ */
+class H1HandController
+{
+public:
+    H1HandController()
+    {
+        this-&gt;InitDDS_();
+    }
+
+    /**
+     * @brief Control the hand to a specific label
+     */
+    void ctrl(std::string label)
+    {
+        if(labels.find(label) != labels.end())
+        {
+            this-&gt;ctrl(labels[label], labels[label]);
+        }
+        else
+        {
+            std::cout &lt;&lt; "Invalid label: " &lt;&lt; label &lt;&lt; std::endl;
+        }
+    }
+
+    /**
+     * @brief Move the fingers to the specified angles
+     * 
+     * @note The angles should be in the range [0, 1]
+     *       0: close  1: open
+     */
+    void ctrl(
+        const Eigen::Matrix&lt;float, 6, 1&gt;&amp; right_angles, 
+        const Eigen::Matrix&lt;float, 6, 1&gt;&amp; left_angles)
+    {
+        for(size_t i(0); i&lt;6; i++)
+        {
+            cmd.cmds()[i].q() = right_angles(i);
+            cmd.cmds()[i+6].q() = left_angles(i);
+        }
+        handcmd-&gt;Write(cmd);
+    }
+
+    /**
+     * @brief Get the right hand angles
+     * 
+     * Joint order: [pinky, ring, middle, index, thumb_bend, thumb_rotation]
+     */
+    Eigen::Matrix&lt;float, 6, 1&gt; getRightQ()
+    {
+        std::lock_guard&lt;std::mutex&gt; lock(mtx);
+        Eigen::Matrix&lt;float, 6, 1&gt; q;
+        for(size_t i(0); i&lt;6; i++)
+        {
+            q(i) = state.states()[i].q();
+        }
+        return q;
+    }
+
+    /**
+     * @brief Get the left hand angles
+     * 
+     * Joint order: [pinky, ring, middle, index, thumb_bend, thumb_rotation]
+     */
+    Eigen::Matrix&lt;float, 6, 1&gt; getLeftQ()
+    {
+        std::lock_guard&lt;std::mutex&gt; lock(mtx);
+        Eigen::Matrix&lt;float, 6, 1&gt; q;
+        for(size_t i(0); i&lt;6; i++)
+        {
+            q(i) = state.states()[i+6].q();
+        }
+        return q;
+    }
+
+    unitree_go::msg::dds_::MotorCmds_ cmd;
+    unitree_go::msg::dds_::MotorStates_ state;
+private:
+    void InitDDS_()
+    {
+        handcmd = std::make_shared&lt;unitree::robot::ChannelPublisher&lt;unitree_go::msg::dds_::MotorCmds_&gt;&gt;(
+            "rt/inspire/cmd");
+        handcmd-&gt;InitChannel();
+        cmd.cmds().resize(12);
+        handstate = std::make_shared&lt;unitree::robot::ChannelSubscriber&lt;unitree_go::msg::dds_::MotorStates_&gt;&gt;(
+            "rt/inspire/state");
+        handstate-&gt;InitChannel([this](const void *message){
+            std::lock_guard&lt;std::mutex&gt; lock(mtx);
+            state = *(unitree_go::msg::dds_::MotorStates_*)message;
+        });
+        state.states().resize(12);
+    }
+
+    // DDS parameters
+    std::mutex mtx;
+    unitree::robot::ChannelPublisherPtr&lt;unitree_go::msg::dds_::MotorCmds_&gt; handcmd;
+    unitree::robot::ChannelSubscriberPtr&lt;unitree_go::msg::dds_::MotorStates_&gt; handstate;
+
+    // Saved labels
+    std::unordered_map&lt;std::string, Eigen::Matrix&lt;float, 6, 1&gt;&gt; labels = {
+        {"open",   Eigen::Matrix&lt;float, 6, 1&gt;::Ones()},
+        {"close",  Eigen::Matrix&lt;float, 6, 1&gt;::Zero()},
+        {"half",   Eigen::Matrix&lt;float, 6, 1&gt;::Constant(0.5)},
+    };
+};</pre>
+
+  <h2 id="c10-s4">패키지 내려받기 <span class="src">문서</span></h2>
+  <table class="t tight wrap1 keep">
+    <caption data-tbl="tbl-g1-pkg"><b>표 60.</b> Unitree DFX 손 예제 패키지</caption>
+    <thead><tr><th>날짜</th><th>변경 내용</th><th>받는 곳</th></tr></thead>
+    <tbody>
+      <tr><td>2024-5-7</td><td>첫 배포 (H1 예제를 그대로 씀)</td><td>https://oss-global-cdn.unitree.com/static/0a8335f7498548d28412c31ea047d4be.zip</td></tr>
+      <tr><td>2025-8-28</td><td></td><td>https://github.com/unitreerobotics/DFX_inspire_service</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 라이선스 (2026-11-17 확인)</div>
+    <p><code>unitree_sdk2</code>와 <code>DFX_inspire_service</code> 저장소는 BSD-3-Clause, 예제가 쓰는 Eigen은 MPL-2.0입니다. 모두 상업적 사용을 허용합니다.</p></div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

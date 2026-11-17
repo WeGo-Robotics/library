@@ -1,3 +1,6 @@
 /* NERO operator manual: web-page button pictures inside the button table */
 table.t img.btn{ height:5.2mm; width:auto; max-width:38mm; display:block; border:0; }
 .toc li .t small{ display:inline; margin-left:2mm; }
+/* Cover: the dual-arm render is square, so at the shared 150 mm height it ran over the lead text.
+   Smaller and in the lower right, below the text (phones keep the shared below-the-text rule). */
+.cover .hero{ height:96mm; right:2mm; bottom:15mm; }
