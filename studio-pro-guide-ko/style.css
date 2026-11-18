@@ -1,0 +1,30 @@
+/* WeGo Humanoid Studio Pro guide: only what the shared wego_manual.css has no rule for (same rules as studio-guide-ko). */
+
+/* cover: product screenshot under the lead text */
+.cover .cover-shot{ position:relative; z-index:1; margin-top:9mm; border-radius:2mm; overflow:hidden;
+  border:.3mm solid rgba(143,184,255,.35); box-shadow:0 4mm 10mm rgba(0,0,0,.45); }
+.cover .cover-shot img{ display:block; width:100%; }
+.toc li .t a{ color:inherit; text-decoration:none; }
+
+/* card screenshots side by side, and a figure kept together with its caption */
+.shots-row{ display:flex; gap:4mm; align-items:flex-start; }
+.shots-row figure{ flex:1; min-width:0; }
+figure{ break-inside:avoid; }
+figure.card img{ max-width:100mm; display:block; margin:0 auto; }
+
+/* flow diagram drawn as inline SVG */
+figure.flow{ --border2:#c9cddc; background:var(--soft); border:1px solid var(--rule); border-radius:2mm; padding:3mm 2.5mm 1.5mm; }
+figure.flow .fb{ fill:#fff; stroke:var(--border2); stroke-width:1.5; }
+figure.flow .fb-accent{ fill:var(--blue); }
+figure.flow .ft{ fill:var(--ink); font-family:"Pretendard",sans-serif; font-weight:700; font-size:14px; }
+figure.flow .fs{ fill:var(--ink3); font-family:"Pretendard",sans-serif; font-weight:500; font-size:10.5px; }
+figure.flow .fa{ stroke:var(--border2); stroke-width:2; fill:none; }
+
+/* safety checklist: an empty box drawn in CSS, so no symbol glyph is needed */
+.checklist{ list-style:none; padding:0; margin:0 0 3mm; }
+.checklist li{ position:relative; padding:1.6mm 0 1.6mm 6.5mm; border-bottom:1px solid var(--rule); }
+.checklist li::before{ content:""; position:absolute; left:0; top:2.6mm; width:3.2mm; height:3.2mm;
+  border:.35mm solid var(--blue); border-radius:.6mm; }
+
+/* keep a short heading + table together on one page */
+.keep{ break-inside:avoid; }

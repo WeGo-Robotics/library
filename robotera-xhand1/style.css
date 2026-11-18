@@ -1,0 +1,14 @@
+/* ROBOTERA XHand1 operator manual */
+/* cover: the hand render is wide for its height; smaller and lower than the shared .hero so it clears the lead text */
+.cover .hero{ height:118mm; right:8mm; bottom:21mm; }
+ol.steps > li figure{ margin-top:1.6mm; }
+table.t td code{ word-break:normal; overflow-wrap:anywhere; }   /* long names must not widen the page (Chrome would shrink the whole PDF) */
+table.t.keep{ break-inside:avoid; }
+/* troubleshooting: error strings in the first column need room */
+table.t.ts td:first-child{ width:34%; white-space:normal; }
+table.t.ts td:nth-child(2){ width:22%; }
+/* joint table: names and numbers stay on one line, the motion column takes the rest */
+table.t.joints td:nth-child(2), table.t.joints td:nth-child(4), table.t.joints td:nth-child(5){ white-space:nowrap; }
+table.t.joints td code{ overflow-wrap:normal; }
+/* API table: long signatures wrap instead of squeezing the description column */
+table.t.api td:first-child{ white-space:normal; width:46%; }

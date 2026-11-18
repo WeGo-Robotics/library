@@ -1,0 +1,9 @@
+/* UR e-Series operator manual: the cover render is nearly square, so (as in nero-operation) it is smaller than the
+   shared 150 mm hero and sits in the lower right, below the lead text; phones keep the shared below-the-text rule */
+.cover .hero{ height:96mm; right:5mm; bottom:19.5mm; }
+.toc li .t small{ display:inline; margin-left:2mm; }
+/* a step with a screenshot may split between text and figure; the figure itself stays whole (as in piper-guide) */
+ol.steps > li figure{ margin-top:1.6mm; }
+ol.steps > li{ break-inside:auto; }
+table.t.keep{ break-inside:avoid; }
+table.t td code{ white-space:nowrap; }

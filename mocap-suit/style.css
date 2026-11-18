@@ -1,0 +1,6 @@
+/* Mocap Suit operator manual: cover photo placed like the Inspire covers (the maker's product photo as published,
+   own black background, no cut-out, in a rounded frame) */
+.cover .hero{ height:auto; width:88mm; right:18mm; bottom:25mm; border-radius:3mm; }
+table.t.keep{ break-inside:avoid; }
+/* keep the support address on one line (a break at its hyphen reads as a different address) */
+.mail{ white-space:nowrap; }

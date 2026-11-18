@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Universal Robots e-Series 협동로봇 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css + style.css */
+@page {
+  @top-left  { content: "Universal Robots e-Series"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Universal Robots e-Series 협동로봇 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/UR_eSeries_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템 구성과 모델</a></summary><a class="wm-t2" href="#c1-s1">구성 장치</a><a class="wm-t2" href="#c1-s2">모델과 사양</a><a class="wm-t2" href="#c1-s3">PolyScope 5와 PolyScope X</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">로봇을 움직이기 전에</a><a class="wm-t2" href="#c2-s2">손으로 움직일 때</a><a class="wm-t2" href="#c2-s3">페이로드와 TCP</a><a class="wm-t2" href="#c2-s4">티치 펜던트 없이 운전할 때</a><a class="wm-t2" href="#c2-s5">원격 제어 · 프로그램으로 움직일 때</a><a class="wm-t2" href="#c2-s6">전기 연결</a><a class="wm-t2" href="#c2-s7">더 읽을 곳</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>설치와 배선 기초</a></summary><a class="wm-t2" href="#c3-s1">받은 장비 확인</a><a class="wm-t2" href="#c3-s2">설치 방향과 마운팅 설정</a><a class="wm-t2" href="#c3-s3">컨트롤 박스 I/O</a><a class="wm-t2" href="#c3-s4">센서를 디지털 입력에 연결해 확인하기</a><a class="wm-t2" href="#c3-s5">툴 I/O와 그리퍼</a><a class="wm-t2" href="#c3-s6">출력 신호로 다른 장치 움직이기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>티치 펜던트와 PolyScope</a></summary><a class="wm-t2" href="#c4-s1">화면 구성</a><a class="wm-t2" href="#c4-s2">이동 탭</a><a class="wm-t2" href="#c4-s3">설치 파일과 프로그램</a><a class="wm-t2" href="#c4-s4">설정 메뉴</a><a class="wm-t2" href="#c4-s5">운영 모드와 제어 모드</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>전원 켜기와 끄기</a></summary><a class="wm-t2" href="#c5-s1">켜기</a><a class="wm-t2" href="#c5-s2">Active Payload</a><a class="wm-t2" href="#c5-s3">PC에서 켜기</a><a class="wm-t2" href="#c5-s4">끄기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>TCP와 페이로드 설정</a></summary><a class="wm-t2" href="#c6-s1">준비</a><a class="wm-t2" href="#c6-s2">TCP란</a><a class="wm-t2" href="#c6-s3">TCP 입력</a><a class="wm-t2" href="#c6-s4">페이로드 측정</a><a class="wm-t2" href="#c6-s5">프로그램에서 페이로드 바꾸기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>안전 구성 기초</a></summary><a class="wm-t2" href="#c7-s1">안전 구성의 항목</a><a class="wm-t2" href="#c7-s2">잠금 해제와 적용</a><a class="wm-t2" href="#c7-s3">감소 모드를 안전 I/O로 켜기</a><a class="wm-t2" href="#c7-s4">안전 평면으로 작업 영역 제한하기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>티치 펜던트 분리와 다시 연결</a></summary><a class="wm-t2" href="#c8-s1">준비할 것</a><a class="wm-t2" href="#c8-s2">펜던트 비활성화</a><a class="wm-t2" href="#c8-s3">펜던트 다시 연결</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>프로그래밍 기초</a></summary><a class="wm-t2" href="#c9-s1">프로그램 탭</a><a class="wm-t2" href="#c9-s2">웨이포인트와 이동 방식</a><a class="wm-t2" href="#c9-s3">실습 환경 (WeGo 실습 안내서)</a><a class="wm-t2" href="#c9-s4">I/O를 쓰는 명령</a><a class="wm-t2" href="#c9-s5">변수 · 반복 · 조건</a><a class="wm-t2" href="#c9-s6">실행 전 확인과 저장</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>URSim 가상 환경</a></summary><a class="wm-t2" href="#c10-s1">교육에서 쓰는 방법</a><a class="wm-t2" href="#c10-s2">설치 방법 고르기</a><a class="wm-t2" href="#c10-s3">A. 가상 머신으로 쓰기</a><a class="wm-t2" href="#c10-s4">B. Docker로 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>네트워크 · 원격 제어 · ROS</a></summary><a class="wm-t2" href="#c11-s1">로봇 IP 설정</a><a class="wm-t2" href="#c11-s2">개발 PC IP 설정 (Ubuntu)</a><a class="wm-t2" href="#c11-s3">통신 포트</a><a class="wm-t2" href="#c11-s4">원격 제어 켜기</a><a class="wm-t2" href="#c11-s5">Dashboard Server</a><a class="wm-t2" href="#c11-s6">RTDE와 ur_rtde</a><a class="wm-t2" href="#c11-s7">URCap 설치와 External Control</a><a class="wm-t2" href="#c11-s8">ROS 2 드라이버</a><a class="wm-t2" href="#c11-s9">ROS에서 그리퍼 다루기 (I/O 경유)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c12"><span class="wm-n">12</span>문제 해결</a></summary><a class="wm-t2" href="#c12-s1">전원 · 시작</a><a class="wm-t2" href="#c12-s2">원격 제어 · Dashboard · RTDE</a><a class="wm-t2" href="#c12-s3">TCP · 페이로드</a><a class="wm-t2" href="#c12-s4">URSim · ROS</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">부록</span>빠른 참조</a></summary><a class="wm-t2" href="#c13-s1">Universal Robots 공개 자료</a></details></nav><main class="wm-main">
+
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>Universal Robots <span>e-Series</span><br>협동로봇</h1>
+  <div class="title2">UR3e · UR5e/UR7e · UR10e/UR12e · UR16e · PolyScope 5</div>
+  <div class="bar"></div>
+  <p class="lead">구성과 모델, 안전 수칙, 설치 · 배선 기초, 티치 펜던트와 PolyScope, 전원 켜기, TCP · 페이로드와 안전 구성,
+    티치 펜던트 분리, 프로그래밍 기초, URSim, 네트워크 · 원격 제어 · ROS, 문제 해결까지 WeGo가 교육과 현장 지원에서 쓰는 순서로 정리했습니다.</p>
+  <img class="hero" src="assets/ur5e_render.png" alt="Universal Robots UR5e">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>Universal Robots e-Series 협동로봇 (UR3e · UR5e/UR7e · UR10e/UR12e · UR16e) · 컨트롤 박스 · 티치 펜던트. UR15(UR Series)는 1장 사양만</td></tr>
+      <tr><td>근거 문서</td><td>WeGo 자료: UR 실습 안내서 · UR ADV 실습 안내서(실습 환경과 풀이 화면), UR ROS 설정 자료(2023-11-10 기준),
+        UR ROS 그리퍼 제어 자료(2023-12-12), UR 페이로드 설정 · 티치 펜던트 비활성화/활성화 지원 문서(2026-08), UR 제품 카탈로그.
+        Universal Robots 공개 자료(이 책에 옮기지 않음, 직접 보십시오): e-Series 사용자 설명서(한국어판 있음) — universal-robots.com/manuals ·
+        e-Series 사양 비교표(2026년 10월판) · 지원 문서 «Disable and enable the e-Series teach pendant», Dashboard Server, 클라이언트 인터페이스 — universal-robots.com/articles ·
+        URSim 내려받기와 설치 안내 — universal-robots.com/download · UR Academy 교육 — academy.universal-robots.com</td></tr>
+      <tr><td>실측 자료</td><td>WeGo가 URSim 5.26.3(Docker 이미지 universalrobots/ursim_e-series:5.26.3, UR7e)과 ur_rtde 1.6.5로 확인한 내용(2026-11)</td></tr>
+      <tr><td>소프트웨어</td><td>PolyScope 5 (화면은 URSim 5.26.3 영어 화면과 WeGo 실습 자료의 한국어 화면) · ROS 2 Humble · ur_rtde 1.6.5</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>본문은 WeGo의 UR 교육 · 지원 자료에서 어느 현장에나 쓰이는 UR 운용 절차만 골라 WeGo 설명서 형식으로 다시 쓴 것입니다.
+      Universal Robots의 사용자 설명서와 UR Academy 교재는 옮기지 않았습니다. 설치 · 배선 · 안전의 전체 내용과 수치는 로봇 모델과
+      소프트웨어 버전에 맞는 UR 사용자 설명서를 따르십시오. 화면은 PolyScope 5 기준이며, 버전에 따라 이름과 위치가 조금씩 다릅니다.</p>
+    <p class="copy">© WeGo Robotics. Universal Robots, UR, PolyScope, URCap, URSim은 Universal Robots A/S의 상표입니다.
+      표지의 UR5e 이미지는 Universal Robots가 공개한 ROS 2 설명 패키지의 메시(github.com/UniversalRobots/Universal_Robots_ROS2_Description,
+      git 0eb1a86, BSD-3-Clause)를 MuJoCo로 렌더링한 것이고, 본문 화면은 PolyScope(URSim)와 WeGo 자료의 화면입니다. 1장의 사양은 Universal Robots 사양 비교표와 WeGo 카탈로그에서 옮겼습니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">시스템 구성과 모델</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">설치와 배선 기초</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">티치 펜던트와 PolyScope</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">전원 켜기와 끄기</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">TCP와 페이로드 설정</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">안전 구성 기초</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">티치 펜던트 분리와 다시 연결</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">프로그래밍 기초</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t">URSim 가상 환경</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t">네트워크 · 원격 제어 · ROS</span><span class="d"></span><span class="p" data-toc="c11"></span></li>
+    <li><span class="n">12</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c12"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c13"></span></li>
+  </ol>
+</section>
+
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">시스템 구성과 모델</h1></div>
+  <p class="lede">e-Series 협동로봇은 로봇팔, 컨트롤 박스, 티치 펜던트 세 장치로 이루어집니다. 설정과 프로그래밍은 티치 펜던트의
+    PolyScope 화면에서 하고, 개발 PC는 이더넷 케이블로 컨트롤 박스에 연결해 원격 제어 · ROS에 씁니다.</p>
+
+  <figure>
+    <svg viewBox="0 0 520 425" style="width:88%;margin:0 auto" role="img" aria-label="e-Series 시스템 구성" font-family="Pretendard" font-size="12.5">
+      <defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#8a90a2"/></marker></defs>
+      <text x="20" y="22" font-size="14" font-weight="700" fill="#0b1020">모든 명령은 컨트롤 박스를 거쳐 로봇팔로 갑니다</text>
+      <g fill="none" stroke="#8a90a2" stroke-width="1.3">
+        <path d="M135 150V190" marker-end="url(#ar1)" marker-start="url(#ar1)"/>
+        <path d="M385 150V190" marker-end="url(#ar1)" marker-start="url(#ar1)"/>
+        <path d="M260 280V320" marker-end="url(#ar1)" marker-start="url(#ar1)"/>
+      </g>
+      <rect x="20" y="40" width="230" height="110" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.3"/>
+      <text x="36" y="66" font-size="14.5" font-weight="700" fill="#0b1020">티치 펜던트</text>
+      <text x="36" y="88" fill="#5a6178">12인치 터치스크린 · PolyScope</text>
+      <text x="36" y="106" fill="#5a6178">비상 정지 · 전원 버튼</text>
+      <text x="36" y="124" fill="#5a6178">프리드라이브 버튼(뒷면) · USB</text>
+      <text x="36" y="142" fill="#5a6178">Standard 또는 3PE</text>
+      <rect x="270" y="40" width="230" height="110" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.3" stroke-dasharray="5 4"/>
+      <text x="286" y="66" font-size="14.5" font-weight="700" fill="#0b1020">개발 PC (선택)</text>
+      <text x="286" y="88" fill="#5a6178">Dashboard Server</text>
+      <text x="286" y="106" fill="#5a6178">RTDE · ur_rtde</text>
+      <text x="286" y="124" fill="#5a6178">ROS 2 드라이버</text>
+      <text x="286" y="142" fill="#5a6178">URSim (연습용)</text>
+      <text x="143" y="175" font-size="11.5" fill="#5a6178">전용 케이블</text>
+      <text x="393" y="175" font-size="11.5" fill="#5a6178">이더넷</text>
+      <rect x="20" y="190" width="480" height="90" rx="8" fill="#1673e6" fill-opacity="0.10" stroke="#1673e6" stroke-width="2"/>
+      <text x="36" y="216" font-size="14.5" font-weight="700" fill="#0b1020">컨트롤 박스</text>
+      <text x="36" y="240" fill="#0b1020">로봇 제어기 · 전원 입력</text>
+      <text x="36" y="260" fill="#0b1020">I/O · 안전 I/O · 원격 ON/OFF</text>
+      <text x="270" y="240" fill="#0b1020">이더넷 · USB</text>
+      <text x="270" y="260" fill="#0b1020">설치 파일 · 프로그램 저장</text>
+      <text x="268" y="305" font-size="11.5" fill="#5a6178">로봇 케이블</text>
+      <rect x="20" y="320" width="480" height="90" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.3"/>
+      <text x="36" y="346" font-size="14.5" font-weight="700" fill="#0b1020">로봇팔</text>
+      <text x="36" y="370" fill="#5a6178">회전 관절 6개 · 어느 방향으로도 설치</text>
+      <text x="36" y="390" fill="#5a6178">툴 플랜지 · 툴 I/O (M8 8핀)</text>
+      <text x="270" y="370" fill="#5a6178">툴 플랜지 힘 · 토크 센서</text>
+      <text x="270" y="390" fill="#5a6178">로봇 케이블 6 m</text>
+    </svg>
+    <figcaption data-fig="fig-arch"><b>그림 1.</b> e-Series 시스템 구성 (WeGo 정리. 장치별 항목은 Universal Robots 사양 비교표 기준)</figcaption>
+  </figure>
+
+  <h2 id="c1-s1">구성 장치</h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-parts"><b>표 1.</b> 구성 장치와 역할</caption>
+    <thead><tr><th>장치</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td>로봇팔</td><td>회전 관절 6개(베이스 · 숄더 · 엘보 · 리스트 1 · 리스트 2 · 리스트 3)로 이루어지며, 바닥 · 벽 · 천장 등 어느 방향으로도 설치할 수 있습니다.
+        끝단 툴 플랜지에 그리퍼 같은 툴을 달고, 툴 I/O 커넥터(M8 8핀)로 툴에 전원과 신호를 줍니다. 툴 플랜지에 힘 · 토크 센서가 들어 있습니다</td></tr>
+      <tr><td>컨트롤 박스</td><td>로봇 제어기입니다. 전원 입력, 이더넷, USB, 디지털 · 아날로그 I/O, 안전 I/O를 갖추고 있으며, 설치 파일과 프로그램이 여기에 저장됩니다</td></tr>
+      <tr><td>티치 펜던트</td><td>12인치 터치스크린으로 PolyScope를 실행합니다. 비상 정지 버튼, 전원 버튼, 뒷면의 프리드라이브 버튼, USB 단자가 있습니다.
+        표준(Standard) 펜던트와 3단 인에이블 스위치가 달린 3PE 펜던트 두 가지가 있습니다</td></tr>
+      <tr><td>개발 PC</td><td>필요할 때만 씁니다. 이더넷으로 컨트롤 박스에 연결해 Dashboard Server · RTDE · ROS 2로 로봇을 다루거나, URSim으로 프로그램을 연습합니다 (10 · 11장)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s2">모델과 사양 <span class="src">문서</span></h2>
+  <p>e-Series는 가반 하중과 작업 반경에 따라 모델이 나뉩니다. 아래 값은 Universal Robots e-Series 사양 비교표(2026년 10월판)에서 옮겼습니다.
+    최신 값은 universal-robots.com의 데이터시트에서 확인하십시오.</p>
+  <table class="t tight">
+    <caption data-tbl="tbl-spec"><b>표 2.</b> e-Series 주요 사양</caption>
+    <thead><tr><th>항목</th><th>UR3e</th><th>UR7e (UR5e)</th><th>UR12e (UR10e)</th><th>UR16e</th></tr></thead>
+    <tbody>
+      <tr><td>가반 하중</td><td>3 kg</td><td>7.5 kg</td><td>12.5 kg</td><td>16 kg</td></tr>
+      <tr><td>작업 반경</td><td>500 mm</td><td>850 mm</td><td>1300 mm</td><td>900 mm</td></tr>
+      <tr><td>무게 (케이블 포함)</td><td>11.2 kg</td><td>20.6 kg</td><td>33.5 kg</td><td>33.1 kg</td></tr>
+      <tr><td>반복 정밀도 (ISO 9283)</td><td>±0.03 mm</td><td>±0.03 mm</td><td>±0.05 mm</td><td>±0.05 mm</td></tr>
+      <tr><td>최대 TCP 속도</td><td>3 m/s</td><td>4 m/s</td><td>4 m/s</td><td>3 m/s</td></tr>
+      <tr><td>관절 최대 속도</td><td>베이스 · 숄더 · 엘보 180°/s, 리스트 360°/s</td><td>모든 관절 180°/s</td><td>베이스 · 숄더 120°/s, 나머지 180°/s</td><td>베이스 · 숄더 120°/s, 나머지 180°/s</td></tr>
+      <tr><td>관절 동작 범위</td><td>±360° (리스트 3 무한 회전)</td><td>±360°</td><td>±360°</td><td>±360°</td></tr>
+      <tr><td>최대 소비 전력</td><td>300 W</td><td>570 W</td><td>615 W</td><td>585 W</td></tr>
+      <tr><td>툴 I/O 전원</td><td>600 mA</td><td>1.5 A (2핀) · 1 A (1핀)</td><td>2 A (2핀) · 1 A (1핀)</td><td>2 A (2핀) · 1 A (1핀)</td></tr>
+      <tr><td>베이스 지름</td><td>Ø128 mm</td><td>Ø151 mm</td><td>Ø190 mm 미만</td><td>Ø190 mm</td></tr>
+      <tr><td>소음</td><td>60 dB(A) 미만</td><td>65 dB(A) 미만</td><td>65 dB(A) 미만</td><td>65 dB(A) 미만</td></tr>
+      <tr><td>공통</td><td colspan="4">회전 관절 6개 · IP54 · 주위 온도 0 ~ 50 °C · 습도 90 % RH 이하(결로 없음) · 설정 가능한 안전 기능 23개 ·
+        EN ISO 13849-1(PLd 카테고리 3) · EN ISO 10218-1 · 툴 플랜지 EN ISO 9409-1-50-4-M6 · 툴 I/O 디지털 입력 2 · 출력 2 · 아날로그 입력 2, 전원 12/24 V · 로봇 케이블 6 m</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box note"><div class="h">참고 · UR5e · UR10e와 UR7e · UR12e</div>
+    <p>Universal Robots는 UR5e와 UR10e의 이름을 실제 가반 하중에 맞춰 UR7e(7.5 kg)와 UR12e(12.5 kg)로 바꾸었고, 로봇 자체는 기계적으로 같다고 밝혔습니다.
+      이미 쓰고 있는 UR5e · UR10e와 그 툴 · 프로그램은 이름 변경의 영향을 받지 않습니다. 최근에는 이름에 작업 반경을 붙이기도 합니다(예: UR7e-920은 7.5 kg · 920 mm).
+      이 작업 반경 값은 측정 방법이 바뀐 결과이며 팔이 달라진 것은 아닙니다 (Universal Robots 제품 FAQ).
+      WeGo의 예전 교육 자료에 실린 사양표(UR5e 5 kg · UR10e 10 kg)는 이름을 바꾸기 전의 값입니다.</p></div>
+
+  <div class="box note"><div class="h">참고 · URSim의 UR7e는 UR5e와 같은 기구학 <span class="src r">실측</span></div>
+    <p>URSim 5.26.3에서 UR7e를 띄우면 UR5와 같은 기구학 파일(<code>urcontrol.conf.UR5</code>)과 UR7e 안전 설정(<code>safety.conf.UR7e</code>)이 쓰입니다.
+      링크 길이는 a = 0, −0.425, −0.3922 m, d = 0.1625, 0, 0, 0.1333, 0.0997, 0.0996 m로, Universal Robots의 ROS 2 설명 패키지에 있는 UR5e 값과 같습니다.
+      그래서 UR5e용 시뮬레이션 모델을 UR7e에 그대로 쓸 수 있습니다 (WeGo가 2026-11-12 확인).</p></div>
+
+  <h3>UR15 (UR Series)</h3>
+  <p>WeGo가 공급하는 UR Series 중 UR15는 가반 하중 15 kg, 작업 반경 1300 mm, 반복 정밀도 ±0.05 mm, 최대 TCP 속도 5 m/s, IP65,
+    무게 40.7 kg(케이블 포함)입니다 (WeGo 카탈로그). UR15는 e-Series가 아닌 UR Series 로봇이므로, 이 책의 절차를 쓰기 전에 UR15 사용자 설명서에서 차이를 확인하십시오.</p>
+
+  <h2 id="c1-s3">PolyScope 5와 PolyScope X</h2>
+  <p>e-Series 컨트롤 박스는 두 가지 소프트웨어 중 하나로 동작합니다. 사양 비교표 기준으로 CB 5.5는 PolyScope 5, CB 5.6은 PolyScope X를 기본으로 하며, 두 컨트롤 박스 모두 두 소프트웨어와 호환됩니다.
+    이 책의 화면과 메뉴 이름은 <b>PolyScope 5</b> 기준입니다. PolyScope X는 화면 구성이 다르므로 그에 맞는 사용자 설명서를 보십시오.
+    로봇의 소프트웨어 버전은 PolyScope 오른쪽 위 메뉴 → <span class="ui">About</span>(정보)에서 확인합니다.</p>
+</section>
+
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <p class="lede">이 장은 WeGo의 UR 자료와 PolyScope 화면이 알려 주는 안전 수칙을 한곳에 모은 것입니다. 로봇 설치와 운용의 안전 요구 사항 전체는
+    로봇 모델별 UR 사용자 설명서의 안전 장에 있으며, 이 책은 그 내용을 대신하지 않습니다.</p>
+
+  <div class="box warn"><div class="h">경고 · 위험성 평가와 안전 구성</div>
+    <p>PolyScope의 안전 설정 화면은 다음과 같이 경고합니다: 위험성 평가에서 정한 것과 다른 안전 구성 값을 쓰면, 합리적으로 제거되지 않은 위험이나
+      충분히 줄지 않은 위험이 생길 수 있습니다. 로봇을 셀에 넣기 전에 위험성 평가를 하고, 그 결과대로 안전 구성(7장)을 설정하십시오.
+      티치 펜던트 없이 운전하는 구성은 따로 위험성 평가를 해야 합니다 (8장).</p></div>
+
+  <h2 id="c2-s1">로봇을 움직이기 전에</h2>
+  <ul>
+    <li>로봇 동작 범위 안에 사람과 장애물이 없는지 확인하십시오. 로봇을 켤 때 PolyScope도 «로봇을 시작할 때 로봇에서 떨어져 있으십시오»라고 경고합니다 (5장).</li>
+    <li>비상 정지가 눌려 있으면 전원 투입과 브레이크 해제가 되지 않습니다. 비상 정지를 해제한 뒤 시작하십시오.</li>
+    <li>로봇의 설치 방향과 툴(그리퍼)의 길이를 생각해, 실습 · 시운전 전에 충돌이 일어나지 않도록 작업 공간을 구성하십시오.</li>
+    <li>그리퍼와 카메라 케이블이 당겨지거나 감기지 않는 자세 범위인지 확인하십시오.</li>
+    <li>설정 작업(TCP · 페이로드 측정, 안전 구성 변경 등)을 하기 전에는 돌고 있는 공정을 멈추고, 상위 시스템의 자동 운전을 중지하십시오.</li>
+    <li>로봇의 움직임이 확실하지 않으면 PolyScope의 시뮬레이션 모드로 먼저 프로그램을 확인하십시오. 시뮬레이션 모드에서는 로봇팔이 움직이지 않습니다 (9장).</li>
+  </ul>
+
+  <h2 id="c2-s2">손으로 움직일 때</h2>
+  <div class="box warn"><div class="h">경고 · 무거운 툴과 프리드라이브</div>
+    <p>무거운 툴을 단 상태에서 프리드라이브를 놓는 순간 로봇이 처질 수 있습니다. 무거운 툴, 좁은 공간, 정밀한 자세 조정이 필요하면 프리드라이브 대신
+      이동 탭의 관절별 제어로 움직이십시오.</p></div>
+
+  <h2 id="c2-s3">페이로드와 TCP</h2>
+  <div class="box caution"><div class="h">주의 · 실제와 다른 페이로드</div>
+    <p>페이로드 값이 실제와 다르면 중력 보상 계산이 어긋나 힘 측정값에 일정한 오차가 실립니다. 그리퍼나 툴 쪽 부품을 바꾸면 페이로드를 다시 설정하십시오.
+      툴을 떼어 낸 뒤에도 퀵 체인저 같은 부품이 남아 있으면 페이로드는 0이 아닙니다. 프로그램에서 페이로드를 바꿀 때 전환 시간을 0으로 두면
+      전환 순간에 로봇이 급격하게 반응할 수 있습니다 (6장).</p></div>
+
+  <h2 id="c2-s4">티치 펜던트 없이 운전할 때</h2>
+  <div class="box warn"><div class="h">경고 · 외부 비상 정지</div>
+    <p>티치 펜던트를 떼어 내면 펜던트의 비상 정지 버튼이 없어집니다. 대체 수단 없이 운전하면 비상시 로봇을 멈출 방법이 없으므로, 펜던트를 떼기 전에
+      외부 비상 정지 장치를 안전 I/O에 배선하고, 실제로 버튼을 눌러 로봇이 멈추는지 확인하십시오. 외부 비상 정지를 구성하지 않은 상태로 운전하지 마십시오 (8장).</p></div>
+
+  <h2 id="c2-s5">원격 제어 · 프로그램으로 움직일 때</h2>
+  <ul>
+    <li>PC 프로그램의 «정지» 버튼은 소프트웨어 정지입니다. 실제 비상 정지는 언제나 티치 펜던트(또는 외부)의 하드웨어 비상 정지 버튼입니다.</li>
+    <li>MoveIt 같은 경로 계획 도구로 실제 로봇을 움직일 때는 반드시 먼저 계획(Plan)을 보고, 문제가 없을 때만 실행(Execute)하십시오 (11장).</li>
+    <li>원격 조작이나 스트리밍 제어는 로봇의 현재 자세에서 천천히 시작하고, 처음 실제 로봇으로 돌리기 전에 PolyScope에서 작업대 · 작업자 쪽 안전 평면과
+      감소 모드 속도 제한을 설정하십시오 (7장).</li>
+    <li>URSim에서 잰 응답 지연과 동작은 실제 로봇에서 다를 수 있습니다. 시뮬레이터에서 정한 제어 값(예: servoJ의 lookahead)은 실제 로봇과 실제 입력으로 다시 확인하십시오 (11장).</li>
+  </ul>
+
+  <h2 id="c2-s6">전기 연결</h2>
+  <div class="box caution"><div class="h">주의 · 24 V 디지털 출력</div>
+    <p>컨트롤 박스의 디지털 출력은 24 V입니다. 아두이노처럼 낮은 전압을 받는 장치에 연결할 때는 그 장치의 입력 사양에 맞게 전압을 바꾸는 변환기를 거치십시오 (3장).</p></div>
+
+  <h2 id="c2-s7">더 읽을 곳</h2>
+  <p>UR 사용자 설명서(로봇 모델별, 한국어판 있음)의 안전 장, 설치 장, 위험성 평가 안내를 함께 보십시오. 내려받기: universal-robots.com/manuals ·
+    universal-robots.com/download. 이 책에서 다루지 않은 안전 기능(관절 제한 값, 정지 시간 · 거리 제한, 3PE 펜던트 운용 등)은 UR 사용자 설명서를 따르십시오.</p>
+</section>
+
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">설치와 배선 기초</h1></div>
+  <p class="lede">이 장은 처음 받은 로봇을 확인하고 I/O를 연결해 신호를 보는 데까지를 다룹니다. 고정 볼트, 케이블 규격, 안전 I/O 배선도 같은 기계 · 전기 설치의
+    세부 사항은 UR 사용자 설명서의 설치 장을 따르십시오.</p>
+
+  <h2 id="c3-s1">받은 장비 확인</h2>
+  <p>e-Series는 두 상자로 나뉘어 옵니다. 한 상자에는 로봇팔이, 다른 상자에는 컨트롤 박스와 티치 펜던트, 케이블, 설명서가 들어 있습니다.
+    상자의 구성품 목록과 대조해 빠진 것이 없는지 확인하고, 로봇팔의 관절(베이스 · 숄더 · 엘보 · 리스트 1 · 2 · 3)과 툴 플랜지를 살펴보십시오.</p>
+
+  <h2 id="c3-s2">설치 방향과 마운팅 설정</h2>
+  <p>로봇팔은 바닥 · 벽 · 천장 등 어느 방향으로도 설치할 수 있습니다. 실제로 설치한 방향과 각도는 PolyScope <span class="ui">Installation</span>(설치) →
+    <span class="ui">General</span>(일반) → <span class="ui">Mounting</span>에 그대로 입력해야 합니다. 마운팅이 올바르게 정의되어 있어야
+    페이로드 측정 마법사(6장)도 올바른 값을 냅니다. 툴 플랜지는 EN ISO 9409-1-50-4-M6 규격이므로 이 규격의 툴 · 어댑터를 쓸 수 있습니다.</p>
+
+  <h2 id="c3-s3">컨트롤 박스 I/O</h2>
+  <p>컨트롤 박스 안의 I/O 단자대는 쓰임새에 따라 색으로 구분되어 있고, PolyScope <span class="ui">I/O</span> 탭도 같은 색으로 신호를 보여 줍니다.</p>
+  <table class="t keep">
+    <caption data-tbl="tbl-io-color"><b>표 3.</b> 컨트롤 박스 I/O 단자대의 색 구분</caption>
+    <thead><tr><th>단자대 색</th><th>신호</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>노란 바탕 · 빨간 글자</td><td>안전 신호</td><td>비상 정지 · 보호 정지 입력 등. 안전 구성(7장)과 함께 씁니다</td></tr>
+      <tr><td>노란 바탕 · 검은 글자</td><td>구성 가능한 I/O</td><td>일반 I/O로 쓰거나 안전 I/O 기능(감소 모드 등)을 할당합니다</td></tr>
+      <tr><td>회색 바탕 · 검은 글자</td><td>디지털 I/O</td><td>센서 · 릴레이 등 일반 디지털 신호</td></tr>
+      <tr><td>녹색 바탕 · 검은 글자</td><td>아날로그 I/O</td><td>전압 또는 전류 신호</td></tr>
+    </tbody>
+  </table>
+  <p>Universal Robots 사양 비교표 기준으로 컨트롤 박스에는 디지털 입력 16 · 출력 16, 아날로그 입력 2 · 출력 2, 쿼드러처 디지털 입력 4가 있고, I/O 전원은 24 V · 2 A입니다.
+    로봇팔 끝의 툴 I/O에는 디지털 입력 2 · 출력 2, 아날로그 입력 2가 있으며 툴 전원은 12 V 또는 24 V로 고릅니다.</p>
+  <figure class="light">
+    <img src="assets/ur_013.png" alt="PolyScope I/O 탭">
+    <figcaption data-fig="fig-io"><b>그림 2.</b> I/O 탭. 구성 가능한 I/O는 노란색, 디지털 I/O는 회색, 아날로그 I/O는 녹색으로 표시됩니다 (URSim 5.26.3)</figcaption>
+  </figure>
+
+  <h2 id="c3-s4">센서를 디지털 입력에 연결해 확인하기</h2>
+  <p>센서 하나를 연결해 신호가 들어오는지 보는 순서입니다. 배선 방식(PNP · NPN, 전원 단자)은 센서 설명서와 UR 사용자 설명서의 I/O 배선 그림을 따르십시오.</p>
+  <ol class="steps">
+    <li><b>센서 신호선을 디지털 입력에 연결합니다.</b>예: 센서 출력을 컨트롤 박스의 DI1에 연결합니다.</li>
+    <li><b>물체가 없을 때 I/O 탭을 봅니다.</b><span class="ui">I/O</span> 탭의 <span class="ui">Digital Input</span>(디지털 입력) 1에 신호가 없는지 확인합니다.</li>
+    <li><b>물체를 센서 앞에 놓고 다시 봅니다.</b>디지털 입력 1의 표시가 켜지면 배선이 맞습니다.</li>
+    <li><b>신호에 이름을 붙입니다.</b><span class="ui">Installation</span> → <span class="ui">General</span> → <span class="ui">I/O Setup</span>에서 입력 이름을 바꾸면(예: Sensor_1) 프로그램을 읽기 쉬워집니다.</li>
+  </ol>
+
+  <h2 id="c3-s5">툴 I/O와 그리퍼</h2>
+  <p>그리퍼는 툴 플랜지에 달고 케이블을 툴 커넥터(M8 8핀)에 연결합니다. 그리퍼를 다루는 방법은 제품마다 다릅니다.
+    URCap(PolyScope 확장 프로그램)을 함께 주는 그리퍼는 URCap을 설치한 뒤 프로그램 노드로 열고 닫으며 (9 · 11장),
+    디지털 신호로 움직이는 그리퍼는 <code>tool_out[0]</code> 같은 툴 출력을 켜고 끄는 방식이 그리퍼마다 다르므로 그리퍼 설명서를 확인하십시오.</p>
+  <p>툴 출력을 바꾸는 <span class="ui">Set</span>(지정) 노드 다음에는 <span class="ui">Wait</span>(기다림) 노드를 넣으십시오. WeGo 교재의 예제는
+    런타임 오류를 막으려고 출력 다음에 짧은 기다림(0.01 ~ 0.5초)을 넣습니다.</p>
+
+  <h2 id="c3-s6">출력 신호로 다른 장치 움직이기</h2>
+  <div class="box caution"><div class="h">주의 · 24 V 출력을 저전압 장치에 연결할 때</div>
+    <p>컨트롤 박스의 디지털 출력은 24 V입니다. WeGo 교재의 컨베이어 예제처럼 아두이노 같은 저전압 보드로 신호를 받을 때는, 보드의 입력 사양에 맞는 전압으로
+      바꾸는 변환기를 거쳐 연결하십시오. 이때 컨트롤 박스의 0 V를 보드의 접지와 함께 연결합니다.</p></div>
+  <p>로봇 프로그램이 멈추면 출력이 연결된 장치(예: 컨베이어)도 멈추게 할 수 있습니다. <span class="ui">Installation</span> → <span class="ui">General</span> →
+    <span class="ui">I/O Setup</span>에서 그 출력을 고르고, 프로그램이 실행 중이 아닐 때의 동작을 «낮음»(Low)으로 정하십시오.</p>
+</section>
+
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">티치 펜던트와 PolyScope</h1></div>
+  <p class="lede">PolyScope는 티치 펜던트에서 실행되는 UR의 그래픽 사용자 화면입니다. 위쪽 머리띠의 탭으로 화면을 바꾸고, 아래쪽 띠에서 로봇 상태 · 속도 · 프로그램 실행을 다룹니다.
+    이 책은 영어 화면(URSim)과 한국어 화면(WeGo 실습 자료)을 함께 싣고, 메뉴 이름은 «영어(한국어)»로 적습니다.</p>
+
+  <h2 id="c4-s1">화면 구성</h2>
+  <figure class="light">
+    <img src="assets/ur_006.png" alt="PolyScope 이동 탭">
+    <figcaption data-fig="fig-move"><b>그림 3.</b> PolyScope 화면. 위쪽 머리띠의 탭, 가운데 작업 영역, 아래쪽 띠의 로봇 상태 · 속도 · 실행 버튼 (이동 탭, URSim 5.26.3)</figcaption>
+  </figure>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-header"><b>표 4.</b> 머리띠 탭과 버튼</caption>
+    <thead><tr><th>영어 (한국어)</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>Run (실행)</td><td>불러온 프로그램을 실행하고 상태를 봅니다</td></tr>
+      <tr><td>Program (프로그램)</td><td>프로그램 트리를 만들고 고칩니다 (9장)</td></tr>
+      <tr><td>Installation (설치)</td><td>TCP · 페이로드 · 마운팅 · I/O 설정 · 안전 구성 · 특징 좌표 · URCap 설정 등 로봇 셀의 설정을 정합니다 (6 · 7장)</td></tr>
+      <tr><td>Move (이동)</td><td>화살표로 TCP를 움직이거나 관절을 하나씩 돌리고, 프리드라이브 · 홈 · 정렬을 씁니다</td></tr>
+      <tr><td>I/O</td><td>컨트롤 박스와 툴의 입출력을 보고 바꿉니다 (3장)</td></tr>
+      <tr><td>Log (로그)</td><td>로봇 상태와 오류 기록을 봅니다</td></tr>
+      <tr><td>New · Open · Save (신규 · 열기 · 저장)</td><td>프로그램과 설치 파일을 만들고 불러오고 저장합니다. 머리띠 가운데에 지금 프로그램과 설치 파일의 이름이 보입니다</td></tr>
+      <tr><td>Local / Remote 아이콘</td><td>로컬 제어와 원격 제어를 바꿉니다. 원격 제어 기능을 켜야 나타납니다 (11장)</td></tr>
+      <tr><td>운영 모드 아이콘</td><td>운영 모드 비밀번호를 정하면 지금 운영 모드(수동 · 자동)가 표시됩니다</td></tr>
+      <tr><td>메뉴 (오른쪽 위 세 줄 아이콘)</td><td>Help(도움말) · About(정보: 소프트웨어 버전, 일련번호, IP 주소) · Settings(설정) · Shutdown Robot(로봇 종료)</td></tr>
+    </tbody>
+  </table>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-footer"><b>표 5.</b> 아래쪽 띠</caption>
+    <thead><tr><th>항목</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>상태 버튼</td><td>빨간색(Power off) · 노란색(Idle) · 녹색(Normal)으로 로봇 상태를 보여 줍니다. 누르면 초기화 화면이 열립니다 (5장)</td></tr>
+      <tr><td>Speed (속도) 슬라이더</td><td>프로그램 실행 속도의 비율을 정합니다</td></tr>
+      <tr><td>실행 · 한 단계 · 정지</td><td>프로그램을 시작 · 한 단계씩 실행 · 정지합니다</td></tr>
+      <tr><td>Simulation (시뮬레이션)</td><td>켜면 로봇팔은 움직이지 않고 화면의 3D 모델만 프로그램대로 움직입니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s2">이동 탭</h2>
+  <p>이동 탭에서는 왼쪽의 <span class="ui">TCP Position</span> · <span class="ui">TCP Orientation</span> 화살표로 TCP를 직선 · 회전 이동하고,
+    오른쪽의 <span class="ui">Joint Position</span>(관절 위치)에서 관절을 하나씩 돌립니다. <span class="ui">Feature</span>(특징)에서 기준 좌표(베이스 · 툴 · 보기 · 사용자 특징 좌표)를 고르면
+    화살표가 그 좌표계 방향으로 움직입니다. <span class="ui">Freedrive</span>(프리드라이브)를 누르고 있으면 손으로 로봇을 움직일 수 있으며,
+    티치 펜던트 뒷면의 프리드라이브 버튼도 같은 일을 합니다. 프리드라이브 패널에서는 축별로 자유도를 묶을 수 있습니다.</p>
+
+  <h2 id="c4-s3">설치 파일과 프로그램</h2>
+  <p>PolyScope는 두 종류의 파일을 다룹니다. <b>설치 파일</b>에는 TCP, 페이로드, 마운팅, I/O 설정, 안전 구성, 특징 좌표, 설치 변수처럼 로봇 셀에 딸린 설정이 들어 있고,
+    <b>프로그램</b>(<code>.urp</code>)에는 동작 순서가 들어 있습니다. 설치 탭에서 바꾼 값은 설치 파일을 저장해야 남습니다. 저장하지 않으면 다시 켤 때 값이 사라집니다.</p>
+
+  <h2 id="c4-s4">설정 메뉴</h2>
+  <p>메뉴 → <span class="ui">Settings</span>(설정)에는 다음 항목이 있습니다 (PolyScope 5.26).</p>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-settings"><b>표 6.</b> 설정 메뉴</caption>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Preferences</td><td>Language(언어: 화면과 키보드, 바꾸면 <span class="ui">Apply and Restart</span>로 다시 시작) · Run Screen · Time</td></tr>
+      <tr><td>Password</td><td>운영 모드(Mode) 비밀번호와 안전(Safety) 비밀번호</td></tr>
+      <tr><td>System</td><td>System Backup · Licenses · URCaps(설치 · 제거, 11장) · Remote Control(11장) · Constrained Freedrive · Network(11장) · Update</td></tr>
+      <tr><td>Security</td><td>보안 관련 설정</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s5">운영 모드와 제어 모드</h2>
+  <p>이름이 비슷한 두 상태를 구분해야 합니다. 둘 다 안전 구성 변경, 티치 펜던트 분리(8장), 원격 제어(11장)에 관여합니다.</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-modes"><b>표 7.</b> 운영 모드와 제어 모드</caption>
+    <thead><tr><th>구분</th><th>값</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>운영 모드</td><td>수동 / 자동</td><td>안전 구성 변경과 프로그램 편집을 허용할지 정합니다. 자동 모드에서는 미리 정한 프로그램만 실행할 수 있고, 프로그램과 설치를 고치거나 저장할 수 없으며 안전 설정도 잠금 해제할 수 없습니다</td></tr>
+      <tr><td>제어 모드</td><td>로컬 / 원격</td><td>명령을 티치 펜던트에서 받을지 외부(소켓 · I/O · Dashboard Server)에서 받을지 정합니다. 원격 제어에서는 이동 탭의 로봇 이동, 프리드라이브, 티치 펜던트에서의 프로그램 시작이 제한됩니다</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">전원 켜기와 끄기</h1></div>
+  <p class="lede">컨트롤 박스를 켜면 PolyScope가 뜨지만 로봇팔은 아직 꺼져 있습니다. 초기화 화면에서 팔에 전원을 넣고(ON) 브레이크를 풀어야(START) 로봇을 움직일 수 있습니다.</p>
+
+  <h2 id="c5-s1">켜기 <span class="src r">실측</span></h2>
+  <ol class="steps">
+    <li><b>안전 조건을 확인합니다.</b>로봇 동작 범위 안에 사람과 장애물이 없는지, 비상 정지가 풀려 있는지 확인합니다. 비상 정지가 눌려 있으면 전원 투입과 브레이크 해제가 되지 않습니다.</li>
+    <li><b>컨트롤 박스를 켭니다.</b>티치 펜던트를 컨트롤 박스에 연결하고 티치 펜던트의 전원 버튼을 누릅니다. PolyScope가 다 뜰 때까지 기다립니다.</li>
+    <li><b>초기화 화면을 엽니다.</b>왼쪽 아래의 빨간 상태 버튼(<span class="ui">Power off</span>)을 누릅니다.
+      <figure class="light"><img src="assets/ur_001.png" alt="초기화 화면"><figcaption data-fig="fig-init"><b>그림 4.</b> 초기화 화면. ON을 누른 뒤 Robot Active 상태에서 START로 브레이크를 풉니다 (URSim 5.26.3)</figcaption></figure></li>
+    <li><b>설치와 페이로드를 확인하고 ON을 누릅니다.</b>화면은 «설치와 페이로드가 맞는지 확인하고 ON을 눌러 시작하라»고 안내합니다. ON을 누르면 Power ON → Booting Complete → Robot Active로 넘어가고, 상태 버튼이 노란색(Idle)이 됩니다.</li>
+    <li><b>로봇에서 떨어져 START를 누릅니다.</b>화면에 «로봇을 시작할 때 로봇에서 떨어져 있으십시오»라는 경고가 나옵니다. START를 누르면 브레이크가 풀리고, 모든 단계가 녹색이 되며 상태 버튼이 녹색(Normal)이 됩니다.</li>
+    <li><b>Exit로 초기화 화면을 닫습니다.</b>이제 이동 탭과 프로그램을 쓸 수 있습니다.</li>
+  </ol>
+
+  <div class="box note"><div class="h">참고 · 마지막 단계의 이름</div>
+    <p>WeGo 지원 문서(PolyScope 5.22 기준)는 마지막 단계를 «Robot Operational»으로 적었고, URSim 5.26.3 화면에는 «Robot in Normal Mode»로 나옵니다.
+      같은 상태이며 소프트웨어 버전에 따라 이름만 다릅니다.</p></div>
+
+  <h2 id="c5-s2">Active Payload</h2>
+  <p>초기화 화면 왼쪽 아래의 <span class="ui">Active Payload</span>는 설치 탭에 저장된 페이로드를 <b>일시적으로 덮어쓰는</b> 값입니다.
+    화면에도 «Active Payload는 설치 페이로드를 일시적으로 덮어쓰는 데 쓰인다»고 적혀 있습니다. 페이로드를 측정하거나 고칠 때는 이 값을 건드리지 말고 설치 탭의 페이로드 구성(6장)을 기준으로 작업하십시오.</p>
+
+  <h2 id="c5-s3">PC에서 켜기</h2>
+  <p>원격 제어(11장)를 켜 두면 개발 PC에서 Dashboard Server(포트 29999)로 같은 순서를 실행할 수 있습니다. WeGo가 URSim에서 쓰는 순서는 다음과 같습니다.</p>
+  <ol class="steps">
+    <li><b>포트 29999가 열릴 때까지 기다립니다.</b>PolyScope가 아직 뜨는 중이면 연결이 거부됩니다. 몇 초 간격으로 다시 시도하십시오.</li>
+    <li><b><code>power on</code>을 보냅니다.</b><code>robotmode</code>의 응답이 <code>IDLE</code>이 될 때까지 기다립니다.</li>
+    <li><b><code>brake release</code>를 보냅니다.</b><code>robotmode</code>의 응답이 <code>RUNNING</code>이 되면 준비가 끝났습니다. <code>safetystatus</code>로 안전 상태도 확인합니다.</li>
+  </ol>
+  <p>Dashboard 명령의 목록과 사용법은 11장과 부록에 있습니다.</p>
+
+  <h2 id="c5-s4">끄기</h2>
+  <ol class="steps">
+    <li><b>프로그램을 멈추고 로봇을 안전한 자세로 둡니다.</b>설치나 프로그램을 바꿨다면 먼저 저장합니다.</li>
+    <li><b>메뉴 → <span class="ui">Shutdown Robot</span>(로봇 종료)을 누릅니다.</b>화면의 안내에 따라 종료합니다.</li>
+    <li><b>케이블 작업은 완전히 꺼진 뒤에 합니다.</b>티치 펜던트 케이블처럼 컨트롤 박스에 연결된 케이블은 로봇이 완전히 종료된 뒤에 분리하십시오 (8장).</li>
+  </ol>
+</section>
+
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">TCP와 페이로드 설정</h1></div>
+  <p class="lede">툴을 달면 TCP(툴 기준점)와 페이로드(툴의 질량 · 무게중심)를 로봇에 알려야 합니다. TCP는 위치 정확도에, 페이로드는 중력 보상과 힘 측정에 바로 영향을 줍니다.
+    툴이나 툴 쪽 부품을 바꿀 때마다 이 장의 절차를 다시 하십시오.</p>
+
+  <h2 id="c6-s1">준비</h2>
+  <ul>
+    <li>실제 운전에 쓰는 구성 그대로 툴을 다십시오. 카메라 브래킷, 케이블 고정구, 흡착 컵처럼 툴 쪽에 붙는 부품을 빠뜨리면 측정값이 실제와 달라집니다.</li>
+    <li>TCP · 페이로드 측정은 티치 펜던트에서 로봇을 직접 움직여야 하므로 로컬 제어 · 수동 모드에서 합니다. 원격 제어로 운전하던 로봇은 먼저 바꾸고(4 · 11장), 작업이 끝나면 되돌리십시오.</li>
+    <li>로봇이 서로 다른 네 자세로 움직일 수 있는 빈 공간을 확보하십시오 (2장).</li>
+  </ul>
+
+  <h2 id="c6-s2">TCP란</h2>
+  <p>TCP(Tool Center Point)는 툴의 기준점입니다. 툴 출력 플랜지 중심을 기준으로 한 위치 X · Y · Z와 자세 RX · RY · RZ, 모두 여섯 값으로 정의하며,
+    여섯 값이 모두 0이면 TCP는 플랜지 중심과 같습니다. 웨이포인트로 돌아가라고 하면 로봇은 TCP를 그 위치와 자세로 옮기고, 직선 이동에서는 TCP가 직선으로 움직입니다.
+    그래서 TCP가 어긋나면 모든 이동 목표에 같은 크기의 오차가 더해집니다.</p>
+
+  <h3>TCP를 정하는 방법</h3>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-tcp-method"><b>표 8.</b> TCP를 정하는 방법 (WeGo 지원 문서)</caption>
+    <thead><tr><th>방법</th><th>쓰는 경우</th><th>특성</th></tr></thead>
+    <tbody>
+      <tr><td>제조사 공표값</td><td>규격 툴을 플랜지 축에 맞춰 그대로 단 경우</td><td>가장 먼저 검토합니다. 단, 공표값의 기준점이 플랜지가 아닐 수 있으므로(퀵 체인저 높이 등) 기준점을 확인하십시오</td></tr>
+      <tr><td>실측 · 적층 계산</td><td>여러 부품을 겹쳐 달았거나 핑거팁 · 흡착 컵이 표준과 다른 경우</td><td>기준면을 명확히 잡아야 합니다</td></tr>
+      <tr><td>임의 값 지정</td><td>공정상 기준점을 툴 끝이 아닌 곳에 두어야 하는 경우</td><td>정한 근거를 함께 기록합니다</td></tr>
+      <tr><td>TCP 위치 티칭</td><td>툴이 비스듬히 달려 X · Y나 회전 값을 알 수 없는 경우</td><td>사람이 포인트를 맞추는 방식이라 오차가 생깁니다</td></tr>
+    </tbody>
+  </table>
+  <p>규격 툴을 축에 맞춰 달았다면 모르는 값은 플랜지에서 툴 끝까지의 Z 거리 하나뿐이고, 이 경우 공표값이나 실측이 티칭보다 정확합니다.
+    공표값은 그대로 넣기보다 계산 결과를 검산하는 기준으로 쓰십시오. 계산값이 공표값과 크게 다르면 빠뜨린 부품이 있다는 뜻입니다.</p>
+
+  <h2 id="c6-s3">TCP 입력</h2>
+  <figure class="light">
+    <img src="assets/ur_002.png" alt="Installation General TCP 화면">
+    <figcaption data-fig="fig-tcp"><b>그림 5.</b> Installation → General → TCP 화면. 위치(mm)와 자세를 직접 넣거나 Measure로 티칭합니다 (URSim 5.26.3)</figcaption>
+  </figure>
+  <ol class="steps">
+    <li><b><span class="ui">Installation</span>(설치) → <span class="ui">General</span>(일반) → <span class="ui">TCP</span>를 엽니다.</b>툴 센터 포인트 화면이 열립니다.</li>
+    <li><b>위치와 자세를 넣습니다.</b>위치 X · Y · Z는 mm, 자세는 기본이 회전 벡터(rad)이며 <span class="ui">Units</span>에서 단위를 바꿀 수 있습니다. 값을 이미 알면 티칭 없이 바로 넣습니다.</li>
+    <li><b>필요하면 TCP를 더 만듭니다.</b>드롭다운 옆 버튼으로 새 TCP를 고유한 이름으로 추가 · 이름 변경 · 제거합니다. 마지막 하나는 제거할 수 없습니다.</li>
+    <li><b>기본 TCP를 정하고 설치를 저장합니다.</b>원하는 TCP를 고르고 기본값으로 설정합니다. 드롭다운의 녹색 아이콘이 기본 TCP입니다.</li>
+  </ol>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-tcp-active"><b>표 9.</b> 활성 TCP와 기본 TCP</caption>
+    <thead><tr><th>구분</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>활성 TCP</td><td>직선 이동에서 로봇이 TCP 오프셋을 정할 때 쓰는 TCP입니다. 프로그램 실행 중에 이동 노드나 Set 노드로 바꿀 수 있습니다</td></tr>
+      <tr><td>기본 TCP</td><td>프로그램을 실행하기 전에 활성 TCP로 지정되는 TCP입니다</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TCP 위치 티칭</h3>
+  <p>값을 알 수 없을 때만 씁니다. 위치 옆의 <span class="ui">Measure</span>(측정)를 누르면 시작됩니다.</p>
+  <ol class="steps">
+    <li><b>작업 영역에 고정된 포인트를 정합니다.</b>뾰족한 핀을 세워 두면 좋습니다.</li>
+    <li><b>최소 세 가지 각도에서 TCP를 그 포인트에 맞추고 위치를 저장합니다.</b>화면 오른쪽의 위치 화살표로 움직입니다. 각도를 충분히 벌리십시오.</li>
+    <li><b>결과를 확인하고 설정을 눌러 TCP에 적용합니다.</b></li>
+  </ol>
+  <p>저장한 위치가 충분히 다르지 않으면 버튼 위의 LED가 빨간색이 됩니다. 각 포인트의 품질은 녹색 · 노란색 · 빨간색 LED로 표시됩니다.
+    세 위치면 대체로 TCP를 정할 수 있지만, 네 번째 위치를 쓰면 계산이 맞는지 한 번 더 확인할 수 있습니다.</p>
+  <div class="box caution"><div class="h">주의 · 티칭 오차</div>
+    <p>티칭 결과는 사람이 같은 포인트를 반복해서 맞추는 정확도에 좌우됩니다. 각도 차이가 작으면 계산이 불안정해져 맞추는 오차가 몇 배로 커집니다.
+      툴 끝이 뾰족하지 않으면 뾰족한 지그를 붙여 측정하십시오. LED가 모두 녹색이어도 결과를 그대로 쓰지 말고, 공표값이나 계산값과 대조해 차이가 크면 다시 티칭하십시오.</p></div>
+
+  <h3>TCP 자세 티칭</h3>
+  <p>자세는 위치와 따로 잡습니다. 자세 옆의 <span class="ui">Measure</span>를 누르고 기준이 될 특징 좌표(예: 베이스)를 고른 뒤, 포인트 설정을 누르고 툴 화살표로 툴 자세가
+    그 좌표계와 일치하는 위치로 움직입니다. 계산된 자세를 확인하고 설정을 누릅니다. 툴을 플랜지 축에 맞춰 달았다면 자세 값은 모두 0이므로 이 과정이 필요 없습니다.</p>
+
+  <div class="box note"><div class="h">참고 · 공정 값을 쌓은 뒤의 TCP 변경</div>
+    <p>TCP를 정하고 공정을 구성해 잡는 위치와 보정 값을 정했다면, 그 값들은 모두 그 TCP를 기준으로 만들어진 것입니다. 나중에 TCP만 더 정확한 값으로 바꾸면 기준이 함께 움직여
+      오히려 정확도가 떨어질 수 있습니다. 부득이하게 바꿀 때는 TCP 변경, 공정 보정 값 재계산, 시험을 한 묶음으로 하십시오 (WeGo 현장 경험).
+      그리퍼를 다른 개체로 바꾸었을 때, 핑거팁 · 흡착 컵 모양을 바꾸었을 때, 브래킷이나 퀵 체인저 어댑터를 바꾸었을 때, 충돌 뒤 툴 변형이 의심될 때는 TCP를 다시 확인하십시오.</p></div>
+
+  <h2 id="c6-s4">페이로드 측정</h2>
+  <figure class="light">
+    <img src="assets/ur_003.png" alt="Installation General Payload 화면">
+    <figcaption data-fig="fig-payload"><b>그림 6.</b> Installation → General → Payload 화면. 질량 · 무게중심을 넣거나 Measure로 측정합니다 (URSim 5.26.3)</figcaption>
+  </figure>
+  <p><span class="ui">Installation</span> → <span class="ui">General</span> → <span class="ui">Payload</span>(페이로드) 화면에는 페이로드 구성 목록, 질량(kg),
+    무게중심 CX · CY · CZ(mm), 관성 항목과 <span class="ui">Measure</span>(측정) 버튼이 있습니다. 페이로드 구성을 여러 개 만들어 두고 프로그램 중에 바꿀 수 있습니다.
+    툴을 바꾸는 셀이라면 툴 상태마다(툴 없음 · 툴 A · 툴 B …) 구성을 하나씩 만들고, 이름을 툴 이름과 맞춰 두면 관리하기 쉽습니다.</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-payload-buttons"><b>표 10.</b> 페이로드 구성 버튼</caption>
+    <thead><tr><th>버튼</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>+ (추가)</td><td>새 페이로드 구성을 추가합니다. 이름은 겹칠 수 없습니다</td></tr>
+      <tr><td>연필 (이름 변경)</td><td>고른 구성의 이름을 바꿉니다</td></tr>
+      <tr><td>휴지통 (삭제)</td><td>고른 구성을 지웁니다. 마지막 하나는 지울 수 없습니다</td></tr>
+      <tr><td>Set Now (지금 설정)</td><td>고른 구성을 지금의 활성 페이로드로 지정합니다. 드롭다운의 체크 표시가 활성 페이로드입니다</td></tr>
+      <tr><td>기본값으로 설정</td><td>프로그램 시작 전에 적용될 기본 페이로드로 지정합니다. 드롭다운의 녹색 아이콘이 기본 페이로드입니다</td></tr>
+    </tbody>
+  </table>
+
+  <h3>측정 마법사</h3>
+  <ol class="steps">
+    <li><b>페이로드 화면에서 <span class="ui">Measure</span>를 누릅니다.</b>페이로드 추정 마법사가 시작됩니다. <span class="ui">Next</span>(다음)를 누릅니다.</li>
+    <li><b>마법사가 안내하는 네 가지 위치로 로봇을 옮깁니다.</b>각 위치에서 페이로드의 하중이 측정됩니다. 이동 탭의 관절별 제어나 프리드라이브로 옮깁니다.</li>
+    <li><b>결과를 확인하고 <span class="ui">Finish</span>(완료)를 누른 뒤 설치를 저장합니다.</b>화면을 닫기 전에 질량과 무게중심 세 값을 기록해 두십시오.</li>
+  </ol>
+  <ul>
+    <li>네 위치의 TCP 위치가 서로 최대한 다르게 하십시오. 비슷한 자세를 반복하면 무게중심 오차가 커집니다.</li>
+    <li>측정은 짧은 시간 안에 끝내고, 측정 전과 측정 중에 툴이나 페이로드를 손으로 당기지 마십시오.</li>
+    <li>설치의 마운팅(3장)이 올바르게 정의되어 있어야 합니다.</li>
+  </ul>
+  <p>관성은 따로 정하지 않으면 지정한 질량과 밀도 1 g/cm³인 구의 관성으로 계산된 기본값이 쓰입니다. 정밀한 관성이 필요할 때만
+    <span class="ui">Use custom Inertia Matrix</span>를 골라 IXX · IYY · IZZ · IXY · IXZ · IYZ를 넣습니다. 관성은 페이로드 무게중심을 원점으로 하고 툴 플랜지 축과 나란한 좌표계로 정합니다.</p>
+
+  <div class="box caution"><div class="h">주의 · 다른 프로그램으로 값을 옮길 때의 단위</div>
+    <p>측정 결과는 티치 펜던트 안에만 저장되며 PC 쪽 설정 파일과 자동으로 연결되지 않습니다. ROS · RTDE 프로그램의 설정 파일에 옮겨 적을 때는 단위를 확인하십시오.
+      티치 펜던트의 CX · CY · CZ는 mm이고 RTDE의 <code>setPayload</code> 같은 API는 보통 m를 씁니다. mm 값을 그대로 넣으면 무게중심이 1000배로 들어갑니다.
+      부호는 화면에 보이는 그대로 옮기고, 무게중심은 툴 플랜지 좌표계 기준이므로 축 순서를 바꾸지 마십시오.</p></div>
+
+  <h2 id="c6-s5">프로그램에서 페이로드 바꾸기</h2>
+  <p>집은 물체를 놓는 등 실행 중에 페이로드가 바뀌면 <span class="ui">Program</span> → <span class="ui">Basic</span> → <span class="ui">Set Payload</span>(페이로드 설정) 노드를 씁니다.
+    미리 정한 페이로드 구성을 고르거나 질량 · 무게중심을 직접 넣을 수 있고, <span class="ui">Set Now</span>를 누르면 그 값이 바로 활성 페이로드가 됩니다.
+    전환 지속 시간은 페이로드가 바뀔 때 값이 반영되는 시간입니다. 0으로 두면 전환 순간에 로봇이 급격하게 반응할 수 있으므로, 무거운 물체를 다루거나 진공 그리퍼로 물체를 놓는 구간처럼
+    하중이 갑자기 바뀌는 곳에는 전환 시간을 주십시오.</p>
+  <p>툴을 바꿀 때마다 그 툴의 TCP와 페이로드를 다시 적용하십시오. 다시 적용하지 않으면 로봇은 이전 툴의 값을 계속 씁니다. 점검표는 부록에 있습니다.</p>
+</section>
+
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">안전 구성 기초</h1></div>
+  <p class="lede">안전 구성은 로봇의 힘 · 속도 · 위치를 제한하는 값과 안전 I/O 기능의 모음이며, 설치 파일에 저장됩니다. 이 장은 화면 구성과 자주 쓰는 설정의 순서를 보여 줍니다.
+    어떤 값을 쓸지는 위험성 평가로 정하고, 각 기능의 정확한 뜻과 한계는 UR 사용자 설명서의 안전 구성 장을 따르십시오.</p>
+
+  <figure class="light">
+    <img src="assets/ur_004.png" alt="Installation Safety Robot Limits 화면">
+    <figcaption data-fig="fig-limits"><b>그림 7.</b> Installation → Safety → Robot Limits. 위쪽의 DANGER 문구, 공장 기본 단계 슬라이더, 정상 · 감소 모드별 제한 값, 아래쪽의 안전 비밀번호 칸 (URSim 5.26.3)</figcaption>
+  </figure>
+
+  <h2 id="c7-s1">안전 구성의 항목</h2>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-safety-menu"><b>표 11.</b> Installation → Safety 메뉴 (PolyScope 5.26)</caption>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Robot Limits (로봇 제한)</td><td>TCP와 로봇의 힘 · 파워 · 운동량 · 속도 · 정지 시간 · 정지 거리 제한. 공장 기본 단계(Most Restricted ~ Least Restricted) 중에서 고르거나 Custom으로 직접 정합니다.
+        값은 정상(Normal) 모드와 감소(Reduced) 모드에 따로 있습니다. 사람이나 주변과 부딪힐 위험이 높으면 낮은 값을, 낮으면 높은 값을 씁니다</td></tr>
+      <tr><td>Joint Limits (관절 제한)</td><td>관절별 최대 속도와 허용 위치 범위</td></tr>
+      <tr><td>Planes (평면)</td><td>안전 평면으로 TCP가 머물 수 있는 작업 영역을 제한합니다 (경계)</td></tr>
+      <tr><td>Tool Position · Tool Direction</td><td>툴의 위치와 방향 제한</td></tr>
+      <tr><td>I/O</td><td>구성 가능한 입출력에 안전 기능(비상 정지, 감소 모드 등)을 할당합니다</td></tr>
+      <tr><td>Hardware</td><td>연결된 티치 펜던트 종류(No · Standard · 3PE) 등 하드웨어 선택 (8장)</td></tr>
+      <tr><td>PROFIsafe · Safe Home · Three Position</td><td>필드버스 안전, 안전 홈 자세, 3단 인에이블 장치 설정</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c7-s2">잠금 해제와 적용</h2>
+  <ol class="steps">
+    <li><b>수동 모드인지 확인합니다.</b>자동 모드에서는 안전 설정을 잠금 해제할 수 없습니다.</li>
+    <li><b>안전 비밀번호를 정합니다 (처음 한 번).</b>메뉴 → <span class="ui">Settings</span> → <span class="ui">Password</span>에서 안전(Safety) 비밀번호를 정합니다.</li>
+    <li><b>잠금을 풉니다.</b><span class="ui">Installation</span> → <span class="ui">Safety</span>의 아무 화면에서 아래쪽 <span class="ui">Safety password</span> 칸에 비밀번호를 넣고 <span class="ui">Unlock</span>을 누릅니다.</li>
+    <li><b>값을 바꾸고 <span class="ui">Apply</span>(적용)를 누릅니다.</b>적용을 누르지 않으면 반영되지 않습니다. 적용 뒤 <span class="ui">Lock</span>으로 다시 잠그고 설치 파일을 저장합니다.</li>
+  </ol>
+
+  <h2 id="c7-s3">감소 모드를 안전 I/O로 켜기</h2>
+  <p>예: 작업자가 영역에 들어오면 안전 스캐너가 신호를 주고, 로봇이 감소 모드(낮은 제한 값)로 움직이게 합니다.</p>
+  <ol class="steps">
+    <li><b>스캐너를 지키려는 영역에 두고 컨트롤 박스의 구성 가능한 입력에 연결합니다.</b>안전 입력의 배선은 UR 사용자 설명서의 안전 I/O 배선을 따르십시오. I/O 탭에서 신호가 들어오는지 확인합니다.</li>
+    <li><b>안전 구성을 잠금 해제하고 <span class="ui">Safety</span> → <span class="ui">I/O</span>를 엽니다.</b></li>
+    <li><b>연결한 입력에 감소 모드 기능을 할당하고 적용합니다.</b>이제 그 입력에 신호가 들어오면 로봇은 감소 모드의 제한 값으로 움직입니다.</li>
+  </ol>
+
+  <h2 id="c7-s4">안전 평면으로 작업 영역 제한하기</h2>
+  <p>예: 로봇이 작업자 쪽으로 넘어오지 못하게 가상의 벽을 세웁니다.</p>
+  <ol class="steps">
+    <li><b>특징 좌표를 만듭니다.</b><span class="ui">Installation</span> → <span class="ui">Features</span>(특징)에서 포인트(또는 평면)를 추가하고, 벽을 세울 자리로 TCP를 옮겨 티칭합니다.</li>
+    <li><b>안전 구성을 잠금 해제하고 <span class="ui">Safety</span> → <span class="ui">Planes</span>를 엽니다.</b></li>
+    <li><b>평면을 추가하고 1단계의 특징을 복사해 위치를 정합니다.</b>평면이 언제 적용될지(정상 모드 · 감소 모드 · 둘 다)를 고릅니다. 항상 지키려면 둘 다를 고릅니다.</li>
+    <li><b>적용하고 결과를 확인합니다.</b>적용을 누르면 안전 구성 화면에 평면이 표시됩니다. 위치가 의도한 곳인지 확인하고 설치 파일을 저장합니다.</li>
+  </ol>
+
+  <div class="box note"><div class="h">참고 · 원격 조작 · 스트리밍 제어 전에 (WeGo 현장 절차)</div>
+    <p>PC에서 로봇을 실시간으로 움직이는 시스템(원격 조작 등)을 처음 실제 로봇으로 돌리기 전에, WeGo는 PolyScope에서 작업대와 작업자 쪽 안전 평면, 감소 모드 속도 제한을 먼저 설정합니다.
+      PC 프로그램 쪽의 작업 영역 제한 · 관절 속도 제한은 이와 별도로 둡니다.</p></div>
+
+  <figure class="light">
+    <img src="assets/ur_005.png" alt="Installation Safety Hardware 화면">
+    <figcaption data-fig="fig-hw"><b>그림 8.</b> Safety → Hardware. 선택한 하드웨어가 실제 연결과 다르면 안전상의 이유로 로봇이 시작되지 않는다는 안내가 있습니다 (URSim 5.26.3)</figcaption>
+  </figure>
+</section>
+
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">티치 펜던트 분리와 다시 연결</h1></div>
+  <p class="lede">e-Series 컨트롤 박스는 기본적으로 티치 펜던트를 연결한 상태로 운전하도록 설정되어 있습니다. 펜던트를 떼고 운전하려면 안전 구성의 하드웨어 설정을 함께 바꿔야 하며,
+    설정을 바꾸지 않고 떼면 로봇이 시작되지 않습니다. 소프트웨어 5.1.0 이상의 e-Series에 해당하며, CB-Series는 절차가 다릅니다.</p>
+
+  <div class="box warn"><div class="h">경고 · 펜던트를 떼기 전에</div>
+    <p>티치 펜던트를 비활성화하면 외부 비상 정지를 반드시 구성해야 합니다. 펜던트의 비상 정지 버튼이 없어지므로, 대체 수단 없이 운전하면 비상시 로봇을 멈출 방법이 없습니다.
+      펜던트 없이 운전하는 구성은 따로 위험성 평가를 하십시오.</p></div>
+
+  <h2 id="c8-s1">준비할 것</h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-tp-prep"><b>표 12.</b> 펜던트 분리 전 확인 사항</caption>
+    <thead><tr><th>항목</th><th>확인 내용</th></tr></thead>
+    <tbody>
+      <tr><td>운영 모드</td><td>안전 구성을 바꾸려면 수동 모드여야 합니다 (4장)</td></tr>
+      <tr><td>안전 비밀번호</td><td>안전 구성을 잠금 해제하는 데 필요합니다</td></tr>
+      <tr><td>펜던트 종류</td><td>표준(Standard) 펜던트인지 3PE 펜던트인지 기록해 둡니다. 다시 연결할 때 같은 항목을 골라야 합니다</td></tr>
+      <tr><td>외부 비상 정지</td><td>펜던트를 떼기 전에 외부 비상 정지의 배선과 동작을 준비합니다</td></tr>
+      <tr><td>외부 전원 버튼</td><td>펜던트의 전원 버튼을 쓸 수 없으므로 원격 ON / OFF 수단을 준비합니다</td></tr>
+      <tr><td>위험성 평가</td><td>펜던트 없이 운전하는 구성을 평가합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s2">펜던트 비활성화</h2>
+  <p>3단계까지는 펜던트를 연결하고 로컬 제어 상태에서 합니다.</p>
+  <ol class="steps">
+    <li><b>원격 제어 기능을 켭니다.</b>메뉴 → <span class="ui">Settings</span> → <span class="ui">System</span> → <span class="ui">Remote Control</span>에서 <span class="ui">Enable</span>(사용)을 누릅니다.
+      화면 오른쪽 위에 펜던트 아이콘이 나타납니다. 이 기능을 켜는 것만으로는 원격 제어로 바뀌지 않습니다.</li>
+    <li><b>하드웨어 설정을 No로 바꿉니다.</b><span class="ui">Installation</span> → <span class="ui">Safety</span> → <span class="ui">Hardware</span>에서 안전 비밀번호로 잠금을 풀고,
+      <span class="ui">TeachPendant</span> 드롭다운에서 <span class="ui">No</span>를 고른 뒤 <span class="ui">Apply</span>를 누릅니다.</li>
+    <li><b>원격 제어로 바꿉니다.</b>오른쪽 위 펜던트 아이콘을 누르고 <span class="ui">Remote Control</span>을 고릅니다. 아이콘 표시가 바뀌면 이제 펜던트 없이 로봇을 제어할 수 있습니다. 확인한 뒤 로봇을 종료합니다.</li>
+    <li><b>로봇이 완전히 꺼진 뒤 펜던트 케이블을 뗍니다.</b>분리 방법은 UR 서비스 설명서의 티치 펜던트 교체 절차를 따르십시오.</li>
+    <li><b>외부 비상 정지를 배선하고 시험합니다.</b>외부 비상 정지 장치를 안전 I/O에 배선합니다(UR 사용자 설명서의 안전 I/O). 배선 뒤에는 실제로 버튼을 눌러 로봇이 멈추는지 확인합니다.</li>
+    <li><b>원격 ON / OFF 버튼을 배선합니다.</b>원격 ON과 원격 OFF 입력을 배선합니다(UR 사용자 설명서의 원격 ON/OFF 제어).</li>
+  </ol>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-tp-hw"><b>표 13.</b> Safety → Hardware의 TeachPendant 선택값</caption>
+    <thead><tr><th>선택값</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>No</td><td>티치 펜던트를 연결하지 않고 운전합니다</td></tr>
+      <tr><td>Standard</td><td>표준 티치 펜던트를 연결해 운전합니다</td></tr>
+      <tr><td>3PE Enabled</td><td>3PE 티치 펜던트를 연결해 운전합니다</td></tr>
+    </tbody>
+  </table>
+  <p>선택값이 실제로 연결된 하드웨어와 다르면 안전상의 이유로 로봇이 시작되지 않고, 오류 코드 C283이 납니다 (그림 8).
+    펜던트를 뗀 상태에서도 컨트롤 박스에 일반 모니터와 키보드 · 마우스를 연결하면 PolyScope 화면을 쓸 수 있습니다.</p>
+
+  <h2 id="c8-s3">펜던트 다시 연결</h2>
+  <ol class="steps">
+    <li><b>펜던트를 컨트롤 박스에 연결합니다.</b>UR 서비스 설명서의 티치 펜던트 교체 절차를 따릅니다.</li>
+    <li><b>로컬 제어로 바꿉니다.</b>화면 위쪽 아이콘을 눌러 원격 제어를 로컬 제어로 바꿉니다.</li>
+    <li><b>하드웨어 설정을 되돌립니다.</b>수동 모드에서 <span class="ui">Installation</span> → <span class="ui">Safety</span> → <span class="ui">Hardware</span>의 잠금을 풀고,
+      연결한 펜던트에 맞춰 <span class="ui">Standard</span> 또는 <span class="ui">3PE Enabled</span>를 고른 뒤 <span class="ui">Apply</span>를 누릅니다.</li>
+    <li><b>운영 모드를 Dashboard로 바꿨다면 되돌립니다.</b><code>clear operational mode</code>를 보내 운영 모드 제어를 펜던트에 돌려줍니다 (11장).</li>
+  </ol>
+
+  <p>이 절차는 Universal Robots 지원 문서 «Disable and enable the e-Series teach pendant»(universal-robots.com/articles)를 바탕으로 WeGo가 현장용으로 정리한 것입니다.
+    화면 그림과 원문은 그 문서를 보십시오. 점검표는 부록에 있습니다.</p>
+</section>
+
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">프로그래밍 기초</h1></div>
+  <p class="lede">PolyScope 프로그램은 왼쪽 노드 목록에서 명령을 골라 가운데 프로그램 트리에 쌓아 만듭니다. 이 장은 노드의 종류, 웨이포인트와 이동 방식, I/O 명령을 정리하고,
+    WeGo 실습 안내서의 풀이 화면으로 사각 경로 · 블렌드 · MoveP · 그리퍼 집기 예제를 따라 합니다. 처음에는 URSim(10장)이나 시뮬레이션 모드에서 연습하십시오.</p>
+
+  <h2 id="c9-s1">프로그램 탭</h2>
+  <figure class="light">
+    <img src="assets/ur_010.png" alt="Program 탭">
+    <figcaption data-fig="fig-prog"><b>그림 9.</b> Program 탭. 왼쪽 노드 목록(Basic · Advanced · Templates · URCaps), 가운데 프로그램 트리, 오른쪽 명령 설정 (URSim 5.26.3)</figcaption>
+  </figure>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-nodes"><b>표 14.</b> Basic(기본) 노드</caption>
+    <thead><tr><th>영어 (한국어)</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>Move (이동)</td><td>아래에 딸린 웨이포인트 사이를 어떻게 움직일지(MoveJ · MoveL · MoveP)와 공통 속도 · 가속도, 기준 특징 좌표, TCP를 정합니다</td></tr>
+      <tr><td>Waypoint (웨이포인트)</td><td>로봇이 지나갈 목표 위치입니다. 반드시 Move 노드 아래에 있어야 합니다</td></tr>
+      <tr><td>Direction (방향)</td><td>정한 방향으로 TCP를 움직입니다</td></tr>
+      <tr><td>Wait (기다림)</td><td>시간, 디지털 · 아날로그 입력, 식이 참이 될 때까지 기다립니다</td></tr>
+      <tr><td>Set (지정)</td><td>디지털 · 아날로그 출력, 식, 한 번 펄스, 변수 증가, 총 페이로드, TCP를 바꿉니다</td></tr>
+      <tr><td>Popup (팝업)</td><td>화면에 메시지 · 경고 · 오류 창을 띄웁니다. 변수를 함께 보여 줄 수도 있습니다</td></tr>
+      <tr><td>Halt</td><td>프로그램 실행을 멈춥니다</td></tr>
+      <tr><td>Comment (주석)</td><td>프로그램 트리에 설명을 붙입니다. 실행에는 영향이 없습니다</td></tr>
+      <tr><td>Folder (폴더)</td><td>여러 노드를 묶어 프로그램을 읽기 쉽게 정리합니다</td></tr>
+      <tr><td>Set Payload (페이로드 설정)</td><td>실행 중에 페이로드를 바꿉니다 (6장)</td></tr>
+    </tbody>
+  </table>
+  <p><span class="ui">Advanced</span>(고급)에는 Loop(반복), SubProgram(서브 프로그램), Assignment(할당), If(조건), Switch, Thread(스레드), Script 같은 흐름 제어 노드가,
+    <span class="ui">Templates</span>(템플릿)에는 팔레타이징 같은 마법사가, <span class="ui">URCaps</span>에는 설치한 URCap(그리퍼 · External Control 등)의 노드가 있습니다.
+    프로그램 트리 아래쪽 버튼으로 노드를 위아래로 옮기고, 되돌리기 · 잘라내기 · 복사 · 붙여넣기 · 삭제 · 감추기(suppress)를 합니다.</p>
+
+  <h2 id="c9-s2">웨이포인트와 이동 방식</h2>
+  <p>웨이포인트는 목표 위치를, Move 노드는 그 목표로 가는 궤적을 정합니다.</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-move"><b>표 15.</b> 이동 방식</caption>
+    <thead><tr><th>방식</th><th>궤적</th><th>쓰는 곳</th></tr></thead>
+    <tbody>
+      <tr><td>MoveJ</td><td>관절 공간에서 계산합니다. 모든 관절이 동시에 목표 각도로 가며, TCP 궤적은 직선이 아닙니다. 가장 빠릅니다. 속도 단위 °/s</td><td>장애물이 없는 넓은 공간의 빠른 이동</td></tr>
+      <tr><td>MoveL</td><td>TCP가 웨이포인트 사이를 직선으로 움직입니다. 속도 단위 mm/s</td><td>집기 · 놓기 직전의 접근 · 이탈, 직선이 필요한 작업</td></tr>
+      <tr><td>MoveP</td><td>TCP를 일정한 속도로 직선 이동하며, 웨이포인트에서 멈추지 않도록 블렌드 반지름을 모든 점에 공유합니다. 세 점으로 원호 이동(Circle Move)을 넣을 수 있습니다</td><td>도포 · 디스펜싱처럼 일정한 TCP 속도가 필요한 공정</td></tr>
+    </tbody>
+  </table>
+
+  <figure class="light">
+    <img src="assets/ur_012.png" alt="Waypoint 노드 설정">
+    <figcaption data-fig="fig-wp"><b>그림 10.</b> Waypoint 노드. Set Waypoint로 위치를 가르치고, Edit pose로 좌표를 직접 고치며, 멈춤 · 블렌드와 속도를 정합니다 (URSim 5.26.3)</figcaption>
+  </figure>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-wp"><b>표 16.</b> 웨이포인트 화면의 항목</caption>
+    <thead><tr><th>영어 (한국어)</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>Set Waypoint (웨이포인트 설정)</td><td>이동 탭 화면으로 가서 로봇을 원하는 위치로 옮긴 뒤 확인하면, 그 위치가 웨이포인트가 됩니다</td></tr>
+      <tr><td>Edit pose (포즈 편집)</td><td>좌표와 관절 값을 숫자로 직접 고칩니다. 치수대로 경로를 만들 때 씁니다</td></tr>
+      <tr><td>Move here (여기로 이동)</td><td>로봇을 그 웨이포인트로 옮깁니다</td></tr>
+      <tr><td>Stop at this point (이 포인트에서 정지)</td><td>웨이포인트에서 멈췄다가 다음으로 갑니다</td></tr>
+      <tr><td>Blend with radius (반지름으로 혼합)</td><td>웨이포인트를 그 반지름 안에서 둥글게 지나가 멈추지 않습니다. 사이클 시간을 줄입니다</td></tr>
+      <tr><td>Shared parameters (공유 매개변수 사용)</td><td>위 Move 노드의 속도 · 가속도를 씁니다. 대신 이 웨이포인트만의 속도 · 가속도나 도착 시간(초)을 정할 수 있습니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s3">실습 환경 (WeGo 실습 안내서)</h2>
+  <p>WeGo 교육의 실습 안내서와 실습 프로그램 파일(<code>.urp</code>)은 다음 환경을 기준으로 만들어졌습니다.</p>
+  <ul>
+    <li>작업 영역의 중심: X = 0, Y = −400 mm, Z = 80 mm (베이스 기준)</li>
+    <li>치수: 강의장의 환경과 로봇 종류를 생각해 강의 자료 치수의 절반으로 설정 (예: 300 mm → 150 mm)</li>
+  </ul>
+  <p>실습 전에 로봇의 설치 방향과 그리퍼의 길이를 생각해 충돌이 일어나지 않도록 환경을 구성하십시오. 아래 그림의 치수는 강의 자료 기준입니다.</p>
+
+  <figure>
+    <svg viewBox="0 0 520 260" role="img" aria-label="사각 경로 예제" font-family="Pretendard" font-size="12.5">
+      <g fill="none" stroke="#1673e6" stroke-width="2.4">
+        <path d="M90 50H290V130H400V220H90Z"/>
+      </g>
+      <g fill="#1673e6"><circle cx="90" cy="50" r="5"/><circle cx="290" cy="50" r="5"/><circle cx="290" cy="130" r="5"/>
+        <circle cx="400" cy="130" r="5"/><circle cx="400" cy="220" r="5"/><circle cx="90" cy="220" r="5"/></g>
+      <g fill="#0b1020" font-weight="600">
+        <text x="40" y="40">Waypoint_1</text><text x="280" y="40">Waypoint_2</text><text x="200" y="150">Waypoint_3</text>
+        <text x="410" y="125">Waypoint_4</text><text x="410" y="240">Waypoint_5</text><text x="40" y="244">Waypoint_6</text>
+      </g>
+      <g fill="#5a6178" font-size="11.5">
+        <text x="168" y="70">200 mm</text><text x="298" y="95">100 mm</text><text x="222" y="212">300 mm</text>
+        <text x="20" y="140">200 mm</text>
+      </g>
+      <text x="300" y="25" font-size="11.5" fill="#5a6178">진행 방향: 1 → 2 → 3 → 4 → 5 → 6 → 1</text>
+    </svg>
+    <figcaption data-fig="fig-path"><b>그림 11.</b> 사각 경로 예제의 웨이포인트 배치 (WeGo 실습 안내서의 그림을 WeGo가 다시 그림, 치수는 강의 자료 기준)</figcaption>
+  </figure>
+
+  <h3>예제 1 · MoveL로 사각 경로 만들기</h3>
+  <ol class="steps">
+    <li><b>Move 노드를 넣고 MoveL로 바꿉니다.</b><span class="ui">Program</span> → <span class="ui">Basic</span> → <span class="ui">Move</span>를 누르면 MoveJ와 Waypoint_1이 생깁니다 (그림 12). 오른쪽 위 드롭다운에서 MoveL을 고릅니다.
+      <figure class="light"><img src="assets/ur_011.png" alt="Move 노드"><figcaption data-fig="fig-movej"><b>그림 12.</b> Move 노드를 넣은 직후. 기본은 MoveJ이며 관절 속도 60°/s, 관절 가속도 80°/s²입니다 (URSim 5.26.3)</figcaption></figure></li>
+    <li><b>웨이포인트를 여섯 개로 늘립니다.</b>Waypoint 노드를 더 넣거나 복사해 Waypoint_1 ~ 6을 만듭니다.</li>
+    <li><b>각 웨이포인트를 가르칩니다.</b>웨이포인트를 고르고 <span class="ui">Set Waypoint</span>를 눌러 이동 탭에서 툴을 그림의 위치로 옮긴 뒤 확인합니다.</li>
+    <li><b>시뮬레이션으로 실행해 보고, 사이클 시간을 기록합니다.</b>다음 예제에서 블렌드를 넣은 뒤와 비교합니다.</li>
+  </ol>
+
+  <h3>예제 2 · 치수 맞추기와 블렌드</h3>
+  <ol class="steps">
+    <li><b>포즈 편집으로 치수를 맞춥니다.</b>각 웨이포인트를 고르고 <span class="ui">Edit pose</span>(포즈 편집) 화면 오른쪽 위의 좌표 칸에 값을 넣어 그림의 치수대로 위치를 정합니다.
+      <figure class="light"><img src="assets/ur_016.png" alt="포즈 편집 화면"><figcaption data-fig="fig-pose"><b>그림 13.</b> 포즈 편집 화면. 오른쪽 위에서 TCP 좌표를, 아래에서 관절 값을 숫자로 넣습니다 (WeGo 실습 안내서)</figcaption></figure></li>
+    <li><b>Waypoint_2 · 3 · 4에 블렌드를 넣습니다.</b>각 웨이포인트에서 <span class="ui">Blend with radius</span>(반지름으로 혼합)를 고르고 반지름을 넣습니다.
+      <figure class="light"><img src="assets/ur_014.png" alt="반지름으로 혼합 설정"><figcaption data-fig="fig-blend"><b>그림 14.</b> Waypoint_2에 반지름으로 혼합을 설정한 화면 (WeGo 실습 안내서)</figcaption></figure></li>
+    <li><b>다시 실행해 사이클 시간을 비교합니다.</b>모서리에서 멈추지 않으므로 시간이 줄어듭니다.</li>
+  </ol>
+  <div class="box note"><div class="h">참고 · 블렌드 반지름 값</div>
+    <p>WeGo 실습 안내서의 글은 Waypoint_2 · 3 · 4에 45 mm 반지름을 넣으라고 하고, 같은 슬라이드의 풀이 화면(그림 14)에는 27.5 mm가 들어 있습니다.
+      실습 파일은 강의 자료 치수의 절반으로 만들어졌으므로 화면의 값이 그 환경에 맞춘 것일 수 있습니다. 쓰는 경로의 치수에 맞춰 정하십시오.</p></div>
+
+  <h3>예제 3 · MoveP로 바꾸기</h3>
+  <ol class="steps">
+    <li><b>예제 2의 프로그램을 불러옵니다.</b></li>
+    <li><b>Waypoint_1 ~ 5를 MoveP 아래에 둡니다.</b>MoveP는 모든 점에 같은 블렌드 반지름을 씁니다. 예제에서는 50 mm를 넣습니다.</li>
+    <li><b>직선 구간은 MoveL로 나눕니다.</b>Waypoint_5는 MoveL 아래에 한 번 더 두어 직선으로 지나가게 하고, Waypoint_6과 1도 같은 방법으로 나눕니다 (그림 15).
+      <figure class="light"><img src="assets/ur_023.png" alt="MoveP 프로그램 트리"><figcaption data-fig="fig-movep"><b>그림 15.</b> MoveP와 MoveL을 섞은 프로그램 트리 (WeGo 실습 안내서)</figcaption></figure></li>
+    <li><b>실행해 사이클 시간을 비교합니다.</b></li>
+  </ol>
+
+  <h3>예제 4 · 그리퍼로 집고 놓기</h3>
+  <p>예제 3에 그리퍼 노드를 넣어 물건을 옮깁니다. 그리퍼 노드는 그리퍼 URCap을 설치하면 <span class="ui">URCaps</span> 노드 목록에 나타납니다 (11장).
+    순서: Waypoint_1에서 물건을 집어 Waypoint_5에 놓고, 그리퍼를 위로 올렸다가 Waypoint_5에서 다시 집어 Waypoint_1에 놓습니다.</p>
+  <figure class="light h95">
+    <img src="assets/ur_015.png" alt="집기 놓기 프로그램 트리">
+    <figcaption data-fig="fig-pick"><b>그림 16.</b> 그리퍼 노드(RG 그립)를 넣은 집기 · 놓기 프로그램 트리 (WeGo 실습 안내서)</figcaption>
+  </figure>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-pick"><b>표 17.</b> 예제 4 프로그램 트리의 흐름 (그림 16)</caption>
+    <thead><tr><th>줄</th><th>노드</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>그리퍼</td><td>Waypoint_1에 있는 물건을 집습니다 (프로그램은 반복되므로 이전 사이클 끝의 위치가 Waypoint_1입니다)</td></tr>
+      <tr><td>3 ~ 10</td><td>MoveP · MoveL</td><td>Waypoint_1 → 5로 옮깁니다</td></tr>
+      <tr><td>11</td><td>그리퍼</td><td>Waypoint_5에 놓습니다</td></tr>
+      <tr><td>12 ~ 13</td><td>Waypoint_7 · 기다림 1.0초</td><td>Waypoint_5에서 Z+ 방향으로 올린 위치로 갔다가 기다립니다</td></tr>
+      <tr><td>14 ~ 15</td><td>Waypoint_5 · 그리퍼</td><td>다시 내려가 물건을 집습니다</td></tr>
+      <tr><td>16 ~ 20</td><td>MoveP · MoveL</td><td>Waypoint_6을 거쳐 Waypoint_1로 돌아갑니다</td></tr>
+      <tr><td>21 ~ 22</td><td>그리퍼 · 기다림 1.0초</td><td>Waypoint_1에 놓고 기다립니다</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 올리는 높이</div>
+    <p>WeGo 실습 자료의 과제 글은 그리퍼를 100 mm 위로 올리라고 하고, 풀이 단계는 Waypoint_7을 Waypoint_5에서 Z+ 방향 50 mm로 정하라고 합니다.
+      어느 쪽이든 실습 환경에서 충돌이 없는 높이로 정하십시오.</p></div>
+
+  <h2 id="c9-s4">I/O를 쓰는 명령</h2>
+  <p>외부 장치와 신호를 주고받을 때는 <span class="ui">Set</span>(지정)과 <span class="ui">Wait</span>(기다림)을 씁니다.
+    예를 들어 센서 신호를 기다렸다가(Wait: <code>digital_in[0]</code> = HI) 집고, 그리퍼 출력을 바꾼 뒤(Set: <code>tool_out[0]</code>) 짧게 기다리는 식입니다.</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-setwait"><b>표 18.</b> Wait와 Set의 선택지</caption>
+    <thead><tr><th>노드</th><th>선택지</th></tr></thead>
+    <tbody>
+      <tr><td>Wait (기다림)</td><td>기다리지 않음 · 정한 시간 · 디지털 입력 · 아날로그 입력 · 식(expression)</td></tr>
+      <tr><td>Set (지정)</td><td>작업 없음 · 디지털 출력 · 아날로그 출력 · 식 · 한 번 펄스 · 변수 증가 · 총 페이로드 · TCP</td></tr>
+    </tbody>
+  </table>
+  <p>시뮬레이션으로 연습할 때는 실제 센서가 없으므로 디지털 입력을 기다리는 노드는 빼거나 시간 기다림으로 바꾸십시오 (WeGo 실습 안내).</p>
+
+  <h2 id="c9-s5">변수 · 반복 · 조건</h2>
+  <p>프로그램을 늘릴 때 자주 쓰는 노드입니다. 각 노드의 설정 화면과 세부 기능은 UR 사용자 설명서의 프로그램 노드 설명을 보십시오.</p>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-adv"><b>표 19.</b> 자주 쓰는 Advanced 노드</caption>
+    <thead><tr><th>노드</th><th>쓰는 방법</th></tr></thead>
+    <tbody>
+      <tr><td>변수 · Assignment(할당)</td><td>값을 담는 칸입니다. 종류는 불리언 · 정수 · 실수 · 문자열 · 포즈(<code>p[x, y, z, rx, ry, rz]</code>) · 목록입니다.
+        프로그램 변수는 그 프로그램에서만 쓰이고 전원을 끄면 지워지며, 설치 변수(Installation → General → Variables)는 같은 설치를 쓰는 모든 프로그램에서 쓰이고 다시 켜도 값이 남습니다.
+        로봇 프로그램 노드의 «초기 변수 값 설정»으로 시작 값을 줄 수 있고, 할당의 출처를 작업자로 바꾸면 화면에서 값을 입력받습니다</td></tr>
+      <tr><td>Loop (반복)</td><td>항상 반복 · 정한 횟수 반복 · 식이 참인 동안 반복. 카운터 변수(<code>var_1 = var_1 + 1</code>)와 함께 자주 씁니다</td></tr>
+      <tr><td>If · ElseIf · Else</td><td>센서 입력이나 변수 값에 따라 다른 동작을 합니다. ElseIf로 조건을 여러 개 둘 수 있습니다</td></tr>
+      <tr><td>Switch · Case</td><td>값에 따라 여러 경우로 나눕니다. 맞는 Case가 없으면 기본(default) Case를 실행합니다</td></tr>
+      <tr><td>SubProgram (서브 프로그램)</td><td>여러 곳에서 쓰는 동작을 따로 만들어 불러옵니다. 파일로 저장해 다른 프로그램에서도 쓸 수 있습니다. 서브 프로그램 안에서 다른 서브 프로그램을 부를 수는 없습니다</td></tr>
+      <tr><td>Thread (스레드)</td><td>로봇 프로그램과 나란히 계속 돕니다. I/O 감시나 외부 장치 제어에 씁니다 (11장의 그리퍼 예)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s6">실행 전 확인과 저장</h2>
+  <ul>
+    <li>새 프로그램은 먼저 아래쪽 띠의 <span class="ui">Simulation</span>(시뮬레이션)을 켜고 실행해 3D 화면으로 경로를 확인하십시오. 시뮬레이션에서는 로봇팔이 움직이지 않습니다.</li>
+    <li>머리띠의 <span class="ui">Save</span>(저장)로 프로그램과 설치 파일을 함께 저장하십시오.</li>
+  </ul>
+</section>
+
+
+<!-- ═══════════════════════ 10 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">URSim 가상 환경</h1></div>
+  <p class="lede">URSim은 Universal Robots가 무료로 내려받게 해 주는 오프라인 시뮬레이터입니다. PC에서 실제 로봇과 같은 PolyScope 화면을 띄워 프로그램을 만들고 시험할 수 있고,
+    Dashboard Server · RTDE · ROS 2 드라이버도 실제 로봇처럼 연결됩니다. e-Series용과 CB-Series용이 따로 있습니다.</p>
+
+  <h2 id="c10-s1">교육에서 쓰는 방법</h2>
+  <p>WeGo 교육은 수강생이 각자 URSim으로 강사와 함께 예제를 풀고, 실습 시간에는 가상 환경에서 만든 프로그램을 한 팀씩 실제 로봇에 넣어 돌려 봅니다.
+    프로그램 파일(<code>.urp</code>)은 USB 메모리로 실제 로봇과 URSim 사이에 옮깁니다.</p>
+
+  <h2 id="c10-s2">설치 방법 고르기</h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-ursim"><b>표 20.</b> URSim을 쓰는 두 가지 방법</caption>
+    <thead><tr><th>방법</th><th>PC</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td>A. 가상 머신</td><td>Windows 등 Linux가 아닌 PC</td><td>UR이 배포하는 «URSim for non-Linux» 가상 디스크를 가상 머신 프로그램에서 실행합니다. WeGo 교육의 기본 방법입니다</td></tr>
+      <tr><td>B. Docker</td><td>Linux PC</td><td>UR이 공개한 Docker 이미지를 실행하고 웹 브라우저로 화면을 봅니다. 여러 대를 함께 띄우기 쉬워 WeGo는 ROS 2 · RTDE 개발에 이 방법을 씁니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c10-s3">A. 가상 머신으로 쓰기</h2>
+  <p>universal-robots.com/download에서 e-Series → Software → Offline Simulator → Non-Linux를 차례로 골라 URSim 가상 디스크를 받고, Oracle VM VirtualBox에서 실행합니다.
+    가상 머신 만들기(종류 Linux · Ubuntu 64비트, 기존 가상 디스크 사용), 디스플레이 · 공유 폴더 · 키보드 · 네트워크 어댑터 설정은
+    같은 페이지의 UR 설치 안내서(«URSim installation guide»)를 단계별로 따르십시오. 바탕 화면의 아이콘으로 UR3e · UR5e · UR10e · UR16e 중 하나를 골라 실행합니다.</p>
+  <div class="box caution"><div class="h">주의 · VirtualBox 확장 팩의 라이선스</div>
+    <p>VirtualBox 본체는 GPLv3로 무료이지만, USB 연결에 쓰는 «VirtualBox Extension Pack»은 개인 · 교육용 라이선스(PUEL)입니다. 회사 업무에 쓰려면 Oracle의 유료 라이선스가 필요합니다.
+      확장 팩 없이 쓸 때는 공유 폴더로 파일을 옮기십시오.</p></div>
+
+  <h3>USB 메모리 연결 (WeGo 교육 자료)</h3>
+  <ol class="steps">
+    <li><b>확장 팩을 설치합니다.</b>virtualbox.org/wiki/Downloads에서 VirtualBox 버전과 같은 Extension Pack을 받아 설치합니다. WeGo 자료는 USB 연결에 이 팩이 필요하다고 적었습니다.</li>
+    <li><b>USB 컨트롤러를 켭니다.</b>USB 메모리를 PC에 꽂고, 가상 머신의 <span class="ui">설정</span> → <span class="ui">USB</span>에서 <span class="ui">USB 3.0(xHCI) 컨트롤러</span>를 고른 뒤, 오른쪽 + 아이콘으로 꽂은 USB 장치를 필터에 추가합니다.</li>
+    <li><b>인식을 확인합니다.</b>가상 머신을 켜고 파일 관리자의 장치 목록에 USB 메모리가 보이는지 확인합니다.</li>
+  </ol>
+
+  <h2 id="c10-s4">B. Docker로 쓰기 <span class="src r">실측</span></h2>
+  <p>Linux의 Docker Engine(Apache 2.0)을 기준으로 합니다. Windows · macOS의 Docker Desktop은 직원 250명 이상 또는 연매출 1천만 달러 이상인 회사가 업무에 쓰려면 유료 구독이 필요합니다.
+    이미지와 옵션은 Docker Hub의 <code>universalrobots/ursim_e-series</code> 페이지에 있습니다.</p>
+  <pre class="cmd">docker pull universalrobots/ursim_e-series
+docker run --rm -it -p 5900:5900 -p 6080:6080 universalrobots/ursim_e-series</pre>
+  <p>웹 브라우저에서 <code>http://localhost:6080/vnc.html</code>을 열면 PolyScope 화면이 보입니다(5900은 VNC 포트). 로봇 모델은 <code>-e ROBOT_MODEL=…</code>로 고르며,
+    값은 UR3 · UR5 · UR7 · UR8LONG · UR10 · UR12 · UR15 · UR16 · UR18 · UR20 · UR30, 기본값은 UR5입니다 (버전에 따라 일부 모델이 없을 수 있음).
+    Dashboard Server를 쓰려면 <code>-p 29999:29999</code>처럼 포트를 더 엽니다.</p>
+  <div class="box note"><div class="h">참고 · 설정이 사라지지 않게 (WeGo 확인 사항)</div>
+    <p>위 예의 <code>--rm</code>으로 띄운 컨테이너는 끄면 지워지므로, PolyScope에서 바꾼 설정(원격 제어 사용 등)도 함께 사라집니다.
+      설정을 남기려면 <code>--rm</code> 없이 이름을 붙여 만들고, 그 뒤로는 <code>docker stop</code> · <code>docker start</code>로 끄고 켜십시오. <code>docker rm</code>을 하면 설정이 사라집니다.
+      <code>docker stop</code> · <code>start</code> 뒤에도 원격 제어 «사용» 설정은 남지만 제어 모드는 로컬로 돌아오므로, 다시 원격 제어로 바꾸어야 합니다 (URSim 5.26.3, 2026-11-17 확인).</p></div>
+  <p>WeGo는 개발 PC에 Docker 네트워크를 하나 만들어 URSim 두 대(UR7e)에 고정 주소를 주고, 웹 화면 포트를 6080 · 6081로 나누어 양팔 시스템을 시험합니다.
+    ROS 2 드라이버 문서도 URSim 예시 주소로 <code>192.168.56.101</code>을 씁니다 (11장).</p>
+
+  <figure class="light">
+    <img src="assets/ur_009.png" alt="URCaps 설정 화면">
+    <figcaption data-fig="fig-urcaps"><b>그림 17.</b> Settings → System → URCaps. URSim에도 URCap을 설치해 실제 로봇과 같은 노드를 시험할 수 있습니다 (URSim 5.26.3)</figcaption>
+  </figure>
+</section>
+
+
+<!-- ═══════════════════════ 11 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">네트워크 · 원격 제어 · ROS</h1></div>
+  <p class="lede">개발 PC를 이더넷으로 컨트롤 박스에 연결하면 Dashboard Server로 전원 · 프로그램을, RTDE로 상태 읽기와 동작 명령을, ROS 2 드라이버로 MoveIt 같은 ROS 도구를 쓸 수 있습니다.
+    먼저 같은 서브넷의 고정 주소를 정하고, 원격 제어를 켭니다.</p>
+
+  <h2 id="c11-s1">로봇 IP 설정</h2>
+  <ol class="steps">
+    <li><b>메뉴 → <span class="ui">Settings</span> → <span class="ui">System</span> → <span class="ui">Network</span>를 엽니다.</b>방식은 DHCP · Static Address(고정 주소) · Disabled network 세 가지입니다.</li>
+    <li><b>Static Address를 고르고 주소를 넣습니다.</b>IP 주소와 서브넷 마스크(보통 255.255.255.0)를 넣습니다. PC와 직접 연결하면 게이트웨이와 DNS는 비워 둡니다 (0.0.0.0).</li>
+    <li><b><span class="ui">Apply</span>를 누릅니다.</b>메뉴 → <span class="ui">About</span>에서 적용된 IP 주소를 확인할 수 있습니다.</li>
+  </ol>
+  <figure class="light">
+    <img src="assets/ur_017.png" alt="Network 설정 화면">
+    <figcaption data-fig="fig-net"><b>그림 18.</b> Settings → System → Network에서 고정 주소를 넣은 화면 (WeGo ROS 설정 자료. 주소는 교육용 예)</figcaption>
+  </figure>
+
+  <h2 id="c11-s2">개발 PC IP 설정 (Ubuntu)</h2>
+  <ol class="steps">
+    <li><b>화면 오른쪽 위 툴바에서 유선 연결 → <span class="ui">Wired Settings</span>를 누릅니다.</b></li>
+    <li><b><span class="ui">Network</span> → <span class="ui">Wired</span> 항목의 톱니바퀴를 누릅니다.</b></li>
+    <li><b><span class="ui">IPv4</span> 탭에서 <span class="ui">Manual</span>을 고르고 주소를 넣습니다.</b>로봇과 같은 서브넷의 다른 주소와 넷마스크 255.255.255.0을 넣습니다.
+      <figure class="light f60"><img src="assets/ur_018.png" alt="Ubuntu IPv4 설정"><figcaption data-fig="fig-pcip"><b>그림 19.</b> Ubuntu 유선 연결의 IPv4 수동 설정 (WeGo ROS 설정 자료)</figcaption></figure></li>
+    <li><b><span class="ui">Apply</span>로 저장한 뒤 Wired 연결을 껐다가 다시 켭니다.</b>새 주소가 적용됩니다. 터미널에서 <code>ping &lt;로봇 IP&gt;</code>로 연결을 확인합니다.</li>
+  </ol>
+  <div class="box note"><div class="h">참고 · WeGo 자료의 예시 주소</div>
+    <p>WeGo ROS 설정 자료의 글은 로봇을 192.168.0.1, PC를 192.168.0.10으로 정하라고 하고, 같은 자료의 PC 설정 화면(그림 19)에는 192.168.1.100이,
+      그리퍼 자료의 프로그램 화면에는 PC 주소 192.168.1.101이 들어 있습니다. 모두 교육용 예이며 공장 기본값이 아닙니다. 로봇과 PC가 같은 서브넷에 있고 주소가 겹치지 않으면 어느 값이든 됩니다.</p></div>
+
+  <h2 id="c11-s3">통신 포트 <span class="src">문서</span></h2>
+  <table class="t keep">
+    <caption data-tbl="tbl-ports"><b>표 21.</b> 컨트롤러의 클라이언트 인터페이스 (Universal Robots 지원 문서)</caption>
+    <thead><tr><th>포트</th><th>인터페이스</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td>29999</td><td>Dashboard Server</td><td>프로그램 불러오기 · 실행 · 일시정지 · 정지, 전원 · 브레이크, 상태 읽기</td></tr>
+      <tr><td>30001</td><td>Primary</td><td>로봇 상태와 추가 메시지를 보내고 URScript를 받습니다</td></tr>
+      <tr><td>30002</td><td>Secondary</td><td>로봇 상태만 보내고 URScript를 받습니다</td></tr>
+      <tr><td>30003</td><td>Real-time</td><td>상태를 보내고 URScript를 받습니다. 갱신 주기가 다릅니다</td></tr>
+      <tr><td>30004</td><td>RTDE</td><td>원하는 상태 값만 골라 받고, 목표값 · 레지스터를 보냅니다</td></tr>
+      <tr><td>30020</td><td>Interpreter Mode</td><td>실행 중에 URScript 문장을 추가로 실행합니다</td></tr>
+    </tbody>
+  </table>
+  <p>방향이 반대인 포트도 있습니다. ROS 드라이버를 쓸 때는 로봇의 External Control URCap이 개발 PC의 포트 50002(기본값, URCap 설정에서 바꿀 수 있음)에 접속해 제어 스크립트를 받습니다.</p>
+
+  <h2 id="c11-s4">원격 제어 켜기</h2>
+  <ol class="steps">
+    <li><b>원격 제어 기능을 켭니다.</b>메뉴 → <span class="ui">Settings</span> → <span class="ui">System</span> → <span class="ui">Remote Control</span>에서 <span class="ui">Enable</span>을 누릅니다.
+      <figure class="light"><img src="assets/ur_007.png" alt="Remote Control 설정"><figcaption data-fig="fig-remote"><b>그림 20.</b> Settings → System → Remote Control. 로컬 제어에서는 외부에서 온 명령이 거부된다는 안내가 있습니다 (URSim 5.26.3)</figcaption></figure></li>
+    <li><b>원격 제어로 바꿉니다.</b>머리띠 오른쪽의 <span class="ui">Local</span> 아이콘을 누르고 <span class="ui">Remote Control</span>을 고릅니다. 티치 펜던트로 다시 조작하려면 같은 메뉴에서 로컬로 되돌립니다.
+      <figure class="light f60"><img src="assets/ur_008.png" alt="Local Remote 메뉴"><figcaption data-fig="fig-localremote"><b>그림 21.</b> 머리띠의 Local 아이콘 메뉴 (URSim 5.26.3)</figcaption></figure></li>
+  </ol>
+  <p>원격 제어에서는 티치 펜던트의 이동 탭 · 프리드라이브 · 프로그램 시작이 제한됩니다. 원격 제어가 아닐 때 Dashboard Server는 일부 명령에
+    «Command is not allowed due to safety reasons, please switch robot to Remote Control mode and reconnect to port 29999»라고 답합니다.</p>
+  <div class="box note"><div class="h">참고 · 로컬 제어에서 RTDE 제어가 되는지 <span class="src r">실측</span></div>
+    <p>WeGo의 2026-11-12 기록에는 URSim이 로컬 제어일 때 ur_rtde 제어 연결이 «Failed to start RTDE data synchronization»으로 실패했다고 되어 있습니다.
+      2026-11-18 같은 URSim(5.26.3, 원격 제어 기능 사용 · 로컬 제어)에서 다시 확인했을 때는, 브레이크가 잠긴 상태(IDLE)에서 «Failed to start control script»로 실패했고,
+      브레이크를 푼 상태(RUNNING)에서는 <code>moveJ</code>가 동작했습니다. 결과가 상태와 버전에 따라 다르므로, PC에서 로봇을 움직일 때는 원격 제어로 바꾸고 쓰십시오.</p></div>
+
+  <h2 id="c11-s5">Dashboard Server</h2>
+  <p>포트 29999에 TCP로 접속해 한 줄짜리 문자열 명령을 보냅니다. 명령은 대소문자를 가리지 않고, 줄바꿈(<code>\n</code>)으로 끝나야 합니다. 접속하면 먼저 인사말
+    («Connected: Universal Robots Dashboard Server»)이 옵니다. 자주 쓰는 명령은 부록에 있습니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-dash"><b>표 22.</b> 자주 쓰는 Dashboard 명령 (URSim 5.26.3에서 확인)</caption>
+    <thead><tr><th>명령</th><th>동작 · 응답 예</th></tr></thead>
+    <tbody>
+      <tr><td><code>power on</code> · <code>power off</code></td><td>로봇팔 전원을 켜고 끕니다 («Powering on»)</td></tr>
+      <tr><td><code>brake release</code></td><td>브레이크를 풉니다 («Brake releasing»)</td></tr>
+      <tr><td><code>robotmode</code></td><td>로봇 모드 («Robotmode: POWER_OFF» · IDLE · RUNNING)</td></tr>
+      <tr><td><code>safetystatus</code></td><td>안전 상태 («Safetystatus: NORMAL»)</td></tr>
+      <tr><td><code>unlock protective stop</code></td><td>보호 정지를 풉니다</td></tr>
+      <tr><td><code>is in remote control</code></td><td>원격 제어인지 («true» · «false»)</td></tr>
+      <tr><td><code>PolyscopeVersion</code> · <code>get robot model</code></td><td>소프트웨어 버전과 모델 («URSoftware 5.26.3…», «UR5»). URSim의 UR7e는 모델을 UR5로 답합니다</td></tr>
+      <tr><td><code>get operational mode</code></td><td>MANUAL · AUTOMATIC · NONE. 운영 모드 비밀번호를 정하지 않았으면 NONE이며 오류가 아닙니다</td></tr>
+      <tr><td><code>set operational mode manual</code> · <code>automatic</code></td><td>운영 모드를 바꿉니다 («Operational mode 'manual' is set»)</td></tr>
+      <tr><td><code>clear operational mode</code></td><td>운영 모드 제어를 티치 펜던트에 돌려줍니다</td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · set operational mode 뒤에는 clear</div>
+    <p><code>set operational mode</code>를 보낸 뒤에는 티치 펜던트에서 운영 모드를 바꿀 수 없고 모드 비밀번호도 꺼진 상태로 남습니다. 작업이 끝나면 반드시
+      <code>clear operational mode</code>를 보내 원래 조작 방식으로 되돌리십시오. 외부 모드 선택기가 연결되어 있으면 PolyScope와 Dashboard Server가 아니라 그 선택기가 모드를 정합니다.</p></div>
+  <p>다음은 WeGo 지원 문서의 운영 모드 전환 스크립트를 줄여 쓴 것입니다 (Python 표준 라이브러리만 씀, URSim 5.26.3에서 확인).</p>
+  <pre class="cmd">"""UR Dashboard Server(29999): 운영 모드 조회 · 전환.   사용: python3 ur_mode.py &lt;로봇 IP&gt;"""
+import socket, sys
+
+def send(sock, cmd):
+    sock.sendall((cmd + "\n").encode())
+    return sock.recv(1024).decode().strip()
+
+with socket.create_connection((sys.argv[1], 29999), timeout=2) as s:
+    s.recv(1024)                                    # 접속 인사말
+    print("지금 운영 모드:", send(s, "get operational mode"))
+    choice = input("1 수동 · 2 자동 · 3 펜던트에 돌려주기 · 그 밖 종료: ").strip()
+    cmd = {"1": "set operational mode manual", "2": "set operational mode automatic",
+           "3": "clear operational mode"}.get(choice)
+    if cmd:
+        print(send(s, cmd))</pre>
+  <div class="box note"><div class="h">참고 · 전환이 failed로 끝날 때</div>
+    <p>응답에 failed가 들어 있을 때의 원인을 WeGo 지원 문서 두 개가 다르게 적었습니다. 페이로드 설정 문서는 «보호 정지 상태이거나 원격 제어 설정이 꺼져 있는 경우»,
+      티치 펜던트 문서는 «보호 정지 상태이거나 외부 모드 선택기가 연결된 경우»라고 합니다. 세 가지를 모두 확인하십시오.
+      또 페이로드 설정 문서는 펜던트의 원격 버튼으로 «로컬 제어(자동)»로 바꾼다고 적어 제어 모드와 운영 모드를 섞어 썼습니다. 둘은 다른 상태입니다 (표 7).</p></div>
+
+  <h2 id="c11-s6">RTDE와 ur_rtde</h2>
+  <p>RTDE(Real-Time Data Exchange, 포트 30004)는 원하는 상태 값만 골라 빠르게 받고, 목표값을 보내는 인터페이스입니다. WeGo는 Python · C++ 라이브러리
+    ur_rtde(SDU Robotics, MIT 라이선스)를 씁니다. 설치: <code>pip install --user ur_rtde</code> (WeGo 확인 버전 1.6.5).</p>
+  <pre class="cmd">import sys
+import rtde_receive
+
+r = rtde_receive.RTDEReceiveInterface(sys.argv[1])
+print(r.getActualQ())            # 관절 각도 6개 [rad]
+print(r.getActualTCPPose())      # TCP 포즈 [x, y, z, rx, ry, rz] [m, rad]
+print(r.getRobotMode(), r.getSafetyMode())</pre>
+  <p>움직이는 명령은 <code>rtde_control</code>로 보냅니다. 아래 예는 리스트 3만 0.1 rad 돌립니다 (URSim 5.26.3에서 확인).</p>
+  <pre class="cmd">import sys
+import rtde_control, rtde_receive
+
+ip = sys.argv[1]
+r = rtde_receive.RTDEReceiveInterface(ip)
+c = rtde_control.RTDEControlInterface(ip)   # 브레이크가 풀린 상태여야 연결됩니다
+q = r.getActualQ()
+q[5] += 0.1                                  # 리스트 3만 0.1 rad 돌림
+c.moveJ(q, 0.2, 0.2)                         # 속도 [rad/s], 가속도 [rad/s²]
+c.stopScript()</pre>
+  <ul>
+    <li><b>제어 스크립트</b>: RTDE 제어는 컨트롤러 쪽에서 도는 제어 스크립트에 기댑니다. 일반적인 일시정지는 <code>stopJ</code> · <code>stopL</code> 같은 부드러운 정지로 하고
+      <code>stopScript()</code>를 부르지 않으면, 제어 스크립트가 남아 다음 동작에 다시 쓸 수 있습니다. <code>stopScript()</code>는 끝낼 때 부릅니다.</li>
+    <li><b>스레드</b>: <code>RTDEControlInterface</code>는 스레드에 안전하지 않습니다. 여러 스레드에서 쓸 때는 잠금(mutex) 하나로 호출을 직렬화하십시오.
+      «RTDE control script is not running»이나 «another thread is controlling the robot» 메시지가 나오면, 정지 명령이 겹쳐 나가거나 다른 스레드가 직접 호출하고 있지 않은지 확인하십시오.</li>
+    <li><b>상태 판단</b>: <code>getRobotMode()</code>의 −1은 ROBOT_MODE_NO_CONTROLLER로, 비상 정지 코드가 아닙니다. 비상 정지는 <code>getSafetyMode()</code>의
+      SYSTEM_EMERGENCY_STOP · ROBOT_EMERGENCY_STOP으로 판단합니다.</li>
+    <li><b>servoJ 지연</b>: 스트리밍 제어(<code>servoJ</code>)의 지연은 대략 lookahead 시간 + 20 ms였습니다 (URSim, 100 Hz 사인파 지령: lookahead 0.2 s → 220 ms, 0.1 s → 120 ms,
+      0.05 s → 70 ms, 0.03 s → 50 ms, gain 300 ~ 600에서 잔차가 가장 작음). 시뮬레이터 값이므로 실제 로봇과 잡음이 있는 입력에서는 더 큰 lookahead가 필요할 수 있습니다.</li>
+  </ul>
+
+  <h2 id="c11-s7">URCap 설치와 External Control</h2>
+  <p>URCap은 PolyScope 확장 프로그램입니다. 그리퍼 · 센서 제조사가 주는 URCap이나 ROS 드라이버용 External Control URCap(Universal Robots, Apache 2.0)을 이렇게 설치합니다.</p>
+  <ol class="steps">
+    <li><b><code>.urcap</code> 파일을 USB 메모리에 담아 티치 펜던트에 꽂습니다.</b></li>
+    <li><b>메뉴 → <span class="ui">Settings</span> → <span class="ui">System</span> → <span class="ui">URCaps</span>에서 + 를 누르고 파일을 고릅니다</b> (그림 17).</li>
+    <li><b><span class="ui">Restart</span>로 PolyScope를 다시 시작합니다.</b>다시 뜨면 <span class="ui">Active URCaps</span> 목록에 녹색 체크로 나타납니다.</li>
+    <li><b>External Control을 설정합니다.</b><span class="ui">Installation</span> → <span class="ui">URCaps</span> → <span class="ui">External Control</span>에서
+      Host IP에 개발 PC의 주소를, Custom port에 50002(기본값)를 넣고 설치를 저장합니다.
+      <figure class="light"><img src="assets/ur_019.png" alt="External Control 설치 설정"><figcaption data-fig="fig-extctl"><b>그림 22.</b> Installation → URCaps → External Control. Host IP는 개발 PC 주소 (WeGo ROS 설정 자료. 주소는 교육용 예)</figcaption></figure></li>
+    <li><b>프로그램에 External Control 노드를 넣습니다.</b><span class="ui">Program</span> → <span class="ui">URCaps</span> → <span class="ui">External Control</span>을 넣으면 트리에 «Control by &lt;PC IP&gt;»가 생깁니다.
+      PC에서 드라이버를 띄운 뒤 펜던트에서 이 프로그램을 실행(▶)하면 PC가 로봇을 제어합니다.
+      <figure class="light"><img src="assets/ur_020.png" alt="External Control 프로그램 노드"><figcaption data-fig="fig-extnode"><b>그림 23.</b> External Control 프로그램 노드 (WeGo ROS 설정 자료)</figcaption></figure></li>
+  </ol>
+
+  <h2 id="c11-s8">ROS 2 드라이버</h2>
+  <p>Universal Robots의 ROS 2 드라이버(<code>Universal_Robots_ROS2_Driver</code>, BSD-3-Clause)는 PolyScope X · PolyScope 5 · CB3 로봇을 지원합니다.
+    드라이버 문서의 지원 배포판은 Humble · Jazzy · Kilted · Lyrical · Rolling이며, Foxy · Galactic · Iron은 지원이 끝난 배포판(EOL)으로 분류되어 있습니다.</p>
+  <pre class="cmd">sudo apt install ros-${ROS_DISTRO}-ur
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5e robot_ip:=&lt;로봇 IP&gt;</pre>
+  <p><code>ur_type</code>에는 로봇 모델(ur3e · ur5e · ur7e · ur10e · ur12e · ur16e 등)을 넣습니다. 드라이버를 띄운 뒤 펜던트에서 External Control 프로그램을 실행하십시오.
+    URSim으로 시험할 때는 드라이버 문서의 예처럼 <code>robot_ip:=192.168.56.101</code>(URSim 컨테이너 주소)을 씁니다.
+    설치와 설정의 세부 사항(캘리브레이션 등)은 드라이버 문서를 보십시오.</p>
+
+  <h3>ROS 1 (WeGo 2023 자료)</h3>
+  <p>WeGo의 ROS 설정 자료(2023-11-10 기준)는 ROS 1(Melodic · Noetic)용 드라이버 <code>Universal_Robots_ROS_Driver</code>(Apache 2.0)를 씁니다. 새로 구성한다면 ROS 2 드라이버를 쓰십시오.</p>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-ros1"><b>표 23.</b> ROS 1 드라이버 명령 (WeGo ROS 설정 자료)</caption>
+    <thead><tr><th>할 일</th><th>명령</th></tr></thead>
+    <tbody>
+      <tr><td>설치 (apt)</td><td><code>sudo apt install ros-${ROS_DISTRO}-ur-robot-driver</code></td></tr>
+      <tr><td>드라이버 실행</td><td><code>roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=&lt;로봇 IP&gt;</code></td></tr>
+      <tr><td>MoveIt 실행</td><td><code>roslaunch ur5e_moveit_config move_group.launch</code></td></tr>
+      <tr><td>RViz (시뮬레이션)</td><td><code>roslaunch ur5e_moveit_config moveit_rviz.launch</code></td></tr>
+    </tbody>
+  </table>
+  <p>드라이버 패키지는 상태를 받아 ros_control을 멈추는 controller_stopper, 캘리브레이션 값을 뽑는 ur_calibration, I/O 등 제어 메시지를 담은 ur_dashboard_msgs,
+    드라이버 본체 ur_robot_driver로 이루어지고, 로봇 모델 패키지(universal_robot)에는 ur_description(URDF) · ur_gazebo · ur_kinematics · ur_moveit_config가 있습니다.
+    기본 설치된 MoveIt 설정 패키지는 잘 동작하지 않을 수 있으므로, 필요하면 MoveIt 설정 패키지를 새로 만드십시오 (WeGo 자료).</p>
+  <div class="box warn"><div class="h">경고 · MoveIt으로 실제 로봇을 움직일 때</div>
+    <p>RViz의 MotionPlanning에서 Planning Group을 manipulator로 두고 관절 슬라이더로 목표를 정한 뒤, 실제 로봇이면 반드시 먼저 <span class="ui">Plan</span>을 눌러 경로를 보고,
+      문제가 없을 때만 <span class="ui">Execute</span>를 누르십시오.</p></div>
+  <figure class="light">
+    <img src="assets/ur_022.png" alt="RViz MoveIt">
+    <figcaption data-fig="fig-rviz"><b>그림 24.</b> RViz의 MoveIt MotionPlanning 화면 (WeGo ROS 설정 자료)</figcaption>
+  </figure>
+
+  <h2 id="c11-s9">ROS에서 그리퍼 다루기 (I/O 경유)</h2>
+  <p>WeGo 그리퍼 자료(2023-12-12)는 URCap으로 움직이는 그리퍼를 ROS에서 다루는 방법을 보여 줍니다. ROS가 드라이버의 I/O 서비스로 로봇의 디지털 출력을 바꾸면,
+    펜던트 프로그램의 스레드가 그 출력을 보고 그리퍼 URCap 노드를 실행합니다. URCap을 지원하는 그리퍼라면 같은 방법으로 쓸 수 있습니다.</p>
+  <figure class="light">
+    <img src="assets/ur_021.png" alt="그리퍼 스레드 프로그램">
+    <figcaption data-fig="fig-thread"><b>그림 25.</b> External Control 노드와, digital_out[0]에 따라 그리퍼를 열고 닫는 스레드 (WeGo 그리퍼 자료. 주소는 교육용 예)</figcaption>
+  </figure>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-setio"><b>표 24.</b> I/O 서비스 (<code>ur_msgs/SetIO</code>)</caption>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>서비스 · 상태 토픽 (ROS 2)</td><td><code>/io_and_status_controller/set_io</code> · <code>/io_and_status_controller/io_states</code></td></tr>
+      <tr><td>서비스 · 상태 토픽 (ROS 1)</td><td><code>/ur_hardware_interface/set_io</code> · <code>/ur_hardware_interface/io_states</code></td></tr>
+      <tr><td><code>fun</code></td><td>1 디지털 출력 · 2 플래그 · 3 아날로그 출력 · 4 툴 전압</td></tr>
+      <tr><td><code>pin</code></td><td>출력 번호 (디지털 출력 0 ~ 7, 구성 가능한 출력 8 ~ 15, 툴 디지털 출력 16 · 17)</td></tr>
+      <tr><td><code>state</code></td><td>디지털: 0 끔 · 1 켬. 툴 전압: 0 · 12 · 24 (V)</td></tr>
+    </tbody>
+  </table>
+  <p>ROS 2에서 디지털 출력 0을 켜고 끄는 예입니다 (WeGo 자료의 예를 줄여 씀). <code>python3 set_do0.py 1</code>이면 켜고, <code>0</code>이면 끕니다.</p>
+  <pre class="cmd">import sys
+import rclpy
+from ur_msgs.srv import SetIO
+
+rclpy.init()
+node = rclpy.create_node("set_io_client")
+cli = node.create_client(SetIO, "/io_and_status_controller/set_io")
+cli.wait_for_service()
+req = SetIO.Request(fun=SetIO.Request.FUN_SET_DIGITAL_OUT, pin=0, state=float(sys.argv[1]))
+future = cli.call_async(req)
+rclpy.spin_until_future_complete(node, future)
+print(future.result().success)
+rclpy.shutdown()</pre>
+  <p>출력이 바뀌는지는 펜던트의 I/O 탭이나 상태 토픽에서 확인합니다. 그리퍼 자료의 예는 ROS 1 Noetic · ROS 2 Galactic(Ubuntu 20.04)에서 만들었으며, Galactic은 이제 지원이 끝난 배포판입니다.</p>
+</section>
+
+
+<!-- ═══════════════════════ 12 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">문제 해결</h1></div>
+  <p class="lede">WeGo가 교육과 현장 지원, URSim 시험에서 만난 증상과 조치입니다. 여기에 없는 오류 코드는 PolyScope 로그 탭의 메시지와 UR 사용자 설명서 · 지원 문서(universal-robots.com/articles)를 보십시오.</p>
+
+  <h2 id="c12-s1">전원 · 시작</h2>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-ts-power"><b>표 25.</b> 전원과 시작</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>ON · START를 눌러도 전원이 들어가지 않거나 브레이크가 풀리지 않음</td><td>비상 정지가 눌려 있음</td><td>비상 정지를 풀고 다시 시작합니다 (5장)</td></tr>
+      <tr><td>오류 코드 C283, 로봇이 시작되지 않음</td><td>Safety → Hardware의 TeachPendant 선택값이 실제 연결과 다름 (3PE 펜던트를 Standard로 고른 경우 포함)</td><td>펜던트를 연결했으면 Standard 또는 3PE Enabled, 뗐으면 No를 고르고 적용합니다 (8장)</td></tr>
+      <tr><td>펜던트를 뗀 뒤 전원을 켤 수 없음</td><td>외부 전원 버튼이 배선되지 않음</td><td>원격 ON / OFF 입력을 배선합니다 (8장)</td></tr>
+      <tr><td>보호 정지가 자주 나고 오류 163(TOO_FREQUENT_PROTECTIVE_STOPS)</td><td>한 관절에서 같은 종류의 보호 정지가 8시간에 50번을 넘음</td><td>원인을 없앤 뒤, 최소 5초 기다렸다가 보호 정지를 풉니다 (UR 지원 문서)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s2">원격 제어 · Dashboard · RTDE</h2>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-ts-remote"><b>표 26.</b> 원격 제어와 통신</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>머리띠에 Local / Remote 아이콘이 없음</td><td>원격 제어 기능이 꺼져 있음</td><td>Settings → System → Remote Control에서 Enable을 누릅니다 (11장)</td></tr>
+      <tr><td>Dashboard가 «Command is not allowed due to safety reasons …»로 답함</td><td>로컬 제어 상태</td><td>원격 제어로 바꾸고 포트 29999에 다시 접속합니다</td></tr>
+      <tr><td><code>set operational mode</code>의 응답에 failed</td><td>보호 정지, 원격 제어 설정 꺼짐, 외부 모드 선택기 연결 (11장 참고 상자)</td><td>로봇 상태를 먼저 해소하고 세 가지를 확인합니다</td></tr>
+      <tr><td>펜던트에서 운영 모드를 바꿀 수 없고 모드 비밀번호가 안 먹음</td><td>Dashboard로 <code>set operational mode</code>를 보낸 뒤 해제하지 않음</td><td><code>clear operational mode</code>를 보냅니다</td></tr>
+      <tr><td><code>get operational mode</code>가 NONE</td><td>운영 모드 비밀번호를 정하지 않음</td><td>오류가 아닙니다</td></tr>
+      <tr><td>ur_rtde 제어 연결이 «Failed to start control script» 또는 «Failed to start RTDE data synchronization»으로 실패</td><td>브레이크가 잠긴 상태(IDLE)이거나 로컬 제어 상태 (11장 참고 상자)</td><td>전원 켜기 · 브레이크 해제 뒤 원격 제어로 바꾸고 다시 연결합니다</td></tr>
+      <tr><td>«RTDE control script is not running», «another thread is controlling the robot»</td><td>정지 명령이 겹쳐 나가거나, 여러 스레드가 <code>RTDEControlInterface</code>를 직접 호출</td><td>제어 호출을 잠금 하나로 직렬화하고, 일시정지에는 <code>stopScript()</code> 대신 부드러운 정지를 씁니다</td></tr>
+      <tr><td>RTDE 로봇 모드가 −1</td><td>ROBOT_MODE_NO_CONTROLLER (비상 정지 아님)</td><td>비상 정지 여부는 안전 모드(SYSTEM_EMERGENCY_STOP · ROBOT_EMERGENCY_STOP)로 판단합니다</td></tr>
+      <tr><td><code>servoJ</code>로 따라가는 동작이 늦음</td><td>lookahead 시간만큼 지연 (URSim에서 지연 ≈ lookahead + 20 ms)</td><td>lookahead를 줄입니다. 실제 로봇에서는 실제 입력 장치를 쥔 상태에서만 낮추어 봅니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s3">TCP · 페이로드</h2>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-ts-tcp"><b>표 27.</b> TCP와 페이로드</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>TCP 위치 티칭에서 LED가 빨간색</td><td>저장한 위치들의 각도 차이가 작음</td><td>각도를 벌려 다시 저장하고, 네 번째 위치로 확인합니다 (6장)</td></tr>
+      <tr><td>티칭한 TCP가 공표값 · 계산값과 크게 다름</td><td>포인트를 맞추는 오차, 툴 끝이 뾰족하지 않음</td><td>뾰족한 지그를 붙여 다시 티칭하거나 실측 값을 씁니다</td></tr>
+      <tr><td>다시 켜면 TCP · 페이로드가 이전 값</td><td>설치 파일을 저장하지 않음</td><td>값을 넣은 뒤 설치를 저장합니다</td></tr>
+      <tr><td>툴을 바꾼 뒤 위치가 어긋나거나 힘 값이 이상함</td><td>이전 툴의 TCP · 페이로드가 그대로 쓰임</td><td>새 툴의 구성을 다시 적용합니다. 툴을 떼었어도 남은 부품의 페이로드를 넣습니다</td></tr>
+      <tr><td>힘 측정값에 일정한 오차</td><td>페이로드가 실제와 다름</td><td>실제 구성 그대로 페이로드를 다시 측정합니다</td></tr>
+      <tr><td>PC 프로그램의 무게중심이 1000배</td><td>펜던트의 mm 값을 m 단위 설정에 그대로 넣음</td><td>1000으로 나누어 넣습니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s4">URSim · ROS</h2>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-ts-sim"><b>표 28.</b> URSim과 ROS</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>Docker URSim을 다시 띄우면 원격 제어 설정이 사라짐</td><td><code>--rm</code> 또는 <code>docker rm</code>으로 컨테이너가 지워짐</td><td>이름을 붙여 만들고 <code>docker stop</code> · <code>start</code>로 씁니다. 다시 켠 뒤에는 로컬 → 원격 제어로 바꿉니다 (10장)</td></tr>
+      <tr><td>PC에서 Dashboard에 연결이 거부됨</td><td>PolyScope가 아직 뜨는 중</td><td>몇 초 간격으로 다시 시도합니다</td></tr>
+      <tr><td>가상 머신 URSim에서 USB 메모리가 안 보임</td><td>USB 컨트롤러 · 장치 필터 미설정, 확장 팩 없음</td><td>USB 3.0(xHCI) 컨트롤러와 장치 필터를 설정합니다 (10장, 확장 팩 라이선스 확인)</td></tr>
+      <tr><td>ROS에서 출력을 바꿔도 그리퍼가 움직이지 않음</td><td>펜던트에서 External Control · 스레드 프로그램이 실행 중이 아님</td><td>펜던트에서 프로그램을 실행하고, I/O 탭에서 출력이 바뀌는지 봅니다 (11장)</td></tr>
+      <tr><td>기본 MoveIt 설정 패키지가 잘 동작하지 않음</td><td>기본 설치 패키지의 한계 (WeGo 자료)</td><td>MoveIt 설정 패키지를 새로 만듭니다</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c13" data-mark="c13">빠른 참조</h1></div>
+
+  <div class="qr">
+    <div class="card"><h3>켜기 (5장)</h3>
+      <ol><li>동작 범위에 사람 · 장애물 없음, 비상 정지 해제</li><li>펜던트 전원 버튼 → PolyScope 부팅</li><li>왼쪽 아래 빨간 상태 버튼 → 초기화 화면</li>
+        <li>설치 · Active Payload 확인 → <b>ON</b></li><li>로봇에서 떨어져 <b>START</b> (브레이크 해제)</li><li>상태 녹색(Normal) → Exit</li></ol></div>
+    <div class="card"><h3>끄기 (5장)</h3>
+      <ol><li>프로그램 정지, 안전한 자세</li><li>프로그램 · 설치 저장</li><li>메뉴 → Shutdown Robot</li><li>케이블 작업은 완전히 꺼진 뒤</li></ol>
+      <h3 style="margin-top:3mm">PC에서 켜기 (Dashboard)</h3>
+      <ol><li>29999 접속될 때까지 대기</li><li><code>power on</code> → <code>robotmode</code> IDLE</li><li><code>brake release</code> → RUNNING</li><li><code>safetystatus</code> 확인</li></ol></div>
+  </div>
+
+  <table class="t wrap1">
+    <caption data-tbl="tbl-qr-ui"><b>표 29.</b> PolyScope 화면 이름 (영어 · 한국어)</caption>
+    <thead><tr><th>영어</th><th>한국어</th><th>영어</th><th>한국어</th></tr></thead>
+    <tbody>
+      <tr><td>Run</td><td>실행</td><td>Waypoint</td><td>웨이포인트</td></tr>
+      <tr><td>Program</td><td>프로그램</td><td>Set Waypoint</td><td>웨이포인트 설정</td></tr>
+      <tr><td>Installation</td><td>설치</td><td>Edit pose</td><td>포즈 편집</td></tr>
+      <tr><td>Move</td><td>이동</td><td>Move here</td><td>여기로 이동</td></tr>
+      <tr><td>Log</td><td>로그</td><td>Stop at this point</td><td>이 포인트에서 정지</td></tr>
+      <tr><td>Basic · Advanced · Templates</td><td>기본 · 고급 · 템플릿</td><td>Blend with radius</td><td>반지름으로 혼합</td></tr>
+      <tr><td>Command · Graphics · Variables</td><td>명령어 · 그래픽 · 변수</td><td>Shared parameters</td><td>공유 매개변수 사용</td></tr>
+      <tr><td>Direction · Wait · Set</td><td>방향 · 기다림 · 지정</td><td>Tool Speed · Tool Acceleration · Time</td><td>툴 속도 · 툴 가속도 · 시간</td></tr>
+      <tr><td>Popup · Comment · Folder</td><td>팝업 · 주석 · 폴더</td><td>Add Until</td><td>'Until' 추가</td></tr>
+      <tr><td>Set Payload</td><td>페이로드 설정</td><td>Fixed position</td><td>고정된 위치</td></tr>
+      <tr><td>Freedrive</td><td>프리드라이브</td><td>Simulation</td><td>시뮬레이션</td></tr>
+      <tr><td>Speed</td><td>속도</td><td>Normal</td><td>정상</td></tr>
+    </tbody>
+  </table>
+
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-qr-ports"><b>표 30.</b> 포트와 주소</caption>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>Dashboard Server</td><td>29999 (문자열 명령, 줄바꿈으로 끝냄)</td></tr>
+      <tr><td>Primary · Secondary · Real-time · RTDE</td><td>30001 · 30002 · 30003 · 30004</td></tr>
+      <tr><td>Interpreter Mode</td><td>30020</td></tr>
+      <tr><td>External Control URCap → 개발 PC</td><td>50002 (기본값)</td></tr>
+      <tr><td>URSim (Docker) 화면</td><td><code>http://localhost:6080/vnc.html</code> · VNC 5900</td></tr>
+      <tr><td>로봇 IP 확인</td><td>메뉴 → About, 설정은 Settings → System → Network</td></tr>
+    </tbody>
+  </table>
+
+  <table class="t wrap1">
+    <caption data-tbl="tbl-qr-tcp"><b>표 31.</b> TCP · 페이로드 점검표 (6장)</caption>
+    <thead><tr><th>확인 항목</th><th>기준</th></tr></thead>
+    <tbody>
+      <tr><td>장착 구성이 실제 운전 구성과 같은가</td><td>카메라 브래킷 · 케이블 고정구 · 흡착 컵 포함</td></tr>
+      <tr><td>측정 자세 네 개의 TCP 위치가 서로 충분히 다른가</td><td>비슷한 자세를 반복하면 무게중심 오차가 커짐</td></tr>
+      <tr><td>측정 중 툴을 손으로 당기지 않았는가</td><td>외력이 실리면 측정값이 왜곡됨</td></tr>
+      <tr><td>결과를 설치에 저장했는가</td><td>저장하지 않으면 다시 켤 때 사라짐</td></tr>
+      <tr><td>PC 쪽 설정 값이 측정값과 같은가</td><td>질량과 무게중심 세 축, mm → m 환산</td></tr>
+      <tr><td>툴을 바꾼 뒤 구성을 다시 적용했는가</td><td>툴을 떼었으면 남은 부품의 구성 적용</td></tr>
+      <tr><td>원격 제어 · 자동 모드로 되돌렸는가</td><td>작업 전 상태로 복귀</td></tr>
+      <tr><td>TCP 값이 공표값 또는 계산값과 맞는가</td><td>차이가 크면 부품 누락이나 티칭 오류</td></tr>
+      <tr><td>공정 값을 쌓은 뒤 TCP를 바꾸지 않았는가</td><td>바꾸면 보정 값을 다시 계산</td></tr>
+    </tbody>
+  </table>
+
+  <table class="t wrap1">
+    <caption data-tbl="tbl-qr-tp"><b>표 32.</b> 티치 펜던트 분리 점검표 (8장)</caption>
+    <thead><tr><th>확인 항목</th><th>기준</th></tr></thead>
+    <tbody>
+      <tr><td>작업 전에 수동 모드로 바꿨는가</td><td>자동 모드에서는 안전 설정을 잠금 해제할 수 없음</td></tr>
+      <tr><td>외부 비상 정지를 배선하고 동작을 확인했는가</td><td>실제로 눌러 로봇이 멈추는지 확인</td></tr>
+      <tr><td>외부 전원 ON / OFF 버튼을 배선했는가</td><td>펜던트 전원 버튼을 대신함</td></tr>
+      <tr><td>Safety → Hardware의 TeachPendant 값이 실제 연결과 같은가</td><td>다르면 C283</td></tr>
+      <tr><td>안전 구성을 적용하고 저장했는가</td><td>적용을 누르지 않으면 반영되지 않음</td></tr>
+      <tr><td>원격 제어에서 상위 시스템 제어가 정상인가</td><td>Dashboard · RTDE 연결 확인</td></tr>
+      <tr><td>펜던트를 다시 연결한 뒤 로컬 제어로 바꿨는가</td><td>원격 제어에서는 펜던트 조작이 제한됨</td></tr>
+      <tr><td><code>clear operational mode</code>를 보냈는가</td><td>보내지 않으면 펜던트에서 운영 모드를 바꿀 수 없음</td></tr>
+      <tr><td>구성 변경을 위험성 평가했는가</td><td>펜던트 없는 운전은 따로 평가</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c13-s1">Universal Robots 공개 자료</h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="tbl-qr-links"><b>표 33.</b> 함께 보는 UR 자료 (이 책에 옮기지 않음)</caption>
+    <thead><tr><th>자료</th><th>어디서</th></tr></thead>
+    <tbody>
+      <tr><td>e-Series 사용자 설명서 (모델별, 한국어판 있음) · 서비스 설명서</td><td>universal-robots.com/manuals</td></tr>
+      <tr><td>URSim 내려받기 · URSim 설치 안내서 · 소프트웨어 · URCap</td><td>universal-robots.com/download</td></tr>
+      <tr><td>데이터시트 · 사양 비교표</td><td>universal-robots.com/manuals (Datasheets)</td></tr>
+      <tr><td>지원 문서: 티치 펜던트 비활성화 · 활성화, Dashboard Server, 클라이언트 인터페이스, RTDE</td><td>universal-robots.com/articles</td></tr>
+      <tr><td>UR Academy 온라인 교육</td><td>academy.universal-robots.com</td></tr>
+      <tr><td>ROS 2 드라이버 · 설명 패키지 · External Control URCap</td><td>github.com/UniversalRobots</td></tr>
+      <tr><td>URSim Docker 이미지</td><td>hub.docker.com/r/universalrobots/ursim_e-series</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>
