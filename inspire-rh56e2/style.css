@@ -1,2 +1,5 @@
 /* Inspire RH56E2 operator manual: short tables stay whole so a caption never sits alone at a page foot */
 table.t.keep{ break-inside:avoid; }
+/* cover: Inspire's product photo as published (own light background, no cut-out), in a rounded frame;
+   the same size and place on all four Inspire books */
+.cover .hero{ height:auto; width:88mm; right:18mm; bottom:25mm; border-radius:3mm; }

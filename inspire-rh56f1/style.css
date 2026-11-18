@@ -1,0 +1,13 @@
+/* Inspire RH56F1 operator manual: short tables and side-by-side pairs stay whole so a caption never sits alone at a page foot */
+table.t.keep, .two{ break-inside:avoid; }
+/* angle ranges (90° ~ 174°) stay on one line */
+table.t.angdef td:last-child{ white-space:nowrap; }
+/* a heading, its intro and its table move to the next page together */
+.kw{ break-inside:avoid; }
+/* register and object names never break inside a word */
+p code, li code{ white-space:nowrap; }
+figure.h50 img{ max-height:50mm; width:auto; max-width:100%; margin:0 auto; }
+table.t.newpage{ break-before:page; }
+/* cover: Inspire's product photo as published (own light background, no cut-out), in a rounded frame;
+   the same size and place on all four Inspire books */
+.cover .hero{ height:auto; width:88mm; right:18mm; bottom:25mm; border-radius:3mm; }

@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Franka Research 3 협동로봇 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css + style.css */
+@page {
+  @top-left  { content: "Franka Research 3"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Franka Research 3 협동로봇 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Franka_FR3_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템 구성과 버전</a></summary><a class="wm-t2" href="#c1-s1">준비물</a><a class="wm-t2" href="#c1-s2">소프트웨어 구성</a><a class="wm-t2" href="#c1-s3">용어</a><a class="wm-t2" href="#c1-s4">버전 호환</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">FCI로 제어할 때</a><a class="wm-t2" href="#c2-s2">WeGo FR3 제어 UI를 쓸 때</a><a class="wm-t2" href="#c2-s3">각 장에서 다시 나오는 경고</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>FR3 이더넷 설정</a></summary><a class="wm-t2" href="#c3-s1">하드웨어 연결</a><a class="wm-t2" href="#c3-s2">이더넷 설정</a><a class="wm-t2" href="#c3-s3">연결 테스트</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>FR3 Desk</a></summary><a class="wm-t2" href="#c4-s1">Desk 접속</a><a class="wm-t2" href="#c4-s2">Desk 메인 화면</a><a class="wm-t2" href="#c4-s3">LED와 로봇 상태 색</a><a class="wm-t2" href="#c4-s4">Desk 프로그래밍 설정</a><a class="wm-t2" href="#c4-s5">Free Drive</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Franka-ROS (Noetic)</a></summary><a class="wm-t2" href="#c5-s1">시작하기 전에</a><a class="wm-t2" href="#c5-s2">시험 환경</a><a class="wm-t2" href="#c5-s3">libfranka 설치 (소스 빌드)</a><a class="wm-t2" href="#c5-s4">ROS 패키지 빌드</a><a class="wm-t2" href="#c5-s5">Desk 원격 제어 설정</a><a class="wm-t2" href="#c5-s6">예제 실행</a><a class="wm-t2" href="#c5-s7">MoveIt으로 움직이기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>Franka-ROS 2 (Humble)</a></summary><a class="wm-t2" href="#c6-s1">시작하기 전에</a><a class="wm-t2" href="#c6-s2">시험 환경</a><a class="wm-t2" href="#c6-s3">franka_ros2 받기</a><a class="wm-t2" href="#c6-s4">libfranka 설치 (소스 빌드)</a><a class="wm-t2" href="#c6-s5">franka_ros2 빌드</a><a class="wm-t2" href="#c6-s6">실시간 권한 주기</a><a class="wm-t2" href="#c6-s7">예제 실행</a><a class="wm-t2" href="#c6-s8">franka_ros2 실행</a><a class="wm-t2" href="#c6-s9">MoveIt 2</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>WeGo FR3 제어 UI</a></summary><a class="wm-t2" href="#c7-s1">안전 수칙</a><a class="wm-t2" href="#c7-s2">실행</a><a class="wm-t2" href="#c7-s3">화면 구성</a><a class="wm-t2" href="#c7-s4">헤더와 상태 표시등</a><a class="wm-t2" href="#c7-s5">단축키</a><a class="wm-t2" href="#c7-s6">로봇 준비</a><a class="wm-t2" href="#c7-s7">관절 조그</a><a class="wm-t2" href="#c7-s8">웨이포인트</a><a class="wm-t2" href="#c7-s9">임피던스 모드</a><a class="wm-t2" href="#c7-s10">정지 · 오류 대응 · 종료</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>문제 해결</a></summary><a class="wm-t2" href="#c8-s1">연결 · 버전 오류</a><a class="wm-t2" href="#c8-s2">실시간 · 통신 품질 오류</a><a class="wm-t2" href="#c8-s3">로봇 동작 · reflex 오류</a><a class="wm-t2" href="#c8-s4">빌드 · 패키지 오류</a><a class="wm-t2" href="#c8-s5">WeGo FR3 제어 UI</a><a class="wm-t2" href="#c8-s6">막혔을 때 진단 순서</a></details><a class="wm-t1" href="#c9"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>Franka <span>Research 3</span><br>협동로봇</h1>
+  <div class="title2">7자유도 · 가반 하중 3 kg</div>
+  <div class="bar"></div>
+  <p class="lead">이더넷 연결과 Desk 사용법, franka_ros(Noetic) · franka_ros2(Humble) 설치와 예제 실행,
+    WeGo FR3 제어 UI, 버전 호환과 문제 해결까지 WeGo의 FR3 시작 자료를 한 권에 모았습니다.</p>
+  <img class="hero" src="assets/fr3_render.png" alt="Franka Research 3">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>Franka Research 3(FR3) 7자유도 로봇팔 · 컨트롤 박스(Control) · Franka Hand</td></tr>
+      <tr><td>근거 문서</td><td>WeGo <i>Franka Research 3 Start Manual</i> (이더넷 설정 · Desk · Franka-ROS · Franka-ROS2) ·
+        WeGo <i>Franka FR3 제어 UI 매뉴얼</i> v1.0 (franka_control_ui v0.1.0) ·
+        WeGo <i>Franka Research 3 PC 제어 완전 설치 가이드</i> (2026-09-16, 시스템 구성 · 버전 호환 · franka_ros2 실행 · 문제 해결 · 안전 수칙 부분) ·
+        Franka 공개 문서 frankarobotics.github.io/docs · FR3 호환 표 franka.de/fr3-compatibility-matrix.
+        본문에서는 앞의 WeGo 자료 세 가지를 차례로 Start Manual · 제어 UI 문서 · 설치 가이드라고 부릅니다.</td></tr>
+      <tr><td>소프트웨어</td><td>5장: Ubuntu 20.04 · ROS Noetic · FR3 시스템 5.3.1 · libfranka 0.10.0 ·
+        6장: Ubuntu 22.04 · ROS 2 Humble · FR3 시스템 5.6.0 · libfranka 0.13.3 ·
+        7장: FR3 시스템 5.10.0 · ROS 2 Humble · franka_control_ui 0.1.0</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>이 책은 FR3를 개발 PC에서 처음 연결해 움직이기까지의 순서를 다룹니다. 로봇 본체의 안전 · 설치 · 사양과 법적 정보는
+      Franka Robotics의 <i>Product Manual Franka Research 3</i>가 기준이며, 이 책은 그것을 대신하지 않습니다.
+      시스템 버전과 소프트웨어 버전에 따라 화면과 명령이 달라질 수 있습니다.</p>
+    <p class="copy">© WeGo Robotics. Franka, Franka Research 3, Desk는 Franka Robotics GmbH의 상표입니다.
+      표지의 FR3 이미지는 Franka Robotics가 공개한 로봇 모델 메시(github.com/frankarobotics/franka_description, Apache-2.0)를 MuJoCo로 렌더링한 것이고,
+      본문 그림은 WeGo가 찍은 화면과 사진이며, Desk 화면은 Franka Robotics 소프트웨어의 화면입니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">시스템 구성과 버전</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">FR3 이더넷 설정</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">FR3 Desk</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">Franka-ROS (Noetic)</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">Franka-ROS 2 (Humble)</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">WeGo FR3 제어 UI</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">시스템 구성과 버전</h1></div>
+  <p class="lede">FR3 시스템은 로봇팔 · 컨트롤 박스 · 개발 PC로 이루어집니다. 개발 PC는 웹 브라우저로 Desk에 접속해 로봇을 설정하고,
+    FCI(Franka Control Interface)로 1 kHz 실시간 제어를 합니다.</p>
+  <figure>
+    <svg viewBox="0 0 640 250" role="img" aria-label="개발 PC, 컨트롤 박스, FR3 로봇팔의 연결" font-family="Pretendard" font-size="13">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#8a90a2"/></marker></defs>
+      <rect x="10" y="20" width="230" height="150" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="24" y="46" font-size="15" font-weight="700" fill="#0b1020">개발 PC</text>
+      <text x="24" y="70" font-size="11.5" fill="#5a6178">Ubuntu 22.04 + 실시간(RT) 커널</text>
+      <text x="24" y="90" font-size="11.5" fill="#5a6178">libfranka</text>
+      <text x="24" y="110" font-size="11.5" fill="#5a6178">franka_ros2 (Humble)</text>
+      <text x="24" y="130" font-size="11.5" fill="#5a6178">Python 라이브러리 (선택)</text>
+      <text x="24" y="150" font-size="11.5" fill="#5a6178">웹 브라우저 (Desk)</text>
+      <rect x="360" y="20" width="130" height="150" rx="8" fill="#1673e6" fill-opacity="0.10" stroke="#1673e6" stroke-width="2"/>
+      <text x="374" y="46" font-size="15" font-weight="700" fill="#0b1020">컨트롤 박스</text>
+      <text x="374" y="70" font-size="11.5" fill="#0b1020">Control</text>
+      <text x="374" y="90" font-size="11.5" fill="#0b1020">Desk 웹 화면</text>
+      <text x="374" y="110" font-size="11.5" fill="#0b1020">FCI 서버</text>
+      <rect x="540" y="20" width="90" height="150" rx="8" fill="none" stroke="#8a90a2" stroke-width="1.25"/>
+      <text x="554" y="46" font-size="15" font-weight="700" fill="#0b1020">FR3</text>
+      <text x="554" y="70" font-size="11.5" fill="#5a6178">로봇팔</text>
+      <text x="554" y="90" font-size="11.5" fill="#5a6178">7자유도</text>
+      <g fill="none" stroke="#8a90a2" stroke-width="1.25">
+        <path d="M240 75H358" marker-end="url(#ar)"/>
+        <path d="M240 130H358" marker-end="url(#ar)"/>
+        <path d="M490 95H538" marker-end="url(#ar)"/>
+      </g>
+      <text x="252" y="66" font-size="11.5" font-weight="700" fill="#0b1020">FCI · UDP 1 kHz</text>
+      <text x="252" y="121" font-size="11.5" font-weight="700" fill="#0b1020">Desk · HTTPS</text>
+      <text x="10" y="205" font-size="11.5" fill="#5a6178">이더넷 케이블 한 가닥으로 직접 연결합니다. 스위치 · 공유기 · Wi-Fi를 거치지 않습니다.</text>
+      <text x="10" y="228" font-size="11.5" fill="#5a6178">1 kHz 주기를 한 번이라도 놓치면 로봇이 바로 멈춥니다.</text>
+    </svg>
+    <figcaption data-fig="fig-sys"><b>그림 1.</b> FR3 시스템 구성: 개발 PC ↔ 컨트롤 박스 ↔ 로봇팔</figcaption>
+  </figure>
+  <ul>
+    <li>FCI는 외부 PC가 1 kHz 주기로 로봇 상태를 받고 명령을 보내는 실시간 채널입니다. 1 ms마다 정확히 한 번씩 패킷을 주고받습니다.</li>
+    <li>이 주기를 한 번이라도 놓치면 컨트롤 박스가 통신 위반으로 판단해 로봇을 바로 정지시킵니다. 일반 커널은 이 주기를 보장하지 못하므로 실시간(RT) 커널이 필요합니다.</li>
+  </ul>
+  <div class="box caution"><div class="h">주의 · 직접 연결</div>
+    <p>로봇과 개발 PC 사이에 스위치 · 공유기 · Wi-Fi를 넣으면 1 kHz 주기를 놓쳐 로봇이 정지합니다. 반드시 케이블로 직접 연결하십시오.</p></div>
+
+  <h2 id="c1-s1">준비물</h2>
+  <table class="t wrap1">
+    <caption data-tbl="prep"><b>표 1.</b> 시작 전 확인할 것</caption>
+    <thead><tr><th>구분</th><th>항목</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>하드웨어</td><td>Franka Research 3 + 컨트롤 박스</td><td>전원 케이블, 로봇–컨트롤 박스 연결 케이블</td></tr>
+      <tr><td>하드웨어</td><td>External Activation Device (E-stop)</td><td>필수입니다. 없으면 로봇이 파란색 상태가 되지 않습니다</td></tr>
+      <tr><td>하드웨어</td><td>이더넷 케이블 1개 (직결용)</td><td>스위치 · 허브를 쓰지 않습니다</td></tr>
+      <tr><td>하드웨어</td><td>Ubuntu PC (유선 랜 포트 필수)</td><td>SSD 여유 40 GB 이상 (커널 빌드용). USB-이더넷 어댑터도 동작하지만 지터가 늘어나므로 내장 랜 포트를 권장합니다</td></tr>
+      <tr><td>계정</td><td>Franka 계정 (franka.de)</td><td>시스템 이미지를 내려받을 때 필요합니다</td></tr>
+      <tr><td>계정</td><td>Desk 로그인 정보</td><td>로봇을 처음 설정할 때 만든 관리자 계정 (4장)</td></tr>
+      <tr><td>정보</td><td>로봇 시스템 버전</td><td>Desk → Settings → System → Version. 이 버전이 libfranka 버전을 정합니다</td></tr>
+      <tr><td>권한</td><td>PC의 sudo 권한</td><td>실시간 커널 설치에 필요합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s2">소프트웨어 구성</h2>
+  <table class="t wrap1">
+    <caption data-tbl="stack"><b>표 2.</b> 무엇이 무엇 위에 올라가는가</caption>
+    <thead><tr><th>층</th><th>이름</th><th>설명</th><th>필수</th></tr></thead>
+    <tbody>
+      <tr><td>로봇 펌웨어</td><td>System Image (예: 5.9.x)</td><td>컨트롤 박스에 설치된 이미지. 모든 버전의 기준점</td><td>고정</td></tr>
+      <tr><td>OS</td><td>Ubuntu + PREEMPT_RT</td><td>실시간 커널. 없으면 제어 루프가 시작되지 않습니다</td><td>필수</td></tr>
+      <tr><td>저수준 C++</td><td>libfranka</td><td>FCI 프로토콜 구현, 1 kHz 제어 루프</td><td>필수</td></tr>
+      <tr><td>ROS 2</td><td>franka_ros2</td><td>libfranka를 ros2_control로 감싼 패키지</td><td>선택</td></tr>
+      <tr><td>Python</td><td>franky</td><td>libfranka의 Python 바인딩 + Ruckig 궤적. ROS가 필요 없습니다</td><td>선택</td></tr>
+      <tr><td>Python</td><td>panda-py</td><td>Python 바인딩. 티칭 · 로깅에 강합니다</td><td>선택</td></tr>
+      <tr><td>경로 계획</td><td>MoveIt 2</td><td>충돌 회피 경로 계획. franka_ros2 위에서 동작</td><td>선택</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s3">용어</h2>
+  <table class="t wrap1">
+    <caption data-tbl="terms"><b>표 3.</b> 문서와 오류 메시지에 자주 나오는 말</caption>
+    <thead><tr><th>용어</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>FCI</td><td>Franka Control Interface. 외부 PC가 1 kHz로 로봇을 제어하는 실시간 인터페이스</td></tr>
+      <tr><td>Desk</td><td>컨트롤 박스가 띄우는 웹 화면. 브라우저로 접속해 로봇의 잠금을 풀고 설정합니다</td></tr>
+      <tr><td>Reflex</td><td>로봇이 스스로 위험을 감지해 일으키는 정지. 발생 후에는 오류 복구(error recovery)가 필요합니다</td></tr>
+      <tr><td>Guiding mode</td><td>중력 보상 상태. 사람이 손으로 로봇을 움직일 수 있습니다</td></tr>
+      <tr><td>Impedance</td><td>위치 오차에 스프링처럼 반응하는 제어. 값이 낮을수록 부드럽고 외력에 잘 따릅니다</td></tr>
+      <tr><td>Collision behavior</td><td>이 토크 · 힘 임계값을 넘으면 reflex가 일어납니다. 안전의 1차 방어선입니다</td></tr>
+      <tr><td>Robot / Gripper server</td><td>컨트롤 박스 안의 프로토콜 버전. libfranka와 반드시 맞아야 합니다</td></tr>
+      <tr><td>relative_dynamics_factor</td><td>franky의 전역 속도 · 가속도 · 저크 배율. 0.05 = 최댓값의 5%</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s4">버전 호환 <span class="src">문서</span></h2>
+  <p>libfranka 버전이 로봇의 시스템 버전과 맞지 않으면 연결 자체가 거부됩니다. 코드 문제가 아닙니다. 가장 흔한 실패입니다.</p>
+  <pre class="cmd">$ ./examples/echo_robot_state 172.16.0.2
+libfranka: Incompatible library version.
+           Server version: 9, Library version: 7</pre>
+  <ul>
+    <li>Server version은 컨트롤 박스(시스템 이미지)의 프로토콜 버전, Library version은 빌드한 libfranka의 프로토콜 버전입니다.</li>
+    <li>해결은 하나뿐입니다. 시스템 이미지에 맞는 libfranka 버전으로 다시 빌드하십시오 (반대로 로봇 이미지를 올려도 됩니다).</li>
+  </ul>
+  <p>먼저 로봇의 버전을 확인하십시오. 브라우저로 Desk(<code>https://172.16.0.2</code>)에 로그인한 뒤 오른쪽 위 메뉴 → <span class="ui">Settings</span> → 왼쪽 <span class="ui">System</span> 탭 → <span class="ui">Version</span> 항목을 봅니다 (예: System Version 5.9.1 / Robot Server 10 / Gripper Server 3).
+    이미 libfranka를 빌드했다면 <code>dpkg -l | grep libfranka</code>로 설치된 버전을 볼 수 있습니다.</p>
+  <table class="t tight">
+    <caption data-tbl="compat"><b>표 4.</b> FR3 호환 표 (Franka FR3 Compatibility Matrix, franka.de/fr3-compatibility-matrix)</caption>
+    <thead><tr><th>System Image</th><th>libfranka</th><th>Server (robot / gripper)</th><th>franka_ros2</th><th>Ubuntu</th></tr></thead>
+    <tbody>
+      <tr><td>≥ 5.9.0</td><td>≥ 0.18.0</td><td>10 / 3</td><td>Humble ≥ 2.0.2, &lt; 3.0.0</td><td>22.04</td></tr>
+      <tr><td>≥ 5.9.0</td><td>≥ 0.18.0</td><td>10 / 3</td><td>Jazzy ≥ 3.0.0</td><td>24.04</td></tr>
+      <tr><td>≥ 5.7.2, &lt; 5.9.0</td><td>≥ 0.15.0, &lt; 0.18.0</td><td>9 / 3</td><td>Humble ≥ 2.0.2, &lt; 3.0.0</td><td>22.04</td></tr>
+      <tr><td>≥ 5.7.2, &lt; 5.9.0</td><td>≥ 0.15.0, &lt; 0.18.0</td><td>9 / 3</td><td>Jazzy ≥ 3.0.0</td><td>24.04</td></tr>
+      <tr><td>≥ 5.7.0, &lt; 5.7.2</td><td>≥ 0.14.1, &lt; 0.15.0</td><td>8 / 3</td><td>Humble ≥ 0.1.15, ≤ 2.0.0</td><td>—</td></tr>
+      <tr><td>≥ 5.5.0, &lt; 5.7.0</td><td>≥ 0.13.3, &lt; 0.14.1</td><td>7 / 3</td><td>Humble ≥ 0.1.15, ≤ 2.0.0</td><td>—</td></tr>
+      <tr><td>≥ 5.2.0, &lt; 5.5.0</td><td>≥ 0.10.0, &lt; 0.13.3</td><td>6 / 3</td><td>Humble ≥ 0.1.0, ≤ 0.1.8</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 이 책의 조합</div>
+    <p>5장은 시스템 5.3.1 + libfranka 0.10.0(Noetic), 6장은 시스템 5.6.0 + libfranka 0.13.3(Humble), 7장의 제어 UI는 시스템 5.10.0에서 시험했습니다.
+      로봇의 버전이 다르면 위 표에서 맞는 libfranka 버전을 골라 5 · 6장의 <code>0.10.0</code> · <code>0.13.3</code> 자리에 넣으십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <p class="lede">이 책의 근거 자료에 있는 안전 수칙과 각 장의 경고를 한곳에 모았습니다. 로봇을 움직이기 전에 읽으십시오.
+    로봇 본체의 안전 정보는 Franka Robotics의 제품 설명서(Product Manual)를 따르십시오.</p>
+  <div class="box warn"><div class="h">경고 · FCI 모드의 안전 책임</div>
+    <p>FCI 모드에서는 Desk의 안전 프리셋(속도 · 작업 공간 제한)이 꺼지고, 안전 책임이 모두 사용자의 코드로 넘어옵니다.</p></div>
+
+  <h2 id="c2-s1">FCI로 제어할 때</h2>
+  <ul>
+    <li>E-stop을 손이 닿는 곳에 두십시오. 실행 전마다 위치를 확인하십시오.</li>
+    <li>작업 반경을 비우십시오. FR3의 도달 거리는 855 mm입니다. 사람 · 장비 · 케이블을 모두 치우십시오.</li>
+    <li>속도는 낮게 시작하십시오 (예: franky는 relative_dynamics_factor = 0.05부터).</li>
+    <li>충돌 임계값을 낮게 설정하십시오. 토크 20 Nm · 힘 10 N부터 시작해 필요한 만큼만 올리십시오.</li>
+    <li>토크 제어는 맨 마지막에 하십시오. 중력 보상이 어긋나면 로봇이 급격히 움직입니다.</li>
+    <li>처음 실행하는 코드는 <code>use_fake_hardware:=true</code>로 먼저 검증하십시오.</li>
+    <li>좌표를 코드에 고정하기 전에 현재 끝단(EE) 좌표를 읽어 작업 영역을 파악하십시오.</li>
+    <li>그리퍼 homing은 손가락 사이를 비우고 하십시오. 최대로 벌렸다 닫습니다.</li>
+    <li>혼자 있을 때 첫 시험을 하지 마십시오.</li>
+    <li>비상시 순서: E-stop → 코드 종료 → Desk에서 오류 확인 → 원인 제거 → 다시 시작.</li>
+  </ul>
+
+  <h2 id="c2-s2">WeGo FR3 제어 UI를 쓸 때</h2>
+  <ul>
+    <li>제어 UI는 실제 로봇을 움직입니다. 처음 쓸 때는 외부 비상 정지(E-stop) 스위치를 손에 쥐고, 작업 반경 안에 사람과 장애물이 없는 상태에서 SPEED 10% 이하로 시작하십시오.</li>
+    <li>UI의 STOP 버튼과 Esc 키는 소프트웨어 정지입니다. 비상 상황에서는 언제나 외부 E-stop을 누르십시오.</li>
+    <li>로봇을 움직이는 버튼은 실행 전에 확인 창이 뜹니다. 내용을 읽고 OK를 누르십시오. 확인 창의 기본 선택은 Cancel입니다.</li>
+  </ul>
+
+  <h2 id="c2-s3">각 장에서 다시 나오는 경고</h2>
+  <ul>
+    <li>관절 잠금을 풀 때 팔이 중력으로 살짝 처질 수 있습니다. 아래에 물건이 없는지 먼저 확인하십시오 (4장).</li>
+    <li>libfranka 예제는 FCI를 켜고, 패키징 자세가 아닌 자세에서 실행하십시오 (6장).</li>
+    <li>MoveIt 2에서는 처음부터 Plan &amp; Execute를 쓰지 말고, Velocity · Acceleration Scaling을 0.1로 낮춰 시작하십시오 (6장).</li>
+    <li>웨이포인트 순차 재생은 경로 중간의 충돌을 검사하지 않습니다. SPEED를 낮게 두고 지켜보십시오 (7장).</li>
+    <li>Cartesian 예제는 팔꿈치(null-space)를 제어하지 않아, 밀면 팔꿈치가 흘러갈 수 있습니다. 팔꿈치 쪽은 밀지 마십시오 (7장).</li>
+    <li>Gravity comp는 페이로드 설정이 실제와 다르면 팔이 처지거나 떠오를 수 있습니다. 팔을 잡은 상태에서 켜십시오 (7장).</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">FR3 이더넷 설정</h1></div>
+  <p class="lede">개발 PC와 컨트롤 박스를 이더넷 케이블로 연결하고, PC의 유선 IP를 로봇과 같은 대역으로 정합니다.
+    로봇의 기본 주소는 172.16.0.2입니다.</p>
+
+  <h2 id="c3-s1">하드웨어 연결</h2>
+  <p>컨트롤 박스와 개발 PC 사이에 이더넷 케이블을 연결합니다.</p>
+  <ul>
+    <li>랜 케이블로 직접 연결합니다. 스위치 · 허브 · 공유기 · Wi-Fi는 1 kHz 주기를 지키지 못합니다.</li>
+    <li>케이블은 CAT5e 이상이면 충분합니다. 크로스오버 케이블은 필요 없습니다 (Auto-MDIX).</li>
+    <li>컨트롤 박스 전원을 켜고 부팅을 기다립니다 (약 30초 ~ 1분). 팬 소리가 안정되면 부팅이 끝난 것입니다.</li>
+  </ul>
+  <div class="box note"><div class="h">문서 차이 · 어느 포트에 연결하는가</div>
+    <p>설치 가이드는 컨트롤 박스 앞면 포트를 FCI용 robot network, 뒷면 포트를 Desk용 shop floor network로 설명합니다.
+      Franka 공개 문서(Setting Up the Robot System and Network for FCI)는 FCI로 제어하는 PC를 <b>컨트롤 박스의 LAN 포트(shop floor network)</b>에 연결하고,
+      로봇팔 베이스의 포트에는 연결하지 말라고 합니다. 이 책은 Franka 문서를 따릅니다.</p></div>
+
+  <h2 id="c3-s2">이더넷 설정</h2>
+  <ol class="steps">
+    <li><b>유선 연결 프로필을 추가합니다.</b>Ubuntu의 <span class="ui">Settings</span> → <span class="ui">Network</span> → <span class="ui">Wired</span>에서 오른쪽 위의 <span class="ui">+</span> 버튼을 누릅니다.
+      <figure class="light"><img src="assets/fr_101.png" alt=""><figcaption data-fig="fig-net-add"><b>그림 2.</b> Settings → Network → Wired의 + 버튼</figcaption></figure></li>
+    <li><b>IPv4를 수동으로 정합니다.</b><span class="ui">IPv4</span> 탭에서 Method를 <span class="ui">Manual</span>로 바꾸고, Address <code>172.16.0.10</code>, Netmask <code>255.255.255.0</code>을 넣습니다. Gateway와 DNS는 비워 둡니다.
+      <figure class="light"><img src="assets/fr_102.png" alt=""><figcaption data-fig="fig-net-ipv4"><b>그림 3.</b> IPv4 Method: Manual, 172.16.0.10 / 255.255.255.0</figcaption></figure></li>
+    <li><b><span class="ui">Add</span>를 누릅니다.</b>설정이 바로 반영되지 않으면 Wired 토글을 껐다가 다시 켭니다.</li>
+  </ol>
+  <div class="box note"><div class="h">문서 차이 · 개발 PC의 주소</div>
+    <p>Start Manual과 제어 UI 문서는 개발 PC에 <code>172.16.0.10/24</code>를, 설치 가이드와 Franka 문서는 <code>172.16.0.1/24</code>를 씁니다.
+      둘 다 로봇(172.16.0.2)과 같은 대역입니다. 이 책은 172.16.0.10을 씁니다.</p></div>
+
+  <h2 id="c3-s3">연결 테스트</h2>
+  <p>터미널에서 로봇에 ping을 보냅니다.</p>
+  <pre class="cmd">ping 172.16.0.2</pre>
+  <p>연결에 실패하면 아래처럼 <code>Destination Host Unreachable</code>이 나옵니다.</p>
+  <pre class="cmd">PING 172.16.0.2 (172.16.0.2) 56(84) bytes of data.
+From 172.16.0.10 icmp_seq=3 Destination Host Unreachable
+From 172.16.0.10 icmp_seq=4 Destination Host Unreachable
+From 172.16.0.10 icmp_seq=5 Destination Host Unreachable</pre>
+  <p>연결에 성공하면 로봇이 응답합니다.</p>
+  <pre class="cmd">PING 172.16.0.2 (172.16.0.2) 56(84) bytes of data.
+64 bytes from 172.16.0.2: icmp_seq=1 ttl=64 time=0.208 ms
+64 bytes from 172.16.0.2: icmp_seq=2 ttl=64 time=0.230 ms
+64 bytes from 172.16.0.2: icmp_seq=3 ttl=64 time=0.241 ms</pre>
+  <p>응답이 없으면 다음을 확인하십시오.</p>
+  <ul>
+    <li>컨트롤 박스의 부팅이 끝났는지 확인합니다.</li>
+    <li><code>ip addr</code>로 개발 PC에 172.16.0.10이 실제로 잡혔는지 확인합니다.</li>
+    <li>방화벽을 확인합니다. <code>sudo ufw status</code>가 활성이면 <code>sudo ufw allow from 172.16.0.0/24</code>를 실행합니다.</li>
+  </ul>
+  <div class="box caution"><div class="h">주의 · ping이 먼저입니다</div>
+    <p>ping이 안 되면 Desk 접속도 안 됩니다. 여기서 해결하고 다음 장으로 넘어가십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">FR3 Desk</h1></div>
+  <p class="lede">Desk는 컨트롤 박스가 띄우는 웹 화면입니다. 웹 브라우저로 접속해 로봇의 상태를 보고, 잠금을 풀고, 앱을 이어 붙여 작업을 프로그래밍합니다.</p>
+
+  <h2 id="c4-s1">Desk 접속</h2>
+  <ol class="steps">
+    <li><b>웹 브라우저 주소 창에 <code>172.16.0.2</code>를 입력합니다.</b>
+      <figure class="light"><img src="assets/fr_103.png" alt=""><figcaption data-fig="fig-desk-login"><b>그림 4.</b> Desk 로그인 화면</figcaption></figure></li>
+    <li><b>인증서 경고를 넘깁니다.</b>첫 접속 때 오류 페이지가 나오면 <span class="ui">고급</span> → <span class="ui">172.16.0.2(으)로 이동</span>을 누릅니다. 로봇이 자체 서명 인증서를 쓰기 때문입니다.</li>
+    <li><b>로그인합니다.</b>로봇을 처음 설정할 때 만든 관리자 계정으로 로그인합니다. 처음 접속하는 로봇이면 관리자 계정을 만드는 화면이 나옵니다.
+      계정을 만들고 비밀번호를 기록해 두십시오. 비밀번호를 잃어버리면 복구가 번거롭습니다.
+      <figure class="light"><img src="assets/fr_104.png" alt=""><figcaption data-fig="fig-desk-home"><b>그림 5.</b> 로그인 후 Desk 화면</figcaption></figure></li>
+  </ol>
+
+  <h2 id="c4-s2">Desk 메인 화면</h2>
+  <figure class="light"><img src="assets/fr_105.png" alt=""><figcaption data-fig="fig-desk-main"><b>그림 6.</b> Desk 메인 화면의 네 영역</figcaption></figure>
+  <table class="t wrap1">
+    <caption data-tbl="desk-areas"><b>표 5.</b> Desk 메인 화면 (그림 6의 번호)</caption>
+    <thead><tr><th>번호</th><th>영역</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Time-Line</td><td>작업을 프로그래밍하기 위해 앱을 순서대로 늘어놓는 영역</td></tr>
+      <tr><td>2</td><td>Task</td><td>프로그래밍한 작업을 저장하거나, 이미 만든 작업을 눌러 실행</td></tr>
+      <tr><td>3</td><td>Apps</td><td>프로그래밍에 쓸 수 있는 설치된 앱 모음. Time-Line으로 끌어다 놓아 단계를 구성합니다. 기본 앱은 세 가지뿐이며, 앱이 더 필요하면 Franka World에서 살 수 있습니다</td></tr>
+      <tr><td>4</td><td>Side bar</td><td>로봇의 현재 모드, 외부 활성화 장치의 켜짐 · 꺼짐, 오류 여부 같은 상태 알림을 봅니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s3">LED와 로봇 상태 색</h2>
+  <p>로봇팔의 LED와 Desk의 로봇 상태는 같은 색으로 상태를 알립니다.</p>
+  <figure class="light"><img src="assets/fr_106.png" alt=""><figcaption data-fig="fig-led"><b>그림 7.</b> Desk의 로봇 상태 색상표</figcaption></figure>
+  <table class="t">
+    <caption data-tbl="led"><b>표 6.</b> 로봇 상태 색</caption>
+    <thead><tr><th>색</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>흰색</td><td>FR3와 안전하게 상호 작용할 수 있음 (Interactive)</td></tr>
+      <tr><td>파란색</td><td>FR3가 동작 중이거나 언제든 움직일 수 있음 (Attention! Activated)</td></tr>
+      <tr><td>초록색</td><td>저장된 자동 프로그램을 실행 중 (Automatic execution)</td></tr>
+      <tr><td>노란색</td><td>기계적으로 잠겨 있거나 쓸 수 없음 (Locked)</td></tr>
+      <tr><td>분홍색</td><td>서로 어긋나는 활성화 신호를 받음 (Conflict)</td></tr>
+      <tr><td>빨간색</td><td>오류 발생 (Error)</td></tr>
+    </tbody>
+  </table>
+  <figure class="light"><img src="assets/fr_107.png" alt=""><figcaption data-fig="fig-led-ex"><b>그림 8.</b> 상태 표시 예: Stopped · Ready · Multiple conflicting safe inputs</figcaption></figure>
+  <div class="box note"><div class="h">문서 차이 · 색의 뜻</div>
+    <p>Start Manual은 분홍색을 "충돌 신호를 받음 (물리적 충돌)"으로 옮겼지만, Desk 화면(그림 7)의 뜻은 "receiving conflicting enable signals", 곧 서로 어긋나는 활성화 신호입니다. 표는 Desk 화면을 따랐습니다.</p>
+    <p>설치 가이드의 LED 표는 흰색 = 잠김, 파란색 = 준비 완료(FCI 제어 가능), 초록색 = 가이딩 모드, 노란색 = 잠금 해제 중 · 대기, 분홍 · 보라색 = 업데이트 · 부팅 중으로 적어 Desk 화면과 다릅니다.
+      두 자료 모두 파란색일 때 외부 제어가 가능하다는 점은 같습니다.</p></div>
+
+  <h2 id="c4-s4">Desk 프로그래밍 설정</h2>
+  <h3>그리퍼 설정</h3>
+  <p><span class="ui">SETTINGS</span>의 End Effector에서 로봇에 장착할 그리퍼 정보를 설정할 수 있습니다. 기본 제공 그리퍼를 쓰면 반드시 <b>Franka Hand</b>로 설정하십시오.</p>
+  <figure class="light"><img src="assets/fr_108.png" alt=""><figcaption data-fig="fig-endeff"><b>그림 9.</b> SETTINGS → End effector</figcaption></figure>
+  <h3>외부 활성화 장치 — OFF</h3>
+  <p>외부 활성화 장치를 OFF로 둡니다. Side bar의 Robot Status에 <span class="ui">Not Enabled</span>가 표시됩니다.</p>
+  <figure class="light"><img src="assets/fr_109.jpg" alt=""><figcaption data-fig="fig-ead"><b>그림 10.</b> 외부 활성화 장치와 Robot Status (Not Enabled)</figcaption></figure>
+  <h3>파일럿 모드 설정과 관절 잠금 해제</h3>
+  <p>Pilot Mode를 설정하고, <span class="ui">Joints</span>에서 로봇팔 모터(관절 브레이크)의 잠금을 풉니다. 일곱 관절의 브레이크가 차례로 풀리며 딸깍 소리가 납니다.</p>
+  <figure class="light f80"><img src="assets/fr_110.png" alt=""><figcaption data-fig="fig-pilot"><b>그림 11.</b> Pilot Mode 설정, Joints 잠금 해제</figcaption></figure>
+  <div class="box warn"><div class="h">경고 · 잠금을 풀 때 팔이 처질 수 있습니다</div>
+    <p>관절 잠금을 풀 때 팔이 중력으로 살짝 처질 수 있습니다. 아래에 물건이 없는지 먼저 확인하십시오.</p></div>
+  <h3>가이딩 모드</h3>
+  <figure class="light f80"><img src="assets/fr_111.png" alt=""><figcaption data-fig="fig-guiding"><b>그림 12.</b> 가이딩 모드 네 가지</figcaption></figure>
+  <table class="t">
+    <caption data-tbl="guiding"><b>표 7.</b> 가이딩 모드</caption>
+    <thead><tr><th>모드</th><th>움직임</th></tr></thead>
+    <tbody>
+      <tr><td>TRANSLATION</td><td>그리퍼의 각도를 고정한 채 이동</td></tr>
+      <tr><td>ROTATION</td><td>로봇을 엔드 이펙터의 TCP에 고정</td></tr>
+      <tr><td>FREE MOVES</td><td>로봇을 제한 없이 이동</td></tr>
+      <tr><td>USER</td><td>손으로 움직일 때 축 이동 · 회전의 제한을 직접 설정</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c4-s5">Free Drive</h2>
+  <h3>Free Drive 설정</h3>
+  <p>가이딩 모드를 <span class="ui">FREE MOVES</span>로 두고, Operations를 <span class="ui">Programming</span>으로 둡니다.</p>
+  <figure class="light f60"><img src="assets/fr_112.png" alt=""><figcaption data-fig="fig-freemoves"><b>그림 13.</b> FREE MOVES와 Operations → Programming</figcaption></figure>
+  <h3>Free Drive 사용법</h3>
+  <ol class="steps">
+    <li><b>Task를 추가합니다.</b>오른쪽 아래 Task 탭에서 <span class="ui">+</span> 버튼을 누릅니다.
+      <figure class="light"><img src="assets/fr_113.png" alt=""><figcaption data-fig="fig-task-add"><b>그림 14.</b> Task 탭의 + 버튼</figcaption></figure></li>
+    <li><b>Task 이름을 정합니다.</b>
+      <figure class="light f80"><img src="assets/fr_114.png" alt=""><figcaption data-fig="fig-task-name"><b>그림 15.</b> 새 Task 이름 입력</figcaption></figure></li>
+    <li><b>앱을 Time-Line으로 옮깁니다.</b>앱을 Time-Line으로 끌어다 놓으면 프로그램이 추가됩니다.
+      <figure class="light"><img src="assets/fr_115.png" alt=""><figcaption data-fig="fig-timeline"><b>그림 16.</b> 앱을 Time-Line으로 옮기기</figcaption></figure></li>
+    <li><b>앱 아이콘을 누릅니다.</b>웨이포인트를 설정하는 화면이 열립니다.
+      <figure class="light"><img src="assets/fr_116.png" alt=""><figcaption data-fig="fig-wp-config"><b>그림 17.</b> 웨이포인트 설정 화면</figcaption></figure></li>
+  </ol>
+
+  <h3>하드웨어에서 웨이포인트 지정</h3>
+  <p>로봇에 붙은 버튼을 누르면 Free Drive 모드에 들어가 로봇의 자세를 손으로 바꿀 수 있습니다. 원하는 자세로 로봇을 옮기고 버튼에서 손을 떼면 그 자세가 고정됩니다.</p>
+  <figure class="f60"><img src="assets/fr_117.jpg" alt=""><figcaption data-fig="fig-pilot-grip"><b>그림 18.</b> 로봇의 버튼을 눌러 Free Drive로 움직이기</figcaption></figure>
+  <p>원하는 자세를 정한 뒤, 로봇의 파일럿 버튼으로 저장합니다.</p>
+  <figure class="f45"><img src="assets/fr_118.jpg" alt=""><figcaption data-fig="fig-pilot-disk"><b>그림 19.</b> 로봇의 파일럿 버튼</figcaption></figure>
+  <table class="t">
+    <caption data-tbl="pilot-keys"><b>표 8.</b> 파일럿 버튼</caption>
+    <thead><tr><th>버튼</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>O (저장)</td><td>로봇의 자세를 저장</td></tr>
+      <tr><td>✓ (티칭 완료)</td><td>로봇 자세 저장을 마침</td></tr>
+      <tr><td>X (삭제)</td><td>저장한 자세를 하나 삭제</td></tr>
+      <tr><td>그리퍼</td><td>그리퍼를 제어</td></tr>
+    </tbody>
+  </table>
+  <ol class="steps">
+    <li><b>O(저장)를 누를 때마다 자세가 추가되는지 확인합니다.</b>
+      <figure class="light"><img src="assets/fr_119.png" alt=""><figcaption data-fig="fig-poses"><b>그림 20.</b> 저장한 자세(Pose)가 추가된 화면</figcaption></figure></li>
+    <li><b>웨이포인트 설정을 마치면 ✓(티칭 완료)를 누릅니다.</b>로봇 자세 저장이 끝납니다.
+      <figure class="light"><img src="assets/fr_120.png" alt=""><figcaption data-fig="fig-teach-done"><b>그림 21.</b> 티칭 완료 후 화면</figcaption></figure></li>
+    <li><b>동작 속도를 정합니다.</b>로봇이 움직일 때의 속도를 원하는 값으로 설정합니다.
+      <figure class="light"><img src="assets/fr_121.png" alt=""><figcaption data-fig="fig-speed"><b>그림 22.</b> SET SPEED: 속도 · 가속도 · 감속도</figcaption></figure></li>
+    <li><b>실행합니다.</b>Operations 탭을 <span class="ui">Execution</span>으로 바꾸고 재생 버튼을 누르면 로봇팔이 움직입니다.
+      <figure class="light f60"><img src="assets/fr_122.png" alt=""><figcaption data-fig="fig-exec"><b>그림 23.</b> Operations → Execution, 재생 버튼</figcaption></figure></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">Franka-ROS (Noetic)</h1></div>
+  <p class="lede">Ubuntu 20.04와 ROS Noetic에서 libfranka와 franka_ros를 소스로 빌드하고, FCI를 켜서 예제 컨트롤러로 FR3를 움직입니다.</p>
+
+  <h2 id="c5-s1">시작하기 전에</h2>
+  <p>이 장은 다음과 같이 설정한 환경을 기준으로 합니다.</p>
+  <figure class="light f60"><img src="assets/fr_123.png" alt=""><figcaption data-fig="fig-catkin"><b>그림 24.</b> catkin_ws/src의 구성</figcaption></figure>
+  <ul>
+    <li><code>catkin_ws/src</code>에 libfranka를 설치했습니다. catkin_make로 빌드할 때 libfranka 경로는 <code>~/catkin_ws/src/libfranka/build</code>입니다.</li>
+    <li>실시간(Real-Time) 커널을 설치하지 않았습니다. 필요하면 Franka 문서의 <a href="https://frankarobotics.github.io/docs/doc/libfranka/docs/real_time_kernel.html">Setting Up the Real-Time Kernel</a>을 참조하십시오.</li>
+    <li>실시간 커널 없이 쓰려면 <code>~/catkin_ws/src/franka_ros/franka_control/config/franka_control_node.yaml</code> 파일에서 <code>realtime_config</code>를 <code>enforce</code>에서 <code>ignore</code>로 바꿉니다.</li>
+  </ul>
+  <pre class="cmd"><span class="c"># Used to decide whether to enforce realtime mode [enforce|ignore]</span>
+realtime_config: ignore</pre>
+
+  <h2 id="c5-s2">시험 환경 <span class="src r">실측</span></h2>
+  <table class="t">
+    <caption data-tbl="env-noetic"><b>표 9.</b> 이 장의 시험 환경</caption>
+    <thead><tr><th>항목</th><th>버전</th></tr></thead>
+    <tbody>
+      <tr><td>OS</td><td>Ubuntu 20.04</td></tr>
+      <tr><td>ROS</td><td>Noetic</td></tr>
+      <tr><td>FR3 시스템</td><td>5.3.1</td></tr>
+      <tr><td>libfranka</td><td>0.10.0</td></tr>
+      <tr><td>ROS 패키지</td><td>franka_ros</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c5-s3">libfranka 설치 (소스 빌드)</h2>
+  <ol class="steps">
+    <li><b>의존 패키지를 설치합니다.</b>Ubuntu의 패키지 관리자로 설치합니다.
+      <pre class="cmd">sudo apt install build-essential cmake git libpoco-dev libeigen3-dev</pre></li>
+    <li><b>GitHub에서 libfranka 소스를 받습니다.</b>
+      <pre class="cmd">git clone --recursive https://github.com/frankaemika/libfranka --branch 0.10.0
+cd libfranka</pre></li>
+    <li><b>빌드 폴더를 만들고 CMake를 실행합니다.</b>
+      <pre class="cmd">mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF ..
+cmake --build .</pre>
+      나중에 빌드에서 Franka 설정(Franka config)을 찾을 수 없다는 오류가 나면 Debian 패키지로 설치합니다.
+      <pre class="cmd">cpack -G DEB
+sudo dpkg -i libfranka*.deb</pre></li>
+  </ol>
+  <div class="box note"><div class="h">참고 · 저장소 주소</div>
+    <p>Franka의 GitHub 저장소는 <code>github.com/frankaemika</code>에서 <code>github.com/frankarobotics</code>로 옮겨졌습니다. 옛 주소는 새 주소로 넘어가므로 이 책의 명령은 그대로 동작합니다 (2026-11-18 확인).</p></div>
+
+  <h2 id="c5-s4">ROS 패키지 빌드</h2>
+  <ol class="steps">
+    <li><b>Catkin 작업 공간을 만듭니다.</b>ROS Noetic을 설정한 뒤, 고른 폴더에 만듭니다.
+      <pre class="cmd">cd /path/to/desired/folder
+mkdir -p catkin_ws/src
+cd catkin_ws
+source /opt/ros/noetic/setup.sh
+catkin_init_workspace src</pre></li>
+    <li><b>GitHub에서 franka_ros 소스를 받습니다.</b>
+      <pre class="cmd">git clone --recursive https://github.com/frankaemika/franka_ros src/franka_ros</pre></li>
+    <li><b>빠진 의존 패키지를 설치하고 빌드합니다.</b><code>/path/to/libfranka/build</code>에는 libfranka의 빌드 폴더(이 장의 환경에서는 <code>~/catkin_ws/src/libfranka/build</code>)를 넣습니다.
+      <pre class="cmd">rosdep install --from-paths src --ignore-src --rosdistro noetic -y --skip-keys libfranka
+catkin_make -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/build
+source devel/setup.sh</pre></li>
+  </ol>
+
+  <h2 id="c5-s5">Desk 원격 제어 설정</h2>
+  <ol class="steps">
+    <li><b>Operations 탭에서 <span class="ui">Execution</span>을 켭니다.</b>
+      <figure class="light f60"><img src="assets/fr_124.png" alt=""><figcaption data-fig="fig-exec2"><b>그림 25.</b> Operations → Execution</figcaption></figure></li>
+    <li><b>FCI를 켜고 상태를 확인합니다.</b>왼쪽 위의 로봇 설정 메뉴에서 <span class="ui">Activate FCI</span>를 켜고, Robot Status 탭이 녹색(FCI ON)인지 확인합니다.
+      <div class="two">
+        <figure class="light"><img src="assets/fr_125.png" alt=""><figcaption data-fig="fig-fci-menu"><b>그림 26.</b> 로봇 설정 메뉴 → Activate FCI</figcaption></figure>
+        <figure class="light"><img src="assets/fr_126.png" alt=""><figcaption data-fig="fig-fci-on"><b>그림 27.</b> Robot Status: FCI ON</figcaption></figure>
+      </div></li>
+  </ol>
+  <ul>
+    <li>FCI를 켜면 Desk의 Task · App 편집은 잠깁니다. 제어권이 외부 PC로 넘어간 것입니다.</li>
+    <li>Desk로 되돌아가려면 메뉴에서 <span class="ui">Deactivate FCI</span>를 누릅니다.</li>
+  </ul>
+
+  <h2 id="c5-s6">예제 실행</h2>
+  <p>로봇을 시작 자세로 옮긴 뒤 팔꿈치 예제 컨트롤러를 실행합니다.</p>
+  <pre class="cmd">cd catkin_ws
+source /opt/ros/noetic/setup.bash
+source devel/setup.sh
+roslaunch franka_example_controllers move_to_start.launch robot_ip:=172.16.0.2 load_gripper:=true robot:=fr3
+roslaunch franka_example_controllers elbow_example_controller.launch robot_ip:=172.16.0.2 load_gripper:=true robot:=fr3</pre>
+  <figure><img src="assets/fr_127.jpg" alt=""><figcaption data-fig="fig-rviz"><b>그림 28.</b> 예제 실행: FR3 로봇팔이 움직이고 RViz에 실시간으로 반영됨</figcaption></figure>
+
+  <h2 id="c5-s7">MoveIt으로 움직이기</h2>
+  <p>Noetic에서 MoveIt으로 실제 로봇을 움직이는 방법입니다. 원래 Panda 로봇을 기준으로 쓴 커뮤니티 글의 방법을 옮겼습니다.</p>
+  <ol class="steps">
+    <li><b>franka_control을 실행합니다.</b>
+      <pre class="cmd">roslaunch panda_moveit_config franka_control.launch robot_ip:=172.16.0.2</pre></li>
+    <li><b>로봇을 움직입니다.</b>RViz에서 로봇을 움직이거나, Python 코드를 써서 움직일 수 있습니다.
+      예를 들어 다른 터미널 탭에서 튜토리얼 Python 코드를 실행합니다.
+      <pre class="cmd">rosrun moveit_tutorials move_group_python_interface_tutorial.py</pre></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">Franka-ROS 2 (Humble)</h1></div>
+  <p class="lede">Ubuntu 22.04와 ROS 2 Humble에서 실시간 커널을 설치하고, libfranka와 franka_ros2를 소스로 빌드해 예제를 실행합니다.
+    ROS 2 Humble은 미리 설치되어 있어야 합니다.</p>
+
+  <h2 id="c6-s1">시작하기 전에</h2>
+  <p>이 장은 다음과 같이 설정한 환경을 기준으로 합니다.</p>
+  <figure class="light f60"><img src="assets/fr_128.png" alt=""><figcaption data-fig="fig-ros2ws"><b>그림 29.</b> franka_ros2_ws/src의 구성</figcaption></figure>
+  <ul>
+    <li><code>franka_ros2_ws/src</code>에 libfranka를 설치했습니다. libfranka 빌드 폴더는 <code>~/franka_ros2_ws/src/libfranka/build</code>입니다.</li>
+    <li>실시간(Real-Time) 커널을 Ubuntu Pro로 설치했습니다. <a href="https://ubuntu.com/pro">ubuntu.com/pro</a>에서 회원 가입한 뒤 Ubuntu Pro 토큰을 받습니다.</li>
+  </ul>
+  <ol class="steps">
+    <li><b>토큰을 등록하고 실시간 커널을 켭니다.</b>
+      <pre class="cmd">sudo pro attach &lt;your token&gt;
+sudo pro enable realtime-kernel</pre></li>
+    <li><b>실시간 커널이 설치되었는지 확인합니다.</b>재부팅한 뒤 커널 이름에 <code>realtime</code>이 보이면 됩니다.
+      <pre class="cmd">$ uname -r
+5.15.0-1073-realtime</pre></li>
+  </ol>
+  <div class="box note"><div class="h">참고 · Ubuntu Pro가 없을 때</div>
+    <p>Ubuntu Pro 구독이 없으면 PREEMPT_RT 커널을 직접 빌드해 설치합니다. 순서는 Franka 문서의 <a href="https://frankarobotics.github.io/docs/doc/libfranka/docs/real_time_kernel.html">Setting Up the Real-Time Kernel</a>을 따르십시오.
+      실시간 커널이나 실시간 권한이 없으면 <code>Setting current thread to real-time priority failed</code>, <code>communication_constraints_violation</code> 오류가 납니다.</p></div>
+
+  <h2 id="c6-s2">시험 환경 <span class="src r">실측</span></h2>
+  <table class="t">
+    <caption data-tbl="env-humble"><b>표 10.</b> 이 장의 시험 환경</caption>
+    <thead><tr><th>항목</th><th>버전</th></tr></thead>
+    <tbody>
+      <tr><td>OS</td><td>Ubuntu 22.04</td></tr>
+      <tr><td>ROS</td><td>ROS 2 Humble</td></tr>
+      <tr><td>FR3 시스템</td><td>5.6.0</td></tr>
+      <tr><td>libfranka</td><td>0.13.3</td></tr>
+      <tr><td>ROS 2 패키지</td><td>franka_ros2</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c6-s3">franka_ros2 받기</h2>
+  <ol class="steps">
+    <li><b>경고와 오류를 색 글씨로 보이게 합니다.</b>
+      <pre class="cmd">echo 'export RCUTILS_COLORIZED_OUTPUT=1' &gt;&gt; ~/.bashrc</pre></li>
+    <li><b>의존 패키지를 설치합니다.</b>
+      <pre class="cmd">sudo apt install -y \
+ros-humble-ament-cmake \
+ros-humble-ament-cmake-clang-format \
+ros-humble-angles \
+ros-humble-ros2-controllers \
+ros-humble-ros2-control \
+ros-humble-ros2-control-test-assets \
+ros-humble-controller-manager \
+ros-humble-control-msgs \
+ros-humble-control-toolbox \
+ros-humble-generate-parameter-library \
+ros-humble-joint-state-publisher \
+ros-humble-joint-state-publisher-gui \
+ros-humble-moveit \
+ros-humble-pinocchio \
+ros-humble-realtime-tools \
+ros-humble-xacro \
+ros-humble-hardware-interface \
+ros-humble-ros-gz \
+python3-colcon-common-extensions</pre></li>
+    <li><b>작업 공간을 만듭니다.</b>
+      <pre class="cmd">mkdir -p ~/franka_ros2_ws/src</pre></li>
+    <li><b>franka_ros2와 franka_description을 받습니다.</b>패키지 빌드는 libfranka를 빌드한 뒤에 합니다.
+      <pre class="cmd">source /opt/ros/humble/setup.bash
+cd ~/franka_ros2_ws
+git clone -b humble https://github.com/frankaemika/franka_ros2.git src/franka_ros2
+git clone https://github.com/frankaemika/franka_description.git src/franka_description</pre></li>
+  </ol>
+  <div class="box note"><div class="h">문서 차이 · franka_ros2 브랜치</div>
+    <p>Start Manual은 franka_ros2를 브랜치 없이 받습니다. 2026-11-18 현재 이 저장소의 기본 브랜치는 <code>jazzy</code>이므로, Humble에서는 설치 가이드처럼 <code>-b humble</code>을 붙여 받으십시오.
+      로봇 시스템 버전에 맞는 franka_ros2 버전은 1장의 호환 표(표 4)를 보십시오.</p></div>
+
+  <h2 id="c6-s4">libfranka 설치 (소스 빌드)</h2>
+  <ol class="steps">
+    <li><b>경고와 오류를 색 글씨로 보이게 합니다.</b>앞에서 했으면 건너뜁니다.
+      <pre class="cmd">echo 'export RCUTILS_COLORIZED_OUTPUT=1' &gt;&gt; ~/.bashrc
+source ~/.bashrc</pre></li>
+    <li><b>의존 패키지를 설치합니다.</b>
+      <pre class="cmd">sudo apt-get update
+sudo apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    libpoco-dev \
+    libeigen3-dev \
+    dpkg</pre></li>
+    <li><b>관련 의존 패키지를 설치합니다.</b>robotpkg 저장소를 추가해 pinocchio를 설치합니다.
+      <pre class="cmd">sudo apt-get install -y \
+    liburdfdom-headers-dev \
+    libconsole-bridge-dev \
+    libtinyxml2-dev
+
+sudo apt-get install -qqy lsb-release curl
+mkdir -p /etc/apt/keyrings
+
+curl http://robotpkg.openrobots.org/packages/debian/robotpkg.asc \
+    | sudo tee /etc/apt/keyrings/robotpkg.asc
+
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/robotpkg.asc] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg" \
+    | sudo tee /etc/apt/sources.list.d/robotpkg.list
+
+sudo apt-get update \
+    &amp;&amp; sudo apt-get install -qqy robotpkg-pinocchio</pre></li>
+    <li><b>충돌을 막기 위해 기존 libfranka 패키지를 지웁니다.</b>
+      <pre class="cmd">sudo apt remove "*libfranka*"</pre></li>
+    <li><b>libfranka를 받아 빌드하고 설치합니다.</b>버전은 로봇에 맞게 고릅니다 (1장 표 4).
+      <pre class="cmd">cd ~/franka_ros2_ws/src
+git clone --recursive https://github.com/frankaemika/libfranka.git
+cd libfranka
+
+git tag -l
+<span class="c"># 필요에 따라 버전 선택</span>
+git checkout 0.13.3
+git submodule update
+mkdir build
+cd build
+
+export CMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake ..
+cmake --build .
+<span class="c"># Debian 패키지로 libfranka 설치</span>
+cpack -G DEB
+sudo dpkg -i libfranka*.deb</pre></li>
+    <li><b>libfranka 빌드를 시험합니다.</b>문제가 없으면 명령이 끝까지 동작합니다. 오류가 나면 아래 '실시간 권한 주기'를 마친 뒤 다시 시도합니다.
+      <pre class="cmd">cd ~/franka_ros2_ws/src/libfranka/build/examples
+./communication_test &lt;robot-ip&gt;</pre></li>
+  </ol>
+  <p>communication_test는 로봇을 움직이지 않고 통신 품질만 잽니다. 결과는 아래 기준으로 판단합니다.</p>
+  <pre class="cmd">#Sent messages: 10000
+#Success: 10000
+#Failures: 0
+Success rate: 100 %</pre>
+  <table class="t">
+    <caption data-tbl="commtest"><b>표 11.</b> communication_test 판정</caption>
+    <thead><tr><th>성공률</th><th>판정</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>100%</td><td>완벽</td><td>다음 단계로 넘어갑니다</td></tr>
+      <tr><td>99.9% 이상</td><td>사용 가능</td><td>써도 되지만, 긴 제어 루프에서 끊길 수 있습니다</td></tr>
+      <tr><td>99.9% 미만</td><td>사용 불가</td><td>실시간 커널 · 실시간 권한 · 스위치 제거를 다시 점검합니다</td></tr>
+    </tbody>
+  </table>
+  <p>상태만 읽어 보려면 <code>./echo_robot_state &lt;robot-ip&gt;</code>를 실행합니다. 로봇은 움직이지 않고, 로봇 상태(JSON)가 계속 출력됩니다 (<span class="ui">Ctrl</span>+<span class="ui">C</span>로 끝냄).
+    여기서 <code>Incompatible library version</code>이 나오면 1장의 호환 표로 돌아가 libfranka 버전을 다시 고르고, <code>Connection timeout</code>이면 3장의 네트워크 설정을 확인하십시오.</p>
+  <div class="box note"><div class="h">문서 차이 · 예제 폴더 이름</div>
+    <p>Start Manual은 예제 폴더를 <code>build/example</code>로 적었지만, libfranka가 예제를 만드는 폴더는 <code>build/examples</code>입니다 (설치 가이드 · Franka 문서). 이 책은 <code>examples</code>로 적었습니다.</p></div>
+
+  <h2 id="c6-s5">franka_ros2 빌드</h2>
+  <pre class="cmd">source /opt/ros/humble/setup.bash
+cd ~/franka_ros2_ws
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+source install/setup.sh</pre>
+
+  <h2 id="c6-s6">실시간 권한 주기</h2>
+  <p>사용자가 자기 프로세스에 실시간 우선순위를 줄 수 있게 합니다.</p>
+  <ol class="steps">
+    <li><b>realtime 그룹을 만들고 계정을 넣습니다.</b>
+      <pre class="cmd">sudo addgroup realtime
+sudo usermod -a -G realtime $(whoami)</pre></li>
+    <li><b>realtime 그룹의 한도를 추가합니다.</b><code>/etc/security/limits.conf</code>에 아래 여섯 줄을 덧붙입니다.
+      <pre class="cmd">sudo tee -a /etc/security/limits.conf &gt; /dev/null &lt;&lt; 'EOF'
+@realtime soft rtprio 99
+@realtime soft priority 99
+@realtime soft memlock 102400
+@realtime hard rtprio 99
+@realtime hard priority 99
+@realtime hard memlock 102400
+EOF</pre></li>
+    <li><b>재부팅합니다.</b>셸을 다시 여는 것만으로는 적용되지 않습니다 (로그아웃 → 로그인도 됩니다).
+      <pre class="cmd">sudo reboot</pre></li>
+    <li><b>확인합니다.</b><code>groups</code>에 <code>realtime</code>이 있고, <code>ulimit -r</code>이 <code>99</code>, <code>ulimit -l</code>이 <code>102400</code>이면 됩니다.</li>
+  </ol>
+  <div class="box note"><div class="h">문서 차이 · limits.conf</div>
+    <p>Start Manual은 <code>cd /etc/security</code> → <code>sudo chmod 777 limit.conf</code> → <code>gedit limit.conf</code>로 적었습니다. 파일 이름은 <code>limits.conf</code>이며,
+      설치 가이드는 권한을 바꾸지 않고 <code>sudo tee -a</code>로 덧붙입니다. 이 책은 설치 가이드의 명령을 따랐습니다. 넣는 여섯 줄은 두 자료가 같습니다.</p></div>
+
+  <h2 id="c6-s7">예제 실행</h2>
+  <p><a href="https://github.com/frankaemika/libfranka/tree/main/examples">github.com/frankaemika/libfranka/tree/main/examples</a>에 있는 예제를 실행해 로봇을 제어합니다. 예:</p>
+  <pre class="cmd">cd ~/franka_ros2_ws/src/libfranka/build/examples
+./cartesian_impedance_control &lt;robot-ip&gt;</pre>
+  <div class="box warn"><div class="h">경고 · 예제를 실행하기 전에</div>
+    <p>FCI를 켜고(그림 26), 패키징 자세가 아닌 자세에서 예제를 실행하십시오.</p></div>
+
+  <h2 id="c6-s8">franka_ros2 실행</h2>
+  <p>새 터미널마다 환경을 source해야 합니다.</p>
+  <pre class="cmd">source /opt/ros/humble/setup.bash
+source ~/franka_ros2_ws/install/setup.bash
+
+<span class="c"># 기본 브링업: 하드웨어 인터페이스 + 상태 퍼블리셔 + RViz</span>
+ros2 launch franka_bringup franka.launch.py robot_ip:=172.16.0.2 arm_id:=fr3
+
+<span class="c"># 예제 컨트롤러 실행 (로봇이 움직입니다)</span>
+ros2 launch franka_bringup example.launch.py \
+  robot_ip:=172.16.0.2 \
+  arm_id:=fr3 \
+  controller_name:=joint_impedance_example_controller
+
+<span class="c"># 그리퍼 노드</span>
+ros2 launch franka_gripper gripper.launch.py robot_ip:=172.16.0.2
+
+<span class="c"># 로봇 없이 시험 (fake hardware)</span>
+ros2 launch franka_bringup franka.launch.py \
+  robot_ip:=dont-care use_fake_hardware:=true</pre>
+  <table class="t">
+    <caption data-tbl="launch-args"><b>표 12.</b> 주요 launch 인자</caption>
+    <thead><tr><th>인자</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>robot_ip</code></td><td>컨트롤 박스 IP</td></tr>
+      <tr><td><code>arm_id</code></td><td><code>fr3</code> (FR3) / <code>panda</code> (이전 모델 FER)</td></tr>
+      <tr><td><code>use_fake_hardware</code></td><td><code>true</code>면 로봇 없이 시뮬레이션</td></tr>
+      <tr><td><code>load_gripper</code></td><td><code>true</code> / <code>false</code></td></tr>
+      <tr><td><code>use_rviz</code></td><td><code>true</code> / <code>false</code></td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">문서 차이 · launch 인자 이름</div>
+    <p>위 명령은 설치 가이드의 것입니다. franka_ros2 버전에 따라 인자가 다릅니다. humble 브랜치 현재판(2026-11-18 확인)의 <code>franka.launch.py</code>는 <code>arm_id</code> 대신 <code>robot_type</code>을 쓰고(7장의 제어 UI도 <code>robot_type</code>),
+      <code>example.launch.py</code>는 로봇 IP 같은 값을 <code>franka_bringup/config/franka.config.yaml</code>에서 읽습니다. 설치한 버전의 launch 파일 머리말을 확인하십시오.</p></div>
+  <table class="t wrap1 api">
+    <caption data-tbl="controllers"><b>표 13.</b> 예제 컨트롤러 (example.launch.py의 controller_name)</caption>
+    <thead><tr><th>컨트롤러</th><th>하는 일</th><th>위험도</th></tr></thead>
+    <tbody>
+      <tr><td><code>gravity_compensation_example_controller</code></td><td>중력만 보상합니다. 손으로 밀면 움직입니다</td><td>낮음</td></tr>
+      <tr><td><code>model_example_controller</code></td><td>동역학 모델 값을 출력만 합니다</td><td>낮음</td></tr>
+      <tr><td><code>joint_impedance_example_controller</code></td><td>관절 임피던스로 사인파를 따라갑니다</td><td>중간</td></tr>
+      <tr><td><code>joint_velocity_example_controller</code></td><td>관절 속도 명령</td><td>중간</td></tr>
+      <tr><td><code>cartesian_pose_example_controller</code></td><td>끝단을 원을 그리며 움직입니다</td><td>중간</td></tr>
+      <tr><td><code>cartesian_velocity_example_controller</code></td><td>끝단 속도 명령</td><td>중간</td></tr>
+      <tr><td><code>cartesian_elbow_example_controller</code></td><td>끝단을 고정하고 팔꿈치만 움직입니다</td><td>중간</td></tr>
+    </tbody>
+  </table>
+  <p>설치한 버전의 실제 목록은 <code>~/franka_ros2_ws/src/franka_ros2/franka_bringup/config/controllers.yaml</code>에서 확인합니다.</p>
+  <h3>토픽 · 컨트롤러 확인 명령</h3>
+  <pre class="cmd"><span class="c"># 토픽 목록 · 관절 상태</span>
+ros2 topic list
+ros2 topic echo /joint_states
+
+<span class="c"># Franka 전용 상태 (외력, 관절 토크, 오차 등)</span>
+ros2 topic echo /franka_robot_state_broadcaster/robot_state
+ros2 topic echo /franka_robot_state_broadcaster/measured_joint_states
+ros2 topic echo /franka_robot_state_broadcaster/external_wrench_in_base_frame
+
+<span class="c"># 컨트롤러 상태</span>
+ros2 control list_controllers
+ros2 control list_hardware_interfaces
+
+<span class="c"># 컨트롤러 전환</span>
+ros2 control switch_controllers \
+  --deactivate joint_impedance_example_controller \
+  --activate   joint_trajectory_controller
+
+<span class="c"># 오류 복구 서비스</span>
+ros2 service call /service_server/error_recovery franka_msgs/srv/ErrorRecovery
+
+<span class="c"># 충돌 임계값 변경 서비스 찾기</span>
+ros2 service list | grep service_server</pre>
+  <div class="box caution"><div class="h">주의 · 모델은 보이는데 관절 값이 없을 때</div>
+    <p>RViz에 로봇 모델은 뜨는데 <code>/joint_states</code>가 흐르지 않으면 하드웨어 인터페이스 연결에 실패한 것입니다. FCI가 켜져 있는지 확인하십시오.</p></div>
+
+  <h2 id="c6-s9">MoveIt 2</h2>
+  <pre class="cmd"><span class="c"># 설치 (franka_ros2를 빌드할 때 이미 들어갔을 수도 있습니다)</span>
+sudo apt install -y ros-humble-moveit ros-humble-moveit-servo
+
+<span class="c"># 실제 로봇</span>
+source /opt/ros/humble/setup.bash
+source ~/franka_ros2_ws/install/setup.bash
+ros2 launch franka_fr3_moveit_config moveit.launch.py robot_ip:=172.16.0.2
+
+<span class="c"># 로봇 없이 (fake hardware)</span>
+ros2 launch franka_fr3_moveit_config moveit.launch.py \
+  robot_ip:=dont-care use_fake_hardware:=true</pre>
+  <ol class="steps">
+    <li><b>왼쪽 MotionPlanning 패널을 확인합니다.</b></li>
+    <li><b>목표 자세를 정합니다.</b>로봇 끝단의 인터랙티브 마커(공 · 화살표)를 끌어 목표 자세를 지정합니다.</li>
+    <li><b>Planning 탭에서 <span class="ui">Plan</span>을 누릅니다.</b>주황색 궤적으로 미리 보여 줍니다.</li>
+    <li><b>궤적이 안전하면 <span class="ui">Execute</span>를 누릅니다.</b></li>
+  </ol>
+  <div class="box warn"><div class="h">경고 · MoveIt 2를 처음 쓸 때</div>
+    <p><span class="ui">Plan &amp; Execute</span>는 계획하자마자 실행합니다. 처음에는 쓰지 마십시오. Velocity Scaling · Acceleration Scaling 슬라이더를 0.1로 낮춰 두고 시작하십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">WeGo FR3 제어 UI</h1></div>
+  <p class="lede">franka_control_ui는 FR3를 PC 화면 하나로 조작하는 WeGo의 데스크톱 제어 패널(FR3 Control Deck)입니다.
+    Desk 웹 페이지를 열지 않고 로그인 · 제어권 · 관절 잠금 해제 · FCI를 처리하고, 브링업(ros2_control), 관절 조그, 웨이포인트 저장 · 재생, 임피던스 모드를 같은 화면에서 실행합니다.</p>
+  <table class="t">
+    <caption data-tbl="ui-target"><b>표 14.</b> 이 장의 대상</caption>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>소프트웨어</td><td>franka_control_ui v0.1.0 · FR3 Control Deck</td></tr>
+      <tr><td>로봇</td><td>Franka FR3 (Robot System 5.10.0)</td></tr>
+      <tr><td>ROS</td><td>ROS 2 Humble</td></tr>
+    </tbody>
+  </table>
+  <p>이 장은 UI 사용법만 다룹니다. 설치, 네트워크 설정, 컨트롤러 게인 변경은 패키지의 README.md(1 ~ 6장)를 따르십시오.</p>
+
+  <h2 id="c7-s1">안전 수칙</h2>
+  <div class="box warn"><div class="h">경고 · 제어 UI는 실제 로봇을 움직입니다</div>
+    <ul>
+      <li>처음 쓸 때는 외부 비상 정지(E-stop) 스위치를 손에 쥐고, 작업 반경 안에 사람과 장애물이 없는 상태에서 SPEED 10% 이하로 시작하십시오.</li>
+      <li>UI의 STOP 버튼과 Esc 키는 소프트웨어 정지입니다. 비상 상황에서는 언제나 외부 E-stop을 누르십시오.</li>
+      <li>로봇을 움직이는 버튼은 실행 전에 확인 창이 뜹니다. 내용을 읽고 OK를 누르십시오. 확인 창의 기본 선택은 Cancel입니다.</li>
+    </ul></div>
+
+  <h2 id="c7-s2">실행</h2>
+  <p>로봇의 FCI 포트와 PC를 직접 연결하고, PC IP를 같은 대역(예: 172.16.0.10/24)으로 맞춘 뒤 실행합니다 (3장).</p>
+  <pre class="cmd">source ~/franka_ros2_ws/install/setup.bash
+ros2 launch franka_control_ui control_ui.launch.py robot_ip:=172.16.0.2</pre>
+  <table class="t wrap1">
+    <caption data-tbl="ui-args"><b>표 15.</b> control_ui.launch.py 인자</caption>
+    <thead><tr><th>인자</th><th>기본값</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td><code>robot_ip</code></td><td>172.16.0.2</td><td>로봇 IP</td></tr>
+      <tr><td><code>robot_type</code></td><td>fr3</td><td>로봇 종류</td></tr>
+      <tr><td><code>namespace</code></td><td>(빈 값)</td><td>ROS 네임스페이스</td></tr>
+      <tr><td><code>desk_user</code> / <code>desk_password</code></td><td>예시 값</td><td>Desk 계정. 기본값은 예시 값이라 대부분의 로봇과 맞지 않습니다. 로봇을 처음 설정할 때 만든 계정을 넣거나, UI의 로그인 칸에 입력하십시오</td></tr>
+    </tbody>
+  </table>
+  <p>창은 최대화 상태로 열립니다. 화면이 레이아웃보다 작으면 스크롤 막대가 생깁니다.</p>
+
+  <h2 id="c7-s3">화면 구성</h2>
+  <figure><img src="assets/fr_201.png" alt=""><figcaption data-fig="fig-ui-all"><b>그림 30.</b> FR3 Control Deck 전체 화면 (번호는 표 16 참조)</figcaption></figure>
+  <table class="t wrap1">
+    <caption data-tbl="ui-areas"><b>표 16.</b> FR3 Control Deck의 영역</caption>
+    <thead><tr><th>번호</th><th>영역</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>헤더</td><td>로봇 IP, 상태 표시등 7개, 전체 화면 전환, STOP</td></tr>
+      <tr><td>2</td><td>SYSTEM</td><td>로봇 정보, Desk 로그인 · 제어권, 한번에 준비 · 종료, 단계별 버튼, Error recovery</td></tr>
+      <tr><td>3</td><td>IMPEDANCE</td><td>Hold, Cartesian 임피던스 예제, 4 · 5축 왕복 예제, 중력 보상(hand guide)</td></tr>
+      <tr><td>4</td><td>JOINT JOG</td><td>현재 모드 표시, 조그 켜기 · 끄기, STEP · SPEED, 관절 7개의 게이지 · 각도 · 토크</td></tr>
+      <tr><td>5</td><td>WAYPOINTS</td><td>자세 저장, 목록, Go · 순서 변경 · 삭제, 순차 재생</td></tr>
+      <tr><td>6</td><td>TELEMETRY LOG</td><td>Events, Bringup output, Cartesian example 로그 탭</td></tr>
+    </tbody>
+  </table>
+  <p>창 맨 아래 상태 줄에는 마지막 동작의 결과가 표시됩니다. 성공은 초록색, 실패는 빨간색입니다.</p>
+
+  <h2 id="c7-s4">헤더와 상태 표시등</h2>
+  <figure><img src="assets/fr_202.png" alt=""><figcaption data-fig="fig-ui-header"><b>그림 31.</b> 헤더: 상태 표시등과 STOP 버튼</figcaption></figure>
+  <p>표시등은 0.1초마다 갱신됩니다. 초록색은 정상, 주황색은 중간 상태, 빨간색은 실패, 회색은 꺼짐입니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="ui-leds"><b>표 17.</b> 상태 표시등</caption>
+    <thead><tr><th>표시등</th><th>초록색 조건</th><th>그 밖의 색</th></tr></thead>
+    <tbody>
+      <tr><td>DESK</td><td>로봇 Desk에 접속됨</td><td>빨간색: 네트워크 연결 실패 (ping 확인)</td></tr>
+      <tr><td>TOKEN</td><td>이 PC가 제어권을 가짐</td><td>회색: 제어권 없음</td></tr>
+      <tr><td>ARM</td><td>관절 잠금 해제 상태 (Connected)</td><td>주황색: 잠김 등 다른 상태</td></tr>
+      <tr><td>FCI</td><td>FCI 활성 (Active)</td><td>주황색: 비활성</td></tr>
+      <tr><td>BRINGUP</td><td>브링업 프로세스 실행 중</td><td>회색: 꺼짐</td></tr>
+      <tr><td>ROS2_CONTROL</td><td>controller manager 응답</td><td>회색: 브링업 전 또는 시작 중</td></tr>
+      <tr><td>JOINT STREAM</td><td>관절 상태가 1초 안에 들어오고 있음</td><td>회색: 관절 값 수신 없음</td></tr>
+    </tbody>
+  </table>
+  <p>로봇을 움직일 수 있는 상태는 표시등 7개가 모두 초록색일 때입니다.</p>
+
+  <h2 id="c7-s5">단축키</h2>
+  <table class="t">
+    <caption data-tbl="ui-keys"><b>표 18.</b> 단축키</caption>
+    <thead><tr><th>키</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>Esc</td><td>STOP (모든 동작 컨트롤러 해제)</td></tr>
+      <tr><td>F11</td><td>전체 화면 전환</td></tr>
+      <tr><td>Enter (비밀번호 칸)</td><td>로그인 + 제어권</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c7-s6">로봇 준비</h2>
+  <h3>로그인과 제어권</h3>
+  <ol class="steps">
+    <li><b>SYSTEM 패널에 Desk 아이디와 비밀번호를 입력합니다.</b>로봇을 처음 설정할 때 만든 계정을 씁니다. 런치 인자의 기본값은 대부분의 로봇과 맞지 않습니다.
+      <figure class="h95"><img src="assets/fr_203.png" alt=""><figcaption data-fig="fig-ui-login"><b>그림 32.</b> SYSTEM 패널: 로그인 전 (단계별 버튼 비활성)</figcaption></figure></li>
+    <li><b><span class="ui">로그인 + 제어권</span>을 누릅니다.</b>상태 줄에 "60초 안에 로봇 본체 버튼을 누르세요"가 표시됩니다.</li>
+    <li><b>60초 안에 로봇 본체의 확인 버튼을 누릅니다.</b>다른 사용자가 제어권을 갖고 있어도 강제로(Enforce) 가져옵니다.</li>
+    <li><b>결과를 확인합니다.</b>성공하면 "로그인됨: · 제어권 보유"가 초록색으로 표시되고 TOKEN 표시등이 켜집니다.
+      <figure class="h95"><img src="assets/fr_204.png" alt=""><figcaption data-fig="fig-ui-token"><b>그림 33.</b> SYSTEM 패널: 로그인 · 제어권 획득 후</figcaption></figure></li>
+  </ol>
+  <div class="box caution"><div class="h">주의 · 계정 저장</div>
+    <p><span class="ui">저장</span>을 체크하고 로그인하면 아이디와 비밀번호가 <code>~/.franka_control_ui/desk.json</code>에 평문(권한 600)으로 저장되어 다음 실행부터 자동으로 입력됩니다.
+      공용 PC에서는 체크하지 마십시오. 체크를 풀고 로그인하면 저장된 파일이 삭제됩니다.</p></div>
+  <p>제어권이 없으면 단계별 Desk 버튼과 한번에 준비 · 종료 버튼이 비활성(회색)입니다. <span class="ui">Start bringup</span>과 <span class="ui">Error recovery</span>는 제어권 없이도 누를 수 있습니다.</p>
+
+  <h3>한번에 준비</h3>
+  <p><span class="ui">▶ 한번에 준비</span>를 누르고 확인 창에서 OK를 누르면 아래를 순서대로 실행합니다.</p>
+  <ol class="steps">
+    <li><b>관절 브레이크 해제</b>수 초 걸립니다.</li>
+    <li><b>Execution 모드 전환 + FCI 활성화</b></li>
+    <li><b>브링업(franka_bringup, ros2_control) 시작</b></li>
+  </ol>
+  <figure class="f45"><img src="assets/fr_205.png" alt=""><figcaption data-fig="fig-ui-prepare"><b>그림 34.</b> 한번에 준비 확인 창</figcaption></figure>
+  <p>완료되면 상태 줄에 <code>Ready: unlocked, FCI on, bringup started</code>가 표시되고 헤더 표시등 7개가 모두 초록색이 됩니다. ROS2_CONTROL과 JOINT STREAM은 브링업 후 몇 초 뒤에 켜집니다.</p>
+
+  <h3>단계별 버튼</h3>
+  <p>한번에 준비가 어느 단계에서 실패했는지 확인하거나, 일부만 실행할 때 씁니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="ui-steps"><b>표 19.</b> SYSTEM 패널의 단계별 버튼</caption>
+    <thead><tr><th>버튼</th><th>동작</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>Unlock joints</td><td>관절 브레이크 해제</td><td>확인 창 있음</td></tr>
+      <tr><td>Lock joints</td><td>관절 브레이크 잠금</td><td>먼저 동작 컨트롤러를 해제합니다</td></tr>
+      <tr><td>FCI on / FCI off</td><td>FCI 켜기 · 끄기</td><td>FCI off 시 실행 중인 브링업도 종료됩니다</td></tr>
+      <tr><td>Start bringup / Stop bringup</td><td>브링업 시작 · 종료</td><td>실행 상태에 따라 한쪽만 활성</td></tr>
+      <tr><td>Execution mode / Programming mode</td><td>Desk 운용 모드 전환</td><td>FCI on은 자동으로 Execution 모드로 바꿉니다</td></tr>
+      <tr><td>Release token</td><td>제어권 반납</td><td>다른 PC나 Desk 웹에서 로봇을 쓸 때</td></tr>
+    </tbody>
+  </table>
+  <p>SYSTEM 패널 위쪽의 System ver., Arm, FCI, Op mode 값으로 각 단계의 결과를 확인합니다.</p>
+
+  <h2 id="c7-s7">관절 조그</h2>
+  <figure><img src="assets/fr_206.png" alt=""><figcaption data-fig="fig-ui-jog"><b>그림 35.</b> JOINT JOG 패널: Jog 활성 상태</figcaption></figure>
+  <ol class="steps">
+    <li><b><span class="ui">Enable jog</span>를 누르고 확인 창에서 OK를 누릅니다.</b>활성화한 순간의 자세를 그대로 유지하며, 모드 표시가 JOG ACTIVE(초록)로 바뀝니다.
+      <figure class="f45"><img src="assets/fr_207.png" alt=""><figcaption data-fig="fig-ui-jogdlg"><b>그림 36.</b> Enable jog 확인 창</figcaption></figure></li>
+    <li><b>STEP에서 한 번 누를 때 움직일 각도를 고릅니다.</b>0.5°, 1°, 2°, 5°, 10° 중에서 고르며, 기본은 1°입니다.</li>
+    <li><b>SPEED 슬라이더로 속도를 정합니다.</b>1 ~ 50%, 기본 10%입니다. 처음에는 10% 이하로 쓰십시오.</li>
+    <li><b>관절(J1 ~ J7)별 −/+를 누릅니다.</b>한 번 누를 때 STEP만큼 움직이며, 빠르게 연속으로 누르면 목표가 누적됩니다.</li>
+    <li><b>끝나면 <span class="ui">Disable</span>을 누릅니다.</b>모든 동작 컨트롤러가 해제됩니다.</li>
+  </ol>
+  <p>각 관절 행은 왼쪽부터 관절 이름과 가동 범위, − 버튼, 게이지, + 버튼, 현재 각도(도 / rad), 관절 토크(Nm)입니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="ui-gauge"><b>표 20.</b> 게이지 표시</caption>
+    <thead><tr><th>표시</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>청록색 선과 채움</td><td>현재 위치</td></tr>
+      <tr><td>분홍색 선</td><td>목표 위치 (조그 목표 또는 Hold 기준점)</td></tr>
+      <tr><td>양 끝 붉은 영역</td><td>관절 한계에서 0.1 rad 안쪽. 목표는 이 영역에 들어가지 않도록 제한됩니다</td></tr>
+    </tbody>
+  </table>
+  <p>추종 오차가 0.15 rad을 넘으면(충돌 등) 모션을 멈추고 현재 자세를 유지합니다. −/+ 버튼은 Jog 모드이고 관절 값이 들어올 때만 활성입니다.</p>
+
+  <h2 id="c7-s8">웨이포인트</h2>
+  <div class="two">
+    <figure class="light"><img src="assets/fr_208.png" alt=""><figcaption data-fig="fig-ui-wp"><b>그림 37.</b> WAYPOINTS 패널: 저장된 웨이포인트와 선택 상태</figcaption></figure>
+    <div>
+      <h3>저장</h3>
+      <ol class="steps">
+        <li><b>로봇을 원하는 자세에 둡니다.</b>조그나 손(Gravity comp)으로 옮깁니다.</li>
+        <li><b>이름 칸에 이름을 입력합니다.</b>비워 두면 WP1, WP2… 순으로 자동으로 붙습니다.</li>
+        <li><b><span class="ui">＋ Save pose</span>를 누릅니다.</b>현재 관절 값이 목록 맨 아래에 추가됩니다.</li>
+      </ol>
+      <p>목록의 각 항목은 순번, 이름, 관절 7개 각도(도)입니다. 저장 위치는 <code>~/.franka_control_ui/waypoints.json</code>이며 UI를 다시 켜도 남습니다.
+        Save pose는 관절 값이 들어오는 상태면 Jog 모드가 아니어도 동작합니다.</p>
+    </div>
+  </div>
+  <h3>이동과 편집</h3>
+  <table class="t">
+    <caption data-tbl="ui-wp-btn"><b>표 21.</b> 웨이포인트 버튼</caption>
+    <thead><tr><th>버튼</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>Go</td><td>선택한 웨이포인트로 이동. 확인 창에 최대 관절 변위와 속도가 표시됩니다</td></tr>
+      <tr><td>▲ / ▼</td><td>선택한 웨이포인트의 순서를 위 · 아래로 이동</td></tr>
+      <tr><td>✕ Delete</td><td>선택한 웨이포인트 삭제 (확인 창 없음)</td></tr>
+    </tbody>
+  </table>
+  <figure class="f45"><img src="assets/fr_209.png" alt=""><figcaption data-fig="fig-ui-go"><b>그림 38.</b> Go 확인 창: 최대 관절 변위와 속도</figcaption></figure>
+  <h3>순차 재생</h3>
+  <ol class="steps">
+    <li><b>Jog 모드를 켭니다.</b>Go와 Play all은 Jog 모드에서만 활성입니다.</li>
+    <li><b>Dwell에 각 웨이포인트에 도착한 뒤 머무를 시간을 입력합니다.</b>0 ~ 10초, 기본 0.5초입니다.</li>
+    <li><b><span class="ui">▶ Play all</span>을 누르고 확인 창에서 OK를 누릅니다.</b>목록 순서대로 이동합니다.
+      <figure class="f45 light"><img src="assets/fr_210.png" alt=""><figcaption data-fig="fig-ui-play"><b>그림 39.</b> 순차 재생 중: 현재 웨이포인트가 ▶ 표시와 분홍색으로 강조됨</figcaption></figure></li>
+  </ol>
+  <p>이동은 모든 관절이 동시에 도착하도록 속도를 맞춥니다. 재생 중에는 조그 · Go · Play 버튼이 비활성이며, Esc 또는 STOP으로 멈춥니다.</p>
+  <div class="box warn"><div class="h">경고 · 경로 중간의 충돌</div>
+    <p>순차 재생은 경로 중간의 충돌을 검사하지 않습니다. SPEED를 낮게 두고 지켜보십시오.</p></div>
+
+  <h2 id="c7-s9">임피던스 모드</h2>
+  <p>IMPEDANCE 패널의 모드는 한 번에 하나만 켜집니다. 다른 모드를 켜면 기존 동작 컨트롤러는 해제됩니다.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/fr_211.png" alt=""><figcaption data-fig="fig-ui-imp"><b>그림 40.</b> IMPEDANCE 패널: Hold 동작 중</figcaption></figure>
+    <div>
+      <h3>Hold (제자리 유지 · 외력 후 복귀)</h3>
+      <p>현재 자세를 기준점으로 잡고 스프링처럼 버팁니다. 손으로 밀면 밀리고, 놓으면 기준점으로 천천히 돌아옵니다.</p>
+      <ol class="steps">
+        <li><b>Stiffness 슬라이더로 강성을 정합니다.</b>10 ~ 100%, 기본 30%입니다.</li>
+        <li><b><span class="ui">▶ Hold</span>를 누르고 확인 창에서 OK를 누릅니다.</b>모드 표시가 HOLD가 됩니다.</li>
+        <li><b>동작 중 슬라이더를 움직이면 손을 뗄 때 새 강성이 바로 적용됩니다.</b></li>
+        <li><b><span class="ui">현재 자세를 기준점으로</span>를 누르면 지금 자세가 새 기준점이 됩니다.</b></li>
+        <li><b><span class="ui">■ Stop</span>으로 끝냅니다.</b></li>
+      </ol>
+    </div>
+  </div>
+  <p>동작 중 패널 아래에 "유지/복귀 중 · 기준점 이탈 x.x° · 강성 xx%"가 표시됩니다. JOINT JOG 게이지의 분홍색 선이 기준점, 청록색 선이 현재 위치입니다.</p>
+  <figure class="f45"><img src="assets/fr_212.png" alt=""><figcaption data-fig="fig-ui-hold"><b>그림 41.</b> Hold 확인 창</figcaption></figure>
+
+  <h3>Cartesian (libfranka 예제 · 끝단 자세 유지)</h3>
+  <p>libfranka 예제 <code>cartesian_impedance_control</code>로 현재 끝단(EE) 자세를 스프링처럼 유지합니다(병진 150 N/m, 회전 10 Nm/rad).
+    <span class="ui">▶ Start</span>로 시작하고 <span class="ui">■ Stop</span>으로 끝냅니다. 출력은 TELEMETRY LOG의 Cartesian example 탭에 표시됩니다.</p>
+  <figure class="f45"><img src="assets/fr_213.png" alt=""><figcaption data-fig="fig-ui-cart"><b>그림 42.</b> Cartesian 확인 창</figcaption></figure>
+  <ul>
+    <li>FCI 연결은 하나만 가능하므로, 시작하면 실행 중인 브링업이 먼저 종료됩니다. 이후 조그 · Hold를 쓰려면 Cartesian을 멈추고 <span class="ui">Start bringup</span>을 다시 누릅니다.</li>
+    <li>예제가 충돌 감지 한계를 높게(100) 설정합니다.</li>
+  </ul>
+  <div class="box warn"><div class="h">경고 · 팔꿈치는 밀지 마십시오</div>
+    <p>Cartesian 예제는 팔꿈치(null-space)를 제어하지 않아, 밀면 팔꿈치가 흘러갈 수 있습니다. 팔꿈치 쪽은 밀지 마십시오.</p></div>
+
+  <h3>Example (4 · 5축 왕복 예제)</h3>
+  <p>franka_example_controllers의 관절 임피던스 예제입니다. 시작한 순간의 자세를 기준으로 J4와 J5를 0 → +45° 사이에서 5초 주기로 왕복시킵니다.
+    충돌 위험이 없는 자세에서 <span class="ui">▶ Start</span>를 누르고, <span class="ui">■ Stop</span>으로 끝냅니다. 실행 중 모드 표시는 IMPEDANCE RUN입니다.</p>
+
+  <h3>Gravity comp (hand guide)</h3>
+  <p>제로 토크 모드입니다. 로봇을 손으로 잡고 끌어서 움직일 수 있습니다. 웨이포인트를 손으로 가르칠 때 씁니다. 모드 표시는 HAND GUIDE입니다.</p>
+  <ul>
+    <li>별도의 Stop 버튼이 없습니다. JOINT JOG 패널의 <span class="ui">Disable</span> 또는 STOP으로 끕니다.</li>
+  </ul>
+  <div class="box warn"><div class="h">경고 · 팔을 잡은 상태에서 켜십시오</div>
+    <p>페이로드 설정이 실제와 다르면 팔이 처지거나 떠오를 수 있습니다. 팔을 잡은 상태에서 켜십시오.</p></div>
+  <figure class="f45"><img src="assets/fr_214.png" alt=""><figcaption data-fig="fig-ui-grav"><b>그림 43.</b> Gravity comp 확인 창</figcaption></figure>
+
+  <h2 id="c7-s10">정지 · 오류 대응 · 종료</h2>
+  <h3>STOP</h3>
+  <p>헤더 오른쪽 <span class="ui">■ STOP</span> 또는 Esc 키는 즉시 정지 명령을 보내고, 웨이포인트 재생을 멈추고, 모든 동작 컨트롤러(Jog, Hold, Example, Gravity comp, Cartesian)를 해제합니다.
+    반사(reflex) 직후처럼 컨트롤러가 해제되지 않으면 브링업을 자동으로 다시 시작합니다(동작 컨트롤러는 켜지 않음).</p>
+  <div class="box warn"><div class="h">경고 · STOP은 소프트웨어 정지입니다</div>
+    <p>비상 상황에서는 외부 E-stop을 쓰십시오.</p></div>
+  <h3>로그</h3>
+  <p>TELEMETRY LOG는 탭 3개로 되어 있습니다.</p>
+  <table class="t">
+    <caption data-tbl="ui-log"><b>표 22.</b> TELEMETRY LOG 탭</caption>
+    <thead><tr><th>탭</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Events</td><td>UI 동작 요청과 결과. 최신이 맨 위. 오류는 빨간색, 경고는 주황색</td></tr>
+      <tr><td>Bringup output</td><td>브링업(ros2_control) 터미널 출력</td></tr>
+      <tr><td>Cartesian example</td><td>Cartesian 예제 출력</td></tr>
+    </tbody>
+  </table>
+  <figure><img src="assets/fr_215.png" alt=""><figcaption data-fig="fig-ui-bringup"><b>그림 44.</b> Bringup output 탭</figcaption></figure>
+  <p>같은 내용이 <code>~/.franka_control_ui/</code> 아래(<code>events.log</code>, <code>bringup.log</code>, <code>cartesian_impedance.log</code>)에도 저장됩니다.</p>
+  <h3>Error recovery</h3>
+  <p>로봇이 반사(reflex)로 정지하거나 컨트롤러 활성화에 실패하면 Events 탭에 빨간색 오류가 남고 상태 줄이 빨간색이 됩니다.
+    원인(충돌, 관절 한계 등)을 확인하고 주변을 정리한 뒤 SYSTEM 패널의 <span class="ui">⟲ Error recovery</span>를 누르고 다시 시도합니다.</p>
+  <figure><img src="assets/fr_216.png" alt=""><figcaption data-fig="fig-ui-recover"><b>그림 45.</b> 오류 발생 후 Error recovery (예시 화면)</figcaption></figure>
+  <h3>한번에 종료</h3>
+  <p>작업이 끝나면 <span class="ui">■ 한번에 종료</span>를 누릅니다. 아래를 순서대로 실행합니다.</p>
+  <ol class="steps">
+    <li><b>동작 컨트롤러 해제</b>Cartesian 예제를 포함합니다.</li>
+    <li><b>브링업 종료</b></li>
+    <li><b>FCI 끄기</b></li>
+    <li><b>관절 브레이크 잠금</b></li>
+    <li><b>제어권 반납</b></li>
+  </ol>
+  <p>브링업이 실행 중일 때 창을 닫으면 확인 창이 뜹니다. OK를 누르면 동작 컨트롤러 해제, 브링업 종료, 제어권 반납 뒤에 닫힙니다.
+    창 닫기는 FCI 끄기와 관절 잠금을 하지 않으므로, 로봇을 끝까지 정리하려면 한번에 종료를 먼저 누르십시오.</p>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">문제 해결</h1></div>
+  <p class="lede">증상 → 원인 → 해결 순으로 정리했습니다. 원인을 모르면 장 끝의 진단 순서를 위에서부터 따라가십시오. 먼저 실패하는 곳이 원인입니다.</p>
+
+  <h2 id="c8-s1">연결 · 버전 오류</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="ts-conn"><b>표 23.</b> 연결 · 버전 오류</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td><code>Incompatible library version.</code> <code>Server version: N, Library version: M</code></td><td>libfranka 버전과 시스템 이미지 불일치</td><td>1장 호환 표(표 4)를 보고 맞는 태그로 libfranka를 다시 빌드합니다</td></tr>
+      <tr><td><code>libfranka: Connection timeout</code></td><td>네트워크 · IP · 케이블</td><td><code>ping 172.16.0.2</code>, 연결한 포트, ufw, 컨트롤 박스 부팅을 확인합니다</td></tr>
+      <tr><td><code>libfranka: Connection refused</code></td><td>FCI 미활성, 또는 다른 프로세스가 점유</td><td>Desk에서 Activate FCI. 다른 터미널의 제어 프로그램을 끝냅니다</td></tr>
+      <tr><td><code>Robot is not in FCI mode</code></td><td>Desk에서 FCI를 켜지 않음</td><td>메뉴 → Activate FCI</td></tr>
+      <tr><td><code>UDP receive: Timeout</code></td><td>네트워크 지터, 스위치 경유</td><td>직결로 바꿉니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s2">실시간 · 통신 품질 오류</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="ts-rt"><b>표 24.</b> 실시간 · 통신 품질 오류</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td><code>Setting current thread to real-time priority failed</code></td><td>실시간 커널이 없거나 realtime 권한이 없음</td><td><code>uname -a</code>에 PREEMPT_RT(또는 realtime), <code>groups</code>에 realtime, <code>ulimit -r</code> = 99, 재부팅(또는 로그아웃 → 로그인)했는지 확인합니다 (6장)</td></tr>
+      <tr><td><code>communication_constraints_violation</code></td><td>1 kHz 주기를 놓침</td><td>communication_test를 실행합니다. 스위치 제거 · 백그라운드 프로그램 정리</td></tr>
+      <tr><td><code>control_command_success_rate</code> 낮음</td><td>제어 루프가 1 ms 안에 끝나지 않음</td><td>제어 콜백 안에서 print · 파일 입출력을 빼고, numpy 연산을 줄입니다</td></tr>
+      <tr><td>부팅할 때 실시간 커널이 안 보임</td><td>Secure Boot 또는 GRUB 설정</td><td>BIOS에서 Secure Boot를 끄고, <code>sudo update-grub</code> 뒤 GRUB 메뉴에서 직접 고릅니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s3">로봇 동작 · reflex 오류</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="ts-reflex"><b>표 25.</b> 로봇 동작 · reflex 오류</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td><code>cartesian_reflex</code> / <code>joint_reflex</code></td><td>충돌 감지 발동 (실제 충돌 또는 임계값이 너무 낮음)</td><td>실제 충돌인지 먼저 확인 → 오류 복구 → 필요하면 충돌 임계값(collision behavior)을 올립니다</td></tr>
+      <tr><td><code>joint_position_limits_violation</code></td><td>목표 관절 값이 한계를 넘음</td><td>Franka 문서(<a href="https://frankarobotics.github.io/docs/robot_specifications.html">Robot Specifications</a>)에서 한계를 확인하고 목표를 고칩니다</td></tr>
+      <tr><td><code>cartesian_position_limits_violation</code></td><td>목표가 작업 공간 밖이거나 특이 자세</td><td>목표를 로봇 쪽으로 당기거나, 관절 공간 이동으로 돌아갑니다</td></tr>
+      <tr><td><code>joint_velocity_violation</code></td><td>속도 명령이 한계를 넘음</td><td>속도 배율(예: franky의 relative_dynamics_factor)을 낮춥니다</td></tr>
+      <tr><td><code>Robot is locked</code></td><td>관절 브레이크 잠김</td><td>Desk → Joints 잠금 해제</td></tr>
+      <tr><td>LED 빨간색</td><td>오류 또는 E-stop</td><td>E-stop 확인 → Desk에서 오류 메시지 확인 → 원인 제거 → 리셋</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s4">빌드 · 패키지 오류</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="ts-build"><b>표 26.</b> 빌드 · 패키지 오류</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td>CMake: <code>Could not find a package configuration file provided by "Franka"</code></td><td>libfranka 경로를 찾지 못함</td><td><code>-DFranka_DIR=</code>에 libfranka 빌드 폴더(예: <code>~/franka_ros2_ws/src/libfranka/build</code>)를 넣습니다</td></tr>
+      <tr><td>colcon build 중 <code>Killed</code></td><td>메모리 부족</td><td><code>--executor sequential</code> 또는 <code>MAKEFLAGS="-j2"</code>로 병렬도를 낮춥니다</td></tr>
+      <tr><td><code>ModuleNotFoundError: franka_msgs</code></td><td>작업 공간을 source하지 않음</td><td><code>source ~/franka_ros2_ws/install/setup.bash</code></td></tr>
+      <tr><td>rosdep이 libfranka를 덮어씀</td><td><code>--skip-keys</code> 누락</td><td><code>rosdep install … --skip-keys "libfranka"</code></td></tr>
+      <tr><td>이전 빌드 잔재로 꼬임</td><td>build · install · log 폴더가 남음</td><td><code>rm -rf build install log</code> 후 다시 빌드합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s5">WeGo FR3 제어 UI</h2>
+  <table class="t wrap1 tight">
+    <caption data-tbl="ts-ui"><b>표 27.</b> 제어 UI 문제 해결 (7장)</caption>
+    <thead><tr><th>증상</th><th>원인 · 조치</th></tr></thead>
+    <tbody>
+      <tr><td>DESK 표시등 빨간색, 로그인 · Unlock 때 연결 실패</td><td><code>ping &lt;robot_ip&gt;</code>를 확인합니다. PC 유선 IP가 로봇과 같은 대역인지 확인합니다</td></tr>
+      <tr><td>로그인 때 401</td><td>Desk 아이디 · 비밀번호 오류. 로봇을 처음 설정할 때 만든 계정을 넣습니다. 런치 인자 기본값(예시 값)은 대부분 맞지 않습니다</td></tr>
+      <tr><td>로그인 후 TOKEN이 켜지지 않음</td><td>60초 안에 로봇 본체의 확인 버튼을 누르지 않았습니다. 다시 로그인합니다</td></tr>
+      <tr><td>단계별 버튼이 모두 회색</td><td>제어권 없음. 로그인 + 제어권을 먼저 합니다</td></tr>
+      <tr><td>FCI on 실패</td><td>Desk에서 FCI 기능(라이선스)이 활성화되지 않았습니다. Events 탭의 오류 메시지를 확인합니다</td></tr>
+      <tr><td><code>Package 'franka_bringup' not found</code></td><td>작업 공간을 source하지 않았습니다 → <code>source ~/franka_ros2_ws/install/setup.bash</code></td></tr>
+      <tr><td>ROS2_CONTROL · JOINT STREAM이 안 켜짐</td><td>Bringup output 탭에서 오류를 확인합니다. 다른 PC와 <code>ROS_DOMAIN_ID</code>가 겹치면 서로 다른 값으로 설정합니다</td></tr>
+      <tr><td>Enable jog · Hold 버튼이 회색</td><td>ROS2_CONTROL 꺼짐 (브링업 미실행 또는 Cartesian 실행 중)</td></tr>
+      <tr><td>−/+, Go, Play all이 회색</td><td>Jog 모드가 아니거나 웨이포인트 재생 중</td></tr>
+      <tr><td><code>communication_constraints_violation</code> 정지</td><td>네트워크 지연. 직결을 확인하고, 실시간 커널과 <code>setup_realtime.sh</code>를 적용하고, 다른 부하 프로그램을 끝냅니다</td></tr>
+      <tr><td>컨트롤러 활성화 실패, 반사(reflex) 오류</td><td><span class="ui">⟲ Error recovery</span> 후 다시 시도합니다</td></tr>
+      <tr><td><code>Could not load the Qt platform plugin "xcb"</code></td><td>GUI 세션이 아닙니다(SSH 등). 로봇 PC 화면에서 직접 실행하거나 <code>ssh -X</code>를 씁니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s6">막혔을 때 진단 순서</h2>
+  <p>위에서부터 차례로 확인하십시오. 먼저 실패하는 곳이 원인입니다.</p>
+  <pre class="cmd"><span class="c"># 1. 네트워크: 손실 0%, RTT 1 ms 미만</span>
+sudo ping -c 100 -i 0.001 172.16.0.2
+<span class="c"># 2. 실시간 커널</span>
+uname -a                 <span class="c"># PREEMPT_RT 또는 realtime</span>
+<span class="c"># 3. 권한</span>
+groups | grep realtime   <span class="c"># realtime 포함</span>
+ulimit -r                <span class="c"># 99</span>
+ulimit -l                <span class="c"># 102400</span>
+<span class="c"># 4. 로봇 상태: Desk에서 LED 파란색 / 관절 잠금 해제 / FCI 활성</span>
+<span class="c"># 5. libfranka 통신</span>
+cd ~/franka_ros2_ws/src/libfranka/build/examples
+./echo_robot_state 172.16.0.2
+./communication_test 172.16.0.2
+<span class="c"># 6. ROS 2</span>
+printenv | grep ROS_DISTRO
+ros2 topic list | grep franka
+ros2 control list_controllers</pre>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c9" data-mark="c9">빠른 참조</h1></div>
+  <div class="qr">
+    <div class="card">
+      <h3>켤 때</h3>
+      <ol>
+        <li>컨트롤 박스 전원 ON → 부팅 대기 (약 1분)</li>
+        <li>E-stop 해제</li>
+        <li><code>https://172.16.0.2</code> → 로그인</li>
+        <li>관절 잠금 해제 (딸깍 소리 확인)</li>
+        <li>LED 파란색 확인</li>
+        <li>메뉴 → Activate FCI</li>
+        <li><code>uname -a</code>로 실시간 커널 확인</li>
+        <li><code>ping 172.16.0.2</code></li>
+        <li>(선택) communication_test 100%</li>
+        <li>코드 실행</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>끌 때</h3>
+      <ol>
+        <li>코드 종료 (<span class="ui">Ctrl</span>+<span class="ui">C</span>)</li>
+        <li>Desk → Deactivate FCI</li>
+        <li>로봇을 안전한 자세로 이동</li>
+        <li>관절 잠금 (Joints lock)</li>
+        <li>E-stop 누름</li>
+        <li>컨트롤 박스 전원 OFF</li>
+      </ol>
+      <h3 style="margin-top:3mm">오래 쓰지 않을 때</h3>
+      <ol>
+        <li>로봇을 접힌 자세(packing pose)로</li>
+        <li>관절 잠금 후 전원 OFF</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>주소 · 계정</h3>
+      <table class="t">
+        <tbody>
+          <tr><td>로봇 (컨트롤 박스)</td><td>172.16.0.2</td></tr>
+          <tr><td>개발 PC</td><td>172.16.0.10/24</td></tr>
+          <tr><td>Desk</td><td>https://172.16.0.2</td></tr>
+          <tr><td>Desk 계정</td><td>처음 설정할 때 만든 관리자 계정</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>주요 사양</h3>
+      <table class="t">
+        <tbody>
+          <tr><td>자유도</td><td>7 (여유 자유도)</td></tr>
+          <tr><td>가반 하중</td><td>3 kg</td></tr>
+          <tr><td>도달 거리</td><td>855 mm</td></tr>
+          <tr><td>끝단 최대 속도 · 가속도</td><td>3.0 m/s · 9.0 m/s²</td></tr>
+        </tbody>
+      </table>
+      <p class="cut">관절별 한계는 시스템 버전에 따라 달라질 수 있습니다. Franka 문서의 Robot Specifications를 보십시오.</p>
+    </div>
+    <div class="card full">
+      <h3>참고 링크</h3>
+      <table class="t">
+        <tbody>
+          <tr><td>Franka 문서 (FCI · libfranka · franka_ros2)</td><td><a href="https://frankarobotics.github.io/docs/">frankarobotics.github.io/docs</a></td></tr>
+          <tr><td>로봇 사양 · 관절 한계</td><td><a href="https://frankarobotics.github.io/docs/robot_specifications.html">frankarobotics.github.io/docs/robot_specifications.html</a></td></tr>
+          <tr><td>FR3 호환 표</td><td><a href="https://franka.de/fr3-compatibility-matrix">franka.de/fr3-compatibility-matrix</a></td></tr>
+          <tr><td>실시간 커널 설치</td><td><a href="https://frankarobotics.github.io/docs/doc/libfranka/docs/real_time_kernel.html">frankarobotics.github.io/docs/doc/libfranka/docs/real_time_kernel.html</a></td></tr>
+          <tr><td>문제 해결</td><td><a href="https://frankarobotics.github.io/docs/troubleshooting.html">frankarobotics.github.io/docs/troubleshooting.html</a></td></tr>
+          <tr><td>libfranka · franka_ros2 소스</td><td><a href="https://github.com/frankarobotics">github.com/frankarobotics</a></td></tr>
+          <tr><td>제조사 설명서 · 시스템 이미지</td><td><a href="https://franka.de/">franka.de</a> (Product Manual Franka Research 3, Franka World)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>

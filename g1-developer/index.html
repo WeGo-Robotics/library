@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree G1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.16</span><a class="wm-pdf" href="../pdf/Unitree_G1_Developer_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree G1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Unitree_G1_Developer_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>개발 환경 준비</a></summary><a class="wm-t2" href="#c1-s1">개발 형태 한눈에</a><a class="wm-t2" href="#c1-s2">네트워크 설정</a><a class="wm-t2" href="#c1-s3">디버깅 준비</a><a class="wm-t2" href="#c1-s4">unitree_sdk2 설치 · 빌드</a><a class="wm-t2" href="#c1-s5">unitree_sdk2_python 설치</a><a class="wm-t2" href="#c1-s6">모델 파일</a><a class="wm-t2" href="#c1-s7">PC2에 프로그램 배포</a><a class="wm-t2" href="#c1-s8">PC2 Wi-Fi 설정</a><a class="wm-t2" href="#c1-s9">공장 이미지 복구</a><a class="wm-t2" href="#c1-s10">EDU+ · NX 패치</a><a class="wm-t2" href="#c1-s11">어깨 보드 GPIO · UART · I2C</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>통신 구조와 DDS</a></summary><a class="wm-t2" href="#c2-s1">두 가지 통신 방식</a><a class="wm-t2" href="#c2-s2">시스템 구조</a><a class="wm-t2" href="#c2-s3">unitree_sdk2와 DDS</a><a class="wm-t2" href="#c2-s4">ChannelFactory</a><a class="wm-t2" href="#c2-s5">ChannelPublisher</a><a class="wm-t2" href="#c2-s6">ChannelSubscriber</a><a class="wm-t2" href="#c2-s7">서비스 클라이언트 공통 API</a><a class="wm-t2" href="#c2-s8">예제 · 발행과 구독</a><a class="wm-t2" href="#c2-s9">Python 대응 API</a><a class="wm-t2" href="#c2-s10">G1 토픽 목록</a><a class="wm-t2" href="#c2-s11">ROS 2 연동</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>관절 · 상태 데이터와 오류 코드</a></summary><a class="wm-t2" href="#c3-s1">몸체 관절 순서</a><a class="wm-t2" href="#c3-s2">Dex3-1 손 모터 순서</a><a class="wm-t2" href="#c3-s3">메시지 구조</a><a class="wm-t2" href="#c3-s4">리모컨 데이터</a><a class="wm-t2" href="#c3-s5">오류 코드</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>저수준 제어</a></summary><a class="wm-t2" href="#c4-s1">시작 전에 — 디버그 모드</a><a class="wm-t2" href="#c4-s2">이 예제가 쓰는 메시지 필드</a><a class="wm-t2" href="#c4-s3">관절 번호와 PR · AB 이름</a><a class="wm-t2" href="#c4-s4">PR 모드와 AB 모드</a><a class="wm-t2" href="#c4-s5">스레드 구조</a><a class="wm-t2" href="#c4-s6">발목 흔들기의 세 단계</a><a class="wm-t2" href="#c4-s7">빌드와 실행</a><a class="wm-t2" href="#c4-s8">그 밖의 저수준 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>고수준 제어 — 보행 · 팔</a></summary><a class="wm-t2" href="#c5-s1">고수준 인터페이스 한눈에</a><a class="wm-t2" href="#c5-s2">LocoClient 호출 방법</a><a class="wm-t2" href="#c5-s3">모드 상태 토픽 — rt/sportmodestate</a><a class="wm-t2" href="#c5-s4">사용자 개발 모드 — rt/user_lowcmd</a><a class="wm-t2" href="#c5-s5">춤 (Mimic) 모드</a><a class="wm-t2" href="#c5-s6">명령줄 예제 g1_loco_client</a><a class="wm-t2" href="#c5-s7">팔 덧씌움 — rt/arm_sdk</a><a class="wm-t2" href="#c5-s8">팔 동작 서비스 — G1ArmActionClient</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>서비스 관리 · 모드 전환 · 시간 동기 · 강화학습 예제</a></summary><a class="wm-t2" href="#c6-s1">서비스 관리 — RobotStateClient</a><a class="wm-t2" href="#c6-s2">기본 서비스 — 저수준 통신 메시지</a><a class="wm-t2" href="#c6-s3">모드 전환 — MotionSwitcherClient</a><a class="wm-t2" href="#c6-s4">시간 동기</a><a class="wm-t2" href="#c6-s5">강화학습 예제 — unitree_rl_gym</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>다관절 손</a></summary><a class="wm-t2" href="#c7-s1">손 비교</a><a class="wm-t2" href="#c7-s2">Dex3-1</a><a class="wm-t2" href="#c7-s3">Inspire FTP</a><a class="wm-t2" href="#c7-s4">Inspire DFX (RH56DFX)</a><a class="wm-t2" href="#c7-s5">BrainCo Revo2</a><a class="wm-t2" href="#c7-s6">Hand SDK — rt/hand_sdk (Dex2-5 · Dex1-1)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>센서 · SLAM 내비게이션</a></summary><a class="wm-t2" href="#c8-s1">센서 토픽 한눈에</a><a class="wm-t2" href="#c8-s2">오도메트리 서비스</a><a class="wm-t2" href="#c8-s3">라이다 서비스</a><a class="wm-t2" href="#c8-s4">라이다 직접 사용 — Livox 도구</a><a class="wm-t2" href="#c8-s5">깊이 카메라 · RealSense D435i</a><a class="wm-t2" href="#c8-s6">SLAM · 내비게이션 서비스 (EDU)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>음성 · 오디오</a></summary><a class="wm-t2" href="#c9-s1">하드웨어</a><a class="wm-t2" href="#c9-s2">버전 요구 · 제공 기능</a><a class="wm-t2" href="#c9-s3">AudioClient API</a><a class="wm-t2" href="#c9-s4">PCM 스트림 재생</a><a class="wm-t2" href="#c9-s5">음성 인식 결과 · 재생 상태</a><a class="wm-t2" href="#c9-s6">마이크 원음 받기</a><a class="wm-t2" href="#c9-s7">음성 비서와의 관계</a><a class="wm-t2" href="#c9-s8">앱 플레이어로 오디오 넣기</a><a class="wm-t2" href="#c9-s9">예제 실행</a></details><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
@@ -38,7 +38,7 @@
     Unitree가 공개한 G1 개발 인터페이스를 한국어로 정리했습니다.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/g1_render_dev.png" alt="Unitree G1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.16</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 판권 ═══════════════════════ -->
@@ -50,13 +50,13 @@
       <tr><td>근거 문서</td><td>Unitree 문서 센터 <i>G1 SDK Development Guide</i> 전 45쪽 (2026-11-06 수집).</td></tr>
       <tr><td>SDK 대조</td><td><code>unitree_sdk2</code> 8e1b927 (2026-10-30) · <code>unitree_sdk2_python</code> 814556d. 일부 장은 이전 판 a4e2d9e (2026-03-12)와의 차이를 함께 적었습니다</td></tr>
       <tr><td>함께 보는 책</td><td><i><a data-manual="g1-operation" href="../g1-operation/">Unitree G1 운용 설명서</a></i> — 안전 수칙, 리모컨 · 운용 모드, 시작 · 종료 순서, 디버그 모드 진입</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.16</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>본문의 <span class="src">문서</span> 표시는 Unitree 공식 문서의 내용이고, <span class="src r">SDK</span> 표시는 SDK 소스 코드에서 직접 확인한 내용입니다.
       두 내용이 다를 때는 SDK 소스를 따르고 차이를 적었습니다. <span class="tag29">29</span> 표시는 29자유도 모델에만 해당합니다.</p>
-    <p><b>개발용 컴퓨터의 계정 정보는 이 설명서에 싣지 않습니다.</b> 기술 지원 담당자가 따로 안내하며,
-      로봇을 외부 네트워크에 연결하기 전에 기본 비밀번호를 바꾸십시오.</p>
+    <p><b>개발용 컴퓨터(PC2)의 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다.</b>
+      로봇을 외부 네트워크에 연결하기 전에 <code>passwd</code>로 기본 비밀번호를 바꾸십시오.</p>
     <p><b>관절을 움직이는 프로그램은 로봇을 보호 거치대에 매단 상태에서 시험하고, 리모컨 담당자가 언제든 댐핑(<span class="k">L2</span> + <span class="k r">B</span>)을 누를 수 있게 하십시오.</b></p>
     <p class="copy">© WeGo Robotics. 표지의 G1 이미지는 Unitree가 공개한 로봇 메시를 MuJoCo로 렌더링한 것이며, 따로 표시가 없는 기술 도면은 Unitree Robotics 문서에서 가져왔습니다.</p>
   </div>
@@ -92,7 +92,7 @@
     <thead><tr><th>실행 위치</th><th>주소</th><th>설명</th></tr></thead>
     <tbody>
       <tr><td>외부 개발 PC</td><td class="mono">192.168.123.99 (권장)</td><td>Ubuntu 20.04 권장. Mac · Windows는 지원하지 않습니다. 어깨 RJ45 포트와 유선으로 연결합니다.</td></tr>
-      <tr><td>PC2 · 개발 컴퓨터 (EDU)</td><td class="mono">192.168.123.164</td><td>Jetson Orin NX (aarch64). 케이블 없이 로봇 단독으로 프로그램을 돌릴 때 씁니다. 계정 정보는 기술 지원이 안내합니다.</td></tr>
+      <tr><td>PC2 · 개발 컴퓨터 (EDU)</td><td class="mono">192.168.123.164</td><td>Jetson Orin NX (aarch64). 케이블 없이 로봇 단독으로 프로그램을 돌릴 때 씁니다. 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다.</td></tr>
       <tr><td>PC1 · 운동 제어</td><td class="mono">192.168.123.161</td><td>Unitree 공식 서비스 전용이라 개발에 쓸 수 없습니다. 연결 확인(<code>ping</code>) 대상으로만 씁니다.</td></tr>
     </tbody>
   </table>
@@ -217,7 +217,7 @@ export CYCLONEDDS_HOME="$HOME/cyclonedds/install"   <span class="c"># 그다음 
   <p>케이블 없이 시험하려면 프로그램을 PC2에 올립니다 (Unitree 페이지에 숨겨진 절의 내용).</p>
   <ol class="steps">
     <li><b>연결 확인</b>개발 PC를 G1 스위치에 연결하고 <code>ping 192.168.123.164</code>를 확인합니다.</li>
-    <li><b>로그인 · 빌드</b>기술 지원이 안내한 초기 계정으로 <code>ssh</code> 접속합니다. 의존성 문제를 피하려면 PC2에서 직접 컴파일하는 것을 권장합니다.</li>
+    <li><b>로그인 · 빌드</b><code>ssh unitree@192.168.123.164</code>로 접속합니다 (공장 기본 비밀번호 <code>123</code>, 첫 접속 때 <code>passwd</code>로 바꿉니다). 의존성 문제를 피하려면 PC2에서 직접 컴파일하는 것을 권장합니다.</li>
     <li><b>백그라운드 실행</b><code>nohup ./실행파일 &gt; log.txt &amp;</code>로 띄우고 정상 동작을 확인한 뒤 케이블을 뽑습니다. 저수준 개발이면 디버그 모드에 들어가 있어야 합니다.</li>
   </ol>
 
@@ -288,7 +288,7 @@ ifconfig -a                                             <span class="c"># wlan0 
     먼저 <b>목 뒤 USB-C 케이블이 어깨의 Type-C 포트에 꽂혀 있는지</b> 확인하십시오. 그래도 안 되면 NX에 패치 파일이 빠진 경우입니다.</p>
   <ol class="steps">
     <li><b>복사</b>문서의 <i>NX System Patch</i>(<code>g1plus_pc4_unitree_install.zip</code>)를 내려받아 <code>scp ./g1plus_pc4_unitree_install.zip unitree@192.168.123.164:~/</code></li>
-    <li><b>접속 · root 전환</b><code>ssh unitree@192.168.123.164</code> 후 <code>sudo su root</code>. 비밀번호는 기술 지원이 안내합니다.</li>
+    <li><b>접속 · root 전환</b><code>ssh unitree@192.168.123.164</code> 후 <code>sudo su root</code>. 공장 기본 비밀번호는 <code>123</code>입니다.</li>
     <li><b>설치</b>아래 명령을 그대로 실행합니다.</li>
     <li><b>확인</b><code>ps -ef | grep "master_service" | grep -v grep</code>에 프로세스가 보이면 성공입니다.</li>
     <li><b>마무리</b>기술 지원에 연락해 <b>Patch PC4</b> · <b>Video Hub PC4</b> 구성 요소를 최신으로 올리고 로봇을 다시 시작합니다.</li>
@@ -373,7 +373,7 @@ gpiodetect ; gpioinfo 1               <span class="c"># 칩 목록 · 칩 1 의 
       <tr><td>G1 · BLE</td><td>앱과 처음 연결할 때 네트워크 설정 · 보안 인증</td></tr>
       <tr><td>G1 · DDS</td><td>기능 모듈 사이 통신의 대부분. DDS IDL은 ROS 2와 호환되므로(맞는 RMW 선택 필요) EDU 모델은 DDS 또는 ROS 2로 인터페이스를 부를 수 있습니다</td></tr>
       <tr><td>G1 · 센서</td><td>모터 · 라이다 등 센서 데이터는 직렬 통신으로 모은 뒤 DDS 계층으로 전달됩니다</td></tr>
-      <tr><td>G1 · PC1 / PC2</td><td>PC1은 Unitree 운동 제어 전용으로 공개되지 않습니다. 2차 개발은 PC2(<code>192.168.123.164</code>)에서만 합니다. 초기 계정은 기술 지원이 안내합니다</td></tr>
+      <tr><td>G1 · PC1 / PC2</td><td>PC1은 Unitree 운동 제어 전용으로 공개되지 않습니다. 2차 개발은 PC2(<code>192.168.123.164</code>)에서만 합니다. 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다</td></tr>
       <tr><td>앱 (Unitree Explore)</td><td>HTTP Web API로 사용자 관리 · 로봇 바인딩 · WebRTC 연결 수립, BLE로 네트워크 설정, WebRTC로 영상 · 점군 · 상태 · 제어</td></tr>
       <tr><td>개발 인터페이스</td><td>① DDS (C++ · Python) ② ROS 2 ③ GST (영상 전송 전용). 프로그램은 G1 내장 PC 또는 외부 개발 보드 · PC에 배포할 수 있습니다</td></tr>
     </tbody>
@@ -2209,7 +2209,7 @@ target_link_libraries(${PROJECT_NAME} ${realsense2_LIBRARY} ${OpenCV_LIBS})</pre
   <h3>네트워크 설정</h3>
   <ol class="steps">
     <li><b>유선 연결</b>PC를 G1 내부 스위치(어깨 포트)에 랜선으로 연결하고, PC IP를 <code>192.168.123.x</code>(기존 장치와 겹치지 않게)로 설정합니다.</li>
-    <li><b>NX 접속</b>NX(PC2)의 기본 IP는 <code>192.168.123.164</code>입니다. <code>ssh &lt;계정&gt;@192.168.123.164</code>로 접속합니다. 계정 정보는 기술 지원이 안내합니다.</li>
+    <li><b>NX 접속</b>NX(PC2)의 기본 IP는 <code>192.168.123.164</code>입니다. <code>ssh unitree@192.168.123.164</code>로 접속합니다 (공장 기본 비밀번호 <code>123</code>).</li>
     <li><b>연결 확인</b><code>ping 192.168.123.120</code>(라이다), <code>ping 192.168.123.161</code>(PC1)이 응답해야 합니다. 이 서비스는 라이다 IP <code>192.168.123.120</code>을 씁니다.</li>
   </ol>
 

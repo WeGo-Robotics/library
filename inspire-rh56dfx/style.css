@@ -2,3 +2,6 @@
 table.t.keep, .two{ break-inside:avoid; }
 /* register names stay on one line in the register lists */
 table.t.regs td:nth-child(2) code{ white-space:nowrap; }
+/* cover: Inspire's product photo as published (own light background, no cut-out), in a rounded frame;
+   the same size and place on all four Inspire books */
+.cover .hero{ height:auto; width:88mm; right:18mm; bottom:25mm; border-radius:3mm; }

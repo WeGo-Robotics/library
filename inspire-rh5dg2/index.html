@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Inspire RH5DG2 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/Inspire_RH5DG2_Manual_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Inspire RH5DG2 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Inspire_RH5DG2_Manual_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">주요 특징</a><a class="wm-t2" href="#c1-s2">구조와 치수</a><a class="wm-t2" href="#c1-s3">성능 사양</a><a class="wm-t2" href="#c1-s4">원문 설명서와 제조사</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">안전 등급</a><a class="wm-t2" href="#c2-s2">개봉과 인수</a><a class="wm-t2" href="#c2-s3">보관과 운송</a><a class="wm-t2" href="#c2-s4">설치</a><a class="wm-t2" href="#c2-s5">배선</a><a class="wm-t2" href="#c2-s6">전원 투입</a><a class="wm-t2" href="#c2-s7">이상이 생겼을 때</a><a class="wm-t2" href="#c2-s8">사용 종료와 폐기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>전기 연결과 통신 방식</a></summary><a class="wm-t2" href="#c3-s1">손목 커넥터 핀 정의</a><a class="wm-t2" href="#c3-s2">외부 케이블</a><a class="wm-t2" href="#c3-s3">전동 실린더와 자유도 배치</a><a class="wm-t2" href="#c3-s4">통신 방식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>RS485 프로토콜</a></summary><a class="wm-t2" href="#c4-s1">통신 프로토콜 개요</a><a class="wm-t2" href="#c4-s2">RS485 개요</a><a class="wm-t2" href="#c4-s3">레지스터 읽기</a><a class="wm-t2" href="#c4-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Modbus RTU</a></summary><a class="wm-t2" href="#c5-s1">Modbus RTU 개요</a><a class="wm-t2" href="#c5-s2">보유 레지스터 읽기 (0x03)</a><a class="wm-t2" href="#c5-s3">단일 레지스터 프리셋 (0x06)</a><a class="wm-t2" href="#c5-s4">다중 레지스터 프리셋 (0x10)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>CAN FD 프로토콜</a></summary><a class="wm-t2" href="#c6-s1">CAN FD 개요</a><a class="wm-t2" href="#c6-s2">CAN FD 확장 프레임 형식</a><a class="wm-t2" href="#c6-s3">레지스터 읽기</a><a class="wm-t2" href="#c6-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>레지스터</a></summary><a class="wm-t2" href="#c7-s1">레지스터 목록</a><a class="wm-t2" href="#c7-s2">시스템 설정</a><a class="wm-t2" href="#c7-s3">보호값과 전원 투입 설정값</a><a class="wm-t2" href="#c7-s4">동작 설정값</a><a class="wm-t2" href="#c7-s5">상태 읽기</a><a class="wm-t2" href="#c7-s6">손가락 동작 모드 (1220 ~ 1232)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>촉각 센서와 내장 동작</a></summary><a class="wm-t2" href="#c8-s1">촉각 데이터 형식</a><a class="wm-t2" href="#c8-s2">내장 동작</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EtherCAT</a></summary><a class="wm-t2" href="#c9-s1">EtherCAT 개요</a><a class="wm-t2" href="#c9-s2">PDO 객체 사전</a><a class="wm-t2" href="#c9-s3">SDO 객체 사전</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>자주 쓰는 명령 예</a></summary><a class="wm-t2" href="#c10-s1">예 1 · ID 바꾸기</a><a class="wm-t2" href="#c10-s2">예 2 · 보율 바꾸기</a><a class="wm-t2" href="#c10-s3">예 3 · 오류 해제</a><a class="wm-t2" href="#c10-s4">예 4 · 파라미터 저장</a><a class="wm-t2" href="#c10-s5">예 5 · 힘 센서 보정</a><a class="wm-t2" href="#c10-s6">예 6 · 자유도별 힘 제어 임계값 설정</a><a class="wm-t2" href="#c10-s7">예 7 · 자유도별 속도 설정</a><a class="wm-t2" href="#c10-s8">예 8 · 자유도별 각도 설정</a><a class="wm-t2" href="#c10-s9">예 9 · 자유도별 현재 각도 읽기</a></details></nav><main class="wm-main">
 
 
@@ -32,7 +32,8 @@
   <div class="bar"></div>
   <p class="lead">안전 수칙과 사양, 손목 커넥터 핀 정의, RS485 · Modbus RTU · CAN FD · EtherCAT 프로토콜, 레지스터 전체와 촉각 센서 데이터,
     내장 동작과 자주 쓰는 명령 예를 Inspire-Robots 공식 사용 설명서에서 옮겼습니다.</p>
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <img class="hero" src="assets/cover.jpg" alt="Inspire RH5DG2">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -44,13 +45,13 @@
       <tr><td>근거 문서</td><td>Inspire-Robots <i>Dexterous Hands User Manual for RH5DG2</i> V1.4 (2026-07, PRJ-02-TS-U-020) ·
         대조: Inspire 중국어판 <i>仿人五指灵巧手 RH5DG2 系列用户手册</i> V1.0 (2025-12)</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="inspire-rh56e2" href="../inspire-rh56e2/">Inspire RH56E2 · RH56DFTP 운용 설명서</a> (같은 8핀 항공 플러그와 케이블 색, 같은 RS485 프레임 형식)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>이 책은 Inspire 공식 사용 설명서(영문) V1.4 전체를 옮긴 것이며, 장 순서는 WeGo 설명서 형식에 맞췄습니다 (원문의 안전 수칙을 2장으로, 원문 2장 '통신 프로토콜'을 4 ~ 9장으로, 원문 3장 '자주 쓰는 명령 예'를 10장으로).
       원문의 오류나 앞뒤가 맞지 않는 곳은 값을 고치지 않고 그 자리에 <b>문서 오류</b> · <b>문서 차이</b> 상자로 적었습니다. 영문판 V1.4와 중국어판 V1.0이 다를 때는 V1.4를 따르고, 눈여겨볼 차이만 상자에 적었습니다.</p>
     <p>Inspire는 원문의 정확성에 최선을 다하지만 기술적 오류나 오탈자가 없음을 보증하지 않는다고 밝힙니다. 고친 내용은 다음 판에 반영하며, 사용자에게 미리 알리지 않고 고칠 수 있다고 덧붙입니다. ID와 보율은 원문에 적힌 공장 기본값입니다.</p>
-    <p class="copy">© WeGo Robotics (한국어 번역) · 원문 © Beijing Inspire-Robots Technology Co., Ltd. WeGo Robotics는 Inspire-Robots의 공식 파트너입니다.</p>
+    <p class="copy">© WeGo Robotics (한국어 번역) · 원문 © Beijing Inspire-Robots Technology Co., Ltd. WeGo Robotics는 Inspire-Robots의 공식 파트너입니다. 표지의 RH5DG2 사진은 Inspire-Robots가 웹사이트(en.inspire-robots.com)에 올린 제품 사진을 그대로 실은 것입니다.</p>
   </div>
 </section>
 

@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/Unitree_R1_Developer_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Unitree_R1_Developer_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>개발 환경과 시스템 구조</a></summary><a class="wm-t2" href="#c1-s1">로봇 안의 컴퓨터와 주소</a><a class="wm-t2" href="#c1-s2">내부 통신과 클라우드</a><a class="wm-t2" href="#c1-s3">두 가지 통신 방식</a><a class="wm-t2" href="#c1-s4">SDK와 모델 얻기</a><a class="wm-t2" href="#c1-s5">개발 환경</a><a class="wm-t2" href="#c1-s6">설치와 빌드</a><a class="wm-t2" href="#c1-s7">네트워크 설정</a><a class="wm-t2" href="#c1-s8">첫 예제 실행</a><a class="wm-t2" href="#c1-s9">개발 팁</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>저수준 제어</a></summary><a class="wm-t2" href="#c2-s1">디버그 모드가 필요한 이유</a><a class="wm-t2" href="#c2-s2">전신 관절 순서</a><a class="wm-t2" href="#c2-s3">발목 병렬 구조와 mode_pr</a><a class="wm-t2" href="#c2-s4">저수준 예제 r1_ankle_swing_example</a><a class="wm-t2" href="#c2-s5">상체 저수준 예제 A5 · A7</a><a class="wm-t2" href="#c2-s6">리모컨 데이터</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>다관절 손</a></summary><a class="wm-t2" href="#c3-s1">Dex1-1 · Dex2/5</a><a class="wm-t2" href="#c3-s2">Dex3-1</a><a class="wm-t2" href="#c3-s3">BrainCo Revo2 · Revo2 Touch ( brainco_hand_service )</a><a class="wm-t2" href="#c3-s4">LinkerHand O6</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>DDS와 기본 서비스</a></summary><a class="wm-t2" href="#c4-s1">ChannelFactory · Publisher · Subscriber</a><a class="wm-t2" href="#c4-s2">RPC 클라이언트 공통</a><a class="wm-t2" href="#c4-s3">주요 토픽</a><a class="wm-t2" href="#c4-s4">로봇 상태 클라이언트 RobotStateClient</a><a class="wm-t2" href="#c4-s5">저수준 메시지</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>보행 · 음성 · 영상 · SLAM 서비스</a></summary><a class="wm-t2" href="#c5-s1">고수준 보행 LocoClient</a><a class="wm-t2" href="#c5-s2">음성 · 조명 AudioClient</a><a class="wm-t2" href="#c5-s3">영상 서비스</a><a class="wm-t2" href="#c5-s4">SLAM 내비게이션</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>고수준 제어</a></summary><a class="wm-t2" href="#c6-s1">보행 예제 r1_loco_client</a><a class="wm-t2" href="#c6-s2">팔 제어 arm_sdk</a><a class="wm-t2" href="#c6-s3">팔 동작 서비스</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>ROS 2와 DDS 예제</a></summary><a class="wm-t2" href="#c7-s1">ROS 2 설정</a><a class="wm-t2" href="#c7-s2">DDS 발행 · 구독 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>오류 코드와 정의</a></summary><a class="wm-t2" href="#c8-s1">장치 전체 상태 비트</a><a class="wm-t2" href="#c8-s2">모터 상태 비트</a><a class="wm-t2" href="#c8-s3">오류 코드 찾아보기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EDU 확장</a></summary><a class="wm-t2" href="#c9-s1">개발 연산 유닛(백팩) 설치</a><a class="wm-t2" href="#c9-s2">설치 구멍</a><a class="wm-t2" href="#c9-s3">백팩 시스템 백업과 복구</a><a class="wm-t2" href="#c9-s4">다관절 손 설치</a></details><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
@@ -34,7 +34,7 @@
     오류 코드와 EDU 확장까지 Unitree 공식 개발 문서를 SDK 소스와 맞춰 보며 한 권에 정리했습니다.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/r1_render_wave.png" alt="Unitree R1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 판권 ═══════════════════════ -->
@@ -48,13 +48,13 @@
       <tr><td>SDK</td><td><code>unitree_sdk2</code> <b>8e1b927 (2026-10-30)</b> · <code>unitree_sdk2_python</code> 814556d (2026-09-21).
         8e1b927보다 오래된 SDK 체크아웃에는 R1 파일이 보행 클라이언트(<code>r1_loco_client</code>)뿐입니다 (1장).</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a> (현장 운용)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p><span class="src">문서</span> 표시는 Unitree 공식 개발 문서의 내용이고, <span class="src r">SDK</span> 표시는 <code>unitree_sdk2</code> 8e1b927 소스에서
       함수 이름 · 인자 · ID · 토픽 · 게인을 직접 확인한 내용입니다. 문서와 SDK가 다르면 <b>SDK를 따르고</b> "문서와 SDK의 차이" 상자에 적었습니다.
       Unitree 문서에 남은 G1 · Go2 문서의 흔적(G1 토픽 표 제목, G1 예제 코드 등)은 옮기지 않고 "문서 오류"로 표시했습니다.</p>
-    <p><b>개발 연산 유닛(PC2)의 접속 계정은 Unitree 기술 지원에서 받습니다.</b> 이 설명서는 기본 비밀번호를 싣지 않습니다.
+    <p><b>개발 연산 유닛(PC2)의 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다.</b>
       첫 접속 뒤 <code>passwd</code>로 비밀번호를 반드시 바꾸십시오.</p>
     <p>이 설명서의 명령과 예제는 실제 로봇을 움직입니다. 실행 전에 로봇을 보호 프레임에 매달고, 리모컨 담당이 소프트 비상 정지를 누를 수 있게 대기하십시오.</p>
     <p class="copy">© WeGo Robotics. 표지의 R1 이미지는 Unitree가 공개한 URDF 메시를 MuJoCo로 렌더링한 것입니다.
@@ -92,7 +92,7 @@
     <tbody>
       <tr><td>운동 제어 컴퓨터 (PC1)</td><td class="mono">192.168.123.161</td><td>Unitree 공식 서비스(보행 · 균형 · 모터 제어, 영상 설정 웹 등)를 실행합니다. <b>사용자 개발에는 쓸 수 없습니다.</b></td></tr>
       <tr><td>개발 연산 유닛 (PC2)</td><td class="mono">192.168.123.164</td><td>EDU의 등에 다는 백팩(확장 도크)입니다. 사용자 프로그램은 여기에서만 실행합니다.
-        NVIDIA Jetson Orin NX(100 TOPS) 또는 Orin Nano(40 TOPS) 보드이며, 계정은 기술 지원에서 받습니다 (9장).</td></tr>
+        NVIDIA Jetson Orin NX(100 TOPS) 또는 Orin Nano(40 TOPS) 보드이며, 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다 (9장).</td></tr>
       <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>SLAM 내비게이션 서비스용 (R1-EDU + Mid360 구성만, 5장)</td></tr>
       <tr><td>개발 PC</td><td class="mono">192.168.123.99</td><td>권장 주소. 다른 장치와 겹치지 않는 192.168.123.x이면 됩니다 (문서 예: <code>.222</code>)</td></tr>
     </tbody>
@@ -182,7 +182,7 @@ cd unitree_sdk2 &amp;&amp; cmake -Bbuild &amp;&amp; cmake --build build</pre>
     <li><b>연결</b>랜 케이블 한쪽을 로봇에, 다른 쪽을 PC에 꽂습니다. PC 쪽 유선(또는 USB 이더넷) 인터페이스를 수동 IPv4로 바꾸고 192.168.123.x(예: <code>192.168.123.99</code>, 넷마스크 <code>255.255.255.0</code>)를 지정합니다.</li>
     <li><b>확인</b><code>ping 192.168.123.161</code>로 운동 제어 컴퓨터가 응답하는지 봅니다.</li>
     <li><b>인터페이스 이름</b><code>ifconfig</code>(또는 <code>ip a</code>)에서 192.168.123.x가 붙은 인터페이스 이름을 적어 둡니다 (문서 예: <code>enxf8e43b808e06</code>, <code>enp3s0</code>). 모든 예제가 이 이름을 인자로 받습니다.</li>
-    <li><b>PC2 접속 (선택)</b><code>ping 192.168.123.164</code> 뒤 <code>ssh unitree@192.168.123.164</code>. 비밀번호는 기술 지원에서 받은 것을 쓰고 첫 접속 때 바꿉니다.</li>
+    <li><b>PC2 접속 (선택)</b><code>ping 192.168.123.164</code> 뒤 <code>ssh unitree@192.168.123.164</code>. 공장 기본 비밀번호는 <code>123</code>이며, 첫 접속 때 바꿉니다.</li>
   </ol>
 
   <h2 id="c1-s8">첫 예제 실행 <span class="src">문서</span> <span class="src r">SDK</span></h2>
@@ -1312,7 +1312,7 @@ export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interf
     설치 절차는 Unitree 교육 영상의 자막과 화면에서 옮겼으며, 작업 전에 해당 영상을 함께 보십시오.</p>
 
   <h2 id="c9-s1">개발 연산 유닛(백팩) 설치 <span class="src">문서</span></h2>
-  <p>R1-EDU는 등에 개발 연산 유닛을 달 수 있습니다. 개발자는 이 유닛(192.168.123.164)에서만 2차 개발을 합니다. 초기 계정은 기술 지원에서 받습니다.
+  <p>R1-EDU는 등에 개발 연산 유닛을 달 수 있습니다. 개발자는 이 유닛(192.168.123.164)에서만 2차 개발을 합니다. 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다.
     교육 영상: <i>Installation of R1 EDU Backpack</i> (support.unitree.com/home/en/R1_developer/edu_backpack).</p>
   <figure class="light"><img src="assets/dev/backpack.png" alt="백팩 설치"><figcaption><b>그림 12.</b> 백팩 설치 (Unitree 교육 영상 갈무리). 구성품 · 모듈 끼우기 · Type-C 연결 · 24 V 전원 연결.</figcaption></figure>
   <ol class="steps">

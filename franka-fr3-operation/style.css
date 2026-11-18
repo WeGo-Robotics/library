@@ -1,0 +1,7 @@
+/* FR3 operator manual: steps that carry screenshots, and tall UI panels kept to a readable height */
+ol.steps > li figure{ margin-top:1.6mm; }
+/* a step with a screenshot may split between text and figure; the figure itself stays whole (shared rule) */
+ol.steps > li{ break-inside:auto; }
+table.t td code{ word-break:normal; overflow-wrap:anywhere; }
+.two figure img{ max-height:80mm; width:auto; max-width:100%; margin:0 auto; }
+table.t td a{ overflow-wrap:anywhere; }   /* long URLs in the appendix must not widen the page (Chrome would shrink the whole PDF) */

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>FAIRINO FR 협동로봇 — 운용 설명서</title>
+<style>
+/* this book's page header; everything else is shared/css/wego_manual.css + style.css */
+@page {
+  @top-left  { content: "FAIRINO FR"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "운용 설명서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">FAIRINO FR 협동로봇 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/FAIRINO_FR_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><a class="wm-t1" href="#c1"><span class="wm-n">01</span>구성품</a><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a><a class="wm-t1" href="#c3"><span class="wm-n">03</span>컨트롤 박스 연결</a><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>티칭 펜던트로 제어</a></summary><a class="wm-t2" href="#c4-s1">로그인</a><a class="wm-t2" href="#c4-s2">관절 움직이기</a><a class="wm-t2" href="#c4-s3">패킹 자세로 옮기기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>웹(WebApp)에서 제어</a></summary><a class="wm-t2" href="#c5-s1">노트북 연결</a><a class="wm-t2" href="#c5-s2">노트북 네트워크 설정 (Ubuntu)</a><a class="wm-t2" href="#c5-s3">WebApp 접속</a><a class="wm-t2" href="#c5-s4">그리퍼 설정</a><a class="wm-t2" href="#c5-s5">접속 IP 변경</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>SDK로 제어</a></summary><a class="wm-t2" href="#c6-s1">FAIRINO 공식 문서</a><a class="wm-t2" href="#c6-s2">개발 사례와 예제</a></details></nav><main class="wm-main">
+
+
+<!-- ═══════════════════════ 표지 ═══════════════════════ -->
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">OPERATOR MANUAL</div></div>
+  <div class="kicker">운용 설명서</div>
+  <h1>FAIRINO <span>FR</span><br>협동로봇</h1>
+  <div class="title2">FAIRINO WebApp V4.0.0 기준</div>
+  <div class="bar"></div>
+  <p class="lead">구성품과 컨트롤 박스 연결, 티칭 펜던트 조작과 패킹 자세, 노트북에서 WebApp 접속, 그리퍼 설정과 접속 IP 변경,
+    SDK 문서 찾기까지 FR 협동로봇을 처음 쓸 때 필요한 순서를 정리했습니다.</p>
+  <img class="hero" src="assets/fr5_render.png" alt="FAIRINO FR5">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+
+<!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 설명서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>FAIRINO FR 협동로봇 · 컨트롤 박스 · 티칭 펜던트</td></tr>
+      <tr><td>근거 문서</td><td>WeGo Robotics <i>Fair Innovation robot 매뉴얼</i> (FAIRINO WebApp V4.0.0 기준, 2026.10).
+        더 자세한 내용은 FAIRINO 공식 문서 — fairino-doc-en.readthedocs.io/latest · 예제 — github.com/FAIR-INNOVATION.
+        제조사 자료(이 책에 옮기지 않음): FAIRINO Product Manual · FR 협동로봇 사용자 설명서(한국어) · ROS 2 · MoveIt 2 튜토리얼 ·
+        제어기 소프트웨어 업그레이드 · 다운그레이드 방법 · DH Robotics AG-95 그리퍼 설명서</td></tr>
+      <tr><td>소프트웨어</td><td>FAIRINO WebApp V4.0.0</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
+    </table>
+    <p>본문은 WeGo가 만든 FR 협동로봇 시작 안내를 WeGo 설명서 형식으로 옮긴 것이며, 안전 수칙을 2장으로 모았습니다.
+      화면은 WebApp V4.0.0 기준이며, 버전에 따라 메뉴 이름과 위치가 다를 수 있습니다.</p>
+    <p class="copy">© WeGo Robotics. FAIRINO는 Fairino (Suzhou) Robot Technology Co., Ltd.의 상표입니다.
+      표지의 FR5 이미지는 FAIRINO가 공개한 URDF 메시(github.com/FAIR-INNOVATION/frcobot_ros, frcobot_description, package.xml 기준 Apache-2.0)를
+      MuJoCo로 렌더링한 것이고, 본문 그림은 WeGo 자료의 사진과 FAIRINO 소프트웨어 · 문서 화면입니다.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 목차 ═══════════════════════ -->
+<section class="front toc">
+  <h2>목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+    <li><span class="n">01</span><span class="t">구성품</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
+    <li><span class="n">03</span><span class="t">컨트롤 박스 연결</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+    <li><span class="n">04</span><span class="t">티칭 펜던트로 제어</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
+    <li><span class="n">05</span><span class="t">웹(WebApp)에서 제어</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
+    <li><span class="n">06</span><span class="t">SDK로 제어</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 1 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">구성품</h1></div>
+  <p class="lede">FR 협동로봇의 구성품은 다음과 같습니다. 1 ~ 5번은 그림 1의 번호이며, 6번 티칭 펜던트는 별도 상자에 들어 있습니다.</p>
+
+  <table class="t">
+    <caption data-tbl="box"><b>표 1.</b> 구성품 목록</caption>
+    <thead><tr><th>번호</th><th>구성품</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>FR 로봇팔 (FR robot)</td><td></td></tr>
+      <tr><td>2</td><td>전원 케이블 (power cable)</td><td></td></tr>
+      <tr><td>3</td><td>비상 정지 버튼 (emergency button)</td><td></td></tr>
+      <tr><td>4</td><td>컨트롤 박스 (control box)</td><td></td></tr>
+      <tr><td>5</td><td>볼트 4개 (bolt × 4)</td><td>아래 사진과 다를 경우 3번과 5번이 함께 들어 있습니다</td></tr>
+      <tr><td>6</td><td>티칭 펜던트 (Teaching Pendant)</td><td>별도 상자</td></tr>
+    </tbody>
+  </table>
+  <figure class="light f80"><img src="assets/fr_001.jpg" alt="포장 상자 안의 구성품 1 ~ 5"><figcaption data-fig="fig-box"><b>그림 1.</b> 포장 상자 안의 구성품 (WeGo 자료)</figcaption></figure>
+</section>
+
+<!-- ═══════════════════════ 2 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+  <p class="lede">이 책은 FR 협동로봇을 처음 연결하고 움직이기까지의 순서를 다룹니다. 설치하고 운용하기 전에 FAIRINO 공식 사용자 설명서의 안전 장을 먼저 읽고,
+    각 장의 경고 · 주의 상자를 지키십시오.</p>
+
+  <div class="box warn"><div class="h">경고 · FAIRINO 안전 수칙을 먼저 읽으십시오</div>
+    <p>설치 환경, 작업자 안전, 안전 기능은 FAIRINO 공식 사용자 설명서의 ‘Safety’ 장과 ‘Installation’ 장의 ‘Personnel safety’ 절에 있습니다:
+      <a href="https://fairino-doc-en.readthedocs.io/latest/CobotsManual/safety.html">https://fairino-doc-en.readthedocs.io/latest/CobotsManual/safety.html</a></p></div>
+
+  <p>이 책에 나오는 경고 · 주의는 다음과 같습니다.</p>
+  <ol class="steps">
+    <li><b>패킹 자세로 옮길 때는 로봇의 속도를 줄이십시오.</b>주변 환경을 점검해 로봇이 부딪힐 요인을 없앤 뒤 실행하십시오(4장).</li>
+    <li><b>그리퍼를 활성화할 때는 그리퍼를 비워 두십시오.</b>활성화할 때 그리퍼에 물체가 없어야 합니다(5장).</li>
+    <li><b>WebApp과 WebRecovery의 네트워크를 겹치지 않게 고르십시오.</b>겹치면 WebApp에 접속하지 못할 수 있습니다(5장).</li>
+    <li><b>WebRecovery에서 업그레이드 · 다운그레이드를 임의로 조작하지 마십시오.</b>WebRecovery는 컨트롤 박스의 Eth0(192.168.57.2)에 있습니다(5장).
+      제어기 소프트웨어를 업그레이드 · 다운그레이드해야 하면 go.support@wego-robotics.com 으로 문의하십시오.</li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════ 3 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">컨트롤 박스 연결</h1></div>
+  <p class="lede">전원 케이블, 로봇 케이블, 비상 정지 버튼(또는 티칭 펜던트)을 컨트롤 박스에 연결합니다. 연결 위치는 그림 2과 같습니다.</p>
+
+  <table class="t">
+    <caption data-tbl="ctrlbox"><b>표 2.</b> 컨트롤 박스에 연결하는 케이블</caption>
+    <thead><tr><th>번호</th><th>케이블</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>전원 케이블 (power cable)</td></tr>
+      <tr><td>2</td><td>FR 로봇 케이블 (FR robot cable)</td></tr>
+      <tr><td>3</td><td>비상 정지 버튼 · 티칭 펜던트 (emergency button / Teaching Pendant)</td></tr>
+    </tbody>
+  </table>
+  <figure class="light f80"><img src="assets/fr_002.jpg" alt="컨트롤 박스 연결 1 ~ 3"><figcaption data-fig="fig-ctrlbox"><b>그림 2.</b> 컨트롤 박스 연결 (WeGo 자료)</figcaption></figure>
+</section>
+
+<!-- ═══════════════════════ 4 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">티칭 펜던트로 제어</h1></div>
+  <p class="lede">티칭 펜던트(TP)로 로그인하고, 관절을 움직이고, 로봇을 패킹 자세로 옮기는 방법입니다.</p>
+
+  <h2 id="c4-s1">로그인</h2>
+  <ol class="steps">
+    <li><b>티칭 펜던트를 컨트롤 박스에 연결하고 전원을 켜십시오.</b>로그인 화면(그림 3)이 나타납니다.</li>
+    <li><b>가상 키보드를 켜십시오.</b>화면 오른쪽 위의 노란 버튼을 누릅니다.</li>
+    <li><b>계정 정보를 입력하고 로그인하십시오.</b>user name <code>admin</code>, password <code>123</code></li>
+  </ol>
+  <figure class="light f80"><img src="assets/fr_003.png" alt=""><figcaption data-fig="fig-tp-login"><b>그림 3.</b> 티칭 펜던트 로그인 화면 (WeGo 자료)</figcaption></figure>
+  <div class="box note"><div class="h">참고 · 티칭 펜던트 사용 켜기</div>
+    <p>최신 WebApp에서는 티칭 펜던트가 기본으로 꺼져 있습니다. WebApp의 <span class="ui">시스템 설정</span> → <span class="ui">일반 설정</span> → <span class="ui">네트워크 설정</span>에서
+      <span class="ui">티칭펜던트 사용</span>을 켜고 재부팅한 뒤 사용하십시오. WebApp 접속 방법은 5장에 있습니다.</p></div>
+
+  <h2 id="c4-s2">관절 움직이기</h2>
+  <p>티칭 펜던트 화면의 로봇이 실제 로봇과 같은 자세이면 연결에 성공한 것입니다.</p>
+  <figure class="light"><img src="assets/fr_004.png" alt=""><figcaption data-fig="fig-tp-main"><b>그림 4.</b> 티칭 펜던트 화면 — 화면의 로봇 자세가 실제 로봇과 같으면 연결된 상태입니다 (WeGo 자료)</figcaption></figure>
+  <p>관절(joint)마다 있는 − · + 버튼(그림 5)이나 슬라이드 바(그림 6)로 로봇을 움직일 수 있습니다.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/fr_005.png" alt=""><figcaption data-fig="fig-tp-single"><b>그림 5.</b> 관절별 − · + 버튼 (Single, WeGo 자료)</figcaption></figure>
+    <figure class="light"><img src="assets/fr_006.png" alt=""><figcaption data-fig="fig-tp-multi"><b>그림 6.</b> 관절별 슬라이드 바 (Multi, WeGo 자료)</figcaption></figure>
+  </div>
+  <p>로봇의 속도와 가속도도 설정할 수 있습니다(그림 7).</p>
+  <figure class="light f60"><img src="assets/fr_007.png" alt=""><figcaption data-fig="fig-tp-speed"><b>그림 7.</b> 속도 · 가속도 설정 (WeGo 자료)</figcaption></figure>
+  <div class="box note"><div class="h">참고 · 자세한 사용법</div>
+    <p>티칭 펜던트의 자세한 사용법은 별도로 제공되는 FAIRINO 사용자 설명서나 FAIRINO 공식 문서
+      (<a href="https://fairino-doc-en.readthedocs.io/latest/">https://fairino-doc-en.readthedocs.io/latest/</a>)를 참고하십시오.</p></div>
+
+  <h2 id="c4-s3">패킹 자세로 옮기기</h2>
+  <p><span class="ui">Application</span> → <span class="ui">Tool App</span> → <span class="ui">Robot packing</span>에서 로봇을 패킹(포장) 자세로 초기화할 수 있습니다.</p>
+  <div class="box warn"><div class="h">경고 · 패킹 자세로 옮길 때</div>
+    <p>이 기능을 쓸 때는 로봇의 속도를 줄이고, 주변 환경을 점검해 로봇이 부딪힐 요인을 없앤 뒤 실행하십시오.</p></div>
+  <ol class="steps">
+    <li><b><span class="ui">Application</span> → <span class="ui">Tool App</span> → <span class="ui">Robot packing</span>을 여십시오.</b>그림 8의 화면이 나타납니다.</li>
+    <li><b>로봇을 영점으로 옮기십시오.</b><span class="ui">Move to zero point</span>의 <span class="ui">Move</span>를 누릅니다.
+      화면의 2단계 안내대로, 로봇의 기계적 영점이 맞는지와 각 관절의 주황색 원 안의 틈이 그림처럼 맞춰져 있는지 확인합니다.</li>
+    <li><b>로봇을 패킹 자세로 옮기십시오.</b><span class="ui">Move to packaging point</span>의 <span class="ui">Move</span>를 누릅니다.</li>
+  </ol>
+  <figure class="light f60"><img src="assets/fr_008.png" alt=""><figcaption data-fig="fig-tp-packing"><b>그림 8.</b> Robot Packaging 화면 (WeGo 자료)</figcaption></figure>
+</section>
+
+<!-- ═══════════════════════ 5 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">웹(WebApp)에서 제어</h1></div>
+  <p class="lede">노트북을 LAN 케이블로 연결하고 웹 브라우저에서 FAIRINO WebApp에 접속합니다. 그리퍼 설정과 접속 IP 변경도 WebApp에서 합니다.</p>
+
+  <h2 id="c5-s1">노트북 연결</h2>
+  <p>티칭 펜던트를 떼어 내고 비상 정지 버튼으로 바꿔 연결한 뒤, LAN 케이블을 노트북에 연결하십시오.</p>
+  <figure class="light f80"><img src="assets/fr_009.jpg" alt=""><figcaption data-fig="fig-estop-lan"><b>그림 9.</b> 비상 정지 버튼과 노트북을 LAN 케이블로 연결한 모습 (WeGo 자료)</figcaption></figure>
+
+  <h2 id="c5-s2">노트북 네트워크 설정 (Ubuntu)</h2>
+  <ol class="steps">
+    <li><b>유선 설정을 여십시오.</b>LAN 케이블을 연결한 뒤 화면 오른쪽 위를 누르고 <span class="ui">Wired Connected</span> → <span class="ui">Wired Settings</span>를 누릅니다.
+      <figure class="light h70"><img src="assets/fr_010.png" alt=""><figcaption data-fig="fig-ub-menu"><b>그림 10.</b> Ubuntu 오른쪽 위 메뉴 (WeGo 자료)</figcaption></figure></li>
+    <li><b><span class="ui">Network</span>의 <span class="ui">Wired</span> 항목에서 톱니바퀴를 누르십시오.</b>
+      <figure class="light f80"><img src="assets/fr_011.png" alt=""><figcaption data-fig="fig-ub-wired"><b>그림 11.</b> Network 설정의 Wired 항목 (WeGo 자료)</figcaption></figure></li>
+    <li><b>IPv4 주소를 수동으로 설정하십시오.</b><span class="ui">IPv4</span> 탭에서 <span class="ui">Manual</span>을 고르고 그림 12처럼 입력합니다.
+      Address는 192.168.58.2를 뺀 같은 대역(192.168.58.x)의 주소로 정합니다 (그림의 예: Address 192.168.58.99, Netmask 255.255.255.0).
+      <figure class="light f80"><img src="assets/fr_012.png" alt=""><figcaption data-fig="fig-ub-ipv4"><b>그림 12.</b> IPv4 수동 설정 (WeGo 자료)</figcaption></figure></li>
+    <li><b><span class="ui">Apply</span>를 눌러 저장하십시오.</b>저장한 뒤 <span class="ui">Wired</span> 항목의 <span class="ui">ON</span> 스위치를 껐다가 다시 켭니다.
+      <figure class="light f80"><img src="assets/fr_013.png" alt=""><figcaption data-fig="fig-ub-apply"><b>그림 13.</b> Wired 스위치를 껐다가 다시 켜기 (WeGo 자료)</figcaption></figure></li>
+  </ol>
+
+  <h2 id="c5-s3">WebApp 접속</h2>
+  <p>웹 브라우저 주소창에 <code>192.168.58.2</code>를 입력하고 로그인하면 그림 14의 화면이 나타납니다.</p>
+  <figure class="light"><img src="assets/fr_014.png" alt=""><figcaption data-fig="fig-web-main"><b>그림 14.</b> FAIRINO WebApp 화면 (WebApp V4.0.0, WeGo 자료)</figcaption></figure>
+
+  <h2 id="c5-s4">그리퍼 설정</h2>
+  <p>그리퍼를 로봇에 연결한 뒤 컨트롤 박스를 켜고 WebApp에 들어가십시오.</p>
+  <div class="box caution"><div class="h">주의 · 그리퍼를 비워 두십시오</div>
+    <p>활성화할 때 그리퍼에 물체가 없어야 합니다.</p></div>
+  <ol class="steps">
+    <li><b><span class="ui">초기설정</span> → <span class="ui">주변기기</span> → <span class="ui">그리퍼</span> → <span class="ui">Device adapted</span>를 고르십시오.</b></li>
+    <li><b>사용할 그리퍼에 맞게 설정하고 <span class="ui">Configure</span>를 누르십시오.</b>제조사(manufacturer), 유형(Type), 소프트웨어 버전(Software version), 장착 위치(Mount location)를 고릅니다.</li>
+    <li><b><span class="ui">Reset</span> → <span class="ui">Active</span>를 누르십시오.</b>그리퍼가 활성화됩니다.</li>
+  </ol>
+  <figure class="light h95"><img src="assets/fr_015.png" alt=""><figcaption data-fig="fig-web-gripper"><b>그림 15.</b> 그리퍼 설정 화면 (Device adapted, WeGo 자료)</figcaption></figure>
+
+  <h2 id="c5-s5">접속 IP 변경</h2>
+  <p><span class="ui">시스템 설정</span> → <span class="ui">일반 설정</span>에서 접속 IP를 바꿀 수 있습니다. <span class="ui">네트워크 설정</span>을 누른 뒤 재부팅하라는 창이 뜨면 재부팅하십시오.</p>
+  <table class="t">
+    <caption data-tbl="net"><b>표 3.</b> 컨트롤 박스의 네트워크 포트</caption>
+    <thead><tr><th>포트</th><th>장치</th><th>IP</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>Eth0</td><td>컨트롤 박스 (Control Box)</td><td>192.168.57.2</td><td>WebRecovery. 업그레이드 · 다운그레이드 임의 조작 금지</td></tr>
+      <tr><td>Eth1</td><td>비상 정지 버튼 (Emergency Stop Button)</td><td>192.168.58.2</td><td>WebApp 접속 주소</td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · WebApp과 WebRecovery 네트워크</div>
+    <p>그림 16처럼 WebApp과 WebRecovery의 네트워크를 겹치지 않게 고르십시오. 겹치면 WebApp에 접속하지 못할 수 있습니다.</p></div>
+  <div class="box caution"><div class="h">주의 · WebRecovery</div>
+    <p>Eth0(192.168.57.2)의 WebRecovery에서 업그레이드 · 다운그레이드를 임의로 조작하지 마십시오.</p></div>
+  <div class="box note"><div class="h">참고 · 티칭 펜던트를 쓸 때</div>
+    <p><span class="ui">티칭펜던트 사용</span>을 켜면 WebApp은 Eth1(192.168.58.2)로 고정됩니다.</p></div>
+  <figure class="light"><img src="assets/fr_016.png" alt=""><figcaption data-fig="fig-web-net"><b>그림 16.</b> Network Settings 화면 — Eth0 · Eth1 주소와 WebApp · WebRecovery 접속 포트 (WeGo 자료)</figcaption></figure>
+</section>
+
+<!-- ═══════════════════════ 6 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">SDK로 제어</h1></div>
+  <p class="lede">SDK의 함수 설명과 최근 업데이트는 FAIRINO 공식 문서에, 예제는 FAIRINO GitHub에 있습니다.</p>
+
+  <h2 id="c6-s1">FAIRINO 공식 문서</h2>
+  <p>자세한 내용과 최근 업데이트 내용은 아래 링크에서 확인할 수 있습니다.</p>
+  <p>FAIRINO 문서: <a href="https://fairino-doc-en.readthedocs.io/latest/">https://fairino-doc-en.readthedocs.io/latest/</a></p>
+  <p>접속한 뒤 왼쪽 패널의 <span class="ui">SDK Manual</span>에서 원하는 언어의 설명서를 고르십시오.</p>
+  <div class="two">
+    <figure class="light"><img src="assets/fr_017.png" alt=""><figcaption data-fig="fig-doc-sdk"><b>그림 17.</b> 왼쪽 패널의 SDK Manual (FAIRINO 문서 화면)</figcaption></figure>
+    <figure class="light h70"><img src="assets/fr_018.png" alt=""><figcaption data-fig="fig-doc-lang"><b>그림 18.</b> SDK Manual의 언어 선택 (예: Python, FAIRINO 문서 화면)</figcaption></figure>
+  </div>
+  <p>함수마다 설명과 예제가 있으므로, 이 자료를 참고해 개발하십시오.</p>
+  <figure class="light f80"><img src="assets/fr_019.png" alt=""><figcaption data-fig="fig-doc-func"><b>그림 19.</b> SDK Manual의 함수 설명 예 (Python · 4. Movement, FAIRINO 문서 화면)</figcaption></figure>
+
+  <h2 id="c6-s2">개발 사례와 예제</h2>
+  <p>SDK를 활용한 개발 사례 (WeGo Robotics 유튜브): <a href="https://youtu.be/YPLGYPv6cLs">https://youtu.be/YPLGYPv6cLs</a></p>
+  <p>관련 예제는 FAIRINO GitHub를 참고하십시오: <a href="https://github.com/FAIR-INNOVATION">https://github.com/FAIR-INNOVATION</a></p>
+  <figure class="light f80"><img src="assets/fr_020.png" alt=""><figcaption data-fig="fig-github"><b>그림 20.</b> FAIRINO GitHub (FAIR-INNOVATION) 화면</figcaption></figure>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>
