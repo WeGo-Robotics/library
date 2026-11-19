@@ -144,3 +144,10 @@
   .lp-hb{ font-size:12px; font-weight:700; color:var(--blue); }
   .lp-hs{ display:block; font-size:13.5px; line-height:1.55; color:var(--ink3); }
 }
+
+/* Watermark on the book pages (not the landing page): the same faint logo, fixed in the middle of the window. */
+@media screen {
+  body:has(.wm-main)::after{ content:""; position:fixed; left:50%; top:50%; width:min(520px, 70vw); aspect-ratio:906/275; z-index:20;
+                             pointer-events:none; transform:translate(-50%,-50%) rotate(-30deg); opacity:.05;
+                             background:url(../img/wego_logo.png) center/contain no-repeat; }
+}

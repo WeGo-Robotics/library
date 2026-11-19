@@ -173,3 +173,13 @@ table.t caption b{ color:var(--ink2); }
    that the subset lacks (because Pretendard has it) falls back to Pretendard. */
 @font-face { font-family:"Pretendard"; font-weight:100 900; src:url("../fonts/NotoSansCJKsc-Subset.otf");
              unicode-range:U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+
+/* ── watermark ─────────────────────────────────────────────────────────── */
+/* A faint WeGo logo on every printed page: Chrome repeats a position:fixed box on each page.
+   Out of the flow and text-free, so it moves nothing and adds nothing to the PDF text or search.
+   Kept narrower than the content box (142 mm) so it can never trigger Chrome's shrink-to-fit. */
+@media print {
+  body::after{ content:""; position:fixed; left:50%; top:50%; width:105mm; height:32mm; z-index:50; pointer-events:none;
+               transform:translate(-50%,-50%) rotate(-30deg); opacity:.06;
+               background:url(../img/wego_logo.png) center/contain no-repeat; }
+}
