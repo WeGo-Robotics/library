@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Unitree_R1_Manual_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 운용 설명서</span><span class="wm-ver">버전 2026.11.19</span><a class="wm-pdf" href="../pdf/Unitree_R1_Manual_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템 구성</a></summary><a class="wm-t2" href="#c1-s1">모델 구분</a><a class="wm-t2" href="#c1-s2">세 가지 제어 경로</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">운용 전 점검</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>하드웨어</a></summary><a class="wm-t2" href="#c3-s1">관절 구성</a><a class="wm-t2" href="#c3-s2">상단 인터페이스</a><a class="wm-t2" href="#c3-s3">머리 카메라</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>리모컨과 운용 모드</a></summary><a class="wm-t2" href="#c4-s1">모드와 LED 색</a><a class="wm-t2" href="#c4-s2">리모컨 각 부분</a><a class="wm-t2" href="#c4-s3">리모컨 조작</a><a class="wm-t2" href="#c4-s4">리모컨 바인딩</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>개봉 · 거치대 · 포장</a></summary><a class="wm-t2" href="#c5-s1">A. 개봉</a><a class="wm-t2" href="#c5-s2">B. 거치대 조립</a><a class="wm-t2" href="#c5-s3">C. 포장</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>시작 · 종료 순서</a></summary><a class="wm-t2" href="#c6-s1">A. 거치대에서 시작</a><a class="wm-t2" href="#c6-s2">B. 누운 자세에서 시작</a><a class="wm-t2" href="#c6-s3">C. 종료</a><a class="wm-t2" href="#c6-s4">D. 앱 연결 — AP 모드 · Wi-Fi 모드</a><a class="wm-t2" href="#c6-s5">앱으로 확인할 것 · 바인딩 해제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>관절 · IMU 교정</a></summary><a class="wm-t2" href="#c7-s1">관절 교정</a><a class="wm-t2" href="#c7-s2">IMU 교정</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>음성 비서와 오디오 재생</a></summary><a class="wm-t2" href="#c8-s1">대화 모드</a><a class="wm-t2" href="#c8-s2">오디오 재생</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>R1 EDU 개발 안내</a></summary><a class="wm-t2" href="#c9-s1">네트워크</a><a class="wm-t2" href="#c9-s2">유선 연결 · SSH 접속</a></details><a class="wm-t1" href="#c10"><span class="wm-n">10</span>WeGo Humanoid Studio 미리보기</a><a class="wm-t1" href="#c11"><span class="wm-n">11</span>문제 해결</a><a class="wm-t1" href="#c12"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
@@ -33,7 +33,7 @@
     R1을 안전하게 다루는 데 필요한 내용을 한 권에 정리했습니다. 2차 개발은 별도의 개발 설명서를 보십시오.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/r1_render_wave.png" alt="Unitree R1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.19</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 판권 ═══════════════════════ -->
@@ -47,7 +47,7 @@
         앱 연결은 Unitree <i>G1 User Manual</i> V1.0(같은 Unitree Explore 앱)과 WeGo 입고 검수 절차</td></tr>
       <tr><td>실측 자료</td><td>WeGo의 R1 운용 · 개발 기록 (2026년 8 ~ 10월)</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="r1-developer" href="../r1-developer/"><b>Unitree R1 개발 설명서</b></a> (R1 EDU의 SDK 개발)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.19</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>본문의 <span class="src">문서</span> 표시는 Unitree 공식 자료(개발자 문서 · 교육 영상 · 리모컨 스티커)와 WeGo 사용 매뉴얼의 내용이고, <span class="src r">실측</span> 표시는 WeGo가 직접 확인한 내용입니다.
@@ -604,7 +604,7 @@
       <tr><td>2장</td><td>모든 관절의 직접 제어 (<code>rt/lowcmd</code>, 디버그 모드)</td></tr>
       <tr><td>3장</td><td>다관절 손 제어 (Dex1-1 · Dex2/5 · Dex3-1 · BrainCo Revo2 · LinkerHand O6)</td></tr>
       <tr><td>4장</td><td>DDS 토픽 · 로봇 상태 · 저수준 메시지</td></tr>
-      <tr><td>5장</td><td>보행 명령, 음성 · 조명, 머리 카메라 영상, SLAM 내비게이션 (Mid360 라이다)</td></tr>
+      <tr><td>5장</td><td>보행 명령, 음성 · 조명, 머리 카메라 영상, SLAM 내비게이션 (R1-A-D 모델의 Livox Mid360 라이다, R1-EDU 제외)</td></tr>
       <tr><td>6장</td><td>균형은 로봇에 맡긴 채 팔 · 허리 요 · 머리 제어, 내장 팔 동작 실행</td></tr>
       <tr><td>7 ~ 9장</td><td>ROS 2 연동 · 오류 코드 · 백팩 설치와 시스템 백업</td></tr>
     </tbody>
@@ -615,7 +615,7 @@
     <tbody>
       <tr><td>운동 제어 컴퓨터 (PC1)</td><td class="mono">192.168.123.161</td><td>Unitree 공식 서비스 전용, 사용자 개발 불가</td></tr>
       <tr><td>개발 연산 유닛 (PC2)</td><td class="mono">192.168.123.164</td><td>EDU 백팩 (Jetson Orin NX / Nano). 여기서 개발합니다</td></tr>
-      <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>SLAM 구성만</td></tr>
+      <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>R1-A-D 모델만 (R1-EDU에는 없음)</td></tr>
       <tr><td>개발 PC</td><td class="mono">192.168.123.99</td><td>권장. 넷마스크 255.255.255.0, 겹치지 않는 192.168.123.x면 됩니다</td></tr>
     </tbody>
   </table>

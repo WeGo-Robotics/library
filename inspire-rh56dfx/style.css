@@ -5,3 +5,5 @@ table.t.regs td:nth-child(2) code{ white-space:nowrap; }
 /* cover: Inspire's product photo as published (own light background, no cut-out), in a rounded frame;
    the same size and place on all four Inspire books */
 .cover .hero{ height:auto; width:88mm; right:18mm; bottom:25mm; border-radius:3mm; }
+/* the long G1 example class (10장) runs on across pages instead of jumping whole to the next page and leaving one mostly blank */
+pre.cmd.long{ break-inside:auto; }

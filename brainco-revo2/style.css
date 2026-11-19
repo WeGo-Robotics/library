@@ -1,0 +1,13 @@
+/* BrainCo Revo2 operator manual */
+/* cover: the hand render is taller than wide; smaller than the shared .hero and kept above the foot rule so it clears the lead text */
+.cover .hero{ height:108mm; right:8mm; bottom:24mm; }
+table.t td code{ word-break:normal; overflow-wrap:anywhere; }   /* long names must not widen the page (Chrome would shrink the whole PDF) */
+table.t.keep{ break-inside:avoid; }
+/* troubleshooting: symptom column needs room for log lines */
+table.t.ts td:first-child{ width:34%; white-space:normal; }
+table.t.ts td:nth-child(2){ width:24%; }
+/* control-path and mode tables: code names need the room */
+table.t.paths td:first-child{ width:42%; }
+table.t.modes td:nth-child(3){ width:46%; }
+table.t.joints td:nth-child(3), table.t.joints td:nth-child(4), table.t.joints td:nth-child(7){ white-space:nowrap; }
+table.t.joints td code{ overflow-wrap:normal; }

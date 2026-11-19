@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Inspire RH56F1 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Inspire_RH56F1_Manual_KO.pdf">PDF 다운로드</a></header>
-<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">주요 특징</a><a class="wm-t2" href="#c1-s2">구조와 치수</a><a class="wm-t2" href="#c1-s3">성능 사양</a><a class="wm-t2" href="#c1-s4">원문 설명서와 제조사</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">안전 등급</a><a class="wm-t2" href="#c2-s2">개봉과 인수</a><a class="wm-t2" href="#c2-s3">보관과 운송</a><a class="wm-t2" href="#c2-s4">설치</a><a class="wm-t2" href="#c2-s5">배선</a><a class="wm-t2" href="#c2-s6">전원 투입</a><a class="wm-t2" href="#c2-s7">이상이 생겼을 때</a><a class="wm-t2" href="#c2-s8">사용 종료와 폐기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>전기 연결과 통신 방식</a></summary><a class="wm-t2" href="#c3-s1">손목 커넥터 핀 정의</a><a class="wm-t2" href="#c3-s2">외부 케이블</a><a class="wm-t2" href="#c3-s3">통신 방식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>RS485 프로토콜</a></summary><a class="wm-t2" href="#c4-s1">통신 프로토콜 개요</a><a class="wm-t2" href="#c4-s2">RS485 개요</a><a class="wm-t2" href="#c4-s3">레지스터 읽기</a><a class="wm-t2" href="#c4-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Modbus RTU</a></summary><a class="wm-t2" href="#c5-s1">Modbus RTU 개요</a><a class="wm-t2" href="#c5-s2">보유 레지스터 읽기 (0x03)</a><a class="wm-t2" href="#c5-s3">단일 레지스터 프리셋 (0x06)</a><a class="wm-t2" href="#c5-s4">다중 레지스터 프리셋 (0x10)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>CAN FD 프로토콜</a></summary><a class="wm-t2" href="#c6-s1">CAN FD 개요</a><a class="wm-t2" href="#c6-s2">CAN FD 확장 프레임 형식</a><a class="wm-t2" href="#c6-s3">레지스터 읽기</a><a class="wm-t2" href="#c6-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>레지스터</a></summary><a class="wm-t2" href="#c7-s1">레지스터 목록</a><a class="wm-t2" href="#c7-s2">시스템 설정</a><a class="wm-t2" href="#c7-s3">보호값과 전원 투입 설정값</a><a class="wm-t2" href="#c7-s4">동작 설정값</a><a class="wm-t2" href="#c7-s5">상태 읽기</a><a class="wm-t2" href="#c7-s6">손가락 동작 모드 (1100 ~ 1105)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>촉각 센서</a></summary><a class="wm-t2" href="#c8-s1">촉각 데이터 형식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EtherCAT</a></summary><a class="wm-t2" href="#c9-s1">EtherCAT 개요</a><a class="wm-t2" href="#c9-s2">PDO 객체 사전</a><a class="wm-t2" href="#c9-s3">SDO 객체 사전</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>자주 쓰는 명령 예</a></summary><a class="wm-t2" href="#c10-s1">예 1 · ID 바꾸기</a><a class="wm-t2" href="#c10-s2">예 2 · 보율 바꾸기</a><a class="wm-t2" href="#c10-s3">예 3 · 오류 해제</a><a class="wm-t2" href="#c10-s4">예 4 · 파라미터 저장</a><a class="wm-t2" href="#c10-s5">예 5 · 힘 센서 보정</a><a class="wm-t2" href="#c10-s6">예 6 · 자유도별 힘 제어 임계값 설정</a><a class="wm-t2" href="#c10-s7">예 7 · 자유도별 속도 설정</a><a class="wm-t2" href="#c10-s8">예 8 · 자유도별 각도 설정</a><a class="wm-t2" href="#c10-s9">예 9 · 자유도별 현재 각도 읽기</a></details></nav><main class="wm-main">
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Inspire RH56F1 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.19</span><a class="wm-pdf" href="../pdf/Inspire_RH56F1_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">주요 특징</a><a class="wm-t2" href="#c1-s2">구조와 치수</a><a class="wm-t2" href="#c1-s3">성능 사양</a><a class="wm-t2" href="#c1-s4">원문 설명서와 제조사</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">안전 등급</a><a class="wm-t2" href="#c2-s2">개봉과 인수</a><a class="wm-t2" href="#c2-s3">보관과 운송</a><a class="wm-t2" href="#c2-s4">설치</a><a class="wm-t2" href="#c2-s5">배선</a><a class="wm-t2" href="#c2-s6">전원 투입</a><a class="wm-t2" href="#c2-s7">이상이 생겼을 때</a><a class="wm-t2" href="#c2-s8">사용 종료와 폐기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>전기 연결과 통신 방식</a></summary><a class="wm-t2" href="#c3-s1">손목 커넥터 핀 정의</a><a class="wm-t2" href="#c3-s2">외부 케이블</a><a class="wm-t2" href="#c3-s3">통신 방식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>RS485 프로토콜</a></summary><a class="wm-t2" href="#c4-s1">통신 프로토콜 개요</a><a class="wm-t2" href="#c4-s2">RS485 개요</a><a class="wm-t2" href="#c4-s3">레지스터 읽기</a><a class="wm-t2" href="#c4-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Modbus RTU</a></summary><a class="wm-t2" href="#c5-s1">Modbus RTU 개요</a><a class="wm-t2" href="#c5-s2">보유 레지스터 읽기 (0x03)</a><a class="wm-t2" href="#c5-s3">단일 레지스터 프리셋 (0x06)</a><a class="wm-t2" href="#c5-s4">다중 레지스터 프리셋 (0x10)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>CAN FD 프로토콜</a></summary><a class="wm-t2" href="#c6-s1">CAN FD 개요</a><a class="wm-t2" href="#c6-s2">CAN FD 확장 프레임 형식</a><a class="wm-t2" href="#c6-s3">레지스터 읽기</a><a class="wm-t2" href="#c6-s4">레지스터 쓰기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>레지스터</a></summary><a class="wm-t2" href="#c7-s1">레지스터 목록</a><a class="wm-t2" href="#c7-s2">시스템 설정</a><a class="wm-t2" href="#c7-s3">보호값과 전원 투입 설정값</a><a class="wm-t2" href="#c7-s4">동작 설정값</a><a class="wm-t2" href="#c7-s5">상태 읽기</a><a class="wm-t2" href="#c7-s6">손가락 동작 모드 (1100 ~ 1105)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>촉각 센서</a></summary><a class="wm-t2" href="#c8-s1">촉각 데이터 형식</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EtherCAT</a></summary><a class="wm-t2" href="#c9-s1">EtherCAT 개요</a><a class="wm-t2" href="#c9-s2">PDO 객체 사전</a><a class="wm-t2" href="#c9-s3">SDO 객체 사전</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>자주 쓰는 명령 예</a></summary><a class="wm-t2" href="#c10-s1">예 1 · ID 바꾸기</a><a class="wm-t2" href="#c10-s2">예 2 · 보율 바꾸기</a><a class="wm-t2" href="#c10-s3">예 3 · 오류 해제</a><a class="wm-t2" href="#c10-s4">예 4 · 파라미터 저장</a><a class="wm-t2" href="#c10-s5">예 5 · 힘 센서 보정</a><a class="wm-t2" href="#c10-s6">예 6 · 자유도별 힘 제어 임계값 설정</a><a class="wm-t2" href="#c10-s7">예 7 · 자유도별 속도 설정</a><a class="wm-t2" href="#c10-s8">예 8 · 자유도별 각도 설정</a><a class="wm-t2" href="#c10-s9">예 9 · 자유도별 현재 각도 읽기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>Unitree G1 연동</a></summary><a class="wm-t2" href="#c11-s1">연동 구성</a><a class="wm-t2" href="#c11-s2">손 준비와 배선</a><a class="wm-t2" href="#c11-s3">로봇에 브리지 설치</a><a class="wm-t2" href="#c11-s4">브리지 실행 인자</a><a class="wm-t2" href="#c11-s5">DDS 토픽과 메시지</a><a class="wm-t2" href="#c11-s6">힘 모드</a><a class="wm-t2" href="#c11-s7">안전 동작</a><a class="wm-t2" href="#c11-s8">Studio Pro에서 쓰기</a><a class="wm-t2" href="#c11-s9">확인과 문제 해결</a></details></nav><main class="wm-main">
 
 
 <!-- ═══════════════════════ 표지 ═══════════════════════ -->
@@ -31,9 +31,9 @@
   <div class="title2">6자유도 · 관절 12개 · RS485 · CAN FD · EtherCAT</div>
   <div class="bar"></div>
   <p class="lead">안전 수칙과 사양, 손목 커넥터 핀 정의, RS485 · Modbus RTU · CAN FD · EtherCAT 프로토콜, 레지스터 전체와 촉각 센서 데이터,
-    자주 쓰는 명령 예를 Inspire-Robots 공식 사용 설명서에서 옮겼습니다.</p>
+    자주 쓰는 명령 예를 Inspire-Robots 공식 사용 설명서에서 옮겼습니다. WeGo 소프트웨어로 Unitree G1에서 쓰는 방법도 함께 실었습니다.</p>
   <img class="hero" src="assets/cover.jpg" alt="Inspire RH56F1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.19</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -43,14 +43,17 @@
     <table>
       <tr><td>로봇</td><td>Inspire RH56F1 다관절 손 (6자유도 · 관절 12개, 손가락 끝과 손바닥의 촉각 센서, RS485 + EtherCAT 또는 CAN FD + EtherCAT)</td></tr>
       <tr><td>근거 문서</td><td>Inspire-Robots <i>Dexterous Hands User Manual for RH56F1</i> V1.2 (파일 이름 RH56F1-User-ManualV1.2.pdf, 표지 표기 V1.0 · 2025-06 · PRJ-02-TS-U-015) ·
-        대조: Inspire 중국어판 <i>仿人五指灵巧手 RH56F1系列用户手册</i> V1.0.0 (2025-06, PRJ-02-TS-U-001, V1.0.1 변경 추적이 들어 있는 docx)</td></tr>
-      <tr><td>함께 보는 책</td><td><a data-manual="inspire-rh5dg2" href="../inspire-rh5dg2/">Inspire RH5DG2 운용 설명서</a> (같은 8핀 항공 플러그와 케이블 색, 같은 RS485 프레임 형식)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+        대조: Inspire 중국어판 <i>仿人五指灵巧手 RH56F1系列用户手册</i> V1.0.0 (2025-06, PRJ-02-TS-U-001, V1.0.1 변경 추적이 들어 있는 docx) ·
+        11장 비교: Unitree 문서 센터 <i>G1 SDK Development Guide</i>의 손 페이지 (2026-11-06 수집)</td></tr>
+      <tr><td>소프트웨어</td><td>11장: WeGo Humanoid Studio Pro · WeGo Humanoid Studio 2.1.0 소스의 RH56F1 DDS 브리지와 로봇 설치 키트 (2026-11-19 확인)</td></tr>
+      <tr><td>함께 보는 책</td><td><a data-manual="inspire-rh5dg2" href="../inspire-rh5dg2/">Inspire RH5DG2 운용 설명서</a> (같은 8핀 항공 플러그와 케이블 색, 같은 RS485 프레임 형식) ·
+        <a data-manual="studio-pro-guide-ko" href="../studio-pro-guide-ko/">WeGo Humanoid Studio Pro 사용 가이드</a> (11장, 손 원격조작)</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.19</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>이 책은 Inspire 공식 사용 설명서(영문) V1.2 전체를 옮긴 것이며, 장 순서는 WeGo 설명서 형식에 맞췄습니다 (원문의 안전 수칙을 2장으로, 원문 1.4절 '전기 연결'을 3장으로, 원문 2장 '통신 프로토콜'을 4 ~ 9장으로, 원문 3장 '자주 쓰는 명령 예'를 10장으로).
       원문의 오류나 앞뒤가 맞지 않는 곳은 값을 고치지 않고 그 자리에 <b>문서 오류</b> · <b>문서 차이</b> 상자로 적었습니다. 영문판 V1.2와 중국어판 V1.0이 다를 때는 V1.2를 따르고, 범위 · 주소 · 레지스터처럼 사용에 영향을 주는 차이만 상자에 적었습니다.
-      체크섬 · CRC 가운데 이 책이 계산한 값은 그 자리에 '이 책이 계산'이라고 밝혔습니다.</p>
+      체크섬 · CRC 가운데 이 책이 계산한 값은 그 자리에 '이 책이 계산'이라고 밝혔습니다. 11장 'Unitree G1 연동'은 원문에 없는 WeGo의 내용으로, WeGo 소프트웨어의 소스에서 옮겼습니다.</p>
     <p>Inspire는 원문의 정확성에 최선을 다하지만 기술적 오류나 오탈자가 없음을 보증하지 않는다고 밝힙니다. 고친 내용은 다음 판에 반영하며, 사용자에게 미리 알리지 않고 고칠 수 있다고 덧붙입니다. ID와 보율은 원문에 적힌 공장 기본값입니다.</p>
     <p class="copy">© WeGo Robotics (한국어 번역) · 원문 © Beijing Inspire-Robots Technology Co., Ltd. WeGo Robotics는 Inspire-Robots의 공식 파트너입니다. 표지의 RH56F1 사진은 Inspire-Robots가 웹사이트(en.inspire-robots.com)에 올린 제품 사진을 그대로 실은 것입니다.</p>
   </div>
@@ -71,6 +74,7 @@
     <li><span class="n">08</span><span class="t">촉각 센서</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
     <li><span class="n">09</span><span class="t">EtherCAT</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
     <li><span class="n">10</span><span class="t">자주 쓰는 명령 예</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t">Unitree G1 연동</span><span class="d"></span><span class="p" data-toc="c11"></span></li>
   </ol>
 </section>
 
@@ -1542,6 +1546,197 @@ EB 90 01 04 11 28 04 0C 4E</pre>
       <li><b>예 5</b>: 명령 프레임의 주소는 0x03F1(1009)인데, 7장 표의 힘 센서 보정 주소는 1007(0x03EF)입니다. 인쇄된 체크섬 0x0B는 0x03EF로 계산한 값과 같고, 0x03F1로 계산하면 0x0D입니다. 둘째 응답의 주소 0x0002는 레지스터 표에 없습니다.</li>
       <li><b>예 8</b>: 다섯째 값 1000은 1044 '엄지 굽힘 각도 설정'에 들어가는데, 7장 표의 범위는 −1, 1100 ~ 1350입니다.</li>
     </ul></div>
+</section>
+
+<!-- ═══════════════════════ 11 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">Unitree G1 연동</h1></div>
+  <p class="lede">Unitree G1에 단 RH56F1은 WeGo 소프트웨어로 구동합니다. G1의 PC2(개발 연산 유닛)에서 도는 브리지 프로그램이 RS485로 두 손을 움직이고, 작업자 PC의 WeGo Humanoid Studio Pro가 로봇 네트워크의 DDS로 브리지에 명령을 보냅니다. <span class="src r">SDK</span></p>
+  <div class="box note"><div class="h">참고 · Unitree 문서에는 RH56F1이 없습니다</div>
+    <p>Unitree의 G1 개발 문서는 Unitree의 손 · 그리퍼(Dex3-1 · Dex2-5 · Dex1-1)와 Inspire FTP(<a data-manual="inspire-rh56e2" href="../inspire-rh56e2/">Inspire RH56E2 · RH56DFTP 운용 설명서</a> 9장) · Inspire DFX(<a data-manual="inspire-rh56dfx" href="../inspire-rh56dfx/">Inspire RH56DFX 운용 설명서</a> 10장) · BrainCo 손을 다루며, RH56F1은 다루지 않습니다.
+      이 장은 Unitree나 Inspire의 문서가 아니라 WeGo 소프트웨어(Humanoid Studio Pro, Humanoid Studio 2.1.0)의 소스에서 옮긴 것입니다. 브리지는 Unitree 손 서비스의 토픽이 아닌 WeGo 전용 토픽(<code>rt/rh56f1/…</code>)을 씁니다.</p></div>
+
+  <h2 id="c11-s1">연동 구성 <span class="src r">SDK</span></h2>
+  <p>두 손은 RS485 버스 하나를 같이 쓰며, USB-직렬 변환기 하나로 PC2에 연결합니다. 브리지(<code>serial_dds_bridge.py</code>)는 PC2에서 손에 각도 명령을 쓰고 손의 상태를 읽어, 로봇 네트워크(192.168.123.0/24)의 DDS 토픽으로 작업자 PC와 주고받습니다.</p>
+  <table class="t tight wrap1 keep">
+    <caption data-tbl="tbl-g1-parts"><b>표 57.</b> RH56F1 G1 연동 구성</caption>
+    <thead><tr><th>위치</th><th>구성 요소</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>작업자 PC</td><td>Studio Pro의 <span class="ui">HAND TELEOP</span> 카드 (<span class="ui">RH56F1 (DDS bridge)</span>)</td><td>장갑의 손가락 동작을 손 관절 각도로 바꿔 <code>rt/rh56f1/cmd</code>로 50 Hz로 보냅니다.</td></tr>
+      <tr><td>로봇 네트워크</td><td>DDS (도메인 0)</td><td>명령 토픽 <code>rt/rh56f1/cmd</code>와 상태 토픽 <code>rt/rh56f1/state</code>를 나릅니다.</td></tr>
+      <tr><td>G1 PC2</td><td><code>serial_dds_bridge.py</code></td><td>명령을 각도 설정값(1040 ~ 1045)으로 바꿔 손마다 50 Hz로 쓰고, 실제 각도(1064 ~ 1069)와 실제 힘(1070 ~ 1075)을 25 Hz로 읽어 상태로 보냅니다.</td></tr>
+      <tr><td>PC2의 USB</td><td>USB-직렬 변환기 (<code>/dev/rh56f1</code>)</td><td>RS485 버스 하나에 두 손을 연결합니다 (오른손 ID 2 · 왼손 ID 1).</td></tr>
+    </tbody>
+  </table>
+  <p>Studio Pro는 브리지를 실행하지 않고, 이미 돌고 있는 브리지와 통신만 합니다. 브리지는 로봇에 한 번 설치하면 로봇이 켜질 때마다 저절로 시작합니다. WeGo Humanoid Studio(<a data-manual="studio-guide-ko" href="../studio-guide-ko/">WeGo Humanoid Studio 사용 가이드</a>)의 손 카드도 RH56F1을 같은 브리지로 구동합니다.</p>
+
+  <h2 id="c11-s2">손 준비와 배선 <span class="src r">SDK</span></h2>
+  <p>브리지는 4장의 RS485 프레임(헤더 EB 90)을 115200 bps로 보냅니다. 손을 G1에 연결하기 전에 다음을 맞추십시오.</p>
+  <ul>
+    <li><b>통신 인터페이스</b>: RS485 모델(RS485 + EtherCAT)을 쓰십시오. 브리지에는 CAN FD로 손을 구동하는 기능이 없습니다.</li>
+    <li><b>보율</b>: 보율 설정(1001)을 공장 기본값 0(115200 bps)으로 두십시오.</li>
+    <li><b>ID</b>: 두 손이 버스 하나에 있으므로 브리지는 ID로 손을 구별하며, 기본값은 오른손 2 · 왼손 1입니다. 손의 공장 기본 ID는 1이므로, 오른손만 버스에 연결한 상태에서 ID를 2로 바꾸고(10장 예 1) 파라미터를 저장하십시오(10장 예 4).</li>
+    <li><b>배선</b>: 두 손 외부 케이블의 485_A(노란색) · 485_B(초록색) 선을 같은 버스로 묶어 변환기에 연결합니다 (표 5).</li>
+    <li><b>변환기</b>: WeGo 설치 키트의 장치 규칙은 FTDI 칩(USB ID 0403:6001)을 쓰는 변환기를 일련번호로 찾아 <code>/dev/rh56f1</code>이라는 고정 이름을 붙입니다. 칩이 다른 변환기를 쓰면 규칙을 고치십시오.</li>
+    <li><b>전원</b>: 손마다 24 ~ 48 V를 공급하십시오. 최대 쥐는 힘일 때 전류는 4.0 A @ 24 V입니다 (표 1).</li>
+  </ul>
+  <div class="box note"><div class="h">참고 · 확인 필요</div>
+    <p>다음은 이 장의 근거 자료(WeGo 소프트웨어 소스, Unitree · Inspire 문서)에 없어 확인하지 못했습니다. 장착하기 전에 WeGo(go.support@wego-robotics.com)에 문의하십시오.</p>
+    <ul>
+      <li>G1 손목에 RH56F1을 다는 기계 플랜지 · 어댑터. WeGo 소프트웨어의 G1 + RH56F1 모델은 손을 손목 끝 링크(<code>wrist_yaw_link</code>)에 붙인 시뮬레이션 모델일 뿐입니다.</li>
+      <li>손의 8핀 항공 플러그에서 PC2까지의 케이블, 변환기 제품, PC2의 어느 USB 포트를 쓰는지. Unitree 문서는 Inspire FTP 손에 대해 'G1이 USB-직렬 모듈을 제공하며 PC2에 꽂는다'고 적지만, 그 모듈을 RH56F1에 써도 되는지는 확인하지 못했습니다.</li>
+      <li>손 전원을 G1에서 받을 수 있는지. Unitree의 G1 손 문서는 Inspire 손의 전원을 적지 않으며, 정격 전압은 Dex3-1의 24 V만 적습니다.</li>
+      <li>브리지 설치 키트를 받는 방법. 키트는 WeGo Humanoid Studio 설치 패키지에 들어 있고, Humanoid Studio Pro 설치 패키지에는 들어 있지 않습니다.</li>
+    </ul></div>
+
+  <h2 id="c11-s3">로봇에 브리지 설치 <span class="src r">SDK</span></h2>
+  <p>설치 키트는 WeGo Humanoid Studio 설치 폴더의 <code>jetson/</code>이며, 같은 폴더의 <code>bin/wego-deploy-g1</code>이 SSH로 키트를 로봇에 복사하고 설치합니다. 필요한 것이 모두 키트에 들어 있어 로봇에는 인터넷이 필요 없습니다.</p>
+  <ol class="steps">
+    <li><b>로봇 네트워크에 연결합니다.</b>작업자 PC를 로봇 네트워크(192.168.123.x)에 연결하고, 비밀번호 없는 SSH를 한 번 설정하십시오 (아래 명령). 로봇의 계정은 Unitree 공장 기본값 <code>unitree</code> / <code>123</code>입니다.</li>
+    <li><b>변환기를 꽂습니다.</b>손의 USB-직렬 변환기를 PC2에 꽂아 두십시오. 설치 프로그램이 변환기의 일련번호를 읽어 장치 규칙을 만듭니다. 꽂혀 있지 않으면 규칙에 <code>REPLACE_ME</code>가 남습니다.</li>
+    <li><b>설치 프로그램을 실행합니다.</b>Humanoid Studio 설치 폴더에서 <code>bin/wego-deploy-g1</code>을 실행합니다 (대상을 주지 않으면 <code>unitree@192.168.123.164</code>). 키트가 로봇의 <code>~/wego_g1_kit</code>에 복사되고, 그 안의 <code>jetson_install.sh</code>가 로봇에서 실행됩니다.</li>
+    <li><b>장치 규칙을 설치합니다.</b>설치 프로그램이 sudo를 쓸 수 없으면 규칙을 설치하지 않고 명령을 출력합니다. 그때는 로봇에서 그 명령을 실행하십시오.</li>
+    <li><b>브리지를 시작합니다.</b>처음 한 번은 로봇에서 <code>start_bridge.sh</code>를 직접 실행합니다. 그다음부터는 로봇이 켜질 때마다 저절로 시작합니다.</li>
+  </ol>
+<pre class="cmd"><span class="c"># 작업자 PC, Humanoid Studio 설치 폴더에서</span>
+ssh-copy-id unitree@192.168.123.164
+bin/wego-deploy-g1 unitree@192.168.123.164
+<span class="c"># 로봇에서: 설치 프로그램이 sudo를 쓰지 못했을 때만</span>
+sudo cp ~/rh56f1_deploy/99-rh56f1.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger
+<span class="c"># 로봇에서: 브리지 시작, 로그 보기</span>
+~/rh56f1_deploy/start_bridge.sh &amp;
+tail -f ~/rh56f1_bridge.log</pre>
+  <table class="t tight">
+    <caption data-tbl="tbl-g1-install"><b>표 58.</b> 로봇에 설치되는 것</caption>
+    <thead><tr><th>구성 요소</th><th>위치와 하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>브리지 프로그램</td><td><code>~/rh56f1_deploy/rh56f1_bridge/</code>의 <code>serial_dds_bridge.py</code> · <code>serial_hand.py</code> · <code>tactile_grasp.py</code> · <code>paths.py</code>. 손을 구동하고 DDS로 작업자 PC와 통신합니다.</td></tr>
+      <tr><td>Python 가상 환경</td><td><code>~/rh56f1_bridge_venv</code>. 로봇의 python3.8로 만든 브리지 전용 환경입니다.</td></tr>
+      <tr><td>cyclonedds 0.10.2</td><td>DDS 통신을 맡는 C 라이브러리와 Python 모듈. 로봇에 이미 있는 C 라이브러리를 쓰고, 없으면 <code>~/cyclonedds_c</code>에 빌드합니다.</td></tr>
+      <tr><td>unitree_sdk2py</td><td>Unitree DDS SDK. <code>~/wego_g1_kit/unitree_sdk2_python</code>을 가상 환경에 <code>.pth</code> 파일로 연결합니다.</td></tr>
+      <tr><td>pyserial · typing_extensions</td><td>직렬 통신과 python3.8 호환을 맡으며, 가상 환경에 설치합니다. typing_extensions는 4.7.1로 고정합니다.</td></tr>
+      <tr><td>자동 시작</td><td><code>~/rh56f1_deploy/start_bridge.sh</code>와 crontab <code>@reboot</code>. 로봇이 켜지고 20초 뒤 브리지를 시작합니다.</td></tr>
+      <tr><td>장치 규칙</td><td><code>/etc/udev/rules.d/99-rh56f1.rules</code>. 변환기에 <code>/dev/rh56f1</code> 이름을 붙입니다.</td></tr>
+    </tbody>
+  </table>
+  <p>키트는 로봇 카메라 서버용 패키지도 함께 설치하지만, 이 장에서는 다루지 않습니다. <code>start_bridge.sh</code>는 <code>/dev/rh56f1</code>이 생길 때까지 최대 60초 기다린 뒤 다음 명령으로 브리지를 실행하고, 출력을 <code>~/rh56f1_bridge.log</code>에 남깁니다.</p>
+<pre class="cmd">serial_dds_bridge.py --serial-right /dev/rh56f1 --serial-left /dev/rh56f1 \
+    --network-iface eth0 --serial-mode soft --force-limit 400</pre>
+  <div class="box note"><div class="h">참고 · 라이선스 (2026-11-19 확인)</div>
+    <p><code>unitree_sdk2py</code>는 BSD-3-Clause, cyclonedds 0.10.2는 EPL-2.0 · BSD-3-Clause, pyserial 3.5는 BSD, typing_extensions 4.7.1은 PSF 라이선스입니다. 모두 상업적 사용을 허용합니다.</p></div>
+
+  <h2 id="c11-s4">브리지 실행 인자 <span class="src r">SDK</span></h2>
+  <table class="t tight">
+    <caption data-tbl="tbl-g1-args"><b>표 59.</b> <code>serial_dds_bridge.py</code> 인자</caption>
+    <thead><tr><th>인자</th><th>기본값</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>--serial-right</code><br><code>--serial-left</code></td><td>없음</td><td>오른손 · 왼손 직렬 포트. 두 인자에 같은 포트를 주면 두 손이 버스 하나를 같이 쓰고 ID로 구별합니다.</td></tr>
+      <tr><td><code>--serial-right-id</code><br><code>--serial-left-id</code></td><td>2 · 1</td><td>버스 하나를 같이 쓸 때 오른손 · 왼손 ID</td></tr>
+      <tr><td><code>--serial-id</code></td><td>1</td><td>두 손의 포트가 다를 때 두 손에 같이 쓰는 ID</td></tr>
+      <tr><td><code>--serial-mode</code></td><td>soft</td><td>시작할 때의 힘 모드: <code>soft</code> · <code>full</code> · <code>adaptive</code> (아래 '힘 모드')</td></tr>
+      <tr><td><code>--force-limit</code></td><td>300</td><td>soft 모드에서 손가락을 멈추는 실제 힘(1070 ~ 1075의 값). <code>start_bridge.sh</code>는 400을 씁니다.</td></tr>
+      <tr><td><code>--tactile-contact-thresh</code></td><td>없음</td><td>adaptive 모드의 접촉 판정 임계값 (촉각 센서의 원시 값)</td></tr>
+      <tr><td><code>--fw-force-mode</code></td><td>꺼짐</td><td>실험 기능. 손가락 동작 모드(1100 ~ 1105)를 1(힘 폐루프)로 씁니다. 소스는 하드웨어에서 확인한 뒤에 쓰라고 적습니다.</td></tr>
+      <tr><td><code>--network-iface</code></td><td>없음</td><td>로봇 네트워크 쪽 네트워크 카드. 로봇에 없는 이름이면 경고를 출력합니다.</td></tr>
+      <tr><td><code>--hz</code></td><td>25</td><td>상태 토픽 발행 주기 (Hz)</td></tr>
+      <tr><td><code>--watchdog</code></td><td>0.5</td><td>이 시간(초) 동안 명령이 오지 않으면 두 손을 폅니다. 0이면 쓰지 않습니다.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c11-s5">DDS 토픽과 메시지 <span class="src r">SDK</span></h2>
+  <p>두 토픽 모두 <code>unitree_sdk2</code>의 <code>unitree_go</code> 메시지를 쓰며, 원소 12개 가운데 0 ~ 5는 오른손, 6 ~ 11은 왼손입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-g1-topics"><b>표 60.</b> RH56F1 브리지 DDS 토픽</caption>
+    <thead><tr><th>토픽</th><th>메시지 형식</th><th>방향 · 주기</th></tr></thead>
+    <tbody>
+      <tr><td><code>rt/rh56f1/cmd</code></td><td><code>unitree_go::msg::dds_::MotorCmds_</code></td><td>작업자 PC → 브리지 · 50 Hz</td></tr>
+      <tr><td><code>rt/rh56f1/state</code></td><td><code>unitree_go::msg::dds_::MotorStates_</code></td><td>브리지 → 작업자 PC · 25 Hz</td></tr>
+    </tbody>
+  </table>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-g1-fields"><b>표 61.</b> 메시지 필드</caption>
+    <thead><tr><th>필드</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>cmds[i].q</code></td><td>관절 각도 목표 (rad). 0은 손가락을 편 상태입니다.</td></tr>
+      <tr><td><code>cmds[0].mode</code></td><td>두 손의 힘 모드: 0 soft · 1 full · 3 adaptive. 2는 오른손 파킹 요청입니다.</td></tr>
+      <tr><td><code>cmds[6].mode</code></td><td>2는 왼손 파킹 요청입니다.</td></tr>
+      <tr><td><code>states[i].q</code></td><td>실제 각도. rad가 아니라 1064 ~ 1069의 레지스터 값(0.1°)이며, 읽지 못했으면 NaN입니다.</td></tr>
+      <tr><td><code>states[i].tau_est</code></td><td>실제 힘. 1070 ~ 1075의 레지스터 값이며, 읽지 못했으면 NaN입니다.</td></tr>
+    </tbody>
+  </table>
+  <p>파킹 요청을 받으면 브리지는 그쪽 손을 주먹 쥔 자세로 접고(아래 '안전 동작'), 2가 아닌 명령이 다시 오면 파킹을 풉니다.</p>
+  <div class="kw">
+  <p>브리지는 채널마다 목표 q(rad)를 아래 식으로 각도 설정값으로 바꾸고, 범위 밖의 값은 범위 끝 값으로 자릅니다. 범위는 7장 각도 설정값(표 38)의 범위와 같습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-g1-ch"><b>표 62.</b> 채널 순서와 각도 설정값 변환</caption>
+    <thead><tr><th>채널 (왼손 +6)</th><th>자유도</th><th>레지스터</th><th>각도 설정값</th><th>범위</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>새끼손가락</td><td>1040</td><td>1740 − 549.6 × q</td><td>900 ~ 1740</td></tr>
+      <tr><td>1</td><td>약지</td><td>1041</td><td>1740 − 549.6 × q</td><td>900 ~ 1740</td></tr>
+      <tr><td>2</td><td>중지</td><td>1042</td><td>1740 − 549.6 × q</td><td>900 ~ 1740</td></tr>
+      <tr><td>3</td><td>검지</td><td>1043</td><td>1740 − 549.6 × q</td><td>900 ~ 1740</td></tr>
+      <tr><td>4</td><td>엄지 굽힘</td><td>1044</td><td>1350 − 527.1 × q</td><td>1100 ~ 1350</td></tr>
+      <tr><td>5</td><td>엄지 회전</td><td>1045</td><td>1800 − 572.9 × q</td><td>600 ~ 1800</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="kw">
+  <h2 id="c11-s6">힘 모드 <span class="src r">SDK</span></h2>
+  <p>브리지는 시작할 때 손가락 동작 모드(1100 ~ 1105)를 0(속도-힘 보호)으로 쓰고, 힘 모드에 따라 힘 제어 임계값(1046 ~ 1051)과 속도(1052 ~ 1057)를 정합니다. 이 두 값은 약 5 Hz로 다시 씁니다.</p>
+  <table class="t tight wrap1 keep">
+    <caption data-tbl="tbl-g1-force"><b>표 63.</b> 브리지의 힘 모드</caption>
+    <thead><tr><th>모드</th><th>힘 제어 임계값</th><th>속도</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td><code>soft</code></td><td>400</td><td>1500</td><td>손가락(엄지 회전 제외)의 실제 힘(평활한 값)이 <code>--force-limit</code>를 넘으면 그 손가락을 닿은 자리에서 조금 편 위치에 멈춥니다. 작업자가 그 손가락을 충분히 펴면 풀립니다.</td></tr>
+      <tr><td><code>full</code></td><td>12000</td><td>4000</td><td>제한 없이 끝까지 쥡니다.</td></tr>
+      <tr><td><code>adaptive</code></td><td>400</td><td>1500</td><td>촉각 센서(8장)로 접촉과 미끄러짐을 보고 쥐는 정도를 조절합니다. 촉각을 읽지 못하면 soft의 방식으로 돌아갑니다.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Studio Pro에는 힘 모드를 바꾸는 단추가 없어 늘 soft(0)를 보내며, 브리지도 <code>start_bridge.sh</code>에서 soft로 시작합니다.</p>
+  <div class="box note"><div class="h">문서와 SDK의 차이 · 힘 제어 임계값</div>
+    <p>브리지는 full 모드와 파킹에서 힘 제어 임계값 12000을 씁니다. 영문판 V1.2의 범위는 0 ~ 1000이고(표 40), 12000은 중국어판 V1.0의 범위(0 ~ 12000)의 최댓값입니다. 범위 밖의 값을 손이 어떻게 다루는지는 원문에 없습니다.</p></div>
+
+  <h2 id="c11-s7">안전 동작 <span class="src r">SDK</span></h2>
+  <ul>
+    <li><b>브리지 시작</b>: 브리지가 시작하면 손마다 동작 모드 · 속도 · 힘을 쓰고 손을 폅니다. 로봇을 켜면 약 20초 뒤 브리지가 시작하므로 그때 손이 움직입니다.</li>
+    <li><b>원격조작 시작</b>: Studio Pro의 <span class="ui">HAND TELEOP</span>을 시작해도 손은 작업자를 따르지 않습니다. <span class="ui">CONTROLS</span>의 HAND 줄에서 <span class="ui">Teleop</span>을 누르면 2초 동안 마지막으로 보낸 자세에서 작업자의 자세로 옮겨 간 뒤 따릅니다. <span class="ui">Open</span>은 원격조작을 풀고 손을 폅니다.</li>
+    <li><b>통신이 끊겼을 때</b>: 명령이 0.5초 동안 오지 않으면(작업자 PC나 네트워크가 끊김) 브리지가 두 손을 폅니다. 파킹한 손은 그대로 둡니다.</li>
+    <li><b>정지할 때</b>: <span class="ui">HAND TELEOP</span>의 <span class="ui">Stop</span>을 누르면 작업자 PC가 파킹을 요청하고, 브리지가 손을 주먹 쥔 자세로 접습니다. 네 손가락을 먼저 굽히고 엄지를 굽히며, 최대 힘 · 최대 속도로 약 1.4초 걸립니다. 브리지 프로그램을 끝낼 때(SIGTERM · SIGINT)도 손을 같은 자세로 접은 뒤 끝납니다.</li>
+  </ul>
+  <div class="box warn"><div class="h">경고 · 정지하면 손이 주먹을 쥡니다</div>
+    <p>원격조작을 멈추거나 브리지를 끝내면 RH56F1이 최대 힘으로 주먹을 쥡니다. 그 전에 RH56F1의 손가락 사이와 손바닥에서 사람의 손가락과 물체를 치우십시오. 로봇을 켤 때도 RH56F1이 움직입니다.</p></div>
+  <div class="box caution"><div class="h">주의 · 통신이 끊기면 물체를 놓습니다</div>
+    <p>작업자 PC나 네트워크가 0.5초 넘게 끊기면 브리지가 손을 펴서 쥐고 있던 물체를 놓습니다. 떨어지면 손상되는 물체는 받침 위에서 다루십시오.</p></div>
+
+  <h2 id="c11-s8">Studio Pro에서 쓰기 <span class="src r">SDK</span></h2>
+  <ol class="steps">
+    <li><b>브리지가 도는지 확인합니다.</b>아래 '확인과 문제 해결'의 명령으로 확인하십시오.</li>
+    <li><b>손 모델을 고릅니다.</b>TELEOP 페이지의 <span class="ui">HAND TELEOP</span> 카드에서 <span class="ui">HAND</span>를 <span class="ui">RH56F1 (DDS bridge)</span>로 고르십시오.</li>
+    <li><b>네트워크 카드를 정합니다.</b><span class="ui">⚙ Advanced</span>의 <span class="ui">IFACE</span>를 로봇 네트워크에 연결된 작업자 PC의 네트워크 카드로 정하십시오 (기본값 <code>enp4s0</code>). <span class="ui">PORT</span> · <span class="ui">RIGHT ID</span> · <span class="ui">LEFT ID</span>는 <span class="ui">RH56F1 (serial)</span>에서만 쓰며, 이 모드에서 손 ID는 브리지 쪽에서 정합니다.</li>
+    <li><b>원격조작을 시작합니다.</b><span class="ui">HAND TELEOP</span>의 <span class="ui">Start</span>를 누른 뒤 <span class="ui">CONTROLS</span>의 HAND 줄에서 <span class="ui">Teleop</span>을 누르십시오.</li>
+  </ol>
+  <p>카드와 단추의 자세한 설명은 <a data-manual="studio-pro-guide-ko" href="../studio-pro-guide-ko/">WeGo Humanoid Studio Pro 사용 가이드</a> 5장 · 7장에 있습니다.</p>
+
+  <div class="kw">
+  <h2 id="c11-s9">확인과 문제 해결 <span class="src r">SDK</span></h2>
+  <p>로봇에서 아래 명령으로 브리지와 로그를 확인합니다. 작업자 PC에서는 <code>rt/rh56f1/state</code>가 약 25 Hz로 들어오면 브리지가 도는 것입니다.</p>
+<pre class="cmd"><span class="c"># 로봇에서 (ssh unitree@192.168.123.164)</span>
+pgrep -af serial_dds_bridge.py              <span class="c"># 한 줄이 나오면 실행 중</span>
+tail -20 ~/rh56f1_bridge.log
+pkill -f serial_dds_bridge.py; sleep 2      <span class="c"># 브리지 다시 시작</span>
+~/rh56f1_deploy/start_bridge.sh &amp;
+udevadm info -q property -n /dev/ttyUSB0 | grep ID_SERIAL_SHORT   <span class="c"># 변환기 일련번호</span></pre>
+  </div>
+  <ul>
+    <li><b>손이 전혀 움직이지 않고 작업자 PC에도 오류가 없음</b>: <code>pgrep</code>에 아무것도 나오지 않으면 브리지가 돌지 않는 것입니다. 설치하거나 시작하십시오.</li>
+    <li><b>로그에 <code>write6 error</code> · <code>Input/output error</code>가 되풀이됨</b>: 변환기가 빠졌거나 장치 번호가 바뀐 것입니다. 브리지는 스스로 복구하지 않으므로 다시 시작하십시오.</li>
+    <li><b>로그에 <code>/dev/rh56f1 never appeared</code></b>: 장치 규칙이 없거나 일련번호가 맞지 않습니다. 변환기의 일련번호를 읽어 규칙의 <code>REPLACE_ME</code>를 고치고 규칙을 다시 설치하십시오.</li>
+    <li><b>로그에 <code>WARNING: --network-iface</code></b>: <code>start_bridge.sh</code>의 <code>eth0</code>을 PC2의 실제 네트워크 카드 이름으로 고치십시오.</li>
+    <li><b><span class="ui">HAND TELEOP</span>이 시작하자마자 끝남</b>: <span class="ui">⚙ Advanced</span>의 실제 명령과 HAND 로그를 보십시오. DDS 모드에서는 대개 <span class="ui">IFACE</span>가 틀린 것입니다.</li>
+  </ul>
 </section>
 
 </main></div>

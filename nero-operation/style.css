@@ -4,3 +4,6 @@ table.t img.btn{ height:5.2mm; width:auto; max-width:38mm; display:block; border
 /* Cover: the dual-arm render is square, so at the shared 150 mm height it ran over the lead text.
    Smaller and in the lower right, below the text (phones keep the shared below-the-text rule). */
 .cover .hero{ height:96mm; right:2mm; bottom:15mm; }
+/* Tables naming SDK/ROS identifiers: keep each identifier whole (the shared code{} breaks anywhere), a bit smaller */
+table.t.codes td code{ word-break:normal; overflow-wrap:break-word; font-size:7.4pt; }
+table.t.keep{ break-inside:avoid; }

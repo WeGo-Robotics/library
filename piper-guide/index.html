@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">AgileX PiPER 로봇팔 — 사용 가이드</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/AgileX_PiPER_Guide_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">AgileX PiPER 로봇팔 — 사용 가이드</span><span class="wm-ver">버전 2026.11.19</span><a class="wm-pdf" href="../pdf/AgileX_PiPER_Guide_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>PiPER 소개</a></summary><a class="wm-t2" href="#c1-s1">제어 소프트웨어</a><a class="wm-t2" href="#c1-s2">사양 · 구성품 · 연결</a></details><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>ArmRobotUA로 시작하기</a></summary><a class="wm-t2" href="#c3-s1">화면 구성</a><a class="wm-t2" href="#c3-s2">연결과 활성화</a><a class="wm-t2" href="#c3-s3">네 가지 모션 명령</a><a class="wm-t2" href="#c3-s4">궤적 라이브러리 (Tracelib)</a><a class="wm-t2" href="#c3-s5">안전하게 종료하기</a><a class="wm-t2" href="#c3-s6">로봇팔 모드 바꾸기 (Master · Servant)</a></details><a class="wm-t1" href="#c4"><span class="wm-n">04</span>텔레오퍼레이션</a><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>캘리브레이션</a></summary><a class="wm-t2" href="#c5-s1">관절 모터</a><a class="wm-t2" href="#c5-s2">2-Finger 그리퍼</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>영점 학습</a></summary><a class="wm-t2" href="#c6-s1">자주 묻는 질문</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>Python SDK</a></summary><a class="wm-t2" href="#c7-s1">설치</a><a class="wm-t2" href="#c7-s2">예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>ROS1</a></summary><a class="wm-t2" href="#c8-s1">패키지 설치</a><a class="wm-t2" href="#c8-s2">Rviz로 제어</a><a class="wm-t2" href="#c8-s3">ROS 토픽</a><a class="wm-t2" href="#c8-s4">Gazebo 시뮬레이션</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>ROS2</a></summary><a class="wm-t2" href="#c9-s1">패키지</a><a class="wm-t2" href="#c9-s2">Rviz 2로 제어</a></details><a class="wm-t1" href="#c10"><span class="wm-n">10</span>MoveIt2</a></nav><main class="wm-main">
 
 
@@ -33,7 +33,7 @@
   <p class="lead">Windows 프로그램 ArmRobotUA로 처음 움직이기, 텔레오퍼레이션, 캘리브레이션과 영점 학습,
     Python SDK · ROS1 · ROS2 · MoveIt2까지 PiPER를 처음 받아서 쓰는 순서대로 정리했습니다.</p>
   <img class="arm" src="assets/piper_render.png" alt="">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.19</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -46,7 +46,7 @@
         github.com/agilexrobotics/piper_sdk · github.com/agilexrobotics/piper_ros</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="piper-operation" href="../piper-operation/"><b>AgileX PiPER 운용 설명서</b></a> (사양 · 설치 · 전기 연결 · ArmRobotUA 기능 설명, AgileX 공식 설명서)</td></tr>
       <tr><td>소프트웨어</td><td>ArmRobotUA V1.4.5 (Windows) · 펌웨어 1.8.1 / 1.8.2 · PiPER SDK (Python 3.8 / 3.10) · ROS Noetic · ROS 2 Humble</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.19</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>본문은 WeGo가 PiPER 납품 고객에게 드려 온 시작 가이드의 내용입니다. 펌웨어와 프로그램 버전이 바뀌면 화면과 순서가 달라질 수 있으니,
@@ -121,7 +121,7 @@
 <!-- ═══════════════════════ 3 ═══════════════════════ -->
 <section class="chapter">
   <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">ArmRobotUA로 시작하기</h1></div>
-  <p class="lede">ArmRobotUA는 PiPER를 PC에서 바로 움직여 볼 수 있는 Windows 프로그램입니다. 연결, 활성화, 네 가지 모션 명령, 궤적 만들기와 안전한 종료까지 순서대로 설명합니다.</p>
+  <p class="lede">ArmRobotUA는 PiPER를 PC에서 바로 움직여 볼 수 있는 Windows 프로그램입니다. 연결, 활성화, 네 가지 모션 명령, 궤적 만들기와 안전한 종료까지 순서대로 설명합니다. 화면의 기능 영역별 설명과 관절 · 로봇팔 상태 표시는 <a data-manual="piper-operation" href="../piper-operation/">PiPER 운용 설명서</a> 8장을 보십시오.</p>
 
   <h2 id="c3-s1">화면 구성</h2>
   <figure class="light"><img src="assets/s07_1.jpg" alt=""><figcaption><b>그림 2.</b> ArmRobotUA 화면 (ArmRobotUA_V1.4.5.250918)</figcaption></figure>
@@ -354,7 +354,7 @@
 <!-- ═══════════════════════ 7 ═══════════════════════ -->
 <section class="chapter">
   <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">Python SDK</h1></div>
-  <p class="lede">Python SDK를 쓰면 PC에서 CAN 인터페이스로 PiPER에 더 구체적인 명령을 원하는 대로 만들어 보낼 수 있습니다.</p>
+  <p class="lede">Python SDK를 쓰면 PC에서 CAN 인터페이스로 PiPER에 더 구체적인 명령을 원하는 대로 만들어 보낼 수 있습니다. CAN 연결, 종단 저항, 처음 전원 넣기는 <a data-manual="piper-operation" href="../piper-operation/">PiPER 운용 설명서</a> 3 · 6장을, CAN 프로토콜 자료는 같은 책 9장을 보십시오.</p>
   <p>자세한 내용은 github.com/agilexrobotics/piper_sdk와 그 안의 Interface · Protocol · Msgs README를 참고하십시오.</p>
 
   <h2 id="c7-s1">설치</h2>

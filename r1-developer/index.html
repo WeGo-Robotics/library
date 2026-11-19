@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Unitree_R1_Developer_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree R1 휴머노이드 — 개발 설명서</span><span class="wm-ver">버전 2026.11.19</span><a class="wm-pdf" href="../pdf/Unitree_R1_Developer_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>개발 환경과 시스템 구조</a></summary><a class="wm-t2" href="#c1-s1">로봇 안의 컴퓨터와 주소</a><a class="wm-t2" href="#c1-s2">내부 통신과 클라우드</a><a class="wm-t2" href="#c1-s3">두 가지 통신 방식</a><a class="wm-t2" href="#c1-s4">SDK와 모델 얻기</a><a class="wm-t2" href="#c1-s5">개발 환경</a><a class="wm-t2" href="#c1-s6">설치와 빌드</a><a class="wm-t2" href="#c1-s7">네트워크 설정</a><a class="wm-t2" href="#c1-s8">첫 예제 실행</a><a class="wm-t2" href="#c1-s9">개발 팁</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>저수준 제어</a></summary><a class="wm-t2" href="#c2-s1">디버그 모드가 필요한 이유</a><a class="wm-t2" href="#c2-s2">전신 관절 순서</a><a class="wm-t2" href="#c2-s3">발목 병렬 구조와 mode_pr</a><a class="wm-t2" href="#c2-s4">저수준 예제 r1_ankle_swing_example</a><a class="wm-t2" href="#c2-s5">상체 저수준 예제 A5 · A7</a><a class="wm-t2" href="#c2-s6">리모컨 데이터</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>다관절 손</a></summary><a class="wm-t2" href="#c3-s1">Dex1-1 · Dex2/5</a><a class="wm-t2" href="#c3-s2">Dex3-1</a><a class="wm-t2" href="#c3-s3">BrainCo Revo2 · Revo2 Touch ( brainco_hand_service )</a><a class="wm-t2" href="#c3-s4">LinkerHand O6</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>DDS와 기본 서비스</a></summary><a class="wm-t2" href="#c4-s1">ChannelFactory · Publisher · Subscriber</a><a class="wm-t2" href="#c4-s2">RPC 클라이언트 공통</a><a class="wm-t2" href="#c4-s3">주요 토픽</a><a class="wm-t2" href="#c4-s4">로봇 상태 클라이언트 RobotStateClient</a><a class="wm-t2" href="#c4-s5">저수준 메시지</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>보행 · 음성 · 영상 · SLAM 서비스</a></summary><a class="wm-t2" href="#c5-s1">고수준 보행 LocoClient</a><a class="wm-t2" href="#c5-s2">음성 · 조명 AudioClient</a><a class="wm-t2" href="#c5-s3">영상 서비스</a><a class="wm-t2" href="#c5-s4">SLAM 내비게이션</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>고수준 제어</a></summary><a class="wm-t2" href="#c6-s1">보행 예제 r1_loco_client</a><a class="wm-t2" href="#c6-s2">팔 제어 arm_sdk</a><a class="wm-t2" href="#c6-s3">팔 동작 서비스</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>ROS 2와 DDS 예제</a></summary><a class="wm-t2" href="#c7-s1">ROS 2 설정</a><a class="wm-t2" href="#c7-s2">DDS 발행 · 구독 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>오류 코드와 정의</a></summary><a class="wm-t2" href="#c8-s1">장치 전체 상태 비트</a><a class="wm-t2" href="#c8-s2">모터 상태 비트</a><a class="wm-t2" href="#c8-s3">오류 코드 찾아보기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>EDU 확장</a></summary><a class="wm-t2" href="#c9-s1">개발 연산 유닛(백팩) 설치</a><a class="wm-t2" href="#c9-s2">설치 구멍</a><a class="wm-t2" href="#c9-s3">백팩 시스템 백업과 복구</a><a class="wm-t2" href="#c9-s4">다관절 손 설치</a></details><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
@@ -34,7 +34,7 @@
     오류 코드와 EDU 확장까지 Unitree 공식 개발 문서를 SDK 소스와 맞춰 보며 한 권에 정리했습니다.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/r1_render_wave.png" alt="Unitree R1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.19</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 판권 ═══════════════════════ -->
@@ -48,7 +48,7 @@
       <tr><td>SDK</td><td><code>unitree_sdk2</code> <b>8e1b927 (2026-10-30)</b> · <code>unitree_sdk2_python</code> 814556d (2026-09-21).
         8e1b927보다 오래된 SDK 체크아웃에는 R1 파일이 보행 클라이언트(<code>r1_loco_client</code>)뿐입니다 (1장).</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a> (현장 운용)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.19</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p><span class="src">문서</span> 표시는 Unitree 공식 개발 문서의 내용이고, <span class="src r">SDK</span> 표시는 <code>unitree_sdk2</code> 8e1b927 소스에서
@@ -93,7 +93,7 @@
       <tr><td>운동 제어 컴퓨터 (PC1)</td><td class="mono">192.168.123.161</td><td>Unitree 공식 서비스(보행 · 균형 · 모터 제어, 영상 설정 웹 등)를 실행합니다. <b>사용자 개발에는 쓸 수 없습니다.</b></td></tr>
       <tr><td>개발 연산 유닛 (PC2)</td><td class="mono">192.168.123.164</td><td>EDU의 등에 다는 백팩(확장 도크)입니다. 사용자 프로그램은 여기에서만 실행합니다.
         NVIDIA Jetson Orin NX(100 TOPS) 또는 Orin Nano(40 TOPS) 보드이며, 공장 기본 계정은 <code>unitree</code> / <code>123</code>입니다 (9장).</td></tr>
-      <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>SLAM 내비게이션 서비스용 (R1-EDU + Mid360 구성만, 5장)</td></tr>
+      <tr><td>Mid360 라이다</td><td class="mono">192.168.123.120</td><td>SLAM 내비게이션 서비스용 (Livox Mid360 라이다가 달린 R1-A-D 모델만, R1-EDU에는 없음, 5장)</td></tr>
       <tr><td>개발 PC</td><td class="mono">192.168.123.99</td><td>권장 주소. 다른 장치와 겹치지 않는 192.168.123.x이면 됩니다 (문서 예: <code>.222</code>)</td></tr>
     </tbody>
   </table>
@@ -507,7 +507,7 @@ memcpy(&amp;remote_key_data, &amp;low_state.wireless_remote()[0], 40);</pre>
   <p>BrainCo 2세대 다관절 손(한쪽 6자유도)은 RS-485 직렬로 제어합니다. Unitree 공개 저장소 <code>github.com/unitreerobotics/brainco_hand_service</code>(<code>d71996b</code>, 2026-05-11)가 직렬 통신을 DDS로 바꿉니다.
     README는 빌드 대상을 "PC2 (NVIDIA Jetson Orin NX)"로 적는데, R1의 PC2(백팩, .164)도 같은 Jetson 계열(aarch64)이라 README 절차를 그대로 따릅니다. 촉각형 <b>Revo2 Touch</b>도 같은 서비스 · 토픽을 씁니다.
     아래는 README와 소스(<code>main.cpp</code> · <code>include/param.h</code> · <code>test/</code> · <code>setup_autostart.sh</code>)를 읽은 내용입니다.</p>
-  <!-- BrainCo Revo2 / Revo2 Touch over brainco_hand_service: DDS topics, channel order, command/state fields. Included by r1-developer and h2-developer (identical text in both). -->
+  <!-- BrainCo Revo2 / Revo2 Touch over brainco_hand_service: DDS topics, channel order, command/state fields. Included by r1-developer, h2-developer and brainco-revo2 (identical text in all). -->
   <table class="t tight wrap1 api">
     <thead><tr><th>토픽</th><th>타입 · 내용</th></tr></thead>
     <tbody>
@@ -947,7 +947,7 @@ ffplay -f v4l2 -framerate 10 -video_size 544x448 -i /dev/video-dep</pre>
   <h2 id="c5-s4">SLAM 내비게이션 <span class="src">문서</span></h2>
   <div class="box warn"><div class="h">경고 · 사용 조건</div>
     <ul>
-      <li><b>R1-EDU + Mid360 라이다</b> 구성만 지원합니다. 교육 · 연구용이며 산업 응용은 Unitree 영업에 문의합니다.</li>
+      <li><b>Livox Mid360 라이다가 달린 R1-A-D 모델</b>만 지원합니다. R1-EDU에는 Mid360 라이다가 없습니다. 교육 · 연구용이며 산업 응용은 Unitree 영업에 문의합니다.</li>
       <li>정적이고 평평하며 특징이 많은 실내, X · Y 45 m 이내에서 씁니다. 공중제비 같은 격한 동작은 라이다를 손상시키고 위치를 잃게 합니다.</li>
       <li>라이다 동작 중 핫플러그를 금지합니다. 사용 전 원시 점군과 IMU 값이 정상인지, 머리가 정면 · 수직이고 헐겁지 않은지 확인합니다.
         정지한 라이다로 정지한 수직면을 비출 때 점군이 층으로 갈라지거나 IMU 값이 이상하면 수리를 의뢰합니다.</li>
@@ -1386,7 +1386,7 @@ cd r1/ &amp;&amp; chmod +x disk_recovery.sh &amp;&amp; sudo ./disk_recovery.sh</
       <table class="t"><tbody>
         <tr><td class="mono">192.168.123.161</td><td>PC1 운동 제어 (개발 불가)</td></tr>
         <tr><td class="mono">192.168.123.164</td><td>PC2 개발 연산 유닛 (ssh)</td></tr>
-        <tr><td class="mono">192.168.123.120</td><td>Mid360 라이다</td></tr>
+        <tr><td class="mono">192.168.123.120</td><td>Mid360 라이다 (R1-A-D 모델)</td></tr>
         <tr><td class="mono">192.168.123.99</td><td>개발 PC 권장</td></tr>
         <tr><td class="mono">:9080 (PC1)</td><td>양안 영상 설정 · 보정 값</td></tr>
         <tr><td class="mono">239.168.123.161:5555</td><td>마이크 PCM 멀티캐스트</td></tr>
