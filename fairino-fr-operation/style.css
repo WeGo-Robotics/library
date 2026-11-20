@@ -2,3 +2,6 @@
 ol.steps > li figure{ margin-top:1.6mm; }
 /* a step with a screenshot may split between text and figure; the figure itself stays whole (shared rule) */
 ol.steps > li{ break-inside:auto; }
+/* steps without a screenshot stay whole; short tables marked keep stay on one page */
+ol.steps > li:not(:has(figure)){ break-inside:avoid; }
+table.t.keep{ break-inside:avoid; }

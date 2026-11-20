@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">ROBOTERA XHand1 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/ROBOTERA_XHand1_Manual_KO.pdf">PDF 다운로드</a></header>
-<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">주요 사양</a><a class="wm-t2" href="#c1-s2">관절 번호</a><a class="wm-t2" href="#c1-s3">WeGo의 시험 구성</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">명령을 보낼 때</a><a class="wm-t2" href="#c2-s2">연결하고 설정할 때</a><a class="wm-t2" href="#c2-s3">WeGo XHand Controller를 쓸 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>연결과 SDK 설치</a></summary><a class="wm-t2" href="#c3-s1">연결 구성</a><a class="wm-t2" href="#c3-s2">개발 PC 준비</a><a class="wm-t2" href="#c3-s3">손이 응답하는지 확인</a><a class="wm-t2" href="#c3-s4">EtherCAT으로 연결할 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>WeGo XHand Controller</a></summary><a class="wm-t2" href="#c4-s1">구성과 설치</a><a class="wm-t2" href="#c4-s2">실행 옵션</a><a class="wm-t2" href="#c4-s3">화면 쓰기</a><a class="wm-t2" href="#c4-s4">비전 제어</a><a class="wm-t2" href="#c4-s5">안전 장치</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Python SDK</a></summary><a class="wm-t2" href="#c5-s1">기본 흐름</a><a class="wm-t2" href="#c5-s2">예제: 관절 하나만 천천히 움직이기</a><a class="wm-t2" href="#c5-s3">XHandControl 함수</a><a class="wm-t2" href="#c5-s4">명령: HandCommand_t</a><a class="wm-t2" href="#c5-s5">상태: HandState_t</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>WeGo 실측 결과</a></summary><a class="wm-t2" href="#c6-s1">통신 속도</a><a class="wm-t2" href="#c6-s2">tor_max는 실제 힘의 상한입니다</a><a class="wm-t2" href="#c6-s3">3번 관절(index_bend)</a><a class="wm-t2" href="#c6-s4">엄지 관절의 실제 움직임</a><a class="wm-t2" href="#c6-s5">뻑뻑한 관절</a><a class="wm-t2" href="#c6-s6">손끝 촉각 센서</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>문제 해결</a></summary><a class="wm-t2" href="#c7-s1">연결</a><a class="wm-t2" href="#c7-s2">상태 읽기 · 움직임</a><a class="wm-t2" href="#c7-s3">WeGo XHand Controller</a></details><a class="wm-t1" href="#c8"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">ROBOTERA XHand1 다관절 손 — 운용 설명서</span><span class="wm-ver">버전 2026.11.20</span><a class="wm-pdf" href="../pdf/ROBOTERA_XHand1_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요</a></summary><a class="wm-t2" href="#c1-s1">상세 사양</a><a class="wm-t2" href="#c1-s2">관절 번호</a><a class="wm-t2" href="#c1-s3">WeGo의 시험 구성</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">명령을 보낼 때</a><a class="wm-t2" href="#c2-s2">연결하고 설정할 때</a><a class="wm-t2" href="#c2-s3">ROS 2 패키지를 쓸 때</a><a class="wm-t2" href="#c2-s4">WeGo XHand Controller를 쓸 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>연결과 SDK 설치</a></summary><a class="wm-t2" href="#c3-s1">손목 커넥터 핀</a><a class="wm-t2" href="#c3-s2">연결 구성</a><a class="wm-t2" href="#c3-s3">개발 PC 준비</a><a class="wm-t2" href="#c3-s4">손이 응답하는지 확인</a><a class="wm-t2" href="#c3-s5">EtherCAT으로 연결할 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>WeGo XHand Controller</a></summary><a class="wm-t2" href="#c4-s1">구성과 설치</a><a class="wm-t2" href="#c4-s2">실행 옵션</a><a class="wm-t2" href="#c4-s3">화면 쓰기</a><a class="wm-t2" href="#c4-s4">비전 제어</a><a class="wm-t2" href="#c4-s5">안전 장치</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>Python SDK</a></summary><a class="wm-t2" href="#c5-s1">기본 흐름</a><a class="wm-t2" href="#c5-s2">예제: 관절 하나만 천천히 움직이기</a><a class="wm-t2" href="#c5-s3">XHandControl 함수</a><a class="wm-t2" href="#c5-s4">명령: HandCommand_t</a><a class="wm-t2" href="#c5-s5">상태: HandState_t</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>WeGo 실측 결과</a></summary><a class="wm-t2" href="#c6-s1">통신 속도</a><a class="wm-t2" href="#c6-s2">tor_max는 실제 힘의 상한입니다</a><a class="wm-t2" href="#c6-s3">3번 관절(index_bend)</a><a class="wm-t2" href="#c6-s4">엄지 관절의 실제 움직임</a><a class="wm-t2" href="#c6-s5">뻑뻑한 관절</a><a class="wm-t2" href="#c6-s6">손끝 촉각 센서</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>손끝 촉각 센서</a></summary><a class="wm-t2" href="#c7-s1">센서 구성</a><a class="wm-t2" href="#c7-s2">데이터 형식</a><a class="wm-t2" href="#c7-s3">읽기 예제</a><a class="wm-t2" href="#c7-s4">영점 맞추기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>통신 방식과 프로토콜</a></summary><a class="wm-t2" href="#c8-s1">RS485와 EtherCAT</a><a class="wm-t2" href="#c8-s2">RS485 설정과 속도</a><a class="wm-t2" href="#c8-s3">프레임 구성</a><a class="wm-t2" href="#c8-s4">통신 ID</a><a class="wm-t2" href="#c8-s5">명령어</a><a class="wm-t2" href="#c8-s6">레지스터</a><a class="wm-t2" href="#c8-s7">EtherCAT</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>ROS 2 패키지</a></summary><a class="wm-t2" href="#c9-s1">패키지</a><a class="wm-t2" href="#c9-s2">설치와 빌드</a><a class="wm-t2" href="#c9-s3">Humble에서 고칠 곳</a><a class="wm-t2" href="#c9-s4">launch 인자</a><a class="wm-t2" href="#c9-s5">토픽</a><a class="wm-t2" href="#c9-s6">노드가 손에 보내는 것</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>유지 보수</a></summary><a class="wm-t2" href="#c10-s1">쓰기 전 점검</a><a class="wm-t2" href="#c10-s2">열과 과전류</a><a class="wm-t2" href="#c10-s3">보정 값과 펌웨어</a><a class="wm-t2" href="#c10-s4">SDK 기록 파일</a><a class="wm-t2" href="#c10-s5">쓰고 난 뒤 · 보관</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>오류 코드</a></summary><a class="wm-t2" href="#c11-s1">손의 보드가 알리는 오류</a><a class="wm-t2" href="#c11-s2">SDK가 알리는 오류</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c12"><span class="wm-n">12</span>문제 해결</a></summary><a class="wm-t2" href="#c12-s1">연결</a><a class="wm-t2" href="#c12-s2">상태 읽기 · 움직임</a><a class="wm-t2" href="#c12-s3">WeGo XHand Controller</a><a class="wm-t2" href="#c12-s4">ROS 2 패키지</a></details><a class="wm-t1" href="#c13"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
 <!-- ═══════════════════════ 표지 ═══════════════════════ -->
@@ -30,10 +30,10 @@
   <h1>ROBOTERA <span>XHand1</span><br>다관절 손</h1>
   <div class="title2">능동 12자유도 · 손끝 촉각 센서 5개</div>
   <div class="bar"></div>
-  <p class="lead">RS485-USB 연결과 Python SDK 설치, WeGo XHand Controller로 손 움직이기, SDK 프로그래밍,
-    WeGo가 실제 손에서 측정한 관절 · 토크 · 통신 결과와 문제 해결을 한 권에 모았습니다.</p>
+  <p class="lead">RS485-USB 연결과 SDK 설치, WeGo XHand Controller, Python SDK · ROS 2 · 통신 프로토콜, 손끝 촉각 센서,
+    WeGo가 실제 손에서 측정한 결과, 유지 보수 · 오류 코드 · 문제 해결을 한 권에 모았습니다.</p>
   <img class="hero" src="assets/xhand_render.png" alt="ROBOTERA XHand1">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.20</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -44,16 +44,19 @@
       <tr><td>로봇</td><td>ROBOTERA XHand1 다관절 손 (2L32 왼손 · 2R32 오른손, 능동 12자유도)</td></tr>
       <tr><td>근거 문서</td><td>ROBOTERA <i>X-Hand 1 Product Manual</i> V1.0 (2024-10-15, 34쪽; 사양 몇 가지만 출처를 밝혀 인용) ·
         ROBOTERA 공개 URDF github.com/roboterax/models (STAR1 휴머노이드, 양손 XHand1 포함, BSD-3-Clause) ·
-        ROBOTERA SDK <code>xhand_controller</code> 1.1.7의 헤더(<code>xhand_control.hpp</code> · <code>data_type.hpp</code>), 예제 <code>xhand_control_example.py</code>, 설치 안내(README)</td></tr>
+        ROBOTERA SDK <code>xhand_controller</code> 1.1.7의 헤더(<code>xhand_control.hpp</code> · <code>data_type.hpp</code> · <code>error_manager.hpp</code>), 예제 <code>xhand_control_example.py</code>, 설치 안내(README) ·
+        SDK 소스 묶음의 ROS 2 패키지 <code>xhand_ros2_control</code> 1.0.0 (MIT)</td></tr>
+      <tr><td>SDK 대조</td><td>SDK 1.4.2 라이브러리(<code>libxhand_control.so</code>)의 오류 번호 · 오류 문장 표를 WeGo가 직접 읽어 냄 (2026-11-20)</td></tr>
       <tr><td>실측 자료</td><td>WeGo XHand 시험 기록 (2026-09-18, 왼손 1대, 관절 펌웨어 1.1.0, RS485-USB 연결) ·
-        WeGo XHand Controller 사용 안내 (2026-11-05판, 시뮬레이션 모드로 시험)</td></tr>
-      <tr><td>소프트웨어</td><td>Ubuntu 22.04 · Python 3.10 · <code>xhand_controller</code> 1.1.7 (SDK 1.4.2) · WeGo XHand Controller 2026-11-05판</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+        WeGo XHand Controller 사용 안내 (2026-11-05판, 시뮬레이션 모드로 시험) ·
+        ROS 2 패키지를 ROS 2 Humble에서 손 없이 빌드 · 실행 (2026-11-20)</td></tr>
+      <tr><td>소프트웨어</td><td>Ubuntu 22.04 · Python 3.10 · <code>xhand_controller</code> 1.1.7 (SDK 1.4.2) · WeGo XHand Controller 2026-11-05판 · ROS 2 Humble</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.20</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>ROBOTERA 제품 설명서는 ROBOTERA의 허가 없이 설명서와 그 안의 글 · 그림 · 사진을 출판 · 복제 · 전송 · 배포하지 못하게 합니다.
-      그래서 이 책은 그 설명서를 옮기지 않고, WeGo가 실제 손으로 시험한 내용과 SDK · URDF에서 확인한 내용으로 썼습니다.
-      사양 몇 가지는 출처를 밝혀 인용했습니다. 커넥터 핀 정의와 통신 프로토콜(RS485 · EtherCAT 프레임)은 ROBOTERA 설명서 원문을 보십시오.
+      그래서 이 책은 그 설명서를 번역하거나 표 · 그림을 옮기지 않고, WeGo가 실제 손으로 시험한 내용과 SDK · URDF에서 확인한 내용으로 썼습니다.
+      사양 · 핀 번호 · 명령어 · 레지스터 · 오류 번호 같은 사실은 WeGo가 다시 정리하고 출처를 밝혔습니다. 바이트 단위의 프레임 표, CRC 표, 커넥터 그림은 ROBOTERA 설명서 원문을 보십시오.
       원문은 ROBOTERA나 제품 공급처에 요청하십시오. 공개 사본: cdn.robotshop.com/media/E/ERA/RB-Era-01/pdf/x-hand-product-manual-1-0.pdf (ROBOTERA 웹사이트 www.robotera.com).</p>
     <p>출처 표시: <span class="src">문서</span> ROBOTERA 제품 설명서, <span class="src r">SDK</span> SDK 헤더 · 예제 · URDF에서 확인, <span class="src r">실측</span> WeGo가 실제 손으로 확인.
       실측값은 WeGo의 시험 장비 한 대에서 나온 값이며, 손마다 다를 수 있습니다.</p>
@@ -74,8 +77,13 @@
     <li><span class="n">04</span><span class="t">WeGo XHand Controller</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
     <li><span class="n">05</span><span class="t">Python SDK</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
     <li><span class="n">06</span><span class="t">WeGo 실측 결과</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
-    <li><span class="n">07</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
-    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">07</span><span class="t">손끝 촉각 센서</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">통신 방식과 프로토콜</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">ROS 2 패키지</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t">유지 보수</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t">오류 코드</span><span class="d"></span><span class="p" data-toc="c11"></span></li>
+    <li><span class="n">12</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c12"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c13"></span></li>
   </ol>
 </section>
 
@@ -85,25 +93,30 @@
   <p class="lede">XHand1은 ROBOTERA가 만든 다섯 손가락 다관절 손(이하 '손')입니다. 관절 12개마다 모터와 기어가 있어 관절을 하나씩 따로 움직이고, 손가락 끝마다 3차원 힘을 재는 촉각 센서가 있습니다.
     개발 PC와는 RS485 또는 EtherCAT으로 통신합니다.</p>
 
-  <h2 id="c1-s1">주요 사양 <span class="src">문서</span></h2>
-  <p>ROBOTERA 제품 설명서 V1.0의 사양 가운데 설치와 운용에 필요한 값만 옮겼습니다. 촉각 센서 줄은 SDK 자료형에서 확인한 값입니다.</p>
-  <table class="t wrap1 keep">
-    <caption data-tbl="tbl-spec"><b>표 1.</b> XHand1 주요 사양 (ROBOTERA 제품 설명서 V1.0, 촉각 센서는 SDK)</caption>
+  <h2 id="c1-s1">상세 사양 <span class="src">문서</span></h2>
+  <p>ROBOTERA 제품 설명서 V1.0의 사양 가운데 설치와 운용에 필요한 값을 WeGo가 다시 정리했습니다. 관절 토크 · 속도는 ROBOTERA URDF, 촉각 센서 줄은 SDK 자료형에서 확인한 값입니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="tbl-spec"><b>표 1.</b> XHand1 상세 사양 (ROBOTERA 제품 설명서 V1.0, 관절 토크 · 속도는 URDF, 촉각 센서는 SDK)</caption>
     <thead><tr><th>항목</th><th>값</th></tr></thead>
     <tbody>
       <tr><td>제품 모델</td><td>2L32 (왼손) · 2R32 (오른손)</td></tr>
-      <tr><td>능동 자유도</td><td>12 (엄지 3 · 검지 3 · 가운뎃손가락 · 약손가락 · 새끼손가락 각 2)</td></tr>
+      <tr><td>능동 자유도</td><td>12 (엄지 3 · 검지 3 · 가운뎃손가락 · 약손가락 · 새끼손가락 각 2). 관절마다 모터와 기어가 있음</td></tr>
+      <tr><td>구성</td><td>통신 보드 1 · 관절 유닛 12 · 손끝 촉각 센서 5. 단위마다 통신 ID가 따로 있음 (8장)</td></tr>
       <tr><td>무게</td><td>1.1 kg</td></tr>
       <tr><td>크기</td><td>190.36 × 94 × 47 mm</td></tr>
+      <tr><td>움직임 범위</td><td>엄지 110° 미만 · 검지 옆 벌림 −5 ~ 17° · 굽힘 관절 0 ~ 110° (관절별 값은 표 2)</td></tr>
+      <tr><td>최소 쥐기 지름</td><td>16 mm</td></tr>
       <tr><td>정격 쥐는 힘</td><td>12 N (손가락 하나) · 24 N (손 전체)</td></tr>
       <tr><td>정격 하중</td><td>1.2 kg (손가락 하나) · 4.8 kg (손 전체)</td></tr>
+      <tr><td>관절 정격 토크 <span class="src r">SDK</span></td><td>1.1 N·m (밑마디 · 0 · 1번) · 0.4 N·m (끝마디 · 2 · 3번)</td></tr>
+      <tr><td>관절 최대 속도 <span class="src r">SDK</span></td><td>8.63 rad/s (밑마디 · 0 · 1번) · 14.38 rad/s (끝마디 · 2 · 3번). URDF 한계값이며 WeGo가 잰 값이 아님</td></tr>
       <tr><td>반복 위치 정밀도</td><td>0.5 mm</td></tr>
       <tr><td>전원</td><td>DC 24 ~ 70 V, 최대 3 A · 144 W</td></tr>
-      <tr><td>통신</td><td>RS485 (3 Mbps) · EtherCAT</td></tr>
+      <tr><td>통신</td><td>RS485 (3 Mbps) · EtherCAT (PDO 1 ms)</td></tr>
       <tr><td>손 전체 제어 주기</td><td>83 Hz (RS485 한 번 주고받는 데 12 ms 이내)</td></tr>
-      <tr><td>손목 커넥터</td><td>DF62B-13EP-2.2C (RS485 · 전원 · EtherCAT 핀)</td></tr>
+      <tr><td>손목 커넥터</td><td>DF62B-13EP-2.2C (RS485 · 전원 · EtherCAT 핀, 3장)</td></tr>
       <tr><td>장착</td><td>둘레의 M3 나사 8개. 장착한 뒤 배선은 옆으로 뺍니다</td></tr>
-      <tr><td>손끝 촉각 센서 <span class="src r">SDK</span></td><td>손가락 5개. 센서 하나에 3축 힘 120점, 온도 20점, 합력 1개(fx · fy · fz)</td></tr>
+      <tr><td>손끝 촉각 센서 <span class="src r">SDK</span></td><td>손가락 5개. 센서 하나에 3축 힘 120점, 온도 20점, 합력 1개(fx · fy · fz) (7장)</td></tr>
     </tbody>
   </table>
   <div class="box note"><div class="h">참고 · 문서 사이의 차이</div>
@@ -117,25 +130,26 @@
   <figure class="light f60"><img src="assets/xhand_joints.png" alt="XHand1 관절 번호">
     <figcaption data-fig="fig-joints"><b>그림 1.</b> 오른손을 손바닥 쪽에서 본 관절 번호. 숫자는 SDK 관절 ID이며 관절 축 위에 있습니다 (ROBOTERA URDF 렌더링, WeGo 작성)</figcaption></figure>
 
-  <table class="t tight joints">
-    <caption data-tbl="tbl-joints"><b>표 2.</b> 관절 번호 · 움직임 · 범위 (범위와 정격 토크는 ROBOTERA URDF)</caption>
-    <thead><tr><th>ID</th><th>SDK 이름</th><th>움직임</th><th>범위 (rad)</th><th>정격 토크</th></tr></thead>
+  <table class="t tight joints keep">
+    <caption data-tbl="tbl-joints"><b>표 2.</b> 관절 번호 · 움직임 · 범위 (범위 · 정격 토크 · 최대 속도는 ROBOTERA URDF)</caption>
+    <thead><tr><th>ID</th><th>SDK 이름</th><th>움직임</th><th>범위 (rad)</th><th>정격 토크</th><th>최대 속도</th></tr></thead>
     <tbody>
-      <tr><td>0</td><td><code>thumb_bend</code></td><td>엄지 맞서기: 엄지 전체가 손의 긴 축을 따라 돌아 손바닥 옆(0)에서 손바닥 앞(1.2) · 가로질러(1.8)로 옵니다</td><td>0 ~ 1.83</td><td>1.1 N·m</td></tr>
-      <tr><td>1</td><td><code>thumb_rota_1</code></td><td>엄지 밑마디 굽힘</td><td>−1.05 ~ 1.57</td><td>1.1 N·m</td></tr>
-      <tr><td>2</td><td><code>thumb_rota_2</code></td><td>엄지 끝마디 굽힘</td><td>−0.17 ~ 1.83</td><td>0.4 N·m</td></tr>
-      <tr><td>3</td><td><code>index_bend</code></td><td>검지 옆으로 벌리기 (굽힘 아님)</td><td>−0.175 ~ 0.175</td><td>0.4 N·m</td></tr>
-      <tr><td>4</td><td><code>index_1</code></td><td>검지 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td></tr>
-      <tr><td>5</td><td><code>index_2</code></td><td>검지 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td></tr>
-      <tr><td>6</td><td><code>mid_1</code></td><td>가운뎃손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td></tr>
-      <tr><td>7</td><td><code>mid_2</code></td><td>가운뎃손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td></tr>
-      <tr><td>8</td><td><code>ring_1</code></td><td>약손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td></tr>
-      <tr><td>9</td><td><code>ring_2</code></td><td>약손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td></tr>
-      <tr><td>10</td><td><code>pinky_1</code></td><td>새끼손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td></tr>
-      <tr><td>11</td><td><code>pinky_2</code></td><td>새끼손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td></tr>
+      <tr><td>0</td><td><code>thumb_bend</code></td><td>엄지 맞서기: 엄지 전체가 손의 긴 축을 따라 돌아 손바닥 옆(0)에서 손바닥 앞(1.2) · 가로질러(1.8)로 옵니다</td><td>0 ~ 1.83</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>1</td><td><code>thumb_rota_1</code></td><td>엄지 밑마디 굽힘</td><td>−1.05 ~ 1.57</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>2</td><td><code>thumb_rota_2</code></td><td>엄지 끝마디 굽힘</td><td>−0.17 ~ 1.83</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
+      <tr><td>3</td><td><code>index_bend</code></td><td>검지 옆으로 벌리기 (굽힘 아님)</td><td>−0.175 ~ 0.175</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
+      <tr><td>4</td><td><code>index_1</code></td><td>검지 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>5</td><td><code>index_2</code></td><td>검지 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
+      <tr><td>6</td><td><code>mid_1</code></td><td>가운뎃손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>7</td><td><code>mid_2</code></td><td>가운뎃손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
+      <tr><td>8</td><td><code>ring_1</code></td><td>약손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>9</td><td><code>ring_2</code></td><td>약손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
+      <tr><td>10</td><td><code>pinky_1</code></td><td>새끼손가락 밑마디 굽힘</td><td>0 ~ 1.92</td><td>1.1 N·m</td><td>8.63 rad/s</td></tr>
+      <tr><td>11</td><td><code>pinky_2</code></td><td>새끼손가락 끝마디 굽힘</td><td>0 ~ 1.92</td><td>0.4 N·m</td><td>14.38 rad/s</td></tr>
     </tbody>
   </table>
-  <p>범위와 정격 토크는 ROBOTERA URDF(<code>l3_with_hand_fixedpin_xml.urdf</code>)의 왼손 값입니다. 오른손은 2번의 아래 한계만 −0.175 rad로 다르고 나머지는 같습니다.
+  <p>범위 · 정격 토크 · 최대 속도는 ROBOTERA URDF(<code>l3_with_hand_fixedpin_xml.urdf</code>)의 왼손 값입니다. 오른손은 2번의 아래 한계만 −0.175 rad로 다르고 나머지는 같습니다.
+    최대 속도는 URDF의 <code>velocity</code> 한계이며, WeGo는 관절 속도를 재지 않았습니다.
     굽힘 관절은 모두 0 근처가 편 자세이고, 값이 커질수록 굽습니다. 0번의 움직임 설명은 WeGo가 URDF의 순기구학으로 확인한 것입니다 (6장).
     밑마디(<code>*_1</code>)와 0번은 정격 토크가 1.1 N·m이고, 끝마디(<code>*_2</code>)와 2 · 3번은 0.4 N·m입니다.</p>
   <div class="box note"><div class="h">참고 · 문서와 URDF의 차이</div>
@@ -168,12 +182,20 @@
 
   <h2 id="c2-s2">연결하고 설정할 때</h2>
   <ul>
-    <li>직렬 포트는 한 프로세스만 열 수 있습니다. 이미 열린 포트를 열면 SDK가 C++ 예외로 프로세스 전체를 끝냅니다. 먼저 다른 프로그램을 끝내십시오 (7장).</li>
+    <li>전원을 넣기 전에 손목 커넥터의 배선을 핀 표와 대조하십시오 (3장).</li>
+    <li>직렬 포트는 한 프로세스만 열 수 있습니다. 이미 열린 포트를 열면 SDK가 C++ 예외로 프로세스 전체를 끝냅니다. 먼저 다른 프로그램을 끝내십시오 (12장).</li>
     <li>손 ID · 이름 · 보정 값 · 펌웨어를 바꾸는 SDK 함수(<code>set_hand_id</code> · <code>calibrate_joint</code> · <code>upgrade_device</code> 등)는 WeGo가 시험하지 않았습니다.
-      쓰기 전에 WeGo 기술 지원에 문의하십시오 (5장).</li>
+      쓰기 전에 WeGo 기술 지원에 문의하십시오 (5장 · 10장).</li>
+    <li>ROBOTERA 예제 <code>xhand_control_example.py</code>를 그대로 실행하지 마십시오. 손 ID를 1로 바꾸고 관절 12개를 모두 0.1 rad로 보냅니다 (5장).</li>
   </ul>
 
-  <h2 id="c2-s3">WeGo XHand Controller를 쓸 때</h2>
+  <h2 id="c2-s3">ROS 2 패키지를 쓸 때</h2>
+  <ul>
+    <li><code>joint_command</code>를 보내기 전에 <code>hand_mode</code>를 보내지 마십시오. 관절 12개가 한꺼번에 0.1 rad로 움직입니다 (9장).</li>
+    <li><code>joint_command</code>의 값은 rad이며, 노드가 관절 한계로 자르지 않고 그대로 손에 보냅니다. 보내는 쪽에서 1장의 범위 안으로 자르십시오.</li>
+  </ul>
+
+  <h2 id="c2-s4">WeGo XHand Controller를 쓸 때</h2>
   <ul>
     <li>프로그램은 손을 놓은(PASSIVE) 상태로 시작하므로 페이지를 열어도 손이 움직이지 않습니다. <span class="ui">Enable</span>을 눌러야 자세를 잡습니다.</li>
     <li><span class="ui">Release</span> 버튼이나 <span class="ui">Esc</span> 키는 손을 바로 놓습니다. 끝낼 때는 <span class="ui">Ctrl</span>+<span class="ui">C</span>를 누르십시오 (손을 놓고 포트를 닫음, 4장).</li>
@@ -186,12 +208,30 @@
   <div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">연결과 SDK 설치</h1></div>
   <p class="lede">손에 전원을 넣고 RS485-USB 변환기로 개발 PC에 연결한 뒤, 개발 PC에 ROBOTERA의 Python SDK를 설치합니다. 손이 응답하는지는 Python 몇 줄로 확인합니다.</p>
 
-  <h2 id="c3-s1">연결 구성</h2>
+  <h2 id="c3-s1">손목 커넥터 핀 <span class="src">문서</span></h2>
+  <p>손목의 커넥터는 13핀 DF62B-13EP-2.2C입니다. ROBOTERA 제품 설명서 V1.0의 핀 정의를 WeGo가 용도별로 다시 정리했습니다. 핀 위치 그림은 원문을 보십시오.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pins"><b>표 3.</b> 손목 커넥터 핀 (ROBOTERA 제품 설명서 V1.0)</caption>
+    <thead><tr><th>핀</th><th>신호 이름</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td>6</td><td><code>POWER</code></td><td>전원 + (DC 24 ~ 70 V)</td></tr>
+      <tr><td>7 · 10</td><td><code>GND</code></td><td>전원 접지</td></tr>
+      <tr><td>8 · 9</td><td><code>485_SD_P</code> · <code>485_SD_N</code></td><td>RS485 차동 쌍 (P · N)</td></tr>
+      <tr><td>3 · 2</td><td><code>TA_P</code> · <code>TA_N</code></td><td>EtherCAT 차동 쌍 TA</td></tr>
+      <tr><td>5 · 4</td><td><code>RA_P</code> · <code>RA_N</code></td><td>EtherCAT 차동 쌍 RA</td></tr>
+      <tr><td>1</td><td><code>SHELL1</code></td><td>EtherCAT 묶음의 차폐</td></tr>
+      <tr><td>11 ~ 13</td><td>—</td><td>설명서 표에 없음</td></tr>
+    </tbody>
+  </table>
+  <div class="box caution"><div class="h">주의 · 전원을 넣기 전에</div>
+    <p>WeGo는 커넥터 핀을 직접 재 보지 않았습니다. 손에 전원을 넣기 전에 배선을 위 표, 원문의 핀 그림, 공급받은 케이블과 대조하십시오.
+      전원을 통신 핀에 잘못 넣으면 통신 보드가 손상될 수 있습니다. 11 ~ 13번 핀의 용도는 확인 필요입니다 (ROBOTERA에 문의).</p></div>
+
+  <h2 id="c3-s2">연결 구성</h2>
   <ol class="steps">
     <li><b>장착 <span class="src">문서</span></b>손은 둘레의 M3 나사 8개로 고정합니다. 장착한 뒤 배선은 옆으로 뺍니다.</li>
-    <li><b>전원 <span class="src">문서</span></b>손목 커넥터(DF62B-13EP-2.2C)의 전원 핀에 DC 24 ~ 70 V를 넣습니다. 손은 최대 3 A · 144 W를 씁니다.
-      핀 번호는 ROBOTERA 제품 설명서의 '전기 인터페이스와 통신' 절에 있습니다.</li>
-    <li><b>통신 <span class="src r">실측</span></b>커넥터의 RS485 선을 RS485-USB 변환기를 거쳐 개발 PC의 USB 포트에 연결합니다.
+    <li><b>전원 <span class="src">문서</span></b>손목 커넥터의 6번(+)과 7 · 10번(접지)에 DC 24 ~ 70 V를 넣습니다. 손은 최대 3 A · 144 W를 씁니다.</li>
+    <li><b>통신 <span class="src r">실측</span></b>커넥터의 RS485 선(8 · 9번)을 RS485-USB 변환기를 거쳐 개발 PC의 USB 포트에 연결합니다.
       WeGo는 FTDI FT232 변환기를 썼고, 개발 PC에서 <code>/dev/ttyUSB0</code>로 보였습니다. 통신 속도는 3,000,000 baud입니다 (ROBOTERA 설명서의 3 Mbps와 같음).</li>
     <li><b>확인</b>개발 PC에서 포트가 보이는지 확인합니다.
       <pre class="cmd">ls -la /dev/ttyUSB*</pre></li>
@@ -201,7 +241,7 @@
       ROBOTERA 설명서에 따르면 EtherCAT은 PDO 한 번에 관절 하나를 1 ms에 주고받아, 관절 12개를 모두 도는 데 12 ms가 걸립니다. RS485도 손 전체를 12 ms 안에 주고받습니다 (83 Hz).
       WeGo는 EtherCAT 속도를 재 보지 않았습니다.</p></div>
 
-  <h2 id="c3-s2">개발 PC 준비 <span class="src r">SDK</span></h2>
+  <h2 id="c3-s3">개발 PC 준비 <span class="src r">SDK</span></h2>
   <p>SDK는 ROBOTERA가 만든 Python 패키지 <code>xhand_controller</code>입니다. 1.1.7판은 Python 3.10용(<code>cp310</code>)과 3.12용(<code>cp312</code>) 휠 파일 두 개로 나오며,
     둘 다 x86_64 Linux용입니다 (<code>linux_x86_64</code>). ARM 보드(예: Jetson)용 휠은 이 판에 없습니다.
     휠 파일은 ROBOTERA나 제품 공급처에서 받으십시오.</p>
@@ -233,7 +273,7 @@ sudo chmod 666 /dev/ttyUSB0</pre></li>
 echo "$(python3 -c 'import os; from importlib import util; s = util.find_spec("xhand_controller"); print(os.path.dirname(s.origin) if s else "")')" | sudo tee /etc/ld.so.conf.d/xhand.conf
 sudo ldconfig</pre></div>
 
-  <h2 id="c3-s3">손이 응답하는지 확인 <span class="src r">실측</span></h2>
+  <h2 id="c3-s4">손이 응답하는지 확인 <span class="src r">실측</span></h2>
   <p>다음 코드는 포트를 열고, 손 ID와 기기 정보를 읽은 뒤 관절 12개의 위치를 출력합니다. 손을 움직이지 않습니다.</p>
   <pre class="cmd">from xhand_controller import xhand_control
 x = xhand_control.XHandControl()
@@ -249,10 +289,10 @@ x.close_device()</pre>
   <ul>
     <li><code>read_state</code>의 두 번째 인자는 반드시 <code>True</code>로 주십시오. <code>False</code>이면 SDK가 저장해 둔 값을 돌려주는데, 처음에는 위치와 토크가 모두 0이라 버스가 죽은 것처럼 보입니다.</li>
     <li>포트를 연 뒤 첫 <code>read_state</code>는 오류 코드(0이 아님)를 자주 돌려줍니다. 0.2초쯤 기다렸다가 한 번 더 읽으십시오.</li>
-    <li>손이 응답하지 않으면 7장을 보십시오.</li>
+    <li>손이 응답하지 않으면 12장을 보십시오.</li>
   </ul>
 
-  <h2 id="c3-s4">EtherCAT으로 연결할 때 <span class="src r">SDK</span></h2>
+  <h2 id="c3-s5">EtherCAT으로 연결할 때 <span class="src r">SDK</span></h2>
   <p>EtherCAT은 원시 소켓을 쓰므로, Python 인터프리터에 <code>CAP_NET_RAW</code> 권한이 있어야 합니다. 권한이 없으면 SDK가 <code>No socket connection on</code> · <code>Excecute as root</code>를 출력하고 빈 목록을 돌려줍니다.
     RS485로만 쓸 때 나오는 이 메시지는 무시해도 됩니다.</p>
   <pre class="cmd">sudo setcap cap_net_raw+ep $(readlink -f $(which python3))</pre>
@@ -297,7 +337,7 @@ python xhand_ui.py                <span class="c"># /dev/ttyUSB0의 실제 손</
 
   <h2 id="c4-s2">실행 옵션</h2>
   <table class="t tight keep">
-    <caption data-tbl="tbl-opts"><b>표 3.</b> xhand_ui.py 옵션</caption>
+    <caption data-tbl="tbl-opts"><b>표 4.</b> xhand_ui.py 옵션</caption>
     <thead><tr><th>옵션</th><th>기본값</th><th>하는 일</th></tr></thead>
     <tbody>
       <tr><td><code>--port</code></td><td><code>/dev/ttyUSB0</code></td><td>손의 직렬 포트</td></tr>
@@ -356,7 +396,7 @@ python xhand_ui.py                <span class="c"># /dev/ttyUSB0의 실제 손</
     <p>슬라이더 화면의 첫 판과 3번 관절의 부호는 2026년 9월 실제 손(왼손)에서 확인했습니다. 비전 제어가 들어간 2026-11-05판은 시뮬레이터와 웹캠으로만 시험했습니다. 실제 손에서 처음 쓸 때 다음을 확인하십시오.</p>
     <ul>
       <li>엄지의 비전 목표 상한(맞서기 1.30 · 밑마디 1.00 · 끝마디 1.30 rad)은 일부러 작게 잡았습니다. 값은 <code>ui/vision.py</code>의 <code>XHAND_CLOSED</code>에 있습니다.</li>
-      <li>촉각 gain 기본값(×10)은 추정값입니다. 패드 번호(PAD 0 ~ 4)와 손가락의 대응도 아직 정하지 않았습니다. 손가락 끝을 하나씩 눌러 어느 패드가 반응하는지 적어 두십시오.</li>
+      <li>촉각 gain 기본값(×10)은 추정값입니다. 패드 번호(PAD 0 ~ 4)와 손가락의 대응도 실제 손으로 확인하지 않았습니다 (설명서 순서는 7장). 손가락 끝을 하나씩 눌러 어느 패드가 반응하는지 적어 두십시오.</li>
       <li>엄지 슬라이더 이름은 URDF를 따릅니다 (0번 맞서기 · 1번 밑마디 · 2번 끝마디). 엄지가 이름과 다르게 움직이면 WeGo 기술 지원에 알려 주십시오.</li>
     </ul></div>
 </section>
@@ -393,7 +433,7 @@ def read():
         if err.error_code == 0:
             return [st.finger_state[i].position for i in range(12)]
         time.sleep(0.2)
-    raise RuntimeError(f"read_state 0x{err.error_code:x}")
+    raise RuntimeError(f"read_state {err.error_code} {err.error_message}")  <span class="c"># 뜻은 11장</span>
 
 def send(q, mode=3, kp=150, tor_max=300):                <span class="c"># 3: 위치 제어, 0: 놓기</span>
     cmd = xhand_control.HandCommand_t()
@@ -417,7 +457,7 @@ finally:
 
   <h2 id="c5-s3">XHandControl 함수 <span class="src r">SDK</span></h2>
   <table class="t api tight">
-    <caption data-tbl="tbl-api"><b>표 4.</b> XHandControl 함수 (xhand_control.hpp)</caption>
+    <caption data-tbl="tbl-api"><b>표 5.</b> XHandControl 함수 (xhand_control.hpp)</caption>
     <thead><tr><th>함수</th><th>하는 일 · 돌려주는 값</th></tr></thead>
     <tbody>
       <tr><td><code>get_sdk_version()</code></td><td>SDK 버전 문자열 (손 필요 없음)</td></tr>
@@ -438,26 +478,31 @@ finally:
       <tr><td><code>upgrade_device(id, component_id, path)</code></td><td>펌웨어 올리기</td></tr>
     </tbody>
   </table>
-  <p>오류는 <code>ErrorStruct</code>의 <code>error_code</code>로 봅니다. 0이면 성공이고, 0이 아니면 16진수로 출력해 두면 문제를 찾기 쉽습니다 (<code>f"0x{err.error_code:x}"</code>).
+  <p>오류는 <code>ErrorStruct</code>의 <code>error_code</code>로 봅니다. 0이면 성공이고, 0이 아니면 <code>error_code</code>(10진수)와 <code>error_message</code>를 함께 출력해 두십시오. 번호의 뜻은 11장에 있습니다.
     표의 뒤쪽 다섯 줄(ID · 이름 · 보정 · 펌웨어)은 손에 저장된 설정을 바꾸며, WeGo는 시험하지 않았습니다 (2장).
     한 버스에 손을 여러 대 연결하려면 손마다 손 ID를 다르게 정해야 합니다 <span class="src">문서</span>.</p>
+  <div class="box caution"><div class="h">주의 · ROBOTERA 예제를 그대로 실행할 때</div>
+    <p>ROBOTERA 예제 <code>xhand_control_example.py</code>의 실행 부분은 함수 사용법을 차례로 보여 주려고 만든 것이라, 그대로 실행하면 손의 설정과 자세가 바뀝니다.
+      <code>set_hand_id</code>로 손 ID를 0에서 1로 바꾸고, 관절 12개를 모두 0.1 rad · kp 100 · <code>tor_max</code> 300으로 보낸 뒤 손을 놓습니다.
+      예제를 쓰려면 이 두 부분을 먼저 지우십시오. 바뀐 ID가 전원을 껐다 켠 뒤에도 남는지는 WeGo가 확인하지 않았습니다.
+      손 ID가 0이 아니면 <code>list_hands_id()</code>가 돌려주는 값을 쓰십시오 <span class="src r">SDK</span>.</p></div>
 
   <h2 id="c5-s4">명령: HandCommand_t <span class="src r">SDK</span></h2>
   <p><code>HandCommand_t.finger_command[0 ~ 11]</code>은 관절마다 <code>FingerCommand_t</code> 하나입니다.</p>
   <table class="t tight">
-    <caption data-tbl="tbl-cmd"><b>표 5.</b> FingerCommand_t 필드</caption>
+    <caption data-tbl="tbl-cmd"><b>표 6.</b> FingerCommand_t 필드</caption>
     <thead><tr><th>필드</th><th>형</th><th>뜻</th></tr></thead>
     <tbody>
       <tr><td><code>id</code></td><td>uint16</td><td>관절 ID (0 ~ 11)</td></tr>
       <tr><td><code>kp</code> · <code>ki</code> · <code>kd</code></td><td>int16</td><td>비례 · 적분 · 미분 이득. ROBOTERA 예제는 kp 100 · ki 0 · kd 0, WeGo는 kp 150</td></tr>
       <tr><td><code>position</code></td><td>float</td><td>목표 위치 (rad)</td></tr>
       <tr><td><code>tor_max</code></td><td>uint16</td><td>토크 상한. ROBOTERA 예제 300. 낮으면 관절이 목표에 못 갑니다 (6장)</td></tr>
-      <tr><td><code>mode</code></td><td>uint16</td><td>관절 모드 (표 6)</td></tr>
+      <tr><td><code>mode</code></td><td>uint16</td><td>관절 모드 (표 7)</td></tr>
       <tr><td><code>res0</code> ~ <code>res3</code></td><td>uint16</td><td>예약. 헤더 주석은 <code>res0</code> · <code>res1</code>에 힘 x · y · z를 적습니다</td></tr>
     </tbody>
   </table>
   <table class="t num keep">
-    <caption data-tbl="tbl-mode"><b>표 6.</b> 관절 모드 (ROBOTERA SDK 설치 안내)</caption>
+    <caption data-tbl="tbl-mode"><b>표 7.</b> 관절 모드 (ROBOTERA SDK 설치 안내)</caption>
     <thead><tr><th>값</th><th>모드</th></tr></thead>
     <tbody>
       <tr><td>0</td><td>놓기 (Passive)</td></tr>
@@ -470,21 +515,17 @@ finally:
       WeGo는 0(놓기)과 3(위치 제어)만 썼고, 5(힘 제어)는 시험하지 않았습니다.</p></div>
 
   <h2 id="c5-s5">상태: HandState_t <span class="src r">SDK</span></h2>
-  <p><code>HandState_t</code>에는 관절 상태 <code>finger_state[0 ~ 11]</code>과 손끝 센서 <code>sensor_data[0 ~ 4]</code>가 들어 있습니다.</p>
+  <p><code>HandState_t</code>에는 관절 상태 <code>finger_state[0 ~ 11]</code>과 손끝 센서 <code>sensor_data[0 ~ 4]</code>가 들어 있습니다. 손끝 센서의 필드는 7장에 있습니다.</p>
   <table class="t tight">
-    <caption data-tbl="tbl-state"><b>표 7.</b> FingerState_t · SenserData_t 필드</caption>
+    <caption data-tbl="tbl-state"><b>표 8.</b> FingerState_t 필드</caption>
     <thead><tr><th>필드</th><th>뜻</th></tr></thead>
     <tbody>
       <tr><td><code>finger_state[i].id</code></td><td>관절 ID</td></tr>
       <tr><td><code>.position</code></td><td>현재 위치 (rad)</td></tr>
       <tr><td><code>.torque</code></td><td>현재 토크. <code>tor_max</code>와 단위가 다릅니다 (6장)</td></tr>
-      <tr><td><code>.raw_position</code></td><td>원시 위치값</td></tr>
+      <tr><td><code>.raw_position</code></td><td>원시 위치값. ROBOTERA 설명서는 위 12비트를 원시 위치(0 ~ 4096), 아래 4비트를 제어 모드로 설명합니다</td></tr>
       <tr><td><code>.temperature</code></td><td>온도 원시값 (아래 참고)</td></tr>
-      <tr><td><code>.commboard_err</code> · <code>.jonitboard_err</code> · <code>.tipboard_err</code></td><td>통신 보드 · 관절 보드 · 손끝 보드 오류 코드 (SDK의 철자 그대로 <code>jonit</code>)</td></tr>
-      <tr><td><code>sensor_data[k].calc_force</code></td><td>패드 전체의 합력 <code>fx</code> · <code>fy</code>(int8) · <code>fz</code>(uint8)</td></tr>
-      <tr><td><code>.raw_force[0 ~ 119]</code></td><td>촉각 점 120개의 3축 힘 (<code>fx</code> · <code>fy</code> · <code>fz</code>)</td></tr>
-      <tr><td><code>.temperature[0 ~ 19]</code></td><td>온도 점 20개 (°C)</td></tr>
-      <tr><td><code>.calc_temperature</code></td><td>패드 온도 (°C)</td></tr>
+      <tr><td><code>.commboard_err</code> · <code>.jonitboard_err</code> · <code>.tipboard_err</code></td><td>통신 보드 · 관절 보드 · 손끝 보드 오류 코드. 0이면 정상 (11장, SDK의 철자 그대로 <code>jonit</code>)</td></tr>
     </tbody>
   </table>
   <div class="box note"><div class="h">참고 · 관절 온도값</div>
@@ -500,7 +541,7 @@ finally:
 
   <h2 id="c6-s1">통신 속도 <span class="src r">실측</span></h2>
   <table class="t keep">
-    <caption data-tbl="tbl-rate"><b>표 8.</b> RS485-USB 통신 속도 (3,000,000 baud)</caption>
+    <caption data-tbl="tbl-rate"><b>표 9.</b> RS485-USB 통신 속도 (3,000,000 baud)</caption>
     <thead><tr><th>측정</th><th>결과</th></tr></thead>
     <tbody>
       <tr><td><code>read_state</code>만 반복</td><td>98 Hz. 300번 읽어 오류 0, 한 번에 중앙값 10.6 ms · 최대 11.1 ms</td></tr>
@@ -544,19 +585,396 @@ finally:
   <h2 id="c6-s6">손끝 촉각 센서 <span class="src r">실측</span></h2>
   <ul>
     <li>패드 5개 모두 3축 힘 120점, 온도 20점(섭씨), 합력 1개(<code>calc_force</code>)를 보냅니다. 촉각 점은 모두 600개입니다.</li>
-    <li>포화된 촉각 점은 약 312(힘 크기)로 읽히고, 살짝 닿으면 몇 정도만 오릅니다 (<code>fx</code> · <code>fy</code>는 int8, <code>fz</code>는 uint8).</li>
-    <li>패드 번호(0 ~ 4)와 손가락의 대응은 아직 확인하지 않았습니다 (4장).</li>
+    <li>포화된 촉각 점은 약 312(힘 크기)로 읽히고, 살짝 닿으면 몇 정도만 오릅니다. 312는 <code>fx</code> · <code>fy</code>(int8) · <code>fz</code>(uint8)가 모두 끝값(127 · 127 · 255)일 때의 크기와 같습니다 (WeGo 계산).</li>
+    <li>패드 번호(0 ~ 4)와 손가락의 대응은 실제 손으로 확인하지 않았습니다 (4장 · 7장).</li>
   </ul>
 </section>
 
 <!-- ═══════════════════════ 7 ═══════════════════════ -->
 <section class="chapter">
-  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">문제 해결</h1></div>
-  <p class="lede">증상 → 원인 → 해결 순으로 정리했습니다. WeGo XHand Controller의 사용 안내와 WeGo의 시험 기록에서 모았습니다.</p>
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">손끝 촉각 센서</h1></div>
+  <p class="lede">손가락 끝마다 촉각 패드가 하나씩, 모두 5개 있습니다. 패드마다 3축 힘을 재는 점 120개와 온도 점 20개가 있고, <code>read_state</code>는 관절 상태와 함께 패드 5개의 값을 한 번에 돌려줍니다.</p>
 
-  <h2 id="c7-s1">연결</h2>
+  <h2 id="c7-s1">센서 구성 <span class="src">문서</span></h2>
+  <p>ROBOTERA 설명서는 손가락마다 100점이 넘는 촉각 센서를 달 수 있고, 이 센서가 3차원 힘과 온도를 잰다고 설명합니다. 누르는 힘뿐 아니라 접선 방향의 힘도 재고, 점이 촘촘해 물체의 모서리와 모양을 구분할 수 있다고 합니다.
+    패드마다 통신 ID가 있으며, RS485 실시간 응답에는 0x11부터 0x15까지 이 순서로 들어 있습니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-pads"><b>표 10.</b> 손끝 센서 ID (ROBOTERA 제품 설명서 V1.0, SDK 순서는 WeGo 추정)</caption>
+    <thead><tr><th>센서 ID</th><th>10진수</th><th>손가락</th><th>SDK 순서 (추정)</th></tr></thead>
+    <tbody>
+      <tr><td>0x11</td><td>17</td><td>엄지</td><td><code>sensor_data[0]</code></td></tr>
+      <tr><td>0x12</td><td>18</td><td>검지</td><td><code>sensor_data[1]</code></td></tr>
+      <tr><td>0x13</td><td>19</td><td>가운뎃손가락</td><td><code>sensor_data[2]</code></td></tr>
+      <tr><td>0x14</td><td>20</td><td>약손가락</td><td><code>sensor_data[3]</code></td></tr>
+      <tr><td>0x15</td><td>21</td><td>새끼손가락</td><td><code>sensor_data[4]</code></td></tr>
+    </tbody>
+  </table>
+  <p>SDK 순서는 설명서의 응답 순서로 WeGo가 추정한 것이며, 실제 손에서는 확인 필요입니다. 손끝을 하나씩 눌러 어느 <code>sensor_data</code>가 반응하는지 확인하십시오 (4장의 Fingertip touch로도 볼 수 있음).
+    촉각 점 120개의 배치(행 · 열)와 힘 값을 N으로 바꾸는 환산식은 설명서 V1.0에 없습니다 (확인 필요).</p>
+
+  <h2 id="c7-s2">데이터 형식 <span class="src r">SDK</span></h2>
+  <p><code>HandState_t.sensor_data[0 ~ 4]</code>는 패드마다 <code>SenserData_t</code> 하나입니다 (SDK의 철자 그대로 <code>Senser</code>). 패드 하나는 384바이트이고, 다섯 개를 합치면 1,920바이트입니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-sensor"><b>표 11.</b> SenserData_t 필드 (data_type.hpp)</caption>
+    <thead><tr><th>필드</th><th>개수 · 형</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>calc_force</code></td><td>1 · <code>fx</code> · <code>fy</code> int8, <code>fz</code> uint8</td><td>패드 전체의 합력</td></tr>
+      <tr><td><code>raw_force[0 ~ 119]</code></td><td>120 · 위와 같음</td><td>촉각 점마다 3축 힘</td></tr>
+      <tr><td><code>temperature[0 ~ 19]</code></td><td>20 · uint8</td><td>온도 점 (°C)</td></tr>
+      <tr><td><code>calc_temperature</code></td><td>1 · uint8</td><td>패드 온도 (°C)</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><code>fx</code> · <code>fy</code>는 −128 ~ 127, <code>fz</code>는 0 ~ 255입니다. 점 하나의 힘 크기는 최대 약 312입니다 (6장).</li>
+    <li>힘 값의 단위는 설명서와 SDK에 적혀 있지 않습니다. WeGo는 상대값으로 다룹니다.</li>
+    <li>온도는 섭씨값으로 읽혔습니다 <span class="src r">실측</span>.</li>
+  </ul>
+
+  <h2 id="c7-s3">읽기 예제 <span class="src r">SDK</span></h2>
+  <p>패드마다 합력, 가장 큰 점의 힘 크기, 패드 온도를 출력합니다. 손을 움직이지 않습니다. 힘 크기는 WeGo XHand Controller가 실제 손에서 계산하는 방법과 같습니다.</p>
+  <pre class="cmd">from xhand_controller import xhand_control
+x = xhand_control.XHandControl()
+assert x.open_serial("/dev/ttyUSB0", 3000000).error_code == 0
+hid = x.list_hands_id()[0]
+err, st = x.read_state(hid, True)                <span class="c"># 첫 읽기가 실패하면 0.2초 뒤 다시 (3장)</span>
+for k, sd in enumerate(st.sensor_data):         <span class="c"># 패드 0 ~ 4</span>
+    c = sd.calc_force
+    peak = max((p.fx**2 + p.fy**2 + p.fz**2) ** 0.5 for p in sd.raw_force)
+    print(k, "합력", (c.fx, c.fy, c.fz), "최대 점", round(peak), "온도", sd.calc_temperature)
+x.close_device()</pre>
+
+  <h2 id="c7-s4">영점 맞추기 <span class="src r">SDK</span></h2>
+  <p>아무것도 닿지 않았는데 값이 남아 있으면 패드의 영점을 다시 맞춥니다. <code>reset_sensor(hand_id, sensor_id)</code>에 위 표의 센서 ID(17 ~ 21)를 넘깁니다.
+    ROBOTERA 설명서의 손끝 센서 영점 명령(0x12, 8장)에 해당하며, ROBOTERA 예제는 17(엄지)을 씁니다.</p>
+  <pre class="cmd">for sid in range(0x11, 0x16):                   <span class="c"># 패드 5개. 아무것도 닿지 않은 상태에서</span>
+    print(sid, x.reset_sensor(hid, sid).error_code)   <span class="c"># 0이면 성공</span></pre>
+  <div class="box note"><div class="h">참고 · 시험하지 않은 기능</div>
+    <p>WeGo는 <code>reset_sensor</code>를 실제 손에서 써 보지 않았습니다. 영점이 손에 저장되는지, 전원을 켤 때마다 다시 맞춰야 하는지는 확인 필요입니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">통신 방식과 프로토콜</h1></div>
+  <p class="lede">개발 PC와 손은 RS485나 EtherCAT으로 통신합니다. 프레임은 SDK가 만들고 해석하므로 프로그램은 5장의 함수만으로 짤 수 있습니다. 이 장은 통신 속도의 한계와 오류의 원인을 이해하는 데 쓰십시오.</p>
+
+  <div class="box caution"><div class="h">주의 · 프로토콜을 직접 구현할 때</div>
+    <p>이 장은 ROBOTERA 제품 설명서 V1.0(2024-10)을 WeGo가 요약한 것입니다. WeGo는 SDK로만 통신했고 프레임을 직접 보내 보지 않았습니다.
+      SDK 1.4.2에는 설명서에 없는 보정 · 오류 기능이 있고 오류 번호도 설명서와 어긋나므로 (11장), 지금 펌웨어의 프로토콜이 설명서와 같다고 볼 수 없습니다.
+      직접 구현하려면 ROBOTERA에 최신 프로토콜 문서를 요청하십시오.</p></div>
+
+  <h2 id="c8-s1">RS485와 EtherCAT <span class="src">문서</span></h2>
+  <p>통신은 실시간 통신(손 움직이기)과 비실시간 통신(설정 읽기 · 쓰기)으로 나뉩니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-comm"><b>표 12.</b> 두 통신 방식 (ROBOTERA 제품 설명서 V1.0)</caption>
+    <thead><tr><th>항목</th><th>RS485</th><th>EtherCAT</th></tr></thead>
+    <tbody>
+      <tr><td>실시간 제어</td><td>명령 한 번에 관절 12개의 목표, 응답 한 번에 관절 12개의 상태와 손끝 센서 5개</td><td>PDO 한 번에 관절 1개의 목표 · 상태와 손끝 센서 1개, 1 ms마다</td></tr>
+      <tr><td>손 전체 한 바퀴</td><td>12 ms 이내 (83 Hz)</td><td>12 ms (1 ms × 관절 12개)</td></tr>
+      <tr><td>비실시간 (설정)</td><td>같은 선에서 묻고 답하기</td><td>SDO 채널에 RS485와 같은 프레임</td></tr>
+      <tr><td>SDK에서 열기</td><td><code>open_serial(포트, 3000000)</code></td><td><code>open_ethercat(인터페이스)</code></td></tr>
+      <tr><td>WeGo 시험</td><td>시험함 (6장)</td><td>시험하지 않음</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s2">RS485 설정과 속도 <span class="src">문서</span></h2>
+  <p>3 Mbps, 데이터 8비트, 패리티 없음, 정지 비트 1개, 흐름 제어 없음이며, 여러 바이트로 된 값은 낮은 바이트를 먼저 보냅니다. WeGo의 FTDI 변환기는 3,000,000 baud로 동작했습니다.</p>
+  <p>실시간 명령 프레임은 297바이트, 응답 프레임은 2,217바이트입니다. 한 바이트에 10비트(시작 · 데이터 8 · 정지)가 들므로, 3 Mbps에서 명령에 약 1.0 ms, 응답에 약 7.4 ms, 합쳐 약 8.4 ms가 선 위에서만 걸립니다 (WeGo 계산).
+    WeGo가 잰 <code>read_state</code> 한 번 10.6 ms(6장)와 설명서의 12 ms 이내가 이 값과 맞습니다. RS485로는 100 Hz를 넘기기 어렵습니다.</p>
+
+  <h2 id="c8-s3">프레임 구성 <span class="src">문서</span></h2>
+  <p>RS485의 모든 프레임과 EtherCAT SDO로 오가는 프레임은 같은 꼴입니다. 앞에서부터 다음 칸이 차례로 옵니다.</p>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-frame"><b>표 13.</b> 프레임의 칸 (ROBOTERA 제품 설명서 V1.0)</caption>
+    <thead><tr><th>칸</th><th>크기</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>머리</td><td>2바이트</td><td>0x55, 0xAA (고정)</td></tr>
+      <tr><td>보내는 쪽 ID</td><td>1바이트</td><td>표 14</td></tr>
+      <tr><td>받는 쪽 ID</td><td>1바이트</td><td>표 14</td></tr>
+      <tr><td>명령어</td><td>1바이트</td><td>표 15</td></tr>
+      <tr><td>데이터 길이</td><td>2바이트</td><td>데이터 칸의 바이트 수</td></tr>
+      <tr><td>데이터</td><td>N바이트</td><td>명령어마다 다름</td></tr>
+      <tr><td>CRC</td><td>2바이트</td><td>머리부터 데이터 끝까지의 CRC-16</td></tr>
+    </tbody>
+  </table>
+  <p>CRC는 다항식 0x1021, 초깃값 0, 비트 반사 없는 CRC-16으로, 흔히 CRC-16/XMODEM이라 부르는 계산과 같습니다 (WeGo가 설명서의 계산표와 대조).</p>
+
+  <h2 id="c8-s4">통신 ID <span class="src">문서</span></h2>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-ids"><b>표 14.</b> 통신 ID (ROBOTERA 제품 설명서 V1.0)</caption>
+    <thead><tr><th>대상</th><th>ID</th></tr></thead>
+    <tbody>
+      <tr><td>개발 PC (상위 장치)</td><td>0xFE (고정)</td></tr>
+      <tr><td>손 (통신 보드)</td><td>손 ID | 0x80. 손 ID 0이면 0x80. 손 ID는 통신 보드에 저장되며 공장 기본값은 0</td></tr>
+      <tr><td>관절</td><td>0 ~ 11 (1장의 관절 번호)</td></tr>
+      <tr><td>손끝 센서</td><td>0x11 ~ 0x15 (표 10)</td></tr>
+      <tr><td>모두 (브로드캐스트)</td><td>0xFF</td></tr>
+    </tbody>
+  </table>
+  <p>한 버스에 손을 여러 대 연결하면 손마다 손 ID가 달라야 합니다. SDK 함수에는 0x80을 더하지 않은 손 ID를 넘깁니다. WeGo의 손은 <code>list_hands_id()</code>가 0을 돌려주었고, 0으로 모든 시험을 했습니다 <span class="src r">실측</span>.</p>
+
+  <h2 id="c8-s5">명령어 <span class="src">문서</span></h2>
+  <table class="t tight">
+    <caption data-tbl="tbl-cmdword"><b>표 15.</b> 명령어 (ROBOTERA 제품 설명서 V1.0, SDK 함수는 WeGo 대조)</caption>
+    <thead><tr><th>명령어</th><th>하는 일</th><th>가까운 SDK 함수</th></tr></thead>
+    <tbody>
+      <tr><td>0x02</td><td>실시간 제어. 관절 12개의 목표(관절마다 24바이트, 모두 288바이트)를 보내고, 관절 12개의 상태(24바이트씩)와 손끝 센서 5개(384바이트씩)를 받음</td><td><code>send_command</code> · <code>read_state</code></td></tr>
+      <tr><td>0x00</td><td>오류 보고. 손이 2바이트 오류 번호를 보냄</td><td>오류 필드 · <code>error_code</code> (11장)</td></tr>
+      <tr><td>0x05</td><td>레지스터에 쓴 사용자 값을 플래시에 저장. 응답 0x0010 성공 · 0x0000 실패</td><td>—</td></tr>
+      <tr><td>0x12</td><td>손끝 센서 영점. 센서 ID로 보냄</td><td><code>reset_sensor</code> (7장)</td></tr>
+      <tr><td>0x13</td><td>버전 읽기. 소프트웨어 4바이트 + 하드웨어 4바이트</td><td><code>read_version</code></td></tr>
+      <tr><td>0x14</td><td>펌웨어 재시작. 응답 없음</td><td>—</td></tr>
+      <tr><td>0x15</td><td>레지스터 읽기 (시작 번호 · 길이)</td><td><code>read_device_info</code> · <code>read_parameters</code></td></tr>
+      <tr><td>0x16</td><td>레지스터 쓰기 (시작 번호 · 값)</td><td><code>set_hand_id</code> · <code>set_hand_name</code> · <code>set_parameters</code></td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>SDK 함수 열은 이름과 데이터 구성을 보고 WeGo가 짝지은 것입니다. SDK 라이브러리는 소스가 없어, 함수가 실제로 어느 명령어를 쓰는지는 확인 필요입니다.</li>
+    <li>버전 4바이트는 위에서부터 8비트 주 버전, 8비트 부 버전, 16비트 릴리스 번호입니다. WeGo의 손에서 <code>read_version(hand_id, 0)</code>은 1.1.0을 돌려주었습니다 <span class="src r">실측</span>.</li>
+    <li>레지스터에 쓴(0x16) 값은 0x05로 저장하지 않으면, 다시 켤 때 쓰기 전 값으로 돌아갑니다.</li>
+  </ul>
+
+  <h2 id="c8-s6">레지스터 <span class="src">문서</span></h2>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-reg"><b>표 16.</b> 레지스터 (바이트 번호, ROBOTERA 제품 설명서 V1.0)</caption>
+    <thead><tr><th>번호</th><th>내용</th><th>쓰기</th><th>DeviceInfo_t 필드</th></tr></thead>
+    <tbody>
+      <tr><td>0 ~ 19</td><td>예약</td><td>—</td><td>—</td></tr>
+      <tr><td>20</td><td>왼손 · 오른손 (<code>L</code> · <code>l</code> 또는 <code>R</code> · <code>r</code>)</td><td>읽기만</td><td><code>ev_hand</code></td></tr>
+      <tr><td>21 ~ 52</td><td>일련번호 (32바이트)</td><td>읽기만</td><td><code>serial_number</code></td></tr>
+      <tr><td>53</td><td>손 ID</td><td>가능</td><td><code>hand_id</code></td></tr>
+      <tr><td>54 ~ 85</td><td>손 이름 (32바이트)</td><td>가능</td><td><code>name</code></td></tr>
+      <tr><td>86 ~ 205</td><td>보정 값 (120바이트, <code>HandParam_t</code>, 10장)</td><td>가능</td><td><code>hand_param</code></td></tr>
+      <tr><td>206 ~ 255</td><td>예약</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p>오른쪽 열은 <code>read_device_info()</code>가 돌려주는 <code>DeviceInfo_t</code>에서 같은 내용을 담는 필드입니다 (WeGo 대조).</p>
+
+  <h2 id="c8-s7">EtherCAT <span class="src">문서</span></h2>
+  <ul>
+    <li>PDO는 1 ms 주기입니다. PDO 한 번에 관절 하나의 명령(목표 · 이득 · <code>tor_max</code> · 모드)과 같은 관절의 상태, 손끝 센서 하나의 값이 오갑니다. 관절 상태는 객체 0x6001, 관절 명령은 객체 0x7001이며, 2바이트 단위로 맞춥니다.</li>
+    <li>SDO는 객체 0x8001을 씁니다. 보조 번호 0x01은 읽기(256바이트), 0x02는 쓰기(4096 + 128바이트)이고, 그 안에 RS485와 같은 프레임을 담습니다.</li>
+    <li>개발 PC에서는 원시 소켓을 쓰므로 <code>CAP_NET_RAW</code> 권한이 필요합니다 (3장). PDO 표의 <code>mode</code> 값은 SDK 안내와 다릅니다 (5장 '문서와 SDK의 차이').</li>
+  </ul>
+
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">ROS 2 패키지</h1></div>
+  <p class="lede">SDK 소스 묶음에 ROS 2 노드 패키지 <code>xhand_ros2_control</code>이 들어 있습니다. 손의 상태를 토픽으로 내보내고, 토픽으로 관절 목표와 모드를 받습니다.
+    WeGo는 ROS 2 Humble에서 손 없이 빌드 · 실행해 토픽을 확인했고, 실제 손에서는 돌려 보지 않았습니다.</p>
+
+  <h2 id="c9-s1">패키지 <span class="src r">SDK</span></h2>
+  <ul>
+    <li>Python 패키지(<code>ament_python</code>) 1.0.0이며, 안에서 Python SDK(<code>xhand_controller</code>)를 부릅니다. 패키지 정보의 라이선스는 MIT로, 상업적 사용이 가능합니다.</li>
+    <li>실행 파일: <code>xhand_node</code>(주 노드), <code>topic_listener_node</code>(다른 토픽을 손 명령으로 넘기는 예제), <code>simple_topic_listener</code> · <code>test_topic_publisher</code> · <code>test_xhand_node</code>(시험용).</li>
+    <li>패키지의 README는 ROS 2 Foxy · Python 3.8을 적지만, SDK 1.1.7 휠은 Python 3.10 · 3.12용뿐입니다. WeGo는 Ubuntu 22.04의 ROS 2 Humble(Python 3.10)에서 시험했습니다.</li>
+    <li>받는 방법은 WeGo 기술 지원에 문의하십시오.</li>
+  </ul>
+  <div class="box note"><div class="h">참고 · 패키지를 만든 곳</div>
+    <p>패키지 정보의 관리자 칸이 자리표시 값(이름 · 메일 없음)이라, ROBOTERA가 만든 공식 패키지인지는 확인 필요입니다. ROBOTERA 설명서는 ROS와 호환되는 응용 프로그램을 제공한다고만 적습니다.</p></div>
+
+  <h2 id="c9-s2">설치와 빌드 <span class="src r">실측</span></h2>
+  <ol class="steps">
+    <li><b>SDK</b>ROS 2는 시스템 Python을 쓰므로 SDK도 시스템 Python 3.10에 설치합니다 (3장 '시스템 Python에 설치할 때', 휠은 <code>cp310</code>). 다음 명령이 <code>1.4.2</code>를 출력해야 합니다.
+      <pre class="cmd">/usr/bin/python3 -c "from xhand_controller import xhand_control as x; print(x.XHandControl().get_sdk_version())"</pre></li>
+    <li><b>작업 공간</b>받은 패키지의 <code>xhand_ros2_control</code> 폴더와 <code>launch</code> 폴더를 작업 공간의 <code>src</code> 아래에 나란히 둡니다. <code>setup.py</code>가 <code>../launch</code>의 파일을 찾습니다.
+      <pre class="cmd">mkdir -p ~/xhand_ws/src
+cp -r xhand_ros2_control launch ~/xhand_ws/src/</pre></li>
+    <li><b>Humble용으로 고치기</b>아래 'Humble에서 고칠 곳'의 명령을 실행합니다.</li>
+    <li><b>빌드</b>
+      <pre class="cmd">cd ~/xhand_ws
+source /opt/ros/humble/setup.bash
+colcon build --packages-select xhand_ros2_control
+source install/setup.bash</pre></li>
+    <li><b>실행</b>손 ID · 이름 · 포트를 넘깁니다. 이름은 토픽 이름에 들어갑니다.
+      <pre class="cmd">ros2 launch xhand_ros2_control launch_xhand.launch.py \
+    hand_ids:='[0]' hand_names:='["left"]' serial_port:=/dev/ttyUSB0</pre></li>
+  </ol>
+
+  <h2 id="c9-s3">Humble에서 고칠 곳 <span class="src r">실측</span></h2>
+  <p>받은 그대로는 ROS 2 Humble에서 노드가 시작하자마자 끝납니다. WeGo가 손 없이 실행해 확인한 오류 두 가지와, 3장의 SDK 동작에 맞춘 한 곳을 고칩니다.</p>
+  <ul>
+    <li><code>InvalidParameterTypeException</code> (<code>hand_names</code> … <code>expecting type 'BYTE_ARRAY'</code>): 빈 목록을 기본값으로 선언해 Humble이 형을 잘못 정합니다. 문자열 목록으로 선언합니다.</li>
+    <li><code>AttributeError: 'dict' object has no attribute 'append'</code>: 노드가 쓰는 이름 <code>_publishers</code>가 Humble <code>Node</code> 안의 이름과 겹칩니다. 이름을 바꿉니다.</li>
+    <li>상태를 <code>read_state(hand_id, False)</code>로 읽어, SDK에 저장된 값만 돌려받습니다 (3장). <code>True</code>로 바꿉니다. 이 고침은 실제 손에서 확인 필요입니다.</li>
+  </ul>
+  <pre class="cmd">cd ~/xhand_ws/src/xhand_ros2_control/xhand_ros2_control
+sed -i "s/declare_parameter('hand_names', \[\])/declare_parameter('hand_names', Parameter.Type.STRING_ARRAY)/" xhand_ros2_node.py
+sed -i 's/^from rclpy.node import Node$/&amp;\nfrom rclpy.parameter import Parameter/' xhand_ros2_node.py
+sed -i 's/self\._publishers/self._xh_publishers/g' xhand_ros2_node.py
+sed -i 's/read_state(hand_id, False)/read_state(hand_id, True)/' xhand_ros2_node.py</pre>
+  <p>고친 뒤 손 없이 실행하면 토픽 다섯 개가 만들어지고, <code>Failed to open RS485 device: 1501039</code> 다음에 <code>Failed to read hand 0 state: 1501038</code>이 0.1초마다 나옵니다. 노드는 포트를 열지 못해도 끝나지 않습니다.</p>
+
+  <h2 id="c9-s4">launch 인자 <span class="src r">SDK</span></h2>
+  <table class="t tight keep">
+    <caption data-tbl="tbl-rosargs"><b>표 17.</b> launch_xhand.launch.py 인자</caption>
+    <thead><tr><th>인자</th><th>기본값</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><code>serial_port</code></td><td><code>/dev/ttyUSB0</code></td><td>손의 직렬 포트</td></tr>
+      <tr><td><code>baud_rate</code></td><td>3000000</td><td>통신 속도</td></tr>
+      <tr><td><code>protocol</code></td><td><code>RS485</code></td><td><code>EtherCAT</code>이면 처음 찾은 인터페이스를 엶</td></tr>
+      <tr><td><code>hand_ids</code></td><td><code>[0]</code></td><td>이 노드가 맡을 손 ID 목록</td></tr>
+      <tr><td><code>hand_names</code></td><td><code>["hand1"]</code></td><td>손마다 토픽 이름. 개수가 <code>hand_ids</code>와 다르면 <code>hand_&lt;ID&gt;</code></td></tr>
+      <tr><td><code>publish_rate</code></td><td>10.0</td><td>상태 발행 주기 (Hz)</td></tr>
+      <tr><td><code>qos_depth</code> · <code>qos_reliability</code> · <code>qos_durability</code></td><td>10 · <code>best_effort</code> · <code>volatile</code></td><td>토픽 QoS. <code>reliable</code> · <code>transient_local</code>도 됨</td></tr>
+    </tbody>
+  </table>
+  <p>패키지 README의 예는 <code>hand_ids:='[1]'</code>을 쓰지만 손 ID의 공장 기본값은 0입니다 (ROBOTERA 예제를 실행하면 1로 바뀜, 5장). 손 두 대는 한 버스에 서로 다른 ID로 연결하고 <code>hand_ids:='[0, 1]'</code>로 한 노드에 맡기십시오.
+    launch 파일은 <code>;</code>로 나눈 묶음마다 노드를 하나씩 띄우지만 모두 같은 <code>serial_port</code>를 쓰므로, 두 번째 노드는 포트를 열다 끝납니다 (2장). README에 나오는 <code>serial_ports</code> 인자는 launch 파일에 없습니다.</p>
+
+  <h2 id="c9-s5">토픽 <span class="src r">실측</span></h2>
+  <table class="t tight">
+    <caption data-tbl="tbl-topics"><b>표 18.</b> xhand_node 토픽 (이름은 hand_names, WeGo가 손 없이 확인)</caption>
+    <thead><tr><th>토픽 · 형</th><th>방향</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>/xhand/&lt;이름&gt;/joint_states</code><br><code>sensor_msgs/JointState</code></td><td>발행</td><td>관절 12개의 위치(rad)와 <code>effort</code>(토크 원시값, 6장). 관절 이름은 <code>&lt;이름&gt;_finger_0_joint</code> ~ <code>_11_joint</code>, 속도는 비어 있음</td></tr>
+      <tr><td><code>/xhand/&lt;이름&gt;/fingertip_force</code><br><code>geometry_msgs/Wrench</code></td><td>발행</td><td>0번 패드의 합력(<code>calc_force</code>)만 <code>force</code>에 넣음. 패드 다섯 개나 촉각 점은 Python SDK로 읽음 (7장)</td></tr>
+      <tr><td><code>/xhand/&lt;이름&gt;/status</code><br><code>std_msgs/String</code></td><td>발행</td><td>손 ID · 이름 · 0번 관절 온도 원시값</td></tr>
+      <tr><td><code>/xhand/&lt;이름&gt;/joint_command</code><br><code>std_msgs/Float32MultiArray</code></td><td>구독</td><td>관절 12개의 목표 위치(rad). 받는 즉시 손에 보냄</td></tr>
+      <tr><td><code>/xhand/&lt;이름&gt;/hand_mode</code><br><code>std_msgs/Int32MultiArray</code></td><td>구독</td><td>관절 12개의 모드(0 놓기 · 3 위치). 받는 즉시 손에 보냄</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c9-s6">노드가 손에 보내는 것 <span class="src r">SDK</span></h2>
+  <p>노드 소스(<code>xhand_ros2_node.py</code>)에서 확인한 동작입니다.</p>
+  <ul>
+    <li>시작할 때는 손에 명령을 보내지 않습니다. 노드 안의 명령은 처음에 관절 12개 모두 0.1 rad · 모드 3 · kp 100 · <code>tor_max</code> 300입니다.</li>
+    <li><code>joint_command</code>를 받으면 위치 12개만 바꿔 보냅니다. kp · <code>tor_max</code>를 바꾸는 토픽은 없습니다. 값은 비율(0 ~ 1)이 아니라 rad이며 (README 설명과 다름), 관절 한계로 자르지 않습니다.</li>
+    <li><code>hand_mode</code>를 받으면 모드만 바꿔 보냅니다. 이때 위치는 마지막 <code>joint_command</code>의 값이고, 아직 없으면 0.1 rad입니다.</li>
+    <li><span class="ui">Ctrl</span>+<span class="ui">C</span>로 끝내면 관절 12개를 모드 0(놓기)으로 보냅니다.</li>
+    <li><code>topic_listener_node</code>는 <code>Float32MultiArray</code> 토픽의 앞 12개 값을 0 ~ 1로 잘라 <code>joint_command</code>로 넘깁니다. 그대로 쓰면 관절이 0 ~ 1 rad 안에서만 움직입니다.</li>
+  </ul>
+  <div class="box warn"><div class="h">경고 · 처음 움직일 때</div>
+    <p>먼저 <code>joint_states</code>로 지금 자세를 읽고, 그 위치를 그대로 <code>joint_command</code>로 보내 자세를 잡은 뒤 조금씩 바꾸십시오. 위치가 모두 0이면 'Humble에서 고칠 곳'의 <code>read_state</code>를 고쳤는지 확인하고, 0을 보내지 마십시오.
+      <code>hand_mode</code>를 먼저 보내거나 모든 관절에 같은 값을 보내면 엄지가 쉬는 자세에서 갑자기 끌려 나옵니다 (2장).</p></div>
+  <pre class="cmd">ros2 topic echo --once /xhand/left/joint_states            <span class="c"># position 12개 확인</span>
+ros2 topic pub --once /xhand/left/joint_command std_msgs/msg/Float32MultiArray \
+    "{data: [읽은 위치 12개]}"                               <span class="c"># 지금 자세 그대로</span>
+ros2 topic pub --once /xhand/left/hand_mode std_msgs/msg/Int32MultiArray \
+    "{data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}"         <span class="c"># 손 놓기</span></pre>
+</section>
+
+<!-- ═══════════════════════ 10 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">유지 보수</h1></div>
+  <p class="lede">ROBOTERA 제품 설명서 V1.0에는 점검 · 부품 교체 · 보관 절차가 없습니다. 이 장은 SDK와 설명서로 할 수 있는 점검과 WeGo가 시험에서 쓴 방법만 모았습니다. 수리와 교체 부품은 ROBOTERA나 제품 공급처에 문의하십시오.</p>
+
+  <h2 id="c10-s1">쓰기 전 점검 <span class="src r">실측</span></h2>
+  <ol class="steps">
+    <li><b>장착 · 케이블</b>M3 나사 8개가 모두 조여 있는지, 손목 커넥터가 끝까지 꽂혔는지, 옆으로 뺀 배선이 손목이나 팔이 움직일 때 당기거나 끼이지 않는지 봅니다.</li>
+    <li><b>응답</b>3장의 확인 코드로 손 ID · 왼손/오른손 · 관절 위치가 읽히는지 봅니다.</li>
+    <li><b>오류 필드</b>관절 12개의 보드 오류 필드가 모두 0인지 봅니다. 0이 아니면 11장에서 번호를 찾습니다.
+      <pre class="cmd">err, st = x.read_state(hid, True)
+print([(f.commboard_err, f.jonitboard_err, f.tipboard_err) for f in st.finger_state])</pre></li>
+    <li><b>관절 움직임</b>5장 예제로 관절을 하나씩 조금 굽혔다 펴, 제자리로 돌아오는지 봅니다. 덜 돌아오는 관절은 적어 두고 다음 점검 때 비교합니다. WeGo의 손에서는 5번과 9번이 뻑뻑했습니다 (6장).</li>
+    <li><b>손끝 센서</b>아무것도 닿지 않은 상태에서 패드 값이 0 근처인지 봅니다 (7장 예제). 값이 남아 있으면 영점을 맞춥니다.</li>
+  </ol>
+
+  <h2 id="c10-s2">열과 과전류 <span class="src">문서</span></h2>
+  <p>관절 보드는 안전 온도를 넘으면 과열 오류(103)를, 전류가 설정값을 500 ms 넘게 넘으면 과전류 오류(110)를 냅니다 (11장).
+    이 오류가 나면 손을 놓고(모드 0) 식힌 뒤, 손가락이 물체나 끝 멈춤에 막혀 계속 힘을 쓰고 있지 않았는지, <code>tor_max</code>가 필요 이상으로 높지 않은지 확인하십시오.
+    관절 온도 필드를 섭씨로 읽는 방법은 아직 확인하지 않았습니다 (5장).</p>
+
+  <h2 id="c10-s3">보정 값과 펌웨어 <span class="src r">SDK</span></h2>
+  <ul>
+    <li>관절 보정 값은 손의 플래시(레지스터 86 ~ 205, 8장)에 저장됩니다. <code>HandParam_t</code>는 관절마다 펼친 · 닫은 · 영점 · 초기 위치의 원시값(int16)과 펼친 · 닫은 각도(int8)를 담습니다.</li>
+    <li>보정 함수 <code>calibrate_joint_by_mold</code>는 보정 지그의 이름을 받습니다 (ROBOTERA 예제는 <code>S1</code>). ROBOTERA의 보정 지그가 있어야 하는 작업으로 보이며, WeGo는 보정을 해 보지 않았습니다. 확인 필요: ROBOTERA에 문의하십시오.</li>
+    <li>펌웨어는 <code>upgrade_device(hand_id, component_id, 파일)</code>로 올립니다. 펌웨어 파일은 ROBOTERA에서 받아야 하며, WeGo는 시험하지 않았습니다.</li>
+    <li>보정이나 펌웨어 작업 전에는 <code>read_device_info()</code> · <code>read_parameters()</code>의 값과 <code>read_version()</code>의 버전을 파일로 남겨 두십시오. 작업이 잘못되었을 때 ROBOTERA에 알릴 기준이 됩니다.</li>
+  </ul>
+
+  <h2 id="c10-s4">SDK 기록 파일 <span class="src r">SDK</span></h2>
+  <p>SDK 1.4.2 라이브러리에는 다음 기록 파일 경로가 들어 있습니다. ROBOTERA나 WeGo에 문의할 때 이 파일이 있으면 함께 보내십시오.
+    WeGo가 손 없이 SDK를 실행했을 때는 만들어지지 않았습니다. 손을 연결했을 때 언제 무엇이 기록되는지는 확인 필요입니다.</p>
+  <pre class="cmd">~/.xhand/xhand_sdk_error
+~/.xhand/xhand_sdk_use_logs
+/tmp/xhand_sdk_error_info.log
+/tmp/xhand_sdk_user_info.log</pre>
+
+  <h2 id="c10-s5">쓰고 난 뒤 · 보관</h2>
+  <ul>
+    <li>WeGo는 쓰고 난 뒤 손을 놓고(모드 0) 포트를 닫은 다음 전원을 끕니다 (부록 '끝내기').</li>
+    <li>보관 온도 · 습도, 손가락 교체 · 분해 절차, 정기 교체 부품은 ROBOTERA 설명서 V1.0에 없습니다. 확인 필요: ROBOTERA나 제품 공급처에 문의하십시오. 손가락이나 관절은 직접 분해하지 말고 먼저 문의하십시오.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 11 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">오류 코드</h1></div>
+  <p class="lede">오류는 두 곳에 나옵니다. SDK 함수가 돌려주는 <code>ErrorStruct</code>의 <code>error_code</code>(1501001부터의 번호)와 <code>error_message</code>(영문 설명), 그리고 <code>read_state</code>의 관절 상태마다 들어 있는 보드 오류 필드(<code>commboard_err</code> · <code>jonitboard_err</code> · <code>tipboard_err</code>)입니다. 0은 정상입니다.</p>
+
+  <h2 id="c11-s1">손의 보드가 알리는 오류 <span class="src r">SDK</span></h2>
+  <p>손의 보드가 알린 번호를 SDK가 1501xxx 번호로 바꿉니다. 아래 표의 짝과 뜻은 WeGo가 SDK 1.4.2 라이브러리의 변환표와 오류 설명 표를 직접 읽어 정리한 것이고, '할 일' 열은 WeGo의 권장입니다.</p>
+  <table class="t tight">
+    <caption data-tbl="tbl-hwerr"><b>표 19.</b> 손의 보드 오류와 SDK 번호 (SDK 1.4.2)</caption>
+    <thead><tr><th>보드 번호</th><th>SDK 번호</th><th>뜻</th><th>할 일</th></tr></thead>
+    <tbody>
+      <tr><td colspan="4"><b>통신 보드</b></td></tr>
+      <tr><td>300</td><td>1501001</td><td>ID가 맞지 않음</td><td>손 ID와 <code>hand_id</code> 인자 확인</td></tr>
+      <tr><td>301</td><td>1501002</td><td>없는 명령어</td><td>SDK · 펌웨어 판 확인</td></tr>
+      <tr><td>302</td><td>1501003</td><td>프로토콜 이상 · 검사 실패</td><td>케이블 · 접지 · 통신 속도 확인</td></tr>
+      <tr><td>303</td><td>1501004</td><td>데이터 길이 오류</td><td>SDK · 펌웨어 판 확인</td></tr>
+      <tr><td>304</td><td>1501005</td><td>플래시에 설정값이 없음</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>305</td><td>1501006</td><td>앞 프레임을 아직 처리하는 중</td><td>명령 간격을 늘림. 포트는 한 프로세스만</td></tr>
+      <tr><td>306</td><td>1501036</td><td>부트 상태에서 없는 명령어</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+      <tr><td>307</td><td>1501070</td><td>통신 데이터 CRC 오류</td><td>케이블 · 접지 · 잡음 확인</td></tr>
+      <tr><td colspan="4"><b>관절 보드</b></td></tr>
+      <tr><td>101</td><td>1501026</td><td>플래시 설정값 초기화 실패</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>103</td><td>1501028</td><td>관절 보드 과열</td><td>손을 놓고 식힘 (10장)</td></tr>
+      <tr><td>104</td><td>1501029</td><td>잘못된 모드</td><td><code>mode</code> 값 확인 (0 · 3 · 5)</td></tr>
+      <tr><td>105</td><td>1501030</td><td>제어 값이 허용 범위 밖</td><td>kp · <code>tor_max</code> · 위치 확인</td></tr>
+      <tr><td>106</td><td>1501031</td><td>플래시에 설정값이 없음</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>107</td><td>1501032</td><td>통신 이상</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+      <tr><td>108</td><td>1501033</td><td>없는 명령어</td><td>SDK · 펌웨어 판 확인</td></tr>
+      <tr><td>109</td><td>1501034</td><td>위치 센서 전압이 정상 범위 밖</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>110</td><td>1501035</td><td>전류가 설정값을 500 ms 넘게 넘음</td><td>막힌 손가락 · <code>tor_max</code> 확인 (10장)</td></tr>
+      <tr><td>111</td><td>1501080</td><td>에이징 중 모터 전류가 너무 작음</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>112</td><td>1501081</td><td>이 하드웨어 판은 힘 제어 모드를 지원하지 않음</td><td>모드 5 대신 3</td></tr>
+      <tr><td colspan="4"><b>손끝 센서 보드</b></td></tr>
+      <tr><td>200</td><td>1501018</td><td>합력을 읽지 못함</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+      <tr><td>201</td><td>1501019</td><td>분포 힘(촉각 점)을 읽지 못함</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+      <tr><td>202</td><td>1501020</td><td>온도를 읽지 못함</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+      <tr><td>203</td><td>1501021</td><td>센서 보정 실패</td><td>아무것도 닿지 않게 하고 영점 다시 (7장)</td></tr>
+      <tr><td>205</td><td>1501022</td><td>없는 명령어</td><td>SDK · 펌웨어 판 확인</td></tr>
+      <tr><td>206</td><td>1501023</td><td>플래시에 설정값이 없음</td><td>ROBOTERA 문의</td></tr>
+      <tr><td>207</td><td>1501024</td><td>통신 이상</td><td>전원을 껐다 켬. 계속되면 문의</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 문서와 SDK의 차이</div>
+    <p>ROBOTERA 제품 설명서 V1.0은 통신 보드 오류를 301 ~ 308로 적어, SDK 1.4.2의 변환표(300 ~ 307)와 번호가 하나씩 어긋납니다. 설명서의 308(관절 · 센서 보드 연결 끊김)은 SDK에 없고, SDK의 307(CRC 오류)은 설명서에 없습니다.
+      설명서는 관절 보드 100(상태 기계 등록 실패) · 102(상태 기계 전환 실패)도 적지만 SDK 변환표에는 없고, SDK의 111 · 112는 설명서에 없습니다. 설명서는 107 · 207을 '통신 끊김(통신 보드가 감지)'으로 설명합니다.
+      보드 오류 필드에 실제로 어느 번호가 나오는지는, WeGo의 손에서 세 필드가 늘 0이라 확인하지 못했습니다 (확인 필요).</p></div>
+
+  <h2 id="c11-s2">SDK가 알리는 오류 <span class="src r">SDK</span></h2>
+  <table class="t tight">
+    <caption data-tbl="tbl-sdkerr"><b>표 20.</b> SDK에서 생기는 오류 번호 (SDK 1.4.2)</caption>
+    <thead><tr><th>SDK 번호</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>1501037</td><td>잘못된 장치(손) ID</td></tr>
+      <tr><td>1501038</td><td>장치가 열리지 않음. 포트를 열지 못한 채 읽거나 보냄 <span class="src r">실측</span></td></tr>
+      <tr><td>1501039</td><td>장치(포트 · 인터페이스)를 열지 못함. <code>Failed to initialize RS485 communication</code>이 함께 출력됨 <span class="src r">실측</span></td></tr>
+      <tr><td>1501041</td><td>EtherCAT SDO 통신 오류</td></tr>
+      <tr><td>1501050</td><td>직렬 통신 오류</td></tr>
+      <tr><td>1501051</td><td>펌웨어 판이 너무 낮음</td></tr>
+      <tr><td>1501067</td><td>잘못된 모드</td></tr>
+      <tr><td>1501007 ~ 1501017</td><td>펌웨어 올리기 오류: 크기 범위, 플래시 지우기 · 쓰기, 순번, 버스 바쁨, 형식, 검사, SHA 계산 · 검사, 스택 검사 (손의 번호 1 ~ 12에서 바뀜)</td></tr>
+      <tr><td>1501042 ~ 1501045</td><td>펌웨어 올리기의 시작 · 전송 · 확인 단계 SDO 오류, 잘못된 펌웨어 파일</td></tr>
+      <tr><td>1501052 ~ 1501058</td><td>보정 오류: 각도 · ADC 범위 밖, ADC 예측 위 · 아래 경계 오류, 보정 값 저장 실패, 입력 값 오류, 잘못된 보정 지그</td></tr>
+      <tr><td>1501059 ~ 1501066</td><td>동작 묶음(action group) · 펌웨어 상태 오류. 동작 묶음 함수는 Python SDK 1.1.7에 없습니다</td></tr>
+    </tbody>
+  </table>
+  <p>1501038 · 1501039는 WeGo가 손 없이 SDK와 ROS 2 노드를 실행해 실제로 본 번호입니다. 표에 없는 번호가 나오면 <code>error_message</code>의 영문 설명과 함께 WeGo 기술 지원에 알려 주십시오.</p>
+</section>
+
+<!-- ═══════════════════════ 12 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">문제 해결</h1></div>
+  <p class="lede">증상 → 원인 → 해결 순으로 정리했습니다. WeGo XHand Controller의 사용 안내, WeGo의 시험 기록, ROS 2 패키지 시험에서 모았습니다. 오류 번호의 뜻은 11장을 보십시오.</p>
+
+  <h2 id="c12-s1">연결</h2>
   <table class="t ts tight">
-    <caption data-tbl="ts-conn"><b>표 9.</b> 연결 문제</caption>
+    <caption data-tbl="ts-conn"><b>표 21.</b> 연결 문제</caption>
     <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
     <tbody>
       <tr><td><code>could not reach the hand: open_serial(...) failed</code></td><td>전원 · 케이블 · 포트 이름 · 권한</td><td>손 전원과 연결을 확인합니다. <code>ls /dev/ttyUSB*</code>로 포트를 찾아 <code>--port</code>로 넘기고, <code>dialout</code> 그룹에 들어 있는지 확인합니다 (<code>usermod</code> 뒤 다시 로그인)</td></tr>
@@ -565,12 +983,14 @@ finally:
       <tr><td>포트를 열자마자 프로그램이 C++ 예외로 끝남 (<code>device reports readiness to read but returned no data</code>)</td><td>다른 프로세스가 이미 포트를 열고 있음</td><td>그 프로세스를 끝냅니다. WeGo XHand Controller가 켜져 있으면 다른 SDK 프로그램은 같은 포트를 열 수 없습니다</td></tr>
       <tr><td><code>No socket connection on</code> · <code>Excecute as root</code></td><td>EtherCAT 검색이 원시 소켓 권한 없이 돎</td><td>RS485로 쓸 때는 무시합니다. EtherCAT을 쓸 때는 3장의 <code>setcap</code></td></tr>
       <tr><td>EtherCAT 인터페이스 목록이 비어 있음</td><td><code>CAP_NET_RAW</code> 권한 없음</td><td>3장의 <code>setcap</code></td></tr>
+      <tr><td><code>error_code</code> 1501039 (<code>Failed to initialize RS485 communication</code>)</td><td>포트 이름 · 권한 · 연결</td><td>첫 줄과 같습니다. <code>enumerate_devices("RS485")</code>는 손이 아닌 <code>/dev/ttyS*</code>도 보여 주므로 <code>/dev/ttyUSB*</code>를 고릅니다</td></tr>
+      <tr><td><code>error_code</code> 1501038</td><td>포트를 열지 못한 채 읽거나 보냄</td><td>앞의 <code>open_serial</code> 결과(1501039)를 봅니다</td></tr>
     </tbody>
   </table>
 
-  <h2 id="c7-s2">상태 읽기 · 움직임</h2>
+  <h2 id="c12-s2">상태 읽기 · 움직임</h2>
   <table class="t ts tight">
-    <caption data-tbl="ts-motion"><b>표 10.</b> 상태 읽기 · 움직임 문제</caption>
+    <caption data-tbl="ts-motion"><b>표 22.</b> 상태 읽기 · 움직임 문제</caption>
     <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
     <tbody>
       <tr><td>위치 · 토크가 모두 0 (버스가 죽은 것처럼 보임)</td><td><code>read_state(id, False)</code>는 SDK에 저장된 값을 돌려줌</td><td><code>read_state(id, True)</code>로 읽습니다</td></tr>
@@ -583,9 +1003,9 @@ finally:
     </tbody>
   </table>
 
-  <h2 id="c7-s3">WeGo XHand Controller</h2>
+  <h2 id="c12-s3">WeGo XHand Controller</h2>
   <table class="t ts tight">
-    <caption data-tbl="ts-ui"><b>표 11.</b> WeGo XHand Controller 문제</caption>
+    <caption data-tbl="ts-ui"><b>표 23.</b> WeGo XHand Controller 문제</caption>
     <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
     <tbody>
       <tr><td>화면은 뜨는데 3D 손이 비전을 따라 하지 않음</td><td>Enable 전</td><td><span class="ui">Enable</span>을 누릅니다 (빨간 경고 참고)</td></tr>
@@ -596,11 +1016,25 @@ finally:
       <tr><td>촉각 막대가 거의 안 움직임</td><td>살짝 닿으면 값이 몇 정도만 오름</td><td><b>gain ×</b>를 올립니다</td></tr>
     </tbody>
   </table>
+
+  <h2 id="c12-s4">ROS 2 패키지</h2>
+  <table class="t ts tight">
+    <caption data-tbl="ts-ros"><b>표 24.</b> ROS 2 패키지 문제</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td><code>No module named 'xhand_controller'</code></td><td>SDK가 ROS 2의 Python(시스템 Python)에 없음</td><td>9장 '설치와 빌드' 1단계</td></tr>
+      <tr><td><code>InvalidParameterTypeException</code> … <code>'BYTE_ARRAY'</code></td><td><code>hand_names</code>의 형 선언 (Humble)</td><td>9장 'Humble에서 고칠 곳'</td></tr>
+      <tr><td><code>AttributeError: 'dict' object has no attribute 'append'</code></td><td><code>_publishers</code> 이름이 Humble과 겹침</td><td>9장 'Humble에서 고칠 곳'</td></tr>
+      <tr><td><code>Failed to read hand 0 state: 1501038</code>이 계속 나옴</td><td>포트를 열지 못함 (앞에 1501039)</td><td>포트 이름 · <code>dialout</code> 권한 · 다른 프로그램이 포트를 쓰는지 확인합니다</td></tr>
+      <tr><td><code>Requested hand_id … not found</code></td><td><code>hand_ids</code>가 손 ID와 다름 (README 예의 <code>[1]</code>)</td><td><code>hand_ids:='[0]'</code> 또는 <code>list_hands_id()</code>가 돌려주는 값</td></tr>
+      <tr><td><code>joint_states</code>의 위치가 모두 0</td><td><code>read_state(hand_id, False)</code></td><td>9장 'Humble에서 고칠 곳'의 넷째 줄</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- ═══════════════════════ 부록 ═══════════════════════ -->
 <section class="chapter app">
-  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c8" data-mark="c8">빠른 참조</h1></div>
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c13" data-mark="c13">빠른 참조</h1></div>
   <div class="qr">
     <div class="card">
       <h3>시작</h3>

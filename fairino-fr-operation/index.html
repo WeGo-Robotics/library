@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">FAIRINO FR 협동로봇 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/FAIRINO_FR_Manual_KO.pdf">PDF 다운로드</a></header>
-<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><a class="wm-t1" href="#c1"><span class="wm-n">01</span>구성품</a><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a><a class="wm-t1" href="#c3"><span class="wm-n">03</span>컨트롤 박스 연결</a><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>티칭 펜던트로 제어</a></summary><a class="wm-t2" href="#c4-s1">로그인</a><a class="wm-t2" href="#c4-s2">관절 움직이기</a><a class="wm-t2" href="#c4-s3">패킹 자세로 옮기기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>웹(WebApp)에서 제어</a></summary><a class="wm-t2" href="#c5-s1">노트북 연결</a><a class="wm-t2" href="#c5-s2">노트북 네트워크 설정 (Ubuntu)</a><a class="wm-t2" href="#c5-s3">WebApp 접속</a><a class="wm-t2" href="#c5-s4">그리퍼 설정</a><a class="wm-t2" href="#c5-s5">접속 IP 변경</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>SDK로 제어</a></summary><a class="wm-t2" href="#c6-s1">FAIRINO 공식 문서</a><a class="wm-t2" href="#c6-s2">개발 사례와 예제</a></details></nav><main class="wm-main">
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">FAIRINO FR 협동로봇 — 운용 설명서</span><span class="wm-ver">버전 2026.11.20</span><a class="wm-pdf" href="../pdf/FAIRINO_FR_Manual_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>구성품과 사양</a></summary><a class="wm-t2" href="#c1-s1">구성품</a><a class="wm-t2" href="#c1-s2">모델별 사양</a><a class="wm-t2" href="#c1-s3">관절 동작 범위</a><a class="wm-t2" href="#c1-s4">설치 조건</a></details><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>컨트롤 박스 연결</a></summary><a class="wm-t2" href="#c3-s1">전원 켜기와 끄기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>티칭 펜던트로 제어</a></summary><a class="wm-t2" href="#c4-s1">로그인</a><a class="wm-t2" href="#c4-s2">관절 움직이기</a><a class="wm-t2" href="#c4-s3">패킹 자세로 옮기기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>웹(WebApp)에서 제어</a></summary><a class="wm-t2" href="#c5-s1">노트북 연결</a><a class="wm-t2" href="#c5-s2">노트북 네트워크 설정 (Ubuntu)</a><a class="wm-t2" href="#c5-s3">WebApp 접속</a><a class="wm-t2" href="#c5-s4">그리퍼 설정</a><a class="wm-t2" href="#c5-s5">접속 IP 변경</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>좌표계 · TCP · 부하 설정</a></summary><a class="wm-t2" href="#c6-s1">좌표계</a><a class="wm-t2" href="#c6-s2">설치 방식</a><a class="wm-t2" href="#c6-s3">툴 좌표(TCP) 보정</a><a class="wm-t2" href="#c6-s4">작업물 좌표 보정</a><a class="wm-t2" href="#c6-s5">엔드 부하</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>I/O</a></summary><a class="wm-t2" href="#c7-s1">컨트롤 박스 I/O</a><a class="wm-t2" href="#c7-s2">엔드 툴 I/O</a><a class="wm-t2" href="#c7-s3">WebApp에서 I/O 다루기</a><a class="wm-t2" href="#c7-s4">프로그램 · SDK의 I/O 번호</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>안전 설정</a></summary><a class="wm-t2" href="#c8-s1">안전 설정 잠금과 체크섬</a><a class="wm-t2" href="#c8-s2">충돌 감지</a><a class="wm-t2" href="#c8-s3">관절 소프트 리밋</a><a class="wm-t2" href="#c8-s4">속도 제한과 축소 모드</a><a class="wm-t2" href="#c8-s5">비상 정지와 보호 정지</a><a class="wm-t2" href="#c8-s6">안전 벽과 간섭 영역</a><a class="wm-t2" href="#c8-s7">통신 포트와 HTTPS</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>프로그램 작성 기본</a></summary><a class="wm-t2" href="#c9-s1">운전 모드와 상태</a><a class="wm-t2" href="#c9-s2">포인트 티칭</a><a class="wm-t2" href="#c9-s3">새 프로그램 만들기</a><a class="wm-t2" href="#c9-s4">Lua로 보기</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>SDK로 제어</a></summary><a class="wm-t2" href="#c10-s1">FAIRINO 공식 문서</a><a class="wm-t2" href="#c10-s2">개발 사례와 예제</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>유지 보수</a></summary><a class="wm-t2" href="#c11-s1">점검 주기</a><a class="wm-t2" href="#c11-s2">비상 정지 시험</a><a class="wm-t2" href="#c11-s3">청소</a><a class="wm-t2" href="#c11-s4">시계와 백업 전지</a><a class="wm-t2" href="#c11-s5">데이터 백업</a><a class="wm-t2" href="#c11-s6">버전 정보와 고장 데이터</a><a class="wm-t2" href="#c11-s7">보관과 운반</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c12"><span class="wm-n">12</span>문제 해결</a></summary><a class="wm-t2" href="#c12-s1">오류 해제</a><a class="wm-t2" href="#c12-s2">오류 코드</a><a class="wm-t2" href="#c12-s3">끝단 LED</a><a class="wm-t2" href="#c12-s4">증상별 조치</a><a class="wm-t2" href="#c12-s5">WeGo에 문의할 때</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">부록</span>빠른 참조</a></summary><a class="wm-t2" href="#c13-s1">FAIRINO 공개 자료</a></details></nav><main class="wm-main">
 
 
 <!-- ═══════════════════════ 표지 ═══════════════════════ -->
@@ -30,10 +30,10 @@
   <h1>FAIRINO <span>FR</span><br>협동로봇</h1>
   <div class="title2">FAIRINO WebApp V4.0.0 기준</div>
   <div class="bar"></div>
-  <p class="lead">구성품과 컨트롤 박스 연결, 티칭 펜던트 조작과 패킹 자세, 노트북에서 WebApp 접속, 그리퍼 설정과 접속 IP 변경,
-    SDK 문서 찾기까지 FR 협동로봇을 처음 쓸 때 필요한 순서를 정리했습니다.</p>
+  <p class="lead">구성품과 모델별 사양, 컨트롤 박스 연결, 티칭 펜던트와 WebApp 조작, 좌표계 · TCP와 부하, I/O, 안전 설정,
+    프로그램 작성, SDK, 유지 보수와 문제 해결까지 FR 협동로봇을 처음 쓸 때 필요한 순서를 정리했습니다.</p>
   <img class="hero" src="assets/fr5_render.png" alt="FAIRINO FR5">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.20</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -42,16 +42,21 @@
     <h3>이 설명서에 대하여</h3>
     <table>
       <tr><td>로봇</td><td>FAIRINO FR 협동로봇 · 컨트롤 박스 · 티칭 펜던트</td></tr>
-      <tr><td>근거 문서</td><td>WeGo Robotics <i>Fair Innovation robot 매뉴얼</i> (FAIRINO WebApp V4.0.0 기준, 2026.10).
-        더 자세한 내용은 FAIRINO 공식 문서 — fairino-doc-en.readthedocs.io/latest · 예제 — github.com/FAIR-INNOVATION.
+      <tr><td>근거 문서</td><td>WeGo Robotics <i>Fair Innovation robot 매뉴얼</i> (FAIRINO WebApp V4.0.0 기준, 2026.10) — 1 ~ 5장의 구성품 · 연결 · 조작, 10장.
+        FAIRINO 공식 문서(fairino-doc-en.readthedocs.io/latest, 2026-11-19 확인)의 협동로봇 사용자 설명서 — 1장의 사양 · 설치 조건, 2장의 추가 수칙, 3장의 전원 켜기 · 끄기, 6 ~ 9장, 11 · 12장, 부록.
+        같은 문서의 FR Lua 프로그래밍 스크립트 설명서와 Python SDK 설명서(IO 장) — 7 · 9장의 명령과 번호. 예제 — github.com/FAIR-INNOVATION.
         제조사 자료(이 책에 옮기지 않음): FAIRINO Product Manual · FR 협동로봇 사용자 설명서(한국어) · ROS 2 · MoveIt 2 튜토리얼 ·
         제어기 소프트웨어 업그레이드 · 다운그레이드 방법 · DH Robotics AG-95 그리퍼 설명서</td></tr>
-      <tr><td>소프트웨어</td><td>FAIRINO WebApp V4.0.0</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>SDK 대조</td><td>fairino-python-sdk (github.com/FAIR-INNOVATION, Apache-2.0, git 8920448)의 <code>Robot.py</code> — 부록의 SDK 포트</td></tr>
+      <tr><td>소프트웨어</td><td>FAIRINO WebApp V4.0.0. 6 ~ 9 · 11 · 12장의 메뉴 경로는 FAIRINO 최신 문서 기준</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.20</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
-    <p>본문은 WeGo가 만든 FR 협동로봇 시작 안내를 WeGo 설명서 형식으로 옮긴 것이며, 안전 수칙을 2장으로 모았습니다.
+    <p>1 ~ 5장과 10장은 WeGo가 만든 FR 협동로봇 시작 안내를 WeGo 설명서 형식으로 옮긴 것이며, 안전 수칙을 2장으로 모았습니다.
       화면은 WebApp V4.0.0 기준이며, 버전에 따라 메뉴 이름과 위치가 다를 수 있습니다.</p>
+    <p>사양과 설정 · 점검 · 문제 해결 내용은 FAIRINO 공식 문서에서 사실과 수치만 골라 우리말로 다시 쓴 것입니다. FAIRINO 문서는 저작권이 FAIRINO에 있고
+      공개 라이선스가 없으므로 글과 그림을 그대로 옮기지 않았습니다. FAIRINO 문서는 최신 소프트웨어를 기준으로 하므로, WebApp V4.0.0 화면과 메뉴 이름 · 위치가
+      다르면 화면을 따르고 WeGo에 알려 주십시오. 메뉴 이름은 FAIRINO 영문 화면을 따랐으며, 한국어 화면에서는 Initial이 초기설정, System이 시스템 설정으로 나옵니다.</p>
     <p class="copy">© WeGo Robotics. FAIRINO는 Fairino (Suzhou) Robot Technology Co., Ltd.의 상표입니다.
       표지의 FR5 이미지는 FAIRINO가 공개한 URDF 메시(github.com/FAIR-INNOVATION/frcobot_ros, frcobot_description, package.xml 기준 Apache-2.0)를
       MuJoCo로 렌더링한 것이고, 본문 그림은 WeGo 자료의 사진과 FAIRINO 소프트웨어 · 문서 화면입니다.</p>
@@ -63,19 +68,29 @@
   <h2>목차</h2>
   <div class="sub">CONTENTS</div>
   <ol>
-    <li><span class="n">01</span><span class="t">구성품</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
+    <li><span class="n">01</span><span class="t">구성품과 사양</span><span class="d"></span><span class="p" data-toc="c1"></span></li>
     <li><span class="n">02</span><span class="t">중요 안전 수칙</span><span class="d"></span><span class="p" data-toc="c2"></span></li>
     <li><span class="n">03</span><span class="t">컨트롤 박스 연결</span><span class="d"></span><span class="p" data-toc="c3"></span></li>
     <li><span class="n">04</span><span class="t">티칭 펜던트로 제어</span><span class="d"></span><span class="p" data-toc="c4"></span></li>
     <li><span class="n">05</span><span class="t">웹(WebApp)에서 제어</span><span class="d"></span><span class="p" data-toc="c5"></span></li>
-    <li><span class="n">06</span><span class="t">SDK로 제어</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">06</span><span class="t">좌표계 · TCP · 부하 설정</span><span class="d"></span><span class="p" data-toc="c6"></span></li>
+    <li><span class="n">07</span><span class="t">I/O</span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+    <li><span class="n">08</span><span class="t">안전 설정</span><span class="d"></span><span class="p" data-toc="c8"></span></li>
+    <li><span class="n">09</span><span class="t">프로그램 작성 기본</span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+    <li><span class="n">10</span><span class="t">SDK로 제어</span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+    <li><span class="n">11</span><span class="t">유지 보수</span><span class="d"></span><span class="p" data-toc="c11"></span></li>
+    <li><span class="n">12</span><span class="t">문제 해결</span><span class="d"></span><span class="p" data-toc="c12"></span></li>
+    <li class="app"><span class="n">부록</span><span class="t">빠른 참조</span><span class="d"></span><span class="p" data-toc="c13"></span></li>
   </ol>
 </section>
 
 <!-- ═══════════════════════ 1 ═══════════════════════ -->
 <section class="chapter">
-  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">구성품</h1></div>
-  <p class="lede">FR 협동로봇의 구성품은 다음과 같습니다. 1 ~ 5번은 그림 1의 번호이며, 6번 티칭 펜던트는 별도 상자에 들어 있습니다.</p>
+  <div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">구성품과 사양</h1></div>
+  <p class="lede">FR 협동로봇의 구성품과 모델별 사양, 설치 조건입니다.</p>
+
+  <h2 id="c1-s1">구성품</h2>
+  <p>FR 협동로봇의 구성품은 다음과 같습니다. 1 ~ 5번은 그림 1의 번호이며, 6번 티칭 펜던트는 별도 상자에 들어 있습니다.</p>
 
   <table class="t">
     <caption data-tbl="box"><b>표 1.</b> 구성품 목록</caption>
@@ -90,12 +105,75 @@
     </tbody>
   </table>
   <figure class="light f80"><img src="assets/fr_001.jpg" alt="포장 상자 안의 구성품 1 ~ 5"><figcaption data-fig="fig-box"><b>그림 1.</b> 포장 상자 안의 구성품 (WeGo 자료)</figcaption></figure>
+
+  <div class="box note"><div class="h">참고 · 비상 정지 버튼과 버튼 박스</div>
+    <p>이 책의 비상 정지 버튼(3번)을 FAIRINO 문서는 버튼 박스(button box)라고 부릅니다. 비상 정지 스위치 말고도 시작 · 정지, 운전 모드 전환, 드래그 모드,
+      포인트 기록 버튼과 이더넷 포트가 있으며, 버튼 구성은 박스 버전(BX01 · BX02)마다 조금씩 다릅니다.</p></div>
+
+  <h2 id="c1-s2">모델별 사양 <span class="src">문서</span></h2>
+  <p>FR 시리즈는 가반 하중에 따라 모델이 나뉩니다. 아래 값은 FAIRINO 사용자 설명서의 기본 사양표(Robot brief introduction → Basic parameters)에서 옮겼습니다.
+    이름 뒤에 -C · -WMS · -WML이 붙은 파생 모델은 값이 다르므로 FAIRINO 문서에서 확인하십시오. 받은 로봇의 모델은 제품 명판과 WebApp의 <span class="ui">System</span> → <span class="ui">About</span>에서 확인합니다.</p>
+  <table class="t tight">
+    <caption data-tbl="spec"><b>표 2.</b> FR 시리즈 주요 사양</caption>
+    <thead><tr><th>항목</th><th>FR3</th><th>FR5</th><th>FR10</th><th>FR16</th><th>FR20</th><th>FR30</th></tr></thead>
+    <tbody>
+      <tr><td>가반 하중</td><td>3 kg</td><td>5 kg</td><td>10 kg</td><td>16 kg</td><td>20 kg</td><td>30 kg</td></tr>
+      <tr><td>도달 거리</td><td>622 mm</td><td>922 mm</td><td>1400 mm</td><td>1034 mm</td><td>1854 mm</td><td>1403 mm</td></tr>
+      <tr><td>반복 정밀도</td><td>±0.02 mm</td><td>±0.03 mm</td><td>±0.05 mm</td><td>±0.03 mm</td><td>±0.1 mm</td><td>±0.1 mm</td></tr>
+      <tr><td>관절 최대 속도</td><td>180°/s</td><td>180°/s</td><td colspan="2">J1 · J2 120°/s, 나머지 180°/s</td><td colspan="2">J1 ~ J3 120°/s, 나머지 180°/s</td></tr>
+      <tr><td>대표 TCP 속도</td><td>1 m/s</td><td>1 m/s</td><td>1.5 m/s</td><td>1 m/s</td><td>2 m/s</td><td>2 m/s</td></tr>
+      <tr><td>무게 (약)</td><td>15 kg</td><td>22 kg</td><td>40 kg</td><td>40 kg</td><td>85 kg</td><td>85 kg</td></tr>
+      <tr><td>소음</td><td colspan="4">65 dB 미만</td><td colspan="2">70 dB 미만</td></tr>
+      <tr><td>공통</td><td colspan="6">회전 관절 6개 · 설치 방향 제한 없음 · IP54(IP65 선택) · 사용 온도 0 ~ 45 °C · 습도 90 %RH 이하(결로 없음) ·
+        보관 −25 ~ 60 °C(서리 없음) · 툴 I/O: 전원 24 V 1.5 A, 디지털 · 아날로그 I/O, RS-485 ·
+        통신: I/O, TCP/IP, Modbus TCP/RTU, Profinet, CC-Link, EtherNet/IP, EtherCAT</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c1-s3">관절 동작 범위 <span class="src">문서</span></h2>
+  <p>소프트 리밋은 소프트웨어가 관절을 멈추는 한계로, 8장에서 이보다 좁게 설정할 수 있습니다. 하드 리밋은 그 바깥의 최종 한계입니다.</p>
+  <table class="t keep">
+    <caption data-tbl="joint"><b>표 3.</b> 관절 동작 범위 (FR3 ~ FR30)</caption>
+    <thead><tr><th>관절</th><th>소프트 리밋</th><th>하드 리밋</th></tr></thead>
+    <tbody>
+      <tr><td>J1</td><td>±175°</td><td>±179°</td></tr>
+      <tr><td>J2</td><td>+85° ~ −265°</td><td>+89° ~ −269°</td></tr>
+      <tr><td>J3</td><td>FR3 ±150°, FR5 ~ FR30 ±160°</td><td>FR3 ±152°, FR5 ~ FR30 ±162°</td></tr>
+      <tr><td>J4</td><td>+85° ~ −265°</td><td>+89° ~ −269°</td></tr>
+      <tr><td>J5</td><td>±175°</td><td>±179°</td></tr>
+      <tr><td>J6</td><td>±175°</td><td>±179°</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · J3 범위</div>
+    <p>FAIRINO 사양표는 관절 범위를 FR3 한 칸과 FR5 ~ FR30 한 칸으로 묶어 적었고, 두 칸은 J3만 다릅니다. 쓰는 로봇의 실제 한계는 WebApp의 관절 소프트 리밋 화면에서 확인하십시오.
+      사양표보다 큰 값을 넣으면 설정할 수 있는 최대값으로 바뀝니다(8장).</p></div>
+
+  <h2 id="c1-s4">설치 조건 <span class="src">문서</span></h2>
+  <table class="t wrap1">
+    <caption data-tbl="install"><b>표 4.</b> 설치 조건</caption>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>로봇 고정 볼트</td><td>FR3: M6 4개, 10 N·m 이상, 핀 구멍 Ø5 mm · FR5: M8 4개, 20 N·m 이상, Ø8 mm · FR10 · FR16: M8 4개, 25 N·m 이상, Ø8 mm ·
+        FR20 · FR30: M10 6개, 45 N·m 이상, Ø8 mm. 볼트 강도는 8.8 이상입니다. 정밀도가 중요하면 핀 2개로 위치를 잡으십시오</td></tr>
+      <tr><td>설치 받침</td><td>로봇 무게의 5배 이상, 1축 토크의 10배 이상을 견디고, 면이 평평하며, 로봇과 공진하지 않아야 합니다.
+        다른 움직이는 장치와는 분리해 고정하십시오. 판으로 받칠 때는 알루미늄 16 mm 이상 또는 철판 8 mm 이상을 권합니다</td></tr>
+      <tr><td>설치 공간</td><td>팔을 끝까지 뻗어 움직일 수 있도록 3 m × 3 m × 2 m(길이 × 너비 × 설치면 위 높이). 툴을 달면 500 mm 이상 더 비워 두십시오</td></tr>
+      <tr><td>툴 플랜지</td><td>M6 나사 구멍 4개, 조임 토크 8 N·m, 볼트 강도 8.8 이상. 위치는 Ø6 핀 구멍으로 잡습니다.
+        나사 구멍에 8 mm보다 깊이 들어가는 볼트를 쓰면 플랜지가 손상될 수 있습니다 (FR3 ~ FR16 기준, FR20 · FR30은 플랜지 도면이 다름)</td></tr>
+      <tr><td>사용 환경</td><td>0 ~ 45 °C, 습도 90 %RH 이하(결로 없음), 고도 2000 m 미만. 충격 · 진동, 부식성 · 폭발성 가스, 액체 · 기름, 염분, 먼지 · 금속 가루, 강한 전자기 잡음이 없는 곳.
+        로봇 전원 앞에 차단기를 두고, EMC 필터를 권합니다</td></tr>
+      <tr><td>컨트롤 박스 위치</td><td>바닥에서 0.6 ~ 1.5 m, 물에 잠기지 않고 열원에서 떨어진 곳. 방열구 둘레를 비워 두십시오.
+        FAIRINO 문서에는 측면 150 mm · 나머지 100 mm 이상과, 양옆 150 mm · 앞면 250 mm 이상 두 가지가 나오므로 큰 값을 따르십시오</td></tr>
+      <tr><td>컨트롤 박스 전원</td><td>30 ~ 60 VDC, 176 ~ 264 VAC, 100 ~ 240 VAC(50 ~ 60 Hz) 세 종류가 있습니다. AC 두 종류는 겉모습이 같으므로
+        명판에서 입력 전압을 확인한 뒤 켜십시오. 컨트롤 박스와 로봇은 반드시 접지합니다</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- ═══════════════════════ 2 ═══════════════════════ -->
 <section class="chapter">
   <div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
-  <p class="lede">이 책은 FR 협동로봇을 처음 연결하고 움직이기까지의 순서를 다룹니다. 설치하고 운용하기 전에 FAIRINO 공식 사용자 설명서의 안전 장을 먼저 읽고,
+  <p class="lede">이 책은 FR 협동로봇의 연결과 조작, 설정, 점검을 다룹니다. 설치하고 운용하기 전에 FAIRINO 공식 사용자 설명서의 안전 장을 먼저 읽고,
     각 장의 경고 · 주의 상자를 지키십시오.</p>
 
   <div class="box warn"><div class="h">경고 · FAIRINO 안전 수칙을 먼저 읽으십시오</div>
@@ -109,6 +187,15 @@
     <li><b>WebApp과 WebRecovery의 네트워크를 겹치지 않게 고르십시오.</b>겹치면 WebApp에 접속하지 못할 수 있습니다(5장).</li>
     <li><b>WebRecovery에서 업그레이드 · 다운그레이드를 임의로 조작하지 마십시오.</b>WebRecovery는 컨트롤 박스의 Eth0(192.168.57.2)에 있습니다(5장).
       제어기 소프트웨어를 업그레이드 · 다운그레이드해야 하면 go.support@wego-robotics.com 으로 문의하십시오.</li>
+    <li><b>로봇이 닿는 범위 안에 머리와 몸을 두지 마십시오.</b>로봇이 잡을 수 있는 곳에 손가락을 넣지 말고, 로봇이 사람이나 물체 쪽으로 움직이게 하지 마십시오(9장).</li>
+    <li><b>처음 쓰거나 설정을 바꾼 뒤에는 낮은 속도로 시작하고 안전 기능부터 시험하십시오.</b>FAIRINO는 처음 쓸 때와 변경 뒤에 속도를 250 mm/s 미만으로 두고,
+      비상 정지 · 보호 정지 입력이 로봇을 멈추는지 먼저 확인하라고 안내합니다(8 · 11장).</li>
+    <li><b>툴을 단 뒤에는 부하와 설치 방식을 실제대로 설정하십시오.</b>틀리면 드래그 모드에서 팔이 들리거나 처지고, 충돌 감지가 제대로 동작하지 않습니다(6장).</li>
+    <li><b>기본 비밀번호를 바꾸십시오.</b>WebApp 관리자 계정과 안전 설정 비밀번호를 기본값으로 두면 누구나 안전 설정을 바꿀 수 있습니다(8장).</li>
+    <li><b>배선은 컨트롤 박스 전원을 끈 상태에서 하십시오.</b>엔드 툴 I/O · 485 커넥터는 전원이 켜진 채로 꽂거나 빼지 마십시오.
+      안전 입력은 안전 등급이 맞지 않는 PLC나 일반 I/O에 연결하지 마십시오(7장).</li>
+    <li><b>컨트롤 박스 전원을 끄기 전에 프로그램을 멈추십시오.</b>갑자기 전원을 끊으면 데이터가 손상될 수 있고, 다시 켤 때는 1분 이상 기다려야 합니다(3장).</li>
+    <li><b>비상 정지와 안전 입력은 한 달에 한 번 시험하십시오.</b>누르면 로봇이 멈추고 관절 전원이 꺼지는지 확인합니다(11장).</li>
   </ol>
 </section>
 
@@ -118,7 +205,7 @@
   <p class="lede">전원 케이블, 로봇 케이블, 비상 정지 버튼(또는 티칭 펜던트)을 컨트롤 박스에 연결합니다. 연결 위치는 그림 2과 같습니다.</p>
 
   <table class="t">
-    <caption data-tbl="ctrlbox"><b>표 2.</b> 컨트롤 박스에 연결하는 케이블</caption>
+    <caption data-tbl="ctrlbox"><b>표 5.</b> 컨트롤 박스에 연결하는 케이블</caption>
     <thead><tr><th>번호</th><th>케이블</th></tr></thead>
     <tbody>
       <tr><td>1</td><td>전원 케이블 (power cable)</td></tr>
@@ -127,6 +214,16 @@
     </tbody>
   </table>
   <figure class="light f80"><img src="assets/fr_002.jpg" alt="컨트롤 박스 연결 1 ~ 3"><figcaption data-fig="fig-ctrlbox"><b>그림 2.</b> 컨트롤 박스 연결 (WeGo 자료)</figcaption></figure>
+
+  <h2 id="c3-s1">전원 켜기와 끄기 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>비상 정지 버튼이 풀려 있는지 확인하십시오.</b>로봇 동작 범위에 사람과 장애물이 없는지도 봅니다.</li>
+    <li><b>컨트롤 박스의 전원 스위치를 켜십시오.</b>로봇이 활성화되면 로봇 끝단 LED가 초록색으로 켜져 있습니다. LED 색의 뜻은 12장에 있습니다.</li>
+    <li><b>끌 때는 먼저 프로그램을 모두 멈추십시오.</b>상태 조회(Status Query)를 쓰고 있었다면 끄고, 상태가 Stopped인지 확인한 뒤 전원 스위치를 끕니다.
+      갑자기 전원을 끊으면 저장된 데이터가 손상될 수 있습니다.</li>
+  </ol>
+  <div class="box caution"><div class="h">주의 · 전원을 빠르게 껐다 켜지 마십시오</div>
+    <p>컨트롤 박스 전원을 끈 뒤 다시 켤 때는 1분 이상 기다리십시오.</p></div>
 </section>
 
 <!-- ═══════════════════════ 4 ═══════════════════════ -->
@@ -212,7 +309,7 @@
   <h2 id="c5-s5">접속 IP 변경</h2>
   <p><span class="ui">시스템 설정</span> → <span class="ui">일반 설정</span>에서 접속 IP를 바꿀 수 있습니다. <span class="ui">네트워크 설정</span>을 누른 뒤 재부팅하라는 창이 뜨면 재부팅하십시오.</p>
   <table class="t">
-    <caption data-tbl="net"><b>표 3.</b> 컨트롤 박스의 네트워크 포트</caption>
+    <caption data-tbl="net"><b>표 6.</b> 컨트롤 박스의 네트워크 포트</caption>
     <thead><tr><th>포트</th><th>장치</th><th>IP</th><th>비고</th></tr></thead>
     <tbody>
       <tr><td>Eth0</td><td>컨트롤 박스 (Control Box)</td><td>192.168.57.2</td><td>WebRecovery. 업그레이드 · 다운그레이드 임의 조작 금지</td></tr>
@@ -230,10 +327,332 @@
 
 <!-- ═══════════════════════ 6 ═══════════════════════ -->
 <section class="chapter">
-  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">SDK로 제어</h1></div>
+  <div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">좌표계 · TCP · 부하 설정</h1></div>
+  <p class="lede">툴을 달면 툴 좌표(TCP)와 부하를, 작업대나 지그를 기준으로 움직이려면 작업물 좌표를 설정합니다. 설치 방식도 실제와 같아야 합니다.
+    모두 WebApp의 <span class="ui">Initial</span>(초기설정) → <span class="ui">Base</span> 아래에 있습니다.</p>
+
+  <h2 id="c6-s1">좌표계 <span class="src">문서</span></h2>
+  <p>위치는 x, y, z(mm), 자세는 rx, ry, rz(°)로 나타냅니다. 지금 쓰고 있는 툴 · 작업물 좌표 번호와 부하 번호는 WebApp 오른쪽 위 상태 영역에서 볼 수 있습니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="frames"><b>표 7.</b> FR 협동로봇의 좌표계</caption>
+    <thead><tr><th>좌표계</th><th>기준과 쓰임</th><th>번호</th></tr></thead>
+    <tbody>
+      <tr><td>베이스 (Base)</td><td>로봇 베이스가 원점입니다. 다른 좌표계의 기준입니다</td><td>—</td></tr>
+      <tr><td>툴 (Tool, TCP)</td><td>툴 끝점(TCP)이 원점입니다. <code>toolcoord0</code>은 툴 없이 끝단 플랜지 중심을 뜻하며, 툴은 <code>toolcoord1</code>부터 보정해 씁니다</td><td>toolcoord0 ~</td></tr>
+      <tr><td>작업물 (Workpiece)</td><td>작업대 · 지그가 원점입니다. <code>wobjcoord0</code>은 베이스 원점과 같습니다</td><td>wobjcoord0 ~ 14</td></tr>
+      <tr><td>외부 툴 (Ext. TCP)</td><td>로봇 밖에 고정한 툴입니다. 로봇이 작업물을 들고 고정된 툴로 가져가는 작업에 씁니다</td><td>etoolcoord0 ~ 14</td></tr>
+    </tbody>
+  </table>
+  <div class="box note"><div class="h">참고 · 자세 각도의 회전 순서</div>
+    <p>FR 시리즈는 rx, ry, rz를 움직이는 좌표계 기준 Z → Y → X 순서의 회전으로 계산합니다. 다른 소프트웨어와 자세 값을 주고받을 때 회전 순서를 맞추십시오.</p></div>
+
+  <h2 id="c6-s2">설치 방식 <span class="src">문서</span></h2>
+  <p>기본값은 바닥 설치입니다. 벽이나 천장에 달았다면 <span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">Installation</span>에서 바꾸십시오.
+    바닥(정방향) · 측면 · 천장(역방향) 버튼을 누르거나, 그 밖의 각도는 베이스 기울기(Base Tilt)와 베이스 회전(Base Rotation)을 직접 넣고 <span class="ui">Apply</span>를 누릅니다.
+    3D 화면의 로봇 모델이 바뀐 설치 방식으로 표시됩니다.</p>
+  <div class="box warn"><div class="h">경고 · 드래그하기 전에 설치 방식을 확인하십시오</div>
+    <p>설정한 설치 방식이 실제와 다르면 드래그 모드와 충돌 감지가 잘못 동작해 위험합니다.</p></div>
+
+  <h2 id="c6-s3">툴 좌표(TCP) 보정 <span class="src">문서</span></h2>
+  <p>보정 방법은 두 가지입니다. 4점법은 TCP의 위치만 구하고 자세는 끝단 플랜지와 같게 둡니다. 6점법은 점 두 개를 더 써서 툴의 자세까지 구합니다.
+    아래는 6점법입니다. 뾰족한 핀 끝처럼 기준으로 삼을 고정점을 작업 공간에 하나 마련해 두십시오.</p>
+  <ol class="steps">
+    <li><b>툴을 달고 <span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">TCP</span>를 여십시오.</b></li>
+    <li><b>먼저 <code>toolcoord0</code>을 고르고 <span class="ui">Apply</span>를 누르십시오.</b>보정은 플랜지 기준 상태에서 해야 합니다.</li>
+    <li><b>보정할 번호(<code>toolcoord1</code> 등)를 고르고 <span class="ui">Modify</span>를 누르십시오.</b>보정 방법으로 6점법을 고릅니다.</li>
+    <li><b>1 ~ 3점: 툴 끝을 서로 다른 자세 세 가지로 고정점에 맞추고 하나씩 저장하십시오.</b>자세 차이가 클수록 결과가 정확합니다.</li>
+    <li><b>4점: 툴을 수직으로 세워 고정점에 맞추고 저장하십시오.</b></li>
+    <li><b>5점: 자세를 그대로 두고 베이스 좌표로 수평 이동한 뒤 저장하십시오.</b>이 방향이 툴 좌표의 X+입니다.</li>
+    <li><b>6점: 고정점으로 돌아와 수직으로 이동한 뒤 저장하십시오.</b>이 방향이 툴 좌표의 Z+이고, Y는 오른손 법칙으로 정해집니다.</li>
+    <li><b><span class="ui">Calculate</span> → <span class="ui">Finish</span> → <span class="ui">Save</span>를 누르고, 새 번호를 <span class="ui">Apply</span>하십시오.</b>
+      다시 하려면 <span class="ui">Cancel</span>을 누르고 <span class="ui">Modify</span>부터 합니다.</li>
+  </ol>
+  <div class="box caution"><div class="h">주의 · 툴 좌표를 적용하지 않으면</div>
+    <p>툴을 달고 툴 좌표를 보정 · 적용하지 않으면, 운동 명령을 실행할 때 TCP의 위치와 자세가 기대한 값과 달라집니다.</p></div>
+  <p>툴 모델 파일(.stl · .dae)을 불러오면 3D 화면의 로봇 끝단에 툴이 함께 표시됩니다.</p>
+
+  <h2 id="c6-s4">작업물 좌표 보정 <span class="src">문서</span></h2>
+  <p>작업물 좌표는 툴 좌표를 기준으로 잡으므로, 툴 좌표를 먼저 보정 · 적용하십시오.</p>
+  <ol class="steps">
+    <li><b>작업물을 고정하고 <span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">Workpiece</span>를 여십시오.</b></li>
+    <li><b><code>wobjcoord0</code>을 먼저 <span class="ui">Apply</span>한 뒤, 보정할 번호를 고르고 <span class="ui">Modify</span>를 누르십시오.</b></li>
+    <li><b>보정 방법을 고르고 점 세 개를 저장하십시오.</b>원점 – X축 – Z축 또는 원점 – X축 – XY+ 평면입니다. 첫 두 점(원점, X축 위의 한 점)은 같고,
+      세 번째 점으로 Z축 방향을 정하거나 XY+ 평면 위의 한 점을 정합니다.</li>
+    <li><b><span class="ui">Calculate</span> → <span class="ui">Finish</span> → <span class="ui">Save</span>를 누르고, 새 번호를 <span class="ui">Apply</span>하십시오.</b></li>
+  </ol>
+  <p>외부 툴 좌표는 <span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">Ext. TCP</span>에서 같은 순서로 보정합니다. 3점법은 측정 툴의 TCP를 외부 툴 끝에 맞춘 점,
+    거기서 외부 툴의 X축 방향으로 옮긴 점, 다시 돌아와 Z축 방향으로 옮긴 점을 저장합니다.</p>
+
+  <h2 id="c6-s5">엔드 부하 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b><span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">Payload</span>를 여십시오.</b></li>
+    <li><b>툴 질량(kg)과 무게중심 X, Y, Z(mm, 0 ~ 1000)를 넣고 <span class="ui">Apply</span>를 누르십시오.</b>질량은 모델의 가반 하중(FR3 3 kg … FR30 30 kg)을 넘을 수 없습니다.</li>
+    <li><b>질량이나 무게중심을 모르면 자동 식별을 쓰십시오.</b>부하를 단 상태에서 측정 동작을 시작하고, 끝나면 결과를 가져와 <span class="ui">Apply</span>합니다.
+      측정 동작 중에는 언제든 멈출 수 있게 비상 정지 버튼 곁에 있으십시오.</li>
+  </ol>
+  <div class="box warn"><div class="h">경고 · 부하를 틀리게 넣으면</div>
+    <p>부하 무게나 무게중심이 틀리면 드래그 모드에서 팔이 들리거나 떨어질 수 있고, 충돌 감지가 제대로 동작하지 않습니다.
+      FAIRINO 제어기는 이를 막으려고 드래그 모드에 들어가기 전에 관절 토크를 검사하며, 범위를 벗어나면 드래그 모드를 막고 오류를 냅니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 7 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">I/O</h1></div>
+  <p class="lede">컨트롤 박스 단자대와 로봇 끝단 커넥터로 그리퍼 · 센서 · PLC 같은 장치와 신호를 주고받습니다.
+    단자 위치와 배선 예는 FAIRINO 사용자 설명서의 Installation → Control connection 절에 있습니다.</p>
+  <div class="box warn"><div class="h">경고 · 배선 전에</div>
+    <p>배선은 컨트롤 박스 전원을 끄고 하십시오. 안전 입력(EI · SI)은 두 채널이 따로 동작해야 하므로 두 채널을 서로 분리해 배선하고,
+      안전 등급이 맞지 않는 PLC나 일반 I/O에 연결하지 마십시오. 안전 기능이 무력해질 수 있습니다.</p></div>
+
+  <h2 id="c7-s1">컨트롤 박스 I/O <span class="src">문서</span></h2>
+  <p>표준 컨트롤 박스와 일체형 미니 컨트롤 박스(mini BOX)는 아래 신호를 함께 갖추고 있으며, 단자 배치가 다르고 미니 박스에는 단자가 몇 개 더 있습니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="io-box"><b>표 8.</b> 컨트롤 박스 I/O</caption>
+    <thead><tr><th>신호</th><th>단자</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>범용 디지털 입력</td><td>DI0 ~ DI7</td><td>24 V, NPN. AC 넓은 전압 박스는 박스 안 DIP 스위치로 PNP를 고를 수 있습니다(출하 시 NPN)</td></tr>
+      <tr><td>설정 가능 디지털 입력</td><td>CI0 ~ CI7</td><td>사양은 DI와 같고, 시작 · 정지 · 수동/자동 전환 같은 기능을 지정할 수 있습니다</td></tr>
+      <tr><td>범용 디지털 출력</td><td>DO0 ~ DO7</td><td>24 V, NPN(AC 넓은 전압 박스는 NPN · PNP). 채널당 허용 전류는 아래 표</td></tr>
+      <tr><td>설정 가능 디지털 출력</td><td>CO0 ~ CO7</td><td>기능을 지정할 수 있습니다. 기본은 CO0 = 로봇 오류, CO1 = 로봇 동작 중</td></tr>
+      <tr><td>아날로그 입력</td><td>AI0 · AI1</td><td>0 ~ 10 V 또는 0 ~ 20 mA, 12비트. 전압 · 전류는 박스 안 스위치로 고릅니다</td></tr>
+      <tr><td>아날로그 출력</td><td>AO0 · AO1</td><td>0 ~ 10 V 또는 0 ~ 20 mA, 12비트. 전압 · 전류는 박스 안 스위치로 고릅니다</td></tr>
+      <tr><td>안전 입력</td><td>EI0 · EI1, SI0 · SI1</td><td>EI는 비상 정지, SI는 안전 정지(문 스위치 등) 입력이며, 둘 다 2채널입니다.
+        출하 시에는 단락 배선이 꽂혀 있어 추가 안전 장치 없이 동작합니다</td></tr>
+      <tr><td>그 밖</td><td>24V · GND, ex24V · exGND, 485, 엔코더</td><td>I/O용 내부 24 V 전원, 외부 24 V 입력, RS-485, 엔코더 입력</td></tr>
+    </tbody>
+  </table>
+  <p>디지털 입력은 11 ~ 30 V에서 ON, −3 ~ 5 V에서 OFF로 읽습니다. I/O 전원은 기본으로 내부 24 V(최대 1.5 A)를 쓰며,
+    부하가 크면 ex24V · exGND 단자에 외부 24 V 전원(최대 2 A)을 연결합니다. 아날로그 신호는 장치와 컨트롤 박스의 GND를 같이 쓰고, 차폐선이나 꼬임선을 쓰면 정확합니다.</p>
+  <table class="t keep">
+    <caption data-tbl="io-do"><b>표 9.</b> 디지털 출력 채널당 최대 부하 전류</caption>
+    <thead><tr><th>컨트롤 박스</th><th>I/O 전원</th><th>채널 1 ~ 4</th><th>채널 5 ~ 8</th><th>채널 9 ~ 16</th></tr></thead>
+    <tbody>
+      <tr><td>DC · AC 좁은 전압</td><td>외부 24 V</td><td>400 mA</td><td>250 mA</td><td>125 mA</td></tr>
+      <tr><td>DC · AC 좁은 전압</td><td>내부 24 V</td><td>300 mA</td><td>190 mA</td><td>90 mA</td></tr>
+      <tr><td>AC 넓은 전압</td><td>외부 · 내부</td><td colspan="3">채널 1 · 2: 200 mA, 3 ~ 8: 100 mA, 9 ~ 16: 60 mA</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c7-s2">엔드 툴 I/O <span class="src">문서</span></h2>
+  <p>로봇 끝단에는 I/O용 M12 8핀 커넥터와 RS-485용 5핀 커넥터가 있습니다. 툴 전원은 24 V, 최대 1.5 A입니다.</p>
+  <div class="two">
+    <table class="t">
+      <caption data-tbl="io-end"><b>표 10.</b> 끝단 I/O 커넥터 (M12 8핀)</caption>
+      <thead><tr><th>핀</th><th>신호</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>AI0</td></tr><tr><td>2</td><td>AO0</td></tr><tr><td>3</td><td>DI0</td></tr><tr><td>4</td><td>DI1</td></tr>
+        <tr><td>5</td><td>24V</td></tr><tr><td>6</td><td>DO0</td></tr><tr><td>7</td><td>DO1</td></tr><tr><td>8</td><td>GND</td></tr>
+      </tbody>
+    </table>
+    <table class="t">
+      <caption data-tbl="io-485"><b>표 11.</b> 끝단 통신 커넥터 (5핀)</caption>
+      <thead><tr><th>핀</th><th>신호</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>485-A</td></tr><tr><td>2</td><td>485-B</td></tr><tr><td>3</td><td>24V</td></tr><tr><td>4</td><td>없음</td></tr><tr><td>5</td><td>GND</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>끝단 DI0 · DI1에도 기능을 지정할 수 있습니다. 기본은 DI0 = 드래그 모드, DI1 = 티칭 포인트 기록입니다.</p>
+  <div class="box caution"><div class="h">주의 · 끝단 커넥터</div>
+    <p>끝단 I/O와 485 커넥터는 전원이 켜진 상태에서 꽂거나 빼지 마십시오.</p></div>
+
+  <h2 id="c7-s3">WebApp에서 I/O 다루기 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>수동 출력</b>: WebApp 아래쪽 보조 기능 표시줄(그림 14의 8번)의 <span class="ui">I/O</span>에서 컨트롤 박스와 끝단의 DO를 켜고 끄며,
+      AO는 0 ~ 100 %로 넣습니다. 100 %가 10 V(전류 모드는 20 mA)입니다.</li>
+    <li><b>상태 보기</b>: 오른쪽 상태 영역(9번)의 I/O 항목에서 입력 · 출력 상태를 봅니다.</li>
+    <li><b>기능 지정</b>: <span class="ui">Initial</span> → <span class="ui">Base</span> → <span class="ui">I/O setup</span>의 DI · DO 설정에서 CI0 ~ CI7, CO0 ~ CO7, 끝단 DI0 · DI1에 기능을 지정하고,
+      신호를 High와 Low 중 어느 쪽에서 유효로 볼지 고릅니다. 입력 기능에는 시작 · 정지 · 일시정지/재개 · 수동/자동 전환 · 드래그 · 오류 해제 · 활성화 등이,
+      출력 기능에는 오류 · 동작 중 · 안전 상태 · 간섭 영역 진입 등이 있습니다.</li>
+    <li><b>별칭 · 필터 · 출력 리셋</b>: 같은 메뉴에서 I/O에 이름을 붙이고, 입력 필터 시간(0 ~ 200 ms)을 정하고, 프로그램을 멈추거나 일시정지했을 때 출력을 유지할지 되돌릴지 정합니다.</li>
+  </ul>
+  <div class="box caution"><div class="h">주의 · 기능을 지정한 I/O</div>
+    <p>기능을 지정한 DI · DO는 프로그램에서 쓰지 마십시오. 기능을 바꾼 뒤에는 제어기를 다시 시작하고, I/O 상태 화면에서 신호가 맞게 바뀌는지 확인하십시오.</p></div>
+
+  <h2 id="c7-s4">프로그램 · SDK의 I/O 번호 <span class="src">문서</span></h2>
+  <p>프로그램(Lua)과 SDK는 DO와 CO, DI와 CI를 한 줄 번호로 씁니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="io-num"><b>표 12.</b> I/O 번호</caption>
+    <thead><tr><th>대상</th><th>번호</th><th>명령 예</th></tr></thead>
+    <tbody>
+      <tr><td>컨트롤 박스 디지털 출력</td><td>0 ~ 7 = DO0 ~ DO7, 8 ~ 15 = CO0 ~ CO7</td><td>Lua · SDK <code>SetDO</code></td></tr>
+      <tr><td>컨트롤 박스 디지털 입력</td><td>0 ~ 7 = DI0 ~ DI7, 8 ~ 15 = CI0 ~ CI7</td><td>Lua <code>WaitDI</code>, SDK <code>GetDI</code></td></tr>
+      <tr><td>끝단 디지털 출력 · 입력</td><td>0 · 1</td><td><code>SetToolDO</code> · <code>GetToolDI</code></td></tr>
+      <tr><td>컨트롤 박스 아날로그 출력 · 입력</td><td>0 · 1, 값은 0 ~ 100 %</td><td>SDK <code>SetAO</code> · <code>GetAI</code></td></tr>
+      <tr><td>끝단 아날로그 출력 · 입력</td><td>0, 값은 0 ~ 100 %</td><td>SDK <code>SetToolAO</code> · <code>GetToolAI</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 8 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">안전 설정</h1></div>
+  <p class="lede">충돌 감지, 관절 범위, 속도 제한, 안전 벽 · 간섭 영역, 비상 정지 · 보호 정지 방식을 WebApp에서 설정합니다.
+    안전 설정은 설치 현장의 위험성 평가에 따라 정하고, 바꾼 뒤에는 반드시 시험하십시오.</p>
+
+  <h2 id="c8-s1">안전 설정 잠금과 체크섬 <span class="src">문서</span></h2>
+  <ul>
+    <li>안전 관련 설정은 <span class="ui">Initial</span> → <span class="ui">Safety</span>에 모여 있습니다. 바꾸려면 먼저 안전 설정 비밀번호를 넣어 잠금을 풉니다.
+      FAIRINO 문서에 적힌 기본값은 <code>12345678</code>입니다. 처음 설정할 때 8자 이상, 대 · 소문자 · 숫자 · 특수 문자를 섞은 비밀번호로 바꾸십시오.
+      1분이 안 되는 간격으로 5번 연속 틀리면 1분 동안 입력이 잠깁니다.</li>
+    <li>값을 바꾸고 <span class="ui">Apply</span>를 누르면 확인 창이 한 번 더 뜹니다. <span class="ui">Confirm</span>을 눌러야 적용됩니다.</li>
+    <li>화면 오른쪽 위의 8자리 16진수가 안전 설정 체크섬입니다. 안전 설정이 바뀌면 값도 바뀝니다. 누르면 현재 안전 설정 목록이 나오고, PDF 보고서로 내려받을 수 있습니다.
+      안전 설정을 확정한 뒤 체크섬을 기록해 두면 나중에 설정이 바뀌었는지 바로 알 수 있습니다.</li>
+    <li>WebApp 관리자 비밀번호도 바꾸고, 사람마다 권한에 맞는 계정을 만들어 쓰십시오(<span class="ui">System</span> → Account settings).</li>
+  </ul>
+  <div class="box note"><div class="h">참고 · 메뉴 위치</div>
+    <p>FAIRINO 문서에는 관절 소프트 리밋과 충돌 등급이 <span class="ui">Initial</span> → <span class="ui">Safety</span> → Joints 아래로도,
+      <span class="ui">Initial</span> → <span class="ui">Base</span> → Joint 아래로도 나옵니다. 소프트웨어 버전에 따라 다르므로, 한 곳에 없으면 다른 곳을 보십시오.</p></div>
+
+  <h2 id="c8-s2">충돌 감지 <span class="src">문서</span></h2>
+  <p>충돌 등급(Collision Level)은 1 ~ 10등급입니다. 1 ~ 3등급이 가장 민감하며, 이때는 권장 속도로 움직여야 합니다. 백분율로 직접 정할 수도 있으며 100 %가 10등급입니다.
+    충돌 감지는 부하와 설치 방식이 맞아야 정확합니다(6장).</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="collision"><b>표 13.</b> 충돌 뒤 동작 (Collision strategy)</caption>
+    <thead><tr><th>전략</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>충돌 시 정지 · 일시정지</td><td>오류를 내고 멈추거나, 일시정지합니다</td></tr>
+      <tr><td>계속 움직임</td><td>충돌을 감지해도 동작을 계속합니다</td></tr>
+      <tr><td>중력 토크 모드</td><td>충돌 힘의 크기와 방향에 따라 충돌점에서 물러납니다</td></tr>
+      <tr><td>진동 응답 모드</td><td>충돌점에서 물러났다가 충돌 위치로 돌아옵니다</td></tr>
+      <tr><td>충돌 반동 모드</td><td>설정값에 따라 가속해 물러납니다. 안전 시간 1000 ~ 2000 ms, 안전 거리 150 ~ 200 mm, 안전 속도 50 ~ 250 mm/s, 안전 계수 1 ~ 10</td></tr>
+    </tbody>
+  </table>
+  <p>중력 토크 · 진동 응답 · 충돌 반동 모드는 끼임을 줄이려는 전략으로, 걸리면 드래그 모드로 바뀌었다가 수동 모드로 돌아갑니다.</p>
+
+  <h2 id="c8-s3">관절 소프트 리밋 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b><span class="ui">Initial</span> → <span class="ui">Safety</span> → Joints → Joint Soft Limits를 여십시오.</b></li>
+    <li><b>관절마다 + · − 한계를 넣으십시오.</b>1장 사양표의 소프트 리밋보다 큰 값을 넣으면 설정할 수 있는 최대값으로 바뀝니다.</li>
+    <li><b>모든 관절의 현재 각도가 새 범위 안에 있는지 확인하고 <span class="ui">Apply</span>를 누르십시오.</b>범위 밖이면 오류가 납니다. 그 관절을 조그나 드래그로 범위 안으로 옮긴 뒤 다시 적용합니다.</li>
+    <li><b>필요하면 소프트 리밋 보호(Joint Soft Limit Protection)를 켜십시오.</b>드래그 티칭 중에도 한계 근처에서 저항이 느껴지며 넘어가지 않습니다.</li>
+  </ol>
+  <p>소프트 리밋 오류가 나서 움직이지 않으면 드래그 모드로 관절을 범위 안으로 옮기십시오.</p>
+
+  <h2 id="c8-s4">속도 제한과 축소 모드 <span class="src">문서</span></h2>
+  <table class="t wrap1">
+    <caption data-tbl="speed"><b>표 14.</b> 속도 관련 안전 설정 (Initial → Safety)</caption>
+    <thead><tr><th>설정</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>Robot Speed</td><td>최대 직선 속도 · 직선 가속도 · 관절 각가속도를 제한합니다</td></tr>
+      <tr><td>Safety Speed</td><td>사용 범위(끔 · 수동 모드에서만 · 모든 모드), 속도 한계(TCP 수동 속도 1 ~ 1500 mm/s), 넘었을 때 처리(정지 후 알람 · 자동 속도 제한 · 정지 후 알람과 비활성화)를 고릅니다.
+        자동 속도 제한은 수동 모드에서만 쓸 수 있습니다</td></tr>
+      <tr><td>Reduced Mode</td><td>1단계 · 2단계 축소 모드의 관절 속도와 TCP 속도를 정합니다. 3단계는 정지입니다. 축소 모드는 CI 기능 지정이나 안전 정지 전략으로 들어갑니다</td></tr>
+      <tr><td>Stop Deceleration</td><td>멈출 때 관절별로 감속할지(Free Stop), TCP 속도를 기준으로 감속할지(Synchronized Stop)와 감속 비율을 정합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c8-s5">비상 정지와 보호 정지 <span class="src">문서</span></h2>
+  <p>비상 정지 버튼은 범주 0 정지가 기본입니다. 누르면 로봇의 모든 동작이 바로 멈춥니다. 범주 0으로 멈췄다면 전원을 끄고, 비상 정지 버튼을 돌려 풀고, 전원을 다시 켜서 로봇을 활성화합니다.
+    <span class="ui">Initial</span> → <span class="ui">Safety</span> → Emergency Stop에서 정지 유형과 정지 시간 · 거리 한계를 정할 수 있습니다. 고를 수 있는 유형은 컨트롤 박스 하드웨어에 따라 다를 수 있습니다.</p>
+  <table class="t wrap1 keep">
+    <caption data-tbl="estop"><b>표 15.</b> 비상 정지 유형</caption>
+    <thead><tr><th>유형</th><th>동작</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>컨트롤 박스가 곧바로 로봇 전원을 끊습니다</td></tr>
+      <tr><td>1a</td><td>감속해 멈춘 뒤 로봇 전원을 끊습니다</td></tr>
+      <tr><td>1b</td><td>감속해 멈춘 뒤 전원은 두고 로봇을 비활성화합니다</td></tr>
+      <tr><td>2</td><td>감속해 멈추고 활성 상태를 유지합니다. 비상 정지를 풀면 바로 다시 쓸 수 있습니다</td></tr>
+    </tbody>
+  </table>
+  <p>보호 정지(Protective Stop)는 컨트롤 박스의 안전 정지 입력(SI)으로 걸립니다. 유형 0은 전원을 끊고 관절 브레이크를 겁니다. 유형 1은 감속해 멈춘 뒤 전원을 끊고 브레이크를 겁니다.
+    유형 2는 감속해 멈추고 전원을 유지하며 브레이크를 걸지 않습니다. Safety Stop 메뉴에서는 안전 정지가 걸렸을 때의 동작(정지 · 일시정지 · 1 · 2단계 축소 모드)과
+    해제 방식(기본: 신호가 돌아오면 자동 해제, 2채널: 화면에서 직접 해제)을 고릅니다.</p>
+  <table class="t keep">
+    <caption data-tbl="stoptime"><b>표 16.</b> 범주 0 정지 시간 (ms, 팔을 다 편 자세 · 100 % 속도 · 최대 부하)</caption>
+    <thead><tr><th>모델</th><th>J1</th><th>J2</th><th>J3</th><th>J4</th><th>J5</th><th>J6</th></tr></thead>
+    <tbody>
+      <tr><td>FR3</td><td>400</td><td>470</td><td>450</td><td>280</td><td>120</td><td>90</td></tr>
+      <tr><td>FR5</td><td>420</td><td>500</td><td>480</td><td>310</td><td>150</td><td>120</td></tr>
+      <tr><td>FR10</td><td>460</td><td>540</td><td>510</td><td>330</td><td>170</td><td>140</td></tr>
+      <tr><td>FR16</td><td>440</td><td>530</td><td>490</td><td>320</td><td>160</td><td>130</td></tr>
+      <tr><td>FR20</td><td>540</td><td>600</td><td>700</td><td>400</td><td>260</td><td>170</td></tr>
+    </tbody>
+  </table>
+  <p>정지 거리와 안전 정지 · 소프트 리밋 정지의 값은 FAIRINO 사용자 설명서 Installation → Emergency stop 절에 있습니다. 위험성 평가와 안전 거리 계산에 쓰십시오.</p>
+
+  <h2 id="c8-s6">안전 벽과 간섭 영역 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>안전 벽(Safety Wall)</b>: 벽마다 기준점 네 개를 저장합니다. 1 ~ 3번 점으로 벽 평면을 정하고, 4번 점으로 안전한 쪽을 정합니다. 안전 거리(기본 0)를 넣고 계산한 뒤 벽을 켭니다.
+      TCP가 안전한 쪽을 벗어나면 오류가 납니다.</li>
+    <li><b>간섭 영역(Interference Zone)</b>: 관절 범위로 정하는 축 간섭과, 베이스 또는 작업물 좌표의 직육면체 간섭이 있습니다.
+      직육면체는 마주 보는 두 꼭짓점이나 중심점과 변 길이로 정합니다. 영역 안 · 밖 중 어느 쪽을 간섭으로 볼지, 명령 위치와 실제 위치 중 무엇으로 감지할지,
+      들어갔을 때 계속 움직일지 멈출지, 드래그 중에는 어떻게 할지를 고릅니다. DO 기능 '간섭 영역 진입'으로 외부 장치에 알릴 수 있습니다(7장).</li>
+  </ul>
+
+  <h2 id="c8-s7">통신 포트와 HTTPS <span class="src">문서</span></h2>
+  <p>FAIRINO 소프트웨어 V4.0.0부터 네트워크 보안 기능이 들어 있습니다. 기능 안전(Functional Safety) 모드에서는 SDK · Modbus TCP · Modbus RTU · CNDE로 로봇을 제어하는 기능이
+    기본으로 꺼져 있습니다. 필요한 것만 <span class="ui">Initial</span> → <span class="ui">Safety</span> → 네트워크 보안(Cybersecurity) → Communication Ports에서 켜십시오(안전 설정 비밀번호 필요).
+    기능 안전 모드가 아니면 모든 통신 기능이 켜져 있습니다. 같은 버전부터 WebApp은 HTTPS(TLS 1.2)를 쓰므로, 로봇 인증서를 설치하지 않으면 브라우저가 안전하지 않은 연결이라고 경고할 수 있습니다(12장).</p>
+  <div class="box caution"><div class="h">주의 · 믿을 수 있는 네트워크에서만</div>
+    <p>SDK의 XML-RPC, CNDE, Modbus 통신은 암호화되지 않습니다. 로봇은 외부와 분리된 믿을 수 있는 네트워크에만 연결하고, 쓰지 않는 제어 기능은 꺼 두십시오.</p></div>
+</section>
+
+<!-- ═══════════════════════ 9 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">프로그램 작성 기본</h1></div>
+  <p class="lede">티칭 포인트를 저장하고, 포인트를 잇는 운동 명령으로 프로그램을 만들어 실행합니다. 프로그램은 WebApp의 <span class="ui">Program</span> 메뉴에서 만들며, FR Lua 스크립트로 저장됩니다.</p>
+  <div class="box warn"><div class="h">경고 · 처음 실행할 때</div>
+    <p>로봇이 닿는 범위 안에 머리와 몸을 두지 말고, 로봇이 잡을 수 있는 곳에 손가락을 넣지 마십시오. 새 프로그램은 낮은 속도로 한 줄씩 확인한 뒤 자동 실행하십시오.</p></div>
+
+  <h2 id="c9-s1">운전 모드와 상태 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>수동 모드(Manual)</b>: 조그 · 드래그로 로봇을 움직이고 포인트를 티칭합니다. <b>자동 모드(Automatic)</b>: 프로그램을 실행합니다.
+      모드는 WebApp 오른쪽 위 상태 영역(그림 14의 5번)이나 버튼 박스의 운전 모드 버튼으로 바꿉니다.</li>
+    <li>위쪽 가운데 제어 영역(4번)에는 활성화 · 시작 · 정지 · 일시정지/재개 버튼이 있습니다.</li>
+    <li>로봇 상태는 Stopped(정지) · Running(실행) · Pause(일시정지) · Drag(드래그)로 표시됩니다.</li>
+    <li>실제 속도는 로봇 최대 속도 × 전역 속도(상태 영역의 Speed) × 명령의 속도 % 입니다.</li>
+  </ul>
+
+  <h2 id="c9-s2">포인트 티칭 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>수동 모드에서 로봇을 목표 위치로 옮기십시오.</b>끝단의 드래그 버튼을 누른 채 손으로 끌거나(드래그 티칭), 3D 화면 왼쪽의 조그 패널(7번)로 움직입니다.</li>
+    <li><b>아래쪽 Point 패널(8번)에 포인트 이름을 넣고 <span class="ui">Add</span>를 누르십시오.</b>저장되는 좌표는 지금 적용된 툴 · 작업물 좌표 기준입니다(6장).
+      버튼 박스의 포인트 기록 버튼이나 끝단 DI1로도 저장할 수 있습니다.</li>
+    <li><b><span class="ui">Program</span> → <span class="ui">Points</span>에서 저장한 포인트를 확인하십시오.</b>값(x, y, z, rx, ry, rz, v)을 고치거나 지우고, 가져오기 · 내보내기를 하며,
+      <span class="ui">Start Run</span>으로 그 포인트까지 PTP 또는 Lin으로 움직여 볼 수 있습니다. 고친 좌표가 로봇의 작업 범위를 넘지 않게 하십시오.</li>
+  </ol>
+
+  <h2 id="c9-s3">새 프로그램 만들기 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b><span class="ui">Program</span> → <span class="ui">Coding</span>을 열고 <span class="ui">New</span>를 누르십시오.</b>템플릿(빈 템플릿 등)을 고르고 파일 이름을 정합니다.</li>
+    <li><b>왼쪽 명령 목록에서 <span class="ui">PTP</span>를 눌러 목표 포인트와 속도를 고르고 <span class="ui">Add</span> → <span class="ui">Apply</span>를 누르십시오.</b>
+      PTP는 제어기가 고른 최적 경로로, <span class="ui">Lin</span>은 직선으로 움직입니다. 부드럽게 이어 갈 시간이나 오프셋도 여기서 정합니다.
+      같은 종류의 명령 여러 개는 <span class="ui">Add</span>로 쌓은 뒤 <span class="ui">Apply</span>로 한 번에 넣을 수 있습니다.</li>
+    <li><b>필요한 명령을 모두 넣고 <span class="ui">Save</span>를 누르십시오.</b>도구 모음에서 노드를 복사 · 잘라 내기 · 붙여 넣기 · 삭제하고, 위아래로 옮길 수 있습니다.</li>
+    <li><b>수동 모드에서 한 줄씩 확인하십시오.</b>각 노드 오른쪽의 첫 번째 아이콘을 누르면 그 명령만 실행합니다.</li>
+    <li><b>자동 모드로 바꾸고 시작 버튼을 누르십시오.</b>실행 중인 노드는 초록색으로 표시됩니다. 정지 · 일시정지/재개 버튼으로 멈춥니다.</li>
+  </ol>
+  <p>Program 메뉴에는 블록을 끌어 놓는 그래픽 프로그래밍과 노드 그래프 프로그래밍도 있습니다. 드래그로 움직인 궤적을 그대로 기록해 재생하는 TPD 기능도 있습니다.</p>
+
+  <h2 id="c9-s4">Lua로 보기 <span class="src">문서</span></h2>
+  <p>프로그램 트리 도구 모음의 편집 모드 전환을 누르면 같은 프로그램을 Lua 글로 보고 고칠 수 있습니다. 아래는 포인트 <code>p1</code> · <code>p2</code>를 저장해 두었다고 할 때의 예입니다.</p>
+<pre class="cmd">PTP(p1,30,-1,0)      <span class="c">-- p1으로 이동, 속도 30 %, 멈춘 뒤 다음 줄</span>
+Lin(p2,30,-1,0,0)    <span class="c">-- p2까지 직선 이동</span>
+SetDO(0,1,0,0)       <span class="c">-- 컨트롤 박스 DO0 켜기</span>
+WaitMs(500)          <span class="c">-- 500 ms 기다리기</span>
+SetDO(0,0,0,0)       <span class="c">-- DO0 끄기</span>
+PTP(p1,30,-1,0)</pre>
+  <table class="t wrap1 api">
+    <caption data-tbl="lua"><b>표 17.</b> 자주 쓰는 Lua 명령</caption>
+    <thead><tr><th>명령</th><th>인자</th></tr></thead>
+    <tbody>
+      <tr><td><code>PTP(점, 속도, 연결, 오프셋)</code></td><td>속도 0 ~ 100 % · 연결 −1 = 멈춤, 0 ~ 500 = 부드럽게 이어 갈 시간(ms) · 오프셋 0 = 없음, 1 = 베이스 · 작업물 좌표, 2 = 툴 좌표</td></tr>
+      <tr><td><code>Lin(점, 속도, 연결, 탐색, 오프셋)</code></td><td>연결 −1 = 멈춤, 0 ~ 1000 = 블렌드 반지름(mm) · 탐색 0 = 안 함(1은 용접 와이어 위치 찾기)</td></tr>
+      <tr><td><code>SetDO(번호, 상태, 부드럽게, 스레드)</code></td><td>번호 0 ~ 15(7장) · 상태 0 = 끔, 1 = 켬 · 나머지는 보통 0</td></tr>
+      <tr><td><code>WaitDI(번호, 상태, 최대 시간, 시간 초과 처리)</code></td><td>최대 시간(ms) · 시간 초과 처리 0 = 멈추고 알림, 1 = 무시하고 계속, 2 = 끝없이 기다림</td></tr>
+      <tr><td><code>WaitMs(시간)</code></td><td>시간(ms)만큼 기다림</td></tr>
+    </tbody>
+  </table>
+  <p>모든 명령과 인자는 FAIRINO 문서의 FR LUA Programming Script 설명서에 있습니다.</p>
+</section>
+
+<!-- ═══════════════════════ 10 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>10</big></div><h1 id="c10" data-mark="c10">SDK로 제어</h1></div>
   <p class="lede">SDK의 함수 설명과 최근 업데이트는 FAIRINO 공식 문서에, 예제는 FAIRINO GitHub에 있습니다.</p>
 
-  <h2 id="c6-s1">FAIRINO 공식 문서</h2>
+  <h2 id="c10-s1">FAIRINO 공식 문서</h2>
   <p>자세한 내용과 최근 업데이트 내용은 아래 링크에서 확인할 수 있습니다.</p>
   <p>FAIRINO 문서: <a href="https://fairino-doc-en.readthedocs.io/latest/">https://fairino-doc-en.readthedocs.io/latest/</a></p>
   <p>접속한 뒤 왼쪽 패널의 <span class="ui">SDK Manual</span>에서 원하는 언어의 설명서를 고르십시오.</p>
@@ -244,10 +663,233 @@
   <p>함수마다 설명과 예제가 있으므로, 이 자료를 참고해 개발하십시오.</p>
   <figure class="light f80"><img src="assets/fr_019.png" alt=""><figcaption data-fig="fig-doc-func"><b>그림 19.</b> SDK Manual의 함수 설명 예 (Python · 4. Movement, FAIRINO 문서 화면)</figcaption></figure>
 
-  <h2 id="c6-s2">개발 사례와 예제</h2>
+  <h2 id="c10-s2">개발 사례와 예제</h2>
   <p>SDK를 활용한 개발 사례 (WeGo Robotics 유튜브): <a href="https://youtu.be/YPLGYPv6cLs">https://youtu.be/YPLGYPv6cLs</a></p>
   <p>관련 예제는 FAIRINO GitHub를 참고하십시오: <a href="https://github.com/FAIR-INNOVATION">https://github.com/FAIR-INNOVATION</a></p>
   <figure class="light f80"><img src="assets/fr_020.png" alt=""><figcaption data-fig="fig-github"><b>그림 20.</b> FAIRINO GitHub (FAIR-INNOVATION) 화면</figcaption></figure>
+  <div class="box note"><div class="h">참고 · SDK가 로봇에 연결되지 않을 때</div>
+    <p>기능 안전 모드에서는 SDK로 로봇을 제어하는 기능이 기본으로 꺼져 있습니다(8장). 개발 PC가 192.168.58.x 대역에 있는지와 함께 확인하십시오.
+      SDK의 I/O 번호는 7장에 있습니다.</p></div>
+</section>
+
+<!-- ═══════════════════════ 11 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>11</big></div><h1 id="c11" data-mark="c11">유지 보수</h1></div>
+  <p class="lede">FAIRINO가 권하는 점검 주기와 청소 방법, 시계 전지, 데이터 백업, 보관과 운반입니다. 점검에서 이상이 보이면 바로 고치고,
+    보증 기간에 손상을 발견하면 go.support@wego-robotics.com 으로 문의하십시오.</p>
+
+  <h2 id="c11-s1">점검 주기 <span class="src">문서</span></h2>
+  <table class="t wrap1">
+    <caption data-tbl="check-arm"><b>표 18.</b> 로봇팔 점검</caption>
+    <thead><tr><th>항목</th><th>방법</th><th>주기</th></tr></thead>
+    <tbody>
+      <tr><td>베이스 고정 볼트 *</td><td>기능 — 토크 렌치로 규정 토크 확인(1장)</td><td>매달</td></tr>
+      <tr><td>엔드 툴 고정 볼트 *</td><td>기능 — 토크 렌치로 확인</td><td>매달</td></tr>
+      <tr><td>관절 뒷덮개 *</td><td>육안 — 금 · 손상</td><td>6개월</td></tr>
+      <tr><td>관절 뒷덮개 나사</td><td>기능 — 제자리에 단단히 조여 있는지</td><td>6개월</td></tr>
+      <tr><td>관절 고무링</td><td>육안 — 마모 · 손상</td><td>6개월</td></tr>
+      <tr><td>로봇 케이블과 연결부</td><td>육안 — 컨트롤 박스와 로봇 사이 케이블 손상</td><td>6개월</td></tr>
+    </tbody>
+  </table>
+  <p>* 표시 항목은 심한 충돌 뒤에도 바로 점검하십시오. 육안 점검은 가능하면 로봇을 영점 자세로 옮기고 컨트롤 박스 전원 케이블을 뺀 뒤 합니다.</p>
+  <table class="t wrap1">
+    <caption data-tbl="check-box"><b>표 19.</b> 컨트롤 박스 · 버튼 박스 · 티칭 펜던트 점검</caption>
+    <thead><tr><th>항목</th><th>방법</th><th>주기</th></tr></thead>
+    <tbody>
+      <tr><td>비상 정지 버튼 (버튼 박스 · 티칭 펜던트)</td><td>기능 — 아래 시험</td><td>매달</td></tr>
+      <tr><td>단자대의 안전 입출력</td><td>기능</td><td>매달</td></tr>
+      <tr><td>버튼 박스의 시작 · 정지, 모드 전환</td><td>기능</td><td>매달</td></tr>
+      <tr><td>컨트롤 박스 공기 필터</td><td>육안 — 점검 · 청소</td><td>매달</td></tr>
+      <tr><td>버튼 박스 · 티칭 펜던트 케이블</td><td>육안</td><td>6개월</td></tr>
+      <tr><td>컨트롤 박스 단자 고정</td><td>기능 — 단자가 단단히 꽂혀 있고 풀린 선이 없는지</td><td>6개월</td></tr>
+      <tr><td>컨트롤 박스 접지 저항</td><td>기능 — 1 Ω 이하</td><td>매년</td></tr>
+      <tr><td>컨트롤 박스 주 전원</td><td>기능</td><td>매년</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c11-s2">비상 정지 시험 <span class="src">문서</span></h2>
+  <ol class="steps">
+    <li><b>로봇 전원이 켜진 상태에서 비상 정지 버튼을 누르십시오.</b></li>
+    <li><b>로봇이 멈추고 관절 전원이 꺼지는지 확인하십시오.</b></li>
+    <li><b>비상 정지 버튼을 돌려 풀고 전원을 다시 켠 뒤 로봇을 활성화하십시오.</b></li>
+    <li><b>단자대에 연결한 외부 비상 정지 · 안전 정지 입력도 같은 방법으로 시험하십시오.</b></li>
+  </ol>
+
+  <h2 id="c11-s3">청소 <span class="src">문서</span></h2>
+  <ul>
+    <li><b>로봇팔</b>: 천에 물, 이소프로필 알코올, 10 % 에탄올, 10 % 나프타 중 하나를 묻혀 먼지 · 기름을 닦습니다. 표백제는 묽게 탄 것도 쓰지 마십시오.
+      압축 공기는 부품을 손상시킬 수 있으므로 쓰지 마십시오. 절삭유 · 냉각수를 쓰는 환경이면 고무링을 자주 청소하거나 바꾸십시오.
+      관절에서 아주 적은 양의 그리스가 보이는 것은 기능 · 수명에 영향이 없습니다.</li>
+    <li><b>컨트롤 박스</b>: 전원 케이블을 뺀 뒤 안쪽 먼지는 정전기 방지(ESD) 청소기로 치웁니다. 안쪽에 압축 공기를 쓰지 마십시오.
+      양옆의 공기 필터는 떼어 낮은 압력의 공기로 청소하고, 더럽거나 손상되었으면 바꿉니다. 팬 소리가 평소와 다르면 문의하십시오.</li>
+    <li><b>티칭 펜던트 화면</b>: 희석제나 부식성 첨가물이 없는 순한 세제를 쓰고, 연마재로 닦지 마십시오.</li>
+  </ul>
+
+  <h2 id="c11-s4">시계와 백업 전지 <span class="src">문서</span></h2>
+  <p>컨트롤 박스의 시계는 충전식 버튼 전지(MS621FE-FL11E, 3 V, 5.5 mAh)로 유지됩니다. 전원이 들어오면 자동으로 충전되며(완전 방전에서 약 5시간), 보통 5년 이상 씁니다.
+    3개월 넘게 전원을 넣지 않으면 전지가 방전되어 날짜가 틀릴 수 있습니다. 다시 켠 뒤 WebApp의 시간이 PC와 다르면
+    <span class="ui">System</span> → <span class="ui">General settings</span>의 시간 항목에서 <span class="ui">Update</span>를 눌러 PC 시간에 맞추십시오. 로그 시각이 이 시계를 따릅니다.</p>
+  <div class="box caution"><div class="h">주의 · 백업 전지</div>
+    <p>충전식이 아닌 전지를 넣지 마십시오. 전지 교체는 컨트롤 박스 덮개를 열고 납땜해야 하므로 WeGo에 문의하십시오.</p></div>
+
+  <h2 id="c11-s5">데이터 백업 <span class="src">문서</span></h2>
+  <p><span class="ui">Application</span> → <span class="ui">Tool App</span> → <span class="ui">Data Backup</span>에서 툴 좌표, 시스템 설정 파일, 티칭 포인트, 사용자 프로그램 · 템플릿, 사용자 설정을
+    한 묶음으로 내려받고, 다시 가져올 수 있습니다. 같은 기능으로 다른 로봇에 설정을 옮길 수도 있습니다.</p>
+  <ul>
+    <li>가져올 때 묶음이 손상되지 않았는지 검사하며, 로봇 모델 · 설치 방식 · 베이스 기울기 · 베이스 회전 · 동적 설정 다섯 가지가 대상 로봇과 같아야 가져올 수 있습니다.</li>
+    <li>가져오는 중에 실패하거나 전원이 나가면 제어기가 이전 상태로 되돌립니다. 컨트롤 박스를 다시 시작하고 다시 가져오십시오.</li>
+    <li>소프트웨어 업그레이드 전에는 반드시 백업하십시오. 업그레이드 · 다운그레이드는 WeGo에 문의하십시오(2장).</li>
+  </ul>
+
+  <h2 id="c11-s6">버전 정보와 고장 데이터 <span class="src">문서</span></h2>
+  <p><span class="ui">System</span> → <span class="ui">About</span>에 로봇 모델과 일련번호, WebApp · 컨트롤 박스 소프트웨어 버전, 하드웨어 · 펌웨어 버전이 나옵니다.
+    <span class="ui">System</span> → <span class="ui">General settings</span>에서 고장 데이터 저장(Fault data)을 켜 두면 고장이 날 때 앞뒤 15초의 데이터가 저장되어, 나중에 내보낼 수 있습니다.
+    같은 화면에서 제어기 로그도 내보낼 수 있습니다. 문의할 때 함께 보내 주십시오(12장).</p>
+
+  <h2 id="c11-s7">보관과 운반 <span class="src">문서</span></h2>
+  <ul>
+    <li>로봇팔과 컨트롤 박스는 한 쌍으로 보정되어 있습니다. 다른 로봇의 컨트롤 박스와 바꾸어 쓰면 다시 보정해야 합니다.</li>
+    <li>운반은 원래 포장으로만 하십시오. 포장재는 마른 곳에 보관하고, 포장 전에 로봇을 패킹 자세로 옮기십시오(4장).</li>
+    <li>혼자 들지 말고 여러 사람이 함께 들거나 크레인 · 지게차를 쓰십시오. 정밀 부품이 있으므로 심한 충격과 진동을 피하십시오.
+      포장에서 꺼내 설치할 때는 두 팔을 함께 붙잡고, 베이스 볼트를 다 조일 때까지 놓지 마십시오.</li>
+    <li>보관 온도는 −25 ~ 60 °C(서리 없음)입니다. 육안 점검 없이 6개월 넘게 보관하지 마십시오.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ 12 ═══════════════════════ -->
+<section class="chapter">
+  <div class="opener"><div class="num">CHAPTER<big>12</big></div><h1 id="c12" data-mark="c12">문제 해결</h1></div>
+  <p class="lede">오류는 WebApp 위쪽 상태 표시줄에 나타납니다. 오류 코드 체계와 끝단 LED, 자주 만나는 증상과 조치를 정리했습니다.
+    전체 하위 코드와 서보 드라이브 · 넓은 전압 컨트롤 박스 고장 표는 FAIRINO 사용자 설명서의 Appendix에 있습니다.</p>
+
+  <h2 id="c12-s1">오류 해제</h2>
+  <p>‘해제 가능’ 오류는 원인을 없앤 뒤 WebApp 오른쪽 위의 오류 해제(Clear)로 지웁니다. 버튼 박스 BX02 V2.0의 일괄 해제 버튼이나, CI 기능 ‘모든 오류 해제’로도 지울 수 있습니다.
+    ‘해제 불가’ 오류는 컨트롤 박스를 다시 시작해야 하며, 다시 나면 WeGo에 문의하십시오.</p>
+
+  <h2 id="c12-s2">오류 코드 <span class="src">문서</span></h2>
+  <p>제어기 오류는 주 코드와 하위 코드로 나옵니다. 주 코드의 뜻과 먼저 할 조치는 다음과 같습니다.</p>
+  <table class="t wrap1 tight">
+    <caption data-tbl="errcode"><b>표 20.</b> 제어기 오류 주 코드</caption>
+    <thead><tr><th>주 코드</th><th>분류</th><th>대표 원인과 조치</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>명령 포인트 오류</td><td>목표점에 닿을 수 없음, 관절 한계 · 속도 초과, 특이 자세, 툴 번호 불일치 등. 대부분 해제 가능합니다.
+        포인트 · 툴 · 속도를 고치고, 특이 자세면 PTP로 바꾸거나 포인트를 옮깁니다. 관절 명령과 실제 위치의 차이가 너무 큰 오류(하위 30)는 다시 시작해야 합니다</td></tr>
+      <tr><td>2</td><td>드라이버 고장</td><td>축 1 ~ 6 드라이버. 해제 불가입니다. 다시 시작하고, 반복되면 문의합니다</td></tr>
+      <tr><td>3</td><td>소프트 리밋 초과</td><td>축 1 ~ 6. 해제 가능합니다. 드래그 모드로 관절을 범위 안으로 옮깁니다(8장)</td></tr>
+      <tr><td>4</td><td>충돌</td><td>축 1 ~ 6, 끝단(7), 외부 축(8). 해제 가능합니다. 원인을 없애고 부하 · 설치 방식 · 충돌 등급을 확인합니다(6 · 8장)</td></tr>
+      <tr><td>5 · 6</td><td>슬레이브 수 · 슬레이브 오류</td><td>제어기에 연결된 슬레이브(컨트롤 박스 · 관절 드라이브 · 끝단 보드)의 수나 상태가 맞지 않습니다. 해제 불가입니다. 로봇 케이블 연결을 확인하고 다시 시작합니다</td></tr>
+      <tr><td>7</td><td>I/O 오류</td><td>채널 · 값 오류, WaitDI · WaitAI 시간 초과, 안전 정지 발생(하위 15) 등. 대부분 해제 가능합니다. 대기 조건과 배선을 확인합니다.
+        DO 24 V 단락 보호(16)와 위치 유지(브레이크) 보호(17)는 해제 불가이므로 배선을 점검하고 문의합니다</td></tr>
+      <tr><td>8</td><td>그리퍼 오류</td><td>그리퍼 동작 시간 초과. 해제 가능합니다. 그리퍼 설정과 활성화를 확인합니다(5장)</td></tr>
+      <tr><td>9</td><td>파일 오류</td><td>설정 파일 버전 · 읽기 실패, 로봇 모델 불일치(7) · 모델 미설정(10). 해제 불가입니다. 로봇 모델 설정은 바꾸지 말고 문의합니다</td></tr>
+      <tr><td>10</td><td>특이 자세</td><td>포인트나 경로를 바꾸거나 PTP를 씁니다</td></tr>
+      <tr><td>11</td><td>드라이버 통신 오류</td><td>축 1 ~ 6. 해제 불가입니다. 로봇 케이블 연결을 확인하고 다시 시작합니다</td></tr>
+      <tr><td>12</td><td>외부 축 소프트 리밋</td><td>외부 축 1 ~ 4. 해제 가능합니다</td></tr>
+      <tr><td>13</td><td>설정 값 오류</td><td>툴 번호, 부하 무게 · 무게중심, 필터 시간, 충돌 등급 등이 범위 밖입니다. 해제 가능합니다. 값을 범위 안으로 고칩니다</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s3">끝단 LED <span class="src">문서</span></h2>
+  <table class="t wrap1 keep">
+    <caption data-tbl="led"><b>표 21.</b> 로봇 끝단 LED</caption>
+    <thead><tr><th>상태</th><th>LED</th></tr></thead>
+    <tbody>
+      <tr><td>제어기와 통신 연결 전</td><td>꺼짐 · 빨강 · 초록 · 파랑이 번갈아 켜짐</td></tr>
+      <tr><td>수동 모드</td><td>초록 켜짐</td></tr>
+      <tr><td>자동 모드</td><td>파랑 켜짐</td></tr>
+      <tr><td>드래그 모드</td><td>흰빛 청록 켜짐</td></tr>
+      <tr><td>활성화</td><td>노랑 두 번 깜빡임</td></tr>
+      <tr><td>영점 보정 완료</td><td>흰빛 청록 세 번 깜빡임</td></tr>
+      <tr><td>버튼 박스로 포인트 기록 · 실행 시작 · 정지</td><td>보라 · 청록 · 빨강 두 번 깜빡임</td></tr>
+      <tr><td>버튼 박스 오류 (버튼 박스를 쓸 때)</td><td>빨강 켜짐</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s4">증상별 조치</h2>
+  <table class="t wrap1">
+    <caption data-tbl="ts"><b>표 22.</b> 증상과 조치</caption>
+    <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>WebApp에 접속되지 않음</td><td>노트북 IP가 192.168.58.x가 아님, 다른 포트에 연결함, WebApp과 WebRecovery의 네트워크가 겹침</td>
+        <td>5장 순서로 IP를 다시 설정하고, LAN 케이블이 비상 정지 버튼(버튼 박스)에 꽂혀 있는지 확인합니다</td></tr>
+      <tr><td>접속 IP를 바꾼 뒤 주소를 모름</td><td>Eth1 주소 변경</td>
+        <td>버튼 박스 V2.0의 IP 재설정 버튼으로 기본값을 되돌리거나 WeGo에 문의합니다. WebRecovery(192.168.57.2:8050)에도 IP 재설정이 있지만, 그 화면의 업그레이드 · 다운그레이드는 건드리지 마십시오</td></tr>
+      <tr><td>브라우저가 안전하지 않은 연결이라고 경고</td><td>V4.0.0부터 WebApp이 HTTPS를 쓰며, 로봇 인증서가 PC에 없음</td>
+        <td>경고 창의 인증서 정보에서 인증서를 내보내 <code>.crt</code>로 저장하고, PC의 신뢰할 수 있는 루트 인증 기관에 설치합니다
+          (FAIRINO 문서 Safety → WebApp Communication Encryption, Windows 기준)</td></tr>
+      <tr><td>티칭 펜던트가 연결되지 않음</td><td>티칭 펜던트 사용이 꺼져 있음 (최신 WebApp 기본값)</td><td>4장 참고 상자대로 켜고 재부팅합니다</td></tr>
+      <tr><td>로봇이 활성화되지 않음</td><td>비상 정지가 눌려 있음, 단자대의 안전 입력 단락 배선이 빠짐</td><td>비상 정지를 풀고, EI · SI 배선을 확인합니다(7장)</td></tr>
+      <tr><td>드래그 모드에 들어가지 않거나 팔이 처지 · 들림</td><td>부하 · 설치 방식이 실제와 다름</td><td>6장대로 부하와 설치 방식을 바로잡습니다</td></tr>
+      <tr><td>충돌 오류가 자주 남</td><td>부하가 틀림, 충돌 등급이 너무 민감, 속도가 높음</td><td>부하를 확인하고 충돌 등급 · 속도를 조정합니다(6 · 8장)</td></tr>
+      <tr><td>프로그램이 시작되지 않음</td><td>수동 모드, 오류가 남아 있음</td><td>오류를 해제하고 자동 모드로 바꾼 뒤 시작합니다(9장)</td></tr>
+      <tr><td>프로그램에서 I/O가 바뀌지 않음</td><td>그 채널에 기능이 지정되어 있음</td><td>기능을 지정하지 않은 채널을 씁니다(7장)</td></tr>
+      <tr><td>SDK가 연결되지 않음</td><td>기능 안전 모드에서 SDK 제어가 꺼져 있음, 개발 PC 대역이 다름</td><td>8장 통신 포트에서 켜고, 192.168.58.x 대역을 확인합니다</td></tr>
+      <tr><td>날짜 · 시간이 틀림</td><td>시계 백업 전지 방전</td><td>시간을 맞추고 전원을 켜 두어 충전합니다(11장)</td></tr>
+      <tr><td>백업을 가져오지 못함</td><td>모델 · 설치 방식 등이 다름, 묶음 손상</td><td>대상 로봇의 설정을 확인하고 다시 내보냅니다(11장)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c12-s5">WeGo에 문의할 때</h2>
+  <p>go.support@wego-robotics.com 으로 다음을 보내 주십시오: 로봇 모델과 일련번호, <span class="ui">System</span> → <span class="ui">About</span>의 버전 정보,
+    오류 코드 · 메시지와 화면 사진, 무엇을 하다가 났는지, 가능하면 고장 데이터와 제어기 로그(11장).</p>
+</section>
+
+<!-- ═══════════════════════ 부록 ═══════════════════════ -->
+<section class="chapter app">
+  <div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c13" data-mark="c13">빠른 참조</h1></div>
+
+  <div class="qr">
+    <div class="card"><h3>켜고 접속하기 (3 · 5장)</h3>
+      <ol><li>비상 정지 해제, 동작 범위 비움</li><li>컨트롤 박스 전원 → 끝단 LED 초록</li><li>노트북 IP 192.168.58.x</li>
+        <li>브라우저 192.168.58.2 → 로그인</li><li>활성화</li></ol></div>
+    <div class="card"><h3>끄기 (3장)</h3>
+      <ol><li>프로그램 정지</li><li>상태 조회 끄기</li><li>상태 Stopped 확인</li><li>전원 끄기</li><li>다시 켤 때는 1분 뒤</li></ol></div>
+    <div class="card"><h3>툴을 바꾼 뒤 (6장)</h3>
+      <ol><li>설치 방식 확인</li><li>toolcoord0 적용 → TCP 보정 · 적용</li><li>부하 입력 또는 자동 식별</li><li>충돌 등급 확인</li><li>낮은 속도로 시험</li></ol></div>
+    <div class="card"><h3>첫 프로그램 (9장)</h3>
+      <ol><li>수동 모드, 포인트 저장</li><li>Program → Coding → New</li><li>PTP · Lin: Add → Apply → Save</li><li>한 줄씩 실행해 확인</li><li>자동 모드 → 시작</li></ol></div>
+  </div>
+
+  <table class="t wrap1">
+    <caption data-tbl="qr-addr"><b>표 23.</b> 기본값과 주소</caption>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>WebApp (Eth1, 버튼 박스 포트)</td><td>192.168.58.2 · 노트북은 192.168.58.x (192.168.58.2 제외)</td></tr>
+      <tr><td>WebRecovery (Eth0)</td><td>192.168.57.2:8050 · 업그레이드 · 다운그레이드 임의 조작 금지</td></tr>
+      <tr><td>WebApp 계정</td><td>admin / 123 — 바꾸어 쓰십시오</td></tr>
+      <tr><td>안전 설정 비밀번호</td><td>12345678 (FAIRINO 문서의 기본값) — 바꾸어 쓰십시오</td></tr>
+      <tr><td>SDK 포트 <span class="src r">SDK</span></td><td>XML-RPC 20003, 상태 수신(CNDE) 20005, UDP 명령 20007</td></tr>
+    </tbody>
+  </table>
+
+  <table class="t wrap1">
+    <caption data-tbl="qr-menu"><b>표 24.</b> WebApp 메뉴 위치 (FAIRINO 영문 화면 기준)</caption>
+    <thead><tr><th>작업</th><th>메뉴</th></tr></thead>
+    <tbody>
+      <tr><td>설치 방식 · 툴 · 작업물 좌표 · 부하</td><td>Initial → Base → Installation · TCP · Workpiece · Payload (6장)</td></tr>
+      <tr><td>I/O 기능 · 별칭 · 필터</td><td>Initial → Base → I/O setup (7장)</td></tr>
+      <tr><td>그리퍼</td><td>Initial → Peripherals → Gripper (5장, 한국어 화면: 초기설정 → 주변기기 → 그리퍼)</td></tr>
+      <tr><td>안전 설정</td><td>Initial → Safety (8장)</td></tr>
+      <tr><td>포인트 · 프로그램</td><td>Program → Points · Coding (9장)</td></tr>
+      <tr><td>시스템 로그</td><td>Status → System Log</td></tr>
+      <tr><td>패킹 자세 · 데이터 백업</td><td>Application → Tool App → Robot packing · Data Backup (4 · 11장)</td></tr>
+      <tr><td>네트워크 · 시간 · 티칭 펜던트 사용</td><td>System → General settings (5 · 11장)</td></tr>
+      <tr><td>버전 정보</td><td>System → About (업그레이드는 WeGo 문의)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="c13-s1">FAIRINO 공개 자료</h2>
+  <table class="t wrap1">
+    <caption data-tbl="qr-links"><b>표 25.</b> 함께 보는 FAIRINO 자료 (이 책에 옮기지 않음)</caption>
+    <thead><tr><th>자료</th><th>어디서</th></tr></thead>
+    <tbody>
+      <tr><td>협동로봇 사용자 설명서 (설치 · 안전 · 프로그래밍 · 부록 오류 표)</td><td>fairino-doc-en.readthedocs.io/latest → Collaborative robot</td></tr>
+      <tr><td>SDK 설명서 (C++ · C# · Python · Java)</td><td>같은 사이트 → SDK Manual</td></tr>
+      <tr><td>FR Lua 프로그래밍 스크립트 설명서</td><td>같은 사이트 → FR LUA Programming Script</td></tr>
+      <tr><td>도면 · 3D 모델 · DH 파라미터 · 로봇 소프트웨어</td><td>같은 사이트 → Download</td></tr>
+      <tr><td>SDK · ROS · ROS 2 저장소</td><td>github.com/FAIR-INNOVATION</td></tr>
+    </tbody>
+  </table>
 </section>
 
 </main></div>
