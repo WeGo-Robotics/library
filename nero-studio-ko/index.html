@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">WeGo NERO Studio — 사용 가이드</span><span class="wm-ver">버전 2026.11.17</span><a class="wm-pdf" href="../pdf/WeGo_NERO_Studio_Guide_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">WeGo NERO Studio — 사용 가이드</span><span class="wm-ver">버전 2026.11.23</span><a class="wm-pdf" href="../pdf/WeGo_NERO_Studio_Guide_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템이 하는 일</a><a class="wm-t1" href="#c2"><span class="wm-n">02</span>주요 기능</a><a class="wm-t1" href="#c3"><span class="wm-n">03</span>로봇 구성</a><a class="wm-t1" href="#c4"><span class="wm-n">04</span>NERO Studio 실행</a><a class="wm-t1" href="#c5"><span class="wm-n">05</span>제어판 한눈에 보기</a><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>제어판 항목 설명</a></summary><a class="wm-t2" href="#c6-s1">6.1 헤더</a><a class="wm-t2" href="#c6-s2">6.2 로봇 카드</a><a class="wm-t2" href="#c6-s3">6.3 VR 원격조작 카드</a><a class="wm-t2" href="#c6-s4">6.4 핸드 테스트 카드</a><a class="wm-t2" href="#c6-s5">6.5 실시간 뷰와 로봇 상태 (원격조작, 왼쪽)</a><a class="wm-t2" href="#c6-s6">6.6 스트림 카드 (녹화)</a><a class="wm-t2" href="#c6-s7">6.7 카메라 카드 (녹화)</a><a class="wm-t2" href="#c6-s8">6.8 데이터 녹화 &amp; 검토 카드 (녹화)</a><a class="wm-t2" href="#c6-s9">6.9 데이터셋 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s10">6.10 학습 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s11">6.11 추론 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s12">6.12 박스 사이클 카드 (학습 / 추론)</a><a class="wm-t2" href="#c6-s13">6.13 키보드</a></details><a class="wm-t1" href="#c7"><span class="wm-n">07</span>상태 표시</a><a class="wm-t1" href="#c8"><span class="wm-n">08</span>시작하기 전에</a><a class="wm-t1" href="#c9"><span class="wm-n">09</span>VR 원격조작</a><a class="wm-t1" href="#c10"><span class="wm-n">10</span>비상 정지 · HOLD · 해제</a><details class="wm-ch"><summary><a class="wm-t1" href="#c11"><span class="wm-n">11</span>시연 녹화</a></summary><a class="wm-t2" href="#c11-s1">녹화 방법</a><a class="wm-t2" href="#c11-s2">좋은 데이터셋의 조건</a></details><a class="wm-t1" href="#c12"><span class="wm-n">12</span>녹화 검토와 편집</a><a class="wm-t1" href="#c13"><span class="wm-n">13</span>정책 학습</a><a class="wm-t1" href="#c14"><span class="wm-n">14</span>로봇에서 정책 실행</a><details class="wm-ch"><summary><a class="wm-t1" href="#c15"><span class="wm-n">15</span>물체 게이트: 작업할 물체가 있을 때만 실행</a></summary><a class="wm-t2" href="#c15-s1">조정: 화면과 영역 확인</a><a class="wm-t2" href="#c15-s2">카운트: 완료한 물체 수</a></details><a class="wm-t1" href="#c16"><span class="wm-n">16</span>VR로 정책 보정</a><details class="wm-ch"><summary><a class="wm-t1" href="#c17"><span class="wm-n">17</span>새 작업에 맞추기</a></summary><a class="wm-t2" href="#c17-s1">어떤 작업에도 그대로 동작하는 것</a><a class="wm-t2" href="#c17-s2">새 작업마다 정할 것</a><a class="wm-t2" href="#c17-s3">새 작업에서 물체 게이트 쓰기</a></details><a class="wm-t1" href="#c18"><span class="wm-n">18</span>저장되는 설정</a><a class="wm-t1" href="#c19"><span class="wm-n">19</span>다른 프로그램 연결</a><a class="wm-t1" href="#c20"><span class="wm-n">20</span>안전 수칙</a><a class="wm-t1" href="#c21"><span class="wm-n">21</span>문제가 생겼을 때</a></nav><main class="wm-main">
 
 <section class="cover">
@@ -31,10 +31,10 @@
 정책을 로봇에서 실행하기까지의 과정을 설명합니다.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/nero_robot.png" alt="NERO">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.17</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.23</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 <section class="front"><div class="colophon" id="about">
-  <h3>이 설명서에 대하여</h3><table><tr><td>대상</td><td>VR로 NERO를 원격조작하고, 시연을 녹화하고, 정책을 학습해 로봇에서 실행하는 운영자와 개발자</td></tr><tr><td>근거 문서</td><td>NERO Studio 저장소의 사용 가이드 (<code>docs/nero-studio-guide.ko.md</code>, 2026-11-05)</td></tr><tr><td>함께 보는 책</td><td><a data-manual="nero-operation" href="../nero-operation/"><b>AgileX NERO 운용 설명서</b></a> (로봇팔 연결 · 웹 제어 화면)</td></tr><tr><td>판</td><td>한국어판 · <span data-version>2026.11.17</span></td></tr><tr><td>문의</td><td>go.support@wego-robotics.com</td></tr></table>
+  <h3>이 설명서에 대하여</h3><table><tr><td>대상</td><td>VR로 NERO를 원격조작하고, 시연을 녹화하고, 정책을 학습해 로봇에서 실행하는 운영자와 개발자</td></tr><tr><td>근거 문서</td><td>NERO Studio 저장소의 사용 가이드 (<code>docs/nero-studio-guide.ko.md</code>, 2026-11-05)</td></tr><tr><td>함께 보는 책</td><td><a data-manual="nero-operation" href="../nero-operation/"><b>AgileX NERO 운용 설명서</b></a> (로봇팔 연결 · 웹 제어 화면)</td></tr><tr><td>판</td><td>한국어판 · <span data-version>2026.11.23</span></td></tr><tr><td>문의</td><td>go.support@wego-robotics.com</td></tr></table>
   <p>NERO Studio는 특정 작업 하나에 묶여 있지 않습니다. 원격조작, 녹화, 학습, 추론은 VR로
 로봇에게 보여 줄 수 있는 양팔 작업이라면 무엇이든 똑같이 동작합니다. 이 가이드는 소포 처리
 작업 하나를 <strong>예시</strong>로 씁니다. 로봇이 들어오는 컨베이어에서 소포를 끌어와
@@ -151,7 +151,7 @@
 <p class="lede">로봇 PC에서 다음 명령으로 실행합니다.</p>
 <pre class="cmd">cd ~/workspace/NERO_DualArm_VR
 .venvs/questarm/bin/python3 ./data/nero_studio.py</pre>
-<p>다른 PC에서는 저장소를 클론한 폴더에서 같은 파일을 실행합니다. PyQt6, h5py, zmq, OpenCV가 있는
+<p>다른 PC에서는 저장소를 클론한 폴더에서 같은 파일을 실행합니다. PySide6, h5py, zmq, OpenCV가 있는
 Python이 필요합니다. 학습과 추론은 별도의 LeRobot 환경에서 실행됩니다.
 <code>&lt;repo&gt;/.venvs/lerobot</code>이 있으면 그 환경을, 없으면 <code>~/miniconda3/envs/lerobot</code>을 씁니다.
 다른 환경을 쓰려면 <code>NERO_LEROBOT_PY</code>를 지정하십시오.</p>
