@@ -41,7 +41,7 @@
     <h3>About this manual</h3>
     <table>
       <tr><td>Audience</td><td>Operators who install and run Humanoid Studio (Unitree G1 · R1 · H2 humanoids, dexterous hands)</td></tr>
-      <tr><td>Sources</td><td>The screens and behaviour of the Humanoid Studio 2.1.0 release · the delivered <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
+      <tr><td>Sources</td><td>The screens and behaviour of the Humanoid Studio 2.1.2 release · the delivered <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
       <tr><td>Read with</td><td><a data-manual="g1-operation" href="../g1-operation/"><b>Unitree G1 operator manual</b></a> · <a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 operator manual</b></a> · <a data-manual="h2-operation" href="../h2-operation/"><b>Unitree H2 operator manual</b></a> (Korean; operating the robot itself)</td></tr>
       <tr><td>Edition</td><td>English edition · <span data-version>2026.11.23</span></td></tr>
       <tr><td>Contact</td><td>go.support@wego-robotics.com</td></tr>
@@ -137,10 +137,10 @@ file, <code>wego-teleop-&lt;version&gt;-install.run</code>. Both are built from
 the same contents; the <code>.run</code> file is a one-step version of
 "unpack, then run <code>install.sh</code>". Either way it is
 <strong>self-contained</strong>: its own Python runtimes, robot models, hand
-models, fonts and training stack. The one exception is NVIDIA's GPU components
-(CUDA and related libraries): WeGo does not redistribute them, so the installer downloads them from
-the official source — <strong>an internet connection is required during installation</strong>. It does not
-touch any Python you already have.</p>
+models, fonts and training stack. It does not touch any Python you already have.
+One part is <strong>downloaded during installation</strong>: the GPU components for training and running skills on an
+NVIDIA card (NVIDIA's CUDA libraries and the CUDA build of PyTorch, about 3 GB), which WeGo may not redistribute.
+Without internet, install with <code>--cpu-only</code> or bring them on a USB stick (<code>--nvidia-wheels &lt;folder&gt;</code>, see INSTALL.md §14).</p>
 
 <table class="t">
 <thead><tr><th>Inside the install</th><th>What it is</th></tr></thead>

@@ -41,7 +41,7 @@
     <h3>이 설명서에 대하여</h3>
     <table>
       <tr><td>대상</td><td>Humanoid Studio 를 설치하고 운용하는 작업자 (Unitree G1 · R1 · H2 휴머노이드, 다관절 손)</td></tr>
-      <tr><td>근거 문서</td><td>Humanoid Studio 2.1.0 배포판의 화면과 동작 · 함께 납품되는 <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
+      <tr><td>근거 문서</td><td>Humanoid Studio 2.1.2 배포판의 화면과 동작 · 함께 납품되는 <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="g1-operation" href="../g1-operation/"><b>Unitree G1 운용 설명서</b></a> · <a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a> · <a data-manual="h2-operation" href="../h2-operation/"><b>Unitree H2 운용 설명서</b></a> (로봇 자체의 운용)</td></tr>
       <tr><td>판</td><td>한국어판 · <span data-version>2026.11.23</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
@@ -136,9 +136,10 @@
 것입니다. 두 파일은 내용이 완전히 동일하며, <code>.run</code> 파일은 "압축을
 풀고 <code>install.sh</code> 를 실행"하는 과정을 한 번에 처리하는 버전일
 뿐입니다. 어느 쪽이든 <strong>모든 것을 포함</strong>하고 있습니다 — 자체
-Python 실행 환경, 로봇 모델, 손 모델, 글꼴, 학습 스택까지. 단, NVIDIA GPU 구성요소(CUDA 등)는 WeGo가
-직접 배포하지 않으므로 설치 프로그램이 공식 배포처에서 내려받습니다 — <strong>설치할 때 인터넷 연결이
-필요합니다</strong>. 이미 설치된 다른 Python 환경에는 영향을 주지 않습니다.</p>
+Python 실행 환경, 로봇 모델, 손 모델, 글꼴, 학습 스택까지. 이미 설치된 다른 Python 환경에는 영향을 주지 않습니다.
+단, GPU 학습 · 실행용 NVIDIA 구성 요소(CUDA 등, 약 3 GB)는 WeGo 가 재배포할 수 없어
+<strong>설치 중에 인터넷에서 내려받습니다</strong>. 인터넷이 없으면 <code>--cpu-only</code> 또는
+<code>--nvidia-wheels &lt;폴더&gt;</code> 로 설치합니다 (INSTALL.ko.md §14).</p>
 
 <table class="t">
 <thead><tr><th>설치 폴더 안</th><th>내용</th></tr></thead>
