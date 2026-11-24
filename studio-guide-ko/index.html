@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">WeGo Humanoid Studio — 사용 가이드</span><span class="wm-ver">버전 2026.11.23</span><a class="wm-pdf" href="../pdf/WeGo_Humanoid_Studio_Guide_KO.pdf">PDF 다운로드</a></header>
-<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>이 시스템이 하는 일</a></summary><a class="wm-t2" href="#c1-s1">요약</a><a class="wm-t2" href="#c1-s2">지원 로봇과 손</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>납품 내용과 준비물</a></summary><a class="wm-t2" href="#c2-s1">작업자 PC</a><a class="wm-t2" href="#c2-s2">로봇 쪽</a><a class="wm-t2" href="#c2-s3">작업자</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>설치</a></summary><a class="wm-t2" href="#c3-s1">.run 파일을 받으셨다면</a><a class="wm-t2" href="#c3-s2">.tar.gz 를 받으셨다면</a></details><a class="wm-t1" href="#c4"><span class="wm-n">04</span>라이선스 활성화</a><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>로봇과 모션캡처 장비 연결</a></summary><a class="wm-t2" href="#c5-s1">5.1 네트워크 인터페이스 확인</a><a class="wm-t2" href="#c5-s2">5.2 로봇 네트워크에 PC 주소 지정</a><a class="wm-t2" href="#c5-s3">5.3 로봇이 실제로 응답하는지 확인</a><a class="wm-t2" href="#c5-s4">5.4 제어판에 입력</a><a class="wm-t2" href="#c5-s5">모션캡처 장비 연결</a></details><a class="wm-t1" href="#c6"><span class="wm-n">06</span>아무것도 연결하지 않은 첫 실행</a><a class="wm-t1" href="#c7"><span class="wm-n">07</span>제어판 개요</a><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>제어판 상세 — 모든 항목</a></summary><a class="wm-t2" href="#c8-s1">8.1 팔 원격조작 카드</a><a class="wm-t2" href="#c8-s2">8.2 핸드 원격조작 카드</a><a class="wm-t2" href="#c8-s3">8.3 제어 카드</a><a class="wm-t2" href="#c8-s4">8.4 로봇 상태 카드</a><a class="wm-t2" href="#c8-s5">8.5 데이터 기록 및 검토 카드</a><a class="wm-t2" href="#c8-s6">8.6 데이터셋 / 학습 / 추론 카드 (학습 / 추론 페이지)</a><a class="wm-t2" href="#c8-s7">8.7 설정 창 (⚙)</a><a class="wm-t2" href="#c8-s8">8.8 키보드</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>상태 배지</a></summary><a class="wm-t2" href="#c9-s1">첫째 줄 — 무엇이 연결되어 있는가</a><a class="wm-t2" href="#c9-s2">둘째 줄 — 팔이 무엇을 하고 있는가</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>시스템 조작</a></summary><a class="wm-t2" href="#c10-s1">1단계 — 미리보기 시작</a><a class="wm-t2" href="#c10-s2">2단계 — 제어 넘기기</a><a class="wm-t2" href="#c10-s3">3단계 — 자세 맞추고 진입</a><a class="wm-t2" href="#c10-s4">4단계 — 원격조작</a><a class="wm-t2" href="#c10-s5">5단계 — 일시정지 또는 정지</a><a class="wm-t2" href="#s10-vr">VR 모드 (Meta Quest) — R1</a></details><a class="wm-t1" href="#c11"><span class="wm-n">11</span>손 파지 모드</a><a class="wm-t1" href="#c12"><span class="wm-n">12</span>비상 정지</a><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">13</span>기록, 카메라, 검토 및 편집</a></summary><a class="wm-t2" href="#c13-s1">기록 방법</a><a class="wm-t2" href="#c13-s2">좋은 데이터셋의 조건</a><a class="wm-t2" href="#c13-s3">카메라</a><a class="wm-t2" href="#c13-s4">검토 및 편집</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c14"><span class="wm-n">14</span>학습 및 스킬 실행</a></summary><a class="wm-t2" href="#c14-s1">1. 데이터셋 준비</a><a class="wm-t2" href="#c14-s2">2. 학습</a><a class="wm-t2" href="#c14-s3">3. 결과 확인</a><a class="wm-t2" href="#c14-s4">4. 로봇에서 스킬 실행</a></details><a class="wm-t1" href="#c15"><span class="wm-n">15</span>설정 프로필</a><details class="wm-ch"><summary><a class="wm-t1" href="#c16"><span class="wm-n">16</span>자체 소프트웨어 연동</a></summary><a class="wm-t2" href="#c16-s1">공개되는 데이터</a><a class="wm-t2" href="#c16-s2">자체 프로그램으로 로봇 명령하기</a><a class="wm-t2" href="#c16-s3">기록된 세션</a><a class="wm-t2" href="#c16-s4">하드웨어 없이 먼저 시험하기</a><a class="wm-t2" href="#c16-s5">상세 문서</a></details><a class="wm-t1" href="#c17"><span class="wm-n">17</span>안전 지침</a><a class="wm-t1" href="#c18"><span class="wm-n">18</span>지원 요청</a></nav><main class="wm-main">
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">WeGo Humanoid Studio — 사용 가이드</span><span class="wm-ver">버전 2026.11.24</span><a class="wm-pdf" href="../pdf/WeGo_Humanoid_Studio_Guide_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>이 시스템이 하는 일</a></summary><a class="wm-t2" href="#c1-s1">요약</a><a class="wm-t2" href="#c1-s2">지원 로봇과 손</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>납품 내용과 준비물</a></summary><a class="wm-t2" href="#c2-s1">작업자 PC</a><a class="wm-t2" href="#c2-s2">외부 소프트웨어와 라이선스</a><a class="wm-t2" href="#c2-s3">로봇 쪽</a><a class="wm-t2" href="#c2-s4">작업자</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>설치</a></summary><a class="wm-t2" href="#c3-s1">.run 파일을 받으셨다면</a><a class="wm-t2" href="#c3-s2">.tar.gz 를 받으셨다면</a><a class="wm-t2" href="#c3-s3">내려받기가 실패했다면</a></details><a class="wm-t1" href="#c4"><span class="wm-n">04</span>라이선스 활성화</a><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>로봇과 모션캡처 장비 연결</a></summary><a class="wm-t2" href="#c5-s1">5.1 네트워크 인터페이스 확인</a><a class="wm-t2" href="#c5-s2">5.2 로봇 네트워크에 PC 주소 지정</a><a class="wm-t2" href="#c5-s3">5.3 로봇이 실제로 응답하는지 확인</a><a class="wm-t2" href="#c5-s4">5.4 제어판에 입력</a><a class="wm-t2" href="#c5-s5">모션캡처 장비 연결</a></details><a class="wm-t1" href="#c6"><span class="wm-n">06</span>아무것도 연결하지 않은 첫 실행</a><a class="wm-t1" href="#c7"><span class="wm-n">07</span>제어판 개요</a><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>제어판 상세 — 모든 항목</a></summary><a class="wm-t2" href="#c8-s1">8.1 팔 원격조작 카드</a><a class="wm-t2" href="#c8-s2">8.2 핸드 원격조작 카드</a><a class="wm-t2" href="#c8-s3">8.3 제어 카드</a><a class="wm-t2" href="#c8-s4">8.4 로봇 상태 카드</a><a class="wm-t2" href="#c8-s5">8.5 데이터 기록 및 검토 카드</a><a class="wm-t2" href="#c8-s6">8.6 데이터셋 / 학습 / 추론 카드 (학습 / 추론 페이지)</a><a class="wm-t2" href="#c8-s7">8.7 설정 창 (⚙)</a><a class="wm-t2" href="#c8-s8">8.8 키보드</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>상태 배지</a></summary><a class="wm-t2" href="#c9-s1">첫째 줄 — 무엇이 연결되어 있는가</a><a class="wm-t2" href="#c9-s2">둘째 줄 — 팔이 무엇을 하고 있는가</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>시스템 조작</a></summary><a class="wm-t2" href="#c10-s1">1단계 — 미리보기 시작</a><a class="wm-t2" href="#c10-s2">2단계 — 제어 넘기기</a><a class="wm-t2" href="#c10-s3">3단계 — 자세 맞추고 진입</a><a class="wm-t2" href="#c10-s4">4단계 — 원격조작</a><a class="wm-t2" href="#c10-s5">5단계 — 일시정지 또는 정지</a><a class="wm-t2" href="#s10-vr">VR 모드 (Meta Quest) — R1</a></details><a class="wm-t1" href="#c11"><span class="wm-n">11</span>손 파지 모드</a><a class="wm-t1" href="#c12"><span class="wm-n">12</span>비상 정지</a><details class="wm-ch"><summary><a class="wm-t1" href="#c13"><span class="wm-n">13</span>기록, 카메라, 검토 및 편집</a></summary><a class="wm-t2" href="#c13-s1">기록 방법</a><a class="wm-t2" href="#c13-s2">좋은 데이터셋의 조건</a><a class="wm-t2" href="#c13-s3">카메라</a><a class="wm-t2" href="#c13-s4">검토 및 편집</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c14"><span class="wm-n">14</span>학습 및 스킬 실행</a></summary><a class="wm-t2" href="#c14-s1">1. 데이터셋 준비</a><a class="wm-t2" href="#c14-s2">2. 학습</a><a class="wm-t2" href="#c14-s3">3. 결과 확인</a><a class="wm-t2" href="#c14-s4">4. 로봇에서 스킬 실행</a></details><a class="wm-t1" href="#c15"><span class="wm-n">15</span>설정 프로필</a><details class="wm-ch"><summary><a class="wm-t1" href="#c16"><span class="wm-n">16</span>자체 소프트웨어 연동</a></summary><a class="wm-t2" href="#c16-s1">공개되는 데이터</a><a class="wm-t2" href="#c16-s2">자체 프로그램으로 로봇 명령하기</a><a class="wm-t2" href="#c16-s3">기록된 세션</a><a class="wm-t2" href="#c16-s4">하드웨어 없이 먼저 시험하기</a><a class="wm-t2" href="#c16-s5">상세 문서</a></details><a class="wm-t1" href="#c17"><span class="wm-n">17</span>안전 지침</a><a class="wm-t1" href="#c18"><span class="wm-n">18</span>지원 요청</a></nav><main class="wm-main">
 
 
 <!-- ═══════════════════════ cover ═══════════════════════ -->
@@ -32,7 +32,7 @@
     스킬 학습 통합 솔루션 — 납품받은 파일부터 로봇에서 실행되는 학습된
     스킬까지.</p>
   <div class="cover-shot"><img src="assets/screenshots/01_teleop_default.png" alt="제어판, 원격조작 페이지"></div>
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.23</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.24</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 이 설명서에 대하여 ═══════════════════════ -->
@@ -41,9 +41,9 @@
     <h3>이 설명서에 대하여</h3>
     <table>
       <tr><td>대상</td><td>Humanoid Studio 를 설치하고 운용하는 작업자 (Unitree G1 · R1 · H2 휴머노이드, 다관절 손)</td></tr>
-      <tr><td>근거 문서</td><td>Humanoid Studio 2.1.2 배포판의 화면과 동작 · 함께 납품되는 <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
+      <tr><td>근거 문서</td><td>Humanoid Studio 2.1.3 배포판의 화면과 동작 · 함께 납품되는 <code>INSTALL.md</code> · <code>TROUBLESHOOTING.md</code> · <code>docs/API.md</code></td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="g1-operation" href="../g1-operation/"><b>Unitree G1 운용 설명서</b></a> · <a data-manual="r1-operation" href="../r1-operation/"><b>Unitree R1 운용 설명서</b></a> · <a data-manual="h2-operation" href="../h2-operation/"><b>Unitree H2 운용 설명서</b></a> (로봇 자체의 운용)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.23</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.24</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
   </div>
@@ -137,9 +137,19 @@
 풀고 <code>install.sh</code> 를 실행"하는 과정을 한 번에 처리하는 버전일
 뿐입니다. 어느 쪽이든 <strong>모든 것을 포함</strong>하고 있습니다 — 자체
 Python 실행 환경, 로봇 모델, 손 모델, 글꼴, 학습 스택까지. 이미 설치된 다른 Python 환경에는 영향을 주지 않습니다.
-단, GPU 학습 · 실행용 NVIDIA 구성 요소(CUDA 등, 약 3 GB)는 WeGo 가 재배포할 수 없어
-<strong>설치 중에 인터넷에서 내려받습니다</strong>. 인터넷이 없으면 <code>--cpu-only</code> 또는
-<code>--nvidia-wheels &lt;폴더&gt;</code> 로 설치합니다 (INSTALL.ko.md §14).</p>
+단, 두 가지는 <strong>설치 중에 내려받으며</strong> 파일마다 고정된 sha256 값과 대조합니다. 그래서
+<strong>설치할 때 인터넷 연결이 필요합니다</strong>:</p>
+<ul>
+<li>NVIDIA 그래픽카드로 학습하고 스킬을 실행하는 데 필요한 GPU 구성 요소(NVIDIA CUDA 라이브러리와
+PyTorch 의 CUDA 빌드, 약 3 GB, pypi.org 와 download.pytorch.org 에서). WeGo 는 NVIDIA 소프트웨어를
+재배포할 수 없습니다.</li>
+<li>일부 기능이 출발점으로 쓰는 외부 사전학습 가중치(약 150 MB: 웹캠 손 추적용 MediaPipe 손 모델,
+ACT 용 ResNet18, Advanced ACT 용 DINOv3, SmolVLA 용 SmolVLM2 설정). 라이선스는 WeGo 가 아니라 각
+저작자에게 있습니다.</li>
+</ul>
+<p>인터넷이 없으면 건너뛰거나(<code>--cpu-only</code>, <code>--skip-models</code>) USB 로 가져와 설치합니다
+(<code>--nvidia-wheels &lt;폴더&gt;</code>, <code>--models-dir &lt;폴더&gt;</code>). §3 과 INSTALL.ko.md §14 를
+보십시오.</p>
 
 <table class="t">
 <thead><tr><th>설치 폴더 안</th><th>내용</th></tr></thead>
@@ -159,7 +169,7 @@ Python 실행 환경, 로봇 모델, 손 모델, 글꼴, 학습 스택까지. �
 <thead><tr><th></th><th>최소 사양</th><th>비고</th></tr></thead>
 <tbody>
 <tr><td>운영체제</td><td>Ubuntu 22.04 또는 24.04 LTS 64비트</td><td>22.04 는 이 빌드 기준 배포판, 24.04 는 실제 데스크톱에서 네이티브 설치 검증 완료(단, X11 세션 — Wayland 세션은 아직 미검증이니 로그인 시 X11 선택 권장). 그 밖의 배포판은 Docker 컨테이너로 설치 — 절차는 <code>INSTALL.md</code> 참고</td></tr>
-<tr><td>디스크</td><td>여유 공간 25 GB</td><td>압축 파일 5.4 GB, 설치 후 14 GB, 그 밖에 기록 데이터</td></tr>
+<tr><td>디스크</td><td>여유 공간 25 GB</td><td>설치 파일 2.8 GB, 설치 후 약 14 GB(GPU 구성 요소와 모델 가중치 포함, <code>--cpu-only --skip-models</code> 이면 9.2 GB), 그 밖에 기록 데이터</td></tr>
 <tr><td>메모리</td><td>16 GB</td><td>학습까지 한다면 32 GB</td></tr>
 <tr><td>그래픽</td><td>OpenGL 이 동작하는 GPU</td><td>3D 미리보기에 필요합니다</td></tr>
 <tr><td>학습용 (선택)</td><td>NVIDIA GPU + 드라이버 550 이상</td><td>VRAM 8 GB 면 ACT · Diffusion 학습 가능 — §14 참조. CUDA 는 설치 프로그램이 공식 배포처에서 내려받아 패키지의 Python 런타임에 넣으므로 시스템에 별도로 설치할 필요가 없습니다 (설치 때 인터넷 필요). TensorRT 는 사용하지 않습니다</td></tr>
@@ -181,17 +191,33 @@ platform plugin "xcb"</code> 오류와 함께 화면이 바로 종료됩니다. 
 <div class="box note"><div class="h">참고 · GR00T 는 연구용 (비상업) 옵션입니다</div>
 NVIDIA 가 GR00T-N1.5-3B 가중치를 비상업적 용도로만 공개하므로, WeGo 는 GR00T 를 상업용 기능으로
 제공하지 않습니다. 정책 목록에는 <span class="ui">GR00T (research only)</span> 로 표시됩니다.
-GR00T 는 학습 시 선택 가능한 정책 옵션 중 하나(<code>nvidia/GR00T-N1.5-3B</code>)로,
-실제로 선택해 학습을 돌릴 때만 Hugging Face 에서 온디맨드로 내려받습니다 —
-사전 설치 목록에 포함되지 않으며 버전 관리 대상도 아닙니다.</div>
+GR00T 는 학습 시 선택 가능한 정책 옵션 중 하나(<code>nvidia/GR00T-N1.5-3B</code>)입니다. 이 모델은 설치에
+포함되지 않으며 설치 프로그램도 내려받지 않습니다. 사용하려면 Hugging Face 에서 소유자의 조건에 동의하고
+로그인한 뒤 <code>HF_HUB_OFFLINE=0 ~/wego-teleop/bin/wego-gui</code> 로 제어판을 실행합니다
+(INSTALL.ko.md §10). 그렇지 않으면 제어판은 오프라인으로 동작하며 아무것도 내려받지 않습니다. π0, π0.5 도
+마찬가지입니다.</div>
 
-<h2 id="c2-s2">로봇 쪽</h2>
+<h2 id="c2-s2">외부 소프트웨어와 라이선스</h2>
+<p>패키지에는 각자의 라이선스를 따르는 오픈소스 구성 요소가 들어 있습니다. 설치 파일 옆에
+<code>wego-teleop-&lt;버전&gt;-sources.tar</code> 도 함께 받으십니다. 패키지에 포함된 LGPL · MPL · EPL ·
+CeCILL-C 구성 요소 전부의 소스 코드입니다. 설치 폴더의 <code>licenses/NOTICE</code> 에 해당 구성 요소가,
+<code>licenses/SOURCES.tsv</code> 에 소스 압축 파일마다 내려받을 주소와 sha256 이 있고,
+<code>licenses/</code> 에 라이선스 전문이 있습니다.</p>
+<ul>
+<li>GPL 코드는 없습니다. 영상 인코딩 · 디코딩에는 x264 · x265 가 빠진 FFmpeg LGPL 빌드를 씁니다.</li>
+<li>NVIDIA GPU 구성 요소와 외부 모델 가중치는 패키지에 들어 있지 않습니다. 설치 프로그램이 내려받기 전에
+NVIDIA 의 약관과 모델별 라이선스를 보여 줍니다.</li>
+<li>라이선스 약관(<code>LICENSE_TERMS.md</code> §2–§3)은 오픈소스 라이선스가 보장하는 권리를 좁히지 않습니다.
+LGPL 구성 요소는 수정하거나 교체할 수 있습니다.</li>
+</ul>
+
+<h2 id="c2-s3">로봇 쪽</h2>
 <ul>
 <li>로봇(Unitree G1, R1 또는 H2)의 전원이 켜져 있고 이더넷으로 접근 가능할 것.</li>
 <li>다관절 손이 장착되어 있을 것. 로봇의 자체 컴퓨터에 연결되어 있다면 그 컴퓨터에 손 브리지가 설치되어 있어야 합니다 (§5).</li>
 <li>시연 영상을 기록할 계획이라면 카메라 (§13).</li>
 </ul>
-<h2 id="c2-s3">작업자</h2>
+<h2 id="c2-s4">작업자</h2>
 <ul><li>모션 캡처 장비(<a data-manual="mocap-suit" href="../mocap-suit/">Mocap Suit</a>, 필요 시 mHand Pro 장갑)를 해당 장비의 설명서에 따라 착용하고 캘리브레이션할 것.</li></ul>
 </section>
 
@@ -240,10 +266,36 @@ cd ~/wego-teleop
 환경변수 설정) 하십시오. 약관은 언제든 <code>bin/wego-license --terms</code>
 로 다시 볼 수 있습니다.</p>
 
+<p>설치 막바지에 <code>install.sh</code> 는 <strong>GPU 구성 요소</strong>(약 3 GB)와 <strong>모델 가중치</strong>(약
+150 MB)를 내려받습니다. 그 전에 NVIDIA 의 라이선스 약관과 모델별 라이선스를 보여 주고 동의를 묻습니다.
+<code>--accept-eula</code> 는 이 질문에도 답합니다. 내려받기가 실패해도 나머지 설치는 완료되며,
+<code>~/wego-teleop/bin/wego-install-downloads</code> 로 빠진 부분을 나중에 추가할 수 있습니다
+(<code>--check</code> 를 붙이면 설치 상태만 보여 줍니다). 두 명령 모두 다음 옵션을 받습니다:</p>
+<table class="t">
+<thead><tr><th>옵션</th><th>동작</th></tr></thead>
+<tbody>
+<tr><td><code>--cpu-only</code></td><td>GPU 구성 요소를 건너뜀: 학습 · 평가 · 스킬은 CPU 로만 실행</td></tr>
+<tr><td><code>--nvidia-wheels &lt;폴더&gt;</code></td><td>GPU 구성 요소를 인터넷 대신 폴더에서 설치 (INSTALL.ko.md §14)</td></tr>
+<tr><td><code>--skip-models</code></td><td>모델 가중치를 건너뜀: 웹캠 손 추적, ACT, Advanced ACT, SmolVLA 가 빠진 것을 알려 줌</td></tr>
+<tr><td><code>--models-dir &lt;폴더&gt;</code></td><td>모델 가중치를 폴더에서 설치 (INSTALL.ko.md §14)</td></tr>
+</tbody>
+</table>
+
 <p><code>install.sh</code> 는 각 단계를 한 줄씩 출력하고 마지막에
 <code>Installed (&lt;버전&gt;)</code> 을 표시합니다. 중간에 <code>!!</code>
 로 시작하는 줄이 나오면 멈추고 <code>TROUBLESHOOTING.md</code> §1 을
 보십시오.</p>
+
+<h2 id="c3-s3">내려받기가 실패했다면</h2>
+<table class="t">
+<thead><tr><th>경우</th><th>표시와 원인</th><th>조치</th></tr></thead>
+<tbody>
+<tr><td>GPU 내려받기</td><td><code>!! The GPU components could not be installed</code> — 인터넷이 없거나, 내려받기가 끊겼거나, 파일이 고정된 sha256 과 달라 거부됨</td><td><code>bin/wego-install-downloads</code> 로 다시 시도. 인터넷이 없으면 <code>--nvidia-wheels &lt;폴더&gt;</code>, 없이 쓰려면 <code>--cpu-only</code></td></tr>
+<tr><td>모델 내려받기</td><td><code>!! not installed: &lt;모델&gt; — those features stay disabled</code> — 모델 가중치 파일을 내려받지 못했거나 고정된 sha256 과 달라 거부됨. 검증되지 않은 파일은 남기지 않음</td><td><code>bin/wego-install-downloads</code> 로 다시 시도. 인터넷이 없으면 <code>--models-dir &lt;폴더&gt;</code>, 없이 쓰려면 <code>--skip-models</code></td></tr>
+<tr><td>키보드 없는 설치</td><td><code>!! not interactive: pass --yes to accept</code> — 스크립트로 설치해 NVIDIA · 모델 라이선스 동의를 물을 수 없었고, 해당 부분은 건너뜀</td><td>약관을 읽은 뒤 <code>--accept-eula</code>(<code>install.sh</code>) 또는 <code>--yes</code>(<code>bin/wego-install-downloads</code>)로 다시 실행</td></tr>
+<tr><td>나중에 제어판에서</td><td>로그에 <code>GPU components not installed</code> 또는 <code>… needs pretrained weights that are not installed</code> — 학습 · 평가 · 스킬에 필요한 부분을 건너뛰었거나 내려받지 못함</td><td><code>bin/wego-install-downloads</code> 실행(또는 위의 폴더 옵션). GPU 의 경우 <span class="ui">장치</span> 를 <code>cpu</code> 로 설정해도 됨</td></tr>
+</tbody>
+</table>
 
 <div class="box caution"><div class="h">주의 · 위치를 먼저 정하십시오</div>
 설치는 압축을 푼 폴더 위치에 묶입니다. 나중에 폴더를 옮기면 동작하지
