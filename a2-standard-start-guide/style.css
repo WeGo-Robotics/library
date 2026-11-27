@@ -1,0 +1,18 @@
+.cover .hero { width: 78%; height: auto; right: 8%; bottom: 25mm; }
+.image-pair { align-items: center; }
+.image-pair img { min-width: 0; }
+.app-download { max-width: 110mm; margin-inline: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app-download img { aspect-ratio: 235 / 265; object-fit: contain; background: #ebebeb; }
+.table-region { overflow-wrap: anywhere; }
+.steps > li { min-height: 8mm; }
+@media screen {
+  .toc a { color: inherit; text-underline-offset: .18em; }
+  .toc a:hover, .toc a:focus-visible { color: var(--blue); }
+  .toc li { flex-wrap: wrap; }
+  .toc li small { flex-basis: 100%; padding-left: 12mm; }
+  .toc li small a { display: inline-block; margin: .15rem .65rem .15rem 0; }
+}
+@media print {
+  .toc li small { display: none; }
+  .toc a { color: inherit; text-decoration: none; }
+}

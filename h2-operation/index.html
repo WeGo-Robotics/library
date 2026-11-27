@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../shared/css/wego_web.css">
 </head>
 <body>
-<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree H2 휴머노이드 — 운용 설명서</span><span class="wm-ver">버전 2026.11.18</span><a class="wm-pdf" href="../pdf/Unitree_H2_Manual_KO.pdf">PDF 다운로드</a></header>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree H2 휴머노이드 — 운용 설명서</span><span class="wm-ver">버전 2026.11.26</span><a class="wm-pdf" href="../pdf/Unitree_H2_Manual_KO.pdf">PDF 다운로드</a></header>
 <div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 설명서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>시스템 구성</a></summary><a class="wm-t2" href="#c1-s1">모델 구분</a><a class="wm-t2" href="#c1-s2">WeGo 보유 장비</a><a class="wm-t2" href="#c1-s3">세 가지 제어 경로</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#c2-s1">운용 전 점검</a><a class="wm-t2" href="#c2-s2">촬영 · 공개 시 권장 사항</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c3"><span class="wm-n">03</span>하드웨어와 관절</a></summary><a class="wm-t2" href="#c3-s1">등판 전기 인터페이스</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>온보드 컴퓨터와 접속 계정</a></summary><a class="wm-t2" href="#c4-s1">접속 정보 한눈에</a><a class="wm-t2" href="#c4-s2">PC2 · Intel 개발 컴퓨터</a><a class="wm-t2" href="#c4-s3">PC3 · Jetson Thor 개발 컴퓨터</a><a class="wm-t2" href="#c4-s4">PC4 · Jetson Orin NX (선택)</a><a class="wm-t2" href="#c4-s5">PC1 · 운동 제어 컴퓨터</a><a class="wm-t2" href="#c4-s6">머리 스테레오 카메라</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>리모컨과 운용 모드</a></summary><a class="wm-t2" href="#c5-s1">운용 모드</a><a class="wm-t2" href="#c5-s2">버튼 배치 — 펌웨어 1.0.3.1</a><a class="wm-t2" href="#c5-s3">디버그 모드 들어가기</a><a class="wm-t2" href="#c5-s4">이전 펌웨어 1.0.2.6</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>시작 · 종료 순서</a></summary><a class="wm-t2" href="#c6-s1">A-1. 매단 상태에서 시작 (기본)</a><a class="wm-t2" href="#c6-s2">A-2. 매단 상태로 종료</a><a class="wm-t2" href="#c6-s3">B. 누운 상태</a><a class="wm-t2" href="#c6-s4">C. 상자에서</a><a class="wm-t2" href="#c6-s5">D. 앱 연결 — AP 모드 · Wi-Fi 모드</a><a class="wm-t2" href="#c6-s6">앱으로 확인할 것 · 바인딩 해제</a><a class="wm-t2" href="#c6-s7">교육 영상</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c7"><span class="wm-n">07</span>개발 안내</a></summary><a class="wm-t2" href="#c7-s1">할 수 있는 것</a><a class="wm-t2" href="#c7-s2">연결 요약</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>센서 · 음성 · 카메라 · 손</a></summary><a class="wm-t2" href="#c8-s1">음성 · 조명</a><a class="wm-t2" href="#c8-s2">카메라 영상</a><a class="wm-t2" href="#c8-s3">다관절 손</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c9"><span class="wm-n">09</span>WeGo Humanoid Studio 미리보기</a></summary><a class="wm-t2" href="#c9-s1">주요 기능</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c10"><span class="wm-n">10</span>문제 해결</a></summary><a class="wm-t2" href="#c10-s1">Unitree 문서의 알려진 오류</a></details><a class="wm-t1" href="#c11"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
 
 
@@ -36,7 +36,7 @@
     SDK 개발은 별도의 <b><a data-manual="h2-developer" href="../h2-developer/">Unitree H2 개발 설명서</a></b>에 있습니다.</p>
   <div class="glow"></div>
   <img class="hero" src="assets/h2_render_wave.png" alt="Unitree H2">
-  <div class="foot"><span>한국어판 · <span data-version>2026.11.18</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.26</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
 </section>
 
 <!-- ═══════════════════════ 판권 ═══════════════════════ -->
@@ -50,7 +50,7 @@
         2026-11-16 추가: WeGo 보유 H2 EDU 펌웨어 V1.0.2.6 → V1.0.3 업데이트와 <code>rt/arm_sdk</code> 머리 · 허리 시험 (2026-11-16, <a data-manual="h2-developer" href="../h2-developer/">개발 설명서</a> 5장)</td></tr>
       <tr><td>소프트웨어</td><td>WeGo Humanoid Studio (화면은 2026-11-06, 로봇 미연결 상태로 캡처)</td></tr>
       <tr><td>함께 보는 책</td><td><a data-manual="h2-developer" href="../h2-developer/">Unitree H2 개발 설명서</a> (개발 환경 · DDS · 저수준 · 고수준 제어 · 음성 · 영상 · 손)</td></tr>
-      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.18</span></td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.26</span></td></tr>
       <tr><td>문의</td><td>go.support@wego-robotics.com</td></tr>
     </table>
     <p>본문의 <span class="src">문서</span> 표시는 Unitree 공식 문서의 내용이고, <span class="src r">실측</span> 표시는 WeGo 보유 장비에서 직접 확인한 값입니다.
@@ -123,7 +123,7 @@
       <text x="70" y="382" font-size="11.5" fill="#5a6178">AI 추론 · GMSL 카메라</text>
       <rect x="258" y="324" width="196" height="76" rx="7" fill="#fff" stroke="#8a90a2" stroke-width="1.2" stroke-dasharray="5 4"/>
       <text x="272" y="348" font-weight="700" fill="#5a6178">PC4 · Orin NX (선택)</text>
-      <text x="272" y="366" font-size="11.5" fill="#8a90a2">.164 · WeGo 장비에는 없음</text>
+      <text x="272" y="366" font-size="11.5" fill="#8a90a2">.164 · Orin NX 16 GB · JetPack 5.1.1</text>
       <text x="272" y="382" font-size="11.5" fill="#8a90a2">100 TOPS</text>
       <rect x="56" y="412" width="398" height="108" rx="7" fill="#fff" stroke="#8a90a2" stroke-width="1.2"/>
       <text x="70" y="436" font-weight="700" fill="#0b1020">몸체 장치</text>
@@ -288,7 +288,7 @@
       <tr><td>PC1 운동 제어</td><td>192.168.123.161</td><td>—</td><td colspan="2">접속 불가 <span class="src">문서</span></td></tr>
       <tr><td>PC2 Intel</td><td>.123.162 / .124.162</td><td class="mono">unitree-H2-pc2 <span class="src r">실측</span></td><td class="mono">unitree</td><td><code>Unitree0408</code><br>초기 펌웨어: <code>Unitree#24226</code></td></tr>
       <tr><td>PC3 Jetson Thor</td><td>.123.163 / .124.163</td><td class="mono">tegra-ubuntu</td><td class="mono">unitree</td><td><code>123</code></td></tr>
-      <tr><td>PC4 Orin NX</td><td>.123.164 / .124.164</td><td>—</td><td class="mono">unitree</td><td><code>123</code></td></tr>
+      <tr><td>PC4 Orin NX</td><td>.123.164 / .124.164</td><td class="mono">unitree-H2-nx4 <span class="src r">실측</span></td><td class="mono">unitree</td><td><code>123</code><br>시험 장비: <code>Unitree0408</code> <span class="src r">실측</span></td></tr>
     </tbody>
   </table>
   <div class="box warn"><div class="h">경고 · 공장 기본 비밀번호</div>
@@ -331,8 +331,18 @@ ssh-copy-id unitree@192.168.123.163   <span class="c"># 이후 비밀번호 없�
     <p>Orin에서 만든 TensorRT 엔진(<code>.engine</code>)은 Thor(sm_110)에서 로드되지 않습니다. ONNX 모델을 Thor로 옮겨 Thor에서 엔진을 다시 만드십시오. <span class="src r">실측</span></p></div>
 
   <h2 id="c4-s4">PC4 · Jetson Orin NX (선택)</h2>
-  <p>Cortex-A78AE 8코어 2 GHz · Ampere GPU 1024코어(Tensor Core 32개) · 16 GB LPDDR5 · 100 TOPS · NVMe 2 TB · 10 ~ 25 W.
-    WeGo 장비에는 장착되어 있지 않습니다.</p>
+  <p>WeGo가 점검한 H2 가운데 PC4까지 모두 단 장비(PC1 + PC2 + PC3 + PC4, 2026-11-26)에서 확인한 값입니다.</p>
+  <table class="t tight wrap1">
+    <thead><tr><th>항목</th><th>Unitree 문서</th><th>시험 장비 (실측)</th></tr></thead>
+    <tbody>
+      <tr><td>모듈</td><td>Jetson Orin NX 16 GB · 100 TOPS · 10 ~ 25 W</td><td>NVIDIA Orin NX Developer Kit</td></tr>
+      <tr><td>CPU · GPU</td><td>Cortex-A78AE 8코어 2 GHz · Ampere GPU 1024코어(Tensor Core 32개)</td><td>8코어</td></tr>
+      <tr><td>메모리 · 저장 장치</td><td>16 GB LPDDR5 · NVMe 2 TB</td><td>사용 가능 15 GiB · 1.9 TB</td></tr>
+      <tr><td>소프트웨어</td><td>—</td><td>Ubuntu 20.04.5 · 커널 5.10.104-tegra · <b>JetPack 5.1.1</b> (L4T 35.3.1) · CUDA 11.4 · 11.7 · ROS 2 Foxy · ROS 1 Noetic</td></tr>
+      <tr><td>장치</td><td>—</td><td>카메라 · 손 · USB 직렬 어댑터 없음. 손목 카메라는 PC2, Dex3-1 손은 PC1에 연결</td></tr>
+      <tr><td>계정</td><td><code>unitree</code> / <code>123</code></td><td><code>123</code>은 거부되고 PC2의 문서 기본값 <code>Unitree0408</code>로 접속됨. 같은 장비의 PC2는 초기 펌웨어 값 <code>Unitree#24226</code>이었음</td></tr>
+    </tbody>
+  </table>
 
   <h2 id="c4-s5">PC1 · 운동 제어 컴퓨터</h2>
   <p>Intel Core i5 (10코어 12스레드, 최대 4.4 GHz) · 8 GB · 500 GB 이상. Unitree 운동 제어 전용이라 외부 접속이 막혀 있습니다.
@@ -715,6 +725,7 @@ ssh-copy-id unitree@192.168.123.163   <span class="c"># 이후 비밀번호 없�
       <tr><td><code>ping 192.168.123.161</code> 응답 없음</td><td>케이블이 [15]에 꽂힘, IP 대역 오류, 인터페이스 꺼짐</td><td>포트 [12] 사용, 192.168.123.x/24 고정 IP, <code>nmcli con up h2</code></td></tr>
       <tr><td>스테레오 영상이 안 보임</td><td><code>video_hub</code> 충돌, <code>stereo_patch_pc1</code> 꺼짐, 수신 주소가 .170, 방화벽</td><td>8장의 서비스 상태를 확인하고, 수신 주소 · 방화벽은 <a data-manual="h2-developer" href="../h2-developer/">개발 설명서</a> 6장을 따릅니다</td></tr>
       <tr><td>PC2 SSH 비밀번호 거부</td><td>초기 펌웨어</td><td><code>Unitree#24226</code> 시도</td></tr>
+      <tr><td>PC4 SSH에서 <code>123</code> 거부</td><td>PC2의 문서 기본값으로 출고된 장비 <span class="src r">실측</span></td><td><code>Unitree0408</code> 시도</td></tr>
       <tr><td>PC2 IP가 DHCP 예약대로 안 잡힘</td><td>PC2 MAC이 부팅마다 바뀜</td><td>고정 IP 사용</td></tr>
       <tr><td>BrainCo 손이 움직이지 않음</td><td>PC2의 <code>brainco_hand_service</code>가 꺼져 있음</td><td>PC2에서 서비스 직접 실행</td></tr>
       <tr><td>앱이 로봇을 찾지 못함</td><td>휴대폰 블루투스 꺼짐 · 앱에 블루투스 권한 없음</td><td>블루투스를 켜고 휴대폰 설정에서 앱에 블루투스 권한을 허용합니다</td></tr>
@@ -730,7 +741,7 @@ ssh-copy-id unitree@192.168.123.163   <span class="c"># 이후 비밀번호 없�
     <thead><tr><th>위치</th><th>문서 내용</th><th>올바른 내용</th></tr></thead>
     <tbody>
       <tr><td>Architecture Description</td><td>"PC2 IP는 192.168.123.164, 비밀번호는 지원팀에 문의" — G1 문서를 복사한 문장</td><td>PC2는 <b>.162</b>, 계정은 About H2 페이지에 공개. .164는 선택 사양 PC4</td></tr>
-      <tr><td>Quick Development</td><td>온보드 개발 컴퓨터(Ubuntu 22.04) 기본 계정 <code>unitree</code> / <code>123</code></td><td><code>123</code>은 Jetson(PC3 · PC4) 비밀번호. Intel PC2는 <code>Unitree0408</code>. 실측 결과와도 어긋나지 않음</td></tr>
+      <tr><td>Quick Development</td><td>온보드 개발 컴퓨터(Ubuntu 22.04) 기본 계정 <code>unitree</code> / <code>123</code></td><td><code>123</code>은 Jetson(PC3 · PC4) 비밀번호. Intel PC2는 <code>Unitree0408</code>. 실측: PC3는 <code>123</code>, PC4는 <code>Unitree0408</code>로 접속된 장비가 있음 (4장)</td></tr>
       <tr><td>Remote Control Guide</td><td>디버그 모드 설명에 "G1"</td><td>G1 문서에서 복사. H2에도 같은 버튼 적용</td></tr>
     </tbody>
   </table>
@@ -747,6 +758,7 @@ ssh-copy-id unitree@192.168.123.163   <span class="c"># 이후 비밀번호 없�
         <tbody>
           <tr><td>PC2 Intel</td><td>192.168.123.162</td><td><code>unitree</code> / <code>Unitree0408</code> (초기: <code>Unitree#24226</code>)</td></tr>
           <tr><td>PC3 Thor</td><td>192.168.123.163</td><td><code>unitree</code> / <code>123</code></td></tr>
+          <tr><td>PC4 Orin NX (선택)</td><td>192.168.123.164</td><td><code>unitree</code> / <code>123</code> (거부되면 <code>Unitree0408</code>)</td></tr>
           <tr><td>PC1 (확인용)</td><td>192.168.123.161</td><td>ping · <code>:9080</code> 웹 설정만</td></tr>
           <tr><td>개발 PC</td><td>192.168.123.99/24</td><td>등판 포트 [12]</td></tr>
         </tbody>

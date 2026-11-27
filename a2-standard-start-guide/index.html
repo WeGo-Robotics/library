@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../shared/css/wego_manual.css">
+<link rel="stylesheet" href="style.css">
+<title>Unitree A2 Standard — 시작 안내서</title>
+<style>
+/* ✎ 이 책의 머리글. 왼쪽 = 제품명, 오른쪽 = 책 종류. 공통 스타일은 css/wego_manual.css 에서만 바꿉니다. */
+@page {
+  @top-left  { content: "Unitree A2 Standard"; font: 600 7.5pt "Pretendard"; color: #8a90a2; }
+  @top-right { content: "시작 안내서"; font: 500 7.5pt "Pretendard"; color: #8a90a2; }
+}
+@page cover { @top-left{content:none} @top-right{content:none} }
+@page front { @top-left{content:none} @top-right{content:none} }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../shared/css/wego_web.css">
+</head>
+<body>
+<header class="wm-bar"><button class="wm-menu" type="button">목차</button><a class="wm-home" href="../">WeGo 도서관</a><span class="wm-title">Unitree A2 Standard 사족보행 로봇 — 시작 안내서</span><span class="wm-ver">버전 2026.11.27</span><a class="wm-pdf" href="../pdf/Unitree_A2_Standard_Start_Guide_KO.pdf">PDF 다운로드</a></header>
+<div class="wm-layout"><nav class="wm-toc" id="wm-toc" aria-label="목차"><a class="wm-toc-home" href="../">← WeGo 도서관</a><div class="wm-toc-h">목차</div><a class="wm-t1" href="#about">이 안내서에 대하여</a><details class="wm-ch"><summary><a class="wm-t1" href="#c1"><span class="wm-n">01</span>제품 개요 및 사양</a></summary><a class="wm-t2" href="#s-13">주요 기술 사양 (A2 Standard)</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c2"><span class="wm-n">02</span>중요 안전 수칙</a></summary><a class="wm-t2" href="#s-27">사용 환경</a></details><a class="wm-t1" href="#c3"><span class="wm-n">03</span>하드웨어 구성 및 확장 인터페이스</a><details class="wm-ch"><summary><a class="wm-t1" href="#c4"><span class="wm-n">04</span>개봉 및 기동 전 점검</a></summary><a class="wm-t2" href="#s-4-1">4.1 포장 개봉</a><a class="wm-t2" href="#s-4-2">4.2 매 기동 전 점검</a><a class="wm-t2" href="#s-4-3">4.3 배터리 장착 및 초기 자세</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c5"><span class="wm-n">05</span>로봇 기동 및 기본 제어</a></summary><a class="wm-t2" href="#s-5-1">5.1 전원 켜기</a><a class="wm-t2" href="#s-5-2">5.2 화면형 조종기</a><a class="wm-t2" href="#s-5-3">5.3 조종기 이동 제어 및 기능 단축키</a></details><details class="wm-ch"><summary><a class="wm-t1" href="#c6"><span class="wm-n">06</span>로봇 전원 끄기, 충전 및 운송 포장</a></summary><a class="wm-t2" href="#s-6-1">6.1 정상 종료</a><a class="wm-t2" href="#s-6-2">6.2 로봇 배터리 충전</a><a class="wm-t2" href="#s-6-3">6.3 운송 포장</a></details><a class="wm-t1" href="#c7"><span class="wm-n">07</span>고장 및 이상 대응</a><details class="wm-ch"><summary><a class="wm-t1" href="#c8"><span class="wm-n">08</span>청소, 점검 및 보관</a></summary><a class="wm-t2" href="#s-8-1">8.1 청소</a><a class="wm-t2" href="#s-8-2">8.2 일상 점검</a><a class="wm-t2" href="#s-8-3">8.3 보관</a></details><a class="wm-t1" href="#c9"><span class="wm-n">09</span>앱 다운로드(해외용)</a><a class="wm-t1" href="#c10"><span class="wm-n">부록</span>빠른 참조</a></nav><main class="wm-main">
+
+
+<section class="cover">
+  <div class="top"><div class="logo"><img src="../shared/img/wego_logo.png" alt="WeGo Robotics"></div>
+    <div class="tag">USER GUIDE</div></div>
+  <div class="kicker">시작 안내서</div>
+  <h1>Unitree <span>A2</span><br>사족보행 로봇</h1>
+  <div class="title2">A2 Standard</div>
+  <div class="bar"></div>
+  <p class="lead">A2 Standard를 처음 운용할 때 필요한 안전 수칙과 기동 전 점검, 리모컨 조작, 종료 및 충전 절차를 정리했습니다.</p>
+  <div class="glow"></div>
+  <img class="hero" src="assets/image1.png" alt="Unitree A2 Standard">
+  <div class="foot"><span>한국어판 · <span data-version>2026.11.27</span></span><span><b>WeGo Robotics</b> · go.support@wego-robotics.com</span></div>
+</section>
+<section class="front">
+  <div class="colophon" id="about">
+    <h3>이 안내서에 대하여</h3>
+    <table>
+      <tr><td>로봇</td><td>Unitree A2 Standard</td></tr>
+      <tr><td>근거 문서</td><td>Unitree A2 Standard 한국어 시작 안내서 · 2026년 11월</td></tr>
+      <tr><td>판</td><td>한국어판 · <span data-version>2026.11.27</span></td></tr>
+      <tr><td>문의</td><td><a href="mailto:go.support@wego-robotics.com">go.support@wego-robotics.com</a></td></tr>
+    </table>
+  </div>
+</section>
+<nav class="front toc" aria-labelledby="contents">
+  <h2 id="contents">목차</h2>
+  <div class="sub">CONTENTS</div>
+  <ol>
+<li><span class="n">01</span><span class="t"><a href="#c1">제품 개요 및 사양</a></span><span class="d"></span><span class="p" data-toc="c1"></span><small><a href="#s-13">주요 기술 사양 (A2 Standard)</a></small></li>
+<li><span class="n">02</span><span class="t"><a href="#c2">중요 안전 수칙</a></span><span class="d"></span><span class="p" data-toc="c2"></span><small><a href="#s-27">사용 환경</a></small></li>
+<li><span class="n">03</span><span class="t"><a href="#c3">하드웨어 구성 및 확장 인터페이스</a></span><span class="d"></span><span class="p" data-toc="c3"></span></li>
+<li><span class="n">04</span><span class="t"><a href="#c4">개봉 및 기동 전 점검</a></span><span class="d"></span><span class="p" data-toc="c4"></span><small><a href="#s-4-1">4.1 포장 개봉</a> <a href="#s-4-2">4.2 매 기동 전 점검</a> <a href="#s-4-3">4.3 배터리 장착 및 초기 자세</a></small></li>
+<li><span class="n">05</span><span class="t"><a href="#c5">로봇 기동 및 기본 제어</a></span><span class="d"></span><span class="p" data-toc="c5"></span><small><a href="#s-5-1">5.1 전원 켜기</a> <a href="#s-5-2">5.2 화면형 조종기</a> <a href="#s-5-2-1">5.2.1 조종기 구성 및 주요 버튼</a> <a href="#s-5-2-2">5.2.2 스틱 장착 및 조종기 전원 켜기/끄기</a> <a href="#s-5-2-3">5.2.3 최초 바인딩 및 연결 상태</a> <a href="#s-5-2-4">5.2.4 비상정지 버튼 및 표시등</a> <a href="#s-5-2-5">5.2.5 조종기 충전, 피드백 설정 및 스틱 보정</a> <a href="#s-5-3">5.3 조종기 이동 제어 및 기능 단축키</a> <a href="#s-5-3-1">5.3.1 기본 이동</a> <a href="#s-5-3-2">5.3.2 자세 및 이동 모드</a> <a href="#s-5-3-3">5.3.3 고급 동작 및 설정</a></small></li>
+<li><span class="n">06</span><span class="t"><a href="#c6">로봇 전원 끄기, 충전 및 운송 포장</a></span><span class="d"></span><span class="p" data-toc="c6"></span><small><a href="#s-6-1">6.1 정상 종료</a> <a href="#s-6-2">6.2 로봇 배터리 충전</a> <a href="#s-6-3">6.3 운송 포장</a></small></li>
+<li><span class="n">07</span><span class="t"><a href="#c7">고장 및 이상 대응</a></span><span class="d"></span><span class="p" data-toc="c7"></span></li>
+<li><span class="n">08</span><span class="t"><a href="#c8">청소, 점검 및 보관</a></span><span class="d"></span><span class="p" data-toc="c8"></span><small><a href="#s-8-1">8.1 청소</a> <a href="#s-8-2">8.2 일상 점검</a> <a href="#s-8-3">8.3 보관</a></small></li>
+<li><span class="n">09</span><span class="t"><a href="#c9">앱 다운로드(해외용)</a></span><span class="d"></span><span class="p" data-toc="c9"></span></li>
+<li class="app"><span class="n">부록</span><span class="t"><a href="#c10">빠른 참조</a></span><span class="d"></span><span class="p" data-toc="c10"></span></li>
+  </ol>
+</nav>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>01</big></div><h1 id="c1" data-mark="c1">제품 개요 및 사양</h1></div>
+<p class="lede">A2는 순찰, 이동 플랫폼 및 연구개발 등 산업용 응용 분야를 위한 사족보행 로봇입니다. A2 Standard 모델에는 LiDAR 1대와 고해상도 카메라 1대가 장착되어 있으며, 이동 제어 및 외부 장치 확장 인터페이스를 제공합니다.</p>
+<figure class="light"><div class="two image-pair"><img src="assets/image2.png" alt="A2 본체 외형과 부품 위치"><img src="assets/image3.png" alt="A2 본체의 센서와 배터리 위치"></div></figure>
+<figure class="light"><img src="assets/image4.png" alt="상부 적재물 장착 홀 치수"><figcaption><b>그림 1.</b> A2 외형 및 본체 구성 (Unitree 문서)</figcaption></figure>
+<h2 id="s-13">주요 기술 사양 (A2 Standard)</h2>
+<div class="table-region"><table class="t"><caption><b>표 1.</b> 주요 기술 사양 (A2 Standard)</caption>
+<thead><tr><th scope="col">항목</th><th scope="col">사양</th></tr></thead>
+<tbody>
+<tr><td>기립 시 크기</td><td>820 × 440 × 570 mm</td></tr>
+<tr><td>엎드린 자세 크기</td><td>720 × 550 × 220 mm</td></tr>
+<tr><td>본체 무게</td><td>약 42 kg(배터리 포함); 약 35 kg(배터리 제외)</td></tr>
+<tr><td>관절 자유도</td><td>12</td></tr>
+<tr><td>최대 관절 토크</td><td>약 180 N·m</td></tr>
+<tr><td>배터리</td><td>단일 배터리 9000 mAh / 453.6 Wh; 듀얼 배터리 18000 mAh / 907.2 Wh</td></tr>
+<tr><td>동작 전압</td><td>50.4 V</td></tr>
+<tr><td>사용 온도</td><td>-20 ℃–55 ℃</td></tr>
+<tr><td>보호 등급</td><td>IP56</td></tr>
+<tr><td>센서</td><td>LiDAR 1대, 고해상도 카메라 1대</td></tr>
+<tr><td>무선 연결</td><td>Wi-Fi 6, Bluetooth 5.2</td></tr>
+<tr><td>정격 연속 보행 적재 하중</td><td>약 25 kg; 최대 정적 기립 하중 약 100 kg</td></tr>
+<tr><td>정격 속도</td><td>0–3.7 m/s; 특정 구성에서 최대 5 m/s</td></tr>
+<tr><td>정격 경사/단차</td><td>약 45° / 30 cm</td></tr>
+<tr><td>정격 운용 시간/거리</td><td>무부하 약 5시간/20 km; 25 kg 적재 시 약 3시간/12.5 km</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>02</big></div><h1 id="c2" data-mark="c2">중요 안전 수칙</h1></div>
+<ul>
+<li>교육을 받은 성인만 조작해야 하며, 18세 미만은 단독으로 조작할 수 없습니다.</li>
+<li>로봇이 이동하는 동안 항상 시야 내에서 관찰하고, 보행자·어린이·반려동물·파손되기 쉬운 물체와 거리를 유지하십시오.</li>
+<li>복잡한 동작을 실행하기 전에 로봇 전방의 직경 2 m 반원 구역에 사람이나 장애물이 없는지 확인하십시오.</li>
+<li>엎드린 자세에서 일어서기 전에 로봇 주변 직경 2 m 범위에 사람이나 물체가 없는지 확인하십시오.</li>
+<li>동작 모드를 전환하기 전에 로봇이 안정된 자세인지 확인하고 주변 최소 1 m 이내에 사람이 없도록 하십시오.</li>
+<li>마찰이 비정상적으로 큰 지면, 무른 지면, 미끄러운 곳, 자갈길, 급경사 및 장애물이 많은 환경에서 고속 주행하지 마십시오.</li>
+<li>끼임 사고를 방지하기 위해 관절이나 구동부에 손을 넣지 마십시오.</li>
+<li>위험한 개조, 승인되지 않은 분해 및 제품 설계 목적을 벗어난 사용을 금지합니다.</li>
+</ul>
+<div class="box caution"><div class="h">주의</div><p>상위 애플리케이션과 조종기가 동시에 로봇을 제어하면 명령 충돌이 발생할 수 있습니다. 개발 기능 사용 시 제어 권한을 명확히 구분하십시오.</p></div>
+<div class="box caution"><div class="h">주의</div><p>IP56을 침수 방지 등급으로 해석해서는 안 됩니다. 배터리함 및 커넥터에 물이 유입되지 않도록 하십시오.</p></div>
+<h2 id="s-27">사용 환경</h2>
+<ul>
+<li>최초 기동 및 조작 연습은 넓고 평평하며 단단한 지면에서 실시하십시오.</li>
+<li>고압 전선, 송신탑, 강한 전자기 간섭 및 심한 Wi-Fi 간섭이 있는 장소를 피하십시오.</li>
+<li>비·눈·강풍·낙뢰 등 악천후를 피하십시오. 수분이 있는 환경에서 사용할 때는 방수 등급의 제한을 준수해야 하며, A2 본체의 표기 등급은 IP56입니다.</li>
+<li>동반 추종 모드는 계단이나 높은 단차에 적합하지 않으며, 좁고 혼잡한 구역에서는 사용하지 마십시오.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>03</big></div><h1 id="c3" data-mark="c3">하드웨어 구성 및 확장 인터페이스</h1></div>
+<p class="lede">A2 양측에는 SDK 확장 인터페이스가 있습니다. 사용 전에 커넥터 유형, 전원 공급 방향, 전압 및 전류 제한을 확인하십시오.</p>
+<figure class="light"><img src="assets/image5.png" alt="A2 한쪽 측면의 확장 인터페이스"></figure>
+<div class="table-region"><table class="t"><caption><b>표 2.</b> 확장 인터페이스 사양 [1]–[8]</caption>
+<thead><tr><th scope="col">No.</th><th scope="col">인터페이스 유형</th><th scope="col">인터페이스 명칭</th><th scope="col">인터페이스 사양</th></tr></thead>
+<tbody>
+<tr><td>[1]</td><td>RS485 2+2 PIN Aviation Plug</td><td>전방 좌측 다리 전원 케이블</td><td>58V</td></tr>
+<tr><td>[2]</td><td>USB 2.0 Type-C</td><td>PC2 USB 2.0 인터페이스 + DP</td><td>최대 20V 1A</td></tr>
+<tr><td>[3]</td><td>USB 3.0 Type-C</td><td>PC2 표준 USB 인터페이스</td><td>전류 제한 1A</td></tr>
+<tr><td>[4]</td><td>USB 3.0 Type-C</td><td>PC1 USB 3.0 인터페이스</td><td>포트당 전류 제한 2A</td></tr>
+<tr><td>[5]</td><td>USB 3.0 Type-C</td><td>PC1 USB 3.0 인터페이스</td><td>포트당 전류 제한 2A</td></tr>
+<tr><td>[6]</td><td>T568 8+2 PIN Aviation Plug</td><td>Switch 2 Network Port<br>192.168.124.0/24</td><td>1000 BASE-T +12V</td></tr>
+<tr><td>[7]</td><td>T568 8+2 PIN Aviation Plug</td><td>Switch 1 Network Port<br>192.168.123.0/24</td><td>1000 BASE-T +12V</td></tr>
+<tr><td>[8]</td><td>RS485 2+2 PIN Aviation Plug</td><td>후방 좌측 다리 전원 케이블</td><td>58V</td></tr>
+</tbody></table></div>
+<figure class="light"><img src="assets/image6.png" alt="A2 반대쪽 측면의 확장 인터페이스"><figcaption><b>그림 2.</b> 확장 인터페이스 위치 및 사양표 (Unitree 문서)</figcaption></figure>
+<div class="table-region"><table class="t"><caption><b>표 3.</b> 확장 인터페이스 사양 [9]–[14]</caption>
+<thead><tr><th scope="col">No.</th><th scope="col">인터페이스 유형</th><th scope="col">인터페이스 명칭</th><th scope="col">인터페이스 사양</th></tr></thead>
+<tbody>
+<tr><td>[9]</td><td>RS485 2+2 PIN Aviation Plug</td><td>후방 우측 다리 전원 케이블</td><td>58V</td></tr>
+<tr><td>[10]</td><td>CAN 2+2 PIN Aviation Plug</td><td>정전압 전원 출력</td><td>24V 5A</td></tr>
+<tr><td>[11]</td><td>CAN 2+2 PIN Aviation Plug</td><td>배터리 전원 출력</td><td>배터리 전압(58V) 10A</td></tr>
+<tr><td>[12]</td><td>485 2+2 PIN Aviation Plug</td><td>정전압 전원 출력</td><td>12V 6A</td></tr>
+<tr><td>[13]</td><td>485 2+2 PIN Aviation Plug</td><td>정전압 전원 출력</td><td>24V 6A</td></tr>
+<tr><td>[14]</td><td>RS485 2+2 PIN Aviation Plug</td><td>전방 우측 다리 전원 케이블</td><td>58V 최대 10A</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>04</big></div><h1 id="c4" data-mark="c4">개봉 및 기동 전 점검</h1></div>
+<h2 id="s-4-1">4.1 포장 개봉</h2>
+<ol class="steps">
+<li>운송 상자를 평평한 곳에 놓고 포장 표시 방향에 따라 개봉하십시오.</li>
+<li>로봇, 조종기, 충전기 및 부속품을 꺼내 납품 목록과 하나씩 대조하십시오.</li>
+<li>로봇을 평평하고 장애물이 없는 바닥에 놓으십시오.</li>
+<li>추후 운송을 위해 원래 포장재와 완충재를 보관하십시오.</li>
+</ol>
+<h2 id="s-4-2">4.2 매 기동 전 점검</h2>
+<ul>
+<li>외장, 네 다리, 발 패드 및 체결 부품에 손상이나 풀림이 없는지 확인하십시오.</li>
+<li>배터리 잔량이 충분하고 잠금장치가 체결되었는지, 조종기 잔량이 충분한지 확인하십시오.</li>
+<li>로봇 주변에 잡동사니, 고인 물 또는 관절에 감길 수 있는 케이블이 없는지 확인하십시오.</li>
+<li>무선 통신 환경과 조종기 연결 상태가 정상인지 확인하십시오.</li>
+<li>조작자가 정지 및 비상 대응 방법을 숙지했는지 확인하십시오.</li>
+</ul>
+<h2 id="s-4-3">4.3 배터리 장착 및 초기 자세</h2>
+<p>1단계: 배터리 장착</p>
+<figure class="light"><div class="two image-pair"><img src="assets/image7.png" alt="배터리 장착 방향"><img src="assets/image8.png" alt="배터리 삽입 위치"></div></figure>
+<p>2단계: 로봇 배치</p>
+<figure class="light"><img src="assets/image9.png" alt="평평한 바닥에서의 엎드린 자세"><figcaption><b>그림 3.</b> 배터리 장착 및 평평한 바닥에서의 엎드린 자세 (Unitree 문서)</figcaption></figure>
+<ol class="steps">
+<li>A2를 평평한 바닥에 놓으십시오.</li>
+<li>올바른 방향으로 배터리를 삽입하고 “딸깍” 소리가 나며 잠길 때까지 밀어 넣으십시오.</li>
+<li>로봇의 네 다리가 설명서에 표시된 자연스러운 엎드린 자세인지 확인하고, 다리가 몸체 아래에 눌리지 않도록 하십시오.</li>
+</ol>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>05</big></div><h1 id="c5" data-mark="c5">로봇 기동 및 기본 제어</h1></div>
+<h2 id="s-5-1">5.1 전원 켜기</h2>
+<figure class="light"><img src="assets/image10.png" alt="배터리 전원 버튼을 짧게 누른 후 길게 누르는 방법"><figcaption><b>그림 4.</b> 배터리 전원 버튼 및 기동 자세 (Unitree 문서)</figcaption></figure>
+<ol class="steps">
+<li>로봇을 올바른 자세로 평평한 바닥에 놓고 주변에 사람과 장애물이 없는지 확인하십시오.</li>
+<li>배터리 전원 버튼을 짧게 한 번 누른 후 3초 이상 길게 눌러 로봇을 켜십시오.</li>
+<li>약 2분간 기다리면 로봇이 기동을 완료한 뒤 자동으로 일어섭니다.</li>
+<li>자세가 안정되었는지 확인한 다음 조종을 시작하십시오.</li>
+</ol>
+<div class="box caution"><div class="h">주의</div><p>기동에 실패하면 엎드린 자세와 배터리 잠금 상태를 먼저 확인하십시오.</p></div>
+<h2 id="s-5-2">5.2 화면형 조종기</h2>
+<figure class="light"><img src="assets/image11.png" alt="조종기 전원 버튼과 DL 연결 표시등"><figcaption><b>그림 5.</b> 조종기 버튼 및 연결 표시 (Unitree 문서)</figcaption></figure>
+<p>조종기 전원 버튼을 짧게 한 번 누른 다음 2초 이상 길게 누르십시오. 알림음이 울리면 조종기가 켜집니다. 연결에 성공하면 우측 DL 표시등이 켜집니다. 이후 조종기로 로봇을 제어할 수 있습니다.</p>
+<h3 id="s-5-2-1">5.2.1 조종기 구성 및 주요 버튼</h3>
+<p>A2에는 R3 화면형 조종기가 제공됩니다. 좌우 스틱, L1/L2, R1/R2, 방향키, X/Y/A/B, SELECT, START, F1, F3, 전원 버튼, USB Type-C 충전 포트 및 별도의 비상정지 버튼이 있습니다. 조종기는 데이터 전송 모듈을 통해 로봇과 통신하며, 최초 사용 시 Unitree Explore App(제9장 다운로드 안내 참조)에서 바인딩해야 합니다.</p>
+<p>R3 조종기 주요 버튼</p>
+<figure class="light"><div class="two image-pair"><img src="assets/image12.png" alt="R3 조종기 앞면의 부품 번호"><img src="assets/image13.png" alt="R3 조종기 뒷면의 비상정지 버튼 위치"></div><figcaption><b>그림 6.</b> 조종기 부품 번호 (Unitree 문서)</figcaption></figure>
+<div class="table-region"><table class="t"><caption><b>표 4.</b> R3 조종기 부품 목록</caption>
+<thead><tr><th scope="col">번호</th><th scope="col">부품</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Right Rocker</td></tr>
+<tr><td>2</td><td>Left Rocker</td></tr>
+<tr><td>3</td><td>Key L1/L2</td></tr>
+<tr><td>4</td><td>Key R1/R2</td></tr>
+<tr><td>5</td><td>Type C Charging Interface</td></tr>
+<tr><td>6</td><td>Left Key</td></tr>
+<tr><td>7</td><td>Power Connect Indicator</td></tr>
+<tr><td>8</td><td>SELECT</td></tr>
+<tr><td>9</td><td>F1(Function Setting Key)</td></tr>
+<tr><td>10</td><td>Charging Status Indicator</td></tr>
+<tr><td>11</td><td>Power Connect Indicator</td></tr>
+<tr><td>12</td><td>Power Button</td></tr>
+<tr><td>13</td><td>Data Transmission Indicator Light</td></tr>
+<tr><td>14</td><td>F3 (Function Setting Key)</td></tr>
+<tr><td>15</td><td>START</td></tr>
+<tr><td>16</td><td>Right Key</td></tr>
+<tr><td>17</td><td>Bluetooth Signal Indicator Light</td></tr>
+<tr><td>18</td><td>Emergency Stop Button</td></tr>
+<tr><td>19</td><td>Emergency Stop Indicator Light</td></tr>
+</tbody></table></div>
+<figure class="light"><img src="assets/image14.png" alt="A2 조종기 버튼 안내 스티커"><figcaption><b>그림 7.</b> A2 조종기 버튼 안내 스티커 (Unitree 문서)</figcaption></figure>
+<h3 id="s-5-2-2">5.2.2 스틱 장착 및 조종기 전원 켜기/끄기</h3>
+<ol class="steps">
+<li>조종기 보관 슬롯에서 스틱 2개를 꺼내 좌우 스틱 장착부에 맞춘 후 시계 방향으로 돌려 고정하십시오. 보관 시에는 반대로 풀어 슬롯에 넣으십시오.</li>
+<li>전원 켜기: 전원 버튼을 짧게 한 번 누른 후 2초 이상 길게 누릅니다. 알림음 2회가 들리면 켜진 상태입니다.</li>
+<li>전원 끄기: 전원 버튼을 짧게 한 번 누른 후 2초 이상 길게 누릅니다. 알림음 3회가 들리면 꺼진 상태입니다.</li>
+<li>로봇 또는 휴대전화와 연결되지 않은 상태에서 조작하지 않으면 약 10분 후 자동으로 꺼집니다.</li>
+</ol>
+<h3 id="s-5-2-3">5.2.3 최초 바인딩 및 연결 상태</h3>
+<ol class="steps">
+<li>Unitree Explore App에서 Device → Data → Remote Control로 이동하여 해당 조종기 코드를 입력하십시오.</li>
+<li>조종기의 SELECT 버튼을 3초 이상 길게 누릅니다. 알림음 4회가 들리면 로봇의 데이터 전송 모듈과 바인딩됩니다.</li>
+<li>조종기를 재시작하여 바인딩을 적용하십시오. 연결에 성공하면 우측 DL 데이터 전송 표시등이 켜집니다.</li>
+</ol>
+<figure class="light"><div class="two image-pair"><img src="assets/image15.png" alt="앱의 Data 메뉴에서 Remote Control 선택"><img src="assets/image16.png" alt="앱 조종기 코드 설정 화면"></div><figcaption><b>그림 8.</b> App 조종기 코드 설정 (Unitree 문서)</figcaption></figure>
+<h3 id="s-5-2-4">5.2.4 비상정지 버튼 및 표시등</h3>
+<p>조종기 중앙의 물리적 비상정지 버튼을 누르면 비상정지 표시등이 빨간색으로 바뀌며 조종기에서 비상정지가 활성화됩니다. 다시 누르면 조종기 측 비상정지 상태가 해제되고 표시등이 녹색으로 바뀝니다. 두 번의 누름 사이에는 최소 3초 간격을 두십시오.</p>
+<p>비상정지 표시등이 깜박이면 조종기가 로봇과 연결되지 않은 상태이며, 계속 켜져 있으면 연결되어 비상정지 기능을 사용할 준비가 된 상태입니다. 공식 안내에 따르면 비상정지 후 정상 이동 제어를 재개하려면 로봇을 재시작해야 합니다.</p>
+<div class="box caution"><div class="h">주의</div><p>비상정지 버튼을 해제했다고 로봇이 자동으로 움직임을 재개하는 것은 아닙니다. 현장 안전을 확인한 뒤 공식 절차에 따라 재시작하십시오. L2 + B는 댐핑 모드 단축키로, 물리적 비상정지와 다릅니다.</p></div>
+<h3 id="s-5-2-5">5.2.5 조종기 충전, 피드백 설정 및 스틱 보정</h3>
+<p>충전: 조종기를 끈 상태에서 규격에 맞는 USB Type-C 케이블과 권장 5 V / 2 A 충전기를 사용하십시오. 충전 표시등은 약 1 Hz로 깜박이며, 배터리 잔량 표시등이 모두 켜지면 완충 상태입니다. 조종기 배터리 정격 용량은 780 mAh, 사용 시간은 약 5시간, 개방된 환경에서 정격 제어 거리는 100 m 이상입니다.</p>
+<p>피드백 설정: F3를 빠르게 3회 누르면 진동/소리 피드백 모드를 전환합니다. F1을 빠르게 3회 누르면 소리 및 진동 피드백을 켜거나 끕니다. 변경 사항은 기본적으로 저장되지 않으며, 다음 사용에도 적용하려면 종료 시 F1을 누른 상태로 현재 모드를 저장하십시오.</p>
+<p>스틱 보정: 양쪽 스틱을 건드리지 않은 상태에서 F1과 F3를 동시에 눌렀다가 놓습니다. 연속 알림음이 들리면 좌우 스틱을 최대 범위까지 움직이고 여러 차례 회전시킵니다. 알림음이 멈추면 F3를 한 번 눌러 보정을 적용합니다. 보정 모드 진입 전에는 스틱을 건드리지 마십시오.</p>
+<h2 id="s-5-3">5.3 조종기 이동 제어 및 기능 단축키</h2>
+<h3 id="s-5-3-1">5.3.1 기본 이동</h3>
+<div class="table-region"><table class="t"><caption><b>표 5.</b> 기본 이동</caption>
+<thead><tr><th scope="col">조작</th><th scope="col">로봇 동작</th></tr></thead>
+<tbody>
+<tr><td>좌측 스틱 앞/뒤</td><td>전진/후진</td></tr>
+<tr><td>좌측 스틱 좌/우</td><td>좌측/우측 횡이동</td></tr>
+<tr><td>우측 스틱 좌/우</td><td>제자리 좌회전/우회전</td></tr>
+<tr><td>스틱에서 손을 떼어 중앙 복귀</td><td>중립 위치로 돌아가 해당 방향 이동 명령 중지</td></tr>
+</tbody></table></div>
+<p>스틱은 천천히 조작하고 넓고 평평한 장소에서 먼저 연습하십시오. 벽, 문 및 장애물은 조종기 신호를 약화시킬 수 있습니다.</p>
+<h3 id="s-5-3-2">5.3.2 자세 및 이동 모드</h3>
+<div class="table-region"><table class="t"><caption><b>표 6.</b> 자세 및 이동 모드</caption>
+<thead><tr><th scope="col">버튼 조합</th><th scope="col">기능</th></tr></thead>
+<tbody>
+<tr><td>L2 길게 누름 + B 한 번</td><td>댐핑 모드(Damping Mode); 물리적 비상정지와 다름</td></tr>
+<tr><td>L2 길게 누름 + A 한 번(첫 번째)</td><td>기립 상태에서 관절 자세 고정</td></tr>
+<tr><td>L2 길게 누름 + A 한 번(다시)</td><td>엎드린 자세로 전환</td></tr>
+<tr><td>START 한 번</td><td>잠금 해제/기본 보행</td></tr>
+<tr><td>L2 길게 누름 + START 한 번</td><td>달리기 모드</td></tr>
+<tr><td>X 두 번; START로 종료</td><td>왼쪽으로 눕기</td></tr>
+<tr><td>Y 두 번; START로 종료</td><td>오른쪽으로 눕기</td></tr>
+<tr><td>R1 두 번; START로 종료</td><td>물구나무서기 동작</td></tr>
+<tr><td>R2 두 번; START로 종료</td><td>직립 동작</td></tr>
+</tbody></table></div>
+<h3 id="s-5-3-3">5.3.3 고급 동작 및 설정</h3>
+<div class="table-region"><table class="t"><caption><b>표 7.</b> 고급 동작 및 설정</caption>
+<thead><tr><th scope="col">버튼 조합</th><th scope="col">기능</th></tr></thead>
+<tbody>
+<tr><td>L2 길게 누름 + X 한 번</td><td>넘어진 상태에서 일어나기</td></tr>
+<tr><td>R1 길게 누름 + X 한 번; START로 종료</td><td>등반 동작</td></tr>
+<tr><td>L1 길게 누름 + X 한 번; START로 종료</td><td>앞 공중제비</td></tr>
+<tr><td>L1 길게 누름 + Y 한 번; START로 종료</td><td>뒤 공중제비</td></tr>
+<tr><td>L1 길게 누름 + 방향키 위/아래; START로 종료</td><td>본체 높이 조절</td></tr>
+<tr><td>방향키 위/아래</td><td>속도 단계 전환</td></tr>
+<tr><td>Y 길게 누름 + B 한 번</td><td>자동 자세 복구 기능 켜기/끄기</td></tr>
+</tbody></table></div>
+<div class="box warn"><div class="h">경고</div><p>고위험 동작(공중제비, 물구나무서기, 등반, 넘어짐 복구)은 장비 손상이나 인명 피해를 일으킬 수 있습니다. 고객 최초 납품 교육 시 시연을 권장하지 않으며, 주변을 충분히 비우고 제조사 조건을 충족한 뒤 교육받은 인원만 수행해야 합니다. 펌웨어나 구성에 따라 사용 가능한 동작이 다를 수 있습니다.</p></div>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>06</big></div><h1 id="c6" data-mark="c6">로봇 전원 끄기, 충전 및 운송 포장</h1></div>
+<h2 id="s-6-1">6.1 정상 종료</h2>
+<ol class="steps">
+<li>평평한 바닥에서 로봇을 정지시키고 안정된 기립 자세를 유지하십시오.</li>
+<li>L2 + A 조합을 두 번 실행하여 관절 자세 고정과 엎드리기 동작을 순서대로 수행하십시오.</li>
+<li>안전한 엎드린 자세인지 확인한 뒤 배터리 전원 버튼을 짧게 한 번 누르고 3초 이상 길게 눌러 종료하십시오.</li>
+<li>전원이 꺼졌는지 확인한 뒤 배터리 잠금장치를 눌러 배터리를 분리하십시오.</li>
+</ol>
+<div class="box caution"><div class="h">주의</div><p>서 있거나 이동하는 동안 전원을 직접 차단하지 마십시오. 로봇이 갑자기 쓰러질 수 있습니다.</p></div>
+<h2 id="s-6-2">6.2 로봇 배터리 충전</h2>
+<div class="charge-illustration">
+<ol class="steps">
+<li><figure class="light"><img src="assets/image17.png" alt="본체에서 배터리 분리"></figure>
+<p>배터리 잠금장치를 누른 상태에서 A2 본체에서 배터리를 분리하십시오.</p></li>
+<li><figure class="light f45"><img src="assets/image18.png" alt="충전기를 AC 전원에 연결"></figure>
+<p>충전기를 먼저 AC 전원에 연결하십시오.</p></li>
+<li><figure class="light"><img src="assets/image19.png" alt="충전기에 A2 배터리 연결"><figcaption><b>그림 9.</b> 배터리 분리 및 충전기 연결 순서 (Unitree 문서)</figcaption></figure>
+<p>A2 배터리를 연결하십시오.</p></li>
+</ol>
+</div>
+<ol class="steps">
+<li>로봇을 끄고 모든 움직임이 멈출 때까지 기다리십시오.</li>
+<li>배터리 잠금장치를 눌러 본체에서 배터리를 분리하십시오.</li>
+<li>배터리, 충전 케이블 및 커넥터에 손상이 없는지 확인하고 배터리 전원이 꺼져 있는지 확인하십시오.</li>
+<li>정품 충전기를 100–240 V, 50/60 Hz AC 전원에 연결하십시오.</li>
+<li>그다음 충전기를 배터리에 연결하고 표시등을 확인하십시오.</li>
+<li>충전 중에는 표시등이 약 1 Hz로 깜박이며, 완충되면 표시등이 꺼집니다.</li>
+<li>완충 후 배터리와 충전기를 분리하고 필요에 따라 배터리를 다시 장착하십시오.</li>
+</ol>
+<div class="box caution"><div class="h">주의</div><p>충전 전 반드시 배터리를 분리하십시오. 로봇 사용 후 배터리가 뜨거울 수 있으므로 실온까지 식힌 뒤 충전하십시오.</p></div>
+<h2 id="s-6-3">6.3 운송 포장</h2>
+<figure class="light"><img src="assets/image20.png" alt="운송 포장용 다리 접힘 자세"><figcaption><b>그림 10.</b> 운송 포장용 다리 접힘 자세 (Unitree 문서)</figcaption></figure>
+<p>제조사 포장 그림에 표시된 위치로 네 다리를 접으십시오. 로봇을 운송 상자 하단에 넣고 부속품과 조종기를 배치한 다음 완충재가 제자리에 있는지 확인하고 상자 덮개를 닫으십시오.</p>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>07</big></div><h1 id="c7" data-mark="c7">고장 및 이상 대응</h1></div>
+<div class="table-region"><table class="t"><caption><b>표 8.</b> 고장 및 이상 대응</caption>
+<thead><tr><th scope="col">증상</th><th scope="col">조치 방법</th></tr></thead>
+<tbody>
+<tr><td>기동 후 약 2분이 지나도 일어서지 않음</td><td>배터리, 초기 자세, 전원 상태를 확인하고 재시작 후에도 이상이 지속되면 기술 지원 문의</td></tr>
+<tr><td>보행 중 자체 보호 기능 작동</td><td>조작을 중지하고 지면 저항, 외부 간섭, 자세 및 발 패드를 점검</td></tr>
+<tr><td>조종기로 엎드린 자세 전환 불가</td><td>주변 인원을 대피시키고 필요 시 배터리 전원 버튼으로 강제 종료; 로봇이 넘어질 수 있음</td></tr>
+<tr><td>전원 켠 후 기립 불가</td><td>설명서대로 올바른 초기 자세로 복귀시킨 뒤 재시작; 계속 실패하면 제조사 문의</td></tr>
+<tr><td>장시간 기립 상태 유지</td><td>장시간 정적 기립을 피하고 안내에 따라 엎드린 자세/댐핑 모드로 전환</td></tr>
+</tbody></table></div>
+<p>공식 지원: <a href="https://support.unitree.com">support.unitree.com</a>. 고객 현장에서는 WEGO 납품/AS 담당자에게 먼저 문의하십시오.</p>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>08</big></div><h1 id="c8" data-mark="c8">청소, 점검 및 보관</h1></div>
+<h2 id="s-8-1">8.1 청소</h2>
+<ol class="steps">
+<li>전원을 끄고, 배터리를 분리하기 전에 배터리함과 로봇 외부가 건조한지 확인하십시오.</li>
+<li>깨끗하고 부드러운 천으로 본체를 닦으십시오. 잘 지워지지 않는 오염에는 소량의 순한 세제를 사용할 수 있습니다.</li>
+<li>철제 브러시, 사포 또는 강한 부식성 용제를 사용하지 마십시오.</li>
+<li>청소 후 물기를 제거하고 커넥터 및 관절 틈으로 물이 들어가지 않도록 하십시오.</li>
+</ol>
+<h2 id="s-8-2">8.2 일상 점검</h2>
+<div class="table-region"><table class="t"><caption><b>표 9.</b> 일상 점검 항목</caption>
+<thead><tr><th scope="col">점검 항목</th><th scope="col">내용</th></tr></thead>
+<tbody>
+<tr><td>본체 외관</td><td>균열, 변형, 풀림, 이물질 여부</td></tr>
+<tr><td>다리 및 관절</td><td>연결부, 체결부, 이상 소음 및 구동 저항</td></tr>
+<tr><td>발 패드</td><td>마모, 파손 및 접지력</td></tr>
+<tr><td>배터리</td><td>외장 손상, 이상 발열, 접촉면 청결</td></tr>
+<tr><td>조종기</td><td>스틱 중립 복귀, 버튼 및 배터리 잔량</td></tr>
+<tr><td>냉각 팬</td><td>정상 작동 및 이상 소음 여부</td></tr>
+</tbody></table></div>
+<h2 id="s-8-3">8.3 보관</h2>
+<ul>
+<li>건조하고 서늘하며 통풍이 잘되는 곳에 보관하고 비와 직사광선을 피하십시오.</li>
+<li>배터리를 40℃를 초과하는 고온 환경에 두지 마십시오.</li>
+<li>장기 보관 시 배터리 잔량을 정기적으로 확인하십시오. 제조사는 잔량이 30% 미만이면 약 70%까지 충전한 후 보관할 것을 권장합니다.</li>
+<li>배터리를 완전히 방전한 상태로 장기간 보관하지 마십시오.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<div class="opener"><div class="num">CHAPTER<big>09</big></div><h1 id="c9" data-mark="c9">앱 다운로드(해외용)</h1></div>
+<figure class="light"><div class="two image-pair app-download"><img src="assets/image21.png" alt="iOS 앱 다운로드 QR 코드"><img src="assets/image22.png" alt="Android 앱 다운로드 QR 코드"></div><figcaption><b>그림 11.</b> iOS 및 Android 앱 다운로드 QR 코드 (Unitree 문서)</figcaption></figure>
+</section>
+
+<section class="chapter app">
+<div class="opener"><div class="num">APPENDIX<big>부록</big></div><h1 id="c10" data-mark="c10">빠른 참조</h1></div>
+<div class="table-region"><table class="t"><caption><b>표 10.</b> 빠른 조작 안내</caption>
+<thead><tr><th scope="col">조작</th><th scope="col">핵심 절차</th></tr></thead>
+<tbody>
+<tr><td>전원 켜기</td><td>평평한 지면에서 엎드리기 → 배터리 버튼 짧게 누른 후 3초 이상 길게 누르기 → 약 2분 대기</td></tr>
+<tr><td>조종기</td><td>짧게 누른 후 2초 이상 길게 누르기 → DL 표시등 확인</td></tr>
+<tr><td>추종</td><td>동반 조종기를 오른쪽에 착용 → 로봇 우측 0.2–0.6 m 위치 → M 버튼</td></tr>
+<tr><td>전원 끄기</td><td>평지에서 안정적으로 기립 → L2+A 두 번으로 엎드리기 → 배터리 버튼 짧게 누른 후 3초 이상 길게 누르기</td></tr>
+<tr><td>충전</td><td>전원 끄고 배터리 분리 → AC 전원 연결 → 배터리 연결 → 완충 후 분리</td></tr>
+</tbody></table></div>
+</section>
+
+</main></div>
+<div class="wm-scrim"></div>
+<script>
+(function(){var b=document.body,t=document.getElementById('wm-toc'),a={},on=null;
+document.querySelector('.wm-menu').onclick=function(){b.classList.toggle('wm-open')};
+document.querySelector('.wm-scrim').onclick=function(){b.classList.remove('wm-open')};
+addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('wm-open')});
+t.addEventListener('click',function(e){if(e.target.closest('a'))b.classList.remove('wm-open')});
+t.querySelectorAll('a').forEach(function(x){a[x.hash.slice(1)]=x});
+function set(id){var x=a[id];if(!x||x===on)return;if(on)on.classList.remove('on');on=x;x.classList.add('on');
+var d=x.closest('details');t.querySelectorAll('details').forEach(function(y){y.open=y===d});
+var r=x.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)t.scrollTop+=r.top-q.top-q.height/3}
+var hs=Object.keys(a).map(function(id){return document.getElementById(id)}).filter(Boolean),k=0;
+function spy(){var y=innerHeight*.3,c=null;for(var i=0;i<hs.length&&hs[i].getBoundingClientRect().top<=y;i++)c=hs[i];if(c)set(c.id)}
+addEventListener('scroll',function(){if(!k){k=1;requestAnimationFrame(function(){k=0;spy()})}},{passive:true});spy()})();
+</script>
+</body>
+</html>
